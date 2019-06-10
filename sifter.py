@@ -7,11 +7,13 @@ QDialogButtonBox, QFormLayout, QGridLayout, QGroupBox, QHBoxLayout,
 QLabel, QLineEdit, QMenu, QMenuBar, QPushButton, QSpinBox, QTextEdit,
 QVBoxLayout)
 import sys
+import itertools
+import re
 
 class List(QtWidgets.QListWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
-
+        self.dropped = QtCore.pyqtSignal(list)
         self.setDragDropMode(self.DragDrop)
         self.setSelectionMode(self.ExtendedSelection)
         self.setAcceptDrops(True)
@@ -38,27 +40,14 @@ class List(QtWidgets.QListWidget):
             for item in selected_items:
                 r = source_widget.row(item)
                 source_widget.takeItem(r)
-    '''            
-    def mousePressEvent(self, QMouseEvent):
-        if QMouseEvent.button() == Qt.LeftButton:
-            print("Left Button Clicked")
-        elif QMouseEvent.button() == Qt.RightButton:
-            #do what you want here
-            print("Right Button Clicked")
-    
-    def mouseDoubleClickEvent(self, event):
-        source_widget = event.source()
-        selected_items = source_widget.selectedItems()
-        for item in selected_items:
-            r = source_widget.row(item)
-            source_widget.takeItem(r)
-    '''
+
 class App(QDialog):
 
     def __init__(self):
         super().__init__()
         self.title = 'PyQt5 layout - pythonspot.com'
-
+        
+        self.weights={}
         self.left = 10
         self.top = 10
         self.width = 320
@@ -67,14 +56,14 @@ class App(QDialog):
 
     def eventFilter(self, source, event):
         if (event.type() == QtCore.QEvent.ContextMenu and
-            source is self.left):
+            source is self.LeftListBox):
             menu = QtWidgets.QMenu()
             menu.addAction('Delete')
             if menu.exec_(event.globalPos()):
-                selected_items = self.left.selectedItems()
+                selected_items = self.LeftListBox.selectedItems()
                 for item in selected_items:
-                    r = self.left.row(item)
-                    self.left.takeItem(r)
+                    r = self.LeftListBox.row(item)
+                    self.LeftListBox.takeItem(r)
             return True
         return super(QDialog, self).eventFilter(source, event)
 
@@ -86,6 +75,7 @@ class App(QDialog):
         
         windowLayout = QVBoxLayout()
         windowLayout.addWidget(self.horizontalGroupBox)
+        
         self.setLayout(windowLayout)
         self._add_items_to_listWidget()
         self.show()
@@ -94,12 +84,16 @@ class App(QDialog):
         self.horizontalGroupBox = QGroupBox("Grid")
         layout = QGridLayout()
        
-        self.left = List()
-        self.right = List()
-        layout.addWidget(self.left,1,0)
-        layout.addWidget(self.right,1,1)
-        self.left.installEventFilter(self)
+        self.LeftListBox = List()
+        self.RightListBox = List()
+        layout.addWidget(self.LeftListBox,1,0)
+        layout.addWidget(self.RightListBox,1,1)
+        self.LeftListBox.installEventFilter(self)
         self.horizontalGroupBox.setLayout(layout)
+        self.RightListBox.dropped.connect(self.handleDropped)
+        
+    def handleDropped(self):
+        print('dropped:')
 
     def _add_items_to_listWidget(self):
         f = open("german_sentences.txt","r",encoding="utf-8")
@@ -108,8 +102,53 @@ class App(QDialog):
         for i in l:
             item=QtWidgets.QListWidgetItem()
             item.setText(i)                        
-            self.left.addItem(item) 
+            self.LeftListBox.addItem(item) 
+        #compute weights
+        words=list(itertools.chain(*[x.split(" ") for x in t.split('\n')]))
+        words=list(set([x for x in [re.sub(r'^[.,(0-9]+','',re.sub(r'[.,?():]+$','',x)) for x in words] if len(x) > 0]))
+        self.weights = { i : 0 for i in words}
+    
+    @QtCore.pyqtSlot(QtWidgets.QListWidgetItem)
+    def on_itemClicked(self, item):
+        if item.text() == "Select all":
+            for row in range(1, self.list_widget.count()):
+                it = self.LeftListBox.item(row)
+                it.setCheckState(QtCore.Qt.Checked)
 
+    @QtCore.pyqtSlot()
+    def on_clicked(self):
+        selected_items = self.LeftListBox.selectedItems()
+        for item in selected_items:
+            print(item.text())
+            text=item.text()
+            words=list(itertools.chain(*[x.split(" ") for x in text.split('\n')]))
+            words=list(set([x for x in [re.sub(r'^[.,(0-9]+','',re.sub(r'[.,?():]+$','',x)) for x in words] if len(x) > 0]))
+            for word in words:
+                if word in self.weights:
+                   self.weights[word] = self.weights[word] + 1
+
+        for item in  self.visibleItems():
+            print(item.text())
+
+    @QtCore.pyqtSlot()
+    def on_dropped(self,event):
+        pass
+
+    def visibleItems(self):
+        rect = self.LeftListBox.viewport().contentsRect()
+        top = self.LeftListBox.indexAt(rect.topLeft())
+        if top.isValid():
+            bottom = self.LeftListBox.indexAt(rect.bottomLeft())
+        if not bottom.isValid():
+            bottom = self.LeftListBox.model().index(self.LeftListBox.count() - 1)
+        for index in range(top.row(), bottom.row() + 1):
+            yield self.LeftListBox.item(index)    
+        '''
+        for row in range(1, self.LeftListBox.count()):
+            it = self.LeftListBox.item(row)
+            if it.checkState() == QtCore.Qt.Checked:
+                print(it.text())
+        '''
 def main():
     app = QApplication(sys.argv)
     ex = App()
