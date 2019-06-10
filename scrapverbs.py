@@ -61,7 +61,7 @@ table_verb='''%==={word}===
 
 def main():
     try:
-        verb_list=['arbeiten','bekommen','bleiben','brauchen',
+        verb_list=['warten','arbeiten','bekommen','bleiben','brauchen',
         'bringen','denken','essen','fahren',
         'finden','fragen','geben','gehen',
         'gehören','glauben','haben','halten',
@@ -76,11 +76,10 @@ def main():
         'tun','warten','werden','werfen',
         'wissen','wohnen','wollen','ziehen']
 
-        shuffle(verb_list)
-        #soups=[get_result_set(verb) for verb in verb_list[0:3]]
+        #shuffle(verb_list)
+        cards={}
         for verb in verb_list:
             soup=get_result_set(verb)   
-        #for soup in soups:
             container = soup.find('span',{'id':"German",'class':"mw-headline"})
             if container:
                 parent=container.parent
@@ -102,7 +101,7 @@ def main():
                 past_line=line_parbox.format(**l)
                 out['past']=past_line
                 out['word']=verb
-                print(table_verb.format(**out))
+                cards[verb]=table_verb.format(**out)
                 #print(l)
                 #print(table_verb.format(**l))
                 #get_meaning(parent)
@@ -110,7 +109,8 @@ def main():
     except Exception as e:
         print('Error on line {}'.format(sys.exc_info()[-1].tb_lineno), type(e).__name__, e)    
 
-  
+    for k, v in cards.items():
+        print(v)
 
 if __name__ == "__main__":
     main()
