@@ -74,8 +74,11 @@ def main():
             container = soup.find('span',{'id':"German",'class':"mw-headline"})
             if container:
                 parent=container.parent
-                ret=get_conjugation(parent)
-                print(ret)
+                verblist=get_conjugation(parent)
+                #print(verblist)
+                for vl in verblist:
+                    
+                    print(vl[0:2])
                 #get_meaning(parent)
 
     except Exception as e:
