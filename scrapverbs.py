@@ -49,6 +49,15 @@ def get_conjugation(parent):
     #for verb in verbs[0:3]:
     #    print(verb[0:2])
     return verbs
+line_parbox='''\\parbox[t][][t]{{2cm}}{{{ich}\\\\{du}\\\\{er}\\\\{wir}\\\\{ihr}\\\\{sie}}}'''
+table_verb='''%==={word}===
+\\card{{\sffamily \huge {word}}}{{
+\\begin{{tabular}}{{lll}}
+\\parbox[t][][t]{{1.5cm}}{{\\raggedleft ich\\\\du\\\\er/sie/es\\\\wir\\\\ihr\\\\sie}} &	
+{present} &
+{past}\\\\
+\\end{{tabular}}
+}}'''
 
 def main():
     try:
@@ -68,17 +77,34 @@ def main():
         'wissen','wohnen','wollen','ziehen']
 
         shuffle(verb_list)
-        soups=[get_result_set(verb) for verb in verb_list[0:3]]
-        
-        for soup in soups:
+        #soups=[get_result_set(verb) for verb in verb_list[0:3]]
+        for verb in verb_list:
+            soup=get_result_set(verb)   
+        #for soup in soups:
             container = soup.find('span',{'id':"German",'class':"mw-headline"})
             if container:
                 parent=container.parent
                 verblist=get_conjugation(parent)
                 #print(verblist)
-                for vl in verblist:
-                    
-                    print(vl[0:2])
+                present=list(itertools.chain.from_iterable([x[0:2] for x in verblist][0:3]))
+                past=list(itertools.chain.from_iterable([x[0:2] for x in verblist][3:6]))
+                
+                out={}
+                l=[x.split(" ",1) for x in present]
+                l=list(itertools.chain.from_iterable(l))
+                l=dict(itertools.zip_longest(*[iter(l)] * 2, fillvalue=""))
+                preset_line=line_parbox.format(**l)
+                out['present']=preset_line
+                
+                l=[x.split(" ",1) for x in past]
+                l=list(itertools.chain.from_iterable(l))
+                l=dict(itertools.zip_longest(*[iter(l)] * 2, fillvalue=""))
+                past_line=line_parbox.format(**l)
+                out['past']=past_line
+                out['word']=verb
+                print(table_verb.format(**out))
+                #print(l)
+                #print(table_verb.format(**l))
                 #get_meaning(parent)
 
     except Exception as e:
