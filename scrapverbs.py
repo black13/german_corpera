@@ -73,10 +73,10 @@ def main():
             container = soup.find('span',{'id':"German",'class':"mw-headline"})
             if container:
                 parent=container.parent
-                meaning=get_meaning(parent)
-                meaning=[x.split("\n") for x in meaning]
+                #meaning=get_meaning(parent)
+                #meaning=[x.split("\n") for x in meaning]
                 #meaning=meaning.split('\n')
-                print(meaning)
+                #print(meaning)
                 verblist=get_conjugation(parent)
                 
                 present=list(itertools.chain.from_iterable([x[0:2] for x in verblist][0:3]))
