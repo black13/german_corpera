@@ -83,7 +83,7 @@ table_verb='''
 \\end{{tabular}}
 \\begin{{tabular}}{{l}}
 \\parbox[t][][t]{{8cm}}{{}}\\\\
-\\parbox[t][][t]{{8cm}}{{\\normalfont \\tiny {examples} }}\\\\
+\\parbox[t][][t]{{8cm}}{{\\normalfont \\small {examples} }}\\\\
 \\end{{tabular}}
 }}'''
 
@@ -102,9 +102,9 @@ explaination_parbox='''\\parbox[t][][t]{{8cm}}{{{text}}}'''
 def main():
     
     urllib3.disable_warnings()
-    shuffle(verb_list)
+    #shuffle(verb_list)
     cards={}
-    for verb in verb_list[0:16]:
+    for verb in verb_list:
         try:
             print(verb)
             soup=get_result_set(verb)  
@@ -114,7 +114,9 @@ def main():
                 out={}
                 parent=container.parent
                 meaning=get_meaning(parent)
-                out['examples']=wrap(re.sub(f'[^{re.escape(string.printable)}]', '','\n'.join(meaning)),50)
+                #text=re.sub(f'[^{re.escape(string.printable)}]', '','\n'.join(meaning))
+                text=re.sub(r'[&_{}]*','','\n'.join(meaning))
+                out['examples']=wrap(text,50)
                 #meaning=meaning.split('\n')
                 #print(meaning)
                 verblist=get_conjugation(parent)
