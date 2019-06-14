@@ -2,17 +2,16 @@ from bs4 import BeautifulSoup
 import sys
 import re
 from random import shuffle 
-import itertools
 import requests
-from itertools import groupby
-from itertools import dropwhile,takewhile
+from itertools import groupby,dropwhile,takewhile,zip_longest,chain
 from textwrap import wrap
 import ftfy
 import urllib3
 from verblist import verb_list
 import string 
-def group2(iterator, count):
-    return list(itertools.imap(None, *([ iter(iterator) ] * count)))
+#theads!
+from multiprocessing import Pool
+from time import sleep
 
 def get_result_set(verb):
     url="http://en.wiktionary.org/wiki/{0}#Conjugation".format(verb)
@@ -54,7 +53,6 @@ def get_conjugation(parent):
 
     table=[ x for x in [x.find('table') for x in tables] if x.has_attr('class')][0]
 
-    table.find_all('trs',{})
     table_body = table.find('tbody')
 
     rows = table_body.find_all('tr')
@@ -99,57 +97,79 @@ footer='''\\end{document}'''
 
 explaination_parbox='''\\parbox[t][][t]{{8cm}}{{{text}}}'''
 
-def main():
+def parse(verb):
+    verblist=[]
+    out={}
+    latex=""
+    headers = {
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36'}
+    try:
+        url="http://en.wiktionary.org/wiki/{0}#Conjugation".format(verb)   
     
+        r = requests.get(url, headers=headers,verify=False, timeout=10)
+        sleep(2)
+        
+        if r.status_code == 200:
+            print('Processing..' + url)
+            html = r.text
+            soup = BeautifulSoup(html, "html.parser")
+            tables=soup.select('table[class="inflection-table"]')
+            
+            table=None
+            for t in tables:
+                tl=[x for x in t.text.split("\n") if len(x) > 0]
+                if 'infinitive' in tl and 'present participle' in tl and 'past participle' in tl:
+                    table=t
+                    break
+            if table is not None:
+                rows = table.find_all('tr')
+                for row in rows:
+                    cols = row.find_all('td')    
+                    if len(cols) == 4:
+                        v=[]
+                        for col in cols: 
+                        #print(col.text)
+                            v.append(col.text.strip())
+                        verblist.append(v)
+            
+            present=list(chain.from_iterable([x[0:2] for x in verblist][0:3]))
+            past=list(chain.from_iterable([x[0:2] for x in verblist][3:6]))
+                
+            out['examples']=""    
+            l=[x.split(" ",1) for x in present]
+            l=list(chain.from_iterable(l))
+            l=dict(zip_longest(*[iter(l)] * 2, fillvalue=""))
+            preset_line=line_parbox.format(**l)
+            out['present']=preset_line
+                
+            l=[x.split(" ",1) for x in past]
+            l=list(chain.from_iterable(l))
+            l=dict(zip_longest(*[iter(l)] * 2, fillvalue=""))
+            past_line=line_parbox.format(**l)
+            out['past']=past_line
+            out['word']=verb
+            latex=table_verb.format(**out)
+    except Exception as e:
+        print('Error on line {}'.format(sys.exc_info()[-1].tb_lineno), type(e).__name__, e)
+    return latex
+
+def main():
+    #use with thread pools
     urllib3.disable_warnings()
     #shuffle(verb_list)
-    cards={}
-    for verb in verb_list:
-        try:
-            print(verb)
-            soup=get_result_set(verb)  
-            soup.encode("utf-8") 
-            container = soup.find('span',{'id':"German",'class':"mw-headline"})
-            if container:
-                out={}
-                parent=container.parent
-                meaning=get_meaning(parent)
-                #text=re.sub(f'[^{re.escape(string.printable)}]', '','\n'.join(meaning))
-                text=re.sub(r'[&_{}]*','','\n'.join(meaning))
-                out['examples']=wrap(text,50)
-                #meaning=meaning.split('\n')
-                #print(meaning)
-                verblist=get_conjugation(parent)
-                
-                present=list(itertools.chain.from_iterable([x[0:2] for x in verblist][0:3]))
-                past=list(itertools.chain.from_iterable([x[0:2] for x in verblist][3:6]))
-                
-                
-                l=[x.split(" ",1) for x in present]
-                l=list(itertools.chain.from_iterable(l))
-                l=dict(itertools.zip_longest(*[iter(l)] * 2, fillvalue=""))
-                preset_line=line_parbox.format(**l)
-                out['present']=preset_line
-                
-                l=[x.split(" ",1) for x in past]
-                l=list(itertools.chain.from_iterable(l))
-                l=dict(itertools.zip_longest(*[iter(l)] * 2, fillvalue=""))
-                past_line=line_parbox.format(**l)
-                out['past']=past_line
-                out['word']=verb
-                cards[verb]=table_verb.format(**out)
-                #print(l)
-                #print(table_verb.format(**out))
-        except Exception as e:
-            print('Error on line {}'.format(sys.exc_info()[-1].tb_lineno), type(e).__name__, e)    
+    p = Pool(20)  # Pool tells how many at a time
+    records = p.map(parse, verb_list)
 
-    f=open("out.tex","w",encoding='utf-8')
+    p.terminate()
+    p.join()
+    
+
+    f=open("verbs.tex","w",encoding='utf-8')
     f.write(header)
-    for k, v in cards.items():
-        f.write(ftfy.fix_text(v))
+    for record in records:
+        f.write (record)
     f.write(footer)
     f.close()
-    
 
 if __name__ == "__main__":
     main()
