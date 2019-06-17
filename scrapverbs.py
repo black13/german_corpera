@@ -159,7 +159,6 @@ def main():
     #shuffle(verb_list)
     p = Pool(20)  # Pool tells how many at a time
     records = p.map(parse, verb_list)
-
     p.terminate()
     p.join()
     
