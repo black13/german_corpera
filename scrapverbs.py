@@ -98,7 +98,7 @@ footer='''\\end{document}'''
 explaination_parbox='''\\parbox[t][][t]{{8cm}}{{{text}}}'''
 
 def parse(verb):
-    verblist=[]
+    textlist=[]
     out={}
     latex=""
     headers = {
@@ -112,6 +112,7 @@ def parse(verb):
         if r.status_code == 200:
             print('Processing..' + url)
             html = r.text
+            
             soup = BeautifulSoup(html, "html.parser")
             tables=soup.select('table[class="inflection-table"]')
             
@@ -151,7 +152,7 @@ def parse(verb):
             latex=table_verb.format(**out)
     except Exception as e:
         print('Error on line {}'.format(sys.exc_info()[-1].tb_lineno), type(e).__name__, e)
-    return latex
+    return textlist
 
 def main():
     #use with thread pools
