@@ -1,0 +1,38 @@
+{
+  "Verb": [
+    "Konjugation Präsens: regelmäßige Verben (ich mache, du machst, er macht...)",
+    "Konjugation Präsens: sein, haben, werden",
+    "Konjugation Präsens: Modalverben können, möchten, müssen, dürfen",
+    "Konjugation Präsens: trennbare Verben (anfangen, aufstehen, einkaufen)",
+    "Imperativ (Kommen Sie! Komm! Geh!)",
+    "Perfekt als feste Wendung (Ich habe gemacht / Ich bin gefahren)"
+  ],
+  "Satzstruktur": [
+    "Aussagesatz: Subjekt-Verb-Objekt (Ich trinke Kaffee.)",
+    "W-Frage (Wo wohnen Sie? Was machen Sie? Wie heißen Sie?)",
+    "Ja/Nein-Frage (Sprechen Sie Deutsch? Kommst du mit?)",
+    "Negation mit nicht / kein",
+    "Satzklammer bei trennbaren Verben (Ich stehe um 7 Uhr auf.)"
+  ],
+  "Nomen": [
+    "Genus: der, die, das",
+    "Nominativ und Akkusativ",
+    "Dativ als feste Wendung (Wie geht es dir? Mit dem Bus.)",
+    "Plural: -e, -en, -er, -s, Umlaut"
+  ],
+  "Artikelwörter": [
+    "bestimmter Artikel: der, die, das / die",
+    "unbestimmter Artikel: ein, eine / kein, keine",
+    "Possessivartikel: mein, dein, sein, ihr (Nominativ)"
+  ],
+  "Pronomen": [
+    "Personalpronomen: ich, du, er, sie, es, wir, ihr, sie, Sie",
+    "man (Man kann hier gut essen.)"
+  ],
+  "Präpositionen": [
+    "Lokale: in, aus, nach, zu, bei, an, auf, von, bis",
+    "Temporale: am, um, von...bis, im",
+    "mit + Dativ (mit dem Bus, mit meiner Freundin)"
+  ],
+  "Konnektoren": ["und", "oder", "aber", "denn"]
+}

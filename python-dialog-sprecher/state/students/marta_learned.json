@@ -1,0 +1,363 @@
+{
+  "day": 7,
+  "vocabulary_acquired": [
+    {
+      "word": "heißen",
+      "stable": true
+    },
+    {
+      "word": "alt",
+      "stable": true
+    },
+    {
+      "word": "kommen aus",
+      "stable": true
+    },
+    {
+      "word": "wohnen in",
+      "stable": true
+    },
+    {
+      "word": "Familie",
+      "stable": true
+    },
+    {
+      "word": "arbeiten",
+      "stable": true
+    },
+    {
+      "word": "Beruf",
+      "stable": true
+    },
+    {
+      "word": "die Telefonnummer",
+      "stable": true
+    },
+    {
+      "word": "wohnen",
+      "stable": true
+    },
+    {
+      "word": "Wohnung",
+      "stable": true
+    },
+    {
+      "word": "Zimmer",
+      "stable": true
+    },
+    {
+      "word": "Küche",
+      "stable": true
+    },
+    {
+      "word": "Garten",
+      "stable": true
+    },
+    {
+      "word": "Balkon",
+      "stable": true
+    },
+    {
+      "word": "schön",
+      "stable": true
+    },
+    {
+      "word": "kochen",
+      "stable": true
+    },
+    {
+      "word": "Mittagessen",
+      "stable": true
+    },
+    {
+      "word": "Suppe",
+      "stable": true
+    },
+    {
+      "word": "Wasser",
+      "stable": true
+    },
+    {
+      "word": "Bier",
+      "stable": true
+    },
+    {
+      "word": "Rechnung",
+      "stable": true
+    },
+    {
+      "word": "Kartoffeln",
+      "stable": true
+    },
+    {
+      "word": "Essen",
+      "stable": true
+    },
+    {
+      "word": "Kartoffeln",
+      "stable": true
+    },
+    {
+      "word": "kaufen",
+      "stable": true
+    },
+    {
+      "word": "Suppe",
+      "stable": true
+    },
+    {
+      "word": "Wasser",
+      "stable": true
+    },
+    {
+      "word": "Bier",
+      "stable": true
+    },
+    {
+      "word": "günstiges Angebot",
+      "stable": true
+    },
+    {
+      "word": "Mittagessen",
+      "stable": true
+    },
+    {
+      "word": "Freunde",
+      "stable": true
+    },
+    {
+      "word": "Freizeit",
+      "stable": true
+    },
+    {
+      "word": "Hobby",
+      "stable": true
+    },
+    {
+      "word": "gern",
+      "stable": true
+    },
+    {
+      "word": "spazieren",
+      "stable": true
+    },
+    {
+      "word": "Freunde",
+      "stable": true
+    },
+    {
+      "word": "Bier",
+      "stable": true
+    },
+    {
+      "word": "Wasser",
+      "stable": true
+    },
+    {
+      "word": "Kaffee",
+      "stable": true
+    },
+    {
+      "word": "kochen",
+      "stable": true
+    },
+    {
+      "word": "fernsehen",
+      "stable": true
+    },
+    {
+      "word": "lesen",
+      "stable": true
+    },
+    {
+      "word": "Buch",
+      "stable": true
+    },
+    {
+      "word": "Filme",
+      "stable": true
+    },
+    {
+      "word": "um ... Uhr",
+      "stable": true
+    },
+    {
+      "word": "acht Uhr",
+      "stable": true
+    },
+    {
+      "word": "Woche",
+      "stable": true
+    },
+    {
+      "word": "Bus",
+      "stable": true
+    },
+    {
+      "word": "zu Fuß",
+      "stable": true
+    },
+    {
+      "word": "fahren",
+      "stable": true
+    },
+    {
+      "word": "gehen",
+      "stable": true
+    },
+    {
+      "word": "Fahrkarte",
+      "stable": true
+    },
+    {
+      "word": "Bahnhof",
+      "stable": true
+    },
+    {
+      "word": "Verkehrsmittel",
+      "stable": true
+    },
+    {
+      "word": "um acht Uhr",
+      "stable": true
+    }
+  ],
+  "grammar_acquired": [
+    {
+      "rule": "'Monate' should be 'Monaten'",
+      "stable": false
+    },
+    {
+      "rule": "Missing article before 'acht'",
+      "stable": false
+    },
+    {
+      "rule": "Missing article in 'in Hotel'",
+      "stable": false
+    },
+    {
+      "rule": "Incorrect plural 'Zimmer' instead of 'Zimmern'",
+      "stable": false
+    },
+    {
+      "rule": "'ich habe Frage' should be 'ich habe eine Frage'",
+      "stable": false
+    },
+    {
+      "rule": "'bei Arbeit und Freunde' should be 'bei der Arbeit und mit Freunden'",
+      "stable": false
+    },
+    {
+      "rule": "Incorrect article 'eine' should be 'einer'",
+      "stable": false
+    },
+    {
+      "rule": "Missing article before 'Balkon'",
+      "stable": false
+    },
+    {
+      "rule": "Incorrect word order in 'Manchmal Freunde kommen'",
+      "stable": false
+    },
+    {
+      "rule": "Incorrect use of 'polnische Essen' should be 'polnisches Essen'",
+      "stable": false
+    },
+    {
+      "rule": "Missing article before nouns",
+      "stable": false
+    },
+    {
+      "rule": "Incorrect word order",
+      "stable": false
+    },
+    {
+      "rule": "Incorrect adjective endings",
+      "stable": false
+    },
+    {
+      "rule": "Missing article before nouns",
+      "stable": false
+    },
+    {
+      "rule": "Incorrect verb form 'kaufen' should be 'kaufe'",
+      "stable": false
+    },
+    {
+      "rule": "Incorrect word order",
+      "stable": false
+    },
+    {
+      "rule": "Missing articles",
+      "stable": false
+    },
+    {
+      "rule": "Incorrect plural forms",
+      "stable": false
+    },
+    {
+      "rule": "Incorrect word order",
+      "stable": false
+    },
+    {
+      "rule": "Missing articles",
+      "stable": false
+    },
+    {
+      "rule": "Incorrect plural forms",
+      "stable": false
+    },
+    {
+      "rule": "Incorrect adjective endings",
+      "stable": false
+    },
+    {
+      "rule": "Missing articles before nouns",
+      "stable": false
+    },
+    {
+      "rule": "Incorrect word order",
+      "stable": false
+    },
+    {
+      "rule": "Incorrect adjective endings",
+      "stable": false
+    }
+  ],
+  "persistent_errors": [
+    "Missing articles",
+    "Incorrect word order",
+    "Incorrect adjective endings"
+  ],
+  "emotional_state": "neutral",
+  "kannbeschreibungen_attempted": {
+    "K01_vorstellen": {
+      "day": 1,
+      "result": "teilweise"
+    },
+    "K07_wohnen": {
+      "day": 2,
+      "result": "teilweise"
+    },
+    "K06_essen_bestellen": {
+      "day": 3,
+      "result": "teilweise"
+    },
+    "K03_einkaufen": {
+      "day": 4,
+      "result": "teilweise"
+    },
+    "K15_freizeit": {
+      "day": 5,
+      "result": "teilweise"
+    },
+    "K04_zeitangaben": {
+      "day": 6,
+      "result": "teilweise"
+    },
+    "K05_wegbeschreibung": {
+      "day": 7,
+      "result": "teilweise"
+    }
+  }
+}

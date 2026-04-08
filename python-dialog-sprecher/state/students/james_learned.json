@@ -1,0 +1,189 @@
+{
+  "day": 5,
+  "vocabulary_acquired": [
+    {
+      "word": "heißen",
+      "stable": true
+    },
+    {
+      "word": "alt",
+      "stable": true
+    },
+    {
+      "word": "wohnen",
+      "stable": true
+    },
+    {
+      "word": "Mitbewohner",
+      "stable": true
+    },
+    {
+      "word": "kaufen",
+      "stable": true
+    },
+    {
+      "word": "Lebensmittel",
+      "stable": true
+    },
+    {
+      "word": "kosten",
+      "stable": true
+    },
+    {
+      "word": "Apfel",
+      "stable": true
+    },
+    {
+      "word": "Brötchen",
+      "stable": true
+    },
+    {
+      "word": "bitte",
+      "stable": true
+    },
+    {
+      "word": "Ich hätte gerne",
+      "stable": true
+    },
+    {
+      "word": "Restaurants",
+      "stable": true
+    },
+    {
+      "word": "bestellen",
+      "stable": true
+    },
+    {
+      "word": "Pizza",
+      "stable": true
+    },
+    {
+      "word": "bitte",
+      "stable": true
+    },
+    {
+      "word": "Apfel",
+      "stable": true
+    },
+    {
+      "word": "Hähnchen",
+      "stable": true
+    },
+    {
+      "word": "Freizeit",
+      "stable": true
+    },
+    {
+      "word": "Hobby",
+      "stable": true
+    },
+    {
+      "word": "Filme",
+      "stable": true
+    },
+    {
+      "word": "Actionfilme",
+      "stable": true
+    },
+    {
+      "word": "Komödien",
+      "stable": true
+    },
+    {
+      "word": "Bücher",
+      "stable": true
+    },
+    {
+      "word": "lesen",
+      "stable": true
+    },
+    {
+      "word": "Lieblingsfilm",
+      "stable": true
+    },
+    {
+      "word": "spannend",
+      "stable": true
+    },
+    {
+      "word": "lustig",
+      "stable": true
+    },
+    {
+      "word": "Gefühle",
+      "stable": true
+    }
+  ],
+  "grammar_acquired": [
+    {
+      "rule": "'ein interessantes Fakt' should be 'eine interessante Tatsache'",
+      "stable": false
+    },
+    {
+      "rule": "Correct use of 'Ich hätte gerne' for ordering",
+      "stable": true
+    },
+    {
+      "rule": "Correct use of articles 'einen Apfel' and 'ein Brötchen'",
+      "stable": true
+    },
+    {
+      "rule": "Correct use of 'Ich hätte gerne' for ordering",
+      "stable": true
+    },
+    {
+      "rule": "Correct use of article 'eine Pizza'",
+      "stable": true
+    },
+    {
+      "rule": "Correct use of 'in meiner Freizeit'",
+      "stable": true
+    },
+    {
+      "rule": "Correct use of 'gern' and 'lieber'",
+      "stable": true
+    },
+    {
+      "rule": "Correct use of 'Ich mag' and 'Ich finde'",
+      "stable": true
+    },
+    {
+      "rule": "Correct phrase 'Es kommt darauf an'",
+      "stable": true
+    },
+    {
+      "rule": "Correct use of 'ein Buch im Kopf'",
+      "stable": true
+    },
+    {
+      "rule": "Correct use of 'Haben Sie... gelesen oder gesehen?'",
+      "stable": true
+    }
+  ],
+  "persistent_errors": [
+    "missing article before 'Bücher'"
+  ],
+  "emotional_state": "confident",
+  "kannbeschreibungen_attempted": {
+    "K01_vorstellen": {
+      "day": 1,
+      "result": "teilweise"
+    },
+    "K07_wohnen": {
+      "day": 2,
+      "result": "teilweise"
+    },
+    "K03_einkaufen": {
+      "day": 3,
+      "result": "bestanden"
+    },
+    "K06_essen_bestellen": {
+      "day": 4,
+      "result": "teilweise"
+    },
+    "K15_freizeit": {
+      "day": 5,
+      "result": "bestanden"
+    }
+  }
+}

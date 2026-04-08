@@ -1,0 +1,24 @@
+{
+  "current_day": {
+    "marta": 7,
+    "james": 5
+  },
+  "areas_covered": {
+    "marta": [
+      "person_vorstellen",
+      "wohnen_beschreiben",
+      "essen_bestellen",
+      "alltag_einkaufen",
+      "freizeit_kontakt",
+      "zeit_termine",
+      "reisen_orientierung"
+    ],
+    "james": [
+      "person_vorstellen",
+      "wohnen_beschreiben",
+      "alltag_einkaufen",
+      "essen_bestellen",
+      "freizeit_kontakt"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "chosen_area": "alltag_einkaufen",
+  "reasoning": "Covering 'alltag_einkaufen' will allow Marta to practice practical vocabulary and scenarios, which can build confidence. It also connects well with her previous topic 'essen bestellen', as both involve transactional language skills. This will also help address persistent errors with articles and word order in a familiar context.",
+  "opening_approach": "I will start by asking Marta to imagine she is going to the market to buy ingredients for a meal, using a list of items she wants to buy. We'll discuss what she needs and how to ask for them.",
+  "watch_for": [
+    "Missing articles",
+    "Incorrect word order",
+    "Incorrect adjective endings"
+  ]
+}

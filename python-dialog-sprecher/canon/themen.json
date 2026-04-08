@@ -1,0 +1,12 @@
+{
+  "Person": ["Name", "Adresse", "Telefon", "Geburtsdatum", "Geburtsort", "Alter", "Geschlecht", "Familienstand/Familie", "Persönliche Beziehungen", "Staatsangehörigkeit/Nationalität/Herkunft", "Aussehen", "Gewohnheiten/Tagesablauf"],
+  "Wohnen": ["Wohnung", "Räume", "Einrichtung/Möbel", "Haushalt/technische Einrichtungen", "Miete/Mietverhältnis"],
+  "Umwelt": ["Pflanzen", "Tiere", "Klima/Wetter"],
+  "Reisen/Verkehr": ["privater und öffentlicher Verkehr", "Reisen", "Unterkunft", "Gepäck"],
+  "Essen/Trinken": ["Nahrungsmittel", "Mahlzeiten", "Speisen", "Getränke", "Lokale (Restaurant, Café)"],
+  "Einkaufen/Gebrauchsartikel": ["Geschäfte", "Preis/Bezahlen", "Lebensmittel", "Kleidung"],
+  "Dienstleistungen": ["Post", "Telekommunikation", "Banken", "Polizei"],
+  "Erziehung/Ausbildung/Lernen": ["Kinderbetreuung", "Schule", "Sprachen lernen"],
+  "Arbeit/Beruf": ["Arbeitsplatz", "Urlaub"],
+  "Freizeit/Unterhaltung": ["Interessen", "Sport treiben", "Radio/Fernsehen", "Internet", "Lektüre/Presse"]
+}

@@ -1,0 +1,8 @@
+{
+  "chosen_area": "person_vorstellen",
+  "reasoning": "Starting with 'person_vorstellen' can build confidence as it allows Marta to talk about herself, a topic she is likely familiar with. It sets a foundation for future topics like alltag_einkaufen and freizeit_kontakt, where personal information may be relevant.",
+  "opening_approach": "I will start by asking Marta to introduce herself, including her name, age, and where she's from, then gradually add more details like hobbies or family.",
+  "watch_for": [
+    "Her comfort level in speaking about herself, any hesitation with vocabulary related to personal details."
+  ]
+}

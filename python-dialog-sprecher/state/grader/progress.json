@@ -1,0 +1,688 @@
+{
+  "marta": [
+    {
+      "day": 1,
+      "subject_area": "person_vorstellen",
+      "kann_result": "teilweise",
+      "vocabulary_learned": [
+        {
+          "word": "heißen",
+          "stable": true
+        },
+        {
+          "word": "alt",
+          "stable": true
+        },
+        {
+          "word": "kommen aus",
+          "stable": true
+        },
+        {
+          "word": "wohnen in",
+          "stable": true
+        },
+        {
+          "word": "Familie",
+          "stable": true
+        },
+        {
+          "word": "arbeiten",
+          "stable": true
+        },
+        {
+          "word": "Beruf",
+          "stable": true
+        },
+        {
+          "word": "die Telefonnummer",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "'Monate' should be 'Monaten'",
+          "stable": false
+        },
+        {
+          "rule": "Missing article before 'acht'",
+          "stable": false
+        },
+        {
+          "rule": "Missing article in 'in Hotel'",
+          "stable": false
+        },
+        {
+          "rule": "Incorrect plural 'Zimmer' instead of 'Zimmern'",
+          "stable": false
+        },
+        {
+          "rule": "'ich habe Frage' should be 'ich habe eine Frage'",
+          "stable": false
+        },
+        {
+          "rule": "'bei Arbeit und Freunde' should be 'bei der Arbeit und mit Freunden'",
+          "stable": false
+        }
+      ],
+      "persistent_errors": [
+        "Missing articles",
+        "Incorrect plural forms"
+      ],
+      "improvements_from_prior": [],
+      "emotional_state": "neutral",
+      "session_highlight": "Marta successfully used vocabulary related to personal introductions and personal data, but struggled with grammar, particularly articles and plurals."
+    },
+    {
+      "day": 2,
+      "subject_area": "wohnen_beschreiben",
+      "kann_result": "teilweise",
+      "vocabulary_learned": [
+        {
+          "word": "wohnen",
+          "stable": true
+        },
+        {
+          "word": "Wohnung",
+          "stable": true
+        },
+        {
+          "word": "Zimmer",
+          "stable": true
+        },
+        {
+          "word": "Küche",
+          "stable": true
+        },
+        {
+          "word": "Garten",
+          "stable": true
+        },
+        {
+          "word": "Balkon",
+          "stable": true
+        },
+        {
+          "word": "schön",
+          "stable": true
+        },
+        {
+          "word": "kochen",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Incorrect article 'eine' should be 'einer'",
+          "stable": false
+        },
+        {
+          "rule": "Missing article before 'Balkon'",
+          "stable": false
+        },
+        {
+          "rule": "Incorrect word order in 'Manchmal Freunde kommen'",
+          "stable": false
+        },
+        {
+          "rule": "Incorrect use of 'polnische Essen' should be 'polnisches Essen'",
+          "stable": false
+        }
+      ],
+      "persistent_errors": [
+        "Missing articles",
+        "Incorrect word order"
+      ],
+      "improvements_from_prior": [
+        "Improved use of vocabulary related to Wohnsituation"
+      ],
+      "emotional_state": "neutral",
+      "session_highlight": "Marta showed improved use of vocabulary related to describing her living situation, but continued to struggle with grammar, particularly articles and word order."
+    },
+    {
+      "day": 3,
+      "subject_area": "essen_bestellen",
+      "kann_result": "teilweise",
+      "vocabulary_learned": [
+        {
+          "word": "Mittagessen",
+          "stable": true
+        },
+        {
+          "word": "Suppe",
+          "stable": true
+        },
+        {
+          "word": "Wasser",
+          "stable": true
+        },
+        {
+          "word": "Bier",
+          "stable": true
+        },
+        {
+          "word": "Rechnung",
+          "stable": true
+        },
+        {
+          "word": "Kartoffeln",
+          "stable": true
+        },
+        {
+          "word": "Essen",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Missing article before nouns",
+          "stable": false
+        },
+        {
+          "rule": "Incorrect word order",
+          "stable": false
+        },
+        {
+          "rule": "Incorrect adjective endings",
+          "stable": false
+        }
+      ],
+      "persistent_errors": [
+        "Missing articles",
+        "Incorrect word order",
+        "Incorrect adjective endings"
+      ],
+      "improvements_from_prior": [
+        "Consistent use of vocabulary related to ordering food"
+      ],
+      "emotional_state": "neutral",
+      "session_highlight": "Marta consistently used relevant vocabulary for ordering food and expressing preferences, but continued to struggle with grammar, particularly missing articles and incorrect word order."
+    },
+    {
+      "day": 4,
+      "subject_area": "alltag_einkaufen",
+      "kann_result": "teilweise",
+      "vocabulary_learned": [
+        {
+          "word": "Kartoffeln",
+          "stable": true
+        },
+        {
+          "word": "kaufen",
+          "stable": true
+        },
+        {
+          "word": "Suppe",
+          "stable": true
+        },
+        {
+          "word": "Wasser",
+          "stable": true
+        },
+        {
+          "word": "Bier",
+          "stable": true
+        },
+        {
+          "word": "günstiges Angebot",
+          "stable": true
+        },
+        {
+          "word": "Mittagessen",
+          "stable": true
+        },
+        {
+          "word": "Freunde",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Missing article before nouns",
+          "stable": false
+        },
+        {
+          "rule": "Incorrect verb form 'kaufen' should be 'kaufe'",
+          "stable": false
+        }
+      ],
+      "persistent_errors": [
+        "Missing articles",
+        "Incorrect verb forms"
+      ],
+      "improvements_from_prior": [
+        "Consistent use of vocabulary related to shopping and ordering"
+      ],
+      "emotional_state": "neutral",
+      "session_highlight": "Marta consistently used relevant vocabulary for shopping and ordering, showing progress in applying learned vocabulary, but continued to struggle with grammar, particularly missing articles."
+    },
+    {
+      "day": 5,
+      "subject_area": "freizeit_kontakt",
+      "kann_result": "teilweise",
+      "vocabulary_learned": [
+        {
+          "word": "Freizeit",
+          "stable": true
+        },
+        {
+          "word": "Hobby",
+          "stable": true
+        },
+        {
+          "word": "gern",
+          "stable": true
+        },
+        {
+          "word": "spazieren",
+          "stable": true
+        },
+        {
+          "word": "Freunde",
+          "stable": true
+        },
+        {
+          "word": "Bier",
+          "stable": true
+        },
+        {
+          "word": "Wasser",
+          "stable": true
+        },
+        {
+          "word": "Kaffee",
+          "stable": true
+        },
+        {
+          "word": "kochen",
+          "stable": true
+        },
+        {
+          "word": "fernsehen",
+          "stable": true
+        },
+        {
+          "word": "lesen",
+          "stable": true
+        },
+        {
+          "word": "Buch",
+          "stable": true
+        },
+        {
+          "word": "Filme",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Incorrect word order",
+          "stable": false
+        },
+        {
+          "rule": "Missing articles",
+          "stable": false
+        },
+        {
+          "rule": "Incorrect plural forms",
+          "stable": false
+        }
+      ],
+      "persistent_errors": [
+        "Incorrect word order",
+        "Missing articles",
+        "Incorrect plural forms"
+      ],
+      "improvements_from_prior": [
+        "Consistent use of relevant vocabulary related to preferences and leisure activities"
+      ],
+      "emotional_state": "neutral",
+      "session_highlight": "Marta consistently used relevant vocabulary related to expressing preferences and leisure activities, but continued to struggle with grammar, particularly word order and missing articles."
+    },
+    {
+      "day": 6,
+      "subject_area": "zeit_termine",
+      "kann_result": "teilweise",
+      "vocabulary_learned": [
+        {
+          "word": "um ... Uhr",
+          "stable": true
+        },
+        {
+          "word": "acht Uhr",
+          "stable": true
+        },
+        {
+          "word": "Woche",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Incorrect word order",
+          "stable": false
+        },
+        {
+          "rule": "Missing articles",
+          "stable": false
+        },
+        {
+          "rule": "Incorrect plural forms",
+          "stable": false
+        },
+        {
+          "rule": "Incorrect adjective endings",
+          "stable": false
+        }
+      ],
+      "persistent_errors": [
+        "Missing articles",
+        "Incorrect word order",
+        "Incorrect plural forms",
+        "Incorrect adjective endings"
+      ],
+      "improvements_from_prior": [
+        "Consistent use of vocabulary related to time and appointments"
+      ],
+      "emotional_state": "neutral",
+      "session_highlight": "Marta consistently used relevant vocabulary for indicating time and appointments, but continued to struggle with grammar, particularly missing articles and incorrect word order."
+    },
+    {
+      "day": 7,
+      "subject_area": "reisen_orientierung",
+      "kann_result": "teilweise",
+      "vocabulary_learned": [
+        {
+          "word": "Bus",
+          "stable": true
+        },
+        {
+          "word": "zu Fuß",
+          "stable": true
+        },
+        {
+          "word": "fahren",
+          "stable": true
+        },
+        {
+          "word": "gehen",
+          "stable": true
+        },
+        {
+          "word": "Fahrkarte",
+          "stable": true
+        },
+        {
+          "word": "Bahnhof",
+          "stable": true
+        },
+        {
+          "word": "Verkehrsmittel",
+          "stable": true
+        },
+        {
+          "word": "um acht Uhr",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Missing articles before nouns",
+          "stable": false
+        },
+        {
+          "rule": "Incorrect word order",
+          "stable": false
+        },
+        {
+          "rule": "Incorrect adjective endings",
+          "stable": false
+        }
+      ],
+      "persistent_errors": [
+        "Missing articles",
+        "Incorrect word order",
+        "Incorrect adjective endings"
+      ],
+      "improvements_from_prior": [
+        "Consistent use of vocabulary related to transportation and directions",
+        "Improved forming of questions"
+      ],
+      "emotional_state": "neutral",
+      "session_highlight": "Marta consistently used relevant vocabulary related to transportation and directions, showing improvement in forming questions, but continued to struggle with grammar, particularly missing articles and incorrect word order."
+    }
+  ],
+  "james": [
+    {
+      "day": 1,
+      "subject_area": "person_vorstellen",
+      "kann_result": "teilweise",
+      "vocabulary_learned": [
+        {
+          "word": "heißen",
+          "stable": true
+        },
+        {
+          "word": "alt",
+          "stable": true
+        },
+        {
+          "word": "wohnen",
+          "stable": true
+        },
+        {
+          "word": "Mitbewohner",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "'ein interessantes Fakt' should be 'eine interessante Tatsache'",
+          "stable": false
+        }
+      ],
+      "persistent_errors": [
+        "missing article before 'University'"
+      ],
+      "improvements_from_prior": [],
+      "emotional_state": "neutral",
+      "session_highlight": "James successfully used vocabulary related to personal introductions and providing personal data, but struggled with informal conversation and small talk."
+    },
+    {
+      "day": 2,
+      "kann_result": "teilweise",
+      "session_highlight": "```json\n{\n  \"day\": 2,\n  \"subject_area\": \"wohnen_beschreiben\",\n  \"kann_result\": \"bestanden\",\n  \"vocabulary_learned\": [\n    {\"word\": \"Wohnung\", \"stable\": true},\n    {\"word\": \"Apartment\", \"stable\": true},\n    {\"word\": \"Mitbewohner\", \"stable\": true},\n    {\"word\": \"Wohnzimmer\", \"stable\": true},\n    {\"word\": \"Küche\", \"stable\": true},\n    {\"word\": \"alt\", \"stable\": true},\n    {\"word\": \"Sofa\", \"stable\": true},\n    {\"word\": \"Fernseher\", \"stable\": true},\n    {\"word\": \"Kaffeetisch\", \"stable\": true},\n    {\"word\": \"Bücher\", \"stable\": true},\n    {\"word\": \"Bilder\", \"stable\": true},\n    {\"word\": \"schön\", \"stable\": true},\n    {\"word\": \"Pflanze\", \"stable\": true},\n    {\"word\": \"Zimmer\", \"stable\": true},\n    {\"word\": \"Herd\", \"stable\": true},\n    {\"word\": \"Kühlschrank\", \"stable\": true},\n    {\"word\": \"Töpfe\", \"stable\": true},\n    {\"word\": \"Pfannen\", \"stable\": true},\n    {\"word\": \"Besteck\", \"stable\": true},\n    {\"word\": \"Mitbewohnerin\", \"stable\": true},\n    {\"word\": \"kocht\", \"stable\": true},\n    {\"word\": \"Bett\", \"stable\": true},\n    {\"word\": \"Schreibtisch\", \"stable\": true},\n    {\"word\": \"Lampe\", \"stable\": true},\n    {\"word\": \"Poster\", \"stable\": true},\n    {\"word\": \"Schlafzimmer\", \"stable\": true}\n  ],\n  \"grammar_learned\": [\n    {\"rule\": \"Correct use of articles with 'eine Pflanze' and 'die Wand'\", \"stable\": true}\n  ],\n  \"persistent_errors\": [\n    \"missing article before 'Wohnzimmer'\",\n    \"missing article before 'Küche'\"\n  ],\n  \"improvements_from_prior\": [\n    \"Improved use of Wohnsituation vocabulary\",\n    \"Improved use of vocabulary related to describing living space\",\n    \"Improvement in using articles correctly and providing details\"\n  ],\n  \"emotional",
+      "vocabulary_learned": [],
+      "grammar_learned": [],
+      "persistent_errors": [],
+      "improvements_from_prior": [],
+      "emotional_state": ""
+    },
+    {
+      "day": 3,
+      "subject_area": "alltag_einkaufen",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "kaufen",
+          "stable": true
+        },
+        {
+          "word": "Lebensmittel",
+          "stable": true
+        },
+        {
+          "word": "kosten",
+          "stable": true
+        },
+        {
+          "word": "Apfel",
+          "stable": true
+        },
+        {
+          "word": "Brötchen",
+          "stable": true
+        },
+        {
+          "word": "bitte",
+          "stable": true
+        },
+        {
+          "word": "Ich hätte gerne",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Correct use of 'Ich hätte gerne' for ordering",
+          "stable": true
+        },
+        {
+          "rule": "Correct use of articles 'einen Apfel' and 'ein Brötchen'",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [],
+      "improvements_from_prior": [
+        "Improved use of shopping-related vocabulary",
+        "Successful use of ordering phrases and price inquiries"
+      ],
+      "emotional_state": "engaged",
+      "session_highlight": "James successfully used relevant vocabulary and structures for making simple purchases, showing improvement in engaging with new vocabulary related to shopping."
+    },
+    {
+      "day": 4,
+      "subject_area": "essen_bestellen",
+      "kann_result": "teilweise",
+      "vocabulary_learned": [
+        {
+          "word": "Restaurants",
+          "stable": true
+        },
+        {
+          "word": "bestellen",
+          "stable": true
+        },
+        {
+          "word": "Pizza",
+          "stable": true
+        },
+        {
+          "word": "bitte",
+          "stable": true
+        },
+        {
+          "word": "Apfel",
+          "stable": true
+        },
+        {
+          "word": "Hähnchen",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Correct use of 'Ich hätte gerne' for ordering",
+          "stable": true
+        },
+        {
+          "rule": "Correct use of article 'eine Pizza'",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [],
+      "improvements_from_prior": [
+        "Improved confidence in expressing preferences",
+        "Continued improvement in using ordering phrases and articles correctly"
+      ],
+      "emotional_state": "engaged",
+      "session_highlight": "James showed progress in ordering food and expressing preferences, though he occasionally drifted from the topic."
+    },
+    {
+      "day": 5,
+      "subject_area": "freizeit_kontakt",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "Freizeit",
+          "stable": true
+        },
+        {
+          "word": "Hobby",
+          "stable": true
+        },
+        {
+          "word": "Filme",
+          "stable": true
+        },
+        {
+          "word": "Actionfilme",
+          "stable": true
+        },
+        {
+          "word": "Komödien",
+          "stable": true
+        },
+        {
+          "word": "Bücher",
+          "stable": true
+        },
+        {
+          "word": "lesen",
+          "stable": true
+        },
+        {
+          "word": "Lieblingsfilm",
+          "stable": true
+        },
+        {
+          "word": "spannend",
+          "stable": true
+        },
+        {
+          "word": "lustig",
+          "stable": true
+        },
+        {
+          "word": "Gefühle",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Correct use of 'in meiner Freizeit'",
+          "stable": true
+        },
+        {
+          "rule": "Correct use of 'gern' and 'lieber'",
+          "stable": true
+        },
+        {
+          "rule": "Correct use of 'Ich mag' and 'Ich finde'",
+          "stable": true
+        },
+        {
+          "rule": "Correct phrase 'Es kommt darauf an'",
+          "stable": true
+        },
+        {
+          "rule": "Correct use of 'ein Buch im Kopf'",
+          "stable": true
+        },
+        {
+          "rule": "Correct use of 'Haben Sie... gelesen oder gesehen?'",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [
+        "missing article before 'Bücher'"
+      ],
+      "improvements_from_prior": [
+        "Improved use of Freizeit vocabulary and expressing preferences",
+        "Improved ability to express preferences and engage in conversation about hobbies",
+        "Engaging more confidently with expressing preferences and discussing hobbies"
+      ],
+      "emotional_state": "confident",
+      "session_highlight": "James consistently used relevant vocabulary and structures to express preferences and discuss hobbies, showing marked improvement in confidence and fluency throughout the day."
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "Soziale Konventionen": [
+    "jemanden begrüßen / zurückgrüßen",
+    "sich verabschieden",
+    "jemanden vorstellen / sich vorstellen",
+    "sich bedanken / auf Dank reagieren",
+    "sich entschuldigen / auf eine Entschuldigung reagieren",
+    "gratulieren",
+    "Wünsche ausdrücken (Alles Gute! Viel Glück!)"
+  ],
+  "Informationsaustausch": [
+    "nach persönlichen Daten fragen / persönliche Daten angeben",
+    "nach dem Weg fragen / einen Weg beschreiben",
+    "nach der Uhrzeit fragen / die Uhrzeit angeben",
+    "nach dem Preis fragen / den Preis angeben",
+    "nach dem Befinden fragen / über das Befinden sprechen",
+    "etwas beschreiben (Personen, Orte, Gegenstände)",
+    "Mengen angeben"
+  ],
+  "Bewertung": [
+    "etwas positiv bewerten (toll! super! schön!)",
+    "etwas negativ bewerten",
+    "Zustimmung ausdrücken (ja, richtig, genau)",
+    "Ablehnung ausdrücken (nein, das stimmt nicht)"
+  ],
+  "Gefühlsausdruck": [
+    "Freude ausdrücken",
+    "Bedauern ausdrücken (schade, leider, tut mir leid)",
+    "Überraschung ausdrücken"
+  ],
+  "Handlungsregulierung": [
+    "um etwas bitten (Können Sie...?)",
+    "etwas anbieten (Möchten Sie...?)",
+    "eine Einladung aussprechen / annehmen / ablehnen",
+    "Vorschläge machen (Wollen wir...?)"
+  ],
+  "Redeorganisation": [
+    "um Wiederholung bitten (Wie bitte? Noch einmal, bitte.)",
+    "um langsameres Sprechen bitten",
+    "nachfragen (Was bedeutet...?)",
+    "buchstabieren / um Buchstabieren bitten",
+    "signalisieren, dass man etwas (nicht) verstanden hat"
+  ]
+}
