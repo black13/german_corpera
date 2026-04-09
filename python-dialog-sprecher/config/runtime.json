@@ -1,0 +1,35 @@
+{
+  "classroom": {
+    "students": ["marta", "james", "yuki"]
+  },
+  "models": {
+    "teacher": {
+      "api": "openai",
+      "model": "gpt-4o",
+      "temperature": 0.8,
+      "max_tokens": 500
+    },
+    "grader_round": {
+      "api": "openai",
+      "model": "gpt-4o",
+      "temperature": 0.3,
+      "max_tokens": 500
+    },
+    "grader_day": {
+      "api": "openai",
+      "model": "gpt-4o",
+      "temperature": 0.3,
+      "max_tokens": 500
+    },
+    "teacher_wrapup": {
+      "api": "openai",
+      "model": "gpt-4o",
+      "temperature": 0.5,
+      "max_tokens": 500
+    }
+  },
+  "server": {
+    "host": "127.0.0.1",
+    "port": 8787
+  }
+}

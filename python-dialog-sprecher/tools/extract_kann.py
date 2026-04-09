@@ -1,7 +1,10 @@
 """One-time script: extract all A1 Kannbeschreibungen from OCR into structured JSON."""
 import json, re
+from pathlib import Path
 
-with open("ocr_text_only.txt") as f:
+BASE = Path(__file__).resolve().parent.parent
+
+with open(BASE / "reference" / "ocr_text_only.txt") as f:
     lines = f.readlines()
 
 # Section 8.1 starts at line 2887 (0-indexed: 2886), ends around 3236
@@ -115,7 +118,7 @@ output = {
     "kannbeschreibungen": all_kann
 }
 
-with open("canon/kannbeschreibungen_full.json", "w") as f:
+with open(BASE / "canon" / "kannbeschreibungen_full.json", "w") as f:
     json.dump(output, f, indent=2, ensure_ascii=False)
 
 print(f"Extracted {len(all_kann)} Kannbeschreibungen across {len(categories)} categories")

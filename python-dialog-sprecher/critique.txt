@@ -1,0 +1,84 @@
+Neutral critique of the current directory
+
+This project is organized around canon data, prompt templates, student and teacher
+state, and generated conversation outputs. If the primary goal is to create
+multi-day conversations that are readable and pedagogically coherent, that
+organization makes sense. In that framing, the JSON artifacts are closer to the
+real product than the Python runtime.
+
+Current strengths
+
+- The directory already separates stable reference data, prompt logic, runtime
+  state, and generated outputs into distinct folders.
+- Prompt and state files are inspectable and editable without changing the
+  runtime, which supports iterative improvement of the conversations themselves.
+- The project has explicit architecture notes, which makes its intended design
+  legible to future editors.
+- Generated output is persisted as JSON, so past runs can be reviewed as
+  artifacts rather than treated as transient console output.
+
+Current areas of friction
+
+1. Documentation and implementation have drifted apart.
+
+The architecture and plan documents describe a stricter JSON-driven system than
+the current runtime actually implements. This creates ambiguity about which
+layer should be treated as authoritative during future edits.
+
+2. Some product behavior still lives in runner.py.
+
+The runtime is narrower than a conventional application, but it still contains
+meaningful behavior such as fixed student lists, HTML rendering, prompt assembly,
+and some flow decisions. That does not make the design invalid, but it weakens
+the stated boundary between artifact logic and execution logic.
+
+3. Configuration is only partly data-driven.
+
+Student model selection is stored in JSON, while teacher and grader model usage
+is hard-coded in Python. This makes it harder to reason about the full system by
+reading the artifact layer alone.
+
+4. Reset behavior does not fully preserve the documented state shape.
+
+Some state files are reset to empty objects even though the plan documents define
+more structured initial schemas. That can make reruns less predictable and can
+blur the distinction between "empty state" and "malformed state."
+
+5. The declared course state and the active runtime assumptions are not fully
+aligned.
+
+The runtime assumes a fixed three-student classroom, while some saved state files
+only reflect a subset of those students. This suggests the project is evolving,
+but the current repository does not yet present one fully consistent worldview.
+
+6. The repository root mixes source, generated artifacts, reference material,
+and scratch files.
+
+Large PDFs, OCR text, runtime outputs, and empty run logs sit beside source and
+design documents. This does not block work, but it makes the directory harder to
+scan and makes the intended stable surface of the project less obvious.
+
+7. One-off migration tooling and ongoing runtime code are stored at the same level.
+
+The OCR extraction script appears to be a conversion utility rather than part of
+the day-to-day course runtime. Keeping it in the same top-level layer as the main
+runner can make the active architecture look less settled than it may actually be.
+
+Interpretation
+
+These issues do not necessarily imply that the Python runtime should become more
+sophisticated. In this project, the more important risk is the opposite: future
+editors may start optimizing the runtime instead of improving the conversations.
+The main concern is not code quality in the abstract, but maintaining a clear
+boundary so that prompt behavior, canonical content, memory state, and output
+quality remain the center of gravity.
+
+Practical implication
+
+The repository would benefit from making three things explicit:
+
+- the primary success metric is the quality and readability of generated
+  conversations;
+- JSON artifacts should be treated as first-class course logic;
+- Python should remain a constrained execution layer unless expanding it directly
+  improves reproducibility, observability, or output fidelity.

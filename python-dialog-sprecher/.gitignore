@@ -1,0 +1,7 @@
+output/
+logs/
+state/
+plans/generated/
+__pycache__/
+*.pyc
+.llm_run_output.txt

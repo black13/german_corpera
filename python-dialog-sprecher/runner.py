@@ -1,15 +1,16 @@
 """
-runner.py — Disposable. Reads JSON, calls APIs, writes JSON, serves HTTP.
+runner.py v2 — Classroom model. One Kann per day, configured student group.
+Disposable. Reads JSON, calls APIs, writes JSON, serves HTTP.
 Contains ZERO rules about German. All meaning is in the JSON files.
 """
-import json, os, sys, threading, time, traceback
+import json, os, sys, threading, time, traceback, functools
 from pathlib import Path
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from openai import OpenAI
 
 BASE = Path(__file__).parent
 
-# ── load JSON helpers ──────────────────────────────────────────────
+# ── JSON helpers ───────────────────────────────────────────────────
 def load(path):
     with open(BASE / path) as f:
         return json.load(f)
@@ -20,6 +21,9 @@ def save(path, data):
     with open(p, "w") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
 
+
+runtime_cfg = load("config/runtime.json")
+
 # ── API clients ────────────────────────────────────────────────────
 openai_client = OpenAI()
 deepseek_client = OpenAI(
@@ -27,15 +31,25 @@ deepseek_client = OpenAI(
     base_url="https://api.deepseek.com"
 )
 
-def chat(api, model, messages, temperature=0.8):
+def chat(api, model, messages, temperature=0.8, max_tokens=500):
     client = deepseek_client if api == "deepseek" else openai_client
     r = client.chat.completions.create(
-        model=model, messages=messages, temperature=temperature, max_tokens=500
+        model=model, messages=messages, temperature=temperature, max_tokens=max_tokens
     )
     return r.choices[0].message.content
 
+
+def chat_from_config(step_name, messages):
+    cfg = runtime_cfg["models"][step_name]
+    return chat(
+        cfg["api"],
+        cfg["model"],
+        messages,
+        temperature=cfg.get("temperature", 0.8),
+        max_tokens=cfg.get("max_tokens", 500),
+    )
+
 def parse_json(raw):
-    """Strip markdown code fences before parsing JSON."""
     s = raw.strip()
     if s.startswith("```"):
         s = s.split("\n", 1)[1] if "\n" in s else s[3:]
@@ -43,14 +57,12 @@ def parse_json(raw):
         s = s[:-3]
     return json.loads(s.strip())
 
-# ── load all canon + prompts (read-only) ───────────────────────────
-canon_kann   = load("canon/kannbeschreibungen.json")["kannbeschreibungen"]
+# ── load canon + prompts (read-only) ──────────────────────────────
+kann_data    = load("canon/kannbeschreibungen_full.json")
+all_kanns    = kann_data["kannbeschreibungen"]
+TOTAL_KANNS  = len(all_kanns)
 canon_bewert = load("canon/bewertung.json")
-canon_sprach = load("canon/sprachhandlungen.json")
-canon_wort   = load("canon/wortfelder.json")
-course_struct= load("plans/course_structure.json")
 teacher_pers = load("prompts/teacher/persona.json")
-planner_tmpl = load("prompts/teacher/planner.json")
 rounds_tmpl  = load("prompts/teacher/round_frames.json")["rounds"]
 wrapup_tmpl  = load("prompts/teacher/wrapup.json")
 bridges      = load("prompts/interstitials/bridges.json")
@@ -58,193 +70,502 @@ grader_round = load("prompts/grader/per_round.json")
 grader_day   = load("prompts/grader/day_summary.json")
 overlay_tmpl = load("prompts/students/learning_overlay.json")
 
-ALL_STUDENTS = ["marta", "james", "yuki"]
-ALL_AREAS = [a["id"] for a in course_struct["subject_areas"]]
-NUM_DAYS = len(ALL_AREAS)  # 7
+STUDENT_IDS = runtime_cfg["classroom"]["students"]
+student_configs = {sid: load(f"prompts/students/{sid}.json") for sid in STUDENT_IDS}
 
-# ── live state (shared with HTTP server) ───────────────────────────
+# ── live state ─────────────────────────────────────────────────────
 live = {
     "status": "starting",
-    "current_student": "",
     "current_day": 0,
-    "students": {},   # student_id -> {"name": ..., "days": [{day, area, plan, rounds, summary}]}
-    "scorecard": {},  # student_id -> {area_id -> "bestanden"|"teilweise"|"nicht_bestanden"}
+    "current_kann": "",
+    "current_kann_text": "",
+    "current_round": 0,
+    "current_round_name": "",
+    "active_student": "",
+    "days": [],  # [{day, kann_id, kann_text, category, rounds, summaries}]
     "done": False
 }
 
-# ── HTTP server ────────────────────────────────────────────────────
+# ── HTML rendering ─────────────────────────────────────────────────
 def _esc(s):
     return str(s).replace("&","&amp;").replace("<","&lt;").replace(">","&gt;")
 
+STUDENT_COLORS = {"marta": "#dcf8c6", "james": "#d4e6f1", "yuki": "#f9e79f"}
+STUDENT_LABEL_COLORS = {"marta": "#2e7d32", "james": "#1565c0", "yuki": "#e65100"}
+STUDENT_NAMES = {sid: student_configs[sid]["name"] for sid in STUDENT_IDS}
+
+# ── CSS (plain string — no f-string escaping needed) ──────────────
+_CSS = """
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden}
+body{font-family:-apple-system,'Segoe UI',Roboto,Helvetica,sans-serif;background:#f0f0f0;color:#222;
+  -webkit-user-select:text;user-select:text;-webkit-touch-callout:default}
+
+/* ── sticky header ── */
+.live-header{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:9px 20px;background:#075e54;color:#fff;
+  font-size:0.88em;box-shadow:0 2px 6px rgba(0,0,0,.18);
+}
+.lh-left{display:flex;align-items:baseline;gap:6px;min-width:0;flex-wrap:wrap}
+.lh-tag{font-weight:700}
+.lh-sep{opacity:.4;margin:0 4px}
+.lh-round{}
+.lh-kann{opacity:.85;font-size:.92em}
+.lh-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.lh-student{font-weight:700;color:#a5d6a7}
+.lh-updated{opacity:.65;font-size:.82em}
+
+/* ── two-pane layout ── */
+.layout{
+  display:grid;grid-template-columns:1fr 280px;
+  height:calc(100vh - 42px);margin-top:42px;
+}
+.transcript{overflow-y:auto;padding:16px 28px 40px 28px;background:#f0f0f0}
+.sidebar{overflow-y:auto;padding:14px;background:#fff;border-left:1px solid #ddd}
+
+/* ── view controls ── */
+.view-controls{display:flex;gap:4px;margin-bottom:14px}
+.vbtn{flex:1;padding:7px 4px;border:1px solid #ccc;background:#f8f8f8;
+  cursor:pointer;font-size:.74em;border-radius:5px;transition:all .15s;font-weight:600}
+.vbtn:hover{background:#e8e8e8}
+.vbtn.active{background:#075e54;color:#fff;border-color:#075e54}
+
+/* ── sidebar sections ── */
+.sidebar-section{margin-bottom:16px}
+.sidebar-title{font-weight:700;font-size:.78em;color:#666;margin-bottom:6px;
+  text-transform:uppercase;letter-spacing:.5px}
+
+/* ── compact scorecard ── */
+.scorecard{width:100%;border-collapse:collapse;font-size:.72em}
+.scorecard th{background:#075e54;color:#fff;padding:3px 5px;text-align:left;position:sticky;top:0}
+.scorecard td{padding:2px 5px;border:1px solid #e0e0e0}
+.sc-day{font-weight:700;width:28px}
+.sc-kann{max-width:56px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pass{background:#d4edda;color:#155724;font-weight:700}
+.partial{background:#fff3cd;color:#856404;font-weight:700}
+.fail{background:#f8d7da;color:#721c24;font-weight:700}
+.pending{background:#f5f5f5;color:#aaa}
+
+/* ── day blocks ── */
+.day-block{background:#fff;border-radius:10px;margin:12px 0;box-shadow:0 1px 4px rgba(0,0,0,.07)}
+.day-block>summary{
+  padding:13px 18px;cursor:pointer;font-weight:600;font-size:.95em;color:#333;
+  list-style:none;
+}
+.day-block>summary::-webkit-details-marker{display:none}
+.day-block>summary::before{content:'\u25b6';margin-right:10px;font-size:.65em;
+  transition:transform .2s;display:inline-block;color:#999}
+.day-block[open]>summary::before{transform:rotate(90deg)}
+.day-block[open]>summary{border-bottom:1px solid #eee}
+.day-content{padding:14px 20px}
+
+/* ── kann banner ── */
+.kann-banner{
+  background:#e8f5e9;border-left:4px solid #2e7d32;border-radius:6px;
+  padding:10px 14px;margin-bottom:16px;line-height:1.5;
+}
+.kann-id{font-weight:700;color:#2e7d32;font-size:.88em}
+.kann-cat{font-size:.78em;color:#666;margin-left:8px}
+.kann-text{margin-top:4px;font-size:.95em;color:#333;-webkit-user-select:text;user-select:text;cursor:text}
+
+/* ── round headers ── */
+.round-header{
+  text-align:center;color:#555;font-size:.88em;font-weight:600;
+  margin:24px 0 10px 0;padding:6px 0;
+  border-bottom:2px solid #e0e0e0;
+}
+
+/* ── exchange groups (spacer between each teacher-student pair) ── */
+.exchange-group{margin:0 0 20px 0;padding-bottom:16px;border-bottom:1px solid #eee}
+.exchange-group:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+
+/* ── messages ── */
+.msg{padding:12px 16px;border-radius:12px;margin:8px 0;line-height:1.65;font-size:1em;
+  -webkit-user-select:text;user-select:text;cursor:text}
+.text{-webkit-user-select:text;user-select:text;cursor:text}
+.teacher-msg{
+  background:#fff;border-left:4px solid #075e54;max-width:85%;
+  box-shadow:0 1px 2px rgba(0,0,0,.04);
+}
+.student-msg{
+  max-width:85%;margin-left:auto;
+  border-right:4px solid rgba(0,0,0,.08);
+  box-shadow:0 1px 2px rgba(0,0,0,.04);
+}
+.speaker{font-weight:700;font-size:.82em;margin-bottom:4px;
+  -webkit-user-select:text;user-select:text}
+.teacher-label{color:#075e54}
+
+/* ── grader ── */
+.grader-block{
+  background:#fff8e1;max-width:90%;margin:8px auto;border-radius:8px;
+  border-left:4px solid #ffc107;padding:8px 14px;font-size:.85em;
+}
+.grader-label{font-weight:700;font-size:.75em;color:#856404;margin-bottom:2px}
+.grader-text{color:#5d4037;-webkit-user-select:text;user-select:text;cursor:text}
+
+/* ── prompt boxes (debug) ── */
+.prompt-details{margin-top:6px}
+.prompt-toggle{font-size:.72em;color:#075e54;cursor:pointer;text-decoration:underline}
+.prompt-box{
+  background:#1a1a2e;color:#0f0;font-family:'SF Mono',Menlo,Consolas,monospace;
+  font-size:.72em;padding:10px;border-radius:6px;margin:4px 0;
+  max-height:220px;overflow-y:auto;white-space:pre-wrap;word-wrap:break-word;
+}
+
+/* ── day summaries ── */
+.day-summaries{margin-top:18px;padding-top:14px;border-top:2px solid #e0e0e0}
+.summaries-label{font-weight:700;font-size:.88em;color:#555;margin-bottom:8px}
+.summary-item{
+  padding:8px 14px;border-radius:6px;margin:5px 0;font-size:.9em;
+  border-left:4px solid #999;background:#fafafa;
+  -webkit-user-select:text;user-select:text;cursor:text;
+}
+.summary-item.pass{border-left-color:#28a745;background:#f0faf2}
+.summary-item.partial{border-left-color:#ffc107;background:#fffdf0}
+.summary-item.fail{border-left-color:#dc3545;background:#fef0f0}
+
+/* ── status in sidebar ── */
+.status-text{font-size:.82em;color:#666;padding:8px 10px;background:#f8f9fa;border-radius:5px;line-height:1.5}
+
+/* ── view mode filtering ── */
+body.view-conversation .grader-block{display:none}
+body.view-conversation .prompt-details{display:none}
+body.view-grader .prompt-details{display:none}
+/* body.view-debug — everything visible */
+
+/* ── mobile / iPhone ── */
+@media(max-width:768px){
+  .layout{grid-template-columns:1fr;height:auto;margin-top:0}
+  .live-header{position:relative;flex-wrap:wrap;padding:8px 12px;font-size:.82em}
+  .lh-sep{display:none}
+  .lh-left{gap:4px}
+  .lh-right{width:100%;justify-content:space-between;margin-top:4px}
+  html,body{height:auto;overflow:auto}
+  .transcript{padding:10px 12px 30px 12px;min-height:0}
+  .sidebar{border-left:none;border-top:1px solid #ddd;padding:12px}
+  .day-content{padding:10px 12px}
+  .msg{max-width:95% !important;padding:10px 12px;font-size:.95em}
+  .teacher-msg{max-width:95%}
+  .grader-block{max-width:100%}
+  .kann-banner{padding:8px 10px}
+  .round-header{margin:16px 0 8px 0}
+  .exchange-group{margin-bottom:14px;padding-bottom:12px}
+  .prompt-box{max-height:150px;font-size:.65em}
+  .day-block>summary{padding:10px 12px;font-size:.88em}
+  .scorecard{font-size:.68em}
+  .vbtn{padding:8px 6px;font-size:.72em}
+}
+@media(max-width:430px){
+  .live-header{padding:6px 10px;font-size:.78em}
+  .lh-tag,.lh-round{font-size:.85em}
+  .lh-kann{font-size:.8em}
+  .transcript{padding:8px 8px 24px 8px}
+  .day-content{padding:8px 10px}
+  .msg{padding:8px 10px;font-size:.9em;border-radius:8px}
+  .speaker{font-size:.78em}
+  .kann-text{font-size:.88em}
+  .sidebar{padding:10px}
+}
+"""
+
+# ── JS (plain string — no f-string escaping needed) ───────────────
+_JS = """
+(function(){
+  var currentView = localStorage.getItem('sprecher-view') || 'conversation';
+  var lastUpdate = Date.now();
+  var manuallyClosedDays = {};
+
+  function setView(v) {
+    currentView = v;
+    localStorage.setItem('sprecher-view', v);
+    document.body.className = 'view-' + v;
+    document.querySelectorAll('.vbtn').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-view') === v);
+    });
+  }
+  setView(currentView);
+
+  // button clicks via delegation
+  document.addEventListener('click', function(e){
+    if (e.target.classList.contains('vbtn')) {
+      setView(e.target.getAttribute('data-view'));
+    }
+  });
+
+  // track manual close of day blocks
+  document.addEventListener('toggle', function(e){
+    if (e.target.classList && e.target.classList.contains('day-block')) {
+      if (!e.target.open) manuallyClosedDays[e.target.id] = true;
+      else delete manuallyClosedDays[e.target.id];
+    }
+  }, true);
+
+  function isNearBottom() {
+    var t = document.getElementById('transcript');
+    if (!t) return true;
+    return t.scrollHeight - t.scrollTop - t.clientHeight < 150;
+  }
+
+  // Incremental update for the active day — only append new children,
+  // never replace existing content.  This prevents jitter when reading.
+  function updateActiveDay(oldDay, newDay) {
+    // update summary text (e.g. "Tag 5: K005 — ...")
+    var oldSum = oldDay.querySelector('summary');
+    var newSum = newDay.querySelector('summary');
+    if (oldSum && newSum && oldSum.textContent !== newSum.textContent) {
+      oldSum.textContent = newSum.textContent;
+    }
+
+    var oldContent = oldDay.querySelector('.day-content');
+    var newContent = newDay.querySelector('.day-content');
+    if (!oldContent && newContent) {
+      oldDay.appendChild(newContent.cloneNode(true));
+      return;
+    }
+    if (!oldContent || !newContent) return;
+
+    var oldKids = Array.from(oldContent.children);
+    var newKids = Array.from(newContent.children);
+
+    // append children that are new
+    for (var j = oldKids.length; j < newKids.length; j++) {
+      oldContent.appendChild(newKids[j].cloneNode(true));
+    }
+
+    // the last pre-existing child might have gained sub-content
+    // (e.g. a grader result or student reply appeared inside it)
+    if (oldKids.length > 0 && newKids.length >= oldKids.length) {
+      var li = oldKids.length - 1;
+      if (oldKids[li].innerHTML !== newKids[li].innerHTML) {
+        oldKids[li].innerHTML = newKids[li].innerHTML;
+      }
+    }
+  }
+
+  function poll() {
+    var wasNearBottom = isNearBottom();
+
+    fetch(location.href).then(function(r){ return r.text(); }).then(function(html){
+      var parser = new DOMParser();
+      var doc = parser.parseFromString(html, 'text/html');
+
+      // header (fixed position — no layout shift)
+      var h = document.querySelector('.live-header');
+      var nh = doc.querySelector('.live-header');
+      if (h && nh) h.innerHTML = nh.innerHTML;
+
+      // sidebar sections (separate scroll context — no transcript shift)
+      var secs = document.querySelectorAll('.sidebar-section');
+      var nsecs = doc.querySelectorAll('.sidebar-section');
+      for (var i = 0; i < nsecs.length && i < secs.length; i++)
+        secs[i].innerHTML = nsecs[i].innerHTML;
+
+      // transcript — append-only strategy
+      var trans = document.getElementById('transcript');
+      var ntrans = doc.getElementById('transcript');
+      if (trans && ntrans) {
+        var days = Array.from(trans.querySelectorAll('.day-block'));
+        var newDays = Array.from(ntrans.querySelectorAll('.day-block'));
+
+        for (var i = 0; i < newDays.length; i++) {
+          if (i >= days.length) {
+            // brand-new day block — append whole
+            trans.appendChild(newDays[i].cloneNode(true));
+          } else if (i >= days.length - 1) {
+            // was the active (last) day — incremental update only
+            updateActiveDay(days[i], newDays[i]);
+          }
+          // older completed days: don't touch at all
+        }
+      }
+
+      // auto-open latest day unless user manually closed it
+      var allDays = document.querySelectorAll('.day-block');
+      if (allDays.length > 0) {
+        var last = allDays[allDays.length - 1];
+        if (!manuallyClosedDays[last.id]) last.open = true;
+      }
+
+      // auto-scroll only if user was already at the bottom
+      if (wasNearBottom) {
+        var t = document.getElementById('transcript');
+        if (t) t.scrollTop = t.scrollHeight;
+      }
+
+      lastUpdate = Date.now();
+    }).catch(function(){});
+  }
+
+  // "updated Xs ago" ticker
+  setInterval(function(){
+    var el = document.getElementById('lh-updated');
+    if (el && el.textContent !== 'Complete') {
+      var s = Math.round((Date.now() - lastUpdate) / 1000);
+      el.textContent = s < 4 ? 'live' : 'updated ' + s + 's ago';
+    }
+  }, 1000);
+
+  setInterval(poll, 3000);
+})();
+"""
+
 def render_html():
-    s = live
-    status = _esc(s["status"])
+    status = _esc(live["status"])
+    cur_day = live.get("current_day", 0)
+    cur_round = live.get("current_round", 0)
+    cur_round_name = _esc(live.get("current_round_name", ""))
+    cur_kann = _esc(live.get("current_kann", ""))
+    cur_kann_text = _esc(live.get("current_kann_text", ""))
+    active_stu = _esc(live.get("active_student", ""))
+    is_done = live.get("done", False)
 
-    # ── scorecard table ───────────────────────────────────────────
-    scorecard_html = '<table class="score"><tr><th>Kannbeschreibung</th>'
-    for sid in ALL_STUDENTS:
-        name = s["students"].get(sid, {}).get("name", sid)
-        scorecard_html += f'<th>{_esc(name)}</th>'
-    scorecard_html += '</tr>'
-
-    area_names = {a["id"]: a["name"] for a in course_struct["subject_areas"]}
-    for area_id in ALL_AREAS:
-        scorecard_html += f'<tr><td>{_esc(area_names.get(area_id, area_id))}</td>'
-        for sid in ALL_STUDENTS:
-            result = s["scorecard"].get(sid, {}).get(area_id, "—")
+    # ── sidebar scorecard rows ──
+    sc_rows = ""
+    for ddata in live["days"]:
+        cells = ""
+        for sid in STUDENT_IDS:
+            result = ddata.get("summaries", {}).get(sid, {}).get("kann_result", "\u2026")
             cls = {"bestanden": "pass", "teilweise": "partial", "nicht_bestanden": "fail"}.get(result, "pending")
-            label = {"bestanden": "bestanden", "teilweise": "teilweise", "nicht_bestanden": "nicht best.", "—": "—"}.get(result, result)
-            scorecard_html += f'<td class="{cls}">{label}</td>'
-        scorecard_html += '</tr>'
-    scorecard_html += '</table>'
+            cells += f'<td class="{cls}">{_esc(result)}</td>'
+        sc_rows += f'<tr><td class="sc-day">{ddata["day"]}</td><td class="sc-kann" title="{_esc(ddata.get("kann_text",""))}">{_esc(ddata["kann_id"])}</td>{cells}</tr>\n'
 
-    # ── per-student days ──────────────────────────────────────────
-    students_html = ""
-    for sid in ALL_STUDENTS:
-        sdata = s["students"].get(sid, {"name": sid, "days": []})
-        students_html += f'<div class="student-section"><h2>{_esc(sdata["name"])}</h2>'
+    stu_ths = "".join(f"<th>{_esc(STUDENT_NAMES[sid][:8])}</th>" for sid in STUDENT_IDS)
 
-        for ddata in sdata.get("days", []):
-            day_num = ddata.get("day", "?")
-            area = ddata.get("area", "")
-            area_label = area_names.get(area, area)
-            plan = ddata.get("plan", {})
-            summary = ddata.get("summary")
+    # ── transcript day blocks ──
+    days_html = ""
+    n_days = len(live["days"])
+    for idx, ddata in enumerate(live["days"]):
+        day_num = ddata["day"]
+        is_latest = (idx == n_days - 1)
 
-            # day header + summary badge
-            badge = ""
-            if summary:
-                res = summary.get("kann_result", "")
-                bcls = {"bestanden": "pass", "teilweise": "partial", "nicht_bestanden": "fail"}.get(res, "pending")
-                badge = f' <span class="badge {bcls}">{res}</span>'
+        kann_full = _esc(ddata.get("kann_text", ""))
+        kann_cat = _esc(ddata.get("category", ""))
+        days_html += f'<details class="day-block" id="d_{day_num}" data-latest="{1 if is_latest else 0}">'
+        days_html += f'<summary>Tag {day_num}: {_esc(ddata["kann_id"])} \u2014 {kann_full}</summary>'
+        days_html += '<div class="day-content">'
+        days_html += f'<div class="kann-banner"><span class="kann-id">{_esc(ddata["kann_id"])}</span> <span class="kann-cat">{kann_cat}</span><div class="kann-text">{kann_full}</div></div>'
 
-            day_id = f"d_{sid}_{day_num}"
-            students_html += f'<details class="day-block" id="{day_id}"><summary>Tag {day_num}: {_esc(area_label)}{badge}</summary>'
+        for rdata in ddata.get("rounds", []):
+            rnd = rdata["round"]
+            days_html += f'<div class="round-header">Runde {rnd}: {_esc(rdata["name"])}</div>'
 
-            # plan
-            if plan:
-                students_html += f'<div class="plan-box"><b>Plan:</b> {_esc(plan.get("reasoning",""))}<br><b>Approach:</b> {_esc(plan.get("opening_approach",""))}</div>'
+            for ex in rdata.get("exchanges", []):
+                sid = ex["student"]
+                sname = STUDENT_NAMES.get(sid, sid)
+                scolor = STUDENT_COLORS.get(sid, "#f0f0f0")
+                lcolor = STUDENT_LABEL_COLORS.get(sid, "#333")
 
-            # rounds
-            for r in ddata.get("rounds", []):
-                students_html += f'<div class="round-header">— Runde {r["round"]}: {_esc(r["name"])} —</div>'
+                # exchange group: teacher → student (→ grader)
+                days_html += '<div class="exchange-group">'
 
-                # Teacher
-                rnd = r["round"]
-                t_id = f"p_{sid}_{day_num}_{rnd}_t"
-                s_id = f"p_{sid}_{day_num}_{rnd}_s"
-                g_id = f"p_{sid}_{day_num}_{rnd}_g"
+                t_id = f"p_{day_num}_{rnd}_{sid}_t"
+                days_html += (
+                    f'<div class="msg teacher-msg">'
+                    f'<div class="speaker teacher-label">Lehrerin Weber \u2192 {_esc(sname)}</div>'
+                    f'<div class="text">{_esc(ex.get("teacher_msg", "..."))}</div>'
+                    f'<details class="prompt-details" id="{t_id}"><summary class="prompt-toggle">teacher prompt</summary>'
+                    f'<pre class="prompt-box">{_esc(ex.get("teacher_prompt",""))}</pre></details></div>'
+                )
 
-                students_html += f'<div class="msg teacher"><div class="label">Lehrerin Weber</div>{_esc(r.get("teacher_msg","..."))}'
-                students_html += f'<details id="{t_id}"><summary class="prompt-toggle">show prompt</summary><div class="prompt-box">{_esc(r.get("teacher_prompt",""))}</div></details></div>'
+                if ex.get("student_msg"):
+                    s_id = f"p_{day_num}_{rnd}_{sid}_s"
+                    days_html += (
+                        f'<div class="msg student-msg" style="background:{scolor}">'
+                        f'<div class="speaker" style="color:{lcolor}">{_esc(sname)}</div>'
+                        f'<div class="text">{_esc(ex["student_msg"])}</div>'
+                        f'<details class="prompt-details" id="{s_id}"><summary class="prompt-toggle">student prompt</summary>'
+                        f'<pre class="prompt-box">{_esc(ex.get("student_prompt",""))}</pre></details></div>'
+                    )
 
-                # Student
-                if r.get("student_msg"):
-                    students_html += f'<div class="msg student"><div class="label">{_esc(sdata["name"])}</div>{_esc(r.get("student_msg","..."))}'
-                    students_html += f'<details id="{s_id}"><summary class="prompt-toggle">show prompt</summary><div class="prompt-box">{_esc(r.get("student_prompt",""))}</div></details></div>'
+                # grader
+                if ex.get("grader"):
+                    g = ex["grader"]
+                    gtext = f'{g.get("verdict","")} | Sprachhandlung: {g.get("sprachhandlung","")} | Wortfeld: {", ".join(g.get("wortfeld_used",[]))}'
+                    g_id = f"p_{day_num}_{rnd}_{sid}_g"
+                    days_html += (
+                        f'<div class="grader-block">'
+                        f'<div class="grader-label">Grader \u2192 {_esc(sname)}</div>'
+                        f'<div class="grader-text">{_esc(gtext)}</div>'
+                        f'<details class="prompt-details" id="{g_id}"><summary class="prompt-toggle">grader prompt</summary>'
+                        f'<pre class="prompt-box">{_esc(ex.get("grader_prompt",""))}</pre></details></div>'
+                    )
 
-                # Grader
-                if r.get("grader"):
-                    g = r["grader"]
-                    gtext = f"Verdict: {g.get('verdict','')} | Wortfeld: {', '.join(g.get('wortfeld_used',[]))} | Grammar: {'; '.join(g.get('grammar_notes',[]))}"
-                    students_html += f'<div class="grader"><div class="label">Grader</div>{_esc(gtext)}'
-                    students_html += f'<details id="{g_id}"><summary class="prompt-toggle">show prompt</summary><div class="prompt-box">{_esc(r.get("grader_prompt",""))}</div></details></div>'
+                days_html += '</div>'  # close .exchange-group
 
-            # day summary
-            if summary:
-                highlight = summary.get("session_highlight", "")
-                vocab = ", ".join(v.get("word","") for v in summary.get("vocabulary_learned", []))
-                students_html += f'<div class="summary-box"><b>Result:</b> {_esc(summary.get("kann_result",""))}<br>'
-                students_html += f'<b>Highlight:</b> {_esc(highlight)}<br>'
-                if vocab:
-                    students_html += f'<b>Vocabulary:</b> {_esc(vocab)}'
-                students_html += '</div>'
+        # day summaries
+        summaries_html = ""
+        for sid in STUDENT_IDS:
+            summ = ddata.get("summaries", {}).get(sid)
+            if summ:
+                sname = STUDENT_NAMES.get(sid, sid)
+                result = summ.get("kann_result", "")
+                cls = {"bestanden": "pass", "teilweise": "partial", "nicht_bestanden": "fail"}.get(result, "pending")
+                summaries_html += f'<div class="summary-item {cls}"><b>{_esc(sname)}</b>: {_esc(result)} \u2014 {_esc(summ.get("session_highlight",""))}</div>'
+        if summaries_html:
+            days_html += f'<div class="day-summaries"><div class="summaries-label">Tageszusammenfassung</div>{summaries_html}</div>'
 
-            students_html += '</details>'
+        days_html += '</div></details>\n'
 
-        # active round indicator
-        if s["current_student"] == sid and not s["done"]:
-            students_html += '<div class="active-indicator">Running...</div>'
+    # ── assemble page ──
+    header_right = ""
+    if active_stu:
+        header_right += f'<span class="lh-student">\u2192 {active_stu}</span>'
+    header_right += '<span class="lh-updated" id="lh-updated">' + ("Complete" if is_done else "live") + "</span>"
 
-        students_html += '</div>'
+    kann_display = cur_kann
+    if cur_kann_text:
+        kann_display += ": " + cur_kann_text
 
-    # ── assemble ──────────────────────────────────────────────────
-    html = f"""<!DOCTYPE html>
-<html><head><meta charset="utf-8"><title>Sprecher — A1 Full Course</title>
-<style>
-  * {{ margin:0; padding:0; box-sizing:border-box; }}
-  body {{ font-family: -apple-system, 'Segoe UI', sans-serif; background:#e5ddd5; padding:20px; max-width:1000px; margin:0 auto; }}
-  h1 {{ text-align:center; padding:12px; background:#075e54; color:white; border-radius:10px 10px 0 0; font-size:1.2em; }}
-  .status {{ text-align:center; padding:8px; background:#128c7e; color:white; font-size:0.85em; margin-bottom:15px; border-radius:0 0 10px 10px; }}
-  h2 {{ background:#25d366; color:white; padding:8px 12px; border-radius:8px; margin:15px 0 8px 0; font-size:1em; }}
-  .score {{ width:100%; border-collapse:collapse; margin:10px 0 20px 0; font-size:0.85em; }}
-  .score th {{ background:#075e54; color:white; padding:6px 10px; text-align:left; }}
-  .score td {{ padding:6px 10px; border:1px solid #ccc; text-align:center; }}
-  .score td:first-child {{ text-align:left; font-weight:bold; }}
-  .pass {{ background:#d4edda; color:#155724; font-weight:bold; }}
-  .partial {{ background:#fff3cd; color:#856404; font-weight:bold; }}
-  .fail {{ background:#f8d7da; color:#721c24; font-weight:bold; }}
-  .pending {{ background:#f0f0f0; color:#888; }}
-  .badge {{ font-size:0.75em; padding:2px 6px; border-radius:4px; margin-left:6px; }}
-  .student-section {{ margin:10px 0; }}
-  .day-block {{ background:white; border-radius:8px; margin:6px 0; padding:0; }}
-  .day-block > summary {{ padding:10px 14px; cursor:pointer; font-weight:bold; font-size:0.95em; background:#f8f9fa; border-radius:8px; }}
-  .day-block[open] > summary {{ border-radius:8px 8px 0 0; border-bottom:1px solid #ddd; }}
-  .chat {{ padding:10px 15px; }}
-  .msg {{ max-width:78%; padding:8px 12px; border-radius:10px; margin:6px 0; line-height:1.4; font-size:0.9em; }}
-  .teacher {{ background:#dcf8c6; margin-right:auto; border-top-left-radius:0; }}
-  .student {{ background:white; margin-left:auto; border-top-right-radius:0; border:1px solid #eee; }}
-  .grader {{ background:#fff3cd; margin:8px auto; max-width:90%; border-radius:8px; border-left:4px solid #ffc107; font-size:0.8em; padding:8px 12px; }}
-  .label {{ font-weight:bold; font-size:0.75em; color:#555; margin-bottom:2px; }}
-  .prompt-box {{ background:#1a1a2e; color:#0f0; font-family:monospace; font-size:0.7em; padding:10px; border-radius:6px; margin:6px 0; max-height:180px; overflow-y:auto; white-space:pre-wrap; word-wrap:break-word; }}
-  .prompt-toggle {{ font-size:0.7em; color:#075e54; cursor:pointer; text-decoration:underline; }}
-  .round-header {{ text-align:center; color:#888; font-size:0.8em; margin:12px 0 4px 0; padding:4px; border-bottom:1px solid #eee; }}
-  .plan-box {{ background:#d4edda; padding:8px 12px; border-radius:6px; margin:8px 12px; font-size:0.85em; border-left:4px solid #28a745; }}
-  .summary-box {{ background:#cce5ff; padding:8px 12px; border-radius:6px; margin:8px 12px; font-size:0.85em; border-left:4px solid #004085; }}
-  .active-indicator {{ text-align:center; padding:6px; color:#128c7e; font-style:italic; animation: pulse 1.5s infinite; }}
-  @keyframes pulse {{ 0%,100% {{ opacity:1; }} 50% {{ opacity:0.4; }} }}
-  details summary {{ cursor:pointer; }}
-</style>
-</head><body>
-<h1>Deutschkurs A1 — Voller Kurs — 3 Studierende × 7 Themen</h1>
-<div class="status">{status}</div>
-{scorecard_html}
-{students_html}
-<script>
-function getOpenIds() {{
-  return Array.from(document.querySelectorAll('details[open]'))
-    .map(d => d.id).filter(Boolean);
-}}
-function restoreOpen(ids) {{
-  ids.forEach(id => {{
-    var el = document.getElementById(id);
-    if (el) el.open = true;
-  }});
-}}
-function poll() {{
-  fetch(location.href).then(r => r.text()).then(html => {{
-    var open = getOpenIds();
-    var scroll = window.scrollY;
-    var parser = new DOMParser();
-    var doc = parser.parseFromString(html, 'text/html');
-    document.querySelector('.status').innerHTML = doc.querySelector('.status').innerHTML;
-    var tables = document.querySelectorAll('.score');
-    var newTables = doc.querySelectorAll('.score');
-    if (tables.length && newTables.length) tables[0].outerHTML = newTables[0].outerHTML;
-    var sections = document.querySelectorAll('.student-section');
-    var newSections = doc.querySelectorAll('.student-section');
-    for (var i = 0; i < newSections.length; i++) {{
-      if (i < sections.length) sections[i].outerHTML = newSections[i].outerHTML;
-      else document.body.appendChild(newSections[i].cloneNode(true));
-    }}
-    restoreOpen(open);
-    window.scrollTo(0, scroll);
-  }}).catch(() => {{}});
-}}
-setInterval(poll, 4000);
-</script>
-</body></html>"""
-    return html
+    parts = []
+    parts.append('<!DOCTYPE html>\n<html><head><meta charset="utf-8">'
+                  '<meta name="viewport" content="width=device-width,initial-scale=1">')
+    parts.append('<title>Sprecher \u2014 A1 Klassenzimmer</title>\n<style>')
+    parts.append(_CSS)
+    parts.append('</style></head>\n<body class="view-conversation">')
+
+    parts.append(f"""
+<div class="live-header">
+  <div class="lh-left">
+    <span class="lh-tag">Tag {cur_day}/{TOTAL_KANNS}</span>
+    <span class="lh-sep">\u2502</span>
+    <span class="lh-round">Runde {cur_round}/7{(": " + cur_round_name) if cur_round_name else ""}</span>
+    <span class="lh-sep">\u2502</span>
+    <span class="lh-kann" title="{cur_kann_text}">{kann_display}</span>
+  </div>
+  <div class="lh-right">{header_right}</div>
+</div>
+<div class="layout">
+  <div class="transcript" id="transcript">
+    {days_html}
+  </div>
+  <div class="sidebar" id="sidebar">
+    <div class="view-controls">
+      <button class="vbtn" data-view="conversation">Conversation</button>
+      <button class="vbtn" data-view="grader">+ Grader</button>
+      <button class="vbtn" data-view="debug">Full Debug</button>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-title">Scorecard</div>
+      <table class="scorecard">
+        <thead><tr><th>Tag</th><th>Kann</th>{stu_ths}</tr></thead>
+        <tbody>{sc_rows}</tbody>
+      </table>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-title">Status</div>
+      <div class="status-text">{status}</div>
+    </div>
+  </div>
+</div>
+""")
+
+    parts.append("<script>")
+    parts.append(_JS)
+    parts.append("</script></body></html>")
+    return "".join(parts)
 
 class Handler(SimpleHTTPRequestHandler):
     def do_GET(self):
@@ -254,60 +575,65 @@ class Handler(SimpleHTTPRequestHandler):
         self.wfile.write(render_html().encode())
     def log_message(self, *a): pass
 
-def start_server(port=8787):
-    srv = HTTPServer(("127.0.0.1", port), Handler)
+def start_server(host="127.0.0.1", port=8787):
+    srv = HTTPServer((host, port), Handler)
     t = threading.Thread(target=srv.serve_forever, daemon=True)
     t.start()
     return srv
 
-# ── find Kann by subject area ──────────────────────────────────────
-def get_kann_for_area(area_id):
-    for area in course_struct["subject_areas"]:
-        if area["id"] == area_id:
-            kann_id = area["primary_kann"][0]
-            for k in canon_kann:
-                if k["id"] == kann_id:
-                    return k
-    return canon_kann[0]
-
-# ── build prompts from JSON templates ──────────────────────────────
-def build_teacher_prompt(kann, round_frame, day, student_name, teacher_memory, interstitial_text=""):
+# ── prompt builders ────────────────────────────────────────────────
+def build_teacher_prompt(kann, round_frame, day, student_name, teacher_memories, classroom_context, interstitial=""):
     persona = teacher_pers["system_prompt"]
-    canon_block = f"Current Kannbeschreibung: {kann['kann']}\nWortfeld: {', '.join(kann['wortfeld'])}\nSprachhandlungen: {', '.join(kann['sprachhandlungen'])}"
+    canon_block = f"Today's Kannbeschreibung: {kann['kann']}\nCategory: {kann.get('category','')}"
     round_block = f"Round {round_frame['round']} of 7: {round_frame['name']}.\n{round_frame['teacher_instruction']}"
-    memory_block = f"Your memory of {student_name}:\n{json.dumps(teacher_memory, ensure_ascii=False)}" if teacher_memory else f"This is your first meeting with {student_name}."
+
+    # memories of all students
+    mem_lines = []
+    for sid, mem in teacher_memories.items():
+        if mem:
+            mem_lines.append(f"Memory of {STUDENT_NAMES.get(sid,sid)}: {json.dumps(mem, ensure_ascii=False)[:300]}")
+    memory_block = "\n".join(mem_lines) if mem_lines else "Day 1 — first meeting with all students."
+
     day_block = bridges["day_open"]["teacher_injection_day1"] if day == 1 else bridges["day_open"]["teacher_injection_returning"].replace("{days_completed}", str(day-1))
 
-    full = f"{persona}\n\n--- CANON ---\n{canon_block}\n\n--- ROUND ---\n{round_block}\n\n--- MEMORY ---\n{memory_block}\n\n--- DAY CONTEXT ---\n{day_block}"
-    if interstitial_text:
-        full += f"\n\n--- INTERSTITIAL ---\n{interstitial_text}"
+    # what other students said this round
+    class_block = ""
+    if classroom_context:
+        class_block = "CLASSROOM CONTEXT (what other students said this round):\n" + "\n".join(
+            f"  {STUDENT_NAMES.get(s,s)}: {msg}" for s, msg in classroom_context
+        )
+
+    full = f"{persona}\n\n--- CANON ---\n{canon_block}\n\n--- ROUND ---\n{round_block}\n\n--- MEMORY ---\n{memory_block}\n\n--- DAY ---\n{day_block}"
+    if class_block:
+        full += f"\n\n--- CLASSROOM ---\n{class_block}"
+    if interstitial:
+        full += f"\n\n--- INTERSTITIAL ---\n{interstitial}"
+    full += f"\n\nYou are now speaking to {student_name}."
     return full
 
-def build_student_prompt(student_data, learned_state):
-    base = f"{student_data['base_persona']}\n\n{student_data['personality']}\n\n{student_data['generation_rules']}"
+def build_student_prompt(student_data, learned_state, classroom_context):
+    base = f"{student_data['base_persona']}\n\n{student_data['personality']}\n\n{student_data.get('classmates','')}\n\n{student_data['generation_rules']}"
+
+    # what classmates said
+    if classroom_context:
+        base += "\n\nWHAT YOUR CLASSMATES SAID THIS ROUND:\n" + "\n".join(
+            f"  {STUDENT_NAMES.get(s,s)}: {msg}" for s, msg in classroom_context
+        )
+
     if learned_state.get("day", 0) > 0:
-        vocab_lines = []
-        for v in learned_state.get("vocabulary_acquired", []):
-            status = "STABLE — use correctly" if v.get("stable") else "UNSTABLE — right ~70%, slip back ~30%"
-            vocab_lines.append(f"  - '{v['word']}' ({status})")
-        vocab_section = "Vocabulary you've learned:\n" + "\n".join(vocab_lines) if vocab_lines else ""
-
-        gram_lines = []
-        for g in learned_state.get("grammar_acquired", []):
-            status = "STABLE" if g.get("stable") else "UNSTABLE"
-            gram_lines.append(f"  - {g['rule']} ({status})")
-        gram_section = "Grammar you've learned:\n" + "\n".join(gram_lines) if gram_lines else ""
-
-        errors_section = "Errors you STILL make:\n" + "\n".join(f"  - {e}" for e in learned_state.get("persistent_errors", []))
-        emotional = f"Your feeling about German class: {learned_state.get('emotional_state', '')}"
+        vocab_lines = [f"  - '{v['word']}' ({'STABLE' if v.get('stable') else 'UNSTABLE'})"
+                       for v in learned_state.get("vocabulary_acquired", [])]
+        gram_lines = [f"  - {g['rule']} ({'STABLE' if g.get('stable') else 'UNSTABLE'})"
+                      for g in learned_state.get("grammar_acquired", [])]
+        errors = learned_state.get("persistent_errors", [])
 
         overlay = overlay_tmpl["template"]
         overlay = overlay.replace("{base_persona}", base)
         overlay = overlay.replace("{days_completed}", str(learned_state.get("day", 0)))
-        overlay = overlay.replace("{vocabulary_section}", vocab_section)
-        overlay = overlay.replace("{grammar_section}", gram_section)
-        overlay = overlay.replace("{errors_section}", errors_section)
-        overlay = overlay.replace("{emotional_section}", emotional)
+        overlay = overlay.replace("{vocabulary_section}", "Vocabulary:\n" + "\n".join(vocab_lines) if vocab_lines else "")
+        overlay = overlay.replace("{grammar_section}", "Grammar:\n" + "\n".join(gram_lines) if gram_lines else "")
+        overlay = overlay.replace("{errors_section}", "Errors:\n" + "\n".join(f"  - {e}" for e in errors) if errors else "")
+        overlay = overlay.replace("{emotional_section}", f"Feeling: {learned_state.get('emotional_state', '')}")
         return overlay
     return base
 
@@ -315,278 +641,271 @@ def build_grader_prompt(kann, round_frame, day, teacher_msg, student_msg, prior_
     sys_p = grader_round["system_prompt"]
     user_p = grader_round["user_template"]
     user_p = user_p.replace("{kann_text}", kann["kann"])
-    user_p = user_p.replace("{wortfeld}", ", ".join(kann["wortfeld"]))
-    user_p = user_p.replace("{sprachhandlungen}", ", ".join(kann["sprachhandlungen"]))
+    user_p = user_p.replace("{wortfeld}", "")  # full kanns don't have wortfeld
+    user_p = user_p.replace("{sprachhandlungen}", "")
     user_p = user_p.replace("{current_day}", str(day))
     user_p = user_p.replace("{current_round}", str(round_frame["round"]))
     user_p = user_p.replace("{round_name}", round_frame["name"])
-    user_p = user_p.replace("{prior_progress}", json.dumps(prior_progress, ensure_ascii=False) if prior_progress else "No prior data (Day 1).")
+    user_p = user_p.replace("{prior_progress}", json.dumps(prior_progress, ensure_ascii=False) if prior_progress else "No prior data.")
     user_p = user_p.replace("{teacher_message}", teacher_msg)
     user_p = user_p.replace("{student_message}", student_msg)
     return sys_p, user_p
 
-# ── run one day for one student ────────────────────────────────────
-def run_day(student_id):
-    student_data = load(f"prompts/students/{student_id}.json")
-    learned = load(f"state/students/{student_id}_learned.json")
-    teacher_mem = load(f"state/teacher/memory_{student_id}.json")
-    course = load("state/course/course_state.json")
+# ── run one day (one Kann, all students) ───────────────────────────
+def run_day(day_num, kann):
+    # load state
+    teacher_mems = {sid: load(f"state/teacher/memory_{sid}.json") for sid in STUDENT_IDS}
+    learned = {sid: load(f"state/students/{sid}_learned.json") for sid in STUDENT_IDS}
     progress = load("state/grader/progress.json")
+    course_state = load("state/course/course_state.json")
+    for sid in STUDENT_IDS:
+        progress.setdefault(sid, [])
+    course_state.setdefault("current_day", {})
+    course_state.setdefault("areas_covered", {})
+    for sid in STUDENT_IDS:
+        course_state["current_day"].setdefault(sid, 0)
+        course_state["areas_covered"].setdefault(sid, [])
 
-    day = course["current_day"].get(student_id, 0) + 1
-    areas_covered = course["areas_covered"].get(student_id, [])
-    areas_remaining = [a for a in ALL_AREAS if a not in areas_covered]
+    day_live = {
+        "day": day_num, "kann_id": kann["id"], "kann_text": kann["kann"],
+        "category": kann.get("category", ""), "rounds": [], "summaries": {}
+    }
+    live["days"].append(day_live)
+    live["current_day"] = day_num
+    live["current_kann"] = kann["id"]
+    live["current_kann_text"] = kann["kann"]
+    live["status"] = f"Tag {day_num}/{TOTAL_KANNS} \u2014 {kann['id']} \u2014 Starting..."
 
-    if not areas_remaining:
-        print(f"  {student_data['name']}: all areas covered!")
-        return None
+    print(f"\n{'='*70}")
+    print(f"  Tag {day_num} \u2014 {kann['id']}: {kann['kann'][:70]}...")
+    print(f"{'='*70}")
 
-    # init live tracking for this student
-    if student_id not in live["students"]:
-        live["students"][student_id] = {"name": student_data["name"], "days": []}
-
-    live["current_student"] = student_id
-    live["current_day"] = day
-    live["status"] = f"{student_data['name']} — Tag {day}/{NUM_DAYS} — Planning..."
-
-    day_live = {"day": day, "area": "", "plan": {}, "rounds": [], "summary": None}
-    live["students"][student_id]["days"].append(day_live)
-
-    print(f"\n{'='*60}")
-    print(f"  Tag {day} — {student_data['name']}")
-    print(f"{'='*60}")
-
-    # ── Planner ───────────────────────────────────────────────────
-    planner_user = planner_tmpl["user_template"]
-    planner_user = planner_user.replace("{student_name}", student_data["name"])
-    planner_user = planner_user.replace("{current_day}", str(day))
-    planner_user = planner_user.replace("{teacher_memory}", json.dumps(teacher_mem, ensure_ascii=False))
-    planner_user = planner_user.replace("{student_learned}", json.dumps(learned, ensure_ascii=False))
-    planner_user = planner_user.replace("{areas_covered}", ", ".join(areas_covered) or "none")
-    planner_user = planner_user.replace("{areas_remaining}", ", ".join(areas_remaining))
-    plan_raw = chat("openai", "gpt-4o", [
-        {"role": "system", "content": planner_tmpl["system_prompt"]},
-        {"role": "user", "content": planner_user}
-    ], temperature=0.7)
-
-    try:
-        plan = parse_json(plan_raw)
-    except:
-        plan = {"chosen_area": areas_remaining[0], "reasoning": plan_raw, "opening_approach": "Greet and ask an open question.", "watch_for": []}
-
-    # validate chosen_area is actually remaining
-    if plan.get("chosen_area") not in areas_remaining:
-        plan["chosen_area"] = areas_remaining[0]
-
-    kann = get_kann_for_area(plan["chosen_area"])
-    area_name = plan["chosen_area"]
-    day_live["area"] = area_name
-    day_live["plan"] = plan
-    live["status"] = f"{student_data['name']} — Tag {day}/{NUM_DAYS} — {area_name}"
-
-    print(f"  Plan: {area_name} — {plan.get('reasoning','')[:80]}")
-    save(f"plans/generated/{student_id}_day{day}_plan.json", plan)
-
-    # ── Rounds 1-7 ────────────────────────────────────────────────
-    conversation_history = []
-    grader_reports = []
+    # per-student conversation histories (teacher sees all, student sees own)
+    teacher_history = []  # all exchanges in order
+    student_histories = {sid: [] for sid in STUDENT_IDS}
+    grader_reports = {sid: [] for sid in STUDENT_IDS}
     interstitial_text = ""
 
     for rf in rounds_tmpl:
         rnd = rf["round"]
-        live["status"] = f"{student_data['name']} — Tag {day} — Runde {rnd}/7: {rf['name']}"
-        round_data = {"round": rnd, "name": rf["name"]}
+        live["status"] = f"Tag {day_num} \u2014 Runde {rnd}/7: {rf['name']}"
+        live["current_round"] = rnd
+        live["current_round_name"] = rf["name"]
+        round_live = {"round": rnd, "name": rf["name"], "exchanges": []}
+        day_live["rounds"].append(round_live)
 
-        # Teacher
-        t_prompt = build_teacher_prompt(kann, rf, day, student_data["name"], teacher_mem, interstitial_text)
-        t_messages = [{"role": "system", "content": t_prompt}]
-        for ex in conversation_history:
-            t_messages.append({"role": "assistant", "content": ex["teacher"]})
-            if ex.get("student"):
-                t_messages.append({"role": "user", "content": ex["student"]})
-        if rnd == 1 and not conversation_history:
-            t_messages.append({"role": "user", "content": f"Begin the lesson. Open approach: {plan.get('opening_approach','Greet the student.')}"})
+        # This round's classroom context builds up as each student speaks
+        round_context = []
 
-        teacher_msg = chat("openai", "gpt-4o", t_messages)
-        round_data["teacher_msg"] = teacher_msg
-        round_data["teacher_prompt"] = t_prompt
-        print(f"\n  [Runde {rnd}: {rf['name']}]")
-        print(f"  Lehrerin: {teacher_msg}")
+        for sid in STUDENT_IDS:
+            sdata = student_configs[sid]
+            sname = sdata["name"]
+            live["active_student"] = sname
 
-        # Student
-        s_prompt = build_student_prompt(student_data, learned)
-        s_messages = [{"role": "system", "content": s_prompt}]
-        for ex in conversation_history:
-            s_messages.append({"role": "user", "content": ex["teacher"]})
-            if ex.get("student"):
-                s_messages.append({"role": "assistant", "content": ex["student"]})
-        s_messages.append({"role": "user", "content": teacher_msg})
+            # ── Teacher speaks to this student ────────────────────
+            t_prompt = build_teacher_prompt(
+                kann, rf, day_num, sname, teacher_mems, round_context, interstitial_text
+            )
+            t_messages = [{"role": "system", "content": t_prompt}]
 
-        student_msg = chat(student_data["api"], student_data["model"], s_messages)
-        round_data["student_msg"] = student_msg
-        round_data["student_prompt"] = s_prompt
-        print(f"  {student_data['name']}: {student_msg}")
+            # teacher conversation history (all students)
+            for ex in teacher_history:
+                t_messages.append({"role": "assistant", "content": f"[To {ex['student_name']}] {ex['teacher_msg']}"})
+                t_messages.append({"role": "user", "content": f"[{ex['student_name']}] {ex['student_msg']}"})
 
-        # Grader
-        g_sys, g_user = build_grader_prompt(kann, rf, day, teacher_msg, student_msg, progress.get(student_id, []))
-        grader_raw = chat("openai", "gpt-4o", [
-            {"role": "system", "content": g_sys},
-            {"role": "user", "content": g_user}
-        ], temperature=0.3)
+            if rnd == 1 and not teacher_history:
+                t_messages.append({"role": "user", "content": f"Begin the lesson. Address {sname} first."})
 
-        try:
-            grader_result = parse_json(grader_raw)
-        except:
-            grader_result = {"verdict": "parse_error", "wortfeld_used": [], "grammar_notes": [grader_raw], "steering": "proceed", "canon_aligned": True, "sprachhandlung": ""}
+            teacher_msg = chat_from_config("teacher", t_messages)
+            print(f"\n  [R{rnd} {rf['name']}] Lehrerin \u2192 {sname}: {teacher_msg}")
 
-        round_data["grader"] = grader_result
-        round_data["grader_prompt"] = f"SYSTEM:\n{g_sys}\n\nUSER:\n{g_user}"
-        grader_reports.append(grader_result)
-        print(f"  Grader: {grader_result.get('verdict','')} | {'; '.join(grader_result.get('grammar_notes',[]))}")
+            # ── Student responds ──────────────────────────────────
+            s_prompt = build_student_prompt(sdata, learned[sid], round_context)
+            s_messages = [{"role": "system", "content": s_prompt}]
+            for ex in student_histories[sid]:
+                s_messages.append({"role": "user", "content": ex["teacher_msg"]})
+                s_messages.append({"role": "assistant", "content": ex["student_msg"]})
+            s_messages.append({"role": "user", "content": teacher_msg})
 
-        # Steering
-        steering = grader_result.get("steering", "proceed")
-        interstitial_key = rf.get("interstitial_after", "")
+            student_msg = chat(
+                sdata["api"],
+                sdata["model"],
+                s_messages,
+                temperature=sdata.get("temperature", 0.8),
+                max_tokens=sdata.get("max_tokens", 500),
+            )
+            print(f"  {sname}: {student_msg}")
+
+            # ── Grade ─────────────────────────────────────────────
+            g_sys, g_user = build_grader_prompt(
+                kann, rf, day_num, teacher_msg, student_msg,
+                progress.get(sid, [])
+            )
+            grader_raw = chat_from_config("grader_round", [
+                {"role": "system", "content": g_sys},
+                {"role": "user", "content": g_user}
+            ])
+
+            try:
+                grader_result = parse_json(grader_raw)
+            except:
+                grader_result = {"verdict": "parse_error", "wortfeld_used": [], "grammar_notes": [grader_raw], "steering": "proceed", "canon_aligned": True, "sprachhandlung": ""}
+
+            print(f"  Grader \u2192 {sname}: {grader_result.get('verdict','')}")
+
+            # ── Record ────────────────────────────────────────────
+            exchange = {
+                "student": sid, "teacher_msg": teacher_msg, "student_msg": student_msg,
+                "grader": grader_result,
+                "teacher_prompt": t_prompt, "student_prompt": s_prompt,
+                "grader_prompt": f"SYSTEM:\n{g_sys}\n\nUSER:\n{g_user}"
+            }
+            round_live["exchanges"].append(exchange)
+
+            teacher_history.append({"student_name": sname, "student_id": sid, "teacher_msg": teacher_msg, "student_msg": student_msg})
+            student_histories[sid].append({"teacher_msg": teacher_msg, "student_msg": student_msg})
+            grader_reports[sid].append(grader_result)
+            round_context.append((sid, student_msg))
+
+        # interstitial for next round
         interstitial_text = ""
-        if steering in ("gentle_redirect", "explicit_reteach") and "correction_bridge" in bridges:
+        # check if any student needs redirect
+        any_redirect = any(
+            ex.get("grader", {}).get("steering", "") in ("gentle_redirect", "explicit_reteach")
+            for ex in round_live["exchanges"]
+        )
+        interstitial_key = rf.get("interstitial_after", "")
+        if any_redirect and "correction_bridge" in bridges:
             interstitial_text = bridges["correction_bridge"]["teacher_injection"]
         elif interstitial_key == "round_transition" and "round_transition" in bridges:
             interstitial_text = bridges["round_transition"]["teacher_injection"]
         elif interstitial_key == "day_close" and "day_close" in bridges:
             interstitial_text = bridges["day_close"]["teacher_injection"]
 
-        conversation_history.append({"teacher": teacher_msg, "student": student_msg})
-        day_live["rounds"].append(round_data)
+    # ── Day summaries per student ─────────────────────────────────
+    live["current_round"] = 0
+    live["current_round_name"] = ""
+    live["active_student"] = ""
+    live["status"] = f"Tag {day_num} \u2014 Summarizing..."
+    for sid in STUDENT_IDS:
+        summary_user = grader_day["user_template"]
+        summary_user = summary_user.replace("{student_name}", STUDENT_NAMES[sid])
+        summary_user = summary_user.replace("{current_day}", str(day_num))
+        summary_user = summary_user.replace("{subject_area}", kann.get("category", ""))
+        summary_user = summary_user.replace("{kann_text}", kann["kann"])
+        summary_user = summary_user.replace("{all_grader_reports}", json.dumps(grader_reports[sid], ensure_ascii=False))
+        summary_user = summary_user.replace("{prior_progress}", json.dumps(progress.get(sid, []), ensure_ascii=False))
+        summary_raw = chat_from_config("grader_day", [
+            {"role": "system", "content": grader_day["system_prompt"]},
+            {"role": "user", "content": summary_user}
+        ])
 
-    # ── Day Summary ───────────────────────────────────────────────
-    live["status"] = f"{student_data['name']} — Tag {day} — Summarizing..."
-    summary_user = grader_day["user_template"]
-    summary_user = summary_user.replace("{student_name}", student_data["name"])
-    summary_user = summary_user.replace("{current_day}", str(day))
-    summary_user = summary_user.replace("{subject_area}", area_name)
-    summary_user = summary_user.replace("{kann_text}", kann["kann"])
-    summary_user = summary_user.replace("{all_grader_reports}", json.dumps(grader_reports, ensure_ascii=False))
-    summary_user = summary_user.replace("{prior_progress}", json.dumps(progress.get(student_id, []), ensure_ascii=False))
-    summary_raw = chat("openai", "gpt-4o", [
-        {"role": "system", "content": grader_day["system_prompt"]},
-        {"role": "user", "content": summary_user}
-    ], temperature=0.3)
+        try:
+            day_summary = parse_json(summary_raw)
+        except:
+            day_summary = {"day": day_num, "kann_result": "teilweise", "session_highlight": summary_raw,
+                           "vocabulary_learned": [], "grammar_learned": [], "persistent_errors": [],
+                           "improvements_from_prior": [], "emotional_state": ""}
 
-    try:
-        day_summary = parse_json(summary_raw)
-    except:
-        day_summary = {"day": day, "kann_result": "teilweise", "session_highlight": summary_raw,
-                       "vocabulary_learned": [], "grammar_learned": [], "persistent_errors": [],
-                       "improvements_from_prior": [], "emotional_state": ""}
+        day_live["summaries"][sid] = day_summary
+        print(f"  Summary {STUDENT_NAMES[sid]}: {day_summary.get('kann_result','')} \u2014 {day_summary.get('session_highlight','')[:60]}")
 
-    day_live["summary"] = day_summary
+    # ── Teacher wrapup per student ────────────────────────────────
+    for sid in STUDENT_IDS:
+        wrapup_user = wrapup_tmpl["user_template"]
+        wrapup_user = wrapup_user.replace("{student_name}", STUDENT_NAMES[sid])
+        wrapup_user = wrapup_user.replace("{current_day}", str(day_num))
+        wrapup_user = wrapup_user.replace("{subject_area}", kann.get("category", ""))
+        wrapup_user = wrapup_user.replace("{conversation}", json.dumps(
+            [h for h in teacher_history if h["student_id"] == sid], ensure_ascii=False))
+        wrapup_user = wrapup_user.replace("{grader_reports}", json.dumps(grader_reports[sid], ensure_ascii=False))
+        wrapup_user = wrapup_user.replace("{prior_memory}", json.dumps(teacher_mems[sid], ensure_ascii=False))
+        wrapup_raw = chat_from_config("teacher_wrapup", [
+            {"role": "system", "content": wrapup_tmpl["system_prompt"]},
+            {"role": "user", "content": wrapup_user}
+        ])
 
-    # ── Wrapup ────────────────────────────────────────────────────
-    wrapup_user = wrapup_tmpl["user_template"]
-    wrapup_user = wrapup_user.replace("{student_name}", student_data["name"])
-    wrapup_user = wrapup_user.replace("{current_day}", str(day))
-    wrapup_user = wrapup_user.replace("{subject_area}", area_name)
-    wrapup_user = wrapup_user.replace("{conversation}", json.dumps(conversation_history, ensure_ascii=False))
-    wrapup_user = wrapup_user.replace("{grader_reports}", json.dumps(grader_reports, ensure_ascii=False))
-    wrapup_user = wrapup_user.replace("{prior_memory}", json.dumps(teacher_mem, ensure_ascii=False))
-    wrapup_raw = chat("openai", "gpt-4o", [
-        {"role": "system", "content": wrapup_tmpl["system_prompt"]},
-        {"role": "user", "content": wrapup_user}
-    ], temperature=0.5)
+        try:
+            new_mem = parse_json(wrapup_raw)
+        except:
+            new_mem = {"raw": wrapup_raw}
+        save(f"state/teacher/memory_{sid}.json", new_mem)
 
-    try:
-        new_teacher_mem = parse_json(wrapup_raw)
-    except:
-        new_teacher_mem = {"raw": wrapup_raw}
+        # update learned state
+        ds = day_live["summaries"][sid]
+        new_learned = dict(learned[sid])
+        new_learned["day"] = day_num
+        for v in ds.get("vocabulary_learned", []):
+            new_learned.setdefault("vocabulary_acquired", []).append(v)
+        for g in ds.get("grammar_learned", []):
+            new_learned.setdefault("grammar_acquired", []).append(g)
+        new_learned["persistent_errors"] = ds.get("persistent_errors", learned[sid].get("persistent_errors", []))
+        new_learned["emotional_state"] = ds.get("emotional_state", "")
+        new_learned.setdefault("kannbeschreibungen_attempted", {})[kann["id"]] = {
+            "day": day_num, "result": ds.get("kann_result", "teilweise")
+        }
+        save(f"state/students/{sid}_learned.json", new_learned)
 
-    # ── Update learned state ──────────────────────────────────────
-    new_learned = dict(learned)
-    new_learned["day"] = day
-    for v in day_summary.get("vocabulary_learned", []):
-        new_learned.setdefault("vocabulary_acquired", []).append(v)
-    for g in day_summary.get("grammar_learned", []):
-        new_learned.setdefault("grammar_acquired", []).append(g)
-    new_learned["persistent_errors"] = day_summary.get("persistent_errors", learned.get("persistent_errors", []))
-    new_learned["emotional_state"] = day_summary.get("emotional_state", "")
-    new_learned.setdefault("kannbeschreibungen_attempted", {})[kann["id"]] = {
-        "day": day, "result": day_summary.get("kann_result", "teilweise")
-    }
+        progress.setdefault(sid, []).append(ds)
 
-    # ── Save everything ───────────────────────────────────────────
-    save(f"state/teacher/memory_{student_id}.json", new_teacher_mem)
-    save(f"state/students/{student_id}_learned.json", new_learned)
-
-    progress.setdefault(student_id, []).append(day_summary)
     save("state/grader/progress.json", progress)
+    for sid in STUDENT_IDS:
+        course_state["current_day"][sid] = day_num
+        area = kann.get("category", "")
+        if area and area not in course_state["areas_covered"][sid]:
+            course_state["areas_covered"][sid].append(area)
+    save("state/course/course_state.json", course_state)
 
-    course["current_day"][student_id] = day
-    course["areas_covered"].setdefault(student_id, []).append(area_name)
-    save("state/course/course_state.json", course)
-
-    save(f"output/day{day}_{student_id}.json", {
-        "day": day, "student": student_id, "subject_area": area_name,
-        "plan": plan, "rounds": day_live["rounds"], "summary": day_summary,
-        "teacher_memory_after": new_teacher_mem
+    # save day output
+    save(f"output/day{day_num}_{kann['id']}.json", {
+        "day": day_num, "kann": kann, "rounds": day_live["rounds"],
+        "summaries": day_live["summaries"]
     })
 
-    # update scorecard
-    live["scorecard"].setdefault(student_id, {})[area_name] = day_summary.get("kann_result", "teilweise")
-
-    result = day_summary.get("kann_result", "")
-    highlight = day_summary.get("session_highlight", "")
-    print(f"\n  Result: {result} — {highlight}")
-    return day_summary
+    live["status"] = f"Tag {day_num}/{TOTAL_KANNS} \u2014 {kann['id']} \u2014 DONE"
 
 # ── run full course ────────────────────────────────────────────────
-def run_full_course():
-    """Run all students through all 7 subject areas."""
-    total_days = NUM_DAYS * len(ALL_STUDENTS)
-    completed = 0
+def run_course(start_day=1, end_day=None):
+    if end_day is None:
+        end_day = TOTAL_KANNS
+    end_day = min(end_day, TOTAL_KANNS)
 
-    for student_id in ALL_STUDENTS:
-        print(f"\n{'#'*60}")
-        print(f"  STUDENT: {student_id.upper()}")
-        print(f"{'#'*60}")
+    for i in range(start_day - 1, end_day):
+        kann = all_kanns[i]
+        try:
+            run_day(i + 1, kann)
+        except Exception as e:
+            print(f"\n  ERROR on day {i+1}: {e}")
+            traceback.print_exc()
+            live["status"] = f"ERROR day {i+1}: {e}"
+            continue
 
-        for day_num in range(1, NUM_DAYS + 1):
-            try:
-                result = run_day(student_id)
-                completed += 1
-                live["status"] = f"Progress: {completed}/{total_days} days complete"
-                if result is None:
-                    break
-            except Exception as e:
-                print(f"\n  ERROR on {student_id} day {day_num}: {e}")
-                traceback.print_exc()
-                live["status"] = f"ERROR: {student_id} day {day_num} — {e}"
-                completed += 1
-                continue
-
-    live["status"] = f"COMPLETE — {completed}/{total_days} days run"
+    live["status"] = f"COMPLETE \u2014 Days {start_day}-{end_day}"
     live["done"] = True
 
-# ── entry point ────────────────────────────────────────────────────
+# ── entry ──────────────────────────────────────────────────────────
 if __name__ == "__main__":
-    port = 8787
-    print(f"Starting HTTP server on http://127.0.0.1:{port}")
-    start_server(port)
+    # Force unbuffered output
+    print = functools.partial(print, flush=True)
+
+    server_cfg = runtime_cfg.get("server", {})
+    host = os.environ.get("HOST", server_cfg.get("host", "0.0.0.0"))
+    port = int(os.environ.get("PORT", server_cfg.get("port", 8787)))
+
+    print(f"HTTP server: http://{host}:{port}")
+    start_server(host, port)
     os.chdir(BASE)
 
-    mode = sys.argv[1] if len(sys.argv) > 1 else "all"
+    # args: python3 runner.py [start_day] [end_day]
+    start = int(sys.argv[1]) if len(sys.argv) > 1 else 1
+    end = int(sys.argv[2]) if len(sys.argv) > 2 else TOTAL_KANNS
 
-    if mode == "all":
-        run_full_course()
-    else:
-        # single student, all their days
-        live["students"][mode] = {"name": mode, "days": []}
-        for _ in range(NUM_DAYS):
-            result = run_day(mode)
-            if result is None:
-                break
-        live["done"] = True
+    print(f"Running days {start}-{end} ({end - start + 1} Kannbeschreibungen)")
+    print(f"Students: {', '.join(STUDENT_NAMES[sid] for sid in STUDENT_IDS)}")
+    run_course(start, end)
 
-    print(f"\nDone. Server running at http://127.0.0.1:{port}")
-    print("Press Ctrl+C to stop.")
+    print(f"\nDone. http://127.0.0.1:{port}")
+    print("Ctrl+C to stop.")
     try:
         while True:
             time.sleep(1)
