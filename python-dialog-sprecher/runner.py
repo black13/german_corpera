@@ -108,14 +108,44 @@ def _estimate_cost_usd(api, model, usage_dict):
     return round(estimate, 6)
 
 
-def _build_call_meta(step_name, api, model, usage_dict):
+def _jsonify_response(obj):
+    if obj is None or isinstance(obj, (str, int, float, bool)):
+        return obj
+    if isinstance(obj, dict):
+        return {str(k): _jsonify_response(v) for k, v in obj.items()}
+    if isinstance(obj, (list, tuple)):
+        return [_jsonify_response(v) for v in obj]
+    if hasattr(obj, "model_dump"):
+        try:
+            return _jsonify_response(obj.model_dump(mode="json"))
+        except TypeError:
+            return _jsonify_response(obj.model_dump())
+    if hasattr(obj, "to_dict"):
+        try:
+            return _jsonify_response(obj.to_dict())
+        except Exception:
+            pass
+    if hasattr(obj, "__dict__"):
+        return {
+            str(k): _jsonify_response(v)
+            for k, v in vars(obj).items()
+            if not str(k).startswith("_")
+        }
+    return str(obj)
+
+
+def _build_call_meta(step_name, api, model, usage_dict, raw_text=None, response_json=None):
     meta = {
         "step": step_name,
         "api": api,
         "model": model,
     }
+    if raw_text is not None:
+        meta["raw_text"] = raw_text
     if usage_dict:
         meta["usage"] = usage_dict
+    if response_json is not None:
+        meta["response_json"] = response_json
     estimated_cost = _estimate_cost_usd(api, model, usage_dict)
     if estimated_cost is not None:
         meta["estimated_cost_usd"] = estimated_cost
@@ -140,11 +170,19 @@ def chat(api, model, messages, temperature=0.8, max_tokens=500,
     )
     content = r.choices[0].message.content or ""
     usage_dict = _usage_to_dict(getattr(r, "usage", None))
+    response_json = _jsonify_response(r)
     if not return_meta:
         return content
     return {
         "content": content,
-        "meta": _build_call_meta(step_name or "chat", api, model, usage_dict),
+        "meta": _build_call_meta(
+            step_name or "chat",
+            api,
+            model,
+            usage_dict,
+            raw_text=content,
+            response_json=response_json,
+        ),
     }
 
 
@@ -687,6 +725,22 @@ body.resizing *{cursor:col-resize !important;user-select:none !important}
 /* ── status in sidebar ── */
 .status-text{font-size:.82em;color:#666;padding:8px 10px;background:#f8f9fa;border-radius:5px;line-height:1.5}
 
+/* ── billing ── */
+.billing-card{
+  background:#f8f9fa;border:1px solid #e3e7ea;border-radius:8px;padding:10px 12px;
+}
+.billing-card + .billing-card{margin-top:8px}
+.billing-amount{font-size:1.15em;font-weight:700;color:#075e54}
+.billing-meta{font-size:.76em;color:#5f6b73;line-height:1.45;margin-top:4px}
+.billing-breakdown{margin-top:8px;border-top:1px solid #e3e7ea;padding-top:8px}
+.billing-row{
+  display:flex;justify-content:space-between;gap:10px;align-items:flex-start;
+  font-size:.74em;line-height:1.4;padding:4px 0;
+}
+.billing-step{color:#33444d}
+.billing-step strong{display:block;font-size:.98em;color:#1f2d35}
+.billing-cost{white-space:nowrap;color:#075e54;font-weight:700}
+
 /* ── kann focus + student summaries ── */
 .focus-card,.student-card{
   background:#f8f9fa;border:1px solid #e3e7ea;border-radius:8px;padding:10px 12px;
@@ -1007,6 +1061,112 @@ def _render_student_summary_cards(student_summaries, active_student):
         cards.append('</div>')
     return "".join(cards) if cards else '<div class="status-text">No student summaries yet.</div>'
 
+
+def _format_usd(value):
+    if value is None:
+        return "n/a"
+    if value >= 0.5:
+        return f"${value:.2f}"
+    return f"${value:.4f}"
+
+
+def _merge_billing(target, source):
+    if not source:
+        return target
+    for key in ("calls", "prompt_tokens", "completion_tokens", "total_tokens", "cached_tokens", "uncached_prompt_tokens"):
+        target[key] += source.get(key, 0)
+    target["estimated_cost_usd"] = round(target["estimated_cost_usd"] + source.get("estimated_cost_usd", 0.0), 6)
+    for step, step_data in source.get("by_step", {}).items():
+        merged_step = target["by_step"].setdefault(step, {
+            "calls": 0,
+            "prompt_tokens": 0,
+            "completion_tokens": 0,
+            "total_tokens": 0,
+            "cached_tokens": 0,
+            "uncached_prompt_tokens": 0,
+            "estimated_cost_usd": 0.0,
+            "models": {},
+        })
+        for key in ("calls", "prompt_tokens", "completion_tokens", "total_tokens", "cached_tokens", "uncached_prompt_tokens"):
+            merged_step[key] += step_data.get(key, 0)
+        merged_step["estimated_cost_usd"] = round(
+            merged_step["estimated_cost_usd"] + step_data.get("estimated_cost_usd", 0.0), 6
+        )
+        for model_key, model_data in step_data.get("models", {}).items():
+            merged_model = merged_step["models"].setdefault(model_key, {
+                "calls": 0,
+                "prompt_tokens": 0,
+                "completion_tokens": 0,
+                "total_tokens": 0,
+                "cached_tokens": 0,
+                "uncached_prompt_tokens": 0,
+                "estimated_cost_usd": 0.0,
+            })
+            for key in ("calls", "prompt_tokens", "completion_tokens", "total_tokens", "cached_tokens", "uncached_prompt_tokens"):
+                merged_model[key] += model_data.get(key, 0)
+            merged_model["estimated_cost_usd"] = round(
+                merged_model["estimated_cost_usd"] + model_data.get("estimated_cost_usd", 0.0),
+                6,
+            )
+    return target
+
+
+def _collect_billing(days):
+    aggregate = make_billing_bucket()
+    for day in days:
+        _merge_billing(aggregate, day.get("billing", {}))
+    return aggregate
+
+
+def _billing_step_label(step):
+    if step == "teacher":
+        return "Teacher"
+    if step == "grader_round":
+        return "Round Grader"
+    if step == "grader_day":
+        return "Day Summary"
+    if step == "teacher_wrapup":
+        return "Wrapup"
+    if step.startswith("student:"):
+        sid = step.split(":", 1)[1]
+        return f"Student: {STUDENT_NAMES.get(sid, sid)}"
+    return step.replace("_", " ").title()
+
+
+def _render_billing_html(current_billing, session_billing):
+    if not current_billing or current_billing.get("calls", 0) == 0:
+        return '<div class="status-text">No billing data yet. Start or finish a run to see pricing.</div>'
+
+    cards = []
+    for title, bucket in (("Current Day", current_billing), ("Session Total", session_billing)):
+        cards.append('<div class="billing-card">')
+        cards.append(f'<div class="sidebar-title">{_esc(title)}</div>')
+        cards.append(f'<div class="billing-amount">{_esc(_format_usd(bucket.get("estimated_cost_usd", 0.0)))}</div>')
+        cards.append(
+            f'<div class="billing-meta">{bucket.get("calls", 0)} calls | '
+            f'{bucket.get("prompt_tokens", 0)} prompt | '
+            f'{bucket.get("completion_tokens", 0)} completion</div>'
+        )
+        breakdown = bucket.get("by_step", {})
+        if breakdown:
+            cards.append('<div class="billing-breakdown">')
+            ordered_steps = sorted(
+                breakdown.items(),
+                key=lambda item: (-item[1].get("estimated_cost_usd", 0.0), item[0]),
+            )
+            for step, step_data in ordered_steps:
+                cards.append(
+                    '<div class="billing-row">'
+                    f'<div class="billing-step"><strong>{_esc(_billing_step_label(step))}</strong>'
+                    f'{step_data.get("calls", 0)} calls | {step_data.get("completion_tokens", 0)} out</div>'
+                    f'<div class="billing-cost">{_esc(_format_usd(step_data.get("estimated_cost_usd", 0.0)))}</div>'
+                    '</div>'
+                )
+            cards.append('</div>')
+        cards.append('</div>')
+    cards.append('<div class="status-text">DeepSeek pricing is estimated from returned token usage. Other providers may not be priced yet.</div>')
+    return "".join(cards)
+
 def render_html():
     status = _esc(live["status"])
     cur_day = live.get("current_day", 0)
@@ -1018,6 +1178,8 @@ def render_html():
     active_stu = _esc(live.get("active_student", ""))
     student_summaries = live.get("student_summaries", {})
     is_done = live.get("done", False)
+    current_billing = live["days"][-1].get("billing", {}) if live.get("days") else {}
+    session_billing = _collect_billing(live.get("days", []))
 
     # ── sidebar scorecard rows ──
     sc_rows = ""
@@ -1118,6 +1280,7 @@ def render_html():
         kann_display += ": " + cur_kann_text
     kann_focus_html = _render_kann_focus_html(cur_kann_focus)
     student_summary_html = _render_student_summary_cards(student_summaries, active_stu)
+    billing_html = _render_billing_html(current_billing, session_billing)
 
     parts = []
     parts.append('<!DOCTYPE html>\n<html><head><meta charset="utf-8">'
@@ -1155,6 +1318,10 @@ def render_html():
     <div class="sidebar-section">
       <div class="sidebar-title">Student Progress</div>
       {student_summary_html}
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-title">Billing</div>
+      {billing_html}
     </div>
     <div class="sidebar-section">
       <div class="sidebar-title">Scorecard</div>
@@ -1593,6 +1760,14 @@ def run_day(day_num, kann):
         "wrapup_calls": day_live["wrapup_calls"],
         "billing": day_live["billing"],
     })
+    billing = day_live["billing"]
+    print(
+        "  Billing:"
+        f" {_format_usd(billing.get('estimated_cost_usd', 0.0))}"
+        f" | {billing.get('calls', 0)} calls"
+        f" | {billing.get('prompt_tokens', 0)} prompt"
+        f" | {billing.get('completion_tokens', 0)} completion"
+    )
 
     live["status"] = f"Tag {day_num}/{TOTAL_KANNS} \u2014 {full_kann_label} \u2014 DONE"
 
@@ -1612,6 +1787,14 @@ def run_course(start_day=1, end_day=None):
             live["status"] = f"ERROR day {i+1}: {e}"
             continue
 
+    total_billing = _collect_billing(live.get("days", []))
+    print(
+        "\nSession billing:"
+        f" {_format_usd(total_billing.get('estimated_cost_usd', 0.0))}"
+        f" | {total_billing.get('calls', 0)} calls"
+        f" | {total_billing.get('prompt_tokens', 0)} prompt"
+        f" | {total_billing.get('completion_tokens', 0)} completion"
+    )
     live["status"] = f"COMPLETE \u2014 Days {start_day}-{end_day}"
     live["done"] = True
 

@@ -19,6 +19,9 @@ Current strengths
 - The monitoring UI is more readable than the earlier debug-heavy version. The
   sticky header, transcript/sidebar split, and conversation/grader/debug modes
   make it easier to follow a run in progress.
+- Execution observability is improving. The runtime now trends toward preserving
+  call metadata and billing information instead of treating provider behavior as
+  invisible.
 
 Current areas of friction
 
@@ -107,6 +110,42 @@ tightly coupled. That may be acceptable for experimentation, but it leaves
 little room for a separate "serve existing artifacts" mode versus "start a new
 course run" mode.
 
+10. There is still no first-class teacher-preparation artifact.
+
+The current system is much better at generating and displaying classroom turns
+than at preserving the pre-class reasoning that a human instructor would
+actually want:
+
+- what this Kannbeschreibung depends on
+- which words and acts really belong to the scene
+- what telc-style tasks are nearby
+- which examples from books would strengthen the lesson
+
+The current `kann_map` is a useful start, but it is still a thin seed rather
+than a real preparation layer.
+
+11. The repository is converging on an instructor-planning tool, but the
+artifacts do not yet fully reflect that role.
+
+The strongest current use case may not be "AI teacher." It may be "planning and
+review support for a very busy instructor." If that is the true product
+direction, then the repository still needs more first-class support for:
+
+- lesson seeds
+- curriculum dependencies
+- source-backed examples
+- post-run pedagogical analysis
+
+12. Cost-aware model separation is conceptually right, but not yet formalized as
+an architecture.
+
+There is now a clear distinction between cheaper generation and stronger
+planning, and that is a promising direction. But the repository still lacks a
+formal artifact handoff between:
+
+- cheap/local classroom generation
+- stronger post-run curriculum planning jobs, including possible Vast AI work
+
 Interpretation
 
 The major early-stage cleanup work has largely succeeded. The remaining issues
@@ -123,14 +162,24 @@ classroom interactions, but the mapping from Kannbeschreibung to grammar,
 vocabulary, examples, and visible student progress is still looser than the use
 case suggests.
 
+There is also a second important shift in understanding:
+
+This system may be more valuable as a curriculum and lesson-planning aid than as
+a claim about fully automated teaching.
+
+That is not a retreat. It is a clearer and probably more durable product
+definition.
+
 Practical implication
 
 The next improvements would be highest-value if they focus on:
 
 - defining explicit per-Kann mappings to grammar, vocabulary, and examples
+- turning those mappings into real teacher-preparation artifacts
 - deduplicating and normalizing learned-state accumulation
 - surfacing pedagogical targets in the UI, not just transcript flow
 - clarifying which prompt artifacts are active runtime dependencies
+- separating cheap runtime generation from expensive post-run planning work
 
 That would keep the center of gravity where it belongs: not on making the Python
 more elaborate, but on making the learning arc more visible, inspectable, and
