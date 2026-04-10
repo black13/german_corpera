@@ -65,6 +65,57 @@ This is the v2 classroom model.
 - The runner serves a lightweight local HTML view so the run can be watched as it
   progresses.
 
+## History Layers
+
+This system should distinguish three different kinds of history.
+
+### 1. Full Artifact History
+
+Keep the complete readable record in JSON artifacts such as:
+
+- `output/*.json`
+- `state/**/*.json`
+
+This is for the human operator. It should remain inspectable and cumulative.
+
+### 2. Durable Compressed Memory
+
+Keep a smaller structured summary for reuse across days and restarts.
+
+For this project, compressed memory should emphasize:
+
+- active and recent `Kannbeschreibungen`
+- target grammar
+- target vocabulary
+- supporting examples
+- stable vs unstable learning
+- repeated errors and drift
+
+This is the layer the runtime should prefer when reconstructing context.
+
+### 3. Prompt-Time Working Context
+
+Each model call should be built from:
+
+- compressed durable memory
+- active day context
+- only the recent raw turns that are still relevant
+
+The runtime should not keep feeding raw cumulative append-only history back into
+every prompt if a smaller pedagogically meaningful summary can carry the same
+information more faithfully.
+
+## Compression Rule
+
+Preserve full history. Compress prompt payload.
+
+That rule is important here because the operator is not merely watching a chat
+system. The operator is trying to understand the active `Kannbeschreibung`
+through grammar, vocabulary, examples, and visible progress over time.
+
+So the system should reduce prompt bloat in a way that makes the
+`Kannbeschreibung` more legible, not less.
+
 ## Current Directory Layout
 
 ```text
@@ -107,6 +158,7 @@ The following are intentionally treated as data, not implementation detail:
 - interstitial instructions
 - grader criteria
 - course state and memory
+- compressed pedagogical summaries
 
 ## What Still Lives In Python
 
@@ -120,6 +172,10 @@ The following remain in `runner.py` on purpose:
 
 Those are runtime concerns. They should stay narrow and should not absorb the
 course design itself.
+
+The runtime may derive compressed summaries, but those summaries should be
+persisted back into inspectable artifacts instead of living only as hidden
+Python internals.
 
 ## Evaluation Standard
 

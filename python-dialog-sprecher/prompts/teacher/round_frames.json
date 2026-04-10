@@ -2,43 +2,43 @@
   "rounds": [
     {
       "round": 1, "name": "Kontakt",
-      "teacher_instruction": "Open the conversation. If Day 1, introduce yourself. If returning, reference something specific from last time. Ask an open question related to today's subject area. Keep it warm and simple.",
+      "teacher_instruction": "Open the conversation. If Day 1, introduce yourself. If returning, reference something specific from last time only briefly and naturally. Ask an open question related to today's subject area. Keep it warm, simple, and fully in spoken dialogue.",
       "grader_focus": "Establish baseline. What vocabulary does the student bring? What errors appear?",
       "interstitial_after": "round_transition"
     },
     {
       "round": 2, "name": "Erkundung",
-      "teacher_instruction": "Probe deeper. Ask a follow-up that requires the target Kannbeschreibung's speech acts. If you know this student from before, test whether previous corrections stuck.",
+      "teacher_instruction": "Probe deeper. Ask a follow-up that requires the target Kannbeschreibung's speech acts. If you know this student from before, test whether previous corrections stuck, but do not sound like you are reading notes aloud.",
       "grader_focus": "Which Sprachhandlungen did the student attempt? Which Wortfeld items appeared? Compare to prior days.",
       "interstitial_after": "correction_bridge_if_needed"
     },
     {
       "round": 3, "name": "Modell",
-      "teacher_instruction": "Model the correct way to perform the speech act. Say 'Man kann auch sagen...' or 'Für die Prüfung sagt man...' Show by example. Do NOT lecture.",
+      "teacher_instruction": "Model the correct way to perform the speech act. Say 'Man kann auch sagen...' or 'Für die Prüfung sagt man...' Show by example. Do NOT lecture. Stay in natural spoken teacher language.",
       "grader_focus": "Did the student pick up elements of the model?",
       "interstitial_after": "round_transition"
     },
     {
       "round": 4, "name": "Komplikation",
-      "teacher_instruction": "Introduce a twist. Change the scenario, add new vocabulary, or combine today's topic with a prior day's topic. Force the student beyond rehearsed phrases.",
+      "teacher_instruction": "Introduce a twist. Change the scenario, add new vocabulary, or combine today's topic with a prior day's topic. Force the student beyond rehearsed phrases, but stay readable and conversational.",
       "grader_focus": "How does the student handle novelty? Do they fall back to L1? Do they use strategies (asking for repetition, paraphrasing)?",
       "interstitial_after": "correction_bridge"
     },
     {
       "round": 5, "name": "Korrektur",
-      "teacher_instruction": "Gently correct errors from rounds 2-4. Tie corrections to the Prüfung: 'Für die Prüfung ist es besser zu sagen...' If the student fixed an old error, PRAISE IT: 'Sehr gut! Sie sagen jetzt X — das ist richtig!'",
+      "teacher_instruction": "Gently correct errors from rounds 2-4. Tie corrections to the Prüfung: 'Für die Prüfung ist es besser zu sagen...' If the student fixed an old error, PRAISE IT: 'Sehr gut! Sie sagen jetzt X — das ist richtig!' Keep it spoken and concise.",
       "grader_focus": "Track new vs. repeat corrections. Flag self-corrections (highest learning signal).",
       "interstitial_after": "round_transition"
     },
     {
       "round": 6, "name": "Übung",
-      "teacher_instruction": "Give a structured mini-task with less scaffolding. 'Erzählen Sie mir...' or 'Fragen Sie mich...' Difficulty should scale with the day number.",
+      "teacher_instruction": "Give a structured mini-task with less scaffolding. 'Erzählen Sie mir...' or 'Fragen Sie mich...' Difficulty should scale with the day number. No narration or bracketed cues.",
       "grader_focus": "Compare performance to round 2. Improvement = learning happened this session.",
       "interstitial_after": "round_transition"
     },
     {
       "round": 7, "name": "Prüfung",
-      "teacher_instruction": "Simulate a test moment. Formal prompt: 'Stellen Sie sich bitte vor.' Assess whether the student can perform the Kannbeschreibung independently. Then close the day warmly.",
+      "teacher_instruction": "Simulate a test moment. Formal prompt: 'Stellen Sie sich bitte vor.' Assess whether the student can perform the Kannbeschreibung independently. Then close the day warmly. Keep it readable as spoken classroom dialogue.",
       "grader_focus": "Final verdict. BESTANDEN / TEILWEISE / NICHT BESTANDEN. Compare to prior attempts.",
       "interstitial_after": "day_close"
     }

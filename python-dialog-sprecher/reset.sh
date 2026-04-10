@@ -37,6 +37,28 @@ for sid in students:
         + "\n",
         encoding="utf-8",
     )
+    (base / "state/students" / f"{sid}_summary.json").write_text(
+        json.dumps(
+            {
+                "student": sid,
+                "day": 0,
+                "days_completed": 0,
+                "stable_vocabulary": [],
+                "unstable_vocabulary": [],
+                "stable_grammar": [],
+                "unstable_grammar": [],
+                "persistent_errors": [],
+                "emotional_state": "nervous, first day",
+                "recent_kanns": [],
+                "recent_highlights": [],
+                "totals": {"vocabulary": 0, "grammar": 0},
+            },
+            indent=2,
+            ensure_ascii=False,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
 
 (base / "state/grader/progress.json").write_text(
     json.dumps({sid: [] for sid in students}, indent=2, ensure_ascii=False) + "\n",
@@ -47,6 +69,17 @@ for sid in students:
         {
             "current_day": {sid: 0 for sid in students},
             "areas_covered": {sid: [] for sid in students},
+        },
+        indent=2,
+        ensure_ascii=False,
+    )
+    + "\n",
+    encoding="utf-8",
+)
+(base / "state/course/kann_progress.json").write_text(
+    json.dumps(
+        {
+            "students": {sid: {} for sid in students},
         },
         indent=2,
         ensure_ascii=False,

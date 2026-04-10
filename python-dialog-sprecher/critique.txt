@@ -1,84 +1,137 @@
-Neutral critique of the current directory
+Neutral critique of the current codebase
 
-This project is organized around canon data, prompt templates, student and teacher
-state, and generated conversation outputs. If the primary goal is to create
-multi-day conversations that are readable and pedagogically coherent, that
-organization makes sense. In that framing, the JSON artifacts are closer to the
-real product than the Python runtime.
+This repository is in a stronger state than the earlier prototype snapshot.
+The main architectural direction is clearer: canon data, prompt templates,
+runtime config, evolving state, and generated conversation artifacts are treated
+as the course product, while the Python runtime is treated as execution
+infrastructure.
 
 Current strengths
 
-- The directory already separates stable reference data, prompt logic, runtime
-  state, and generated outputs into distinct folders.
-- Prompt and state files are inspectable and editable without changing the
-  runtime, which supports iterative improvement of the conversations themselves.
-- The project has explicit architecture notes, which makes its intended design
-  legible to future editors.
-- Generated output is persisted as JSON, so past runs can be reviewed as
-  artifacts rather than treated as transient console output.
+- Documentation and implementation are much closer than before. The repository
+  now describes the active classroom model rather than an older design sketch.
+- Runtime configuration has improved. Student roster and teacher/grader model
+  selection now live in JSON instead of being spread across hardcoded values.
+- Reset behavior is more disciplined. The reset script restores structured
+  initial state shapes instead of writing bare empty objects.
+- Repository hygiene is improved. Source references, tools, runtime code, and
+  generated data are more clearly separated.
+- The monitoring UI is more readable than the earlier debug-heavy version. The
+  sticky header, transcript/sidebar split, and conversation/grader/debug modes
+  make it easier to follow a run in progress.
 
 Current areas of friction
 
-1. Documentation and implementation have drifted apart.
+1. The pedagogical core is still flatter than the use case suggests.
 
-The architecture and plan documents describe a stricter JSON-driven system than
-the current runtime actually implements. This creates ambiguity about which
-layer should be treated as authoritative during future edits.
+The system is centered on Kannbeschreibungen, but the canon data still does not
+explicitly map each individual Kannbeschreibung to grammar targets, vocabulary
+targets, speech acts, and curated example sentences. Those pieces exist in the
+repository, but mostly as separate global resources rather than as a single
+per-Kann unit.
 
-2. Some product behavior still lives in runner.py.
+This matters because the main reading and evaluation goal is not just to watch a
+conversation happen. It is to watch a student gradually realize a specific
+Kannbeschreibung through grammar, vocabulary, and examples over time.
 
-The runtime is narrower than a conventional application, but it still contains
-meaningful behavior such as fixed student lists, HTML rendering, prompt assembly,
-and some flow decisions. That does not make the design invalid, but it weakens
-the stated boundary between artifact logic and execution logic.
+2. Some artifact files exist, but are not part of the active runtime path.
 
-3. Configuration is only partly data-driven.
+The repository contains prompt assets such as the planner prompt and additional
+bridge concepts, but the current runner does not appear to exercise all of them.
+That is not inherently wrong, but it creates ambiguity about which prompts are
+live and which are archival or experimental.
 
-Student model selection is stored in JSON, while teacher and grader model usage
-is hard-coded in Python. This makes it harder to reason about the full system by
-reading the artifact layer alone.
+3. Learned-state accumulation is append-only and becomes noisy over time.
 
-4. Reset behavior does not fully preserve the documented state shape.
+The student learned-state files grow by repeated appends of vocabulary and
+grammar items. In practice this produces many duplicates, which makes the state
+harder to interpret as a clean picture of what is actually stable, newly
+acquired, or still fragile.
 
-Some state files are reset to empty objects even though the plan documents define
-more structured initial schemas. That can make reruns less predictable and can
-blur the distinction between "empty state" and "malformed state."
+As the course gets longer, this weakens both the prompts and the reader-facing
+story of progress.
 
-5. The declared course state and the active runtime assumptions are not fully
-aligned.
+4. Course state is currently too coarse to be very informative.
 
-The runtime assumes a fixed three-student classroom, while some saved state files
-only reflect a subset of those students. This suggests the project is evolving,
-but the current repository does not yet present one fully consistent worldview.
+The saved course state records broad categories such as "Interaktion mündlich"
+and "Interaktion schriftlich," but not a richer notion of pedagogical coverage.
+That means the long-term state does not yet express the finer-grained learning
+path that the UI and evaluation would ideally surface.
 
-6. The repository root mixes source, generated artifacts, reference material,
-and scratch files.
+5. The runner is still narrow, but it is no longer minimal.
 
-Large PDFs, OCR text, runtime outputs, and empty run logs sit beside source and
-design documents. This does not block work, but it makes the directory harder to
-scan and makes the intended stable surface of the project less obvious.
+This is not a criticism by itself. The current runner now contains:
 
-7. One-off migration tooling and ongoing runtime code are stored at the same level.
+- the live HTML interface
+- client-side polling behavior
+- prompt assembly
+- interstitial routing
+- classroom execution sequencing
 
-The OCR extraction script appears to be a conversion utility rather than part of
-the day-to-day course runtime. Keeping it in the same top-level layer as the main
-runner can make the active architecture look less settled than it may actually be.
+That may be a reasonable scope for the runtime, but it means the boundary should
+be described as "execution layer with observability" rather than as a nearly
+empty pipe.
+
+6. Prompt assembly depends on implicit template contracts.
+
+The runner uses manual string replacement against JSON templates. This keeps the
+system simple, but it also means the relationship between code and prompt schema
+is informal. Missing keys, renamed placeholders, or shape drift can become
+runtime prompt bugs rather than explicit validation failures.
+
+7. The improved UI is still more conversation-centric than pedagogy-centric.
+
+The live view is better for reading, but it still mainly presents:
+
+- the current transcript
+- grader summaries
+- prompt inspection
+
+It does not yet foreground the specific instructional lens that seems most
+important for this project: active Kannbeschreibung, target grammar,
+target vocabulary, supporting examples, and visible evidence that the student is
+becoming more competent in those targets over time.
+
+8. In this checkout, normal execution still creates git churn in tracked state.
+
+The repository now ignores state and output paths for new changes, which is
+helpful, but the current checkout still has tracked state files that change as
+the system runs. That creates friction for review and makes it harder to tell
+the difference between intentional source edits and ordinary runtime mutation.
+
+9. Deployment behavior is simple, but operationally blunt.
+
+The deployment configuration starts the runner directly. Since the runner both
+serves the live page and executes the course loop, deployment and execution are
+tightly coupled. That may be acceptable for experimentation, but it leaves
+little room for a separate "serve existing artifacts" mode versus "start a new
+course run" mode.
 
 Interpretation
 
-These issues do not necessarily imply that the Python runtime should become more
-sophisticated. In this project, the more important risk is the opposite: future
-editors may start optimizing the runtime instead of improving the conversations.
-The main concern is not code quality in the abstract, but maintaining a clear
-boundary so that prompt behavior, canonical content, memory state, and output
-quality remain the center of gravity.
+The major early-stage cleanup work has largely succeeded. The remaining issues
+are less about repository disorder and more about fidelity to the actual
+pedagogical goal.
+
+The central question is now:
+
+Can the repository make a Kannbeschreibung legible as a learning object, not
+just as a line of text that triggers a conversation?
+
+At the moment, the answer is only partial. The system can generate and display
+classroom interactions, but the mapping from Kannbeschreibung to grammar,
+vocabulary, examples, and visible student progress is still looser than the use
+case suggests.
 
 Practical implication
 
-The repository would benefit from making three things explicit:
+The next improvements would be highest-value if they focus on:
 
-- the primary success metric is the quality and readability of generated
-  conversations;
-- JSON artifacts should be treated as first-class course logic;
-- Python should remain a constrained execution layer unless expanding it directly
-  improves reproducibility, observability, or output fidelity.
+- defining explicit per-Kann mappings to grammar, vocabulary, and examples
+- deduplicating and normalizing learned-state accumulation
+- surfacing pedagogical targets in the UI, not just transcript flow
+- clarifying which prompt artifacts are active runtime dependencies
+
+That would keep the center of gravity where it belongs: not on making the Python
+more elaborate, but on making the learning arc more visible, inspectable, and
+trustworthy.

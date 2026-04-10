@@ -14,6 +14,8 @@ reduce drift so the repository accurately reflects how it currently works.
 4. Keep source material, tools, runtime state, and generated outputs clearly
    separated.
 5. Judge progress by conversation quality, not by Python sophistication.
+6. Preserve cumulative learning history without sending raw cumulative history
+   into every model call.
 
 ## Concrete Work Items
 
@@ -67,6 +69,49 @@ Keep the root focused on the active runtime.
 an older single-student or planner-heavy design that the runtime no longer
 implements.
 
+### 6. Cumulative State Compression
+
+Keep the cumulative record. Compress the prompt payload.
+
+This project needs both:
+
+- a full readable history for the human operator
+- a smaller working summary for the model
+
+Do not treat these as the same thing.
+
+The full record should remain in:
+
+- `output/*.json`
+- `state/**/*.json`
+- future per-Kann mapping artifacts
+
+The prompt-time working summary should be derived from that record and should
+favor pedagogical signal over raw transcript bulk.
+
+The intended summary shape is:
+
+- active `Kannbeschreibung`
+- related prior `Kannbeschreibungen`
+- target grammar
+- target vocabulary
+- supporting examples
+- stable learned items
+- unstable learned items
+- repeated errors
+- what changed on the current day
+
+The main purpose is not just cost control. The main purpose is to keep the
+active `Kannbeschreibung` legible while reducing prompt drift, duplication, and
+provider spend.
+
+This should be designed as a reusable pattern that can be shared across other
+conversation-heavy systems:
+
+- preserve full artifacts
+- persist a compressed durable summary
+- send only the compressed summary plus recent raw turns back to the model
+
 ## Runtime Snapshot
 
 Current runtime behavior:
@@ -81,6 +126,14 @@ Current runtime behavior:
 - write the day artifact to `output/`
 - serve a local HTML view during execution
 
+Target runtime behavior after compression work:
+
+- preserve full day artifacts and state history on disk
+- maintain a compressed per-student working summary
+- maintain a compressed per-Kann view of grammar, vocabulary, and examples
+- build prompts from compressed memory plus current-day context, not from raw
+  cumulative append-only state
+
 ## Review Standard
 
 Prefer changes that do one or more of the following:
@@ -89,6 +142,7 @@ Prefer changes that do one or more of the following:
 - improve faithfulness to the JSON artifacts
 - reduce hardcoded assumptions
 - improve restartability and observability
+- reduce prompt bloat without hiding pedagogical state
 
 Be cautious with changes that mainly:
 
