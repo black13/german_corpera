@@ -99,7 +99,22 @@ def _render_windowed_html(query_string):
     selected_days = _selected_days(query)
     original_days = runner.live["days"]
     original_status = runner.live["status"]
+    original_current = {
+        key: runner.live.get(key)
+        for key in (
+            "current_day",
+            "current_kann",
+            "current_kann_text",
+            "current_kann_focus",
+        )
+    }
     runner.live["days"] = selected_days
+    if selected_days:
+        selected = selected_days[-1]
+        runner.live["current_day"] = selected.get("day", 0)
+        runner.live["current_kann"] = selected.get("kann_id", "")
+        runner.live["current_kann_text"] = selected.get("kann_text", "")
+        runner.live["current_kann_focus"] = selected.get("kann_focus", {})
     runner.live["status"] = (
         f"{original_status} Showing {len(selected_days)} of {len(all_days)} saved days. "
         "Use the Kann Index or query ?day=175 / ?day=K176."
@@ -114,6 +129,8 @@ def _render_windowed_html(query_string):
     finally:
         runner.live["days"] = original_days
         runner.live["status"] = original_status
+        for key, value in original_current.items():
+            runner.live[key] = value
 
 
 def app(environ, start_response):
