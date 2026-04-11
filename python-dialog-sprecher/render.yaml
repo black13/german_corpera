@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: sprecher-a1
+    name: cefr-practice
     runtime: python
     rootDir: python-dialog-sprecher
     buildCommand: pip install -r requirements.txt
