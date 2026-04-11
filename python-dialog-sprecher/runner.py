@@ -6,6 +6,7 @@ Contains ZERO rules about German. All meaning is in the JSON files.
 import json, os, re, sys, threading, time, traceback, functools
 from pathlib import Path
 from http.server import HTTPServer, SimpleHTTPRequestHandler
+from urllib.parse import parse_qs, urlparse
 from openai import OpenAI
 
 BASE = Path(__file__).parent
@@ -568,6 +569,7 @@ live = {
     "days": [],  # [{day, kann_id, kann_text, category, rounds, summaries}]
     "done": False
 }
+run_lock = threading.Lock()
 
 # ── HTML rendering ─────────────────────────────────────────────────
 def _esc(s):
@@ -636,8 +638,21 @@ body.resizing *{cursor:col-resize !important;user-select:none !important}
 .scorecard{width:100%;border-collapse:collapse;font-size:.72em}
 .scorecard th{background:#075e54;color:#fff;padding:3px 5px;text-align:left;position:sticky;top:0}
 .scorecard td{padding:2px 5px;border:1px solid #e0e0e0}
+.scorecard-tools{display:flex;gap:6px;margin:0 0 8px 0}
+.scorecard-tool{
+  border:1px solid #cfd6dc;background:#f8f9fa;color:#34444c;border-radius:5px;
+  padding:5px 7px;font-size:.72em;font-weight:700;cursor:pointer;
+}
+.scorecard-tool:hover{background:#eef3f5;border-color:#aeb9c2}
 .sc-day{font-weight:700;width:28px}
 .sc-kann{min-width:240px;white-space:normal;line-height:1.35}
+.scorecard-row{cursor:pointer}
+.scorecard-row:hover .sc-kann{background:#eef8f6}
+.scorecard-link{
+  display:block;width:100%;border:0;background:transparent;color:inherit;
+  font:inherit;text-align:left;line-height:inherit;cursor:pointer;padding:0;
+}
+.scorecard-link:focus{outline:2px solid #075e54;outline-offset:2px;border-radius:3px}
 .pass{background:#d4edda;color:#155724;font-weight:700}
 .partial{background:#fff3cd;color:#856404;font-weight:700}
 .fail{background:#f8d7da;color:#721c24;font-weight:700}
@@ -645,6 +660,7 @@ body.resizing *{cursor:col-resize !important;user-select:none !important}
 
 /* ── day blocks ── */
 .day-block{background:#fff;border-radius:10px;margin:12px 0;box-shadow:0 1px 4px rgba(0,0,0,.07)}
+.day-block.day-highlight{box-shadow:0 0 0 3px rgba(7,94,84,.22),0 1px 4px rgba(0,0,0,.07)}
 .day-block>summary{
   padding:13px 18px;cursor:pointer;font-weight:600;font-size:.95em;color:#333;
   list-style:none;
@@ -724,6 +740,20 @@ body.resizing *{cursor:col-resize !important;user-select:none !important}
 
 /* ── status in sidebar ── */
 .status-text{font-size:.82em;color:#666;padding:8px 10px;background:#f8f9fa;border-radius:5px;line-height:1.5}
+.run-form{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px;
+  background:#f8f9fa;border:1px solid #e3e7ea;border-radius:8px;padding:10px;
+}
+.run-input{
+  width:100%;border:1px solid #cfd6dc;border-radius:5px;padding:7px 8px;
+  font-size:.82em;background:#fff;color:#1f2d35;
+}
+.run-button{
+  border:1px solid #075e54;background:#075e54;color:#fff;border-radius:5px;
+  padding:7px 10px;font-size:.78em;font-weight:700;cursor:pointer;
+}
+.run-button:hover{background:#064d45}
+.run-help{font-size:.74em;color:#66757f;line-height:1.45;margin-top:6px}
 
 /* ── billing ── */
 .billing-card{
@@ -809,7 +839,19 @@ _JS = """
   var currentView = localStorage.getItem('sprecher-view') || 'conversation';
   var sidebarWidth = parseInt(localStorage.getItem('sprecher-sidebar-width') || '320', 10);
   var lastUpdate = Date.now();
-  var manuallyClosedDays = {};
+  var dayOpenState = loadDayOpenState();
+
+  function loadDayOpenState() {
+    try {
+      return JSON.parse(localStorage.getItem('sprecher-day-open-state') || '{}') || {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function saveDayOpenState() {
+    localStorage.setItem('sprecher-day-open-state', JSON.stringify(dayOpenState));
+  }
 
   function applySidebarWidth(px) {
     if (!Number.isFinite(px)) return;
@@ -861,7 +903,8 @@ _JS = """
   function setView(v) {
     currentView = v;
     localStorage.setItem('sprecher-view', v);
-    document.body.className = 'view-' + v;
+    document.body.classList.remove('view-conversation', 'view-grader', 'view-debug');
+    document.body.classList.add('view-' + v);
     document.querySelectorAll('.vbtn').forEach(function(b){
       b.classList.toggle('active', b.getAttribute('data-view') === v);
     });
@@ -872,16 +915,82 @@ _JS = """
   document.addEventListener('click', function(e){
     if (e.target.classList.contains('vbtn')) {
       setView(e.target.getAttribute('data-view'));
+      return;
+    }
+
+    var tool = e.target.closest ? e.target.closest('.scorecard-tool') : null;
+    if (tool) {
+      if (tool.getAttribute('data-day-action') === 'collapse-all') setAllDays(false);
+      if (tool.getAttribute('data-day-action') === 'expand-all') setAllDays(true);
+      if (tool.getAttribute('data-day-action') === 'latest') openLatestDay();
+      return;
+    }
+
+    var link = e.target.closest ? e.target.closest('.scorecard-link') : null;
+    if (link) {
+      e.preventDefault();
+      scrollToDay(link.getAttribute('data-target-day'));
+      return;
+    }
+
+    var row = e.target.closest ? e.target.closest('.scorecard-row') : null;
+    if (row) {
+      scrollToDay(row.getAttribute('data-target-day'));
     }
   });
 
   // track manual close of day blocks
   document.addEventListener('toggle', function(e){
     if (e.target.classList && e.target.classList.contains('day-block')) {
-      if (!e.target.open) manuallyClosedDays[e.target.id] = true;
-      else delete manuallyClosedDays[e.target.id];
+      dayOpenState[e.target.id] = !!e.target.open;
+      saveDayOpenState();
     }
   }, true);
+
+  function setAllDays(open) {
+    document.querySelectorAll('.day-block').forEach(function(day){
+      day.open = open;
+      dayOpenState[day.id] = open;
+    });
+    saveDayOpenState();
+  }
+
+  function applyDayOpenState(day) {
+    if (!day || !day.id) return;
+    if (Object.prototype.hasOwnProperty.call(dayOpenState, day.id)) {
+      day.open = !!dayOpenState[day.id];
+    } else if (day.getAttribute('data-latest') === '1') {
+      day.open = true;
+      dayOpenState[day.id] = true;
+      saveDayOpenState();
+    }
+  }
+
+  function openLatestDay() {
+    var allDays = document.querySelectorAll('.day-block');
+    if (!allDays.length) return;
+    var latest = allDays[allDays.length - 1];
+    latest.open = true;
+    dayOpenState[latest.id] = true;
+    saveDayOpenState();
+    scrollToDay(latest.id, false);
+  }
+
+  function scrollToDay(dayId, shouldOpen) {
+    if (!dayId) return;
+    var day = document.getElementById(dayId);
+    if (!day) return;
+    if (shouldOpen !== false) {
+      day.open = true;
+      dayOpenState[day.id] = true;
+      saveDayOpenState();
+    }
+    day.scrollIntoView({behavior:'smooth', block:'start'});
+    day.classList.add('day-highlight');
+    window.setTimeout(function(){ day.classList.remove('day-highlight'); }, 1800);
+  }
+
+  document.querySelectorAll('.day-block').forEach(applyDayOpenState);
 
   function isNearBottom() {
     var t = document.getElementById('transcript');
@@ -949,24 +1058,33 @@ _JS = """
       if (trans && ntrans) {
         var days = Array.from(trans.querySelectorAll('.day-block'));
         var newDays = Array.from(ntrans.querySelectorAll('.day-block'));
+        var daysById = {};
+        days.forEach(function(day){ daysById[day.id] = day; });
 
         for (var i = 0; i < newDays.length; i++) {
-          if (i >= days.length) {
+          var newDay = newDays[i];
+          var existingDay = daysById[newDay.id];
+          if (!existingDay) {
             // brand-new day block — append whole
-            trans.appendChild(newDays[i].cloneNode(true));
-          } else if (i >= days.length - 1) {
-            // was the active (last) day — incremental update only
-            updateActiveDay(days[i], newDays[i]);
+            var clonedDay = newDay.cloneNode(true);
+            trans.appendChild(clonedDay);
+            applyDayOpenState(clonedDay);
+          } else if (newDay.getAttribute('data-active') === '1' || newDay.getAttribute('data-latest') === '1') {
+            // Active/latest day can gain exchanges while the reader keeps other days stable.
+            existingDay.setAttribute('data-active', newDay.getAttribute('data-active') || '0');
+            existingDay.setAttribute('data-latest', newDay.getAttribute('data-latest') || '0');
+            updateActiveDay(existingDay, newDay);
+            applyDayOpenState(existingDay);
           }
           // older completed days: don't touch at all
         }
       }
 
-      // auto-open latest day unless user manually closed it
+      // auto-open latest day only until the user explicitly chooses otherwise.
       var allDays = document.querySelectorAll('.day-block');
       if (allDays.length > 0) {
         var last = allDays[allDays.length - 1];
-        if (!manuallyClosedDays[last.id]) last.open = true;
+        applyDayOpenState(last);
       }
 
       // auto-scroll only if user was already at the bottom
@@ -1190,7 +1308,13 @@ def render_html():
             cls = {"bestanden": "pass", "teilweise": "partial", "nicht_bestanden": "fail"}.get(result, "pending")
             cells += f'<td class="{cls}">{_esc(result)}</td>'
         sc_label = f'{ddata["kann_id"]}: {ddata.get("kann_text","")}'
-        sc_rows += f'<tr><td class="sc-day">{ddata["day"]}</td><td class="sc-kann">{_esc(sc_label)}</td>{cells}</tr>\n'
+        target_day = f'd_{ddata["day"]}'
+        sc_rows += (
+            f'<tr class="scorecard-row" data-target-day="{target_day}">'
+            f'<td class="sc-day">{ddata["day"]}</td>'
+            f'<td class="sc-kann"><button class="scorecard-link" data-target-day="{target_day}">'
+            f'{_esc(sc_label)}</button></td>{cells}</tr>\n'
+        )
 
     stu_ths = "".join(f"<th>{_esc(STUDENT_NAMES[sid][:8])}</th>" for sid in STUDENT_IDS)
 
@@ -1200,10 +1324,11 @@ def render_html():
     for idx, ddata in enumerate(live["days"]):
         day_num = ddata["day"]
         is_latest = (idx == n_days - 1)
+        is_active = (day_num == cur_day)
 
         kann_full = _esc(ddata.get("kann_text", ""))
         kann_cat = _esc(ddata.get("category", ""))
-        days_html += f'<details class="day-block" id="d_{day_num}" data-latest="{1 if is_latest else 0}">'
+        days_html += f'<details class="day-block" id="d_{day_num}" data-latest="{1 if is_latest else 0}" data-active="{1 if is_active else 0}">'
         days_html += f'<summary>Tag {day_num}: {_esc(ddata["kann_id"])} \u2014 {kann_full}</summary>'
         days_html += '<div class="day-content">'
         days_html += f'<div class="kann-banner"><span class="kann-id">{_esc(ddata["kann_id"])}</span> <span class="kann-cat">{kann_cat}</span><div class="kann-text">{kann_full}</div></div>'
@@ -1312,6 +1437,14 @@ def render_html():
       <button class="vbtn" data-view="debug">Full Debug</button>
     </div>
     <div class="sidebar-section">
+      <div class="sidebar-title">Run One Kann</div>
+      <form class="run-form" method="post" action="/run">
+        <input class="run-input" name="target" placeholder="165 or K163" autocomplete="off">
+        <button class="run-button" type="submit">Run</button>
+      </form>
+      <div class="run-help">Runs one selected day/Kann only. It does not start the full course.</div>
+    </div>
+    <div class="sidebar-section">
       <div class="sidebar-title">Current Kann</div>
       {kann_focus_html}
     </div>
@@ -1325,6 +1458,11 @@ def render_html():
     </div>
     <div class="sidebar-section">
       <div class="sidebar-title">Scorecard</div>
+      <div class="scorecard-tools">
+        <button class="scorecard-tool" data-day-action="collapse-all">Collapse Days</button>
+        <button class="scorecard-tool" data-day-action="expand-all">Expand Days</button>
+        <button class="scorecard-tool" data-day-action="latest">Latest</button>
+      </div>
       <table class="scorecard">
         <thead><tr><th>Tag</th><th>Kann</th>{stu_ths}</tr></thead>
         <tbody>{sc_rows}</tbody>
@@ -1343,12 +1481,131 @@ def render_html():
     parts.append("</script></body></html>")
     return "".join(parts)
 
+
+_OUTPUT_FILE_RE = re.compile(r"day(\d+)_K\d+\.json$")
+
+
+def _output_file_day(path):
+    match = _OUTPUT_FILE_RE.match(path.name)
+    return int(match.group(1)) if match else 0
+
+
+def load_existing_outputs():
+    """Populate the live UI from saved output JSON without starting generation."""
+    output_dir = BASE / "output"
+    days = []
+    for path in sorted(output_dir.glob("day*_K*.json"), key=_output_file_day):
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except Exception as exc:
+            print(f"Skipping unreadable output {path.name}: {exc}")
+            continue
+        kann = payload.get("kann", {})
+        day_num = int(payload.get("day") or _output_file_day(path))
+        days.append({
+            "day": day_num,
+            "kann_id": kann.get("id", f"K{day_num:03d}"),
+            "kann_text": kann.get("kann", ""),
+            "category": kann.get("category", ""),
+            "kann_focus": payload.get("kann_focus", {}),
+            "rounds": payload.get("rounds", []),
+            "summaries": payload.get("summaries", {}),
+            "summary_calls": payload.get("summary_calls", {}),
+            "wrapup_calls": payload.get("wrapup_calls", {}),
+            "billing": payload.get("billing", make_billing_bucket()),
+        })
+
+    live["days"] = days
+    live["student_summaries"] = {
+        sid: load_optional(f"state/students/{sid}_summary.json", {})
+        for sid in STUDENT_IDS
+    }
+    live["done"] = True
+
+    if days:
+        latest = days[-1]
+        live["current_day"] = latest["day"]
+        live["current_kann"] = latest["kann_id"]
+        live["current_kann_text"] = latest["kann_text"]
+        live["current_kann_focus"] = latest.get("kann_focus", {})
+        live["status"] = f"Loaded {len(days)} saved conversation days. Use Run One Kann to generate a single day."
+    else:
+        live["status"] = "No saved conversations found. Use Run One Kann to generate a single day."
+
+
+def resolve_run_target(target):
+    value = str(target or "").strip().upper()
+    if not value:
+        raise ValueError("Enter a day number or Kann ID, for example 165 or K163.")
+    if value.startswith("K"):
+        for idx, kann in enumerate(all_kanns, start=1):
+            if kann["id"].upper() == value:
+                return idx, kann
+        raise ValueError(f"Unknown Kann ID: {value}")
+    if value.isdigit():
+        day_num = int(value)
+        if day_num < 1 or day_num > TOTAL_KANNS:
+            raise ValueError(f"Day must be between 1 and {TOTAL_KANNS}.")
+        return day_num, all_kanns[day_num - 1]
+    raise ValueError("Use a day number like 165 or a Kann ID like K163.")
+
+
+def start_single_day_run(target):
+    day_num, kann = resolve_run_target(target)
+    if not run_lock.acquire(blocking=False):
+        return False, "A run is already active. Wait for it to finish before starting another."
+
+    def worker():
+        try:
+            live["done"] = False
+            live["status"] = f"Queued single run: day {day_num} — {kann['id']}"
+            run_day(day_num, kann)
+            live["done"] = True
+            live["status"] = f"Finished single run: day {day_num} — {kann['id']}"
+        except Exception as exc:
+            print(f"\n  ERROR on single run day {day_num}: {exc}")
+            traceback.print_exc()
+            live["done"] = True
+            live["status"] = f"ERROR day {day_num}: {exc}"
+        finally:
+            run_lock.release()
+
+    threading.Thread(target=worker, daemon=True).start()
+    return True, f"Started single run: day {day_num} — {kann['id']}"
+
+
 class Handler(SimpleHTTPRequestHandler):
     def do_GET(self):
+        parsed = urlparse(self.path)
+        if parsed.path == "/healthz":
+            self.send_response(200)
+            self.send_header("Content-Type", "text/plain; charset=utf-8")
+            self.end_headers()
+            self.wfile.write(b"ok")
+            return
         self.send_response(200)
         self.send_header("Content-Type", "text/html; charset=utf-8")
         self.end_headers()
         self.wfile.write(render_html().encode())
+
+    def do_POST(self):
+        parsed = urlparse(self.path)
+        if parsed.path != "/run":
+            self.send_error(404)
+            return
+        try:
+            length = int(self.headers.get("Content-Length", "0"))
+            body = self.rfile.read(length).decode("utf-8")
+            fields = parse_qs(body)
+            target = fields.get("target", [""])[0]
+            _, message = start_single_day_run(target)
+            live["status"] = message
+        except Exception as exc:
+            live["status"] = f"Could not start run: {exc}"
+        self.send_response(303)
+        self.send_header("Location", "/")
+        self.end_headers()
+
     def log_message(self, *a): pass
 
 def start_server(host="127.0.0.1", port=8787):
@@ -1534,7 +1791,9 @@ def run_day(day_num, kann):
         "summary_calls": {}, "wrapup_calls": {}
     }
     full_kann_label = f'{kann["id"]}: {kann["kann"]}'
+    live["days"] = [day for day in live["days"] if day.get("day") != day_num]
     live["days"].append(day_live)
+    live["days"].sort(key=lambda day: day.get("day", 0))
     live["current_day"] = day_num
     live["current_kann"] = kann["id"]
     live["current_kann_text"] = kann["kann"]
@@ -1811,10 +2070,21 @@ if __name__ == "__main__":
     start_server(host, port)
     os.chdir(BASE)
 
+    if len(sys.argv) > 1 and sys.argv[1] == "--serve":
+        load_existing_outputs()
+        print(f"Loaded {len(live['days'])} saved conversation days.")
+        print(f"Serve-only mode. Run individual days from http://127.0.0.1:{port}")
+        print("Ctrl+C to stop.")
+        try:
+            while True:
+                time.sleep(1)
+        except KeyboardInterrupt:
+            print("\nStopped.")
+        sys.exit(0)
+
     # args: python3 runner.py [start_day] [end_day]
     start = int(sys.argv[1]) if len(sys.argv) > 1 else 1
     end = int(sys.argv[2]) if len(sys.argv) > 2 else TOTAL_KANNS
-
     print(f"Running days {start}-{end} ({end - start + 1} Kannbeschreibungen)")
     print(f"Students: {', '.join(STUDENT_NAMES[sid] for sid in STUDENT_IDS)}")
     run_course(start, end)
