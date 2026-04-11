@@ -1,0 +1,196 @@
+{
+  "student": "yuki",
+  "day": 176,
+  "days_completed": 176,
+  "stable_vocabulary": [
+    {
+      "word": "kommen aus",
+      "stable": true,
+      "mentions": 20
+    },
+    {
+      "word": "heißen",
+      "stable": true,
+      "mentions": 19
+    },
+    {
+      "word": "wohnen in",
+      "stable": true,
+      "mentions": 14
+    },
+    {
+      "word": "die Uhrzeit",
+      "stable": true,
+      "mentions": 11
+    },
+    {
+      "word": "Entschuldigung",
+      "stable": true,
+      "mentions": 11
+    },
+    {
+      "word": "Danke",
+      "stable": true,
+      "mentions": 10
+    },
+    {
+      "word": "die Uhr",
+      "stable": true,
+      "mentions": 9
+    },
+    {
+      "word": "rechts",
+      "stable": true,
+      "mentions": 7
+    },
+    {
+      "word": "die Stunde",
+      "stable": true,
+      "mentions": 7
+    },
+    {
+      "word": "links",
+      "stable": true,
+      "mentions": 7
+    }
+  ],
+  "unstable_vocabulary": [
+    {
+      "word": "Speisekarte",
+      "stable": false,
+      "mentions": 2
+    },
+    {
+      "word": "Zeitangaben (24h-Format)",
+      "stable": false,
+      "mentions": 1
+    },
+    {
+      "word": "Identität",
+      "stable": false,
+      "mentions": 1
+    },
+    {
+      "word": "Papier",
+      "stable": false,
+      "mentions": 1
+    },
+    {
+      "word": "Stift",
+      "stable": false,
+      "mentions": 1
+    }
+  ],
+  "stable_grammar": [
+    {
+      "rule": "Können Sie...? (request structure)",
+      "stable": true,
+      "mentions": 2
+    },
+    {
+      "rule": "correct use of 'ich möchte'",
+      "stable": true,
+      "mentions": 2
+    },
+    {
+      "rule": "correct use of 'ich komme aus'",
+      "stable": true,
+      "mentions": 2
+    },
+    {
+      "rule": "correct use of 'ich heiße'",
+      "stable": true,
+      "mentions": 2
+    },
+    {
+      "rule": "Mediationsstruktur: 'Was bedeutet...?' + 'Das bedeutet...'",
+      "stable": true,
+      "mentions": 1
+    },
+    {
+      "rule": "Korrekte einfache Antwortstruktur mit 'Ich möchte'",
+      "stable": true,
+      "mentions": 1
+    },
+    {
+      "rule": "Uhrzeitangabe mit 'um' + Zahl + Uhr",
+      "stable": true,
+      "mentions": 1
+    },
+    {
+      "rule": "Preisangabe mit 'kostet' + Zahl + Euro",
+      "stable": true,
+      "mentions": 1
+    }
+  ],
+  "unstable_grammar": [
+    {
+      "rule": "Korrekte Frageformulierung mit Weiterleitung: 'Und Sie, James? Was machen Sie?'",
+      "stable": false,
+      "mentions": 1
+    },
+    {
+      "rule": "Korrekte A1-Antwortstruktur auf Befindensfrage: 'Mir geht es gut, danke.'",
+      "stable": false,
+      "mentions": 1
+    },
+    {
+      "rule": "Antwortstruktur für Verneinung: 'Nein, ich arbeite nicht mit...'",
+      "stable": false,
+      "mentions": 1
+    },
+    {
+      "rule": "correct use of infinitive",
+      "stable": false,
+      "mentions": 1
+    },
+    {
+      "rule": "correct verb conjugation",
+      "stable": false,
+      "mentions": 1
+    }
+  ],
+  "persistent_errors": [],
+  "emotional_state": "Fokussiert und selbstsicher",
+  "recent_kanns": [
+    {
+      "kann_id": "K176",
+      "day": 176,
+      "result": "bestanden",
+      "kann_text": "Kann im Hotel einfache Begriffe auf der Informationstafel (z. B. „breakfast“) für einen deutschsprachigen Gast übersetzen."
+    },
+    {
+      "kann_id": "K175",
+      "day": 175,
+      "result": "teilweise",
+      "kann_text": "Kann in einem Restaurant die Aufschrift (z. B. „caballeros“) auf der Toilettentür für einen deutschsprachigen Touristen übersetzen."
+    },
+    {
+      "kann_id": "K174",
+      "day": 174,
+      "result": "bestanden",
+      "kann_text": "Kann die Aufschrift auf dem Schild einer Geschäftstür (z. B. „fermé“) für einen deutschsprachigen Touristen übersetzen."
+    },
+    {
+      "kann_id": "K173",
+      "day": 173,
+      "result": "bestanden",
+      "kann_text": "Kann einfache anderssprachige Informationen von Schildern und Aufschriften Deutschsprachigen in Einzelwörtern auf Deutsch weitergeben."
+    },
+    {
+      "kann_id": "K172",
+      "day": 172,
+      "result": "bestanden",
+      "kann_text": "Kann in einem Geschäft einem deutschen Touristen behilflich sein und für ihn auf Deutsch den Preis von Waren nennen."
+    }
+  ],
+  "recent_highlights": [
+    "Perfekte A1-Mediation in Runde 6: Direkte Frage 'Was bedeutet...?' gefolgt von sofortiger Übersetzung 'Das bedeutet... Parkplatz.' - zeigt vollständige Beherrschung der Kernkompetenz",
+    "Round 6: Perfect execution of mediation task with immediate, accurate translation of 'caballeros' to 'Herren', demonstrating retained core competency when properly focused",
+    "Perfect 7/7 performance in translating various shop signs (including complex time information and directional cues) with immediate, accurate responses that exactly match the target Kannbeschreibung"
+  ],
+  "totals": {
+    "vocabulary": 301,
+    "grammar": 139
+  }
+}

@@ -1,24 +1,36 @@
 {
   "current_day": {
-    "marta": 7,
-    "james": 5
+    "marta": 176,
+    "james": 176,
+    "yuki": 176
   },
   "areas_covered": {
     "marta": [
-      "person_vorstellen",
-      "wohnen_beschreiben",
-      "essen_bestellen",
-      "alltag_einkaufen",
-      "freizeit_kontakt",
-      "zeit_termine",
-      "reisen_orientierung"
+      "Interaktion mündlich",
+      "Interaktion schriftlich",
+      "Sprachmittlung mündlich",
+      "Rezeption mündlich",
+      "Rezeption schriftlich",
+      "Produktion mündlich",
+      "Produktion schriftlich"
     ],
     "james": [
-      "person_vorstellen",
-      "wohnen_beschreiben",
-      "alltag_einkaufen",
-      "essen_bestellen",
-      "freizeit_kontakt"
+      "Interaktion mündlich",
+      "Interaktion schriftlich",
+      "Sprachmittlung mündlich",
+      "Rezeption mündlich",
+      "Rezeption schriftlich",
+      "Produktion mündlich",
+      "Produktion schriftlich"
+    ],
+    "yuki": [
+      "Interaktion mündlich",
+      "Interaktion schriftlich",
+      "Sprachmittlung mündlich",
+      "Rezeption mündlich",
+      "Rezeption schriftlich",
+      "Produktion mündlich",
+      "Produktion schriftlich"
     ]
   }
 }

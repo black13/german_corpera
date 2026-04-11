@@ -1,0 +1,216 @@
+{
+  "student": "james",
+  "day": 176,
+  "days_completed": 176,
+  "stable_vocabulary": [
+    {
+      "word": "Entschuldigung",
+      "stable": true,
+      "mentions": 12
+    },
+    {
+      "word": "kommen aus",
+      "stable": true,
+      "mentions": 11
+    },
+    {
+      "word": "Danke",
+      "stable": true,
+      "mentions": 10
+    },
+    {
+      "word": "heißen",
+      "stable": true,
+      "mentions": 9
+    },
+    {
+      "word": "wohnen in",
+      "stable": true,
+      "mentions": 9
+    },
+    {
+      "word": "Brot",
+      "stable": true,
+      "mentions": 8
+    },
+    {
+      "word": "Tschüss",
+      "stable": true,
+      "mentions": 8
+    },
+    {
+      "word": "die Uhrzeit",
+      "stable": true,
+      "mentions": 7
+    },
+    {
+      "word": "lesen",
+      "stable": true,
+      "mentions": 7
+    },
+    {
+      "word": "üben",
+      "stable": true,
+      "mentions": 7
+    }
+  ],
+  "unstable_vocabulary": [
+    {
+      "word": "lecker",
+      "stable": false,
+      "mentions": 9
+    },
+    {
+      "word": "Kopfschmerzen",
+      "stable": false,
+      "mentions": 2
+    },
+    {
+      "word": "Videospiele spielen",
+      "stable": false,
+      "mentions": 2
+    },
+    {
+      "word": "Prüfung",
+      "stable": false,
+      "mentions": 2
+    },
+    {
+      "word": "Studentenwohnheim",
+      "stable": false,
+      "mentions": 2
+    },
+    {
+      "word": "Leine",
+      "stable": false,
+      "mentions": 1
+    },
+    {
+      "word": "Kulturzeit",
+      "stable": false,
+      "mentions": 1
+    },
+    {
+      "word": "vielleicht",
+      "stable": false,
+      "mentions": 1
+    }
+  ],
+  "stable_grammar": [
+    {
+      "rule": "Kann ich bitte... haben? (request structure)",
+      "stable": true,
+      "mentions": 2
+    },
+    {
+      "rule": "Metakognitive Reflexion und Planung mit Code-switching als stabiles, lernförderliches Muster",
+      "stable": true,
+      "mentions": 1
+    },
+    {
+      "rule": "Präzise, kanonalignierte Weitergabe einfacher Fragen und Informationen (Frühstücksort, Zeit, Beschwerde, Toilette) in funktionaler A1-Syntax",
+      "stable": true,
+      "mentions": 1
+    },
+    {
+      "rule": "Präzise, kanonalignierte Weitergabe einzelner Informationen aus listenartigen Texten (Schilder, Menüs, Öffnungszeiten) unter Verwendung der korrekten Satzstruktur 'On the menu it says...'",
+      "stable": true,
+      "mentions": 1
+    },
+    {
+      "rule": "Nahtloser Transfer konsolidierter Sprachhandlungen (persönliche Daten angeben, Zahlen weitergeben, nach Uhrzeit fragen) in den Sprachmittlungskontext",
+      "stable": true,
+      "mentions": 1
+    },
+    {
+      "rule": "Präzise, kanonalignierte Weitergabe von persönlichen Daten, Zahlenfolgen und einfachen Fragen im Sprachmittlungskontext",
+      "stable": true,
+      "mentions": 1
+    },
+    {
+      "rule": "Korrekte Verwendung von 'Danke für' + Nominalphrase als Höflichkeitsformel",
+      "stable": true,
+      "mentions": 1
+    },
+    {
+      "rule": "Funktionale, vollständige Sätze mit Subjekt-Verb-Objekt zur Beschreibung von Handlungen anderer Personen (3. Person Singular)",
+      "stable": true,
+      "mentions": 1
+    }
+  ],
+  "unstable_grammar": [
+    {
+      "rule": "mixed English and German",
+      "stable": false,
+      "mentions": 26
+    },
+    {
+      "rule": "Formelle Höflichkeitsphrase 'Können Sie bitte... wiederholen?'",
+      "stable": false,
+      "mentions": 1
+    },
+    {
+      "rule": "Completing greeting formulas (Liebe.../Lieber...)",
+      "stable": false,
+      "mentions": 1
+    },
+    {
+      "rule": "Preposition 'für' with definite article ('für die Prüfung')",
+      "stable": false,
+      "mentions": 1
+    },
+    {
+      "rule": "Correct use of 'im Café' after correction",
+      "stable": false,
+      "mentions": 1
+    },
+    {
+      "rule": "temporal construction with 'seit'",
+      "stable": false,
+      "mentions": 1
+    }
+  ],
+  "persistent_errors": [],
+  "emotional_state": "",
+  "recent_kanns": [
+    {
+      "kann_id": "K176",
+      "day": 176,
+      "result": "teilweise",
+      "kann_text": "Kann im Hotel einfache Begriffe auf der Informationstafel (z. B. „breakfast“) für einen deutschsprachigen Gast übersetzen."
+    },
+    {
+      "kann_id": "K175",
+      "day": 175,
+      "result": "teilweise",
+      "kann_text": "Kann in einem Restaurant die Aufschrift (z. B. „caballeros“) auf der Toilettentür für einen deutschsprachigen Touristen übersetzen."
+    },
+    {
+      "kann_id": "K174",
+      "day": 174,
+      "result": "teilweise",
+      "kann_text": "Kann die Aufschrift auf dem Schild einer Geschäftstür (z. B. „fermé“) für einen deutschsprachigen Touristen übersetzen."
+    },
+    {
+      "kann_id": "K173",
+      "day": 173,
+      "result": "teilweise",
+      "kann_text": "Kann einfache anderssprachige Informationen von Schildern und Aufschriften Deutschsprachigen in Einzelwörtern auf Deutsch weitergeben."
+    },
+    {
+      "kann_id": "K172",
+      "day": 172,
+      "result": "teilweise",
+      "kann_text": "Kann in einem Geschäft einem deutschen Touristen behilflich sein und für ihn auf Deutsch den Preis von Waren nennen."
+    }
+  ],
+  "recent_highlights": [
+    "```json { \"day\": 176, \"subject_area\": \"Sprachmittlung mündlich\", \"kann_result\": \"bestanden\", \"vocabulary_learned\": [ {\"word\": \"das Zimmer\", \"stable\": true}, {\"word\": \"die Uhr\", \"stable\": true}, {\"word\": \"die Küche\", \"stable\": false} ], \"grammar_learned\": [ {\"rule\": \"Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Übersetzen/Erklären von Schildern) als robust konsolidiertes Muster\", \"stable\": true}, {\"rule\": \"Funktionale elliptische Strukturen für direkte Informationsweitergabe ('Frühstück... von sieben bis zehn Uhr.') als stabiles A1-Muster\", \"stable\": true} ], \"persistent_errors\": [ \"Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)\", \"Code-switching für metakognitive Planung (etabliertes, funktionales Muster)\" ], \"improvements_from_prior\": [ \"Vollständige Konsolidierung und Stabilität: Keine Drifting-Episoden über alle 7 Runden, Fortsetzung der perfekten Leistung aus den Tagen 174 und 175. Die Korrektur aus dem isolierten Rückfall (Tag 173) hat vollständig 'gestickt'.\", \"Innerhalb der Session: Stabile, sofortige Aufgabenausführung in jeder Runde ohne Leistungsabfall oder Verbesserungsbedarf von Runde 1 bis Runde 7. Der Student begann jede Runde sofort mit der korrekten Sprachhandlung.\", \"Demonstriert robuste Sprachmittlungsfähigkeit mit nahtlosem Transfer auf verschiedene Hotel-Schilder (Fitnessraum, Reception, Check-out-Zeit, Frühstückszeiten) und zeigt aktive Verständnissicherung durch präzisierende Fragen.\", \"Insgesamt positive Trajektorie: Der Student zeigt nun durchgängige Stabilität über mehrere Tage mit konsolidierter Rollenannahme als Sprachmittler, sofortiger Aufgabenfok",
+    "```json { \"day\": 175, \"subject_area\": \"Sprachmittlung mündlich\", \"kann_result\": \"bestanden\", \"vocabulary_learned\": [ {\"word\": \"Brötchen\", \"stable\": true}, {\"word\": \"bestellen\", \"stable\": true} ], \"grammar_learned\": [ {\"rule\": \"Erweiterte Satzstruktur 'Ich bestelle für meinen Freund Tee und ein Brötchen.' zeigt Fortschritt über A1-Minimum hinaus.\", \"stable\": true} ], \"persistent_errors\": [ \"Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)\", \"Code-switching für metakognitive Planung (etabliertes, funktionales Muster)\" ], \"improvements_from_prior\": [ \"Vollständige Konsolidierung nach isoliertem Rückfall von Tag 173: Keine Drifting-Episoden über alle 7 Runden. Die Korrektur hat vollständig 'gestickt'.\", \"Innerhalb der Session: Stabile, sofortige Aufgabenausführung in jeder Runde ohne Leistungsabfall. Runde 5 zeigt aktive Integration von Lehrer-Feedback in erweiterte Sprachproduktion.\", \"Demonstriert robuste Sprachmittlungsfähigkeit mit nahtlosem Wechsel zwischen verschiedenen Sprachhandlungen (Übersetzen, Bestellen, Bewerten) innerhalb des Restaurantkontexts.\", \"Insgesamt positive Trajektorie: Der Student zeigt nun durchgängige Stabilität über mehrere Tage (abgesehen vom isolierten Rückfall Tag 173) mit der Fähigkeit, Feedback sofort zu integrieren und komplexere Strukturen zu produzieren.\" ], \"emotional_state\": \"konzentriert, selbstsicher und lernbereit\", \"session_highlight\": \"Runde 5: Sofortige und korrekte Integration des spezifischen Lehrer-Feedbacks ('für meinen Freund') in einen vollständigen, erweiterten Satz ('Ich bestelle für meinen Freund Tee und ein Brötchen.'), was aktives Lernen und Fortschritt über das A1-Minimum hinaus demon",
+    "```json { \"day\": 174, \"subject_area\": \"Sprachmittlung mündlich\", \"kann_result\": \"bestanden\", \"vocabulary_learned\": [ {\"word\": \"die Uhr\", \"stable\": true}, {\"word\": \"die Uhrzeit\", \"stable\": true}, {\"word\": \"die Stunde\", \"stable\": true}, {\"word\": \"Bahnhof\", \"stable\": true} ], \"grammar_learned\": [ {\"rule\": \"Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Übersetzen/Verständnissignalisierung) als robust konsolidiertes Muster\", \"stable\": true}, {\"rule\": \"Funktionale elliptische Strukturen für direkte Informationsweitergabe ('Toiletten... geöffnet bis 22 Uhr') als stabiles A1-Muster\", \"stable\": true}, {\"rule\": \"Strategisches Code-switching für metakognitive Planung als etabliertes, funktionales Werkzeug\", \"stable\": true} ], \"persistent_errors\": [ \"Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)\", \"Code-switching für metakognitive Planung (etabliertes, funktionales Muster)\" ], \"improvements_from_prior\": [ \"Vollständige Konsolidierung nach isoliertem Rückfall: Keine Drifting-Episoden über alle 7 Runden, was die sofortige Korrektur aus Tag 173 bestätigt und die robuste Stabilität der Tage 171-172 wiederherstellt.\", \"Innerhalb der Session: Stabile, konsistente Leistung von Runde 1 bis Runde 7. Jede Runde begann sofort mit der korrekten Sprachhandlung ohne Ablenkung, was eine perfekte Aufgabenfokussierung zeigt.\", \"Demonstriert nahtlosen Transfer der konsolidierten Sprachmittlungsfähigkeit auf die neue Kannbeschreibung (Schilder übersetzen) mit sicherer Nutzung des relevanten Wortfelds (Uhrzeit, Bahnhof).\" ], \"emotional_state\": \"konzentriert und selbst"
+  ],
+  "totals": {
+    "vocabulary": 315,
+    "grammar": 196
+  }
+}

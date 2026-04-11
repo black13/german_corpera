@@ -1,96 +1,25 @@
 {
-  "day": 5,
+  "student": "james",
+  "day": 176,
   "vocabulary_acquired": [
     {
-      "word": "heißen",
+      "word": "USA",
       "stable": true
     },
     {
-      "word": "alt",
+      "word": "Deutsch",
       "stable": true
     },
     {
-      "word": "wohnen",
+      "word": "sechs Monate",
       "stable": true
     },
     {
-      "word": "Mitbewohner",
+      "word": "Duolingo",
       "stable": true
     },
     {
-      "word": "kaufen",
-      "stable": true
-    },
-    {
-      "word": "Lebensmittel",
-      "stable": true
-    },
-    {
-      "word": "kosten",
-      "stable": true
-    },
-    {
-      "word": "Apfel",
-      "stable": true
-    },
-    {
-      "word": "Brötchen",
-      "stable": true
-    },
-    {
-      "word": "bitte",
-      "stable": true
-    },
-    {
-      "word": "Ich hätte gerne",
-      "stable": true
-    },
-    {
-      "word": "Restaurants",
-      "stable": true
-    },
-    {
-      "word": "bestellen",
-      "stable": true
-    },
-    {
-      "word": "Pizza",
-      "stable": true
-    },
-    {
-      "word": "bitte",
-      "stable": true
-    },
-    {
-      "word": "Apfel",
-      "stable": true
-    },
-    {
-      "word": "Hähnchen",
-      "stable": true
-    },
-    {
-      "word": "Freizeit",
-      "stable": true
-    },
-    {
-      "word": "Hobby",
-      "stable": true
-    },
-    {
-      "word": "Filme",
-      "stable": true
-    },
-    {
-      "word": "Actionfilme",
-      "stable": true
-    },
-    {
-      "word": "Komödien",
-      "stable": true
-    },
-    {
-      "word": "Bücher",
+      "word": "YouTube",
       "stable": true
     },
     {
@@ -98,92 +27,3890 @@
       "stable": true
     },
     {
-      "word": "Lieblingsfilm",
+      "word": "sprechen",
       "stable": true
     },
     {
-      "word": "spannend",
+      "word": "Selbstvertrauen",
       "stable": true
     },
     {
-      "word": "lustig",
+      "word": "große",
       "stable": true
     },
     {
-      "word": "Gefühle",
+      "word": "Gebäude",
+      "stable": true
+    },
+    {
+      "word": "rot",
+      "stable": true
+    },
+    {
+      "word": "blau",
+      "stable": true
+    },
+    {
+      "word": "Himmel",
+      "stable": true
+    },
+    {
+      "word": "Wasser",
+      "stable": true
+    },
+    {
+      "word": "Pierogi",
+      "stable": true
+    },
+    {
+      "word": "Pizza",
+      "stable": true
+    },
+    {
+      "word": "Lieblingsessen",
+      "stable": true
+    },
+    {
+      "word": "Universität",
+      "stable": true
+    },
+    {
+      "word": "Studenten",
+      "stable": true
+    },
+    {
+      "word": "Gruppenarbeiten",
+      "stable": true
+    },
+    {
+      "word": "üben",
+      "stable": true
+    },
+    {
+      "word": "lernen",
+      "stable": true
+    },
+    {
+      "word": "Wörter",
+      "stable": true
+    },
+    {
+      "word": "Spaß",
+      "stable": true
+    },
+    {
+      "word": "Sushi",
+      "stable": true
+    },
+    {
+      "word": "Restaurant",
+      "stable": true
+    },
+    {
+      "word": "lecker",
+      "stable": true
+    },
+    {
+      "word": "einfach",
+      "stable": true
+    },
+    {
+      "word": "Wasser",
+      "stable": true
+    },
+    {
+      "word": "Pizza",
+      "stable": true
+    },
+    {
+      "word": "lecker",
+      "stable": true
+    },
+    {
+      "word": "Eier",
+      "stable": true
+    },
+    {
+      "word": "Spaß",
+      "stable": true
+    },
+    {
+      "word": "selbstbewusst",
+      "stable": true
+    },
+    {
+      "word": "Café",
+      "stable": true
+    },
+    {
+      "word": "Entschuldigung",
+      "stable": true
+    },
+    {
+      "word": "suche",
+      "stable": true
+    },
+    {
+      "word": "Bahnhof",
+      "stable": true
+    },
+    {
+      "word": "geradeaus",
+      "stable": true
+    },
+    {
+      "word": "links",
+      "stable": true
+    },
+    {
+      "word": "Kartoffeln",
+      "stable": true
+    },
+    {
+      "word": "Pizza",
+      "stable": true
+    },
+    {
+      "word": "lecker",
+      "stable": true
+    },
+    {
+      "word": "Sushi",
+      "stable": true
+    },
+    {
+      "word": "Lieblingsessen",
+      "stable": true
+    },
+    {
+      "word": "probieren",
+      "stable": true
+    },
+    {
+      "word": "Brot",
+      "stable": true
+    },
+    {
+      "word": "Käse",
+      "stable": true
+    },
+    {
+      "word": "Wasser",
+      "stable": true
+    },
+    {
+      "word": "üben",
+      "stable": true
+    },
+    {
+      "word": "selbstbewusst",
+      "stable": true
+    },
+    {
+      "word": "Duolingo",
+      "stable": true
+    },
+    {
+      "word": "YouTube",
+      "stable": true
+    },
+    {
+      "word": "lesen",
+      "stable": true
+    },
+    {
+      "word": "sprechen",
+      "stable": true
+    },
+    {
+      "word": "Fehler",
+      "stable": true
+    },
+    {
+      "word": "Pizza",
+      "stable": true
+    },
+    {
+      "word": "lecker",
+      "stable": true
+    },
+    {
+      "word": "Sushi",
+      "stable": true
+    },
+    {
+      "word": "einfach",
+      "stable": true
+    },
+    {
+      "word": "spaßig",
+      "stable": true
+    },
+    {
+      "word": "essen",
+      "stable": true
+    },
+    {
+      "word": "Spaß",
+      "stable": true
+    },
+    {
+      "word": "zusammen",
+      "stable": true
+    },
+    {
+      "word": "üben",
+      "stable": true
+    },
+    {
+      "word": "selbstbewusst",
+      "stable": true
+    },
+    {
+      "word": "Wasser",
+      "stable": true
+    },
+    {
+      "word": "Speisekarte",
+      "stable": true
+    },
+    {
+      "word": "versuchen",
+      "stable": true
+    },
+    {
+      "word": "denken",
+      "stable": true
+    },
+    {
+      "word": "zeigen",
+      "stable": true
+    },
+    {
+      "word": "Gesten",
+      "stable": true
+    },
+    {
+      "word": "USA",
+      "stable": true
+    },
+    {
+      "word": "Deutsch",
+      "stable": true
+    },
+    {
+      "word": "sechs Monate",
+      "stable": true
+    },
+    {
+      "word": "Duolingo",
+      "stable": true
+    },
+    {
+      "word": "YouTube",
+      "stable": true
+    },
+    {
+      "word": "lesen",
+      "stable": true
+    },
+    {
+      "word": "Universität",
+      "stable": true
+    },
+    {
+      "word": "Pizza",
+      "stable": true
+    },
+    {
+      "word": "Universität",
+      "stable": true
+    },
+    {
+      "word": "lecker",
+      "stable": true
+    },
+    {
+      "word": "selbstbewusst",
+      "stable": true
+    },
+    {
+      "word": "üben",
+      "stable": true
+    },
+    {
+      "word": "Hallo",
+      "stable": true
+    },
+    {
+      "word": "Guten Tag",
+      "stable": true
+    },
+    {
+      "word": "Wie geht's",
+      "stable": true
+    },
+    {
+      "word": "Tschüss",
+      "stable": true
+    },
+    {
+      "word": "Auf Wiedersehen",
+      "stable": true
+    },
+    {
+      "word": "schönes Wochenende",
+      "stable": true
+    },
+    {
+      "word": "spaßig",
+      "stable": true
+    },
+    {
+      "word": "Hallo",
+      "stable": true
+    },
+    {
+      "word": "Wie geht's",
+      "stable": true
+    },
+    {
+      "word": "Tschüss",
+      "stable": true
+    },
+    {
+      "word": "Auf Wiedersehen",
+      "stable": true
+    },
+    {
+      "word": "schönen Tag",
+      "stable": true
+    },
+    {
+      "word": "Bis morgen",
+      "stable": true
+    },
+    {
+      "word": "Tschüss",
+      "stable": true
+    },
+    {
+      "word": "bis später",
+      "stable": true
+    },
+    {
+      "word": "schönen Tag",
+      "stable": true
+    },
+    {
+      "word": "Danke",
+      "stable": true
+    },
+    {
+      "word": "gleichfalls",
+      "stable": true
+    },
+    {
+      "word": "schönen Feierabend",
+      "stable": true
+    },
+    {
+      "word": "Tschüss",
+      "stable": true
+    },
+    {
+      "word": "Auf Wiedersehen",
+      "stable": true
+    },
+    {
+      "word": "schönen Tag",
+      "stable": true
+    },
+    {
+      "word": "Danke schön",
+      "stable": true
+    },
+    {
+      "word": "schönen Feierabend",
+      "stable": true
+    },
+    {
+      "word": "Bis nächste Woche",
+      "stable": true
+    },
+    {
+      "word": "Einen guten Tag",
+      "stable": true
+    },
+    {
+      "word": "James",
+      "stable": true
+    },
+    {
+      "word": "USA",
+      "stable": true
+    },
+    {
+      "word": "Deutsch",
+      "stable": true
+    },
+    {
+      "word": "sechs Monate",
+      "stable": true
+    },
+    {
+      "word": "Duolingo",
+      "stable": true
+    },
+    {
+      "word": "YouTube",
+      "stable": true
+    },
+    {
+      "word": "Spaß",
+      "stable": true
+    },
+    {
+      "word": "selbstbewusst",
+      "stable": true
+    },
+    {
+      "word": "sprechen",
+      "stable": true
+    },
+    {
+      "word": "üben",
+      "stable": true
+    },
+    {
+      "word": "Fehler",
+      "stable": true
+    },
+    {
+      "word": "lecker",
+      "stable": true
+    },
+    {
+      "word": "Pierogi",
+      "stable": true
+    },
+    {
+      "word": "Kartoffeln",
+      "stable": true
+    },
+    {
+      "word": "Käse",
+      "stable": true
+    },
+    {
+      "word": "Tschüss",
+      "stable": true
+    },
+    {
+      "word": "schönen Tag",
+      "stable": true
+    },
+    {
+      "word": "nervös",
+      "stable": true
+    },
+    {
+      "word": "selbstbewusst",
+      "stable": true
+    },
+    {
+      "word": "Spaß",
+      "stable": true
+    },
+    {
+      "word": "probieren",
+      "stable": true
+    },
+    {
+      "word": "lecker",
+      "stable": true
+    },
+    {
+      "word": "Auf Wiedersehen",
+      "stable": true
+    },
+    {
+      "word": "Tschüss",
+      "stable": true
+    },
+    {
+      "word": "Bis dann",
+      "stable": true
+    },
+    {
+      "word": "gut",
+      "stable": true
+    },
+    {
+      "word": "Spaß",
+      "stable": true
+    },
+    {
+      "word": "nervös",
+      "stable": true
+    },
+    {
+      "word": "selbstbewusster",
+      "stable": true
+    },
+    {
+      "word": "Entschuldigung",
+      "stable": true
+    },
+    {
+      "word": "Pop Musik",
+      "stable": true
+    },
+    {
+      "word": "Indie Musik",
+      "stable": true
+    },
+    {
+      "word": "klassische Musik",
+      "stable": true
+    },
+    {
+      "word": "Rock Musik",
+      "stable": true
+    },
+    {
+      "word": "Stift",
+      "stable": false
+    },
+    {
+      "word": "Papier",
+      "stable": false
+    },
+    {
+      "word": "Pass",
+      "stable": true
+    },
+    {
+      "word": "bitte",
+      "stable": true
+    },
+    {
+      "word": "Wasser",
+      "stable": true
+    },
+    {
+      "word": "Pizza",
+      "stable": true
+    },
+    {
+      "word": "Käse",
+      "stable": true
+    },
+    {
+      "word": "bitte",
+      "stable": true
+    },
+    {
+      "word": "Packung",
+      "stable": false
+    },
+    {
+      "word": "Fleisch",
+      "stable": false
+    },
+    {
+      "word": "Flasche",
+      "stable": false
+    },
+    {
+      "word": "Wie bitte?",
+      "stable": true
+    },
+    {
+      "word": "Langsam bitte",
+      "stable": true
+    },
+    {
+      "word": "schönen Feierabend",
+      "stable": true
+    },
+    {
+      "word": "spaßig",
+      "stable": true
+    },
+    {
+      "word": "üben",
+      "stable": true
+    },
+    {
+      "word": "Tschüss",
+      "stable": true
+    },
+    {
+      "word": "Langsam bitte",
+      "stable": true
+    },
+    {
+      "word": "noch einmal",
+      "stable": true
+    },
+    {
+      "word": "erklären",
+      "stable": true
+    },
+    {
+      "word": "üben",
+      "stable": true
+    },
+    {
+      "word": "Wie bitte?",
+      "stable": true
+    },
+    {
+      "word": "Könnten Sie das bitte wiederholen?",
+      "stable": true
+    },
+    {
+      "word": "Kurs",
+      "stable": true
+    },
+    {
+      "word": "die Uhr/die Uhrzeit",
+      "stable": true
+    },
+    {
+      "word": "Empfang",
+      "stable": true
+    },
+    {
+      "word": "die Uhr",
+      "stable": true
+    },
+    {
+      "word": "die Uhrzeit",
+      "stable": true
+    },
+    {
+      "word": "die Stunde",
+      "stable": true
+    },
+    {
+      "word": "wohnen: die Wohnung",
+      "stable": true
+    },
+    {
+      "word": "Zimmer",
+      "stable": true
+    },
+    {
+      "word": "Ingenieurin",
+      "stable": true
+    },
+    {
+      "word": "verstehe",
+      "stable": true
+    },
+    {
+      "word": "Was bedeutet",
+      "stable": true
+    },
+    {
+      "word": "was bedeutet",
+      "stable": true
+    },
+    {
+      "word": "Hausaufgaben",
+      "stable": true
+    },
+    {
+      "word": "schwierig",
+      "stable": true
+    },
+    {
+      "word": "Metzger",
+      "stable": true
+    },
+    {
+      "word": "Was bedeutet...?",
+      "stable": true
+    },
+    {
+      "word": "Name",
+      "stable": true
+    },
+    {
+      "word": "Adresse",
+      "stable": true
+    },
+    {
+      "word": "wohnen in",
+      "stable": true
+    },
+    {
+      "word": "heißen",
+      "stable": true
+    },
+    {
+      "word": "kommen aus",
+      "stable": true
+    },
+    {
+      "word": "schwierig",
+      "stable": true
+    },
+    {
+      "word": "Guten Tag",
+      "stable": true
+    },
+    {
+      "word": "Guten Tag",
+      "stable": true
+    },
+    {
+      "word": "Guten Morgen",
+      "stable": true
+    },
+    {
+      "word": "Feierabend",
+      "stable": true
+    },
+    {
+      "word": "Wochenende",
+      "stable": true
+    },
+    {
+      "word": "wie sagt man",
+      "stable": true
+    },
+    {
+      "word": "Hallo Leute",
+      "stable": true
+    },
+    {
+      "word": "Tschüss, bis morgen!",
+      "stable": true
+    },
+    {
+      "word": "Schönen Feierabend!",
+      "stable": true
+    },
+    {
+      "word": "Bis bald!",
+      "stable": true
+    },
+    {
+      "word": "Bis nächste Woche!",
+      "stable": true
+    },
+    {
+      "word": "Schönen Tag noch!",
+      "stable": true
+    },
+    {
+      "word": "Do widzenia (Polish for Auf Wiedersehen)",
+      "stable": true
+    },
+    {
+      "word": "formeller/informeller Abschied",
+      "stable": true
+    },
+    {
+      "word": "kommen aus",
+      "stable": true
+    },
+    {
+      "word": "Familienname",
+      "stable": true
+    },
+    {
+      "word": "wohnen in",
+      "stable": true
+    },
+    {
+      "word": "Student",
+      "stable": true
+    },
+    {
+      "word": "heißen",
+      "stable": true
+    },
+    {
+      "word": "heißen",
+      "stable": true
+    },
+    {
+      "word": "kommen aus",
+      "stable": true
+    },
+    {
+      "word": "Brot",
+      "stable": false
+    },
+    {
+      "word": "Butter",
+      "stable": false
+    },
+    {
+      "word": "Ei",
+      "stable": false
+    },
+    {
+      "word": "heißen",
+      "stable": true
+    },
+    {
+      "word": "kommen aus",
+      "stable": true
+    },
+    {
+      "word": "wohnen in",
+      "stable": true
+    },
+    {
+      "word": "Was bedeutet...",
+      "stable": true
+    },
+    {
+      "word": "Ich verstehe",
+      "stable": true
+    },
+    {
+      "word": "Danke",
+      "stable": true
+    },
+    {
+      "word": "Tschüss",
+      "stable": true
+    },
+    {
+      "word": "Wie geht es dir?",
+      "stable": true
+    },
+    {
+      "word": "glücklich",
+      "stable": true
+    },
+    {
+      "word": "Informatik",
+      "stable": true
+    },
+    {
+      "word": "lesen",
+      "stable": true
+    },
+    {
+      "word": "Videospiele spielen",
+      "stable": false
+    },
+    {
+      "word": "Hobby",
+      "stable": true
+    },
+    {
+      "word": "lesen",
+      "stable": true
+    },
+    {
+      "word": "Sport",
+      "stable": true
+    },
+    {
+      "word": "Freizeit",
+      "stable": true
+    },
+    {
+      "word": "schwimmen",
+      "stable": true
+    },
+    {
+      "word": "gern (für positive Bewertung)",
+      "stable": true
+    },
+    {
+      "word": "langweilig",
+      "stable": true
+    },
+    {
+      "word": "Jazz Musik",
+      "stable": true
+    },
+    {
+      "word": "Rock Musik",
+      "stable": true
+    },
+    {
+      "word": "Kaffee",
+      "stable": true
+    },
+    {
+      "word": "Milch",
+      "stable": true
+    },
+    {
+      "word": "Brot",
+      "stable": true
+    },
+    {
+      "word": "Butter",
+      "stable": true
+    },
+    {
+      "word": "Brötchen",
+      "stable": true
+    },
+    {
+      "word": "das Ei",
+      "stable": true
+    },
+    {
+      "word": "die Butter",
+      "stable": true
+    },
+    {
+      "word": "das Brot",
+      "stable": true
+    },
+    {
+      "word": "kommen aus",
+      "stable": true
+    },
+    {
+      "word": "die Uhr",
+      "stable": true
+    },
+    {
+      "word": "das Brot",
+      "stable": true
+    },
+    {
+      "word": "der Käse",
+      "stable": true
+    },
+    {
+      "word": "der Tee",
+      "stable": true
+    },
+    {
+      "word": "verstehe",
+      "stable": true
+    },
+    {
+      "word": "Angst",
+      "stable": true
+    },
+    {
+      "word": "Student",
+      "stable": true
+    },
+    {
+      "word": "Universität",
+      "stable": true
+    },
+    {
+      "word": "Hotel",
+      "stable": true
+    },
+    {
+      "word": "kommen aus",
+      "stable": true
+    },
+    {
+      "word": "Muttersprache",
+      "stable": true
+    },
+    {
+      "word": "wohnen in",
+      "stable": true
+    },
+    {
+      "word": "was bedeutet",
+      "stable": true
+    },
+    {
+      "word": "die Uhr / die Stunde",
+      "stable": true
+    },
+    {
+      "word": "zahlen (fünf, drei, zwei, eins, vier, neun, null, sechs, sieben, zehn)",
+      "stable": true
+    },
+    {
+      "word": "kostenlos / gratis",
+      "stable": true
+    },
+    {
+      "word": "Was bedeutet...?",
+      "stable": true
+    },
+    {
+      "word": "Wie bitte?",
+      "stable": true
+    },
+    {
+      "word": "eins, zwei, drei, vier, fünf, sechs (Telefonnummern)",
+      "stable": true
+    },
+    {
+      "word": "die Uhrzeit",
+      "stable": true
+    },
+    {
+      "word": "das Brot",
+      "stable": true
+    },
+    {
+      "word": "die Butter",
+      "stable": true
+    },
+    {
+      "word": "die Milch",
+      "stable": true
+    },
+    {
+      "word": "Ei",
+      "stable": true
+    },
+    {
+      "word": "Käse",
+      "stable": true
+    },
+    {
+      "word": "geradeaus",
+      "stable": true
+    },
+    {
+      "word": "Brot",
+      "stable": true
+    },
+    {
+      "word": "links",
+      "stable": true
+    },
+    {
+      "word": "Ecke",
+      "stable": true
+    },
+    {
+      "word": "das Brötchen",
+      "stable": true
+    },
+    {
+      "word": "das Brötchen",
+      "stable": true
+    },
+    {
+      "word": "das Ei",
+      "stable": true
+    },
+    {
+      "word": "die Milch",
+      "stable": true
+    },
+    {
+      "word": "Danke",
+      "stable": true
+    },
+    {
+      "word": "Entschuldigung",
+      "stable": true
+    },
+    {
+      "word": "Tut mir leid",
+      "stable": true
+    },
+    {
+      "word": "Danke",
+      "stable": true
+    },
+    {
+      "word": "Entschuldigung",
+      "stable": true
+    },
+    {
+      "word": "Danke",
+      "stable": true
+    },
+    {
+      "word": "Entschuldigung",
+      "stable": true
+    },
+    {
+      "word": "der Name",
+      "stable": true
+    },
+    {
+      "word": "der Vorname",
+      "stable": true
+    },
+    {
+      "word": "der Tag",
+      "stable": true
+    },
+    {
+      "word": "lesen",
+      "stable": true
+    },
+    {
+      "word": "Sport treiben",
+      "stable": true
+    },
+    {
+      "word": "bestellen",
+      "stable": true
+    },
+    {
+      "word": "danke",
+      "stable": true
+    },
+    {
+      "word": "Entschuldigung",
+      "stable": true
+    },
+    {
+      "word": "Eltern",
+      "stable": true
+    },
+    {
+      "word": "Danke",
+      "stable": true
+    },
+    {
+      "word": "Entschuldigung",
+      "stable": true
+    },
+    {
+      "word": "der Name",
+      "stable": true
+    },
+    {
+      "word": "kommen aus",
+      "stable": true
+    },
+    {
+      "word": "Brot",
+      "stable": true
+    },
+    {
+      "word": "Käse",
+      "stable": true
+    },
+    {
+      "word": "Milch",
+      "stable": true
+    },
+    {
+      "word": "heißen",
+      "stable": true
+    },
+    {
+      "word": "heißen",
+      "stable": true
+    },
+    {
+      "word": "kommen aus",
+      "stable": true
+    },
+    {
+      "word": "wohnen in",
+      "stable": true
+    },
+    {
+      "word": "der Name",
+      "stable": true
+    },
+    {
+      "word": "Brot",
+      "stable": true
+    },
+    {
+      "word": "das Ei",
+      "stable": true
+    },
+    {
+      "word": "heißen",
+      "stable": true
+    },
+    {
+      "word": "kommen aus",
+      "stable": true
+    },
+    {
+      "word": "wohnen in",
+      "stable": true
+    },
+    {
+      "word": "Butter",
+      "stable": true
+    },
+    {
+      "word": "Brot",
+      "stable": true
+    },
+    {
+      "word": "Danke",
+      "stable": true
+    },
+    {
+      "word": "Entschuldigung",
+      "stable": true
+    },
+    {
+      "word": "Verspätung",
+      "stable": true
+    },
+    {
+      "word": "Gern geschehen!",
+      "stable": true
+    },
+    {
+      "word": "Danke für die Blumen",
+      "stable": true
+    },
+    {
+      "word": "Liebe Kollegin",
+      "stable": true
+    },
+    {
+      "word": "Sie sind schön",
+      "stable": true
+    },
+    {
+      "word": "Viele Grüße",
+      "stable": true
+    },
+    {
+      "word": "Termin",
+      "stable": true
+    },
+    {
+      "word": "Brötchen",
+      "stable": true
+    },
+    {
+      "word": "Brot",
+      "stable": true
+    },
+    {
+      "word": "Käse",
+      "stable": true
+    },
+    {
+      "word": "Entschuldigung",
+      "stable": true
+    },
+    {
+      "word": "Termin",
+      "stable": true
+    },
+    {
+      "word": "krank",
+      "stable": true
+    },
+    {
+      "word": "Gern geschehen",
+      "stable": true
+    },
+    {
+      "word": "Entschuldigung",
+      "stable": true
+    },
+    {
+      "word": "Es tut mir leid",
+      "stable": true
+    },
+    {
+      "word": "Viele Grüße",
+      "stable": true
+    },
+    {
+      "word": "Danke",
+      "stable": true
+    },
+    {
+      "word": "Geschenk",
+      "stable": true
+    },
+    {
+      "word": "Entschuldigung",
+      "stable": true
+    },
+    {
+      "word": "Postkarte",
+      "stable": true
+    },
+    {
+      "word": "Feriengrüße",
+      "stable": true
+    },
+    {
+      "word": "Entschuldigung",
+      "stable": true
+    },
+    {
+      "word": "danken",
+      "stable": true
+    },
+    {
+      "word": "Danke",
+      "stable": true
+    },
+    {
+      "word": "Zimmer",
+      "stable": true
+    },
+    {
+      "word": "Küche",
+      "stable": true
+    },
+    {
+      "word": "Wohnheim",
+      "stable": true
+    },
+    {
+      "word": "Schwester",
+      "stable": true
+    },
+    {
+      "word": "wohnt",
+      "stable": true
+    },
+    {
+      "word": "arbeitet",
+      "stable": true
+    },
+    {
+      "word": "Café",
+      "stable": true
+    },
+    {
+      "word": "Fabrik",
+      "stable": true
+    },
+    {
+      "word": "Software-Entwickler",
+      "stable": true
+    },
+    {
+      "word": "Prüfung",
+      "stable": true
+    },
+    {
+      "word": "spreche mit",
+      "stable": true
+    },
+    {
+      "word": "Uhr (in time expressions)",
+      "stable": true
+    },
+    {
+      "word": "zahlen (numbers 1-6)",
+      "stable": true
+    },
+    {
+      "word": "vielleicht",
+      "stable": false
+    },
+    {
+      "word": "Studentenwohnheim",
+      "stable": true
+    },
+    {
+      "word": "Samstag",
+      "stable": true
+    },
+    {
+      "word": "Nachmittag",
+      "stable": true
+    },
+    {
+      "word": "Sonntag",
+      "stable": true
+    },
+    {
+      "word": "Bibliothek",
+      "stable": true
+    },
+    {
+      "word": "Café",
+      "stable": true
+    },
+    {
+      "word": "Treffen",
+      "stable": true
+    },
+    {
+      "word": "Termin",
+      "stable": true
+    },
+    {
+      "word": "verschieben",
+      "stable": true
+    },
+    {
+      "word": "Raum",
+      "stable": true
+    },
+    {
+      "word": "Ansagen",
+      "stable": true
+    },
+    {
+      "word": "manchmal",
+      "stable": true
+    },
+    {
+      "word": "vierzehn Uhr dreißig",
+      "stable": true
+    },
+    {
+      "word": "halb acht",
+      "stable": true
+    },
+    {
+      "word": "neunzehn Uhr fünfundvierzig",
+      "stable": true
+    },
+    {
+      "word": "Guten Abend",
+      "stable": true
+    },
+    {
+      "word": "Auf Wiedersehen",
+      "stable": true
+    },
+    {
+      "word": "Guten Morgen",
+      "stable": true
+    },
+    {
+      "word": "Gute Nacht",
+      "stable": true
+    },
+    {
+      "word": "Sendung",
+      "stable": true
+    },
+    {
+      "word": "Programm",
+      "stable": true
+    },
+    {
+      "word": "Kulturzeit",
+      "stable": false
+    },
+    {
+      "word": "willkommen",
+      "stable": true
+    },
+    {
+      "word": "Guten Tag",
+      "stable": true
+    },
+    {
+      "word": "Dank- und Abschiedsformeln (Danke, Tschüss, Auf Wiedersehen, Vielen Dank für das Gespräch, Bis nächste Woche)",
+      "stable": true
+    },
+    {
+      "word": "Moment, bitte",
+      "stable": true
+    },
+    {
+      "word": "Gleis",
+      "stable": true
+    },
+    {
+      "word": "Audio-Übungen",
+      "stable": true
+    },
+    {
+      "word": "aufschreiben",
+      "stable": true
+    },
+    {
+      "word": "Ansagen",
+      "stable": true
+    },
+    {
+      "word": "Noch einmal, bitte",
+      "stable": true
+    },
+    {
+      "word": "Information",
+      "stable": true
+    },
+    {
+      "word": "versperrt",
+      "stable": true
+    },
+    {
+      "word": "Einfahrt",
+      "stable": true
+    },
+    {
+      "word": "zahlen",
+      "stable": true
+    },
+    {
+      "word": "Tür",
+      "stable": true
+    },
+    {
+      "word": "schließen",
+      "stable": true
+    },
+    {
+      "word": "Datum",
+      "stable": true
+    },
+    {
+      "word": "die Ecke",
+      "stable": true
+    },
+    {
+      "word": "geradeaus",
+      "stable": true
+    },
+    {
+      "word": "rechts",
+      "stable": true
+    },
+    {
+      "word": "Straße",
+      "stable": true
+    },
+    {
+      "word": "Bahnhof",
+      "stable": true
+    },
+    {
+      "word": "links",
+      "stable": true
+    },
+    {
+      "word": "wohnen in",
+      "stable": true
+    },
+    {
+      "word": "kommen aus",
+      "stable": true
+    },
+    {
+      "word": "heißen",
+      "stable": true
+    },
+    {
+      "word": "Familienname",
+      "stable": true
+    },
+    {
+      "word": "Nachrichten",
+      "stable": true
+    },
+    {
+      "word": "Politik",
+      "stable": true
+    },
+    {
+      "word": "Sport",
+      "stable": true
+    },
+    {
+      "word": "Kultur",
+      "stable": true
+    },
+    {
+      "word": "Videospiele",
+      "stable": true
+    },
+    {
+      "word": "Nachrichten",
+      "stable": true
+    },
+    {
+      "word": "gewinnt",
+      "stable": true
+    },
+    {
+      "word": "gegen",
+      "stable": true
+    },
+    {
+      "word": "Ergebnis",
+      "stable": true
+    },
+    {
+      "word": "Busfahrplan",
+      "stable": true
+    },
+    {
+      "word": "Computermagazin",
+      "stable": true
+    },
+    {
+      "word": "Programm",
+      "stable": true
+    },
+    {
+      "word": "Videospiele",
+      "stable": true
+    },
+    {
+      "word": "Ticket",
+      "stable": true
+    },
+    {
+      "word": "Gate Nummer",
+      "stable": true
+    },
+    {
+      "word": "der Zug",
+      "stable": true
+    },
+    {
+      "word": "die Minute",
+      "stable": true
+    },
+    {
+      "word": "die Stunde",
+      "stable": true
+    },
+    {
+      "word": "die Uhrzeit",
+      "stable": true
+    },
+    {
+      "word": "der Bahnhof",
+      "stable": true
+    },
+    {
+      "word": "die Uhrzeit",
+      "stable": true
+    },
+    {
+      "word": "die Stunde",
+      "stable": true
+    },
+    {
+      "word": "die Minute",
+      "stable": true
+    },
+    {
+      "word": "Zahlen",
+      "stable": true
+    },
+    {
+      "word": "zahlen",
+      "stable": true
+    },
+    {
+      "word": "wohnen in",
+      "stable": true
+    },
+    {
+      "word": "der Name",
+      "stable": true
+    },
+    {
+      "word": "Zettel",
+      "stable": true
+    },
+    {
+      "word": "Fahrradkeller",
+      "stable": true
+    },
+    {
+      "word": "Keller",
+      "stable": true
+    },
+    {
+      "word": "Aushang",
+      "stable": true
+    },
+    {
+      "word": "Uhrzeit",
+      "stable": true
+    },
+    {
+      "word": "Telefonnummer",
+      "stable": true
+    },
+    {
+      "word": "Treffpunkt",
+      "stable": true
+    },
+    {
+      "word": "Bahnhof",
+      "stable": true
+    },
+    {
+      "word": "zahlen (eins, zwei, drei, vier, fünf, sechs)",
+      "stable": true
+    },
+    {
+      "word": "die Uhr/die Uhrzeit",
+      "stable": true
+    },
+    {
+      "word": "die Stunde",
+      "stable": true
+    },
+    {
+      "word": "der Preis",
+      "stable": true
+    },
+    {
+      "word": "die Woche",
+      "stable": true
+    },
+    {
+      "word": "Speisekarte",
+      "stable": true
+    },
+    {
+      "word": "Studentenwohnheim",
+      "stable": false
+    },
+    {
+      "word": "Angebot",
+      "stable": true
+    },
+    {
+      "word": "Film",
+      "stable": true
+    },
+    {
+      "word": "verstehe",
+      "stable": true
+    },
+    {
+      "word": "Komödie",
+      "stable": true
+    },
+    {
+      "word": "bestellen",
+      "stable": true
+    },
+    {
+      "word": "zahlen",
+      "stable": true
+    },
+    {
+      "word": "lecker",
+      "stable": true
+    },
+    {
+      "word": "Bahnhof",
+      "stable": true
+    },
+    {
+      "word": "Uhrzeit",
+      "stable": true
+    },
+    {
+      "word": "die Ankunft",
+      "stable": true
+    },
+    {
+      "word": "Artikel",
+      "stable": true
+    },
+    {
+      "word": "Uhrzeit",
+      "stable": true
+    },
+    {
+      "word": "Zeitung",
+      "stable": true
+    },
+    {
+      "word": "Jahre alt",
+      "stable": true
+    },
+    {
+      "word": "wohnt",
+      "stable": true
+    },
+    {
+      "word": "Beruf",
+      "stable": true
+    },
+    {
+      "word": "Lehrerin",
+      "stable": true
+    },
+    {
+      "word": "Krankenschwester",
+      "stable": true
+    },
+    {
+      "word": "Student",
+      "stable": true
+    },
+    {
+      "word": "jünger als",
+      "stable": true
+    },
+    {
+      "word": "Sportteil",
+      "stable": true
+    },
+    {
+      "word": "Ergebnisse",
+      "stable": true
+    },
+    {
+      "word": "Tore",
+      "stable": true
+    },
+    {
+      "word": "gewonnen",
+      "stable": true
+    },
+    {
+      "word": "toll!",
+      "stable": true
+    },
+    {
+      "word": "Sport",
+      "stable": true
+    },
+    {
+      "word": "lesen",
+      "stable": true
+    },
+    {
+      "word": "Apotheke",
+      "stable": true
+    },
+    {
+      "word": "Bäckerei",
+      "stable": true
+    },
+    {
+      "word": "Bank",
+      "stable": true
+    },
+    {
+      "word": "Supermarkt",
+      "stable": true
+    },
+    {
+      "word": "Café",
+      "stable": true
+    },
+    {
+      "word": "die Ecke",
+      "stable": true
+    },
+    {
+      "word": "Bahnhof",
+      "stable": true
+    },
+    {
+      "word": "geradeaus",
+      "stable": true
+    },
+    {
+      "word": "rechts",
+      "stable": true
+    },
+    {
+      "word": "links",
+      "stable": true
+    },
+    {
+      "word": "die Uhr",
+      "stable": true
+    },
+    {
+      "word": "die Uhrzeit",
+      "stable": true
+    },
+    {
+      "word": "die Ecke",
+      "stable": true
+    },
+    {
+      "word": "der Bahnhof",
+      "stable": true
+    },
+    {
+      "word": "Bahnhof",
+      "stable": true
+    },
+    {
+      "word": "die Straße",
+      "stable": true
+    },
+    {
+      "word": "links",
+      "stable": true
+    },
+    {
+      "word": "rechts",
+      "stable": true
+    },
+    {
+      "word": "Leine",
+      "stable": false
+    },
+    {
+      "word": "Mülleimer",
+      "stable": true
+    },
+    {
+      "word": "unten",
+      "stable": true
+    },
+    {
+      "word": "Ecke",
+      "stable": true
+    },
+    {
+      "word": "der Bahnhof",
+      "stable": true
+    },
+    {
+      "word": "die Ecke",
+      "stable": true
+    },
+    {
+      "word": "links",
+      "stable": true
+    },
+    {
+      "word": "rechts",
+      "stable": true
+    },
+    {
+      "word": "Zimmer",
+      "stable": true
+    },
+    {
+      "word": "die Uhr",
+      "stable": true
+    },
+    {
+      "word": "die Uhrzeit",
+      "stable": true
+    },
+    {
+      "word": "den Weg",
+      "stable": true
+    },
+    {
+      "word": "Tablette",
+      "stable": true
+    },
+    {
+      "word": "morgens",
+      "stable": true
+    },
+    {
+      "word": "abends",
+      "stable": true
+    },
+    {
+      "word": "Essen",
+      "stable": true
+    },
+    {
+      "word": "Kopfschmerzen",
+      "stable": false
+    },
+    {
+      "word": "Sicherheitsschild",
+      "stable": true
+    },
+    {
+      "word": "Erste-Hilfe-Kasten",
+      "stable": true
+    },
+    {
+      "word": "Vorsicht",
+      "stable": true
+    },
+    {
+      "word": "Achtung",
+      "stable": true
+    },
+    {
+      "word": "Gefahr",
+      "stable": true
+    },
+    {
+      "word": "Sicherheitsschild",
+      "stable": true
+    },
+    {
+      "word": "Prüfung",
+      "stable": false
+    },
+    {
+      "word": "Postkarte",
+      "stable": true
+    },
+    {
+      "word": "Grüße",
+      "stable": true
+    },
+    {
+      "word": "Neujahr",
+      "stable": true
+    },
+    {
+      "word": "Frohes neues Jahr",
+      "stable": true
+    },
+    {
+      "word": "Gesundheit",
+      "stable": true
+    },
+    {
+      "word": "Geburtstag",
+      "stable": true
+    },
+    {
+      "word": "Alles Gute",
+      "stable": true
+    },
+    {
+      "word": "Frohe Festtage",
+      "stable": true
+    },
+    {
+      "word": "Weihnachten",
+      "stable": true
+    },
+    {
+      "word": "Vielen Dank",
+      "stable": true
+    },
+    {
+      "word": "Einladung",
+      "stable": true
+    },
+    {
+      "word": "Leertaste",
+      "stable": true
+    },
+    {
+      "word": "Enter-Taste",
+      "stable": true
+    },
+    {
+      "word": "Senden",
+      "stable": true
+    },
+    {
+      "word": "Speichern",
+      "stable": true
+    },
+    {
+      "word": "Drucken",
+      "stable": true
+    },
+    {
+      "word": "Öffnen",
+      "stable": true
+    },
+    {
+      "word": "Datei",
+      "stable": true
+    },
+    {
+      "word": "speichern",
+      "stable": true
+    },
+    {
+      "word": "löschen",
+      "stable": true
+    },
+    {
+      "word": "programmieren/programmiere",
+      "stable": true
+    },
+    {
+      "word": "Senden-Taste",
+      "stable": true
+    },
+    {
+      "word": "Löschen-Taste",
+      "stable": true
+    },
+    {
+      "word": "Nachricht-neu",
+      "stable": true
+    },
+    {
+      "word": "Druck-Symbol",
+      "stable": true
+    },
+    {
+      "word": "Drucken-Taste",
+      "stable": true
+    },
+    {
+      "word": "Speichern-Symbol",
+      "stable": true
+    },
+    {
+      "word": "Wochenende",
+      "stable": true
+    },
+    {
+      "word": "Samstag",
+      "stable": true
+    },
+    {
+      "word": "Sonntag",
+      "stable": true
+    },
+    {
+      "word": "Abend",
+      "stable": true
+    },
+    {
+      "word": "speichern",
+      "stable": true
+    },
+    {
+      "word": "drucken",
+      "stable": true
+    },
+    {
+      "word": "Drucker",
+      "stable": true
+    },
+    {
+      "word": "kommen aus",
+      "stable": true
+    },
+    {
+      "word": "wohnen in",
+      "stable": true
+    },
+    {
+      "word": "das Brot",
+      "stable": true
+    },
+    {
+      "word": "die Butter",
+      "stable": true
+    },
+    {
+      "word": "die Milch",
+      "stable": true
+    },
+    {
+      "word": "das Brötchen",
+      "stable": true
+    },
+    {
+      "word": "Familienname",
+      "stable": true
+    },
+    {
+      "word": "Vorname",
+      "stable": true
+    },
+    {
+      "word": "Name",
+      "stable": true
+    },
+    {
+      "word": "heißen",
+      "stable": true
+    },
+    {
+      "word": "buchstabieren",
+      "stable": true
+    },
+    {
+      "word": "Videospiele spielen",
+      "stable": false
+    },
+    {
+      "word": "lecker",
+      "stable": false
+    },
+    {
+      "word": "Betonungsmuster (ARBEITE, HABE, SPIELE)",
+      "stable": true
+    },
+    {
+      "word": "kommt aus / wohnt in (für Drittpersonen)",
+      "stable": true
+    },
+    {
+      "word": "Polen / Warschau (Länder- und Städtenamen)",
+      "stable": true
+    },
+    {
+      "word": "bestellen",
+      "stable": true
+    },
+    {
+      "word": "das Restaurant",
+      "stable": true
+    },
+    {
+      "word": "die Speisekarte",
+      "stable": true
+    },
+    {
+      "word": "toll!",
+      "stable": true
+    },
+    {
+      "word": "super",
+      "stable": true
+    },
+    {
+      "word": "programmieren",
+      "stable": true
+    },
+    {
+      "word": "Nachmittag",
+      "stable": true
+    },
+    {
+      "word": "Kopfschmerzen",
+      "stable": false
+    },
+    {
+      "word": "Hotel",
+      "stable": true
+    },
+    {
+      "word": "arbeitet",
+      "stable": true
+    },
+    {
+      "word": "telefoniert",
+      "stable": true
+    },
+    {
+      "word": "Notizen",
+      "stable": true
+    },
+    {
+      "word": "Liste",
+      "stable": true
+    },
+    {
+      "word": "Danke (für + Nominalphrase)",
+      "stable": true
+    },
+    {
+      "word": "die Uhrzeit",
+      "stable": true
+    },
+    {
+      "word": "eins, zwei, drei, fünf (Zahlen)",
+      "stable": true
+    },
+    {
+      "word": "Frühstückszimmer",
       "stable": true
     }
   ],
   "grammar_acquired": [
     {
-      "rule": "'ein interessantes Fakt' should be 'eine interessante Tatsache'",
+      "rule": "mixed English and German",
       "stable": false
     },
     {
-      "rule": "Correct use of 'Ich hätte gerne' for ordering",
+      "rule": "mixed English and German",
+      "stable": false
+    },
+    {
+      "rule": "mixed English and German",
+      "stable": false
+    },
+    {
+      "rule": "mixed English and German",
+      "stable": false
+    },
+    {
+      "rule": "mixed English and German",
+      "stable": false
+    },
+    {
+      "rule": "mixed English and German",
+      "stable": false
+    },
+    {
+      "rule": "mixed English and German",
+      "stable": false
+    },
+    {
+      "rule": "mixed English and German",
+      "stable": false
+    },
+    {
+      "rule": "mixed English and German",
+      "stable": false
+    },
+    {
+      "rule": "mixed English and German",
+      "stable": false
+    },
+    {
+      "rule": "mixed English and German",
+      "stable": false
+    },
+    {
+      "rule": "mixed English and German",
+      "stable": false
+    },
+    {
+      "rule": "mixed English and German",
+      "stable": false
+    },
+    {
+      "rule": "mixed English and German",
+      "stable": false
+    },
+    {
+      "rule": "mixed English and German",
+      "stable": false
+    },
+    {
+      "rule": "mixed English and German",
+      "stable": false
+    },
+    {
+      "rule": "mixed English and German",
+      "stable": false
+    },
+    {
+      "rule": "mixed English and German",
+      "stable": false
+    },
+    {
+      "rule": "Incorrect use of 'leise' instead of 'ruhig'",
+      "stable": false
+    },
+    {
+      "rule": "mixed English and German",
+      "stable": false
+    },
+    {
+      "rule": "mixed English and German",
+      "stable": false
+    },
+    {
+      "rule": "mixed English and German",
+      "stable": false
+    },
+    {
+      "rule": "mixed English and German",
+      "stable": false
+    },
+    {
+      "rule": "mixed English and German",
+      "stable": false
+    },
+    {
+      "rule": "mixed English and German",
+      "stable": false
+    },
+    {
+      "rule": "mixed English and German",
+      "stable": false
+    },
+    {
+      "rule": "mixed English and German",
+      "stable": false
+    },
+    {
+      "rule": "Question structure for translation requests (Was bedeutet...?)",
       "stable": true
     },
     {
-      "rule": "Correct use of articles 'einen Apfel' and 'ein Brötchen'",
+      "rule": "Time range expressions (von...bis...)",
+      "stable": false
+    },
+    {
+      "rule": "Time expressions with 'Uhr'",
       "stable": true
     },
     {
-      "rule": "Correct use of 'Ich hätte gerne' for ordering",
+      "rule": "Translation structure without English mixing",
       "stable": true
     },
     {
-      "rule": "Correct use of article 'eine Pizza'",
+      "rule": "Ich bin Student für [Fach]",
       "stable": true
     },
     {
-      "rule": "Correct use of 'in meiner Freizeit'",
+      "rule": "Ich habe [Zahl] [Familienmitglied]",
       "stable": true
     },
     {
-      "rule": "Correct use of 'gern' and 'lieber'",
+      "rule": "Basic question formation with 'Was bedeutet'",
       "stable": true
     },
     {
-      "rule": "Correct use of 'Ich mag' and 'Ich finde'",
+      "rule": "Self-introduction structure (Ich heiße... Ich bin... Ich wohne...)",
       "stable": true
     },
     {
-      "rule": "Correct phrase 'Es kommt darauf an'",
+      "rule": "Question formation with 'was' for meaning clarification",
       "stable": true
     },
     {
-      "rule": "Correct use of 'ein Buch im Kopf'",
+      "rule": "Artikelverwendung bei Plural (viele Hausaufgaben)",
+      "stable": false
+    },
+    {
+      "rule": "Using rising intonation for questions",
       "stable": true
     },
     {
-      "rule": "Correct use of 'Haben Sie... gelesen oder gesehen?'",
+      "rule": "Basic self-introduction structure (Ich heiße..., Ich bin..., Ich wohne...)",
+      "stable": true
+    },
+    {
+      "rule": "Correct use of 'wohne in' for location",
+      "stable": true
+    },
+    {
+      "rule": "Using 'ist das richtig?' for verification questions",
+      "stable": true
+    },
+    {
+      "rule": "Using 'ein bisschen' correctly for quantity",
+      "stable": true
+    },
+    {
+      "rule": "Correct sentence structure for 'Ja, ich spreche Englisch'",
+      "stable": true
+    },
+    {
+      "rule": "Formal question structure 'Wie ist Ihr...?'",
+      "stable": true
+    },
+    {
+      "rule": "Self-correction to German-only production",
+      "stable": true
+    },
+    {
+      "rule": "German-only production in greeting scenarios",
+      "stable": true
+    },
+    {
+      "rule": "Appropriate question formation for 'nachfragen'",
+      "stable": true
+    },
+    {
+      "rule": "German-only production in target speech acts",
+      "stable": true
+    },
+    {
+      "rule": "Appropriate farewell phrase construction",
+      "stable": true
+    },
+    {
+      "rule": "German-only responses in target speech acts",
+      "stable": true
+    },
+    {
+      "rule": "Correct article usage in self-description ('Ich bin ein bisschen müde')",
+      "stable": false
+    },
+    {
+      "rule": "Preposition 'aus' with country names",
+      "stable": true
+    },
+    {
+      "rule": "Verb conjugation (ich studiere)",
+      "stable": true
+    },
+    {
+      "rule": "Basic sentence structure for personal data",
+      "stable": true
+    },
+    {
+      "rule": "Question formation with 'Was bedeutet...'",
+      "stable": true
+    },
+    {
+      "rule": "Simple comprehension statements ('Ich verstehe')",
+      "stable": true
+    },
+    {
+      "rule": "Mir geht es... gut (basic wellbeing response structure)",
+      "stable": true
+    },
+    {
+      "rule": "Reagieren auf Wohlbefindensfragen mit angemessener A1-Antwortstruktur",
+      "stable": true
+    },
+    {
+      "rule": "Selbstkorrektur von Code-Switching (happy → glücklich, Computer science → Informatik)",
+      "stable": true
+    },
+    {
+      "rule": "Ich mag keine... (expressing dislike)",
+      "stable": true
+    },
+    {
+      "rule": "Ich lese gern (expressing preference)",
+      "stable": true
+    },
+    {
+      "rule": "Verb in second position with 'gern' for preferences",
+      "stable": true
+    },
+    {
+      "rule": "Using 'wie sagt man...' for vocabulary clarification",
+      "stable": true
+    },
+    {
+      "rule": "Forming return questions with 'Und Sie? Was machen Sie gern?'",
+      "stable": true
+    },
+    {
+      "rule": "Ich höre gern + Musikgenre (positive Präferenz)",
+      "stable": true
+    },
+    {
+      "rule": "Ich mag keine + Musikgenre (negative Präferenz)",
+      "stable": true
+    },
+    {
+      "rule": "Ich mag + noun (expressing likes)",
+      "stable": true
+    },
+    {
+      "rule": "mit + noun (prepositional phrase)",
+      "stable": true
+    },
+    {
+      "rule": "Ich möchte + noun + bitte (making requests)",
+      "stable": true
+    },
+    {
+      "rule": "Self-correction of haben/geben in requests",
+      "stable": true
+    },
+    {
+      "rule": "Code-switching awareness and self-correction (e.g., 'the USA' to 'Aus den USA')",
+      "stable": true
+    },
+    {
+      "rule": "Kann ich bitte... haben? (request structure)",
+      "stable": true
+    },
+    {
+      "rule": "Hier + name + object (handing over)",
+      "stable": true
+    },
+    {
+      "rule": "Direct question response structure",
+      "stable": true
+    },
+    {
+      "rule": "Nachfragen with 'Was bedeutet...?'",
+      "stable": true
+    },
+    {
+      "rule": "Ich arbeite nicht (negation)",
+      "stable": true
+    },
+    {
+      "rule": "Ich bin Student (occupation statement)",
+      "stable": true
+    },
+    {
+      "rule": "Ich studiere an der Universität (location of study)",
+      "stable": true
+    },
+    {
+      "rule": "Ich studiere + field (with code-switching acceptable at A1)",
+      "stable": true
+    },
+    {
+      "rule": "Meine Muttersprache ist + language",
+      "stable": true
+    },
+    {
+      "rule": "Correct use of 'nach Hause'",
+      "stable": true
+    },
+    {
+      "rule": "Formal 'Sie' in questions",
+      "stable": true
+    },
+    {
+      "rule": "Uhrzeit angeben mit 'um... Uhr'",
+      "stable": true
+    },
+    {
+      "rule": "Preis angeben mit 'kostet... Euro'",
+      "stable": true
+    },
+    {
+      "rule": "Telefonnummer angeben mit Zahlenreihe",
+      "stable": true
+    },
+    {
+      "rule": "Immediate application of target speech act structures without hesitation",
+      "stable": true
+    },
+    {
+      "rule": "Maintaining formal exam context without social drift",
+      "stable": true
+    },
+    {
+      "rule": "Zahlwörter für Telefonnummern angeben",
+      "stable": true
+    },
+    {
+      "rule": "Ziel-Sprachhandlung fokussiert ausführen",
+      "stable": false
+    },
+    {
+      "rule": "Correct use of formal 'Sie' in clarification requests",
+      "stable": true
+    },
+    {
+      "rule": "Code-switching as acceptable A1 strategy for lexical gaps",
+      "stable": true
+    },
+    {
+      "rule": "Können Sie das bitte wiederholen? (canonical request structure)",
+      "stable": true
+    },
+    {
+      "rule": "Können Sie mir bitte zeigen... (request structure)",
+      "stable": true
+    },
+    {
+      "rule": "Was bedeutet...? (clarification question)",
+      "stable": true
+    },
+    {
+      "rule": "Frageformulierung 'Was bedeutet...?'",
+      "stable": false
+    },
+    {
+      "rule": "Bitten um Erklärung mit 'Können Sie mir erklären...'",
+      "stable": false
+    },
+    {
+      "rule": "Basic apology structures ('Entschuldigung, ich komme spät')",
+      "stable": true
+    },
+    {
+      "rule": "Thanking expressions with 'Danke'",
+      "stable": true
+    },
+    {
+      "rule": "Broken but communicative German acceptable for A1 (e.g., 'mein Name' instead of 'meinen Namen')",
+      "stable": true
+    },
+    {
+      "rule": "self-correction of case/gender (kein → keinen Deutschkurs)",
+      "stable": true
+    },
+    {
+      "rule": "temporal construction with 'seit'",
+      "stable": false
+    },
+    {
+      "rule": "Self-correction of lexical gaps (English to German)",
+      "stable": true
+    },
+    {
+      "rule": "Basic sentence structure for personal information",
+      "stable": true
+    },
+    {
+      "rule": "Preposition 'aus' with dative case for countries (aus den USA)",
+      "stable": true
+    },
+    {
+      "rule": "Formal request structure 'Können Sie...'",
+      "stable": true
+    },
+    {
+      "rule": "Können Sie...? (formal requests)",
+      "stable": true
+    },
+    {
+      "rule": "Self-introduction structure (name, origin, residence)",
+      "stable": true
+    },
+    {
+      "rule": "Können Sie mir bitte sagen... (asking questions)",
+      "stable": true
+    },
+    {
+      "rule": "Man macht es auf Brot (explaining with simple structures)",
+      "stable": true
+    },
+    {
+      "rule": "Apology structure with 'Entschuldigung für die...'",
+      "stable": true
+    },
+    {
+      "rule": "Social response phrases for thanking/apologizing",
+      "stable": true
+    },
+    {
+      "rule": "Canonical A1 thank-you note structure (greeting + thanks + compliment + closing)",
+      "stable": true
+    },
+    {
+      "rule": "Using 'danke' appropriately as both thanks and response to feedback",
+      "stable": true
+    },
+    {
+      "rule": "Können Sie mir bitte...? (request structure)",
+      "stable": true
+    },
+    {
+      "rule": "Positive response: Ja, gerne",
+      "stable": true
+    },
+    {
+      "rule": "Note structure: greeting + apology + reason + closing",
+      "stable": true
+    },
+    {
+      "rule": "Using 'ich habe' for possession/obligations",
+      "stable": true
+    },
+    {
+      "rule": "Apology email structure (Entschuldigung + reason + closing)",
+      "stable": true
+    },
+    {
+      "rule": "Thank-you email structure (Danke + compliment + closing)",
+      "stable": true
+    },
+    {
+      "rule": "Apology + thank-you combination in card format",
+      "stable": true
+    },
+    {
+      "rule": "Preposition 'für' with thanking/apologizing",
+      "stable": true
+    },
+    {
+      "rule": "Korrekte Verwendung von 'manchmal' in Satzstruktur",
+      "stable": true
+    },
+    {
+      "rule": "Einfache Satzstruktur für Dank und Entschuldigung",
+      "stable": true
+    },
+    {
+      "rule": "Basic email structure with greeting and closing",
+      "stable": true
+    },
+    {
+      "rule": "Simple present tense for current activities",
+      "stable": true
+    },
+    {
+      "rule": "Verständnis und Anwendung der formalen vs. informalen Anrede (Sie/du)",
+      "stable": true
+    },
+    {
+      "rule": "Artikel bei Familienmitgliedern (eine Schwester/einen Bruder)",
+      "stable": true
+    },
+    {
+      "rule": "Präposition 'in' mit Dativ (in einer Fabrik/in einem Café)",
+      "stable": true
+    },
+    {
+      "rule": "Personalpronomen 'sie' für Familienmitglieder",
+      "stable": true
+    },
+    {
+      "rule": "Korrekte Verwendung von 'in... einem Büro' mit Präposition und Artikel",
+      "stable": true
+    },
+    {
+      "rule": "Korrekte Konjugation von 'spreche' in 'spreche mit'",
+      "stable": true
+    },
+    {
+      "rule": "Anwendung von Artikelkorrekturen (für die Prüfung)",
+      "stable": true
+    },
+    {
+      "rule": "Time expression structure 'Es ist drei Uhr'",
+      "stable": true
+    },
+    {
+      "rule": "Country preposition 'aus den USA'",
+      "stable": true
+    },
+    {
+      "rule": "Preposition 'in' with dative case for location ('in einem Studentenwohnheim')",
+      "stable": true
+    },
+    {
+      "rule": "Correct positioning of verbs in simple statements ('ich lerne, ich spiele')",
+      "stable": true
+    },
+    {
+      "rule": "Artikelgebrauch 'in der Bibliothek' mit Selbstkorrektur",
+      "stable": true
+    },
+    {
+      "rule": "Nachahmung von Terminmitteilungsstrukturen",
+      "stable": true
+    },
+    {
+      "rule": "Korrekte Artikelverwendung bei 'einen Termin'",
+      "stable": true
+    },
+    {
+      "rule": "Zeitangaben im 24-Stunden-Format verstehen und umrechnen",
+      "stable": true
+    },
+    {
+      "rule": "Verständnisbestätigung mit qualifizierenden Adverbien (manchmal)",
+      "stable": true
+    },
+    {
+      "rule": "Präposition-Artikel-Kontraktion 'im' (für 'in dem')",
+      "stable": true
+    },
+    {
+      "rule": "Ich soll + infinitive (task comprehension structure)",
+      "stable": true
+    },
+    {
+      "rule": "Verwendung von 'fahre mit' vs. 'komme mit' für Transportmittel",
+      "stable": true
+    },
+    {
+      "rule": "Simple sentence structure for topic identification",
+      "stable": true
+    },
+    {
+      "rule": "Responding to teacher feedback in German",
+      "stable": true
+    },
+    {
+      "rule": "Third person singular verb conjugation for sports results (gewinnt)",
+      "stable": true
+    },
+    {
+      "rule": "Preposition 'gegen' for opponent teams",
+      "stable": true
+    },
+    {
+      "rule": "German-only production maintenance",
+      "stable": true
+    },
+    {
+      "rule": "Appropriate A1-level broken syntax",
+      "stable": true
+    },
+    {
+      "rule": "Selbstkorrektur bei Pluralformen",
+      "stable": true
+    },
+    {
+      "rule": "Nachfragen nach spezifischen Informationen (Uhrzeit, Preis)",
+      "stable": true
+    },
+    {
+      "rule": "Korrekte Wortstellung in Fragen",
+      "stable": true
+    },
+    {
+      "rule": "Artikel 'der' korrekt verwendet",
+      "stable": true
+    },
+    {
+      "rule": "Self-correction from English to German",
+      "stable": true
+    },
+    {
+      "rule": "Maintaining German-only communication after brief code-switches",
+      "stable": true
+    },
+    {
+      "rule": "Informationsentnahme aus schriftlichen Quellen",
+      "stable": true
+    },
+    {
+      "rule": "Fragen zu Termin und Kosten stellen",
+      "stable": true
+    },
+    {
+      "rule": "Mengen angeben (Telefonnummern, Preise, Zeiten)",
+      "stable": true
+    },
+    {
+      "rule": "Fragen nach Preis (Wie viel kostet...?)",
+      "stable": true
+    },
+    {
+      "rule": "Fragen nach Menge (Wie viele Wochen?)",
+      "stable": true
+    },
+    {
+      "rule": "Fragen nach Uhrzeit (Wann ist der Kurs?)",
+      "stable": true
+    },
+    {
+      "rule": "Correct use of 'im Café' after correction",
+      "stable": false
+    },
+    {
+      "rule": "Frageform korrekt bilden (Ist das... ein Film?)",
+      "stable": true
+    },
+    {
+      "rule": "Zeitangaben verstehen und verwenden (um neunzehn Uhr)",
+      "stable": true
+    },
+    {
+      "rule": "Accusative case application (einen Controller)",
+      "stable": true
+    },
+    {
+      "rule": "Self-correction of article usage",
+      "stable": true
+    },
+    {
+      "rule": "Frageform 'wann ist...' korrekt bilden",
+      "stable": true
+    },
+    {
+      "rule": "Artikel-Nomen-Kombination 'die Ankunft' korrekt verwenden",
+      "stable": true
+    },
+    {
+      "rule": "Vergleichssätze mit 'jünger als'",
+      "stable": true
+    },
+    {
+      "rule": "Informationsentnahme aus Texten mit vollständigen Sätzen",
+      "stable": true
+    },
+    {
+      "rule": "Subjekt-Verb-Stellung in Aussagesätzen",
+      "stable": true
+    },
+    {
+      "rule": "Verwendung von 'hat gewonnen' für Sportresultate",
+      "stable": true
+    },
+    {
+      "rule": "Negation with 'kein' (neuter noun)",
+      "stable": true
+    },
+    {
+      "rule": "Verb conjugation 'spiele' for 'ich'",
+      "stable": true
+    },
+    {
+      "rule": "Question formulation for translation requests",
+      "stable": true
+    },
+    {
+      "rule": "Color + noun description patterns",
+      "stable": true
+    },
+    {
+      "rule": "Directional phrases with 'um die Ecke'",
+      "stable": true
+    },
+    {
+      "rule": "Basic route description syntax",
+      "stable": true
+    },
+    {
+      "rule": "Fragende Bestätigung der Bedeutung",
+      "stable": true
+    },
+    {
+      "rule": "Broken syntax for time expressions (A1-typical)",
+      "stable": true
+    },
+    {
+      "rule": "Signal des Verständnisses formulieren (Ich verstehe...)",
+      "stable": true
+    },
+    {
+      "rule": "Understanding and reproducing simple spatial instructions",
+      "stable": true
+    },
+    {
+      "rule": "Processing illustrated signs with directional arrows",
+      "stable": true
+    },
+    {
+      "rule": "Code-switching for lexical retrieval",
+      "stable": true
+    },
+    {
+      "rule": "Simplified/broken syntax",
+      "stable": true
+    },
+    {
+      "rule": "Missing articles",
+      "stable": true
+    },
+    {
+      "rule": "Understanding and restating simple medication instructions (quantity and time)",
+      "stable": true
+    },
+    {
+      "rule": "Preposition 'für' with definite article ('für die Prüfung')",
+      "stable": false
+    },
+    {
+      "rule": "Completing greeting formulas (Liebe.../Lieber...)",
+      "stable": false
+    },
+    {
+      "rule": "Understanding and identifying postcard occasions from context",
+      "stable": true
+    },
+    {
+      "rule": "Producing appropriate holiday/birthday greetings",
+      "stable": true
+    },
+    {
+      "rule": "Correct article usage with 'die Enter-Taste' (applied from teacher feedback)",
+      "stable": true
+    },
+    {
+      "rule": "Verb conjugation correction (programmieren → programmiere)",
+      "stable": true
+    },
+    {
+      "rule": "Artikelverwendung bei zusammengesetzten Substantiven (die Senden-Taste, die Löschen-Taste)",
+      "stable": true
+    },
+    {
+      "rule": "Artikelgebrauch 'das' für Computer-Symbole (Druck-Symbol, Speichern-Symbol)",
+      "stable": true
+    },
+    {
+      "rule": "erst... dann... Struktur für Abläufe",
+      "stable": true
+    },
+    {
+      "rule": "Korrekte Verbkonjugation bei regelmäßigen Verben (ich speichere)",
+      "stable": true
+    },
+    {
+      "rule": "Verwendung von Zeitangaben (Am Morgen, Am Nachmittag)",
+      "stable": true
+    },
+    {
+      "rule": "Kann ich bitte... haben? (request structure)",
+      "stable": true
+    },
+    {
+      "rule": "Können Sie mir bitte...? (polite request)",
+      "stable": true
+    },
+    {
+      "rule": "Correct article usage with food items (das/die)",
+      "stable": true
+    },
+    {
+      "rule": "Verbposition in Hauptsätzen (Am Wochenende HABE ich frei)",
+      "stable": true
+    },
+    {
+      "rule": "Prosodische Merkmale (Wortakzent, Sprechmelodie) bewusst anwenden",
+      "stable": true
+    },
+    {
+      "rule": "Verwendung einfacher Konnektoren ('und', 'und dann', 'oder') zur Verknüpfung von Wortgruppen",
+      "stable": true
+    },
+    {
+      "rule": "Selbstkorrektur von Artikel-Präposition-Kombinationen (aus die → aus den USA)",
+      "stable": true
+    },
+    {
+      "rule": "Korrekte Anwendung von 'kommt aus' und 'wohnt in' für Drittpersonen",
+      "stable": true
+    },
+    {
+      "rule": "Selbstkorrektur bei Berufsangabe (arbeiten → bin Student)",
+      "stable": true
+    },
+    {
+      "rule": "Kombination mehrerer Sprachhandlungen in einem Zug (Beruf + Hobby + Bestellung)",
+      "stable": true
+    },
+    {
+      "rule": "Aktive Rezeption und Anwendung von Feedback zur Verbkonjugation (programmiere)",
+      "stable": true
+    },
+    {
+      "rule": "Konsistente elliptische Strukturen für spontane Tagesablaufbeschreibung",
+      "stable": true
+    },
+    {
+      "rule": "Elliptische Strukturen für Firmenbeschreibung",
+      "stable": true
+    },
+    {
+      "rule": "Korrekte Verbkonjugation in Antworten ('sie telefoniert')",
+      "stable": true
+    },
+    {
+      "rule": "Formelle Höflichkeitsphrase 'Können Sie bitte... wiederholen?'",
+      "stable": false
+    },
+    {
+      "rule": "Elliptische Strukturen für das Aufschreiben von Fakten/Daten zu alltäglichen Aufgaben in Stichpunktform (konsolidiert)",
+      "stable": true
+    },
+    {
+      "rule": "Funktionale, vollständige Sätze mit Subjekt-Verb-Objekt zur Beschreibung von Handlungen anderer Personen (3. Person Singular)",
+      "stable": true
+    },
+    {
+      "rule": "Korrekte Verwendung von 'Danke für' + Nominalphrase als Höflichkeitsformel",
+      "stable": true
+    },
+    {
+      "rule": "Präzise, kanonalignierte Weitergabe von persönlichen Daten, Zahlenfolgen und einfachen Fragen im Sprachmittlungskontext",
+      "stable": true
+    },
+    {
+      "rule": "Nahtloser Transfer konsolidierter Sprachhandlungen (persönliche Daten angeben, Zahlen weitergeben, nach Uhrzeit fragen) in den Sprachmittlungskontext",
+      "stable": true
+    },
+    {
+      "rule": "Präzise, kanonalignierte Weitergabe einzelner Informationen aus listenartigen Texten (Schilder, Menüs, Öffnungszeiten) unter Verwendung der korrekten Satzstruktur 'On the menu it says...'",
+      "stable": true
+    },
+    {
+      "rule": "Präzise, kanonalignierte Weitergabe einfacher Fragen und Informationen (Frühstücksort, Zeit, Beschwerde, Toilette) in funktionaler A1-Syntax",
+      "stable": true
+    },
+    {
+      "rule": "Metakognitive Reflexion und Planung mit Code-switching als stabiles, lernförderliches Muster",
       "stable": true
     }
   ],
-  "persistent_errors": [
-    "missing article before 'Bücher'"
-  ],
-  "emotional_state": "confident",
   "kannbeschreibungen_attempted": {
-    "K01_vorstellen": {
+    "K001": {
       "day": 1,
-      "result": "teilweise"
+      "result": "bestanden"
     },
-    "K07_wohnen": {
+    "K002": {
       "day": 2,
-      "result": "teilweise"
+      "result": "bestanden"
     },
-    "K03_einkaufen": {
+    "K003": {
       "day": 3,
       "result": "bestanden"
     },
-    "K06_essen_bestellen": {
+    "K004": {
       "day": 4,
-      "result": "teilweise"
+      "result": "bestanden"
     },
-    "K15_freizeit": {
+    "K005": {
       "day": 5,
       "result": "bestanden"
+    },
+    "K006": {
+      "day": 6,
+      "result": "bestanden"
+    },
+    "K007": {
+      "day": 7,
+      "result": "bestanden"
+    },
+    "K008": {
+      "day": 8,
+      "result": "bestanden"
+    },
+    "K009": {
+      "day": 9,
+      "result": "bestanden"
+    },
+    "K010": {
+      "day": 10,
+      "result": "bestanden"
+    },
+    "K012": {
+      "day": 12,
+      "result": "bestanden"
+    },
+    "K013": {
+      "day": 13,
+      "result": "bestanden"
+    },
+    "K014": {
+      "day": 14,
+      "result": "bestanden"
+    },
+    "K015": {
+      "day": 15,
+      "result": "bestanden"
+    },
+    "K016": {
+      "day": 16,
+      "result": "bestanden"
+    },
+    "K017": {
+      "day": 17,
+      "result": "bestanden"
+    },
+    "K018": {
+      "day": 18,
+      "result": "bestanden"
+    },
+    "K024": {
+      "day": 24,
+      "result": "bestanden"
+    },
+    "K027": {
+      "day": 27,
+      "result": "bestanden"
+    },
+    "K028": {
+      "day": 28,
+      "result": "bestanden"
+    },
+    "K035": {
+      "day": 35,
+      "result": "bestanden"
+    },
+    "K036": {
+      "day": 36,
+      "result": "bestanden"
+    },
+    "K038": {
+      "day": 38,
+      "result": "bestanden"
+    },
+    "K040": {
+      "day": 40,
+      "result": "bestanden"
+    },
+    "K047": {
+      "day": 47,
+      "result": "bestanden"
+    },
+    "K053": {
+      "day": 53,
+      "result": "bestanden"
+    },
+    "K176": {
+      "day": 176,
+      "result": "teilweise"
+    },
+    "K011": {
+      "day": 11,
+      "result": "bestanden"
+    },
+    "K019": {
+      "day": 19,
+      "result": "bestanden"
+    },
+    "K020": {
+      "day": 20,
+      "result": "bestanden"
+    },
+    "K021": {
+      "day": 21,
+      "result": "teilweise"
+    },
+    "K022": {
+      "day": 22,
+      "result": "bestanden"
+    },
+    "K023": {
+      "day": 23,
+      "result": "bestanden"
+    },
+    "K025": {
+      "day": 25,
+      "result": "bestanden"
+    },
+    "K026": {
+      "day": 26,
+      "result": "bestanden"
+    },
+    "K029": {
+      "day": 29,
+      "result": "teilweise"
+    },
+    "K030": {
+      "day": 30,
+      "result": "bestanden"
+    },
+    "K031": {
+      "day": 31,
+      "result": "teilweise"
+    },
+    "K032": {
+      "day": 32,
+      "result": "teilweise"
+    },
+    "K033": {
+      "day": 33,
+      "result": "bestanden"
+    },
+    "K034": {
+      "day": 34,
+      "result": "bestanden"
+    },
+    "K037": {
+      "day": 37,
+      "result": "bestanden"
+    },
+    "K039": {
+      "day": 39,
+      "result": "bestanden"
+    },
+    "K041": {
+      "day": 41,
+      "result": "teilweise"
+    },
+    "K042": {
+      "day": 42,
+      "result": "bestanden"
+    },
+    "K043": {
+      "day": 43,
+      "result": "bestanden"
+    },
+    "K044": {
+      "day": 44,
+      "result": "bestanden"
+    },
+    "K045": {
+      "day": 45,
+      "result": "bestanden"
+    },
+    "K046": {
+      "day": 46,
+      "result": "bestanden"
+    },
+    "K048": {
+      "day": 48,
+      "result": "bestanden"
+    },
+    "K049": {
+      "day": 49,
+      "result": "bestanden"
+    },
+    "K050": {
+      "day": 50,
+      "result": "bestanden"
+    },
+    "K051": {
+      "day": 51,
+      "result": "bestanden"
+    },
+    "K052": {
+      "day": 52,
+      "result": "bestanden"
+    },
+    "K054": {
+      "day": 54,
+      "result": "bestanden"
+    },
+    "K055": {
+      "day": 55,
+      "result": "bestanden"
+    },
+    "K056": {
+      "day": 56,
+      "result": "bestanden"
+    },
+    "K057": {
+      "day": 57,
+      "result": "bestanden"
+    },
+    "K058": {
+      "day": 58,
+      "result": "bestanden"
+    },
+    "K059": {
+      "day": 59,
+      "result": "bestanden"
+    },
+    "K060": {
+      "day": 60,
+      "result": "bestanden"
+    },
+    "K061": {
+      "day": 61,
+      "result": "bestanden"
+    },
+    "K062": {
+      "day": 62,
+      "result": "bestanden"
+    },
+    "K063": {
+      "day": 63,
+      "result": "bestanden"
+    },
+    "K064": {
+      "day": 64,
+      "result": "bestanden"
+    },
+    "K065": {
+      "day": 65,
+      "result": "bestanden"
+    },
+    "K066": {
+      "day": 66,
+      "result": "teilweise"
+    },
+    "K067": {
+      "day": 67,
+      "result": "bestanden"
+    },
+    "K068": {
+      "day": 68,
+      "result": "bestanden"
+    },
+    "K069": {
+      "day": 69,
+      "result": "bestanden"
+    },
+    "K070": {
+      "day": 70,
+      "result": "bestanden"
+    },
+    "K071": {
+      "day": 71,
+      "result": "bestanden"
+    },
+    "K072": {
+      "day": 72,
+      "result": "bestanden"
+    },
+    "K073": {
+      "day": 73,
+      "result": "bestanden"
+    },
+    "K074": {
+      "day": 74,
+      "result": "bestanden"
+    },
+    "K075": {
+      "day": 75,
+      "result": "bestanden"
+    },
+    "K076": {
+      "day": 76,
+      "result": "bestanden"
+    },
+    "K077": {
+      "day": 77,
+      "result": "bestanden"
+    },
+    "K078": {
+      "day": 78,
+      "result": "bestanden"
+    },
+    "K079": {
+      "day": 79,
+      "result": "bestanden"
+    },
+    "K080": {
+      "day": 80,
+      "result": "bestanden"
+    },
+    "K081": {
+      "day": 81,
+      "result": "bestanden"
+    },
+    "K082": {
+      "day": 82,
+      "result": "bestanden"
+    },
+    "K083": {
+      "day": 83,
+      "result": "bestanden"
+    },
+    "K084": {
+      "day": 84,
+      "result": "bestanden"
+    },
+    "K085": {
+      "day": 85,
+      "result": "bestanden"
+    },
+    "K086": {
+      "day": 86,
+      "result": "bestanden"
+    },
+    "K087": {
+      "day": 87,
+      "result": "bestanden"
+    },
+    "K088": {
+      "day": 88,
+      "result": "bestanden"
+    },
+    "K089": {
+      "day": 89,
+      "result": "bestanden"
+    },
+    "K090": {
+      "day": 90,
+      "result": "bestanden"
+    },
+    "K091": {
+      "day": 91,
+      "result": "bestanden"
+    },
+    "K092": {
+      "day": 92,
+      "result": "bestanden"
+    },
+    "K093": {
+      "day": 93,
+      "result": "bestanden"
+    },
+    "K094": {
+      "day": 94,
+      "result": "bestanden"
+    },
+    "K095": {
+      "day": 95,
+      "result": "bestanden"
+    },
+    "K096": {
+      "day": 96,
+      "result": "bestanden"
+    },
+    "K097": {
+      "day": 97,
+      "result": "bestanden"
+    },
+    "K098": {
+      "day": 98,
+      "result": "bestanden"
+    },
+    "K099": {
+      "day": 99,
+      "result": "bestanden"
+    },
+    "K100": {
+      "day": 100,
+      "result": "bestanden"
+    },
+    "K101": {
+      "day": 101,
+      "result": "bestanden"
+    },
+    "K102": {
+      "day": 102,
+      "result": "bestanden"
+    },
+    "K103": {
+      "day": 103,
+      "result": "bestanden"
+    },
+    "K104": {
+      "day": 104,
+      "result": "bestanden"
+    },
+    "K105": {
+      "day": 105,
+      "result": "bestanden"
+    },
+    "K106": {
+      "day": 106,
+      "result": "bestanden"
+    },
+    "K107": {
+      "day": 107,
+      "result": "bestanden"
+    },
+    "K108": {
+      "day": 108,
+      "result": "bestanden"
+    },
+    "K109": {
+      "day": 109,
+      "result": "bestanden"
+    },
+    "K110": {
+      "day": 110,
+      "result": "bestanden"
+    },
+    "K111": {
+      "day": 111,
+      "result": "bestanden"
+    },
+    "K112": {
+      "day": 112,
+      "result": "bestanden"
+    },
+    "K113": {
+      "day": 113,
+      "result": "bestanden"
+    },
+    "K114": {
+      "day": 114,
+      "result": "bestanden"
+    },
+    "K115": {
+      "day": 115,
+      "result": "bestanden"
+    },
+    "K116": {
+      "day": 116,
+      "result": "bestanden"
+    },
+    "K117": {
+      "day": 117,
+      "result": "bestanden"
+    },
+    "K118": {
+      "day": 118,
+      "result": "bestanden"
+    },
+    "K119": {
+      "day": 119,
+      "result": "bestanden"
+    },
+    "K120": {
+      "day": 120,
+      "result": "bestanden"
+    },
+    "K121": {
+      "day": 121,
+      "result": "teilweise"
+    },
+    "K122": {
+      "day": 122,
+      "result": "bestanden"
+    },
+    "K123": {
+      "day": 123,
+      "result": "bestanden"
+    },
+    "K124": {
+      "day": 124,
+      "result": "bestanden"
+    },
+    "K125": {
+      "day": 125,
+      "result": "teilweise"
+    },
+    "K126": {
+      "day": 126,
+      "result": "teilweise"
+    },
+    "K127": {
+      "day": 127,
+      "result": "teilweise"
+    },
+    "K128": {
+      "day": 128,
+      "result": "teilweise"
+    },
+    "K129": {
+      "day": 129,
+      "result": "teilweise"
+    },
+    "K130": {
+      "day": 130,
+      "result": "teilweise"
+    },
+    "K131": {
+      "day": 131,
+      "result": "teilweise"
+    },
+    "K132": {
+      "day": 132,
+      "result": "teilweise"
+    },
+    "K133": {
+      "day": 133,
+      "result": "teilweise"
+    },
+    "K134": {
+      "day": 134,
+      "result": "teilweise"
+    },
+    "K135": {
+      "day": 135,
+      "result": "teilweise"
+    },
+    "K136": {
+      "day": 136,
+      "result": "teilweise"
+    },
+    "K137": {
+      "day": 137,
+      "result": "teilweise"
+    },
+    "K138": {
+      "day": 138,
+      "result": "teilweise"
+    },
+    "K139": {
+      "day": 139,
+      "result": "teilweise"
+    },
+    "K140": {
+      "day": 140,
+      "result": "teilweise"
+    },
+    "K141": {
+      "day": 141,
+      "result": "teilweise"
+    },
+    "K142": {
+      "day": 142,
+      "result": "teilweise"
+    },
+    "K143": {
+      "day": 143,
+      "result": "teilweise"
+    },
+    "K144": {
+      "day": 144,
+      "result": "teilweise"
+    },
+    "K145": {
+      "day": 145,
+      "result": "bestanden"
+    },
+    "K146": {
+      "day": 146,
+      "result": "teilweise"
+    },
+    "K147": {
+      "day": 147,
+      "result": "teilweise"
+    },
+    "K148": {
+      "day": 148,
+      "result": "teilweise"
+    },
+    "K149": {
+      "day": 149,
+      "result": "teilweise"
+    },
+    "K150": {
+      "day": 150,
+      "result": "teilweise"
+    },
+    "K151": {
+      "day": 151,
+      "result": "bestanden"
+    },
+    "K152": {
+      "day": 152,
+      "result": "teilweise"
+    },
+    "K153": {
+      "day": 153,
+      "result": "teilweise"
+    },
+    "K154": {
+      "day": 154,
+      "result": "teilweise"
+    },
+    "K167": {
+      "day": 155,
+      "result": "teilweise"
+    },
+    "K168": {
+      "day": 156,
+      "result": "teilweise"
+    },
+    "K155": {
+      "day": 157,
+      "result": "bestanden"
+    },
+    "K156": {
+      "day": 158,
+      "result": "teilweise"
+    },
+    "K157": {
+      "day": 159,
+      "result": "teilweise"
+    },
+    "K158": {
+      "day": 160,
+      "result": "teilweise"
+    },
+    "K159": {
+      "day": 161,
+      "result": "teilweise"
+    },
+    "K160": {
+      "day": 162,
+      "result": "teilweise"
+    },
+    "K161": {
+      "day": 163,
+      "result": "teilweise"
+    },
+    "K162": {
+      "day": 164,
+      "result": "teilweise"
+    },
+    "K163": {
+      "day": 165,
+      "result": "bestanden"
+    },
+    "K164": {
+      "day": 166,
+      "result": "teilweise"
+    },
+    "K165": {
+      "day": 167,
+      "result": "teilweise"
+    },
+    "K166": {
+      "day": 168,
+      "result": "teilweise"
+    },
+    "K169": {
+      "day": 169,
+      "result": "bestanden"
+    },
+    "K170": {
+      "day": 170,
+      "result": "teilweise"
+    },
+    "K171": {
+      "day": 171,
+      "result": "teilweise"
+    },
+    "K172": {
+      "day": 172,
+      "result": "teilweise"
+    },
+    "K173": {
+      "day": 173,
+      "result": "teilweise"
+    },
+    "K174": {
+      "day": 174,
+      "result": "teilweise"
+    },
+    "K175": {
+      "day": 175,
+      "result": "teilweise"
     }
-  }
+  },
+  "persistent_errors": [],
+  "emotional_state": ""
 }
