@@ -71,6 +71,8 @@ Example for hotel mediation tasks:
 - speech acts: ask meaning, translate a term, explain a short notice, react to
   thanks
 
+First worked seed: `plans/hotel_lesson_seed.md`.
+
 Example for registration, housing, and office tasks:
 
 - big scene: living in Germany and dealing with housing or an office
