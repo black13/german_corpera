@@ -21,6 +21,8 @@ reduce drift so the repository accurately reflects how it currently works.
    post-run analysis.
 8. Treat the system as a planning aid for busy instructors, not as a claim that
    the AI itself must become the real teacher.
+9. Make grader verdicts structured enough that final pass/fail decisions follow
+   from evidence, not from improvised prose.
 
 ## Concrete Work Items
 
@@ -126,6 +128,8 @@ explicit before class generation begins.
 
 The intended lesson-seed shape should include:
 
+- a scene-to-language ladder: big scene -> small scene -> speech act ->
+  text/utterance -> lexical field -> grammar
 - the scene and role relationship
 - core words and likely signboard terms
 - core speech acts
@@ -137,6 +141,14 @@ The intended lesson-seed shape should include:
 
 This preparation layer should improve both the runtime prompts and the value of
 the repository as an instructor planning tool.
+
+The order matters. Grammar should usually be derived from the small scene and
+utterance need, not selected first as an abstract topic. For example, the broad
+scene "hotel" can narrow to "guest asks about an information board," which
+requires the speech act "explain what this word means," which produces
+utterances such as "Das bedeutet Frühstück von sieben bis zehn Uhr." Only then
+should the system name the lexical field and grammar needed to support that
+exchange.
 
 ### 8. Curriculum Planning Workflow
 
@@ -180,6 +192,32 @@ This is important not only for cost control, but for prompt analysis and for
 post-run planning jobs that need the original model output rather than only the
 cleaned transcript text.
 
+### 10. Grader Rubric and Verdict Aggregation
+
+The grader should keep "Sprachhandlung first" as an A1 principle, but it should
+not collapse all judgment into one flat ON TRACK / DRIFTING label.
+
+Each graded exchange should expose structured fields such as:
+
+- task alignment
+- communicative success
+- A1 appropriateness
+- style and scenario compliance
+- parse or format validity
+
+The final per-student day verdict should be computed from those fields. The
+system should distinguish cases such as:
+
+- the student communicated successfully but drifted from the target scenario
+- the student stayed A1-appropriate but did not complete the task
+- the student produced a valid closing formula but did not perform the
+  `Kannbeschreibung`
+- the model response had a parse error even though the prose looked plausible
+
+This would make final results more trustworthy and make the UI better for
+review. A clean "bestanden" should be traceable to structured evidence across
+rounds, not just to a summary sentence.
+
 ## Runtime Snapshot
 
 Current runtime behavior:
@@ -202,6 +240,7 @@ Target runtime behavior after compression work:
 - build prompts from compressed memory plus current-day context, not from raw
   cumulative append-only state
 - expose per-run billing and saved provider response data for later analysis
+- compute grader verdicts from structured exchange-level evidence
 - support a post-run planning pass that updates curriculum artifacts
 
 ## Review Standard
@@ -213,6 +252,7 @@ Prefer changes that do one or more of the following:
 - reduce hardcoded assumptions
 - improve restartability and observability
 - reduce prompt bloat without hiding pedagogical state
+- make grading and final verdicts more evidence-based
 - strengthen the repository as an instructor planning tool
 - reserve expensive model usage for planning tasks that justify it
 

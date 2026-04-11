@@ -49,6 +49,8 @@ This layer should prioritize depth, synthesis, and planning quality.
 Each important `Kannbeschreibung` should eventually have a lesson seed that
 contains at least:
 
+- scene-to-language ladder: big scene -> small scene -> speech act ->
+  text/utterance -> lexical field -> grammar
 - scene
 - roles and relationships
 - core words
@@ -68,6 +70,28 @@ Example for hotel mediation tasks:
 - words: Frühstück, Check-out, Rezeption, Zimmer, WLAN, Buffet
 - speech acts: ask meaning, translate a term, explain a short notice, react to
   thanks
+
+Example for registration, housing, and office tasks:
+
+- big scene: living in Germany and dealing with housing or an office
+- small scenes: filling in a registration form, saying where one lives, saying
+  where one is from, asking for an appointment at the Amt, looking for an
+  apartment
+- A1 bridge: personal data, origin, address, simple place statements
+- A2 bridge: Wohnungssuche, Anmeldung, moving, appointments, explaining a
+  practical need at an office
+- speech acts: give personal data, answer "Wo wohnen Sie?" / "Woher kommen
+  Sie?", ask for a registration appointment, say that one needs a form or help
+- words: Adresse, Straße, Hausnummer, Stadt, Land, Wohnung, Zimmer, Termin, Amt,
+  Anmeldung
+- grammar: W-Fragen, "kommen aus", "wohnen in", place prepositions, simple
+  present tense; later A2 can add Perfekt for moving or changing residence
+
+The ladder is important because it keeps the grammar attached to lived use. The
+planner should not begin with "teach temporal prepositions" in the abstract. It
+should begin with a broad situation, narrow to a small scene, identify what the
+learner must do socially, draft the utterance or text, then name the vocabulary
+field and grammar needed for that utterance.
 
 ## Workflow
 

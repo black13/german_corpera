@@ -61,7 +61,32 @@ and "Interaktion schriftlich," but not a richer notion of pedagogical coverage.
 That means the long-term state does not yet express the finer-grained learning
 path that the UI and evaluation would ideally surface.
 
-5. The runner is still narrow, but it is no longer minimal.
+5. The grader is permissive in the wrong place and final aggregation is too
+informal.
+
+"Sprachhandlung first" is a good A1 principle, but the current grader sometimes
+awards ON TRACK to empty, closing-formula, or near-empty behavior that does not
+really perform the target task. The final summaries can also be inconsistent
+with the visible evidence in the rounds. For example, a student can show a
+parse error or visible drift in a K176 run while the final student verdict still
+lands as "bestanden."
+
+This suggests the grader label is too flat. It is trying to express several
+different judgments through one label and prose explanation. The grader should
+separate at least these dimensions:
+
+- task alignment
+- communicative success
+- A1 appropriateness
+- style and scenario compliance
+
+The final per-student verdict should be computed from these fields, not
+improvised from prose. A student can be communicatively successful but
+scenario-drifting, A1-appropriate but incomplete, or on-task in one round while
+not meeting the full day target. Those differences should remain visible in the
+JSON and UI.
+
+6. The runner is still narrow, but it is no longer minimal.
 
 This is not a criticism by itself. The current runner now contains:
 
@@ -75,14 +100,14 @@ That may be a reasonable scope for the runtime, but it means the boundary should
 be described as "execution layer with observability" rather than as a nearly
 empty pipe.
 
-6. Prompt assembly depends on implicit template contracts.
+7. Prompt assembly depends on implicit template contracts.
 
 The runner uses manual string replacement against JSON templates. This keeps the
 system simple, but it also means the relationship between code and prompt schema
 is informal. Missing keys, renamed placeholders, or shape drift can become
 runtime prompt bugs rather than explicit validation failures.
 
-7. The improved UI is still more conversation-centric than pedagogy-centric.
+8. The improved UI is still more conversation-centric than pedagogy-centric.
 
 The live view is better for reading, but it still mainly presents:
 
@@ -95,14 +120,14 @@ important for this project: active Kannbeschreibung, target grammar,
 target vocabulary, supporting examples, and visible evidence that the student is
 becoming more competent in those targets over time.
 
-8. In this checkout, normal execution still creates git churn in tracked state.
+9. In this checkout, normal execution still creates git churn in tracked state.
 
 The repository now ignores state and output paths for new changes, which is
 helpful, but the current checkout still has tracked state files that change as
 the system runs. That creates friction for review and makes it harder to tell
 the difference between intentional source edits and ordinary runtime mutation.
 
-9. Deployment behavior is simple, but operationally blunt.
+10. Deployment behavior is simple, but operationally blunt.
 
 The deployment configuration starts the runner directly. Since the runner both
 serves the live page and executes the course loop, deployment and execution are
@@ -110,7 +135,7 @@ tightly coupled. That may be acceptable for experimentation, but it leaves
 little room for a separate "serve existing artifacts" mode versus "start a new
 course run" mode.
 
-10. There is still no first-class teacher-preparation artifact.
+11. There is still no first-class teacher-preparation artifact.
 
 The current system is much better at generating and displaying classroom turns
 than at preserving the pre-class reasoning that a human instructor would
@@ -124,7 +149,7 @@ actually want:
 The current `kann_map` is a useful start, but it is still a thin seed rather
 than a real preparation layer.
 
-11. The repository is converging on an instructor-planning tool, but the
+12. The repository is converging on an instructor-planning tool, but the
 artifacts do not yet fully reflect that role.
 
 The strongest current use case may not be "AI teacher." It may be "planning and
@@ -136,7 +161,7 @@ direction, then the repository still needs more first-class support for:
 - source-backed examples
 - post-run pedagogical analysis
 
-12. Cost-aware model separation is conceptually right, but not yet formalized as
+13. Cost-aware model separation is conceptually right, but not yet formalized as
 an architecture.
 
 There is now a clear distinction between cheaper generation and stronger
@@ -176,6 +201,8 @@ The next improvements would be highest-value if they focus on:
 
 - defining explicit per-Kann mappings to grammar, vocabulary, and examples
 - turning those mappings into real teacher-preparation artifacts
+- making grader judgments multi-dimensional and computing final verdicts from
+  structured fields
 - deduplicating and normalizing learned-state accumulation
 - surfacing pedagogical targets in the UI, not just transcript flow
 - clarifying which prompt artifacts are active runtime dependencies
