@@ -73,6 +73,8 @@ Example for hotel mediation tasks:
 
 First worked seed: `plans/hotel_lesson_seed.md`.
 
+First mediation/list-information seed: `plans/k163_list_information_seed.md`.
+
 Example for registration, housing, and office tasks:
 
 - big scene: living in Germany and dealing with housing or an office
