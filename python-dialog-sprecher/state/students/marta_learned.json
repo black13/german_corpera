@@ -3041,6 +3041,22 @@
     {
       "word": "Aufzug",
       "stable": true
+    },
+    {
+      "word": "Zimmerservice",
+      "stable": true
+    },
+    {
+      "word": "Aufzug",
+      "stable": true
+    },
+    {
+      "word": "Nichtraucherzimmer",
+      "stable": true
+    },
+    {
+      "word": "check-out",
+      "stable": true
     }
   ],
   "grammar_acquired": [
@@ -4175,6 +4191,14 @@
     {
       "rule": "Verwendung von 'Das bedeutet:' zur Einleitung von Übersetzungen",
       "stable": true
+    },
+    {
+      "rule": "Elliptische Strukturen für funktionale Übersetzungen",
+      "stable": true
+    },
+    {
+      "rule": "Übersetzungsformel 'Das bedeutet...'",
+      "stable": true
     }
   ],
   "kannbeschreibungen_attempted": {
@@ -4886,7 +4910,7 @@
   "persistent_errors": [
     "Fehlende Artikel (der/die/das/ein/eine)",
     "Elliptische Strukturen statt vollständiger Sätze",
-    "Fehlende Präpositionen in einigen Kontexten"
+    "Englische Einmischung/Code-Switching"
   ],
   "emotional_state": "sicher und engagiert"
 }

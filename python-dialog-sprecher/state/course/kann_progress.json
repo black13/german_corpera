@@ -1335,57 +1335,53 @@
           }
         ],
         "wortfeld_used": [
-          "die Uhr",
-          "die Uhrzeit",
-          "die Stunde",
-          "Uhr",
-          "links",
-          "Bad"
+          "Zimmer",
+          "Uhr"
         ],
         "grammar_learned": [
           {
-            "rule": "Elliptische Strukturen für funktionale Erklärungen",
+            "rule": "Elliptische Strukturen für funktionale Übersetzungen",
             "stable": true
           },
           {
-            "rule": "Verwendung von 'Das bedeutet:' zur Einleitung von Übersetzungen",
+            "rule": "Übersetzungsformel 'Das bedeutet...'",
             "stable": true
           }
         ],
         "vocabulary_learned": [
           {
-            "word": "Frühstück",
-            "stable": true
-          },
-          {
-            "word": "Empfang",
-            "stable": true
-          },
-          {
-            "word": "Sauna",
+            "word": "Zimmerservice",
             "stable": true
           },
           {
             "word": "Aufzug",
+            "stable": true
+          },
+          {
+            "word": "Nichtraucherzimmer",
+            "stable": true
+          },
+          {
+            "word": "check-out",
             "stable": true
           }
         ],
         "persistent_errors": [
           "Fehlende Artikel (der/die/das/ein/eine)",
           "Elliptische Strukturen statt vollständiger Sätze",
-          "Fehlende Präpositionen in einigen Kontexten"
+          "Englische Einmischung/Code-Switching"
         ],
         "grammar_notes": [
-          "Elliptische Strukturen statt vollständiger Sätze",
-          "Fehlende Artikel (der/die/das/ein/eine)",
-          "Fehlende Präpositionen in einigen Kontexten",
-          "Fehlende Artikel (bis elf Uhr)",
-          "Elliptische Strukturen statt vollständiger Sätze (Das bedeutet Essen im Zimmer)",
-          "Fehlende Artikel (Von achtzehn Uhr bis zweiundzwanzig Uhr)",
-          "Elliptische Struktur ('Aufzug ist lift')",
-          "Fehlende Artikel ('Im Hotel, Aufzug ist links')"
+          "Elliptische Struktur statt vollständiger Satz",
+          "Fehlender Artikel (der/die/das/ein/eine)",
+          "Elliptische Struktur ('Aufzug ist... lift')",
+          "Fehlende Artikel",
+          "Englische Einmischung ('lift')",
+          "Mixed German/English explanation",
+          "Missing articles (Nichtraucherzimmer ist...)",
+          "Simple noun phrase structure"
         ],
-        "session_highlight": "Runde 3: Übersetzung von 'breakfast' zu 'Frühstück' mit professioneller Ergänzung der Öffnungszeiten ('von sieben bis zehn Uhr'), zeigt tiefes Verständnis der kommunikativen Aufgabe über reine Übersetzung hinaus."
+        "session_highlight": "Runde 7: Übersetzung von 'check-out' mit funktionaler Erklärung ('Das bedeutet: Zimmer bis elf Uhr verlassen'), die perfekt die kommunikative Aufgabe erfüllt und über reine Wort-für-Wort-Übersetzung hinausgeht."
       },
       "K011": {
         "day": 11,
@@ -11902,7 +11898,7 @@
         "kann_id": "K176",
         "kann_text": "Kann im Hotel einfache Begriffe auf der Informationstafel (z. B. „breakfast“) für einen deutschsprachigen Gast übersetzen.",
         "category": "Sprachmittlung mündlich",
-        "result": "teilweise",
+        "result": "bestanden",
         "speech_acts": [
           "nachfragen (Was bedeutet...?)",
           "einen einfachen Hotel-Begriff übersetzen/erklären (Das bedeutet ...)",
@@ -12005,23 +12001,49 @@
           }
         ],
         "wortfeld_used": [
-          "das Zimmer",
-          "die Uhr"
+          "die Uhr",
+          "die Uhrzeit",
+          "das Zimmer"
         ],
-        "grammar_learned": [],
-        "vocabulary_learned": [],
-        "persistent_errors": [],
+        "grammar_learned": [
+          {
+            "rule": "Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Übersetzen/Erklären von Hotelbegriffen) als robust konsolidiertes Muster",
+            "stable": true
+          },
+          {
+            "rule": "Funktionale elliptische Strukturen für direkte Übersetzungen/Erklärungen ('Das bedeutet...', 'Check-out bis elf Uhr.') als stabiles A1-Muster",
+            "stable": true
+          }
+        ],
+        "vocabulary_learned": [
+          {
+            "word": "das Zimmer",
+            "stable": true
+          },
+          {
+            "word": "die Uhr",
+            "stable": true
+          },
+          {
+            "word": "die Uhrzeit",
+            "stable": true
+          }
+        ],
+        "persistent_errors": [
+          "Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)",
+          "Code-switching für metakognitive Planung und präzisierende Erklärungen (etabliertes, funktionales Muster)"
+        ],
         "grammar_notes": [
-          "Funktionale elliptische Struktur 'Das bedeutet...' mit korrekter A1-typischer Pause und Unsicherheitsmarker 'äh'",
-          "Richtige Wortstellung und Artikelverwendung in der Übersetzung 'Zimmerservice'",
+          "Elliptische Struktur 'Das bedeutet...' (A1-typisch und funktional)",
+          "Code-switching für metakognitive Planung (etabliertes Muster)",
           "Funktionale elliptische Struktur ('Das bedeutet...')",
           "Code-switching für präzise Übersetzung (A1-typisch)",
-          "Funktionale elliptische Struktur 'Das bedeutet... open.'",
-          "Code-switching für präzise Übersetzung (etabliertes funktionales Muster)",
-          "Elliptische Struktur 'Er fragt...' + korrekte Frageformulierung 'Was bedeutet Parkplatz?'",
-          "Funktionale elliptische Struktur ('Das bedeutet... pool.')"
+          "Code-switching für präzise Übersetzung (A1-typisch und funktional)",
+          "Code-switching für präzise Erklärung (A1-typisch)",
+          "Elliptische Struktur ('Das war... okay.')",
+          "Broken Syntax ('Ich kann die Wörter sagen.') - A1-typisch"
         ],
-        "session_highlight": "```json\n{\n    \"day\": 176,\n    \"subject_area\": \"Sprachmittlung mündlich\",\n    \"kann_result\": \"bestanden\",\n    \"vocabulary_learned\": [\n        {\"word\": \"das Zimmer\", \"stable\": true},\n        {\"word\": \"die Uhr\", \"stable\": true}\n    ],\n    \"grammar_learned\": [\n        {\"rule\": \"Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Übersetzen/Erklären von Hotelbegriffen) als robust konsolidiertes Muster\", \"stable\": true},\n        {\"rule\": \"Funktionale elliptische Strukturen für direkte Übersetzungen ('Das bedeutet...') als stabiles A1-Muster\", \"stable\": true}\n    ],\n    \"persistent_errors\": [\n        \"Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)\",\n        \"Code-switching für metakognitive Planung (etabliertes, funktionales Muster)\"\n    ],\n    \"improvements_from_prior\": [\n        \"Vollständige Konsolidierung der Korrektur: Keine Drifting-Episoden über alle 7 Runden. Die Korrektur aus dem isolierten Rückfall (Tag 173) hat vollständig 'gestickt' und die Stabilität der Tage 174-175 wurde fortgesetzt.\",\n        \"Innerhalb der Session: Stabile, sofortige Aufgabenausführung ohne Leistungsabfall von Runde 1 bis Runde 7. Jede Runde begann direkt mit der korrekten Sprachhandlung (Übersetzen/Erklären/Nachfragen), was eine robuste, automatisierte Rollenannahme zeigt.\",\n        \"Aktive Integration von Feedback: In Runde 5 zeigte der Student sofortige Integration von Lehrer-Feedback durch präzisierte Formulierung und aktive Verständnissicherung.\",\n        \"Positive Gesamttrajektorie: Der Student demonstriert durchgängige Stabilität über mehrere Tage (174-176) mit konsolidierter Sprachmittlungsfähigkeit, sicherer Rollenannahme und zuverlässiger Reaktion auf klare Lehrersteuerung.\"\n    ],\n    \"emotional_state\": \"konzentriert"
+        "session_highlight": "Runden 1-5 und 7: Durchgängig perfekte, sofortige und kanonalignierte Ausführung der Sprachmittlungsaufgabe mit robust konsolidiertem Muster, aktiver Wortfeldnutzung und präzisen Übersetzungen, die eine vollständige Beherrschung der Kannbeschreibung zeigen."
       },
       "K011": {
         "day": 11,
@@ -20872,37 +20894,33 @@
           }
         ],
         "wortfeld_used": [
-          "Zimmer",
-          "das Zimmer",
-          "Hotel"
+          "die Uhr",
+          "die Stunde",
+          "die Uhrzeit"
         ],
         "grammar_learned": [
           {
-            "rule": "Mediationsstruktur: 'Was bedeutet...?' + 'Das bedeutet...'",
-            "stable": true
-          },
-          {
-            "rule": "Signalwort bei Unsicherheit: 'Ich weiß nicht'",
+            "rule": "Mediationsstruktur 'Das bedeutet...' für Übersetzungen",
             "stable": true
           }
         ],
         "vocabulary_learned": [
           {
-            "word": "Zimmer",
+            "word": "die Uhr",
             "stable": true
           },
           {
-            "word": "Rezeption/Empfang im Hotel",
+            "word": "die Stunde",
             "stable": true
           },
           {
-            "word": "Zimmerservice/Essen im Zimmer",
+            "word": "die Uhrzeit",
             "stable": true
           }
         ],
         "persistent_errors": [],
         "grammar_notes": [
-          "Korrekte Formulierung 'Ich weiß nicht' (A1-Niveau)"
+          "Korrekte Formulierung 'Ich weiß nicht'"
         ],
         "session_highlight": "Perfekte 7/7 Performance mit vollständiger Beherrschung der Kernkompetenz - zeigt konsistentes Mastery-Niveau in der Hotelbegriff-Mediation"
       },

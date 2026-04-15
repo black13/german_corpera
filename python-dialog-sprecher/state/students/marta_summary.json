@@ -173,7 +173,7 @@
   "persistent_errors": [
     "Fehlende Artikel (der/die/das/ein/eine)",
     "Elliptische Strukturen statt vollständiger Sätze",
-    "Fehlende Präpositionen in einigen Kontexten"
+    "Englische Einmischung/Code-Switching"
   ],
   "emotional_state": "sicher und engagiert",
   "recent_kanns": [
@@ -209,12 +209,12 @@
     }
   ],
   "recent_highlights": [
+    "Runde 7: Übersetzung von 'check-out' mit funktionaler Erklärung ('Das bedeutet: Zimmer bis elf Uhr verlassen'), die perfekt die kommunikative Aufgabe erfüllt und über reine Wort-für-Wort-Übersetzung hinausgeht.",
     "Runde 3: Übersetzung von 'breakfast' zu 'Frühstück' mit professioneller Ergänzung der Öffnungszeiten ('von sieben bis zehn Uhr'), zeigt tiefes Verständnis der kommunikativen Aufgabe über reine Übersetzung hinaus.",
-    "Runde 7: Übersetzung von 'check-out' mit funktionaler Erklärung ('Das bedeutet: Zimmer bis elf Uhr verlassen'), die über die reine Wort-für-Wort-Übersetzung hinausgeht und perfekt die kommunikative Aufgabe erfüllt.",
-    "Runde 3: Studentin übersetzt 'breakfast' zu 'Frühstück' und ergänzt professionell die Öffnungszeiten ('von sieben bis zehn Uhr'), zeigt tiefes Verständnis der kommunikativen Aufgabe über reine Übersetzung hinaus."
+    "Runde 7: Übersetzung von 'check-out' mit funktionaler Erklärung ('Das bedeutet: Zimmer bis elf Uhr verlassen'), die über die reine Wort-für-Wort-Übersetzung hinausgeht und perfekt die kommunikative Aufgabe erfüllt."
   ],
   "totals": {
-    "vocabulary": 349,
-    "grammar": 237
+    "vocabulary": 351,
+    "grammar": 239
   }
 }

@@ -2233,6 +2233,18 @@
     {
       "word": "Zimmerservice/Essen im Zimmer",
       "stable": true
+    },
+    {
+      "word": "die Uhr",
+      "stable": true
+    },
+    {
+      "word": "die Stunde",
+      "stable": true
+    },
+    {
+      "word": "die Uhrzeit",
+      "stable": true
     }
   ],
   "grammar_acquired": [
@@ -2822,6 +2834,10 @@
     },
     {
       "rule": "Signalwort bei Unsicherheit: 'Ich weiß nicht'",
+      "stable": true
+    },
+    {
+      "rule": "Mediationsstruktur 'Das bedeutet...' für Übersetzungen",
       "stable": true
     }
   ],
@@ -3532,5 +3548,5 @@
     }
   },
   "persistent_errors": [],
-  "emotional_state": "sicher und kompetent"
+  "emotional_state": "sicher und engagiert"
 }

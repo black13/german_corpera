@@ -29,6 +29,11 @@
       "mentions": 9
     },
     {
+      "word": "die Uhrzeit",
+      "stable": true,
+      "mentions": 8
+    },
+    {
       "word": "Brot",
       "stable": true,
       "mentions": 8
@@ -37,11 +42,6 @@
       "word": "Tschüss",
       "stable": true,
       "mentions": 8
-    },
-    {
-      "word": "die Uhrzeit",
-      "stable": true,
-      "mentions": 7
     },
     {
       "word": "lesen",
@@ -103,6 +103,16 @@
       "mentions": 2
     },
     {
+      "rule": "Funktionale elliptische Strukturen für direkte Übersetzungen/Erklärungen ('Das bedeutet...', 'Check-out bis elf Uhr.') als stabiles A1-Muster",
+      "stable": true,
+      "mentions": 1
+    },
+    {
+      "rule": "Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Übersetzen/Erklären von Hotelbegriffen) als robust konsolidiertes Muster",
+      "stable": true,
+      "mentions": 1
+    },
+    {
       "rule": "Metakognitive Reflexion und Planung mit Code-switching als stabiles, lernförderliches Muster",
       "stable": true,
       "mentions": 1
@@ -124,16 +134,6 @@
     },
     {
       "rule": "Präzise, kanonalignierte Weitergabe von persönlichen Daten, Zahlenfolgen und einfachen Fragen im Sprachmittlungskontext",
-      "stable": true,
-      "mentions": 1
-    },
-    {
-      "rule": "Korrekte Verwendung von 'Danke für' + Nominalphrase als Höflichkeitsformel",
-      "stable": true,
-      "mentions": 1
-    },
-    {
-      "rule": "Funktionale, vollständige Sätze mit Subjekt-Verb-Objekt zur Beschreibung von Handlungen anderer Personen (3. Person Singular)",
       "stable": true,
       "mentions": 1
     }
@@ -170,13 +170,16 @@
       "mentions": 1
     }
   ],
-  "persistent_errors": [],
-  "emotional_state": "",
+  "persistent_errors": [
+    "Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)",
+    "Code-switching für metakognitive Planung und präzisierende Erklärungen (etabliertes, funktionales Muster)"
+  ],
+  "emotional_state": "konzentriert, selbstsicher und lernbereit",
   "recent_kanns": [
     {
       "kann_id": "K176",
       "day": 176,
-      "result": "teilweise",
+      "result": "bestanden",
       "kann_text": "Kann im Hotel einfache Begriffe auf der Informationstafel (z. B. „breakfast“) für einen deutschsprachigen Gast übersetzen."
     },
     {
@@ -205,12 +208,12 @@
     }
   ],
   "recent_highlights": [
+    "Runden 1-5 und 7: Durchgängig perfekte, sofortige und kanonalignierte Ausführung der Sprachmittlungsaufgabe mit robust konsolidiertem Muster, aktiver Wortfeldnutzung und präzisen Übersetzungen, die eine vollständige Beherrschung der Kannbeschreibung zeigen.",
     "```json { \"day\": 176, \"subject_area\": \"Sprachmittlung mündlich\", \"kann_result\": \"bestanden\", \"vocabulary_learned\": [ {\"word\": \"das Zimmer\", \"stable\": true}, {\"word\": \"die Uhr\", \"stable\": true} ], \"grammar_learned\": [ {\"rule\": \"Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Übersetzen/Erklären von Hotelbegriffen) als robust konsolidiertes Muster\", \"stable\": true}, {\"rule\": \"Funktionale elliptische Strukturen für direkte Übersetzungen ('Das bedeutet...') als stabiles A1-Muster\", \"stable\": true} ], \"persistent_errors\": [ \"Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)\", \"Code-switching für metakognitive Planung (etabliertes, funktionales Muster)\" ], \"improvements_from_prior\": [ \"Vollständige Konsolidierung der Korrektur: Keine Drifting-Episoden über alle 7 Runden. Die Korrektur aus dem isolierten Rückfall (Tag 173) hat vollständig 'gestickt' und die Stabilität der Tage 174-175 wurde fortgesetzt.\", \"Innerhalb der Session: Stabile, sofortige Aufgabenausführung ohne Leistungsabfall von Runde 1 bis Runde 7. Jede Runde begann direkt mit der korrekten Sprachhandlung (Übersetzen/Erklären/Nachfragen), was eine robuste, automatisierte Rollenannahme zeigt.\", \"Aktive Integration von Feedback: In Runde 5 zeigte der Student sofortige Integration von Lehrer-Feedback durch präzisierte Formulierung und aktive Verständnissicherung.\", \"Positive Gesamttrajektorie: Der Student demonstriert durchgängige Stabilität über mehrere Tage (174-176) mit konsolidierter Sprachmittlungsfähigkeit, sicherer Rollenannahme und zuverlässiger Reaktion auf klare Lehrersteuerung.\" ], \"emotional_state\": \"konzentriert",
-    "```json { \"day\": 176, \"subject_area\": \"Sprachmittlung mündlich\", \"kann_result\": \"bestanden\", \"vocabulary_learned\": [ {\"word\": \"das Zimmer\", \"stable\": true}, {\"word\": \"die Uhr\", \"stable\": true}, {\"word\": \"die Uhrzeit\", \"stable\": true} ], \"grammar_learned\": [ {\"rule\": \"Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Übersetzen/Erklären von Hotelbegriffen) als robust konsolidiertes Muster\", \"stable\": true}, {\"rule\": \"Funktionale elliptische Strukturen für direkte Übersetzungen/Erklärungen ('das bedeutet...', 'Check-out bis elf Uhr.') als stabiles A1-Muster\", \"stable\": true} ], \"persistent_errors\": [ \"Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)\", \"Code-switching für metakognitive Planung und präzisierende Erklärungen (etabliertes, funktionales Muster)\" ], \"improvements_from_prior\": [ \"Vollständige Konsolidierung der Korrektur: Keine Drifting-Episoden über alle 7 Runden dieses Tages. Die isolierten Rückfälle aus den letzten Runden von Tag 175 sind nicht aufgetreten; die Korrektur hat vollständig 'gestickt'.\", \"Innerhalb der Session: Stabile, sofortige Aufgabenausführung ohne Leistungsabfall von Runde 1 bis Runde 7. Jede Runde begann direkt mit der korrekten Sprachhandlung (Übersetzen/Erklären/Nachfragen), was eine robuste, automatisierte Rollenannahme zeigt.\", \"Positive Gesamttrajektorie: Der Student demonstriert nun durchgängige Stabilität über mehrere Tage (174-176) mit konsolidierter Sprachmittlungsfähigkeit. Er führt die Aufgabe zuverlässig aus, zeigt aktive Wortfeldnutzung und reagiert perfekt auf klare Lehrersteuerung.\" ], \"emotional_state\": \"konzentriert,",
-    "```json { \"day\": 176, \"subject_area\": \"Sprachmittlung mündlich\", \"kann_result\": \"teilweise\", \"vocabulary_learned\": [ {\"word\": \"das Zimmer\", \"stable\": true}, {\"word\": \"die Uhr\", \"stable\": true} ], \"grammar_learned\": [ {\"rule\": \"Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Übersetzen/Erklären von Hotelbegriffen) als robust konsolidiertes Muster\", \"stable\": true}, {\"rule\": \"Funktionale elliptische Strukturen für direkte Übersetzungen ('das bedeutet...') als stabiles A1-Muster\", \"stable\": true} ], \"persistent_errors\": [ \"Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)\", \"Code-switching für metakognitive Planung (etabliertes, funktionales Muster)\", \"Isolierte Drifting-Episoden in den letzten Runden (Runden 6 und 7), wenn die Lehrersteuerung unklar oder generisch wird\" ], \"improvements_from_prior\": [ \"Die Korrektur des isolierten Drifting-Rückfalls von Tag 173 hat für die Hauptphase der Session vollständig 'gestickt': Runden 1-5 waren perfekt kanonaligniert und stabil.\", \"Innerhalb der Session zeigte sich eine stabile, sofortige Aufgabenausführung in Runden 1-5 ohne Leistungsabfall. Die letzten beiden Runden (6 und 7) zeigen jedoch einen Rückfall in Drifting, wenn der Lehrer die Aufgabe nicht explizit hält.\", \"Die Gesamttrajektorie bleibt positiv: Der Student demonstriert über mehrere Tage (174-176) eine konsolidierte Sprachmittlungsfähigkeit, zeigt aber eine anhaltende Schwachstelle bei der Aufrechterhaltung der Rolle ohne klare Lehrersteuerung.\" ], \"emotional_state\": \"konzentriert und engagiert, mit aktiver metakognitiver Planung für Präzision\", \"session_highlight\": \"Runden 1-5: Durchgängig"
+    "```json { \"day\": 176, \"subject_area\": \"Sprachmittlung mündlich\", \"kann_result\": \"bestanden\", \"vocabulary_learned\": [ {\"word\": \"das Zimmer\", \"stable\": true}, {\"word\": \"die Uhr\", \"stable\": true}, {\"word\": \"die Uhrzeit\", \"stable\": true} ], \"grammar_learned\": [ {\"rule\": \"Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Übersetzen/Erklären von Hotelbegriffen) als robust konsolidiertes Muster\", \"stable\": true}, {\"rule\": \"Funktionale elliptische Strukturen für direkte Übersetzungen/Erklärungen ('das bedeutet...', 'Check-out bis elf Uhr.') als stabiles A1-Muster\", \"stable\": true} ], \"persistent_errors\": [ \"Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)\", \"Code-switching für metakognitive Planung und präzisierende Erklärungen (etabliertes, funktionales Muster)\" ], \"improvements_from_prior\": [ \"Vollständige Konsolidierung der Korrektur: Keine Drifting-Episoden über alle 7 Runden dieses Tages. Die isolierten Rückfälle aus den letzten Runden von Tag 175 sind nicht aufgetreten; die Korrektur hat vollständig 'gestickt'.\", \"Innerhalb der Session: Stabile, sofortige Aufgabenausführung ohne Leistungsabfall von Runde 1 bis Runde 7. Jede Runde begann direkt mit der korrekten Sprachhandlung (Übersetzen/Erklären/Nachfragen), was eine robuste, automatisierte Rollenannahme zeigt.\", \"Positive Gesamttrajektorie: Der Student demonstriert nun durchgängige Stabilität über mehrere Tage (174-176) mit konsolidierter Sprachmittlungsfähigkeit. Er führt die Aufgabe zuverlässig aus, zeigt aktive Wortfeldnutzung und reagiert perfekt auf klare Lehrersteuerung.\" ], \"emotional_state\": \"konzentriert,"
   ],
   "totals": {
-    "vocabulary": 315,
-    "grammar": 196
+    "vocabulary": 316,
+    "grammar": 198
   }
 }

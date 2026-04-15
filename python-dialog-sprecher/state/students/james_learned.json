@@ -2313,6 +2313,18 @@
     {
       "word": "Frühstückszimmer",
       "stable": true
+    },
+    {
+      "word": "das Zimmer",
+      "stable": true
+    },
+    {
+      "word": "die Uhr",
+      "stable": true
+    },
+    {
+      "word": "die Uhrzeit",
+      "stable": true
     }
   ],
   "grammar_acquired": [
@@ -3203,6 +3215,14 @@
     {
       "rule": "Metakognitive Reflexion und Planung mit Code-switching als stabiles, lernförderliches Muster",
       "stable": true
+    },
+    {
+      "rule": "Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Übersetzen/Erklären von Hotelbegriffen) als robust konsolidiertes Muster",
+      "stable": true
+    },
+    {
+      "rule": "Funktionale elliptische Strukturen für direkte Übersetzungen/Erklärungen ('Das bedeutet...', 'Check-out bis elf Uhr.') als stabiles A1-Muster",
+      "stable": true
     }
   ],
   "kannbeschreibungen_attempted": {
@@ -3312,7 +3332,7 @@
     },
     "K176": {
       "day": 176,
-      "result": "teilweise"
+      "result": "bestanden"
     },
     "K011": {
       "day": 11,
@@ -3911,6 +3931,9 @@
       "result": "teilweise"
     }
   },
-  "persistent_errors": [],
-  "emotional_state": ""
+  "persistent_errors": [
+    "Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)",
+    "Code-switching für metakognitive Planung und präzisierende Erklärungen (etabliertes, funktionales Muster)"
+  ],
+  "emotional_state": "konzentriert, selbstsicher und lernbereit"
 }

@@ -813,13 +813,14 @@ button,input{font:inherit}
 
 /* ── two-pane layout ── */
 .layout{
-  display:grid;grid-template-columns:minmax(0,1fr) 12px minmax(260px,var(--sidebar-width));
+  display:grid;grid-template-columns:1fr 12px var(--sidebar-width);
   height:calc(100vh - 42px);margin-top:42px;
 }
 .transcript{overflow-y:auto;padding:16px 28px 40px 28px;background:#f0f0f0;min-width:0}
 .splitter{
   position:relative;background:#eef1f3;cursor:col-resize;
   border-left:1px solid #d6dbe0;border-right:1px solid #d6dbe0;
+  touch-action:none;
 }
 .splitter::before{
   content:'';position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);
@@ -1242,7 +1243,8 @@ _JS = """
 
   function applySidebarWidth(px) {
     if (!Number.isFinite(px)) return;
-    var clamped = Math.max(260, Math.min(720, px));
+    var maxW = Math.floor(window.innerWidth * 0.75);
+    var clamped = Math.max(200, Math.min(maxW, px));
     sidebarWidth = clamped;
     document.documentElement.style.setProperty('--sidebar-width', clamped + 'px');
   }
@@ -1552,7 +1554,9 @@ _JS = """
     }
   }, 1000);
 
-  setInterval(poll, 3000);
+  if (location.protocol !== 'file:') {
+    setInterval(poll, 3000);
+  }
   initWorkbench();
   initSyllabusBrowser();
   initSplitter();

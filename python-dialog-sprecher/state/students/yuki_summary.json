@@ -21,7 +21,7 @@
     {
       "word": "die Uhrzeit",
       "stable": true,
-      "mentions": 11
+      "mentions": 12
     },
     {
       "word": "Entschuldigung",
@@ -29,22 +29,22 @@
       "mentions": 11
     },
     {
+      "word": "die Uhr",
+      "stable": true,
+      "mentions": 10
+    },
+    {
       "word": "Danke",
       "stable": true,
       "mentions": 10
     },
     {
-      "word": "die Uhr",
+      "word": "die Stunde",
       "stable": true,
-      "mentions": 9
+      "mentions": 8
     },
     {
       "word": "rechts",
-      "stable": true,
-      "mentions": 7
-    },
-    {
-      "word": "die Stunde",
       "stable": true,
       "mentions": 7
     },
@@ -108,17 +108,17 @@
       "mentions": 2
     },
     {
+      "rule": "Mediationsstruktur 'Das bedeutet...' für Übersetzungen",
+      "stable": true,
+      "mentions": 1
+    },
+    {
       "rule": "Signalwort bei Unsicherheit: 'Ich weiß nicht'",
       "stable": true,
       "mentions": 1
     },
     {
       "rule": "Mediationsstruktur: 'Das bedeutet...'",
-      "stable": true,
-      "mentions": 1
-    },
-    {
-      "rule": "Perfekt A1-Form: 'das bedeutet' + Übersetzung, dann Verständnisfrage",
       "stable": true,
       "mentions": 1
     }
@@ -151,7 +151,7 @@
     }
   ],
   "persistent_errors": [],
-  "emotional_state": "sicher und kompetent",
+  "emotional_state": "sicher und engagiert",
   "recent_kanns": [
     {
       "kann_id": "K176",
@@ -186,11 +186,11 @@
   ],
   "recent_highlights": [
     "Perfekte 7/7 Performance mit vollständiger Beherrschung der Kernkompetenz - zeigt konsistentes Mastery-Niveau in der Hotelbegriff-Mediation",
-    "Perfekte 7/7 Performance mit sofortigen, akkuraten Übersetzungen von Hotelbegriffen und konsistenter Anwendung der Mediationsstruktur",
-    "Perfect execution of mediation task in round 6: immediate translation 'Das bedeutet... Parkplatz.' with comprehension check, demonstrating complete mastery of the core competency"
+    "Perfekte 7/7 Performance mit vollständiger Beherrschung der Kernkompetenz - zeigt konsistentes Mastery-Niveau in der Hotelbegriff-Mediation",
+    "Perfekte 7/7 Performance mit sofortigen, akkuraten Übersetzungen von Hotelbegriffen und konsistenter Anwendung der Mediationsstruktur"
   ],
   "totals": {
     "vocabulary": 308,
-    "grammar": 142
+    "grammar": 143
   }
 }
