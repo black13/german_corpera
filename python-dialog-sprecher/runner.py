@@ -153,7 +153,8 @@ def _build_call_meta(step_name, api, model, usage_dict, raw_text=None, response_
     return meta
 
 def chat(api, model, messages, temperature=0.8, max_tokens=500,
-         base_url=None, api_key_env=None, step_name=None, return_meta=False):
+         base_url=None, api_key_env=None, step_name=None, return_meta=False,
+         request_timeout=None):
     """Call any OpenAI-compatible endpoint.
 
     Resolution order for base_url / api_key_env:
@@ -166,9 +167,16 @@ def chat(api, model, messages, temperature=0.8, max_tokens=500,
         if not api_key_env:
             api_key_env = default_key_env
     client = _get_client(base_url, api_key_env)
-    r = client.chat.completions.create(
-        model=model, messages=messages, temperature=temperature, max_tokens=max_tokens
-    )
+    create_kwargs = {
+        "model": model,
+        "messages": messages,
+        "temperature": temperature,
+        "max_tokens": max_tokens,
+    }
+    timeout = request_timeout if request_timeout is not None else runtime_cfg.get("request_timeout", 180)
+    if timeout:
+        create_kwargs["timeout"] = timeout
+    r = client.chat.completions.create(**create_kwargs)
     content = r.choices[0].message.content or ""
     usage_dict = _usage_to_dict(getattr(r, "usage", None))
     response_json = _jsonify_response(r)
@@ -199,6 +207,7 @@ def chat_from_config(step_name, messages, return_meta=False):
         api_key_env=cfg.get("api_key_env"),
         step_name=step_name,
         return_meta=return_meta,
+        request_timeout=cfg.get("request_timeout"),
     )
 
 def parse_json(raw):
@@ -369,6 +378,124 @@ def _needle_matches(text, needle):
     return False
 
 
+def _derive_kann_relationships(kann, limit=4):
+    relationships = []
+    kann_id = kann["id"]
+    category = kann.get("category", "")
+    for idx, rel in enumerate(kann_relationship_cfg.get("relationship_groups", [])):
+        score = 0
+        if kann_id in rel.get("kann_ids", []):
+            score = max(score, 4)
+        if kann_id in rel.get("bridge_to_kann_ids", []):
+            score = max(score, 3)
+        if any(_needle_matches(kann["kann"], needle) for needle in rel.get("match_any", [])):
+            score = max(score, 2)
+        if category in rel.get("scope_categories", []):
+            score = max(score, 1)
+        if not score:
+            continue
+        relationships.append((
+            -score,
+            idx,
+            {
+                "id": rel.get("id", ""),
+                "name": rel.get("name", ""),
+                "kann_ids": rel.get("kann_ids", []),
+                "bridge_to_kann_ids": rel.get("bridge_to_kann_ids", []),
+                "summary": rel.get("summary", ""),
+                "teacher_guidance": rel.get("teacher_guidance", ""),
+                "grader_guidance": rel.get("grader_guidance", ""),
+            },
+        ))
+    relationships.sort(key=lambda item: (item[0], item[1]))
+    return [item[2] for item in relationships[:limit]]
+
+
+def _derive_syllabus_branches(kann, focus, limit=3):
+    branches = []
+    kann_id = kann["id"]
+    category = kann.get("category", "")
+    rel_ids = {rel.get("id", "") for rel in focus.get("global_relationships", [])}
+    bridge_ids = {
+        bridge_id
+        for rel in focus.get("global_relationships", [])
+        for bridge_id in rel.get("bridge_to_kann_ids", [])
+    }
+    wortfeld_targets = set(focus.get("wortfeld_targets", []))
+    for idx, branch in enumerate(a1_syllabus_cfg.get("branches", [])):
+        score = 0
+        if kann_id in branch.get("kann_ids", []):
+            score = max(score, 5)
+        if kann_id in branch.get("bridge_to_kann_ids", []):
+            score = max(score, 4)
+        if bridge_ids.intersection(branch.get("bridge_to_kann_ids", [])):
+            score = max(score, 3)
+        if rel_ids.intersection(branch.get("relationship_ids", [])):
+            score = max(score, 3)
+        if wortfeld_targets.intersection(branch.get("wortfeld_targets", [])):
+            score = max(score, 2)
+        if any(_needle_matches(kann["kann"], needle) for needle in branch.get("match_any", [])):
+            score = max(score, 4)
+        if category in branch.get("scope_categories", []):
+            score = max(score, 1)
+        if not score:
+            continue
+        branches.append((
+            -score,
+            idx,
+            {
+                "id": branch.get("id", ""),
+                "name": branch.get("name", ""),
+                "summary": branch.get("summary", ""),
+                "teacher_language": branch.get("teacher_language", ""),
+                "relationship_ids": branch.get("relationship_ids", []),
+                "fruit_clusters": branch.get("fruit_clusters", []),
+            },
+        ))
+    branches.sort(key=lambda item: (item[0], item[1]))
+    return [item[2] for item in branches[:limit]]
+
+
+def _derive_kann_quick_guide(kann, focus):
+    guide = dict(kann_quick_guides_cfg.get("guides", {}).get(kann["id"], {}) or {})
+    guide["kb_de"] = guide.get("kb_de") or kann["kann"]
+
+    if not guide.get("kb_de_simple"):
+        guide["kb_de_simple"] = "Ich mache diese Aufgabe in einer einfachen Alltagsszene."
+    if not guide.get("kb_en_simple"):
+        guide["kb_en_simple"] = "I practice this can-do statement in one simple everyday scene."
+    if not guide.get("scene"):
+        guide["scene"] = kann.get("category", "Alltagsszene")
+
+    speech_acts = focus.get("speech_acts", [])
+    if not guide.get("task_shape"):
+        guide["task_shape"] = [
+            "Die Situation erkennen.",
+            "Die passende Sprachhandlung wählen.",
+            "Einen kurzen A1-Satz sagen oder schreiben.",
+        ]
+    if not guide.get("core_phrases"):
+        guide["core_phrases"] = speech_acts[:4]
+
+    if not guide.get("word_bank"):
+        words = []
+        for sample in focus.get("wortfeld_samples", []):
+            words.extend(sample.get("examples", []))
+        guide["word_bank"] = _dedupe_strings(words, limit=12)
+    if not guide.get("grammar_tools"):
+        guide["grammar_tools"] = focus.get("grammar_targets", [])[:6]
+    if not guide.get("related_kbs"):
+        related = []
+        for rel in focus.get("global_relationships", []):
+            related.extend(rel.get("kann_ids", []))
+            related.extend(rel.get("bridge_to_kann_ids", []))
+        guide["related_kbs"] = [kid for kid in _dedupe_strings(related, limit=10) if kid != kann["id"]]
+
+    for key in ("roles", "task_shape", "core_phrases", "word_bank", "grammar_tools", "related_kbs"):
+        guide[key] = _dedupe_strings(guide.get(key, []), limit=12)
+    return guide
+
+
 def derive_kann_focus(kann):
     focus = {
         "kann_id": kann["id"],
@@ -378,6 +505,9 @@ def derive_kann_focus(kann):
         "wortfeld_targets": [],
         "speech_acts": [],
         "example_bank": [],
+        "global_relationships": [],
+        "syllabus_branches": [],
+        "quick_guide": {},
     }
 
     category_defaults = kann_map_cfg.get("category_defaults", {})
@@ -399,6 +529,8 @@ def derive_kann_focus(kann):
     focus["grammar_targets"] = _dedupe_strings(focus["grammar_targets"], limit=8)
     focus["wortfeld_targets"] = _dedupe_strings(focus["wortfeld_targets"], limit=6)
     focus["speech_acts"] = _dedupe_strings(focus["speech_acts"], limit=6)
+    focus["global_relationships"] = _derive_kann_relationships(kann)
+    focus["syllabus_branches"] = _derive_syllabus_branches(kann, focus)
 
     examples = []
     for example in focus["example_bank"]:
@@ -423,6 +555,7 @@ def derive_kann_focus(kann):
             break
     focus["example_bank"] = deduped_examples
     focus["wortfeld_samples"] = _sample_wortfeld_examples(focus["wortfeld_targets"])
+    focus["quick_guide"] = _derive_kann_quick_guide(kann, focus)
     return focus
 
 
@@ -485,6 +618,46 @@ def summarize_prior_progress(progress_entries, limit=5):
 
 def format_kann_focus_for_prompt(kann_focus):
     blocks = []
+    guide = kann_focus.get("quick_guide") or {}
+    if guide:
+        guide_lines = [
+            f"  - Original DE: {guide.get('kb_de', kann_focus.get('kann_text', ''))}",
+            f"  - Simple DE: {guide.get('kb_de_simple', '')}",
+            f"  - Simple EN: {guide.get('kb_en_simple', '')}",
+            f"  - Scene: {guide.get('scene', '')}",
+        ]
+        if guide.get("task_shape"):
+            guide_lines.append("  - Task shape: " + " / ".join(guide["task_shape"][:4]))
+        if guide.get("core_phrases"):
+            guide_lines.append("  - Core phrases: " + "; ".join(guide["core_phrases"][:6]))
+        if guide.get("word_bank"):
+            guide_lines.append("  - Word bank: " + ", ".join(guide["word_bank"][:12]))
+        if guide.get("grammar_tools"):
+            guide_lines.append("  - Grammar tools: " + "; ".join(guide["grammar_tools"][:6]))
+        blocks.append("KB quick guide:\n" + "\n".join(line for line in guide_lines if line.strip()))
+    if kann_focus.get("global_relationships"):
+        rel_lines = []
+        for rel in kann_focus["global_relationships"]:
+            ids = ", ".join(rel.get("kann_ids", []))
+            bridge_ids = ", ".join(rel.get("bridge_to_kann_ids", []))
+            suffix = f" ({ids})" if ids else ""
+            if bridge_ids:
+                suffix += f" -> bridges to {bridge_ids}"
+            rel_lines.append(f"  - {rel.get('name', rel.get('id', 'relationship'))}{suffix}: {rel.get('summary', '')}")
+            if rel.get("teacher_guidance"):
+                rel_lines.append(f"    Teacher: {rel['teacher_guidance']}")
+        blocks.append("Global KB relationships:\n" + "\n".join(rel_lines))
+    if kann_focus.get("syllabus_branches"):
+        branch_lines = []
+        for branch in kann_focus["syllabus_branches"]:
+            branch_lines.append(f"  - {branch.get('name', branch.get('id', 'branch'))}: {branch.get('summary', '')}")
+            if branch.get("teacher_language"):
+                branch_lines.append(f"    Teacher may say: {branch['teacher_language']}")
+            for cluster in branch.get("fruit_clusters", [])[:2]:
+                words = ", ".join(cluster.get("words", [])[:8])
+                tools = ", ".join(cluster.get("grammar_tools", [])[:5])
+                branch_lines.append(f"    Fruit cluster - {cluster.get('id', 'cluster')}: {words} | grammar/tools: {tools}")
+        blocks.append("A1 syllabus branches:\n" + "\n".join(branch_lines))
     if kann_focus.get("speech_acts"):
         blocks.append("Target speech acts:\n" + "\n".join(f"  - {item}" for item in kann_focus["speech_acts"]))
     if kann_focus.get("grammar_targets"):
@@ -522,6 +695,23 @@ def build_kann_progress_entry(kann, kann_focus, day_num, day_summary, grader_rep
         "speech_acts": kann_focus.get("speech_acts", []),
         "grammar_targets": kann_focus.get("grammar_targets", []),
         "wortfeld_targets": kann_focus.get("wortfeld_targets", []),
+        "global_relationships": [
+            {
+                "id": rel.get("id", ""),
+                "name": rel.get("name", ""),
+                "kann_ids": rel.get("kann_ids", []),
+                "bridge_to_kann_ids": rel.get("bridge_to_kann_ids", []),
+            }
+            for rel in kann_focus.get("global_relationships", [])
+        ],
+        "syllabus_branches": [
+            {
+                "id": branch.get("id", ""),
+                "name": branch.get("name", ""),
+                "relationship_ids": branch.get("relationship_ids", []),
+            }
+            for branch in kann_focus.get("syllabus_branches", [])
+        ],
         "wortfeld_used": _dedupe_strings(vocab_used, limit=8),
         "grammar_learned": day_summary.get("grammar_learned", []),
         "vocabulary_learned": day_summary.get("vocabulary_learned", []),
@@ -542,6 +732,15 @@ kann_map_cfg = load_optional("canon/kann_map.json", {
     "keyword_rules": [],
     "manual_overrides": {},
 })
+kann_relationship_cfg = load_optional("canon/kann_relationships.json", {
+    "relationship_groups": [],
+})
+a1_syllabus_cfg = load_optional("canon/a1_syllabus_branches.json", {
+    "branches": [],
+})
+kann_quick_guides_cfg = load_optional("canon/kann_quick_guides.json", {
+    "guides": {},
+})
 sprachacts   = load("canon/sprachhandlungen.json")
 teacher_pers = load("prompts/teacher/persona.json")
 rounds_tmpl  = load("prompts/teacher/round_frames.json")["rounds"]
@@ -554,6 +753,11 @@ wortfelder   = load("canon/wortfelder.json")
 
 STUDENT_IDS = runtime_cfg["classroom"]["students"]
 student_configs = {sid: load(f"prompts/students/{sid}.json") for sid in STUDENT_IDS}
+observer_cfg = runtime_cfg["classroom"].get("observer", {})
+NOTE_TAKER_ENABLED = bool(observer_cfg.get("enabled"))
+NOTE_TAKER_ID = observer_cfg.get("id", "note_taker")
+NOTE_TAKER_NAME = observer_cfg.get("name", "Note Taker")
+note_taker_tmpl = load_optional(f"prompts/observers/{NOTE_TAKER_ID}.json", {})
 
 # ── live state ─────────────────────────────────────────────────────
 live = {
@@ -575,6 +779,9 @@ run_lock = threading.Lock()
 def _esc(s):
     return str(s).replace("&","&amp;").replace("<","&lt;").replace(">","&gt;")
 
+def _attr(s):
+    return _esc(s).replace('"', "&quot;")
+
 STUDENT_COLORS = {"marta": "#dcf8c6", "james": "#d4e6f1", "yuki": "#f9e79f"}
 STUDENT_LABEL_COLORS = {"marta": "#2e7d32", "james": "#1565c0", "yuki": "#e65100"}
 STUDENT_NAMES = {sid: student_configs[sid]["name"] for sid in STUDENT_IDS}
@@ -586,6 +793,7 @@ _CSS = """
 html,body{height:100%;overflow:hidden}
 body{font-family:-apple-system,'Segoe UI',Roboto,Helvetica,sans-serif;background:#f0f0f0;color:#222;
   -webkit-user-select:text;user-select:text;-webkit-touch-callout:default}
+button,input{font:inherit}
 
 /* ── sticky header ── */
 .live-header{
@@ -639,6 +847,7 @@ body.resizing *{cursor:col-resize !important;user-select:none !important}
 .scorecard th{background:#075e54;color:#fff;padding:3px 5px;text-align:left;position:sticky;top:0}
 .scorecard td{padding:2px 5px;border:1px solid #e0e0e0}
 .scorecard-tools{display:flex;gap:6px;margin:0 0 8px 0}
+.scorecard-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .scorecard-tool{
   border:1px solid #cfd6dc;background:#f8f9fa;color:#34444c;border-radius:5px;
   padding:5px 7px;font-size:.72em;font-weight:700;cursor:pointer;
@@ -717,6 +926,16 @@ body.resizing *{cursor:col-resize !important;user-select:none !important}
 .grader-label{font-weight:700;font-size:.75em;color:#856404;margin-bottom:2px}
 .grader-text{color:#5d4037;-webkit-user-select:text;user-select:text;cursor:text}
 
+/* ── quiet note-taker ── */
+.observer-block{
+  background:#eef6ff;max-width:92%;margin:8px auto;border-radius:8px;
+  border-left:4px solid #4f8fcf;padding:8px 14px;font-size:.85em;
+}
+.observer-label{font-weight:700;font-size:.75em;color:#24527a;margin-bottom:4px}
+.observer-text{color:#25384a;line-height:1.5;-webkit-user-select:text;user-select:text;cursor:text}
+.observer-row{margin:2px 0}
+.observer-row b{color:#183a59}
+
 /* ── prompt boxes (debug) ── */
 .prompt-details{margin-top:6px}
 .prompt-toggle{font-size:.72em;color:#075e54;cursor:pointer;text-decoration:underline}
@@ -755,6 +974,22 @@ body.resizing *{cursor:col-resize !important;user-select:none !important}
 .run-button:hover{background:#064d45}
 .run-help{font-size:.74em;color:#66757f;line-height:1.45;margin-top:6px}
 
+/* ── reader workbench ── */
+.workbench-card{
+  background:#f8f9fa;border:1px solid #e3e7ea;border-radius:8px;padding:10px 12px;
+}
+.workbench-textarea{
+  width:100%;min-height:150px;resize:vertical;border:1px solid #cfd6dc;border-radius:6px;
+  padding:9px 10px;background:#fff;color:#1f2d35;font-size:.84em;line-height:1.45;
+}
+.workbench-textarea:focus{outline:2px solid rgba(7,94,84,.22);border-color:#075e54}
+.workbench-tools{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.workbench-button{
+  border:1px solid #cfd6dc;background:#fff;color:#34444c;border-radius:5px;
+  padding:6px 8px;font-size:.74em;font-weight:700;cursor:pointer;
+}
+.workbench-button:hover{background:#eef3f5;border-color:#aeb9c2}
+
 /* ── billing ── */
 .billing-card{
   background:#f8f9fa;border:1px solid #e3e7ea;border-radius:8px;padding:10px 12px;
@@ -780,6 +1015,51 @@ body.resizing *{cursor:col-resize !important;user-select:none !important}
 .focus-subtitle{font-size:.75em;font-weight:700;color:#4f5b62;text-transform:uppercase;letter-spacing:.4px;margin:8px 0 4px 0}
 .focus-list{font-size:.78em;color:#333;line-height:1.45;padding-left:16px}
 .focus-list li{margin:2px 0}
+.quick-guide{
+  background:#fff;border:1px solid #dce7e3;border-left:4px solid #075e54;
+  border-radius:8px;padding:9px 10px;margin:8px 0 10px 0;
+}
+.quick-title{font-weight:800;color:#075e54;font-size:.84em;margin-bottom:6px}
+.quick-line{font-size:.79em;color:#27363d;line-height:1.45;margin:4px 0}
+.quick-tags{display:flex;flex-wrap:wrap;gap:4px;margin:4px 0 6px 0}
+.quick-tag{
+  font-size:.72em;line-height:1.3;padding:3px 6px;border-radius:999px;
+  background:#eef8f6;color:#1d4c45;border:1px solid #d1e5df;
+}
+.syllabus-browser-card{
+  background:#f8f9fa;border:1px solid #e3e7ea;border-radius:8px;padding:10px 12px;
+}
+.syllabus-search{
+  width:100%;border:1px solid #cfd6dc;border-radius:6px;padding:8px 9px;
+  font-size:.84em;background:#fff;color:#1f2d35;
+}
+.syllabus-search:focus{outline:2px solid rgba(7,94,84,.22);border-color:#075e54}
+.syllabus-tools{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.syllabus-tool,.syllabus-action,.syllabus-related{
+  border:1px solid #cfd6dc;background:#fff;color:#34444c;border-radius:5px;
+  padding:5px 7px;font-size:.72em;font-weight:700;cursor:pointer;
+}
+.syllabus-tool:hover,.syllabus-action:hover,.syllabus-related:hover{background:#eef3f5;border-color:#aeb9c2}
+.syllabus-count{font-size:.74em;color:#66757f;line-height:1.4;margin-bottom:8px}
+.syllabus-list{display:flex;flex-direction:column;gap:6px;max-height:48vh;overflow-y:auto;padding-right:2px}
+.syllabus-item{
+  background:#fff;border:1px solid #e1e6ea;border-radius:8px;overflow:hidden;
+}
+.syllabus-item.active{border-color:#075e54;box-shadow:0 0 0 2px rgba(7,94,84,.12)}
+.syllabus-item.highlight{box-shadow:0 0 0 3px rgba(7,94,84,.22)}
+.syllabus-item[hidden]{display:none}
+.syllabus-item>summary{
+  list-style:none;cursor:pointer;padding:8px 10px;line-height:1.35;
+}
+.syllabus-item>summary::-webkit-details-marker{display:none}
+.syllabus-summary-main{display:flex;gap:6px;align-items:baseline;margin-bottom:3px}
+.syllabus-kid{font-weight:800;color:#075e54;font-size:.82em;white-space:nowrap}
+.syllabus-cat{font-size:.7em;color:#66757f;white-space:nowrap}
+.syllabus-summary-text{font-size:.78em;color:#2d3a40}
+.syllabus-body{border-top:1px solid #edf0f2;padding:9px 10px}
+.syllabus-body .quick-tags{margin-bottom:8px}
+.syllabus-related-row{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px}
+.syllabus-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
 .student-card.active{border-color:#075e54;background:#eef8f6}
 .student-head{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
 .student-name{font-weight:700;font-size:.86em}
@@ -794,31 +1074,44 @@ body.resizing *{cursor:col-resize !important;user-select:none !important}
 /* ── view mode filtering ── */
 body.view-conversation .grader-block{display:none}
 body.view-conversation .prompt-details{display:none}
+body.view-syllabus .grader-block{display:none}
+body.view-syllabus .prompt-details{display:none}
 body.view-grader .prompt-details{display:none}
 /* body.view-debug — everything visible */
 
 /* ── mobile / iPhone ── */
 @media(max-width:768px){
-  .layout{grid-template-columns:1fr;height:auto;margin-top:0}
-  .live-header{position:relative;flex-wrap:wrap;padding:8px 12px;font-size:.82em}
+  .layout{display:block;height:auto;margin-top:0}
+  .live-header{position:sticky;flex-wrap:wrap;padding:8px 12px;font-size:.82em}
   .splitter{display:none}
   .lh-sep{display:none}
   .lh-left{gap:4px}
   .lh-right{width:100%;justify-content:space-between;margin-top:4px}
+  .lh-kann{display:block;width:100%;line-height:1.35}
   html,body{height:auto;overflow:auto}
   .transcript{padding:10px 12px 30px 12px;min-height:0}
   .sidebar{border-left:none;border-top:1px solid #ddd;padding:12px}
   .day-content{padding:10px 12px}
-  .msg{max-width:95% !important;padding:10px 12px;font-size:.95em}
-  .teacher-msg{max-width:95%}
+  .msg{max-width:100% !important;padding:10px 12px;font-size:.96em;line-height:1.58}
+  .teacher-msg{max-width:100%}
+  .student-msg{max-width:100%;margin-left:0}
   .grader-block{max-width:100%}
+  .observer-block{max-width:100%}
   .kann-banner{padding:8px 10px}
   .round-header{margin:16px 0 8px 0}
   .exchange-group{margin-bottom:14px;padding-bottom:12px}
   .prompt-box{max-height:150px;font-size:.65em}
-  .day-block>summary{padding:10px 12px;font-size:.88em}
-  .scorecard{font-size:.68em}
-  .vbtn{padding:8px 6px;font-size:.72em}
+  .day-block>summary{padding:12px 12px;font-size:.9em;line-height:1.35}
+  .scorecard{font-size:.72em;min-width:620px}
+  .scorecard-tools{flex-wrap:wrap}
+  .scorecard-tool,.vbtn,.run-button,.workbench-button{min-height:44px}
+  .run-input{min-height:44px;font-size:16px}
+  .workbench-textarea{font-size:16px;min-height:180px}
+  .syllabus-search{font-size:16px;min-height:44px}
+  .syllabus-list{max-height:none;overflow:visible}
+  .syllabus-tool,.syllabus-action,.syllabus-related{min-height:38px}
+  .vbtn{padding:8px 6px;font-size:.76em}
+  .prompt-toggle{display:inline-block;padding:8px 0}
 }
 @media(max-width:430px){
   .live-header{padding:6px 10px;font-size:.78em}
@@ -826,10 +1119,11 @@ body.view-grader .prompt-details{display:none}
   .lh-kann{font-size:.8em}
   .transcript{padding:8px 8px 24px 8px}
   .day-content{padding:8px 10px}
-  .msg{padding:8px 10px;font-size:.9em;border-radius:8px}
+  .msg{padding:9px 10px;font-size:.93em;border-radius:8px}
   .speaker{font-size:.78em}
   .kann-text{font-size:.88em}
   .sidebar{padding:10px}
+  .run-form{grid-template-columns:1fr}
 }
 """
 
@@ -840,6 +1134,7 @@ _JS = """
   var sidebarWidth = parseInt(localStorage.getItem('sprecher-sidebar-width') || '320', 10);
   var lastUpdate = Date.now();
   var dayOpenState = loadDayOpenState();
+  var workbenchKey = 'sprecher-workbench-notes';
 
   function loadDayOpenState() {
     try {
@@ -851,6 +1146,98 @@ _JS = """
 
   function saveDayOpenState() {
     localStorage.setItem('sprecher-day-open-state', JSON.stringify(dayOpenState));
+  }
+
+  function setWorkbenchValue(value) {
+    var box = document.getElementById('workbench-notes');
+    if (!box) return;
+    box.value = value;
+    localStorage.setItem(workbenchKey, value);
+  }
+
+  function currentKbNote() {
+    var tag = document.querySelector('.lh-tag');
+    var round = document.querySelector('.lh-round');
+    var kann = document.querySelector('.lh-kann');
+    var parts = [];
+    if (tag && tag.textContent.trim()) parts.push(tag.textContent.trim());
+    if (round && round.textContent.trim()) parts.push(round.textContent.trim());
+    if (kann && kann.textContent.trim()) parts.push(kann.textContent.trim());
+    return parts.join(' | ');
+  }
+
+  function currentKbId() {
+    var kann = document.querySelector('.lh-kann');
+    var text = kann ? kann.textContent : '';
+    var match = text.match(/K\d{3}/);
+    return match ? match[0] : '';
+  }
+
+  function appendWorkbenchText(text) {
+    var box = document.getElementById('workbench-notes');
+    if (!box || !text) return;
+    var prefix = box.value && !box.value.endsWith('\n') ? '\n\n' : '';
+    setWorkbenchValue(box.value + prefix + text);
+    box.focus();
+  }
+
+  function initWorkbench() {
+    var box = document.getElementById('workbench-notes');
+    if (!box) return;
+    var saved = localStorage.getItem(workbenchKey);
+    if (saved !== null) box.value = saved;
+    box.addEventListener('input', function(){
+      localStorage.setItem(workbenchKey, box.value);
+    });
+  }
+
+  function updateSyllabusCount() {
+    var count = document.getElementById('syllabus-count');
+    if (!count) return;
+    var visible = document.querySelectorAll('.syllabus-item:not([hidden])').length;
+    var total = document.querySelectorAll('.syllabus-item').length;
+    count.textContent = visible + ' / ' + total + ' KBs visible';
+  }
+
+  function filterSyllabus(value) {
+    var needle = (value || '').trim().toLowerCase();
+    document.querySelectorAll('.syllabus-item').forEach(function(item){
+      var haystack = (item.getAttribute('data-search') || '').toLowerCase();
+      item.hidden = needle && haystack.indexOf(needle) === -1;
+    });
+    updateSyllabusCount();
+  }
+
+  function openSyllabusItem(kid) {
+    if (!kid) return;
+    var item = document.getElementById('syllabus-' + kid);
+    if (!item) return;
+    item.hidden = false;
+    item.open = true;
+    item.scrollIntoView({behavior:'smooth', block:'start'});
+    item.classList.add('highlight');
+    window.setTimeout(function(){ item.classList.remove('highlight'); }, 1800);
+  }
+
+  function highlightCurrentSyllabus() {
+    var kid = currentKbId();
+    document.querySelectorAll('.syllabus-item').forEach(function(item){
+      item.classList.toggle('active', item.getAttribute('data-kb-id') === kid);
+    });
+  }
+
+  function initSyllabusBrowser() {
+    var search = document.getElementById('syllabus-filter');
+    if (search) {
+      var saved = localStorage.getItem('sprecher-syllabus-filter') || '';
+      search.value = saved;
+      filterSyllabus(saved);
+      search.addEventListener('input', function(){
+        localStorage.setItem('sprecher-syllabus-filter', search.value);
+        filterSyllabus(search.value);
+      });
+    }
+    highlightCurrentSyllabus();
   }
 
   function applySidebarWidth(px) {
@@ -903,11 +1290,16 @@ _JS = """
   function setView(v) {
     currentView = v;
     localStorage.setItem('sprecher-view', v);
-    document.body.classList.remove('view-conversation', 'view-grader', 'view-debug');
+    document.body.classList.remove('view-conversation', 'view-syllabus', 'view-grader', 'view-debug');
     document.body.classList.add('view-' + v);
     document.querySelectorAll('.vbtn').forEach(function(b){
       b.classList.toggle('active', b.getAttribute('data-view') === v);
     });
+    if (v === 'syllabus') {
+      var target = document.getElementById('syllabus-browser-section') || document.getElementById('syllabus-section');
+      if (target) target.scrollIntoView({behavior:'smooth', block:'start'});
+      highlightCurrentSyllabus();
+    }
   }
   setView(currentView);
 
@@ -915,6 +1307,57 @@ _JS = """
   document.addEventListener('click', function(e){
     if (e.target.classList.contains('vbtn')) {
       setView(e.target.getAttribute('data-view'));
+      return;
+    }
+
+    var workbenchButton = e.target.closest ? e.target.closest('.workbench-button') : null;
+    if (workbenchButton) {
+      if (workbenchButton.getAttribute('data-workbench-action') === 'insert-kann') {
+        appendWorkbenchText(currentKbNote());
+      }
+      if (workbenchButton.getAttribute('data-workbench-action') === 'clear') {
+        var box = document.getElementById('workbench-notes');
+        if (box && (!box.value || window.confirm('Clear workbench notes?'))) {
+          setWorkbenchValue('');
+        }
+      }
+      return;
+    }
+
+    var syllabusAction = e.target.closest ? e.target.closest('[data-syllabus-action]') : null;
+    if (syllabusAction) {
+      var action = syllabusAction.getAttribute('data-syllabus-action');
+      if (action === 'current') {
+        setView('syllabus');
+        openSyllabusItem(currentKbId());
+      }
+      if (action === 'clear-filter') {
+        var sf = document.getElementById('syllabus-filter');
+        if (sf) {
+          sf.value = '';
+          localStorage.setItem('sprecher-syllabus-filter', '');
+          filterSyllabus('');
+          sf.focus();
+        }
+      }
+      return;
+    }
+
+    var kbOpen = e.target.closest ? e.target.closest('[data-kb-open]') : null;
+    if (kbOpen) {
+      e.preventDefault();
+      setView('syllabus');
+      openSyllabusItem(kbOpen.getAttribute('data-kb-open'));
+      return;
+    }
+
+    var kbRun = e.target.closest ? e.target.closest('[data-syllabus-run]') : null;
+    if (kbRun) {
+      var input = document.querySelector('.run-input');
+      if (input) {
+        input.value = kbRun.getAttribute('data-syllabus-run');
+        input.focus();
+      }
       return;
     }
 
@@ -1037,7 +1480,7 @@ _JS = """
   function poll() {
     var wasNearBottom = isNearBottom();
 
-    fetch(location.href).then(function(r){ return r.text(); }).then(function(html){
+    fetch(location.pathname + '?poll=1').then(function(r){ return r.text(); }).then(function(html){
       var parser = new DOMParser();
       var doc = parser.parseFromString(html, 'text/html');
 
@@ -1049,8 +1492,11 @@ _JS = """
       // sidebar sections (separate scroll context — no transcript shift)
       var secs = document.querySelectorAll('.sidebar-section');
       var nsecs = doc.querySelectorAll('.sidebar-section');
-      for (var i = 0; i < nsecs.length && i < secs.length; i++)
+      for (var i = 0; i < nsecs.length && i < secs.length; i++) {
+        if (secs[i].getAttribute('data-static')) continue;
         secs[i].innerHTML = nsecs[i].innerHTML;
+      }
+      highlightCurrentSyllabus();
 
       // transcript — append-only strategy
       var trans = document.getElementById('transcript');
@@ -1107,6 +1553,8 @@ _JS = """
   }, 1000);
 
   setInterval(poll, 3000);
+  initWorkbench();
+  initSyllabusBrowser();
   initSplitter();
 })();
 """
@@ -1118,13 +1566,68 @@ def _render_focus_list(items):
     return "<ul class=\"focus-list\">" + "".join(f"<li>{_esc(item)}</li>" for item in items) + "</ul>"
 
 
+def _render_quick_tags(items):
+    if not items:
+        return ""
+    return '<div class="quick-tags">' + "".join(f'<span class="quick-tag">{_esc(item)}</span>' for item in items) + "</div>"
+
+
 def _render_kann_focus_html(kann_focus):
     if not kann_focus:
         return '<div class="status-text">No Kann focus available yet.</div>'
+    guide = kann_focus.get("quick_guide") or {}
     parts = [
         '<div class="focus-card">',
         f'<div class="focus-lead">{_esc(kann_focus.get("kann_text", ""))}</div>',
     ]
+    if guide:
+        parts.append('<div class="quick-guide">')
+        parts.append('<div class="quick-title">KB Quick Guide</div>')
+        if guide.get("kb_de_simple"):
+            parts.append(f'<div class="quick-line"><b>Einfach DE:</b> {_esc(guide["kb_de_simple"])}</div>')
+        if guide.get("kb_en_simple"):
+            parts.append(f'<div class="quick-line"><b>Simple EN:</b> {_esc(guide["kb_en_simple"])}</div>')
+        if guide.get("scene"):
+            parts.append(f'<div class="quick-line"><b>Scene:</b> {_esc(guide["scene"])}</div>')
+        if guide.get("roles"):
+            parts.append(f'<div class="quick-line"><b>Roles:</b> {_esc(", ".join(guide["roles"]))}</div>')
+        if guide.get("task_shape"):
+            parts.append('<div class="focus-subtitle">Layout</div>')
+            parts.append(_render_focus_list(guide["task_shape"]))
+        if guide.get("core_phrases"):
+            parts.append('<div class="focus-subtitle">Core Phrases</div>')
+            parts.append(_render_quick_tags(guide["core_phrases"]))
+        if guide.get("word_bank"):
+            parts.append('<div class="focus-subtitle">Word Bank</div>')
+            parts.append(_render_quick_tags(guide["word_bank"]))
+        if guide.get("grammar_tools"):
+            parts.append('<div class="focus-subtitle">Grammar Tools</div>')
+            parts.append(_render_focus_list(guide["grammar_tools"]))
+        if guide.get("related_kbs"):
+            parts.append(f'<div class="quick-line"><b>Related KBs:</b> {_esc(", ".join(guide["related_kbs"]))}</div>')
+        parts.append('</div>')
+    if kann_focus.get("global_relationships"):
+        parts.append('<div class="focus-subtitle">Global KB Relationships</div><ul class="focus-list">')
+        for rel in kann_focus["global_relationships"]:
+            ids = ", ".join(rel.get("kann_ids", []))
+            bridge_ids = ", ".join(rel.get("bridge_to_kann_ids", []))
+            suffix = f' <span class="student-meta">[{_esc(ids)}]</span>' if ids else ""
+            if bridge_ids:
+                suffix += f' <span class="student-meta">bridges to {_esc(bridge_ids)}</span>'
+            parts.append(f'<li><b>{_esc(rel.get("name", rel.get("id", "")))}</b>{suffix}: {_esc(rel.get("summary", ""))}</li>')
+        parts.append('</ul>')
+    if kann_focus.get("syllabus_branches"):
+        parts.append('<div class="focus-subtitle">A1 Syllabus Branches</div><ul class="focus-list">')
+        for branch in kann_focus["syllabus_branches"]:
+            parts.append(f'<li><b>{_esc(branch.get("name", branch.get("id", "")))}</b>: {_esc(branch.get("summary", ""))}')
+            if branch.get("fruit_clusters"):
+                clusters = []
+                for cluster in branch.get("fruit_clusters", [])[:2]:
+                    words = ", ".join(cluster.get("words", [])[:6])
+                    clusters.append(f'{cluster.get("id", "cluster")}: {words}')
+                parts.append(f'<br><span class="student-meta">{_esc("; ".join(clusters))}</span>')
+            parts.append('</li>')
+        parts.append('</ul>')
     if kann_focus.get("speech_acts"):
         parts.append('<div class="focus-subtitle">Speech Acts</div>')
         parts.append(_render_focus_list(kann_focus["speech_acts"]))
@@ -1143,6 +1646,104 @@ def _render_kann_focus_html(kann_focus):
             parts.append(f'<li>{_esc(example["text"])} <span class="student-meta">[{_esc(source)}]</span></li>')
         parts.append('</ul>')
     parts.append('</div>')
+    return "".join(parts)
+
+
+_SYLLABUS_FOCUS_CACHE = None
+
+
+def _get_syllabus_focus_cache():
+    global _SYLLABUS_FOCUS_CACHE
+    if _SYLLABUS_FOCUS_CACHE is None:
+        _SYLLABUS_FOCUS_CACHE = [
+            {
+                "day": idx + 1,
+                "kann": kann,
+                "focus": derive_kann_focus(kann),
+            }
+            for idx, kann in enumerate(all_kanns)
+        ]
+    return _SYLLABUS_FOCUS_CACHE
+
+
+def _render_syllabus_browser_html(current_kann_id):
+    parts = [
+        '<div class="syllabus-browser-card">',
+        '<input id="syllabus-filter" class="syllabus-search" type="search" '
+        'placeholder="Search KB, word, scene, grammar..." autocomplete="off">',
+        '<div class="syllabus-tools">',
+        '<button type="button" class="syllabus-tool" data-syllabus-action="current">Current KB</button>',
+        '<button type="button" class="syllabus-tool" data-syllabus-action="clear-filter">Clear Search</button>',
+        '</div>',
+        '<div id="syllabus-count" class="syllabus-count"></div>',
+        '<div class="syllabus-list">',
+    ]
+    for item in _get_syllabus_focus_cache():
+        day = item["day"]
+        kann = item["kann"]
+        focus = item["focus"]
+        guide = focus.get("quick_guide") or {}
+        kid = kann["id"]
+        active = " active" if kid == current_kann_id else ""
+        opened = " open" if kid == current_kann_id else ""
+        search_bits = [
+            kid,
+            str(day),
+            kann.get("category", ""),
+            kann.get("kann", ""),
+            guide.get("kb_de_simple", ""),
+            guide.get("kb_en_simple", ""),
+            guide.get("scene", ""),
+            " ".join(guide.get("roles", [])),
+            " ".join(guide.get("task_shape", [])),
+            " ".join(guide.get("core_phrases", [])),
+            " ".join(guide.get("word_bank", [])),
+            " ".join(guide.get("grammar_tools", [])),
+            " ".join(guide.get("related_kbs", [])),
+        ]
+        parts.append(
+            f'<details class="syllabus-item{active}" id="syllabus-{_attr(kid)}" '
+            f'data-kb-id="{_attr(kid)}" data-search="{_attr(" ".join(search_bits))}"{opened}>'
+        )
+        parts.append(
+            '<summary>'
+            '<div class="syllabus-summary-main">'
+            f'<span class="syllabus-kid">Tag {day} / {_esc(kid)}</span>'
+            f'<span class="syllabus-cat">{_esc(kann.get("category", ""))}</span>'
+            '</div>'
+            f'<div class="syllabus-summary-text">{_esc(guide.get("kb_de_simple") or kann.get("kann", ""))}</div>'
+            '</summary>'
+        )
+        parts.append('<div class="syllabus-body">')
+        parts.append(f'<div class="quick-line"><b>Original DE:</b> {_esc(kann.get("kann", ""))}</div>')
+        if guide.get("kb_en_simple"):
+            parts.append(f'<div class="quick-line"><b>Simple EN:</b> {_esc(guide["kb_en_simple"])}</div>')
+        if guide.get("scene"):
+            parts.append(f'<div class="quick-line"><b>Scene:</b> {_esc(guide["scene"])}</div>')
+        if guide.get("roles"):
+            parts.append(f'<div class="quick-line"><b>Roles:</b> {_esc(", ".join(guide["roles"]))}</div>')
+        if guide.get("task_shape"):
+            parts.append('<div class="focus-subtitle">Layout</div>')
+            parts.append(_render_focus_list(guide["task_shape"]))
+        if guide.get("core_phrases"):
+            parts.append('<div class="focus-subtitle">Core Phrases</div>')
+            parts.append(_render_quick_tags(guide["core_phrases"]))
+        if guide.get("word_bank"):
+            parts.append('<div class="focus-subtitle">Word Bank</div>')
+            parts.append(_render_quick_tags(guide["word_bank"]))
+        if guide.get("grammar_tools"):
+            parts.append('<div class="focus-subtitle">Grammar Tools</div>')
+            parts.append(_render_focus_list(guide["grammar_tools"]))
+        if guide.get("related_kbs"):
+            parts.append('<div class="focus-subtitle">Related KBs</div><div class="syllabus-related-row">')
+            for related in guide["related_kbs"][:10]:
+                parts.append(f'<button type="button" class="syllabus-related" data-kb-open="{_attr(related)}">{_esc(related)}</button>')
+            parts.append('</div>')
+        parts.append('<div class="syllabus-actions">')
+        parts.append(f'<button type="button" class="syllabus-action" data-syllabus-run="{_attr(kid)}">Put {kid} in run box</button>')
+        parts.append('</div>')
+        parts.append('</div></details>')
+    parts.append('</div></div>')
     return "".join(parts)
 
 
@@ -1178,6 +1779,35 @@ def _render_student_summary_cards(student_summaries, active_student):
             cards.append('</div>')
         cards.append('</div>')
     return "".join(cards) if cards else '<div class="status-text">No student summaries yet.</div>'
+
+
+def _render_observer_note(note):
+    if not note:
+        return ""
+    if not isinstance(note, dict):
+        return f'<div class="observer-text">{_esc(note)}</div>'
+    rows = []
+    if any(note.get(key, "") for key in ("kb_de", "kb_de_simple", "kb_en_simple", "exchange_note")):
+        for label, key in (
+            ("KB", "kb_de"),
+            ("Einfach", "kb_de_simple"),
+            ("English", "kb_en_simple"),
+            ("Note", "exchange_note"),
+        ):
+            value = note.get(key, "")
+            if value:
+                rows.append(f'<div class="observer-row"><b>{label}:</b> {_esc(value)}</div>')
+        return "".join(rows)
+    for label, key in (
+        ("German", "german_focus"),
+        ("English", "english_meaning"),
+        ("Context", "context"),
+        ("Note", "reader_note"),
+    ):
+        value = note.get(key, "")
+        if value:
+            rows.append(f'<div class="observer-row"><b>{label}:</b> {_esc(value)}</div>')
+    return "".join(rows) if rows else f'<div class="observer-text">{_esc(json.dumps(note, ensure_ascii=False))}</div>'
 
 
 def _format_usd(value):
@@ -1245,6 +1875,8 @@ def _billing_step_label(step):
         return "Day Summary"
     if step == "teacher_wrapup":
         return "Wrapup"
+    if step == "note_taker":
+        return "Note Taker"
     if step.startswith("student:"):
         sid = step.split(":", 1)[1]
         return f"Student: {STUDENT_NAMES.get(sid, sid)}"
@@ -1285,7 +1917,7 @@ def _render_billing_html(current_billing, session_billing):
     cards.append('<div class="status-text">DeepSeek pricing is estimated from returned token usage. Other providers may not be priced yet.</div>')
     return "".join(cards)
 
-def render_html():
+def render_html(include_static=True):
     status = _esc(live["status"])
     cur_day = live.get("current_day", 0)
     cur_round = live.get("current_round", 0)
@@ -1350,7 +1982,7 @@ def render_html():
                 days_html += (
                     f'<div class="msg teacher-msg">'
                     f'<div class="speaker teacher-label">Lehrerin Weber \u2192 {_esc(sname)}</div>'
-                    f'<div class="text">{_esc(ex.get("teacher_msg", "..."))}</div>'
+                    f'<div class="text">{_esc(ex.get("teacher_msg") or "[missing teacher turn]")}</div>'
                     f'<details class="prompt-details" id="{t_id}"><summary class="prompt-toggle">teacher prompt</summary>'
                     f'<pre class="prompt-box">{_esc(ex.get("teacher_prompt",""))}</pre></details></div>'
                 )
@@ -1365,9 +1997,20 @@ def render_html():
                         f'<pre class="prompt-box">{_esc(ex.get("student_prompt",""))}</pre></details></div>'
                     )
 
+                if ex.get("observer_note"):
+                    n_id = f"p_{day_num}_{rnd}_{sid}_n"
+                    note_html = _render_observer_note(ex.get("observer_note"))
+                    days_html += (
+                        f'<div class="observer-block">'
+                        f'<div class="observer-label">{_esc(NOTE_TAKER_NAME)} notes</div>'
+                        f'<div class="observer-text">{note_html}</div>'
+                        f'<details class="prompt-details" id="{n_id}"><summary class="prompt-toggle">note prompt</summary>'
+                        f'<pre class="prompt-box">{_esc(ex.get("observer_prompt",""))}</pre></details></div>'
+                    )
+
                 # grader
                 if ex.get("grader"):
-                    g = ex["grader"]
+                    g = normalize_grader_result(dict(ex["grader"]))
                     gtext = f'{g.get("verdict","")} | Sprachhandlung: {g.get("sprachhandlung","")} | Wortfeld: {", ".join(g.get("wortfeld_used",[]))}'
                     g_id = f"p_{day_num}_{rnd}_{sid}_g"
                     days_html += (
@@ -1404,6 +2047,7 @@ def render_html():
     if cur_kann_text:
         kann_display += ": " + cur_kann_text
     kann_focus_html = _render_kann_focus_html(cur_kann_focus)
+    syllabus_browser_html = _render_syllabus_browser_html(cur_kann) if include_static else ""
     student_summary_html = _render_student_summary_cards(student_summaries, active_stu)
     billing_html = _render_billing_html(current_billing, session_billing)
 
@@ -1433,6 +2077,7 @@ def render_html():
   <div class="sidebar" id="sidebar">
     <div class="view-controls">
       <button class="vbtn" data-view="conversation">Conversation</button>
+      <button class="vbtn" data-view="syllabus">Syllabus</button>
       <button class="vbtn" data-view="grader">+ Grader</button>
       <button class="vbtn" data-view="debug">Full Debug</button>
     </div>
@@ -1444,9 +2089,24 @@ def render_html():
       </form>
       <div class="run-help">Runs one selected day/Kann only. It does not start the full course.</div>
     </div>
-    <div class="sidebar-section">
-      <div class="sidebar-title">Current Kann</div>
+    <div class="sidebar-section" id="syllabus-section">
+      <div class="sidebar-title">Current KB Syllabus</div>
       {kann_focus_html}
+    </div>
+    <div class="sidebar-section" id="syllabus-browser-section" data-static="syllabus-browser">
+      <div class="sidebar-title">Full KB Syllabus Browser</div>
+      {syllabus_browser_html}
+    </div>
+    <div class="sidebar-section" data-static="workbench">
+      <div class="sidebar-title">Workbench Notes</div>
+      <div class="workbench-card">
+        <textarea id="workbench-notes" class="workbench-textarea" placeholder="Write while watching: KB relationships, word branches, grammar tools, teacher ideas..."></textarea>
+        <div class="workbench-tools">
+          <button type="button" class="workbench-button" data-workbench-action="insert-kann">Insert Current KB</button>
+          <button type="button" class="workbench-button" data-workbench-action="clear">Clear</button>
+        </div>
+        <div class="run-help">Saved in this browser only. Live updates will not erase it.</div>
+      </div>
     </div>
     <div class="sidebar-section">
       <div class="sidebar-title">Student Progress</div>
@@ -1463,10 +2123,12 @@ def render_html():
         <button class="scorecard-tool" data-day-action="expand-all">Expand Days</button>
         <button class="scorecard-tool" data-day-action="latest">Latest</button>
       </div>
-      <table class="scorecard">
-        <thead><tr><th>Tag</th><th>Kann</th>{stu_ths}</tr></thead>
-        <tbody>{sc_rows}</tbody>
-      </table>
+      <div class="scorecard-scroll">
+        <table class="scorecard">
+          <thead><tr><th>Tag</th><th>Kann</th>{stu_ths}</tr></thead>
+          <tbody>{sc_rows}</tbody>
+        </table>
+      </div>
     </div>
     <div class="sidebar-section">
       <div class="sidebar-title">Status</div>
@@ -1583,10 +2245,12 @@ class Handler(SimpleHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(b"ok")
             return
+        query = parse_qs(parsed.query)
+        include_static = query.get("poll", ["0"])[0] != "1"
         self.send_response(200)
         self.send_header("Content-Type", "text/html; charset=utf-8")
         self.end_headers()
-        self.wfile.write(render_html().encode())
+        self.wfile.write(render_html(include_static=include_static).encode())
 
     def do_POST(self):
         parsed = urlparse(self.path)
@@ -1648,6 +2312,7 @@ def build_teacher_prompt(kann, kann_focus, round_frame, day, student_name, teach
     turn_rules = [
         f"Speak only to {student_name} in this turn.",
         "Do not call on a different student to answer inside this turn.",
+        f"If you use a name for the task prompt, it must be {student_name}. Do not begin a task prompt with another student's name.",
     ]
     if round_frame["round"] < 7:
         turn_rules.append("The lesson is not over yet. Do not say goodbye, preview next week, or wrap up the whole class.")
@@ -1747,8 +2412,13 @@ def build_grader_prompt(kann, kann_focus, round_frame, day, teacher_msg, student
         for sample in kann_focus.get("wortfeld_samples", [])
     ) or ", ".join(kann_focus.get("wortfeld_targets", [])) or "No explicit target Wortfeld."
     speech_act_text = "\n".join(f"- {item}" for item in kann_focus.get("speech_acts", [])) or "No explicit target speech acts."
+    relationship_text = "\n".join(
+        f"- {rel.get('name', rel.get('id', 'relationship'))}: {rel.get('summary', '')} Grader: {rel.get('grader_guidance', '')}"
+        for rel in kann_focus.get("global_relationships", [])
+    ) or "No explicit global KB relationships."
     user_p = user_p.replace("{wortfeld}", wordfield_text)
     user_p = user_p.replace("{sprachhandlungen}", speech_act_text)
+    user_p = user_p.replace("{kann_relationships}", relationship_text)
     user_p = user_p.replace("{current_day}", str(day))
     user_p = user_p.replace("{current_round}", str(round_frame["round"]))
     user_p = user_p.replace("{round_name}", round_frame["name"])
@@ -1756,6 +2426,73 @@ def build_grader_prompt(kann, kann_focus, round_frame, day, teacher_msg, student
     user_p = user_p.replace("{teacher_message}", teacher_msg)
     user_p = user_p.replace("{student_message}", student_msg)
     return sys_p, user_p
+
+
+def build_note_taker_prompt(kann, kann_focus, round_frame, teacher_msg, student_msg):
+    if not NOTE_TAKER_ENABLED or not note_taker_tmpl:
+        return None, None
+    sys_p = note_taker_tmpl.get("system_prompt", "")
+    user_p = note_taker_tmpl.get("user_template", "")
+    user_p = user_p.replace("{kann_text}", kann["kann"])
+    user_p = user_p.replace("{kann_focus}", format_kann_focus_for_prompt(kann_focus))
+    user_p = user_p.replace("{current_round}", str(round_frame["round"]))
+    user_p = user_p.replace("{round_name}", round_frame["name"])
+    user_p = user_p.replace("{teacher_message}", teacher_msg)
+    user_p = user_p.replace("{student_message}", student_msg)
+    return sys_p, user_p
+
+
+def run_note_taker(kann, kann_focus, round_frame, teacher_msg, student_msg, day_live):
+    sys_p, user_p = build_note_taker_prompt(kann, kann_focus, round_frame, teacher_msg, student_msg)
+    if not sys_p or not user_p:
+        return None, None
+    note_call = chat_from_config("note_taker", [
+        {"role": "system", "content": sys_p},
+        {"role": "user", "content": user_p},
+    ], return_meta=True)
+    note_raw = note_call["content"]
+    add_call_meta_to_billing(day_live["billing"], note_call["meta"])
+    try:
+        note = parse_json(note_raw)
+    except:
+        note = {
+            "kb_de": kann["kann"],
+            "kb_de_simple": "",
+            "kb_en_simple": "",
+            "exchange_note": clean_spoken_text(note_raw),
+        }
+    return note, {
+        "prompt": f"SYSTEM:\n{sys_p}\n\nUSER:\n{user_p}",
+        "call": note_call["meta"],
+    }
+
+
+_GRADER_VERDICTS = ("ON TRACK", "NEEDS REDIRECT", "DRIFTING")
+
+
+def normalize_grader_result(grader_result):
+    if not isinstance(grader_result, dict):
+        grader_result = {"verdict": "parse_error", "grammar_notes": [str(grader_result)]}
+    verdict_raw = str(grader_result.get("verdict", "")).strip()
+    if verdict_raw == "parse_error":
+        return grader_result
+    verdict_upper = verdict_raw.upper()
+    for label in _GRADER_VERDICTS:
+        if verdict_upper == label or verdict_upper.startswith(label + ".") or verdict_upper.startswith(label + " ") or verdict_upper.startswith(label + "-"):
+            detail = verdict_raw[len(label):].lstrip(" .:-")
+            grader_result["verdict"] = label
+            if detail:
+                grader_result["verdict_raw"] = verdict_raw
+                if not grader_result.get("steering"):
+                    grader_result["steering"] = detail
+            return grader_result
+    if verdict_raw:
+        grader_result["verdict_raw"] = verdict_raw
+    grader_result["verdict"] = "NEEDS REDIRECT" if grader_result.get("canon_aligned") is False else "DRIFTING"
+    if verdict_raw and not grader_result.get("steering"):
+        grader_result["steering"] = verdict_raw
+    return grader_result
+
 
 # ── run one day (one Kann, all students) ───────────────────────────
 def run_day(day_num, kann):
@@ -1866,10 +2603,33 @@ def run_day(day_num, kann):
                 api_key_env=sdata.get("api_key_env"),
                 step_name=f"student:{sid}",
                 return_meta=True,
+                request_timeout=sdata.get("request_timeout"),
             )
             student_msg = clean_spoken_text(student_call["content"])
             add_call_meta_to_billing(day_live["billing"], student_call["meta"])
             print(f"  {sname}: {student_msg}")
+
+            observer_note = None
+            observer_prompt = ""
+            observer_call = {}
+            if NOTE_TAKER_ENABLED:
+                try:
+                    observer_note, observer_meta = run_note_taker(
+                        kann, kann_focus, rf, teacher_msg, student_msg, day_live
+                    )
+                    if observer_meta:
+                        observer_prompt = observer_meta["prompt"]
+                        observer_call = observer_meta["call"]
+                    if observer_note:
+                        note_line = observer_note.get("reader_note", "") if isinstance(observer_note, dict) else str(observer_note)
+                        print(f"  Notes \u2192 {NOTE_TAKER_NAME}: {note_line[:120]}")
+                except Exception as exc:
+                    observer_note = {
+                        "german_focus": "",
+                        "english_meaning": "",
+                        "context": "",
+                        "reader_note": f"Note-taker unavailable: {type(exc).__name__}: {exc}",
+                    }
 
             # ── Grade ─────────────────────────────────────────────
             prior_progress_text = summarize_prior_progress(progress.get(sid, []))
@@ -1877,17 +2637,33 @@ def run_day(day_num, kann):
                 kann, kann_focus, rf, day_num, teacher_msg, student_msg,
                 prior_progress_text
             )
-            grader_call = chat_from_config("grader_round", [
-                {"role": "system", "content": g_sys},
-                {"role": "user", "content": g_user}
-            ], return_meta=True)
-            grader_raw = grader_call["content"]
-            add_call_meta_to_billing(day_live["billing"], grader_call["meta"])
-
             try:
-                grader_result = parse_json(grader_raw)
-            except:
-                grader_result = {"verdict": "parse_error", "wortfeld_used": [], "grammar_notes": [grader_raw], "steering": "proceed", "canon_aligned": True, "sprachhandlung": ""}
+                grader_call = chat_from_config("grader_round", [
+                    {"role": "system", "content": g_sys},
+                    {"role": "user", "content": g_user}
+                ], return_meta=True)
+                grader_raw = grader_call["content"]
+                add_call_meta_to_billing(day_live["billing"], grader_call["meta"])
+
+                try:
+                    grader_result = parse_json(grader_raw)
+                except:
+                    grader_result = {"verdict": "parse_error", "wortfeld_used": [], "grammar_notes": [grader_raw], "steering": "proceed", "canon_aligned": True, "sprachhandlung": ""}
+            except Exception as exc:
+                grader_call = {
+                    "meta": _build_call_meta("grader_round", runtime_cfg["models"]["grader_round"].get("api", "openai"), runtime_cfg["models"]["grader_round"].get("model", "unknown"), {}),
+                }
+                grader_raw = f"{type(exc).__name__}: {exc}"
+                grader_result = {
+                    "canon_aligned": True,
+                    "wortfeld_used": [],
+                    "sprachhandlung": "",
+                    "grammar_notes": [grader_raw],
+                    "progress_vs_prior": "",
+                    "verdict": "NEEDS REDIRECT",
+                    "steering": "Grader call failed or timed out; continue the classroom run and inspect this exchange manually.",
+                }
+            grader_result = normalize_grader_result(grader_result)
 
             print(f"  Grader \u2192 {sname}: {grader_result.get('verdict','')}")
 
@@ -1900,6 +2676,9 @@ def run_day(day_num, kann):
                 "teacher_call": teacher_call["meta"],
                 "student_call": student_call["meta"],
                 "grader_call": grader_call["meta"],
+                "observer_note": observer_note,
+                "observer_prompt": observer_prompt,
+                "observer_call": observer_call,
             }
             round_live["exchanges"].append(exchange)
 

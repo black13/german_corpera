@@ -83,6 +83,11 @@
   ],
   "stable_grammar": [
     {
+      "rule": "Mediationsstruktur: 'Was bedeutet...?' + 'Das bedeutet...'",
+      "stable": true,
+      "mentions": 2
+    },
+    {
       "rule": "Können Sie...? (request structure)",
       "stable": true,
       "mentions": 2
@@ -103,22 +108,17 @@
       "mentions": 2
     },
     {
-      "rule": "Mediationsstruktur: 'Was bedeutet...?' + 'Das bedeutet...'",
+      "rule": "Signalwort bei Unsicherheit: 'Ich weiß nicht'",
       "stable": true,
       "mentions": 1
     },
     {
-      "rule": "Korrekte einfache Antwortstruktur mit 'Ich möchte'",
+      "rule": "Mediationsstruktur: 'Das bedeutet...'",
       "stable": true,
       "mentions": 1
     },
     {
-      "rule": "Uhrzeitangabe mit 'um' + Zahl + Uhr",
-      "stable": true,
-      "mentions": 1
-    },
-    {
-      "rule": "Preisangabe mit 'kostet' + Zahl + Euro",
+      "rule": "Perfekt A1-Form: 'das bedeutet' + Übersetzung, dann Verständnisfrage",
       "stable": true,
       "mentions": 1
     }
@@ -151,7 +151,7 @@
     }
   ],
   "persistent_errors": [],
-  "emotional_state": "Fokussiert und selbstsicher",
+  "emotional_state": "sicher und kompetent",
   "recent_kanns": [
     {
       "kann_id": "K176",
@@ -185,12 +185,12 @@
     }
   ],
   "recent_highlights": [
-    "Perfekte A1-Mediation in Runde 6: Direkte Frage 'Was bedeutet...?' gefolgt von sofortiger Übersetzung 'Das bedeutet... Parkplatz.' - zeigt vollständige Beherrschung der Kernkompetenz",
-    "Round 6: Perfect execution of mediation task with immediate, accurate translation of 'caballeros' to 'Herren', demonstrating retained core competency when properly focused",
-    "Perfect 7/7 performance in translating various shop signs (including complex time information and directional cues) with immediate, accurate responses that exactly match the target Kannbeschreibung"
+    "Perfekte 7/7 Performance mit vollständiger Beherrschung der Kernkompetenz - zeigt konsistentes Mastery-Niveau in der Hotelbegriff-Mediation",
+    "Perfekte 7/7 Performance mit sofortigen, akkuraten Übersetzungen von Hotelbegriffen und konsistenter Anwendung der Mediationsstruktur",
+    "Perfect execution of mediation task in round 6: immediate translation 'Das bedeutet... Parkplatz.' with comprehension check, demonstrating complete mastery of the core competency"
   ],
   "totals": {
-    "vocabulary": 301,
-    "grammar": 139
+    "vocabulary": 308,
+    "grammar": 142
   }
 }

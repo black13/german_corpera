@@ -2973,6 +2973,74 @@
     {
       "word": "Zimmer",
       "stable": true
+    },
+    {
+      "word": "die Uhr",
+      "stable": true
+    },
+    {
+      "word": "das Zimmer",
+      "stable": true
+    },
+    {
+      "word": "Hotel",
+      "stable": true
+    },
+    {
+      "word": "das Zimmer",
+      "stable": true
+    },
+    {
+      "word": "die Uhr",
+      "stable": true
+    },
+    {
+      "word": "die Uhrzeit",
+      "stable": true
+    },
+    {
+      "word": "die Stunde",
+      "stable": true
+    },
+    {
+      "word": "der Tag",
+      "stable": true
+    },
+    {
+      "word": "Frühstück",
+      "stable": true
+    },
+    {
+      "word": "Zimmer",
+      "stable": true
+    },
+    {
+      "word": "Rezeption",
+      "stable": true
+    },
+    {
+      "word": "Check-out",
+      "stable": true
+    },
+    {
+      "word": "Frühstücksraum",
+      "stable": true
+    },
+    {
+      "word": "Frühstück",
+      "stable": true
+    },
+    {
+      "word": "Empfang",
+      "stable": true
+    },
+    {
+      "word": "Sauna",
+      "stable": true
+    },
+    {
+      "word": "Aufzug",
+      "stable": true
     }
   ],
   "grammar_acquired": [
@@ -4079,6 +4147,34 @@
     {
       "rule": "Präposition 'von' für Zeitangaben",
       "stable": true
+    },
+    {
+      "rule": "Elliptische Strukturen für funktionale Erklärungen",
+      "stable": true
+    },
+    {
+      "rule": "Präposition 'von' korrekt für Zeitangaben verwenden",
+      "stable": true
+    },
+    {
+      "rule": "Struktur 'Das bedeutet...' für Übersetzungen",
+      "stable": true
+    },
+    {
+      "rule": "Übersetzung + Erklärung von Hotelbegriffen",
+      "stable": true
+    },
+    {
+      "rule": "Ergänzung von praktischen Zusatzinformationen (Öffnungszeiten, Ortsangaben)",
+      "stable": true
+    },
+    {
+      "rule": "Elliptische Strukturen für funktionale Erklärungen",
+      "stable": true
+    },
+    {
+      "rule": "Verwendung von 'Das bedeutet:' zur Einleitung von Übersetzungen",
+      "stable": true
     }
   ],
   "kannbeschreibungen_attempted": {
@@ -4789,7 +4885,8 @@
   },
   "persistent_errors": [
     "Fehlende Artikel (der/die/das/ein/eine)",
-    "Elliptische Strukturen statt vollständiger Sätze"
+    "Elliptische Strukturen statt vollständiger Sätze",
+    "Fehlende Präpositionen in einigen Kontexten"
   ],
-  "emotional_state": "sicher und funktional"
+  "emotional_state": "sicher und engagiert"
 }

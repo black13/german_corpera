@@ -2189,6 +2189,50 @@
     {
       "word": "das Zimmer",
       "stable": true
+    },
+    {
+      "word": "das Zimmer",
+      "stable": true
+    },
+    {
+      "word": "Rezeption",
+      "stable": true
+    },
+    {
+      "word": "Zimmerservice",
+      "stable": true
+    },
+    {
+      "word": "Frühstück",
+      "stable": true
+    },
+    {
+      "word": "Schwimmbad",
+      "stable": true
+    },
+    {
+      "word": "Parkplatz",
+      "stable": true
+    },
+    {
+      "word": "Zimmer",
+      "stable": true
+    },
+    {
+      "word": "Check-out",
+      "stable": true
+    },
+    {
+      "word": "Zimmer",
+      "stable": true
+    },
+    {
+      "word": "Rezeption/Empfang im Hotel",
+      "stable": true
+    },
+    {
+      "word": "Zimmerservice/Essen im Zimmer",
+      "stable": true
     }
   ],
   "grammar_acquired": [
@@ -2762,6 +2806,22 @@
     },
     {
       "rule": "Mediationsstruktur: 'Was bedeutet...?' + 'Das bedeutet...'",
+      "stable": true
+    },
+    {
+      "rule": "Perfekt A1-Form: 'das bedeutet' + Übersetzung, dann Verständnisfrage",
+      "stable": true
+    },
+    {
+      "rule": "Mediationsstruktur: 'Das bedeutet...'",
+      "stable": true
+    },
+    {
+      "rule": "Mediationsstruktur: 'Was bedeutet...?' + 'Das bedeutet...'",
+      "stable": true
+    },
+    {
+      "rule": "Signalwort bei Unsicherheit: 'Ich weiß nicht'",
       "stable": true
     }
   ],
@@ -3472,5 +3532,5 @@
     }
   },
   "persistent_errors": [],
-  "emotional_state": "Fokussiert und selbstsicher"
+  "emotional_state": "sicher und kompetent"
 }

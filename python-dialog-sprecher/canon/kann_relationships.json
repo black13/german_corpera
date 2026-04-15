@@ -1,0 +1,70 @@
+{
+  "_meta": {
+    "purpose": "Global and cross-Kann relationships used by the prompt system. These are not day topics by themselves; they are support layers that explain how a Kannbeschreibung is performed inside a scene.",
+    "ladder": "global ability -> domain/place system -> role -> small scene -> speech act -> text/utterance -> lexical field -> grammar tool",
+    "notes": [
+      "Keep these inspectable in JSON so the relationship logic does not drift into runner.py.",
+      "Teachers may paraphrase these relationships aloud, but should not lecture on the KB ids.",
+      "Students may name the task in English or meta-language in early rounds; the teacher should recast it as simple German and move back into the scene."
+    ]
+  },
+  "relationship_groups": [
+    {
+      "id": "a1_conversation_support",
+      "name": "A1 conversation support",
+      "kann_ids": ["K001", "K003", "K004", "K005", "K006", "K007", "K030", "K038"],
+      "scope_categories": ["Interaktion mündlich", "Rezeption mündlich", "Produktion mündlich", "Sprachmittlung mündlich"],
+      "summary": "Slow partner, repetition, pauses, short utterances, intonation, and repair are the normal operating system for A1 speech.",
+      "teacher_guidance": "Use slow, clear speech. If the student names the task in English or meta-language, accept it as orientation, restate it in simple German, and put the student back into the small scene.",
+      "grader_guidance": "Do not penalize pauses, English repair, repetition requests, or short prefabricated utterances when the student is still oriented toward the current speech act."
+    },
+    {
+      "id": "social_contact_operators",
+      "name": "Social contact operators",
+      "kann_ids": ["K009", "K010", "K014", "K017", "K018", "K022", "K026"],
+      "scope_categories": ["Interaktion mündlich", "Sprachmittlung mündlich"],
+      "summary": "Greetings, introductions, well-being, likes/dislikes, small requests, and thanks are entry/exit moves inside scenes, not full replacement scenes.",
+      "teacher_guidance": "Use these as warm opening or closing moves, then return to the core KB scene immediately.",
+      "grader_guidance": "If a response only greets or thanks when the KB requires another speech act, mark it as drift unless it also performs the target act."
+    },
+    {
+      "id": "numbers_time_exchange_currency",
+      "name": "Numbers/time as exchange currency",
+      "kann_ids": ["K034", "K064", "K067", "K075", "K129", "K141"],
+      "match_any": ["zahl", "preis", "uhr", "uhrzeit", "termin", "zeit", "kursbeginn", "abfahrt", "ankunft", "datum", "daten", "menge"],
+      "summary": "Numbers, prices, times, dates, quantities, and short notes are portable information types across hotel, course, shop, transport, workplace, and appointment scenes.",
+      "teacher_guidance": "When the KB contains time/price/date/quantity information, make the grammar serve that exchange: 'um', 'am', 'von...bis', 'bis', numbers, and short note form.",
+      "grader_guidance": "Treat approximate but intelligible numbers/times as communicatively successful at A1."
+    },
+    {
+      "id": "text_list_reading",
+      "name": "Text/list reading",
+      "kann_ids": ["K060", "K062", "K084", "K085", "K086", "K092", "K104"],
+      "bridge_to_kann_ids": ["K163", "K176"],
+      "scope_categories": ["Rezeption schriftlich"],
+      "match_any": ["text", "liste", "listenartig", "schriftlich", "schild", "schildern", "aufschrift", "tafel", "information", "informationstafel", "anleitung", "internationalismen", "visuelle"],
+      "summary": "Short text, familiar topic, visual support, internationalisms, list-like structure, and repeated reading bridge directly into K163 and K176.",
+      "teacher_guidance": "Start from one visible item in the text/list. Do not ask students to summarize the whole text; ask what one item means and how to pass it to another person.",
+      "grader_guidance": "Reward extracting one relevant information item. Do not require full-text comprehension."
+    },
+    {
+      "id": "micro_writing",
+      "name": "Micro-writing",
+      "kann_ids": ["K043", "K048", "K051", "K052", "K136", "K145", "K149", "K150"],
+      "scope_categories": ["Interaktion schriftlich", "Produktion schriftlich"],
+      "match_any": ["notiz", "schreiben", "schrift", "e-mail", "chat", "angaben", "stichpunkt", "notieren"],
+      "summary": "Short social texts, chat, personal details, simple notes, and connectors like 'und/oder/und dann' connect forms, notes, e-mails, and everyday written exchange.",
+      "teacher_guidance": "Keep written tasks very small: one note, one form field, one sentence, or one connector.",
+      "grader_guidance": "Grade whether the short written purpose is achieved before grading form or completeness."
+    },
+    {
+      "id": "oral_production_frame",
+      "name": "Oral production frame",
+      "kann_ids": ["K116", "K117", "K120", "K121", "K126"],
+      "scope_categories": ["Produktion mündlich", "Interaktion mündlich", "Sprachmittlung mündlich"],
+      "summary": "A1 spoken output is short, unconnected, prefabricated, built from simple words, and often linked only with 'und/oder/und dann'.",
+      "teacher_guidance": "Accept fragments and prefabricated chunks when they perform the scene. Model a better phrase only after the student has attempted the act.",
+      "grader_guidance": "Do not require fluent connected speech; reward the right speech act in short chunks."
+    }
+  ]
+}

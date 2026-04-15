@@ -21,6 +21,11 @@
     {
       "word": "die Uhrzeit",
       "stable": true,
+      "mentions": 12
+    },
+    {
+      "word": "Hotel",
+      "stable": true,
       "mentions": 11
     },
     {
@@ -32,11 +37,6 @@
       "word": "Gäste",
       "stable": true,
       "mentions": 11
-    },
-    {
-      "word": "Hotel",
-      "stable": true,
-      "mentions": 10
     },
     {
       "word": "Brot",
@@ -113,6 +113,11 @@
       "mentions": 3
     },
     {
+      "rule": "Elliptische Strukturen für funktionale Erklärungen",
+      "stable": true,
+      "mentions": 2
+    },
+    {
       "rule": "Fehlende Artikel in typischen A1-Kontexten",
       "stable": true,
       "mentions": 2
@@ -129,11 +134,6 @@
     },
     {
       "rule": "Elliptische Strukturen für Notizen",
-      "stable": true,
-      "mentions": 2
-    },
-    {
-      "rule": "Elliptische Strukturen in informeller Kommunikation",
       "stable": true,
       "mentions": 2
     }
@@ -172,9 +172,10 @@
   ],
   "persistent_errors": [
     "Fehlende Artikel (der/die/das/ein/eine)",
-    "Elliptische Strukturen statt vollständiger Sätze"
+    "Elliptische Strukturen statt vollständiger Sätze",
+    "Fehlende Präpositionen in einigen Kontexten"
   ],
-  "emotional_state": "sicher und funktional",
+  "emotional_state": "sicher und engagiert",
   "recent_kanns": [
     {
       "kann_id": "K176",
@@ -208,12 +209,12 @@
     }
   ],
   "recent_highlights": [
-    "Runde 3: Studentin erfüllt die Kannbeschreibung perfekt durch Übersetzung von 'breakfast' zu 'Frühstück' und erweitert dies professionell mit relevanten Hotel-Öffnungszeiten, zeigt tiefes Verständnis der Sprachmittlungsaufgabe.",
-    "Runde 7: Erfolgreiche Sprachmittlung mit vollständiger Übersetzung ('Caballeros ist für Männer') und zusätzlichem Angebot der Gegenüberstellung ('Für Frauen ist... Damentoilette?'), zeigt endgültiges Verständnis der Kannbeschreibung",
-    "Runde 6: Erfolgreiche Sprachmittlung mit praktischer Kommunikationsstrategie (Zeigen mit Finger) und natürlicher, funktionaler A1-Sprache, die perfekt die Kannbeschreibung erfüllt"
+    "Runde 3: Übersetzung von 'breakfast' zu 'Frühstück' mit professioneller Ergänzung der Öffnungszeiten ('von sieben bis zehn Uhr'), zeigt tiefes Verständnis der kommunikativen Aufgabe über reine Übersetzung hinaus.",
+    "Runde 7: Übersetzung von 'check-out' mit funktionaler Erklärung ('Das bedeutet: Zimmer bis elf Uhr verlassen'), die über die reine Wort-für-Wort-Übersetzung hinausgeht und perfekt die kommunikative Aufgabe erfüllt.",
+    "Runde 3: Studentin übersetzt 'breakfast' zu 'Frühstück' und ergänzt professionell die Öffnungszeiten ('von sieben bis zehn Uhr'), zeigt tiefes Verständnis der kommunikativen Aufgabe über reine Übersetzung hinaus."
   ],
   "totals": {
-    "vocabulary": 345,
-    "grammar": 231
+    "vocabulary": 349,
+    "grammar": 237
   }
 }

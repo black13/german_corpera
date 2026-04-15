@@ -1,6 +1,13 @@
 {
   "classroom": {
-    "students": ["marta", "james", "yuki"]
+    "students": ["marta", "james", "yuki"],
+    "observer": {
+      "enabled": false,
+      "id": "note_taker",
+      "name": "Nora Weiss",
+      "frequency": "exchange",
+      "graded": false
+    }
   },
   "models": {
     "teacher": {
@@ -19,13 +26,19 @@
       "api": "deepseek",
       "model": "deepseek-chat",
       "temperature": 0.3,
-      "max_tokens": 500
+      "max_tokens": 1000
     },
     "teacher_wrapup": {
       "api": "deepseek",
       "model": "deepseek-chat",
       "temperature": 0.5,
       "max_tokens": 500
+    },
+    "note_taker": {
+      "api": "deepseek",
+      "model": "deepseek-chat",
+      "temperature": 0.2,
+      "max_tokens": 220
     }
   },
   "providers": {

@@ -166,11 +166,13 @@
       "wortfeld_targets": ["wohnen", "zeit", "verkehr"],
       "speech_acts": [
         "nachfragen (Was bedeutet...?)",
-        "nach persönlichen Daten fragen / persönliche Daten angeben"
+        "einen einfachen Hotel-Begriff übersetzen/erklären (Das bedeutet ...)",
+        "Verständnis sichern (Verstehen Sie? / Ist das klar?)"
       ],
       "example_bank": [
-        { "text": "Frühstück von sieben bis zehn Uhr.", "source": "seed" },
-        { "text": "Wo ist mein Zimmer?", "source": "seed" }
+        { "text": "Was bedeutet breakfast? Das bedeutet Frühstück.", "source": "seed" },
+        { "text": "Check-out bis elf Uhr. Das bedeutet: Zimmer bis elf Uhr verlassen.", "source": "seed" },
+        { "text": "Verstehen Sie? Ist das klar?", "source": "seed" }
       ]
     },
     {
@@ -211,15 +213,23 @@
   ],
   "manual_overrides": {
     "K176": {
-      "wortfeld_targets": ["wohnen", "zeit"],
+      "grammar_targets": [
+        "Temporale: bis, von...bis",
+        "Lokale Chunks: im Hotel, auf der Tafel, hier, dort, links, rechts"
+      ],
+      "wortfeld_targets": ["wohnen", "zeit", "verkehr"],
       "speech_acts": [
+        "nachfragen (Was bedeutet [Wort]?)",
+        "einen einfachen Begriff übersetzen/erklären (Das bedeutet ...)",
+        "Verständnis sichern (Verstehen Sie? / Ist das klar?)",
         "signalisieren, dass man etwas (nicht) verstanden hat",
         "nachfragen (Was bedeutet...?)"
       ],
       "example_bank": [
-        { "text": "Frühstück von sieben bis zehn Uhr.", "source": "seed" },
-        { "text": "Checkout bis elf Uhr.", "source": "seed" },
-        { "text": "Was bedeutet breakfast?", "source": "seed" }
+        { "text": "Was bedeutet breakfast? Das bedeutet Frühstück.", "source": "seed" },
+        { "text": "Frühstück ist von sieben bis zehn Uhr.", "source": "seed" },
+        { "text": "Check-out bis elf Uhr. Das bedeutet: Zimmer bis elf Uhr verlassen.", "source": "seed" },
+        { "text": "Verstehen Sie? Ist das klar?", "source": "seed" }
       ]
     }
   }
