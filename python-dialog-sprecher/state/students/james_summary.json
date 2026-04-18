@@ -19,6 +19,11 @@
       "mentions": 10
     },
     {
+      "word": "die Uhrzeit",
+      "stable": true,
+      "mentions": 9
+    },
+    {
       "word": "heißen",
       "stable": true,
       "mentions": 9
@@ -29,7 +34,7 @@
       "mentions": 9
     },
     {
-      "word": "die Uhrzeit",
+      "word": "links",
       "stable": true,
       "mentions": 8
     },
@@ -44,12 +49,7 @@
       "mentions": 8
     },
     {
-      "word": "lesen",
-      "stable": true,
-      "mentions": 7
-    },
-    {
-      "word": "üben",
+      "word": "die Uhr",
       "stable": true,
       "mentions": 7
     }
@@ -59,6 +59,11 @@
       "word": "lecker",
       "stable": false,
       "mentions": 9
+    },
+    {
+      "word": "bestellen",
+      "stable": false,
+      "mentions": 4
     },
     {
       "word": "Kopfschmerzen",
@@ -81,59 +86,54 @@
       "mentions": 2
     },
     {
+      "word": "der Saft",
+      "stable": false,
+      "mentions": 1
+    },
+    {
       "word": "Leine",
-      "stable": false,
-      "mentions": 1
-    },
-    {
-      "word": "Kulturzeit",
-      "stable": false,
-      "mentions": 1
-    },
-    {
-      "word": "vielleicht",
       "stable": false,
       "mentions": 1
     }
   ],
   "stable_grammar": [
     {
+      "rule": "Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Übersetzen/Erklären von Hotelbegriffen) als robust konsolidiertes Muster",
+      "stable": true,
+      "mentions": 2
+    },
+    {
       "rule": "Kann ich bitte... haben? (request structure)",
       "stable": true,
       "mentions": 2
     },
     {
-      "rule": "Funktionale elliptische Strukturen für direkte Übersetzungen/Erklärungen ('Das bedeutet...', 'Check-out bis elf Uhr.') als stabiles A1-Muster",
+      "rule": "Code-switching als funktionales A1-Muster für metasprachliche Erklärungen",
       "stable": true,
       "mentions": 1
     },
     {
-      "rule": "Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Übersetzen/Erklären von Hotelbegriffen) als robust konsolidiertes Muster",
+      "rule": "Frageform 'Was bedeutet...?' mit korrekter Struktur",
       "stable": true,
       "mentions": 1
     },
     {
-      "rule": "Metakognitive Reflexion und Planung mit Code-switching als stabiles, lernförderliches Muster",
+      "rule": "Code-switching Englisch/Deutsch für metakognitive Planung und präzisierende Erklärungen",
       "stable": true,
       "mentions": 1
     },
     {
-      "rule": "Präzise, kanonalignierte Weitergabe einfacher Fragen und Informationen (Frühstücksort, Zeit, Beschwerde, Toilette) in funktionaler A1-Syntax",
+      "rule": "Elliptische/broken Syntax für funktionale Übersetzungen (A1-typisch)",
       "stable": true,
       "mentions": 1
     },
     {
-      "rule": "Präzise, kanonalignierte Weitergabe einzelner Informationen aus listenartigen Texten (Schilder, Menüs, Öffnungszeiten) unter Verwendung der korrekten Satzstruktur 'On the menu it says...'",
+      "rule": "Funktionale Sprachhandlungsschemata ('Auf dem Schild steht X. Auf Deutsch: Y.') für klare Informationsweitergabe",
       "stable": true,
       "mentions": 1
     },
     {
-      "rule": "Nahtloser Transfer konsolidierter Sprachhandlungen (persönliche Daten angeben, Zahlen weitergeben, nach Uhrzeit fragen) in den Sprachmittlungskontext",
-      "stable": true,
-      "mentions": 1
-    },
-    {
-      "rule": "Präzise, kanonalignierte Weitergabe von persönlichen Daten, Zahlenfolgen und einfachen Fragen im Sprachmittlungskontext",
+      "rule": "Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Übersetzen von Schildern) als robust konsolidiertes Muster",
       "stable": true,
       "mentions": 1
     }
@@ -172,9 +172,9 @@
   ],
   "persistent_errors": [
     "Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)",
-    "Code-switching für metakognitive Planung und präzisierende Erklärungen (etabliertes, funktionales Muster)"
+    "Abhängigkeit von klarer, kanonalignierter Lehrersteuerung: Bei unklaren oder generischen Prompts driftet der Student in soziale Abschlussformeln statt zur Zielsprachhandlung (Runden 6-7)"
   ],
-  "emotional_state": "konzentriert, selbstsicher und lernbereit",
+  "emotional_state": "Engagiert und reaktionsschnell bei klaren Aufgaben, kooperativ im sozialen Abschluss",
   "recent_kanns": [
     {
       "kann_id": "K176",
@@ -185,35 +185,35 @@
     {
       "kann_id": "K175",
       "day": 175,
-      "result": "teilweise",
+      "result": "bestanden",
       "kann_text": "Kann in einem Restaurant die Aufschrift (z. B. „caballeros“) auf der Toilettentür für einen deutschsprachigen Touristen übersetzen."
     },
     {
       "kann_id": "K174",
       "day": 174,
-      "result": "teilweise",
+      "result": "bestanden",
       "kann_text": "Kann die Aufschrift auf dem Schild einer Geschäftstür (z. B. „fermé“) für einen deutschsprachigen Touristen übersetzen."
     },
     {
       "kann_id": "K173",
       "day": 173,
-      "result": "teilweise",
+      "result": "bestanden",
       "kann_text": "Kann einfache anderssprachige Informationen von Schildern und Aufschriften Deutschsprachigen in Einzelwörtern auf Deutsch weitergeben."
     },
     {
       "kann_id": "K172",
       "day": 172,
-      "result": "teilweise",
+      "result": "bestanden",
       "kann_text": "Kann in einem Geschäft einem deutschen Touristen behilflich sein und für ihn auf Deutsch den Preis von Waren nennen."
     }
   ],
   "recent_highlights": [
-    "Runden 1-5 und 7: Durchgängig perfekte, sofortige und kanonalignierte Ausführung der Sprachmittlungsaufgabe mit robust konsolidiertem Muster, aktiver Wortfeldnutzung und präzisen Übersetzungen, die eine vollständige Beherrschung der Kannbeschreibung zeigen.",
-    "```json { \"day\": 176, \"subject_area\": \"Sprachmittlung mündlich\", \"kann_result\": \"bestanden\", \"vocabulary_learned\": [ {\"word\": \"das Zimmer\", \"stable\": true}, {\"word\": \"die Uhr\", \"stable\": true} ], \"grammar_learned\": [ {\"rule\": \"Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Übersetzen/Erklären von Hotelbegriffen) als robust konsolidiertes Muster\", \"stable\": true}, {\"rule\": \"Funktionale elliptische Strukturen für direkte Übersetzungen ('Das bedeutet...') als stabiles A1-Muster\", \"stable\": true} ], \"persistent_errors\": [ \"Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)\", \"Code-switching für metakognitive Planung (etabliertes, funktionales Muster)\" ], \"improvements_from_prior\": [ \"Vollständige Konsolidierung der Korrektur: Keine Drifting-Episoden über alle 7 Runden. Die Korrektur aus dem isolierten Rückfall (Tag 173) hat vollständig 'gestickt' und die Stabilität der Tage 174-175 wurde fortgesetzt.\", \"Innerhalb der Session: Stabile, sofortige Aufgabenausführung ohne Leistungsabfall von Runde 1 bis Runde 7. Jede Runde begann direkt mit der korrekten Sprachhandlung (Übersetzen/Erklären/Nachfragen), was eine robuste, automatisierte Rollenannahme zeigt.\", \"Aktive Integration von Feedback: In Runde 5 zeigte der Student sofortige Integration von Lehrer-Feedback durch präzisierte Formulierung und aktive Verständnissicherung.\", \"Positive Gesamttrajektorie: Der Student demonstriert durchgängige Stabilität über mehrere Tage (174-176) mit konsolidierter Sprachmittlungsfähigkeit, sicherer Rollenannahme und zuverlässiger Reaktion auf klare Lehrersteuerung.\" ], \"emotional_state\": \"konzentriert",
-    "```json { \"day\": 176, \"subject_area\": \"Sprachmittlung mündlich\", \"kann_result\": \"bestanden\", \"vocabulary_learned\": [ {\"word\": \"das Zimmer\", \"stable\": true}, {\"word\": \"die Uhr\", \"stable\": true}, {\"word\": \"die Uhrzeit\", \"stable\": true} ], \"grammar_learned\": [ {\"rule\": \"Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Übersetzen/Erklären von Hotelbegriffen) als robust konsolidiertes Muster\", \"stable\": true}, {\"rule\": \"Funktionale elliptische Strukturen für direkte Übersetzungen/Erklärungen ('das bedeutet...', 'Check-out bis elf Uhr.') als stabiles A1-Muster\", \"stable\": true} ], \"persistent_errors\": [ \"Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)\", \"Code-switching für metakognitive Planung und präzisierende Erklärungen (etabliertes, funktionales Muster)\" ], \"improvements_from_prior\": [ \"Vollständige Konsolidierung der Korrektur: Keine Drifting-Episoden über alle 7 Runden dieses Tages. Die isolierten Rückfälle aus den letzten Runden von Tag 175 sind nicht aufgetreten; die Korrektur hat vollständig 'gestickt'.\", \"Innerhalb der Session: Stabile, sofortige Aufgabenausführung ohne Leistungsabfall von Runde 1 bis Runde 7. Jede Runde begann direkt mit der korrekten Sprachhandlung (Übersetzen/Erklären/Nachfragen), was eine robuste, automatisierte Rollenannahme zeigt.\", \"Positive Gesamttrajektorie: Der Student demonstriert nun durchgängige Stabilität über mehrere Tage (174-176) mit konsolidierter Sprachmittlungsfähigkeit. Er führt die Aufgabe zuverlässig aus, zeigt aktive Wortfeldnutzung und reagiert perfekt auf klare Lehrersteuerung.\" ], \"emotional_state\": \"konzentriert,"
+    "Runden 1-5 zeigen durchgängig perfekte, kanonalignierte Leistung bei klarer Lehrersteuerung: Der Student übersetzt Hotelbegriffe (Check-out, Frühstück, Rezeption, Parkplatz) und Zeitangaben funktional, nutzt korrekte Nachfragestrukturen und integriert Verständnissicherung.",
+    "Der Student demonstriert bei klarer, kanonalignierter Lehrersteuerung (in 6 von 7 Runden) eine vollständige Beherrschung der Kannbeschreibung: Er übersetzt Aufschriften (z.B. 'dames', 'Signore', 'señoras', 'Signori') sofort und korrekt in funktionale Äußerungen wie 'Damentoilette' oder 'Herrentoilette', teilweise mit integrierter Ortsangabe ('da lang').",
+    "Runde 5 zeigt das dokumentierte Rückfallmuster: Bei unklarer Lehrersteuerung driftet der Student in metakognitive Paraphrase statt zur Zielsprachhandlung. Dies unterstreicht die Abhängigkeit von klarer, kanonalignierter Führung für optimale Leistung."
   ],
   "totals": {
-    "vocabulary": 316,
-    "grammar": 198
+    "vocabulary": 322,
+    "grammar": 213
   }
 }

@@ -3057,6 +3057,118 @@
     {
       "word": "check-out",
       "stable": true
+    },
+    {
+      "word": "die Uhr",
+      "stable": true
+    },
+    {
+      "word": "links",
+      "stable": true
+    },
+    {
+      "word": "das Zimmer",
+      "stable": true
+    },
+    {
+      "word": "die Uhrzeit",
+      "stable": true
+    },
+    {
+      "word": "die Stunde",
+      "stable": true
+    },
+    {
+      "word": "Wasser",
+      "stable": true
+    },
+    {
+      "word": "Kaffee",
+      "stable": true
+    },
+    {
+      "word": "Milch",
+      "stable": true
+    },
+    {
+      "word": "Tee",
+      "stable": true
+    },
+    {
+      "word": "Wein",
+      "stable": true
+    },
+    {
+      "word": "geradeaus",
+      "stable": true
+    },
+    {
+      "word": "links",
+      "stable": true
+    },
+    {
+      "word": "Straße",
+      "stable": true
+    },
+    {
+      "word": "Bahnhof",
+      "stable": true
+    },
+    {
+      "word": "Frühstück",
+      "stable": true
+    },
+    {
+      "word": "eins, zwei, drei, vier, fünf, sechs",
+      "stable": true
+    },
+    {
+      "word": "Cent",
+      "stable": false
+    },
+    {
+      "word": "Bahnhof",
+      "stable": true
+    },
+    {
+      "word": "Eingang",
+      "stable": true
+    },
+    {
+      "word": "geschlossen",
+      "stable": true
+    },
+    {
+      "word": "Straße",
+      "stable": true
+    },
+    {
+      "word": "links",
+      "stable": true
+    },
+    {
+      "word": "die Uhrzeit",
+      "stable": true
+    },
+    {
+      "word": "geöffnet",
+      "stable": true
+    },
+    {
+      "word": "reserviert",
+      "stable": true
+    },
+    {
+      "word": "Herrentoilette",
+      "stable": true
+    },
+    {
+      "word": "caballeros",
+      "stable": true
+    },
+    {
+      "word": "Hombres",
+      "stable": true
     }
   ],
   "grammar_acquired": [
@@ -4199,6 +4311,46 @@
     {
       "rule": "Übersetzungsformel 'Das bedeutet...'",
       "stable": true
+    },
+    {
+      "rule": "Nachfrage mit 'Was bedeutet...?' und Erklärung mit 'Das bedeutet...'",
+      "stable": true
+    },
+    {
+      "rule": "Funktionale Erklärungen mit Zusatzinformationen (z.B. Uhrzeiten, Ortsangaben)",
+      "stable": true
+    },
+    {
+      "rule": "Elliptische Strukturen für Getränkebitten (z.B. 'Wasser mit Eis, bitte')",
+      "stable": true
+    },
+    {
+      "rule": "Elliptische Strukturen für funktionale Kommunikation",
+      "stable": true
+    },
+    {
+      "rule": "Elliptische Strukturen für Preisabfragen (Wie viel kostet...?)",
+      "stable": true
+    },
+    {
+      "rule": "Minimale Preisangabe (nur Zahl) als funktionale Antwort",
+      "stable": true
+    },
+    {
+      "rule": "Elliptische Strukturen für Sprachmittlung (z.B. 'Auf Deutsch: Straße')",
+      "stable": true
+    },
+    {
+      "rule": "Elliptische Strukturen für funktionale Übersetzungen (A1-typisch)",
+      "stable": true
+    },
+    {
+      "rule": "Fehlende Artikel in Alltagskommunikation",
+      "stable": true
+    },
+    {
+      "rule": "Elliptische Strukturen für funktionale Sprachmittlung",
+      "stable": true
     }
   ],
   "kannbeschreibungen_attempted": {
@@ -4910,7 +5062,7 @@
   "persistent_errors": [
     "Fehlende Artikel (der/die/das/ein/eine)",
     "Elliptische Strukturen statt vollständiger Sätze",
-    "Englische Einmischung/Code-Switching"
+    "Code-switching (Englisch-Deutsch-Mischung)"
   ],
-  "emotional_state": "sicher und engagiert"
+  "emotional_state": "stabil und funktional"
 }

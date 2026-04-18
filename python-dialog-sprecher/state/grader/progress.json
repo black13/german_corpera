@@ -8291,6 +8291,315 @@
       ],
       "emotional_state": "sicher und engagiert",
       "session_highlight": "Runde 7: Übersetzung von 'check-out' mit funktionaler Erklärung ('Das bedeutet: Zimmer bis elf Uhr verlassen'), die perfekt die kommunikative Aufgabe erfüllt und über reine Wort-für-Wort-Übersetzung hinausgeht."
+    },
+    {
+      "day": 176,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "die Uhr",
+          "stable": true
+        },
+        {
+          "word": "links",
+          "stable": true
+        },
+        {
+          "word": "das Zimmer",
+          "stable": true
+        },
+        {
+          "word": "die Uhrzeit",
+          "stable": true
+        },
+        {
+          "word": "die Stunde",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Nachfrage mit 'Was bedeutet...?' und Erklärung mit 'Das bedeutet...'",
+          "stable": true
+        },
+        {
+          "rule": "Funktionale Erklärungen mit Zusatzinformationen (z.B. Uhrzeiten, Ortsangaben)",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [
+        "Elliptische Strukturen statt vollständiger Sätze",
+        "Fehlende Artikel (der/die/das/ein/eine)",
+        "Gelegentliche englische Einmischung/Code-Switching"
+      ],
+      "improvements_from_prior": [
+        "Sofortige Anwendung der Zielstrukturen aus Lehrerinstruktion",
+        "Konsistente Ausführung der Sprachhandlungen 'nachfragen' und 'übersetzen/erklären'",
+        "Tiefes Verständnis der kommunikativen Aufgabe über reine Wort-für-Wort-Übersetzung hinaus"
+      ],
+      "emotional_state": "sicher und engagiert",
+      "session_highlight": "Runde 7: Exemplarische A1-Leistung mit Übersetzung von 'Frühstück' und professioneller Ergänzung der Öffnungszeiten ('von sieben bis zehn Uhr'), zeigt funktionale Sprachmittlung mit relevanten Zusatzinformationen."
+    },
+    {
+      "day": 170,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "Wasser",
+          "stable": true
+        },
+        {
+          "word": "Kaffee",
+          "stable": true
+        },
+        {
+          "word": "Milch",
+          "stable": true
+        },
+        {
+          "word": "Tee",
+          "stable": true
+        },
+        {
+          "word": "Wein",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Elliptische Strukturen für Getränkebitten (z.B. 'Wasser mit Eis, bitte')",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [
+        "Fehlende Artikel (der/die/das/ein/eine)",
+        "Elliptische Strukturen statt vollständiger Sätze"
+      ],
+      "improvements_from_prior": [
+        "Konsistente funktionale Sprachmittlung ohne überflüssige Zusatzinformationen",
+        "Präzise Übersetzungen, die genau der kommunikativen Aufgabe entsprechen",
+        "Schnelle Reaktionszeit und sicheres Verständnis der Übersetzungsaufgabe"
+      ],
+      "emotional_state": "sicher und engagiert",
+      "session_highlight": "Konsistente Demonstration funktionaler Sprachmittlungskompetenz über alle sieben Runden hinweg mit präzisen, situationsangemessenen Übersetzungen im Restaurantkontext"
+    },
+    {
+      "day": 171,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "teilweise",
+      "vocabulary_learned": [
+        {
+          "word": "geradeaus",
+          "stable": true
+        },
+        {
+          "word": "links",
+          "stable": true
+        },
+        {
+          "word": "Straße",
+          "stable": true
+        },
+        {
+          "word": "Bahnhof",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Elliptische Strukturen für funktionale Kommunikation",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [
+        "Fehlende Artikel (der/die/das/ein/eine)",
+        "Elliptische Strukturen statt vollständiger Sätze",
+        "Inkonsistente Anrede (Sie/du-Mischung)"
+      ],
+      "improvements_from_prior": [
+        "Konsistente Anwendung des Zielwortfelds (Richtungsangaben) bei klarer Aufgabenstellung",
+        "Funktionale Sprachmittlung mit minimalen, aber effektiven Strukturen",
+        "Fähigkeit, relevante Zusatzinformationen zur Wegbeschreibung hinzuzufügen"
+      ],
+      "emotional_state": "Kooperativ und reaktionsbereit, aber passiv bei unklarer Aufgabenstellung",
+      "session_highlight": "Runden 1-3: Perfekte Demonstration der Kannbeschreibung mit funktionaler Wegbeschreibung unter Verwendung von 'geradeaus', 'links', 'Straße' und 'Bahnhof' - zeigt klare Kompetenz bei präziser Lehrerführung."
+    },
+    {
+      "day": 172,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "Frühstück",
+          "stable": true
+        },
+        {
+          "word": "eins, zwei, drei, vier, fünf, sechs",
+          "stable": true
+        },
+        {
+          "word": "Cent",
+          "stable": false
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Elliptische Strukturen für Preisabfragen (Wie viel kostet...?)",
+          "stable": true
+        },
+        {
+          "rule": "Minimale Preisangabe (nur Zahl) als funktionale Antwort",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [
+        "Fehlende Artikel (der/die/das/ein/eine)",
+        "Elliptische Strukturen statt vollständiger Sätze",
+        "Fehlende Präpositionen (z.B. 'Bis nächste Woche' statt 'Bis zur nächsten Woche')"
+      ],
+      "improvements_from_prior": [
+        "Erfolgreicher Transfer der Preisabfrage vom Geschäfts- auf Hotelkontext",
+        "Konsistente funktionale Kommunikation über alle Runden hinweg",
+        "Reflexion über persönliche Erfahrung mit der Sprachhandlung (Hotelarbeit)"
+      ],
+      "emotional_state": "Engagiert und kooperativ, zeigt persönliche Verbindung zum Thema durch Berufserfahrung",
+      "session_highlight": "Runde 1: Erfolgreicher Transfer der Kannbeschreibung vom Geschäft auf Hotel-Frühstück mit korrekter Preisabfrage ('Wie viel kostet Frühstück?')"
+    },
+    {
+      "day": 173,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "Bahnhof",
+          "stable": true
+        },
+        {
+          "word": "Eingang",
+          "stable": true
+        },
+        {
+          "word": "geschlossen",
+          "stable": true
+        },
+        {
+          "word": "Straße",
+          "stable": true
+        },
+        {
+          "word": "links",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Elliptische Strukturen für Sprachmittlung (z.B. 'Auf Deutsch: Straße')",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [
+        "Fehlende Artikel (der/die/das/ein/eine)",
+        "Elliptische Strukturen statt vollständiger Sätze"
+      ],
+      "improvements_from_prior": [
+        "Konsistente Anwendung der Sprachmittlungskompetenz über alle relevanten Runden",
+        "Präzise Einzelwort-Übersetzungen ohne Ablenkung durch komplexere Strukturen",
+        "Schnelle und korrekte Identifikation von Schlüsselwörtern aus Schildern"
+      ],
+      "emotional_state": "sicher und fokussiert",
+      "session_highlight": "Perfekte Demonstration der Kannbeschreibung in Runden 1-6 mit funktionaler, präziser Sprachmittlung von fünf verschiedenen Schildern (Bahnhof, Eingang, geschlossen, Straße, links)"
+    },
+    {
+      "day": 174,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "die Uhrzeit",
+          "stable": true
+        },
+        {
+          "word": "geöffnet",
+          "stable": true
+        },
+        {
+          "word": "reserviert",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Elliptische Strukturen für funktionale Übersetzungen (A1-typisch)",
+          "stable": true
+        },
+        {
+          "rule": "Fehlende Artikel in Alltagskommunikation",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [
+        "Fehlende Artikel",
+        "Elliptische Strukturen statt vollständiger Sätze"
+      ],
+      "improvements_from_prior": [
+        "Konsistente funktionale Sprachmittlung über verschiedene Kontexte",
+        "Präzise Übersetzungen mit Zusatzerklärungen"
+      ],
+      "emotional_state": "Engagiert und kooperativ",
+      "session_highlight": "Runde 7: Perfekte Übersetzung von 'Geöffnet außer Sonntag' mit klarer Vermittlung der Ausnahmeregelung, zeigt vollständige Beherrschung der Kannbeschreibung"
+    },
+    {
+      "day": 175,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "Herrentoilette",
+          "stable": true
+        },
+        {
+          "word": "caballeros",
+          "stable": true
+        },
+        {
+          "word": "Hombres",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Elliptische Strukturen für funktionale Sprachmittlung",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [
+        "Fehlende Artikel (der/die/das/ein/eine)",
+        "Elliptische Strukturen statt vollständiger Sätze"
+      ],
+      "improvements_from_prior": [
+        "Konsistente präzise Übersetzungen von Toilettenschildern",
+        "Proaktive Erweiterung mit Wegbeschreibungen (z.B. 'rechts', 'da lang')",
+        "Funktionales Verständnis der Sprachmittlungsaufgabe"
+      ],
+      "emotional_state": "Engagiert und kooperativ",
+      "session_highlight": "Runde 5: Präzise Übersetzung von 'Herren' mit Richtungsangabe ('Das ist die Herrentoilette, rechts') zeigt perfekte Anwendung der Kannbeschreibung"
+    },
+    {
+      "day": 176,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [],
+      "grammar_learned": [],
+      "persistent_errors": [
+        "Fehlende Artikel (der/die/das/ein/eine)",
+        "Elliptische Strukturen statt vollständiger Sätze",
+        "Code-switching (Englisch-Deutsch-Mischung)"
+      ],
+      "improvements_from_prior": [],
+      "emotional_state": "stabil und funktional",
+      "session_highlight": "Runde 6: Student signalisiert Verständnis und beschreibt praktischen Anwendungskontext ('Im Hotel, ich sage das oft'), was auf Transferdenken und funktionales Verständnis der Sprachmittlungsaufgabe hindeutet."
     }
   ],
   "james": [
@@ -15115,6 +15424,321 @@
       ],
       "emotional_state": "konzentriert, selbstsicher und lernbereit",
       "session_highlight": "Runden 1-5 und 7: Durchgängig perfekte, sofortige und kanonalignierte Ausführung der Sprachmittlungsaufgabe mit robust konsolidiertem Muster, aktiver Wortfeldnutzung und präzisen Übersetzungen, die eine vollständige Beherrschung der Kannbeschreibung zeigen."
+    },
+    {
+      "day": 176,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "das Zimmer",
+          "stable": true
+        },
+        {
+          "word": "die Uhr",
+          "stable": true
+        },
+        {
+          "word": "links",
+          "stable": true
+        },
+        {
+          "word": "rechts",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Übersetzen/Erklären von Hotelbegriffen) als robust konsolidiertes Muster",
+          "stable": true
+        },
+        {
+          "rule": "Funktionale elliptische Strukturen für direkte Übersetzungen/Erklärungen ('Das bedeutet...') als stabiles A1-Muster",
+          "stable": true
+        },
+        {
+          "rule": "Aktive Verständnissicherung ('Ist das klar?') als erweiterte Sprachhandlung",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [
+        "Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)",
+        "Code-switching für metakognitive Planung und präzisierende Erklärungen (etabliertes, funktionales Muster)"
+      ],
+      "improvements_from_prior": [
+        "Vollständige Konsolidierung der Korrektur: Keine Drifting-Episoden über alle 7 Runden. Die Korrektur aus dem isolierten Rückfall (Tag 173) hat vollständig 'gestickt' und die Stabilität der Tage 174-175 wurde fortgesetzt.",
+        "Innerhalb der Session: Stabile, sofortige Aufgabenausführung ohne Leistungsabfall von Runde 1 bis Runde 7. Der Student begann jede Runde direkt mit der korrekten Sprachhandlung (Übersetzen/Erklären), zeigte keine Ermüdung oder Qualitätsverlust.",
+        "Aktive Integration von Feedback: Demonstrierte sofortige Anwendung von Lehrer-Feedback durch präzisierte Formulierungen und die Einführung von Verständnissicherung ('Ist das klar?') in späteren Runden.",
+        "Positive Gesamttrajektorie: Zeigt nun durchgängige Stabilität über mehrere Tage (174-176) mit konsolidierter Sprachmittlungsfähigkeit, sicherer Rollenannahme und zuverlässiger Reaktion auf klare Lehrersteuerung."
+      ],
+      "emotional_state": "konzentriert, engagiert und selbstsicher in der Rollenausführung",
+      "session_highlight": "Durchgängig perfekte, sofortige und kanonalignierte Ausführung über alle 7 Runden mit aktiver Wortfeldnutzung, präzisen Übersetzungen und erweiterter Sprachhandlung (Verständnissicherung), die eine vollständige Beherrschung der Kannbeschreibung demonstriert."
+    },
+    {
+      "day": 170,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "teilweise",
+      "vocabulary_learned": [
+        {
+          "word": "Wasser",
+          "stable": true
+        },
+        {
+          "word": "Kaffee",
+          "stable": true
+        },
+        {
+          "word": "Tee",
+          "stable": true
+        },
+        {
+          "word": "der Saft",
+          "stable": false
+        },
+        {
+          "word": "bestellen",
+          "stable": false
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Übersetzen von Getränkebestellungen) als robustes Muster bei klarer Lehrersteuerung",
+          "stable": true
+        },
+        {
+          "rule": "Funktionale elliptische Strukturen für Getränkebitten ('Können Sie bitte... bringen?') als stabiles A1-Muster",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [
+        "Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)",
+        "Code-switching für metakognitive Planung und Rollenreflexion (etabliertes, funktionales Muster)",
+        "Isolierte Drifting-Episoden, wenn Lehrersteuerung unklar oder generisch wird (Rückfallmuster)"
+      ],
+      "improvements_from_prior": [
+        "Die Korrektur des Drifting-Musters hat teilweise 'gestickt': In Runden 1-5 zeigte der Student perfekte, sofortige Aufgabenausführung genau wie in den erfolgreichen Phasen von Tag 176.",
+        "Innerhalb der Session: Stabile Leistung in Runden 1-5 mit sofortiger, korrekter Sprachhandlung (Übersetzen von Getränkewünschen). Ab Runde 6 tritt jedoch ein Rückfall in Drifting auf, wenn die Lehrersteuerung generisch wird.",
+        "Die Gesamttrajektorie zeigt eine konsolidierte Kernfähigkeit: Der Student beherrscht die Sprachmittlungsaufgabe zuverlässig bei klarer Aufgabenstellung, hat aber eine anhaltende Schwachstelle bei der Aufrechterhaltung der Rolle ohne explizite Aufforderung."
+      ],
+      "emotional_state": "konzentriert und aufgabenorientiert bei klarer Steuerung, passiv-reaktiv bei generischen Prompts",
+      "session_highlight": "Runden 1-5: Durchgängig perfekte, sofortige Übersetzung von vier verschiedenen Getränkebestellungen (Wasser, Kaffee, Tee mit Zucker, Orangensaft) mit korrekter Sprachhandlung und aktiver Wortfeldnutzung, demonstriert volle Beherrschung der Kannbeschreibung bei optimaler Lehrersteuerung."
+    },
+    {
+      "day": 171,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "teilweise",
+      "vocabulary_learned": [
+        {
+          "word": "die Ecke",
+          "stable": true
+        },
+        {
+          "word": "geradeaus",
+          "stable": true
+        },
+        {
+          "word": "rechts",
+          "stable": true
+        },
+        {
+          "word": "links",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Weitergeben von Wegerklärungen) als robust konsolidiertes Muster bei klarer Lehrersteuerung",
+          "stable": true
+        },
+        {
+          "rule": "Funktionale elliptische Strukturen für direkte Übersetzungen/Erklärungen ('Bis heißt...', 'Links, dann geradeaus.') als stabiles A1-Muster",
+          "stable": true
+        },
+        {
+          "rule": "Aktive Nutzung von fragender Intonation zur Verständnissicherung in der Sprachmittlerrolle",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [
+        "Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)",
+        "Code-switching für metakognitive Planung und präzisierende Erklärungen (etabliertes, funktionales Muster)",
+        "Isolierte Drifting-Episoden, wenn die Lehrersteuerung unklar, generisch oder unvollständig wird (Rückfallmuster)"
+      ],
+      "improvements_from_prior": [
+        "Die Korrektur des Drifting-Rückfalls aus Tag 170 hat teilweise 'gestickt': Bei klarer Lehrersteuerung (Runden 1-3, 5-6) zeigt der Student sofortige, perfekte Ausführung der Sprachmittlungsaufgabe mit aktiver Wortfeldnutzung, genau wie in Tag 176 konsolidiert.",
+        "Innerhalb der Session: Stabile, sofortige Aufgabenausführung in den ersten drei Runden und Runden 5-6, wenn die Lehrersteuerung klar ist. Die Drifting-Episoden in Runden 4 und 7 treten ausschließlich bei unklarer/generischer (Runde 4) oder unvollständiger (Runde 7) Lehrersteuerung auf.",
+        "Die Gesamttrajektorie bleibt positiv mit konsolidierter Kernfähigkeit: Der Student beherrscht die Sprachmittlungsaufgabe (Weitergeben von Wegerklärungen) zuverlässig, zeigt sichere Rollenannahme und aktive Wortfeldnutzung. Die anhaltende Schwachstelle ist die Abhängigkeit von expliziter Lehrersteuerung zur Aufrechterhaltung der Rolle."
+      ],
+      "emotional_state": "konzentriert und reaktionsschnell, zeigt aktive metakognitive Planung für präzise Erklärungen",
+      "session_highlight": "Runden 1-3 und 5-6: Durchgängig perfekte, sofortige und kanonalignierte Ausführung der Sprachmittlungsaufgabe (Wegbeschreibung und Erklärung von Wegbegriffen) mit aktiver Nutzung des Zielwortfelds (geradeaus, rechts, links, die Ecke), demonstriert volle Beherrschung der Kannbeschreibung bei optimaler Lehrersteuerung."
+    },
+    {
+      "day": 172,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "Zahlen (eins, zwei, drei, vier, fünf, sechs) für Preisangaben",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Sofortige, kanonalignierte Ausführung der Sprachhandlung 'den Preis angeben' als robust konsolidiertes Muster",
+          "stable": true
+        },
+        {
+          "rule": "Funktionale elliptische Strukturen für Preisangaben ('Zwei Euro... und... fünfzig.') als stabiles A1-Muster",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [
+        "Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)",
+        "Code-switching für metakognitive Planung (etabliertes, funktionales Muster)"
+      ],
+      "improvements_from_prior": [
+        "Vollständige Konsolidierung der Korrektur: Keine Drifting-Episoden über alle 7 Runden. Die isolierten Rückfallmuster aus den Tagen 170-171 (bei unklarer Lehrersteuerung) sind nicht aufgetreten; die Stabilität der Tage 174-176 wurde fortgesetzt.",
+        "Innerhalb der Session: Stabile, sofortige Aufgabenausführung ohne Leistungsabfall von Runde 1 bis Runde 7. Jede Runde begann direkt mit der korrekten Sprachhandlung (Preis nennen), was eine robuste, automatisierte Rollenannahme zeigt.",
+        "Aktive Integration von Feedback: In Runde 5 zeigte der Student sofortige Integration der Korrektur ('ein Euro' statt 'eins Euro') aus früheren Runden.",
+        "Positive Gesamttrajektorie: Der Student demonstriert durchgängige Stabilität über mehrere Tage (174-176, 172) mit konsolidierter Sprachmittlungsfähigkeit. Er führt die Aufgabe zuverlässig aus, zeigt aktive Wortfeldnutzung (Zahlen) und reagiert perfekt auf klare Lehrersteuerung."
+      ],
+      "emotional_state": "konzentriert, sicher",
+      "session_highlight": "Durchgängig perfekte, sofortige und kanonalignierte Ausführung der Sprachhandlung 'den Preis angeben' über alle 7 Runden mit korrekter Nutzung des Zahlenwortfelds und aktiver Integration von Feedback, demonstriert volle Beherrschung der Kannbeschreibung."
+    },
+    {
+      "day": 173,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "Fahrkarten",
+          "stable": true
+        },
+        {
+          "word": "Auskunft",
+          "stable": true
+        },
+        {
+          "word": "Parkplatz",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Übersetzen von Schildern) als robust konsolidiertes Muster",
+          "stable": true
+        },
+        {
+          "rule": "Funktionale Sprachhandlungsschemata ('Auf dem Schild steht X. Auf Deutsch: Y.') für klare Informationsweitergabe",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [
+        "Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)",
+        "Code-switching für metakognitive Planung und Rollenklärung (etabliertes, funktionales Muster)"
+      ],
+      "improvements_from_prior": [
+        "Vollständige Konsistenz: Alle 7 Runden zeigen perfekte, sofortige Übersetzungen ohne Drifting-Episoden, was eine vollständige Konsolidierung der Korrektur aus Tag 173 demonstriert.",
+        "Innerhalb der Session: Stabile, hohe Leistung von Runde 1 bis Runde 7 ohne Leistungsabfall. Jede Runde begann direkt mit korrekter Sprachhandlung und präziser Übersetzung.",
+        "Korrekturen aus früheren Tagen haben vollständig 'gestickt': Keine Rückfälle in frühere Drifting-Muster trotz Prüfungskontext in Runde 7.",
+        "Positive Gesamttrajektorie: Der Student zeigt durchgängige Stabilität über mehrere Tage mit konsolidierter Sprachmittlungsfähigkeit, sicherer Rollenannahme und zuverlässiger Reaktion auf klare Lehrersteuerung."
+      ],
+      "emotional_state": "konzentriert und sicher",
+      "session_highlight": "Durchgängig perfekte, sofortige und kanonalignierte Ausführung über alle 7 Runden mit präzisen Übersetzungen (tickets→Fahrkarten, information→Auskunft, parking→Parkplatz), die eine vollständige Beherrschung der Kannbeschreibung demonstriert."
+    },
+    {
+      "day": 174,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "der Tag",
+          "stable": true
+        },
+        {
+          "word": "die Uhr",
+          "stable": true
+        },
+        {
+          "word": "die Uhrzeit",
+          "stable": true
+        },
+        {
+          "word": "die Stunde",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Elliptische/broken Syntax für funktionale Übersetzungen (A1-typisch)",
+          "stable": true
+        },
+        {
+          "rule": "Code-switching Englisch/Deutsch für metakognitive Planung und präzisierende Erklärungen",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [],
+      "improvements_from_prior": [
+        "Konsolidierung des etablierten Musters: sofortige, präzise Übersetzung bei klarer Lehrersteuerung",
+        "Aktive Nutzung des Zielwortfelds (Zeitangaben, Tag) in Übersetzungen",
+        "Demonstriert volle Beherrschung der Kannbeschreibung bei optimaler Lehrerführung"
+      ],
+      "emotional_state": "sicher und routiniert bei klaren Aufgaben, unsicher bei unklarer Steuerung",
+      "session_highlight": "Runde 5 zeigt das dokumentierte Rückfallmuster: Bei unklarer Lehrersteuerung driftet der Student in metakognitive Paraphrase statt zur Zielsprachhandlung. Dies unterstreicht die Abhängigkeit von klarer, kanonalignierter Führung für optimale Leistung."
+    },
+    {
+      "day": 175,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [],
+      "grammar_learned": [],
+      "persistent_errors": [
+        "Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)",
+        "Code-switching für metakognitive Planung (etabliertes, funktionales Muster)"
+      ],
+      "improvements_from_prior": [
+        "Keine signifikante Verbesserung innerhalb der Session (Runde 1 vs. Runde 7), da das Leistungsniveau bereits hoch ist und von der Lehrersteuerung abhängt.",
+        "Das dokumentierte Rückfallmuster (Drifting bei unklarer Lehrersteuerung) trat in Runde 3 erneut auf, zeigt also keine Besserung gegenüber früheren Tagen (z.B. Tag 174, Runde 5).",
+        "Die Korrekturen aus früheren Tagen sind stabil: Bei klarer Lehrersteuerung liefert der Student durchgängig perfekte, sofortige und kanonalignierte Übersetzungen."
+      ],
+      "emotional_state": "Engagiert und kooperativ, zeigt Bereitschaft zur Aufgabe, benötigt aber klare Führung, um fokussiert zu bleiben.",
+      "session_highlight": "Der Student demonstriert bei klarer, kanonalignierter Lehrersteuerung (in 6 von 7 Runden) eine vollständige Beherrschung der Kannbeschreibung: Er übersetzt Aufschriften (z.B. 'dames', 'Signore', 'señoras', 'Signori') sofort und korrekt in funktionale Äußerungen wie 'Damentoilette' oder 'Herrentoilette', teilweise mit integrierter Ortsangabe ('da lang')."
+    },
+    {
+      "day": 176,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "das Zimmer",
+          "stable": true
+        },
+        {
+          "word": "die Uhr / die Uhrzeit",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Frageform 'Was bedeutet...?' mit korrekter Struktur",
+          "stable": true
+        },
+        {
+          "rule": "Code-switching als funktionales A1-Muster für metasprachliche Erklärungen",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [
+        "Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)",
+        "Abhängigkeit von klarer, kanonalignierter Lehrersteuerung: Bei unklaren oder generischen Prompts driftet der Student in soziale Abschlussformeln statt zur Zielsprachhandlung (Runden 6-7)"
+      ],
+      "improvements_from_prior": [
+        "Konsistente Beibehaltung des etablierten Musters: Bei optimaler Lehrersteuerung sofortige, perfekte Ausführung der Zielsprachhandlung (Übersetzen/Erklären von Hotelbegriffen, Nachfragen mit 'Was bedeutet...?')",
+        "Stabile Integration der Sprachhandlung 'Verständnis sichern' mit 'Ist das klar?' als funktionale Erweiterung"
+      ],
+      "emotional_state": "Engagiert und reaktionsschnell bei klaren Aufgaben, kooperativ im sozialen Abschluss",
+      "session_highlight": "Runden 1-5 zeigen durchgängig perfekte, kanonalignierte Leistung bei klarer Lehrersteuerung: Der Student übersetzt Hotelbegriffe (Check-out, Frühstück, Rezeption, Parkplatz) und Zeitangaben funktional, nutzt korrekte Nachfragestrukturen und integriert Verständnissicherung."
     }
   ],
   "yuki": [
@@ -21330,6 +21954,314 @@
       ],
       "emotional_state": "sicher und engagiert",
       "session_highlight": "Perfekte 7/7 Performance mit vollständiger Beherrschung der Kernkompetenz - zeigt konsistentes Mastery-Niveau in der Hotelbegriff-Mediation"
+    },
+    {
+      "day": 176,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "Zimmerservice",
+          "stable": true
+        },
+        {
+          "word": "geöffnet",
+          "stable": true
+        },
+        {
+          "word": "Nichtraucherzimmer",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Mediationsstruktur 'Das bedeutet...'",
+          "stable": true
+        },
+        {
+          "rule": "Fragestruktur 'Was bedeutet...?'",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [],
+      "improvements_from_prior": [
+        "Vollständige Beherrschung der Kernkompetenz erreicht",
+        "Sofortige, akkurate Übersetzungen ohne Zögern",
+        "Konsistente Anwendung der Mediationsstruktur über alle Runden"
+      ],
+      "emotional_state": "sicher und selbstbewusst",
+      "session_highlight": "Perfekte 7/7 Performance mit vollständiger Beherrschung der Hotelbegriff-Mediation, einschließlich Fragestellung und Übersetzung"
+    },
+    {
+      "day": 170,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "Saft",
+          "stable": true
+        },
+        {
+          "word": "Kaffee",
+          "stable": true
+        },
+        {
+          "word": "Milch",
+          "stable": true
+        },
+        {
+          "word": "Tee",
+          "stable": true
+        },
+        {
+          "word": "Bier",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Können Sie bitte... bringen? (Restaurant mediation structure)",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [],
+      "improvements_from_prior": [
+        "Consistent mastery of mediation structure across contexts (hotel to restaurant)",
+        "Immediate, automatic responses without hesitation",
+        "Accurate vocabulary application in new scenarios"
+      ],
+      "emotional_state": "confident, automatic",
+      "session_highlight": "Perfect 7/7 performance with immediate, accurate translations of drink requests using the target mediation structure, demonstrating complete command of A1 restaurant mediation tasks"
+    },
+    {
+      "day": 171,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "geradeaus",
+          "stable": true
+        },
+        {
+          "word": "rechts",
+          "stable": true
+        },
+        {
+          "word": "links",
+          "stable": true
+        },
+        {
+          "word": "Ecke",
+          "stable": true
+        },
+        {
+          "word": "Bahnhof",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [],
+      "persistent_errors": [],
+      "improvements_from_prior": [
+        "Consistent mastery of A1 mediation tasks with immediate, accurate translations",
+        "Strong command of using simple directional vocabulary in context",
+        "Appropriate use of prefabricated phrases for A1 level communication"
+      ],
+      "emotional_state": "confident and engaged",
+      "session_highlight": "Student demonstrated complete command of the mediation task, successfully relaying police directions to a tourist using target vocabulary (geradeaus, rechts, links, Ecke, Bahnhof) with perfect accuracy in 5 out of 7 rounds, showing consistent mastery pattern from prior days."
+    },
+    {
+      "day": 172,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "zwei",
+          "stable": true
+        },
+        {
+          "word": "drei",
+          "stable": true
+        },
+        {
+          "word": "vier",
+          "stable": true
+        },
+        {
+          "word": "eins",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Preisangabe-Struktur 'Das kostet [Zahl] Euro'",
+          "stable": true
+        },
+        {
+          "rule": "Akusativ 'einen' mit maskulinem 'Euro'",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [],
+      "improvements_from_prior": [
+        "Konsistente Beherrschung der Preisnennung in Geschäftsszenarien",
+        "Sofortige, akkurate Reaktionen ohne Korrekturbedarf",
+        "Natürliche Sprechmuster mit typischen A1-Hesitationen"
+      ],
+      "emotional_state": "sicher und kompetent",
+      "session_highlight": "Perfekte 6/6 Performance in Preisnennungsaufgaben mit sofortigen, korrekten Antworten und Beherrschung der Zielstrukturen"
+    },
+    {
+      "day": 173,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "Ausgang",
+          "stable": true
+        },
+        {
+          "word": "geöffnet",
+          "stable": true
+        },
+        {
+          "word": "kein Eingang",
+          "stable": true
+        },
+        {
+          "word": "Bahnsteig",
+          "stable": true
+        },
+        {
+          "word": "Halt",
+          "stable": true
+        },
+        {
+          "word": "Eingang",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Mediationsstruktur 'Auf Deutsch: ...'",
+          "stable": true
+        },
+        {
+          "rule": "Vollständige Sätze für Schilder-Mediation",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [],
+      "improvements_from_prior": [
+        "Konsistentes Mastery-Niveau über alle 7 Runden hinweg",
+        "Sofortige, akkurate Übersetzungen ohne Verzögerung",
+        "Verwendung vollständiger Sätze bei expliziter Aufforderung",
+        "Stabile Beherrschung der Mediationsaufgabe über verschiedene Kontexte hinweg"
+      ],
+      "emotional_state": "sicher und selbstbewusst",
+      "session_highlight": "Perfekte 7/7 Performance mit konsistentem Mastery-Niveau in der Schilder-Mediation, zeigt vollständige Beherrschung der A1-Sprachmittlungsaufgabe"
+    },
+    {
+      "day": 174,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "die Uhrzeit",
+          "stable": true
+        },
+        {
+          "word": "die Stunde",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Korrekte einfache Aussagen (z.B. 'Die Rezeption ist geschlossen.')",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [],
+      "improvements_from_prior": [
+        "Konsistente Beibehaltung des Mastery-Niveaus aus vorherigen Tagen (Tage 170-173)",
+        "Sofortige, korrekte Übersetzungen ohne Zögern oder Hilfsstrukturen",
+        "Vollständige Beherrschung der Mediationsaufgabe gemäß A1-Kannbeschreibung"
+      ],
+      "emotional_state": "sicher und kompetent",
+      "session_highlight": "Perfekte 7/7 Performance mit sofortigen, präzisen Übersetzungen verschiedener Aufschriften (Geschäftstür, Öffnungszeiten, Rezeption)"
+    },
+    {
+      "day": 175,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "Damentoilette",
+          "stable": true
+        },
+        {
+          "word": "Herrentoilette",
+          "stable": true
+        },
+        {
+          "word": "Toilette",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Einfache Richtungsangaben mit 'ist links/rechts'",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [],
+      "improvements_from_prior": [
+        "Konsistente perfekte Performance über alle 7 Runden hinweg",
+        "Sofortige, präzise Übersetzungen ohne Zögern",
+        "Erweiterung um Richtungsinformationen bei Pfeilschildern"
+      ],
+      "emotional_state": "sicher, selbstbewusst, automatisiert",
+      "session_highlight": "Vollständige Beherrschung der A1-Sprachmittlungsaufgabe mit perfekten 7/7 Runden, einschließlich korrekter Übersetzung verschiedener Aufschriften (WC, Damigelle, Damen, Herren, Fräulein) und Integration von Richtungsangaben"
+    },
+    {
+      "day": 176,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "Zimmer",
+          "stable": true
+        },
+        {
+          "word": "Check-in",
+          "stable": true
+        },
+        {
+          "word": "Check-out",
+          "stable": true
+        },
+        {
+          "word": "Frühstücksbuffet",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Übersetzungsstruktur 'Das bedeutet ...'",
+          "stable": true
+        },
+        {
+          "rule": "Verständnissicherung 'Ist das klar?'",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [],
+      "improvements_from_prior": [
+        "Automatisierung der Sprachmittlungsroutine (Übersetzung + Verständnissicherung)",
+        "Erweiterung des Hotel-Wortschatzes über einfache Begriffe hinaus",
+        "Konsistente Anwendung der Zielstrukturen ohne Lehrer-Modellierung"
+      ],
+      "emotional_state": "sicher und selbstbewusst",
+      "session_highlight": "Perfekte 5/7 ON-TRACK-Runden mit sofortigen, präzisen Übersetzungen verschiedener Hotelbegriffe (Check-in als 'Ankunft im Hotel', Check-out als 'Abreise' mit Erklärung 'Sie verlassen das Zimmer') und automatischer Verständnissicherung"
     }
   ]
 }

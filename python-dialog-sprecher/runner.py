@@ -2472,6 +2472,62 @@ def run_note_taker(kann, kann_focus, round_frame, teacher_msg, student_msg, day_
 
 
 _GRADER_VERDICTS = ("ON TRACK", "NEEDS REDIRECT", "DRIFTING")
+_SUMMARY_RESULTS = ("bestanden", "teilweise", "nicht_bestanden")
+
+
+def _validate_grader_round(raw):
+    """Parse and validate a per-round grader response. Returns (result, error)."""
+    try:
+        obj = parse_json(raw)
+    except Exception as e:
+        return None, f"JSON parse failed: {e}"
+    if not isinstance(obj, dict):
+        return None, "not a dict"
+    if "verdict" not in obj:
+        return None, "missing verdict field"
+    return obj, None
+
+
+def _validate_day_summary(raw, day_num):
+    """Parse and validate a day summary response. Returns (result, error)."""
+    try:
+        obj = parse_json(raw)
+    except Exception as e:
+        return None, f"JSON parse failed: {e}"
+    if not isinstance(obj, dict):
+        return None, "not a dict"
+    result = obj.get("kann_result", "")
+    if result not in _SUMMARY_RESULTS:
+        return None, f"bad kann_result: {result!r}"
+    if not obj.get("session_highlight"):
+        return None, "missing session_highlight"
+    # session_highlight should be a short readable string, not a JSON dump
+    hl = str(obj.get("session_highlight", ""))
+    if hl.startswith("{") or hl.startswith("[") or len(hl) > 500:
+        return None, f"session_highlight looks like raw JSON or too long ({len(hl)} chars)"
+    return obj, None
+
+
+def _retry_call(step_name, messages, validator, max_retries=2, billing_bucket=None):
+    """Call the model, validate, retry on bad output. Returns (result, meta_list)."""
+    meta_list = []
+    for attempt in range(1 + max_retries):
+        call = chat_from_config(step_name, messages, return_meta=True)
+        meta_list.append(call["meta"])
+        if billing_bucket:
+            add_call_meta_to_billing(billing_bucket, call["meta"])
+        result, error = validator(call["content"])
+        if result is not None:
+            return result, meta_list
+        print(f"    [{step_name}] bad return (attempt {attempt+1}): {error}")
+        if attempt < max_retries:
+            # Add the bad response and a correction nudge to the messages
+            messages = messages + [
+                {"role": "assistant", "content": call["content"]},
+                {"role": "user", "content": f"That response was not valid: {error}. Please respond again with valid JSON only, no extra text."},
+            ]
+    # All retries exhausted — return the raw content for fallback handling
+    return None, meta_list
 
 
 def normalize_grader_result(grader_result):
@@ -2642,17 +2698,17 @@ def run_day(day_num, kann):
                 prior_progress_text
             )
             try:
-                grader_call = chat_from_config("grader_round", [
+                g_messages = [
                     {"role": "system", "content": g_sys},
                     {"role": "user", "content": g_user}
-                ], return_meta=True)
-                grader_raw = grader_call["content"]
-                add_call_meta_to_billing(day_live["billing"], grader_call["meta"])
-
-                try:
-                    grader_result = parse_json(grader_raw)
-                except:
-                    grader_result = {"verdict": "parse_error", "wortfeld_used": [], "grammar_notes": [grader_raw], "steering": "proceed", "canon_aligned": True, "sprachhandlung": ""}
+                ]
+                grader_result, grader_metas = _retry_call(
+                    "grader_round", g_messages, _validate_grader_round,
+                    max_retries=1, billing_bucket=day_live["billing"]
+                )
+                grader_call = {"meta": grader_metas[-1]}
+                if grader_result is None:
+                    grader_result = {"verdict": "parse_error", "wortfeld_used": [], "grammar_notes": [], "steering": "proceed", "canon_aligned": True, "sprachhandlung": ""}
             except Exception as exc:
                 grader_call = {
                     "meta": _build_call_meta("grader_round", runtime_cfg["models"]["grader_round"].get("api", "openai"), runtime_cfg["models"]["grader_round"].get("model", "unknown"), {}),
@@ -2719,17 +2775,18 @@ def run_day(day_num, kann):
         summary_user = summary_user.replace("{kann_text}", kann["kann"])
         summary_user = summary_user.replace("{all_grader_reports}", json.dumps(grader_reports[sid], ensure_ascii=False))
         summary_user = summary_user.replace("{prior_progress}", summarize_prior_progress(progress.get(sid, []), limit=6))
-        summary_call = chat_from_config("grader_day", [
+        summary_messages = [
             {"role": "system", "content": grader_day["system_prompt"]},
             {"role": "user", "content": summary_user}
-        ], return_meta=True)
-        summary_raw = summary_call["content"]
-        add_call_meta_to_billing(day_live["billing"], summary_call["meta"])
-
-        try:
-            day_summary = parse_json(summary_raw)
-        except:
-            day_summary = {"day": day_num, "kann_result": "teilweise", "session_highlight": summary_raw,
+        ]
+        day_summary, summary_metas = _retry_call(
+            "grader_day", summary_messages,
+            lambda raw: _validate_day_summary(raw, day_num),
+            max_retries=2, billing_bucket=day_live["billing"]
+        )
+        summary_call = {"meta": summary_metas[-1]}
+        if day_summary is None:
+            day_summary = {"day": day_num, "kann_result": "teilweise", "session_highlight": "(summary failed after retries)",
                            "vocabulary_learned": [], "grammar_learned": [], "persistent_errors": [],
                            "improvements_from_prior": [], "emotional_state": ""}
 

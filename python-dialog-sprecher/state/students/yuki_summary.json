@@ -21,7 +21,7 @@
     {
       "word": "die Uhrzeit",
       "stable": true,
-      "mentions": 12
+      "mentions": 13
     },
     {
       "word": "Entschuldigung",
@@ -41,17 +41,17 @@
     {
       "word": "die Stunde",
       "stable": true,
+      "mentions": 9
+    },
+    {
+      "word": "links",
+      "stable": true,
       "mentions": 8
     },
     {
       "word": "rechts",
       "stable": true,
-      "mentions": 7
-    },
-    {
-      "word": "links",
-      "stable": true,
-      "mentions": 7
+      "mentions": 8
     }
   ],
   "unstable_vocabulary": [
@@ -83,6 +83,11 @@
   ],
   "stable_grammar": [
     {
+      "rule": "Mediationsstruktur 'Das bedeutet...'",
+      "stable": true,
+      "mentions": 2
+    },
+    {
       "rule": "Mediationsstruktur: 'Was bedeutet...?' + 'Das bedeutet...'",
       "stable": true,
       "mentions": 2
@@ -108,17 +113,12 @@
       "mentions": 2
     },
     {
-      "rule": "Mediationsstruktur 'Das bedeutet...' für Übersetzungen",
+      "rule": "Verständnissicherung 'Ist das klar?'",
       "stable": true,
       "mentions": 1
     },
     {
-      "rule": "Signalwort bei Unsicherheit: 'Ich weiß nicht'",
-      "stable": true,
-      "mentions": 1
-    },
-    {
-      "rule": "Mediationsstruktur: 'Das bedeutet...'",
+      "rule": "Übersetzungsstruktur 'Das bedeutet ...'",
       "stable": true,
       "mentions": 1
     }
@@ -151,7 +151,7 @@
     }
   ],
   "persistent_errors": [],
-  "emotional_state": "sicher und engagiert",
+  "emotional_state": "sicher und selbstbewusst",
   "recent_kanns": [
     {
       "kann_id": "K176",
@@ -162,7 +162,7 @@
     {
       "kann_id": "K175",
       "day": 175,
-      "result": "teilweise",
+      "result": "bestanden",
       "kann_text": "Kann in einem Restaurant die Aufschrift (z. B. „caballeros“) auf der Toilettentür für einen deutschsprachigen Touristen übersetzen."
     },
     {
@@ -185,12 +185,12 @@
     }
   ],
   "recent_highlights": [
-    "Perfekte 7/7 Performance mit vollständiger Beherrschung der Kernkompetenz - zeigt konsistentes Mastery-Niveau in der Hotelbegriff-Mediation",
-    "Perfekte 7/7 Performance mit vollständiger Beherrschung der Kernkompetenz - zeigt konsistentes Mastery-Niveau in der Hotelbegriff-Mediation",
-    "Perfekte 7/7 Performance mit sofortigen, akkuraten Übersetzungen von Hotelbegriffen und konsistenter Anwendung der Mediationsstruktur"
+    "Perfekte 5/7 ON-TRACK-Runden mit sofortigen, präzisen Übersetzungen verschiedener Hotelbegriffe (Check-in als 'Ankunft im Hotel', Check-out als 'Abreise' mit Erklärung 'Sie verlassen das Zimmer') und automatischer Verständnissicherung",
+    "Vollständige Beherrschung der A1-Sprachmittlungsaufgabe mit perfekten 7/7 Runden, einschließlich korrekter Übersetzung verschiedener Aufschriften (WC, Damigelle, Damen, Herren, Fräulein) und Integration von Richtungsangaben",
+    "Perfekte 7/7 Performance mit sofortigen, präzisen Übersetzungen verschiedener Aufschriften (Geschäftstür, Öffnungszeiten, Rezeption)"
   ],
   "totals": {
-    "vocabulary": 308,
-    "grammar": 143
+    "vocabulary": 323,
+    "grammar": 153
   }
 }

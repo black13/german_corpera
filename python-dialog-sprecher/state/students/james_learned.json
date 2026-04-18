@@ -2325,6 +2325,98 @@
     {
       "word": "die Uhrzeit",
       "stable": true
+    },
+    {
+      "word": "das Zimmer",
+      "stable": true
+    },
+    {
+      "word": "die Uhr",
+      "stable": true
+    },
+    {
+      "word": "links",
+      "stable": true
+    },
+    {
+      "word": "rechts",
+      "stable": true
+    },
+    {
+      "word": "Wasser",
+      "stable": true
+    },
+    {
+      "word": "Kaffee",
+      "stable": true
+    },
+    {
+      "word": "Tee",
+      "stable": true
+    },
+    {
+      "word": "der Saft",
+      "stable": false
+    },
+    {
+      "word": "bestellen",
+      "stable": false
+    },
+    {
+      "word": "die Ecke",
+      "stable": true
+    },
+    {
+      "word": "geradeaus",
+      "stable": true
+    },
+    {
+      "word": "rechts",
+      "stable": true
+    },
+    {
+      "word": "links",
+      "stable": true
+    },
+    {
+      "word": "Zahlen (eins, zwei, drei, vier, fünf, sechs) für Preisangaben",
+      "stable": true
+    },
+    {
+      "word": "Fahrkarten",
+      "stable": true
+    },
+    {
+      "word": "Auskunft",
+      "stable": true
+    },
+    {
+      "word": "Parkplatz",
+      "stable": true
+    },
+    {
+      "word": "der Tag",
+      "stable": true
+    },
+    {
+      "word": "die Uhr",
+      "stable": true
+    },
+    {
+      "word": "die Uhrzeit",
+      "stable": true
+    },
+    {
+      "word": "die Stunde",
+      "stable": true
+    },
+    {
+      "word": "das Zimmer",
+      "stable": true
+    },
+    {
+      "word": "die Uhr / die Uhrzeit",
+      "stable": true
     }
   ],
   "grammar_acquired": [
@@ -3223,6 +3315,70 @@
     {
       "rule": "Funktionale elliptische Strukturen für direkte Übersetzungen/Erklärungen ('Das bedeutet...', 'Check-out bis elf Uhr.') als stabiles A1-Muster",
       "stable": true
+    },
+    {
+      "rule": "Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Übersetzen/Erklären von Hotelbegriffen) als robust konsolidiertes Muster",
+      "stable": true
+    },
+    {
+      "rule": "Funktionale elliptische Strukturen für direkte Übersetzungen/Erklärungen ('Das bedeutet...') als stabiles A1-Muster",
+      "stable": true
+    },
+    {
+      "rule": "Aktive Verständnissicherung ('Ist das klar?') als erweiterte Sprachhandlung",
+      "stable": true
+    },
+    {
+      "rule": "Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Übersetzen von Getränkebestellungen) als robustes Muster bei klarer Lehrersteuerung",
+      "stable": true
+    },
+    {
+      "rule": "Funktionale elliptische Strukturen für Getränkebitten ('Können Sie bitte... bringen?') als stabiles A1-Muster",
+      "stable": true
+    },
+    {
+      "rule": "Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Weitergeben von Wegerklärungen) als robust konsolidiertes Muster bei klarer Lehrersteuerung",
+      "stable": true
+    },
+    {
+      "rule": "Funktionale elliptische Strukturen für direkte Übersetzungen/Erklärungen ('Bis heißt...', 'Links, dann geradeaus.') als stabiles A1-Muster",
+      "stable": true
+    },
+    {
+      "rule": "Aktive Nutzung von fragender Intonation zur Verständnissicherung in der Sprachmittlerrolle",
+      "stable": true
+    },
+    {
+      "rule": "Sofortige, kanonalignierte Ausführung der Sprachhandlung 'den Preis angeben' als robust konsolidiertes Muster",
+      "stable": true
+    },
+    {
+      "rule": "Funktionale elliptische Strukturen für Preisangaben ('Zwei Euro... und... fünfzig.') als stabiles A1-Muster",
+      "stable": true
+    },
+    {
+      "rule": "Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Übersetzen von Schildern) als robust konsolidiertes Muster",
+      "stable": true
+    },
+    {
+      "rule": "Funktionale Sprachhandlungsschemata ('Auf dem Schild steht X. Auf Deutsch: Y.') für klare Informationsweitergabe",
+      "stable": true
+    },
+    {
+      "rule": "Elliptische/broken Syntax für funktionale Übersetzungen (A1-typisch)",
+      "stable": true
+    },
+    {
+      "rule": "Code-switching Englisch/Deutsch für metakognitive Planung und präzisierende Erklärungen",
+      "stable": true
+    },
+    {
+      "rule": "Frageform 'Was bedeutet...?' mit korrekter Struktur",
+      "stable": true
+    },
+    {
+      "rule": "Code-switching als funktionales A1-Muster für metasprachliche Erklärungen",
+      "stable": true
     }
   ],
   "kannbeschreibungen_attempted": {
@@ -3916,24 +4072,24 @@
     },
     "K172": {
       "day": 172,
-      "result": "teilweise"
+      "result": "bestanden"
     },
     "K173": {
       "day": 173,
-      "result": "teilweise"
+      "result": "bestanden"
     },
     "K174": {
       "day": 174,
-      "result": "teilweise"
+      "result": "bestanden"
     },
     "K175": {
       "day": 175,
-      "result": "teilweise"
+      "result": "bestanden"
     }
   },
   "persistent_errors": [
     "Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)",
-    "Code-switching für metakognitive Planung und präzisierende Erklärungen (etabliertes, funktionales Muster)"
+    "Abhängigkeit von klarer, kanonalignierter Lehrersteuerung: Bei unklaren oder generischen Prompts driftet der Student in soziale Abschlussformeln statt zur Zielsprachhandlung (Runden 6-7)"
   ],
-  "emotional_state": "konzentriert, selbstsicher und lernbereit"
+  "emotional_state": "Engagiert und reaktionsschnell bei klaren Aufgaben, kooperativ im sozialen Abschluss"
 }

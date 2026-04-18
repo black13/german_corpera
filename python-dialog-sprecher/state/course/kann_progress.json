@@ -1334,54 +1334,24 @@
             ]
           }
         ],
-        "wortfeld_used": [
-          "Zimmer",
-          "Uhr"
-        ],
-        "grammar_learned": [
-          {
-            "rule": "Elliptische Strukturen für funktionale Übersetzungen",
-            "stable": true
-          },
-          {
-            "rule": "Übersetzungsformel 'Das bedeutet...'",
-            "stable": true
-          }
-        ],
-        "vocabulary_learned": [
-          {
-            "word": "Zimmerservice",
-            "stable": true
-          },
-          {
-            "word": "Aufzug",
-            "stable": true
-          },
-          {
-            "word": "Nichtraucherzimmer",
-            "stable": true
-          },
-          {
-            "word": "check-out",
-            "stable": true
-          }
-        ],
+        "wortfeld_used": [],
+        "grammar_learned": [],
+        "vocabulary_learned": [],
         "persistent_errors": [
           "Fehlende Artikel (der/die/das/ein/eine)",
           "Elliptische Strukturen statt vollständiger Sätze",
-          "Englische Einmischung/Code-Switching"
+          "Code-switching (Englisch-Deutsch-Mischung)"
         ],
         "grammar_notes": [
-          "Elliptische Struktur statt vollständiger Satz",
-          "Fehlender Artikel (der/die/das/ein/eine)",
-          "Elliptische Struktur ('Aufzug ist... lift')",
-          "Fehlende Artikel",
-          "Englische Einmischung ('lift')",
-          "Mixed German/English explanation",
-          "Missing articles (Nichtraucherzimmer ist...)",
-          "Simple noun phrase structure"
+          "Elliptische Struktur ('das ist hier. Wo wir sind')",
+          "Code-switching (Englisch 'reception')",
+          "Elliptische Struktur ('das ist diese Tafel')",
+          "Code-switching (Englisch 'Information board')",
+          "Elliptische Struktur ('Im Hotel, ich sage das oft')",
+          "Fehlende Artikel ('Im Hotel')",
+          "Wortstellungsvariation ('Im Hotel, ich sage...')"
         ],
-        "session_highlight": "Runde 7: Übersetzung von 'check-out' mit funktionaler Erklärung ('Das bedeutet: Zimmer bis elf Uhr verlassen'), die perfekt die kommunikative Aufgabe erfüllt und über reine Wort-für-Wort-Übersetzung hinausgeht."
+        "session_highlight": "Runde 6: Student signalisiert Verständnis und beschreibt praktischen Anwendungskontext ('Im Hotel, ich sage das oft'), was auf Transferdenken und funktionales Verständnis der Sprachmittlungsaufgabe hindeutet."
       },
       "K011": {
         "day": 11,
@@ -10081,31 +10051,98 @@
           "lebensmittel",
           "getränke"
         ],
+        "global_relationships": [
+          {
+            "id": "a1_conversation_support",
+            "name": "A1 conversation support",
+            "kann_ids": [
+              "K001",
+              "K003",
+              "K004",
+              "K005",
+              "K006",
+              "K007",
+              "K030",
+              "K038"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "social_contact_operators",
+            "name": "Social contact operators",
+            "kann_ids": [
+              "K009",
+              "K010",
+              "K014",
+              "K017",
+              "K018",
+              "K022",
+              "K026"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "oral_production_frame",
+            "name": "Oral production frame",
+            "kann_ids": [
+              "K116",
+              "K117",
+              "K120",
+              "K121",
+              "K126"
+            ],
+            "bridge_to_kann_ids": []
+          }
+        ],
+        "syllabus_branches": [
+          {
+            "id": "service_place_systems",
+            "name": "Service place systems",
+            "relationship_ids": []
+          },
+          {
+            "id": "a1_speaking_operating_system",
+            "name": "A1 speaking operating system",
+            "relationship_ids": [
+              "a1_conversation_support",
+              "oral_production_frame"
+            ]
+          },
+          {
+            "id": "social_entry_exit",
+            "name": "Social entry and exit moves",
+            "relationship_ids": [
+              "social_contact_operators"
+            ]
+          }
+        ],
         "wortfeld_used": [
-          "Tee",
-          "der Saft",
-          "Orangensaft",
-          "Milch",
           "Restaurant",
-          "Kaffee"
+          "Hotel",
+          "Kaffee",
+          "Milch",
+          "Tee",
+          "Wasser",
+          "das Wasser",
+          "der Wein"
         ],
         "grammar_learned": [
           {
-            "rule": "Elliptische Strukturen für A1-Sprachmittlung (z.B. 'Milch für sie, bitte')",
-            "stable": true
-          },
-          {
-            "rule": "Funktionale Artikel-Omission in Bitten und Übersetzungen",
+            "rule": "Elliptische Strukturen für Getränkebitten (z.B. 'Wasser mit Eis, bitte')",
             "stable": true
           }
         ],
         "vocabulary_learned": [
           {
-            "word": "das Wasser",
+            "word": "Wasser",
             "stable": true
           },
           {
-            "word": "der Kaffee",
+            "word": "Kaffee",
+            "stable": true
+          },
+          {
+            "word": "Milch",
             "stable": true
           },
           {
@@ -10113,11 +10150,7 @@
             "stable": true
           },
           {
-            "word": "der Saft/Orangensaft",
-            "stable": true
-          },
-          {
-            "word": "Milch",
+            "word": "Wein",
             "stable": true
           }
         ],
@@ -10126,16 +10159,11 @@
           "Elliptische Strukturen statt vollständiger Sätze"
         ],
         "grammar_notes": [
-          "{ \"canon_aligned\": true, \"wortfeld_used\": [\"das Wasser\", \"der Kaffee\"], \"sprachhandlung\": \"Äußerung einer Getränkepräferenz (Antwort auf Frage) und eine Bitte ('Wasser, bitte')\", \"grammar_notes\": [\"Elliptische Strukturen ('Kaffee, immer Kaffee. Und Wasser, bitte.')\"], \"progress_vs_prior\": \"Konsistent. Zeigt weiterhin funktionale, elliptische Kommunikation mit korrekter Wortfeldnutzung, wie in den vorherigen Tagen.\", \"verdict\": \"ON TRACK. Der Schüler reagiert angemessen auf die Frage und verwendet Zielvokabular. Die Sprachhandlung ist eine direkte Antwort und eine Bitte, was für den Kontext passend ist, auch wenn die spezifische Kannbeschreibung (Übersetzung für eine Bekannte) noch nicht aktiviert wurde.\", \"steering\": \"Lehrer sollte nun das Szenario der Sprachmittlung einführen (z.B. 'Ah, gut. Und wenn Ihre Freundin auf Französisch \"Un verre d'eau\" sagt, was sagen Sie dann zur Bedienung auf Deutsch?').\" }",
-          "Elliptische Struktur ('Tee für sie, bitte')",
-          "Fehlender Artikel ('Sie möchte Tee')",
-          "Elliptische Struktur (fehlendes Subjekt/Objekt im Hauptsatz)",
-          "Fehlender Artikel (ein)",
-          "Elliptische Struktur ('Milch für sie, bitte.')",
-          "Fehlender Artikel ('Milch' statt 'die Milch')",
-          "Keine relevanten Fehler auf A1-Niveau"
+          "Elliptische Struktur ('Kaffee mit Milch, bitte') statt vollständigem Satz",
+          "Fehlender Artikel ('Kaffee' statt 'Ein Kaffee')",
+          "Korrekte Verwendung von 'ist einfach' als elliptische Struktur"
         ],
-        "session_highlight": "Runde 7: Erfolgreicher Abschluss der Sprachmittlungsaufgabe mit natürlicher Verabschiedung und Bestätigung durch die Lehrerin, zeigt vollständige Integration der Kannbeschreibung in flüssige Interaktion"
+        "session_highlight": "Konsistente Demonstration funktionaler Sprachmittlungskompetenz über alle sieben Runden hinweg mit präzisen, situationsangemessenen Übersetzungen im Restaurantkontext"
       },
       "K171": {
         "day": 171,
@@ -10153,21 +10181,81 @@
         "wortfeld_targets": [
           "verkehr"
         ],
+        "global_relationships": [
+          {
+            "id": "a1_conversation_support",
+            "name": "A1 conversation support",
+            "kann_ids": [
+              "K001",
+              "K003",
+              "K004",
+              "K005",
+              "K006",
+              "K007",
+              "K030",
+              "K038"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "social_contact_operators",
+            "name": "Social contact operators",
+            "kann_ids": [
+              "K009",
+              "K010",
+              "K014",
+              "K017",
+              "K018",
+              "K022",
+              "K026"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "oral_production_frame",
+            "name": "Oral production frame",
+            "kann_ids": [
+              "K116",
+              "K117",
+              "K120",
+              "K121",
+              "K126"
+            ],
+            "bridge_to_kann_ids": []
+          }
+        ],
+        "syllabus_branches": [
+          {
+            "id": "a1_speaking_operating_system",
+            "name": "A1 speaking operating system",
+            "relationship_ids": [
+              "a1_conversation_support",
+              "oral_production_frame"
+            ]
+          },
+          {
+            "id": "social_entry_exit",
+            "name": "Social entry and exit moves",
+            "relationship_ids": [
+              "social_contact_operators"
+            ]
+          },
+          {
+            "id": "service_place_systems",
+            "name": "Service place systems",
+            "relationship_ids": []
+          }
+        ],
         "wortfeld_used": [
           "geradeaus",
           "links",
-          "die Ecke",
-          "Bahnhof",
-          "Ecke"
+          "Straße",
+          "Bahnhof"
         ],
         "grammar_learned": [
           {
-            "rule": "Elliptische Strukturen für Wegbeschreibungen",
+            "rule": "Elliptische Strukturen für funktionale Kommunikation",
             "stable": true
-          },
-          {
-            "rule": "Fehlende Artikel in Ortsangaben",
-            "stable": false
           }
         ],
         "vocabulary_learned": [
@@ -10180,7 +10268,7 @@
             "stable": true
           },
           {
-            "word": "die Ecke",
+            "word": "Straße",
             "stable": true
           },
           {
@@ -10190,20 +10278,20 @@
         ],
         "persistent_errors": [
           "Fehlende Artikel (der/die/das/ein/eine)",
-          "Fehlende Präpositionen",
-          "Elliptische Strukturen statt vollständiger Sätze"
+          "Elliptische Strukturen statt vollständiger Sätze",
+          "Inkonsistente Anrede (Sie/du-Mischung)"
         ],
         "grammar_notes": [
-          "Fehlende Artikel (Restaurant, Bahnhofstraße)",
-          "Elliptische Struktur (Ja, ich kenne Restaurant)",
-          "Elliptische Strukturen (fehlende Verben/Subjekte)",
-          "Fehlende Artikel (der/die/das/ein/eine)",
-          "Fehlende Präpositionen",
-          "Korrekte Satzstruktur",
-          "Korrekte Konjugation (kann)",
-          "Angemessene Frageformulierung"
+          "Elliptische Struktur (kein vollständiger Satz)",
+          "Elliptische Struktur ('Supermarkt ist links') statt vollständigem Satz",
+          "Fehlender Artikel ('Supermarkt ist links' statt 'Der Supermarkt ist links')",
+          "Elliptische Struktur (fehlendes Verb)",
+          "Fehlender Artikel ('die Straße')",
+          "Elliptische Strukturen (Yuki, du gut)",
+          "Fehlende Artikel (keine relevanten Nomen vorhanden)",
+          "Inkonsistente Anrede (Sie/du-Mischung)"
         ],
-        "session_highlight": "Runde 4: Studentin hinterfragt aktiv die Übungssituation und zeigt metakognitives Bewusstsein für die Sprachmittlungsaufgabe, bevor sie zur Aufgabe zurückkehrt."
+        "session_highlight": "Runden 1-3: Perfekte Demonstration der Kannbeschreibung mit funktionaler Wegbeschreibung unter Verwendung von 'geradeaus', 'links', 'Straße' und 'Bahnhof' - zeigt klare Kompetenz bei präziser Lehrerführung."
       },
       "K172": {
         "day": 172,
@@ -10222,47 +10310,131 @@
           "zeit",
           "person"
         ],
+        "global_relationships": [
+          {
+            "id": "numbers_time_exchange_currency",
+            "name": "Numbers/time as exchange currency",
+            "kann_ids": [
+              "K034",
+              "K064",
+              "K067",
+              "K075",
+              "K129",
+              "K141"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "a1_conversation_support",
+            "name": "A1 conversation support",
+            "kann_ids": [
+              "K001",
+              "K003",
+              "K004",
+              "K005",
+              "K006",
+              "K007",
+              "K030",
+              "K038"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "social_contact_operators",
+            "name": "Social contact operators",
+            "kann_ids": [
+              "K009",
+              "K010",
+              "K014",
+              "K017",
+              "K018",
+              "K022",
+              "K026"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "oral_production_frame",
+            "name": "Oral production frame",
+            "kann_ids": [
+              "K116",
+              "K117",
+              "K120",
+              "K121",
+              "K126"
+            ],
+            "bridge_to_kann_ids": []
+          }
+        ],
+        "syllabus_branches": [
+          {
+            "id": "service_place_systems",
+            "name": "Service place systems",
+            "relationship_ids": []
+          },
+          {
+            "id": "a1_speaking_operating_system",
+            "name": "A1 speaking operating system",
+            "relationship_ids": [
+              "a1_conversation_support",
+              "oral_production_frame"
+            ]
+          },
+          {
+            "id": "social_entry_exit",
+            "name": "Social entry and exit moves",
+            "relationship_ids": [
+              "social_contact_operators"
+            ]
+          }
+        ],
         "wortfeld_used": [
-          "zahlen",
+          "eins",
+          "zwei",
+          "drei",
           "vier",
-          "zwei"
+          "fünf",
+          "sechs",
+          "zahlen: eins, zwei, drei, vier, fünf, sechs"
         ],
         "grammar_learned": [
           {
-            "rule": "Elliptische Strukturen für funktionale Kommunikation (z.B. 'Wie viel kostet?', 'Ich nehme')",
+            "rule": "Elliptische Strukturen für Preisabfragen (Wie viel kostet...?)",
+            "stable": true
+          },
+          {
+            "rule": "Minimale Preisangabe (nur Zahl) als funktionale Antwort",
             "stable": true
           }
         ],
         "vocabulary_learned": [
           {
-            "word": "zahlen",
+            "word": "Frühstück",
             "stable": true
           },
           {
-            "word": "vier",
+            "word": "eins, zwei, drei, vier, fünf, sechs",
             "stable": true
           },
           {
-            "word": "zwei",
-            "stable": true
+            "word": "Cent",
+            "stable": false
           }
         ],
         "persistent_errors": [
           "Fehlende Artikel (der/die/das/ein/eine)",
-          "Fehlende Präpositionen",
-          "Elliptische Strukturen statt vollständiger Sätze"
+          "Elliptische Strukturen statt vollständiger Sätze",
+          "Fehlende Präpositionen (z.B. 'Bis nächste Woche' statt 'Bis zur nächsten Woche')"
         ],
         "grammar_notes": [
-          "Elliptische Struktur (fehlendes Subjekt in 'Wie viel kostet?')",
-          "Fehlender Artikel ('ich kaufe Brot')",
-          "Elliptische Struktur (\"Ich nehme\" ohne Artikel/Objekt)",
-          "Elliptische Struktur (fehlendes Subjekt/Artikel)",
-          "Frageform als Unsicherheitsmarker",
-          "Korrekte Formulierung 'Ich gehe jetzt'",
-          "Angemessene Interjektion 'Oh, spät!'",
-          "Elliptische Strukturen ('Im Hotel auch so')"
+          "Elliptische Strukturen statt vollständiger Sätze",
+          "Fehlende Artikel (der/die/das/ein/eine)",
+          "Fehlende Präpositionen in einigen Kontexten",
+          "Ich mache oft (fehlendes Objekt/Artikel)",
+          "Cent... manchmal schwierig (elliptische Struktur)",
+          "Elliptische Struktur: 'Bis nächste Woche' (fehlender Artikel 'zur')"
         ],
-        "session_highlight": "Runde 5: Studentin verbindet die Sprachmittlungsaufgabe erfolgreich mit persönlicher Berufserfahrung ('Im Hotel auch so'), zeigt Transfer des Gelernten in authentischen Kontext."
+        "session_highlight": "Runde 1: Erfolgreicher Transfer der Kannbeschreibung vom Geschäft auf Hotel-Frühstück mit korrekter Preisabfrage ('Wie viel kostet Frühstück?')"
       },
       "K173": {
         "day": 173,
@@ -10278,22 +10450,98 @@
           "verkehr",
           "zeit"
         ],
+        "global_relationships": [
+          {
+            "id": "text_list_reading",
+            "name": "Text/list reading",
+            "kann_ids": [
+              "K060",
+              "K062",
+              "K084",
+              "K085",
+              "K086",
+              "K092",
+              "K104"
+            ],
+            "bridge_to_kann_ids": [
+              "K163",
+              "K176"
+            ]
+          },
+          {
+            "id": "a1_conversation_support",
+            "name": "A1 conversation support",
+            "kann_ids": [
+              "K001",
+              "K003",
+              "K004",
+              "K005",
+              "K006",
+              "K007",
+              "K030",
+              "K038"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "social_contact_operators",
+            "name": "Social contact operators",
+            "kann_ids": [
+              "K009",
+              "K010",
+              "K014",
+              "K017",
+              "K018",
+              "K022",
+              "K026"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "oral_production_frame",
+            "name": "Oral production frame",
+            "kann_ids": [
+              "K116",
+              "K117",
+              "K120",
+              "K121",
+              "K126"
+            ],
+            "bridge_to_kann_ids": []
+          }
+        ],
+        "syllabus_branches": [
+          {
+            "id": "text_list_to_message",
+            "name": "Text/list to message",
+            "relationship_ids": [
+              "text_list_reading"
+            ]
+          },
+          {
+            "id": "a1_speaking_operating_system",
+            "name": "A1 speaking operating system",
+            "relationship_ids": [
+              "a1_conversation_support",
+              "oral_production_frame"
+            ]
+          },
+          {
+            "id": "social_entry_exit",
+            "name": "Social entry and exit moves",
+            "relationship_ids": [
+              "social_contact_operators"
+            ]
+          }
+        ],
         "wortfeld_used": [
           "Bahnhof",
           "Straße",
-          "die Uhr",
-          "die Uhrzeit",
-          "die Straße",
-          "Minute",
-          "Tag"
+          "links"
         ],
         "grammar_learned": [
           {
-            "rule": "Elliptische Strukturen (Einzelwörter/Phrasen ohne Artikel/Verben) für Sprachmittlung",
-            "stable": true
-          },
-          {
-            "rule": "Funktionaler Imperativ ('sag einfach', 'du sagst')",
+            "rule": "Elliptische Strukturen für Sprachmittlung (z.B. 'Auf Deutsch: Straße')",
             "stable": true
           }
         ],
@@ -10303,40 +10551,31 @@
             "stable": true
           },
           {
+            "word": "Eingang",
+            "stable": true
+          },
+          {
+            "word": "geschlossen",
+            "stable": true
+          },
+          {
             "word": "Straße",
             "stable": true
           },
           {
-            "word": "die Uhr",
-            "stable": true
-          },
-          {
-            "word": "die Uhrzeit",
-            "stable": true
-          },
-          {
-            "word": "Minute",
-            "stable": true
-          },
-          {
-            "word": "Tag",
+            "word": "links",
             "stable": true
           }
         ],
         "persistent_errors": [
           "Fehlende Artikel (der/die/das/ein/eine)",
-          "Fehlende Präpositionen",
           "Elliptische Strukturen statt vollständiger Sätze"
         ],
         "grammar_notes": [
-          "Elliptische Struktur ('Das bedeutet... acht Uhr, der Zug fährt')",
-          "Fehlende Artikel/Präpositionen (erwartet bei A1)",
-          "Elliptische Strukturen (fehlende Artikel/Verben in Imperativkonstruktion)",
-          "Elliptische Struktur ('Nicht schwierig' ohne Subjekt/Verb)",
-          "Funktionaler Imperativ ('sag einfach')",
-          "Keine relevanten Fehler für A1-Niveau"
+          "Elliptische Strukturen statt vollständiger Sätze",
+          "Fehlende Artikel ('Im Hotel' statt 'Im Hotel') akzeptabel"
         ],
-        "session_highlight": "Studentin übernimmt aktiv Lehrerrolle, organisiert Sprachmittlungsübung ('du sagst... ich sage...') und zeigt tiefes Verständnis der Aufgabenstruktur"
+        "session_highlight": "Perfekte Demonstration der Kannbeschreibung in Runden 1-6 mit funktionaler, präziser Sprachmittlung von fünf verschiedenen Schildern (Bahnhof, Eingang, geschlossen, Straße, links)"
       },
       "K174": {
         "day": 174,
@@ -10352,19 +10591,99 @@
           "verkehr",
           "zeit"
         ],
+        "global_relationships": [
+          {
+            "id": "text_list_reading",
+            "name": "Text/list reading",
+            "kann_ids": [
+              "K060",
+              "K062",
+              "K084",
+              "K085",
+              "K086",
+              "K092",
+              "K104"
+            ],
+            "bridge_to_kann_ids": [
+              "K163",
+              "K176"
+            ]
+          },
+          {
+            "id": "a1_conversation_support",
+            "name": "A1 conversation support",
+            "kann_ids": [
+              "K001",
+              "K003",
+              "K004",
+              "K005",
+              "K006",
+              "K007",
+              "K030",
+              "K038"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "social_contact_operators",
+            "name": "Social contact operators",
+            "kann_ids": [
+              "K009",
+              "K010",
+              "K014",
+              "K017",
+              "K018",
+              "K022",
+              "K026"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "oral_production_frame",
+            "name": "Oral production frame",
+            "kann_ids": [
+              "K116",
+              "K117",
+              "K120",
+              "K121",
+              "K126"
+            ],
+            "bridge_to_kann_ids": []
+          }
+        ],
+        "syllabus_branches": [
+          {
+            "id": "text_list_to_message",
+            "name": "Text/list to message",
+            "relationship_ids": [
+              "text_list_reading"
+            ]
+          },
+          {
+            "id": "service_place_systems",
+            "name": "Service place systems",
+            "relationship_ids": []
+          },
+          {
+            "id": "a1_speaking_operating_system",
+            "name": "A1 speaking operating system",
+            "relationship_ids": [
+              "a1_conversation_support",
+              "oral_production_frame"
+            ]
+          }
+        ],
         "wortfeld_used": [
-          "die Uhrzeit",
           "die Uhr",
-          "die Straße",
-          "der Bahnhof"
+          "die Uhrzeit"
         ],
         "grammar_learned": [
           {
-            "rule": "Elliptische Strukturen für funktionale Kommunikation",
+            "rule": "Elliptische Strukturen für funktionale Übersetzungen (A1-typisch)",
             "stable": true
           },
           {
-            "rule": "Fehlende Artikel in typischen A1-Kontexten",
+            "rule": "Fehlende Artikel in Alltagskommunikation",
             "stable": true
           }
         ],
@@ -10374,34 +10693,29 @@
             "stable": true
           },
           {
-            "word": "die Uhr",
+            "word": "geöffnet",
             "stable": true
           },
           {
-            "word": "die Straße",
-            "stable": true
-          },
-          {
-            "word": "der Bahnhof",
+            "word": "reserviert",
             "stable": true
           }
         ],
         "persistent_errors": [
-          "Elliptische Strukturen statt vollständiger Sätze",
-          "Fehlende Artikel (der/die/das/ein/eine)",
-          "Fehlende Präpositionen in einigen Kontexten"
+          "Fehlende Artikel",
+          "Elliptische Strukturen statt vollständiger Sätze"
         ],
         "grammar_notes": [
-          "Elliptische Struktur ('Manchmal nicht verstehen')",
-          "Fehlende Artikel ('Uhrzeit ist einfach')",
-          "Elliptische Strukturen ('Hier zu.')",
-          "Fehlende Artikel ('andere Straße')",
-          "Elliptische Strukturen (\"Gehen wir Bahnhof\")",
-          "Fehlende Präposition (\"Gehen wir Bahnhof\")",
-          "Elliptische Strukturen ('Sprechen ist besser für Arbeit' statt 'Sprechen ist besser für die Arbeit')",
-          "Fehlende Artikel ('für Arbeit')"
+          "Elliptische Struktur ('Kein Platz frei' statt vollständiger Satz)",
+          "Fehlender Artikel ('Kein Platz frei' statt 'Kein Platz ist frei')",
+          "Elliptische Struktur ('Das Geschäft ist nicht jetzt')",
+          "Fehlender Artikel ('Öffnung um zehn Uhr')",
+          "Elliptische Strukturen ('Ja, gut')",
+          "Fehlende Artikel ('im Hotel', 'bis 10 Uhr')",
+          "Elliptische Strukturen statt vollständiger Sätze",
+          "Fehlende Artikel (\"Hotel voll\" statt \"Das Hotel ist voll\")"
         ],
-        "session_highlight": "Runde 6: Erfolgreiche Sprachmittlung mit praktischer Kommunikationsstrategie (Zeigen mit Finger) und natürlicher, funktionaler A1-Sprache, die perfekt die Kannbeschreibung erfüllt"
+        "session_highlight": "Runde 7: Perfekte Übersetzung von 'Geöffnet außer Sonntag' mit klarer Vermittlung der Ausnahmeregelung, zeigt vollständige Beherrschung der Kannbeschreibung"
       },
       "K175": {
         "day": 175,
@@ -10422,48 +10736,118 @@
           "lebensmittel",
           "getränke"
         ],
-        "wortfeld_used": [
-          "Kaffee",
-          "Brötchen",
-          "Butter",
-          "Tee",
-          "das Café",
-          "das Brötchen",
-          "der Käse",
-          "das Ei"
+        "global_relationships": [
+          {
+            "id": "text_list_reading",
+            "name": "Text/list reading",
+            "kann_ids": [
+              "K060",
+              "K062",
+              "K084",
+              "K085",
+              "K086",
+              "K092",
+              "K104"
+            ],
+            "bridge_to_kann_ids": [
+              "K163",
+              "K176"
+            ]
+          },
+          {
+            "id": "a1_conversation_support",
+            "name": "A1 conversation support",
+            "kann_ids": [
+              "K001",
+              "K003",
+              "K004",
+              "K005",
+              "K006",
+              "K007",
+              "K030",
+              "K038"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "social_contact_operators",
+            "name": "Social contact operators",
+            "kann_ids": [
+              "K009",
+              "K010",
+              "K014",
+              "K017",
+              "K018",
+              "K022",
+              "K026"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "oral_production_frame",
+            "name": "Oral production frame",
+            "kann_ids": [
+              "K116",
+              "K117",
+              "K120",
+              "K121",
+              "K126"
+            ],
+            "bridge_to_kann_ids": []
+          }
         ],
+        "syllabus_branches": [
+          {
+            "id": "text_list_to_message",
+            "name": "Text/list to message",
+            "relationship_ids": [
+              "text_list_reading"
+            ]
+          },
+          {
+            "id": "service_place_systems",
+            "name": "Service place systems",
+            "relationship_ids": []
+          },
+          {
+            "id": "a1_speaking_operating_system",
+            "name": "A1 speaking operating system",
+            "relationship_ids": [
+              "a1_conversation_support",
+              "oral_production_frame"
+            ]
+          }
+        ],
+        "wortfeld_used": [],
         "grammar_learned": [
           {
-            "rule": "Elliptische Strukturen für Sprachmittlung (Caballeros ist für Männer)",
+            "rule": "Elliptische Strukturen für funktionale Sprachmittlung",
             "stable": true
           }
         ],
         "vocabulary_learned": [
           {
-            "word": "Damentoilette",
+            "word": "Herrentoilette",
             "stable": true
           },
           {
-            "word": "Caballeros",
+            "word": "caballeros",
+            "stable": true
+          },
+          {
+            "word": "Hombres",
             "stable": true
           }
         ],
         "persistent_errors": [
           "Fehlende Artikel (der/die/das/ein/eine)",
-          "Elliptische Strukturen statt vollständiger Sätze",
-          "Fehlende Präpositionen in einigen Kontexten"
+          "Elliptische Strukturen statt vollständiger Sätze"
         ],
         "grammar_notes": [
-          "Fehlende Artikel (in Hotel)",
-          "Fehlende Präposition (in Hotel)",
-          "Elliptische Strukturen (Kaffee und Brötchen...)",
-          "Elliptische Strukturen (Ja, Käse ist gut. Oder manchmal Ei.)",
-          "Fehlende Artikel (im Café, nur Brötchen)",
-          "Elliptische Strukturen (Aber Kaffee ist besser.)",
-          "Fehlende Artikel (Kaffee ist besser)",
-          "Korrekte A1-Struktur: 'Ich möchte...' + Aufzählung"
+          "Elliptische Struktur ('Das ist die Herrentoilette, rechts') statt vollständigem Satz",
+          "Korrekte Artikelverwendung ('die Herrentoilette')"
         ],
-        "session_highlight": "Runde 7: Erfolgreiche Sprachmittlung mit vollständiger Übersetzung ('Caballeros ist für Männer') und zusätzlichem Angebot der Gegenüberstellung ('Für Frauen ist... Damentoilette?'), zeigt endgültiges Verständnis der Kannbeschreibung"
+        "session_highlight": "Runde 5: Präzise Übersetzung von 'Herren' mit Richtungsangabe ('Das ist die Herrentoilette, rechts') zeigt perfekte Anwendung der Kannbeschreibung"
       }
     },
     "james": {
@@ -12001,17 +12385,17 @@
           }
         ],
         "wortfeld_used": [
+          "das Zimmer",
           "die Uhr",
-          "die Uhrzeit",
-          "das Zimmer"
+          "die Uhrzeit"
         ],
         "grammar_learned": [
           {
-            "rule": "Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Übersetzen/Erklären von Hotelbegriffen) als robust konsolidiertes Muster",
+            "rule": "Frageform 'Was bedeutet...?' mit korrekter Struktur",
             "stable": true
           },
           {
-            "rule": "Funktionale elliptische Strukturen für direkte Übersetzungen/Erklärungen ('Das bedeutet...', 'Check-out bis elf Uhr.') als stabiles A1-Muster",
+            "rule": "Code-switching als funktionales A1-Muster für metasprachliche Erklärungen",
             "stable": true
           }
         ],
@@ -12021,29 +12405,22 @@
             "stable": true
           },
           {
-            "word": "die Uhr",
-            "stable": true
-          },
-          {
-            "word": "die Uhrzeit",
+            "word": "die Uhr / die Uhrzeit",
             "stable": true
           }
         ],
         "persistent_errors": [
           "Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)",
-          "Code-switching für metakognitive Planung und präzisierende Erklärungen (etabliertes, funktionales Muster)"
+          "Abhängigkeit von klarer, kanonalignierter Lehrersteuerung: Bei unklaren oder generischen Prompts driftet der Student in soziale Abschlussformeln statt zur Zielsprachhandlung (Runden 6-7)"
         ],
         "grammar_notes": [
-          "Elliptische Struktur 'Das bedeutet...' (A1-typisch und funktional)",
-          "Code-switching für metakognitive Planung (etabliertes Muster)",
-          "Funktionale elliptische Struktur ('Das bedeutet...')",
-          "Code-switching für präzise Übersetzung (A1-typisch)",
-          "Code-switching für präzise Übersetzung (A1-typisch und funktional)",
-          "Code-switching für präzise Erklärung (A1-typisch)",
-          "Elliptische Struktur ('Das war... okay.')",
-          "Broken Syntax ('Ich kann die Wörter sagen.') - A1-typisch"
+          "Code-switching for comprehension check (A1-typical functional pattern)",
+          "Elliptical structure 'leave the room until eleven' (functional communication)",
+          "Student uses correct question structure 'Was bedeutet...?' with target word in quotes",
+          "Code-switching (English/German mix) is functional A1 pattern",
+          "Elliptical structure 'bedeutet... closed' is acceptable"
         ],
-        "session_highlight": "Runden 1-5 und 7: Durchgängig perfekte, sofortige und kanonalignierte Ausführung der Sprachmittlungsaufgabe mit robust konsolidiertem Muster, aktiver Wortfeldnutzung und präzisen Übersetzungen, die eine vollständige Beherrschung der Kannbeschreibung zeigen."
+        "session_highlight": "Runden 1-5 zeigen durchgängig perfekte, kanonalignierte Leistung bei klarer Lehrersteuerung: Der Student übersetzt Hotelbegriffe (Check-out, Frühstück, Rezeption, Parkplatz) und Zeitangaben funktional, nutzt korrekte Nachfragestrukturen und integriert Verständnissicherung."
       },
       "K011": {
         "day": 11,
@@ -19499,22 +19876,126 @@
           "lebensmittel",
           "getränke"
         ],
+        "global_relationships": [
+          {
+            "id": "a1_conversation_support",
+            "name": "A1 conversation support",
+            "kann_ids": [
+              "K001",
+              "K003",
+              "K004",
+              "K005",
+              "K006",
+              "K007",
+              "K030",
+              "K038"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "social_contact_operators",
+            "name": "Social contact operators",
+            "kann_ids": [
+              "K009",
+              "K010",
+              "K014",
+              "K017",
+              "K018",
+              "K022",
+              "K026"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "oral_production_frame",
+            "name": "Oral production frame",
+            "kann_ids": [
+              "K116",
+              "K117",
+              "K120",
+              "K121",
+              "K126"
+            ],
+            "bridge_to_kann_ids": []
+          }
+        ],
+        "syllabus_branches": [
+          {
+            "id": "service_place_systems",
+            "name": "Service place systems",
+            "relationship_ids": []
+          },
+          {
+            "id": "a1_speaking_operating_system",
+            "name": "A1 speaking operating system",
+            "relationship_ids": [
+              "a1_conversation_support",
+              "oral_production_frame"
+            ]
+          },
+          {
+            "id": "social_entry_exit",
+            "name": "Social entry and exit moves",
+            "relationship_ids": [
+              "social_contact_operators"
+            ]
+          }
+        ],
         "wortfeld_used": [
-          "Bier",
+          "Wasser",
           "Kaffee",
-          "Milch"
+          "Tee",
+          "bestellen",
+          "der Saft"
         ],
-        "grammar_learned": [],
-        "vocabulary_learned": [],
-        "persistent_errors": [],
+        "grammar_learned": [
+          {
+            "rule": "Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Übersetzen von Getränkebestellungen) als robustes Muster bei klarer Lehrersteuerung",
+            "stable": true
+          },
+          {
+            "rule": "Funktionale elliptische Strukturen für Getränkebitten ('Können Sie bitte... bringen?') als stabiles A1-Muster",
+            "stable": true
+          }
+        ],
+        "vocabulary_learned": [
+          {
+            "word": "Wasser",
+            "stable": true
+          },
+          {
+            "word": "Kaffee",
+            "stable": true
+          },
+          {
+            "word": "Tee",
+            "stable": true
+          },
+          {
+            "word": "der Saft",
+            "stable": false
+          },
+          {
+            "word": "bestellen",
+            "stable": false
+          }
+        ],
+        "persistent_errors": [
+          "Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)",
+          "Code-switching für metakognitive Planung und Rollenreflexion (etabliertes, funktionales Muster)",
+          "Isolierte Drifting-Episoden, wenn Lehrersteuerung unklar oder generisch wird (Rückfallmuster)"
+        ],
         "grammar_notes": [
-          "Funktionale A1-Syntax mit Code-switching ('wait') - typisch und akzeptabel für die Sprachhandlung, die sie ausführt.",
-          "Perfekte, kanonalignierte Struktur: 'Also... kalte Milch, bitte.'",
-          "Die Struktur 'Sie möchte...' ist für A1 angemessen und funktional. Die Wortstellung ist korrekt.",
-          "Perfekte, kanonalignierte Struktur: 'Sie möchte [Getränk] mit [Zutat], bitte.'",
-          "Korrekte Verwendung von 'Danke' und 'Bis nächste Woche!'"
+          "Code-switching for metalinguistic planning ('wait, how do you say...') - established functional A1 pattern",
+          "Elliptical structure 'Ein Glas Wasser?' - functional A1 pattern",
+          "Elliptische Struktur ('Können Sie bitte... einen Kaffee?') ist funktional für A1",
+          "Elliptische Struktur 'Können Sie bitte... einen Orangensaft?' ist funktional A1-typisch",
+          "Fehlender Artikel vor 'Orangensaft' (A1-typisch und nicht strafbar)",
+          "Korrekte Verwendung von 'Danke'",
+          "Code-switching zur metakognitiven Rollenreflexion (etabliertes funktionales Muster)",
+          "Elliptische Antwort (Ja, das ist... toll.) - A1-typisch und funktional"
         ],
-        "session_highlight": "```json\n{\n    \"day\": 170,\n    \"subject_area\": \"Sprachmittlung mündlich\",\n    \"kann_result\": \"bestanden\",\n    \"vocabulary_learned\": [\n        {\"word\": \"Bier\", \"stable\": true},\n        {\"word\": \"Kaffee\", \"stable\": true},\n        {\"word\": \"Milch\", \"stable\": true}\n    ],\n    \"grammar_learned\": [\n        {\"rule\": \"Präzise, kanonalignierte Übersetzung von Getränkewünschen mit Strukturen wie 'Können Sie bitte... bringen?' und 'Sie möchte..., bitte.'\", \"stable\": true},\n        {\"rule\": \"Funktionale A1-Syntax mit Code-switching für metakognitive Planung als etabliertes, stabiles Muster\", \"stable\": true}\n    ],\n    \"persistent_errors\": [\n        \"Isolierte Drifting-Episoden (persönliche Interaktion statt Sprachmittlung) bei Aufgabeneinführung\",\n        \"Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)\",\n        \"Code-switching für metakognitive Planung (etabliertes, funktionales Muster)\"\n    ],\n    \"improvements_from_prior\": [\n        \"Innerhalb der Session: Dramatische Verbesserung nach Runde 1 (DRIFTING). Nach sofortiger Lehrer-Korrektur zeigten Runden 2-7 durchgängig perfekte, kanonalignierte Sprachmittlung ohne weitere Ablenkungen.\",\n        \"Korrekturmuster bestätigt: Der Student reagiert lernbereit auf direktes Feedback und kehrt sofort zur präzisen Aufgabenausführung zurück. Die Drifting-Episode in Runde 1 war ein isolierter Rückfall, der nach Korrektur nicht wieder auftrat.\",\n        \"Fortsetzung der stabilen Kernleistung: Die Fähigkeit zur präzisen Übersetzung von Getränkewünschen ist konsolidiert und wurde in 6 von 7 Runden fehlerfrei ausgeführt.\",\n        \"Insgesamt zeigt der Student eine robuste Beherrschung der Sprachmittlungsaufgabe, mit der Fähigkeit, Feedback sofort zu integrieren"
+        "session_highlight": "Runden 1-5: Durchgängig perfekte, sofortige Übersetzung von vier verschiedenen Getränkebestellungen (Wasser, Kaffee, Tee mit Zucker, Orangensaft) mit korrekter Sprachhandlung und aktiver Wortfeldnutzung, demonstriert volle Beherrschung der Kannbeschreibung bei optimaler Lehrersteuerung."
       },
       "K171": {
         "day": 171,
@@ -19532,35 +20013,132 @@
         "wortfeld_targets": [
           "verkehr"
         ],
+        "global_relationships": [
+          {
+            "id": "a1_conversation_support",
+            "name": "A1 conversation support",
+            "kann_ids": [
+              "K001",
+              "K003",
+              "K004",
+              "K005",
+              "K006",
+              "K007",
+              "K030",
+              "K038"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "social_contact_operators",
+            "name": "Social contact operators",
+            "kann_ids": [
+              "K009",
+              "K010",
+              "K014",
+              "K017",
+              "K018",
+              "K022",
+              "K026"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "oral_production_frame",
+            "name": "Oral production frame",
+            "kann_ids": [
+              "K116",
+              "K117",
+              "K120",
+              "K121",
+              "K126"
+            ],
+            "bridge_to_kann_ids": []
+          }
+        ],
+        "syllabus_branches": [
+          {
+            "id": "a1_speaking_operating_system",
+            "name": "A1 speaking operating system",
+            "relationship_ids": [
+              "a1_conversation_support",
+              "oral_production_frame"
+            ]
+          },
+          {
+            "id": "social_entry_exit",
+            "name": "Social entry and exit moves",
+            "relationship_ids": [
+              "social_contact_operators"
+            ]
+          },
+          {
+            "id": "service_place_systems",
+            "name": "Service place systems",
+            "relationship_ids": []
+          }
+        ],
         "wortfeld_used": [
-          "Bahnhof",
           "geradeaus",
+          "rechts",
           "links",
-          "die Ecke",
-          "der Bahnhof",
-          "Ecke"
+          "die Ecke"
         ],
-        "grammar_learned": [],
-        "vocabulary_learned": [],
-        "persistent_errors": [],
+        "grammar_learned": [
+          {
+            "rule": "Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Weitergeben von Wegerklärungen) als robust konsolidiertes Muster bei klarer Lehrersteuerung",
+            "stable": true
+          },
+          {
+            "rule": "Funktionale elliptische Strukturen für direkte Übersetzungen/Erklärungen ('Bis heißt...', 'Links, dann geradeaus.') als stabiles A1-Muster",
+            "stable": true
+          },
+          {
+            "rule": "Aktive Nutzung von fragender Intonation zur Verständnissicherung in der Sprachmittlerrolle",
+            "stable": true
+          }
+        ],
+        "vocabulary_learned": [
+          {
+            "word": "die Ecke",
+            "stable": true
+          },
+          {
+            "word": "geradeaus",
+            "stable": true
+          },
+          {
+            "word": "rechts",
+            "stable": true
+          },
+          {
+            "word": "links",
+            "stable": true
+          }
+        ],
+        "persistent_errors": [
+          "Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)",
+          "Code-switching für metakognitive Planung und präzisierende Erklärungen (etabliertes, funktionales Muster)",
+          "Isolierte Drifting-Episoden, wenn die Lehrersteuerung unklar, generisch oder unvollständig wird (Rückfallmuster)"
+        ],
         "grammar_notes": [
-          "Funktionales Code-switching für metakognitive Planung ('Wait, how do you say...')",
-          "Elliptische Struktur ('Ja, ich kann...')",
-          "Korrekte Wegbeschreibung mit Imperativ ('Gehen Sie...')",
-          "Elliptische Struktur ('Links von Bahnhof' ohne Artikel) - A1-typisch und funktional",
-          "Broken Syntax ('Gehen Sie geradeaus... und dann links.') - kommunikativ ausreichend",
-          "Imperativ 'Gehen Sie' korrekt für formale Anrede",
-          "Präposition 'an der' korrekt verwendet",
-          "Perfectly functional A1-level response. No grammatical analysis needed for A1."
+          "Elliptische Struktur ('geradeaus und dann... rechts?') ist A1-typisch und funktional",
+          "Fragende Intonation zur Verständnissicherung (gut für A1)",
+          "Elliptische Struktur ('Links, dann geradeaus.')",
+          "Code-switching für metakognitive Planung ('Nein, wait.')",
+          "Code-switching für präzise Erklärung (etabliertes funktionales Muster)",
+          "Elliptische Struktur ('Bis means...')",
+          "Korrekte Verwendung von 'Danke'",
+          "'Ich verstehe jetzt... die Aufgabe' zeigt Verständnis, aber keine Sprachmittlung"
         ],
-        "session_highlight": "```json\n{\n    \"day\": 171,\n    \"subject_area\": \"Sprachmittlung mündlich\",\n    \"kann_result\": \"bestanden\",\n    \"vocabulary_learned\": [\n        {\"word\": \"Bahnhof\", \"stable\": true},\n        {\"word\": \"geradeaus\", \"stable\": true},\n        {\"word\": \"links\", \"stable\": true},\n        {\"word\": \"die Ecke\", \"stable\": true}\n    ],\n    \"grammar_learned\": [\n        {\"rule\": \"Präzise, kanonalignierte Wegbeschreibung mit Imperativ ('Gehen Sie...') und einfachen Richtungsangaben\", \"stable\": true},\n        {\"rule\": \"Funktionale elliptische Strukturen für direkte Informationsweitergabe ('Links von Bahnhof') als etabliertes A1-Muster\", \"stable\": true},\n        {\"rule\": \"Strategisches Code-switching für metakognitive Planung als stabiles, funktionales Werkzeug\", \"stable\": true}\n    ],\n    \"persistent_errors\": [\n        \"Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)\",\n        \"Code-switching für metakognitive Planung (etabliertes, funktionales Muster)\"\n    ],\n    \"improvements_from_prior\": [\n        \"Vollständige Konsolidierung der korrekten Rollenannahme: Keine einzige Drifting-Episode über alle 7 Runden, was eine deutliche Verbesserung gegenüber den isolierten Runde-1-Drifting-Episoden der Tage 167, 168 und 170 darstellt.\",\n        \"Innerhalb der Session: Stabile, konsistente Leistung von Runde 1 bis Runde 6. Jede Runde begann sofort mit der korrekten Sprachhandlung (Wegbeschreibung) ohne Ablenkung, was auf eine verbesserte sofortige Aufgabenfokussierung hinweist.\",\n        \"Demonstriert nahtlosen Transfer der konsolidierten Sprachmittlungsfähigkeit auf eine neue Kannbeschreibung (Wegerklärung) mit vollständiger Beherrschung des erforderlichen Wortfelds und der Sprachhandlung.\",\n        \"Korrekturmuster bestätigt: Die in vor"
+        "session_highlight": "Runden 1-3 und 5-6: Durchgängig perfekte, sofortige und kanonalignierte Ausführung der Sprachmittlungsaufgabe (Wegbeschreibung und Erklärung von Wegbegriffen) mit aktiver Nutzung des Zielwortfelds (geradeaus, rechts, links, die Ecke), demonstriert volle Beherrschung der Kannbeschreibung bei optimaler Lehrersteuerung."
       },
       "K172": {
         "day": 172,
         "kann_id": "K172",
         "kann_text": "Kann in einem Geschäft einem deutschen Touristen behilflich sein und für ihn auf Deutsch den Preis von Waren nennen.",
         "category": "Sprachmittlung mündlich",
-        "result": "teilweise",
+        "result": "bestanden",
         "speech_acts": [
           "nach der Uhrzeit fragen / die Uhrzeit angeben",
           "nach dem Preis fragen / den Preis angeben",
@@ -19572,33 +20150,128 @@
           "zeit",
           "person"
         ],
+        "global_relationships": [
+          {
+            "id": "numbers_time_exchange_currency",
+            "name": "Numbers/time as exchange currency",
+            "kann_ids": [
+              "K034",
+              "K064",
+              "K067",
+              "K075",
+              "K129",
+              "K141"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "a1_conversation_support",
+            "name": "A1 conversation support",
+            "kann_ids": [
+              "K001",
+              "K003",
+              "K004",
+              "K005",
+              "K006",
+              "K007",
+              "K030",
+              "K038"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "social_contact_operators",
+            "name": "Social contact operators",
+            "kann_ids": [
+              "K009",
+              "K010",
+              "K014",
+              "K017",
+              "K018",
+              "K022",
+              "K026"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "oral_production_frame",
+            "name": "Oral production frame",
+            "kann_ids": [
+              "K116",
+              "K117",
+              "K120",
+              "K121",
+              "K126"
+            ],
+            "bridge_to_kann_ids": []
+          }
+        ],
+        "syllabus_branches": [
+          {
+            "id": "service_place_systems",
+            "name": "Service place systems",
+            "relationship_ids": []
+          },
+          {
+            "id": "a1_speaking_operating_system",
+            "name": "A1 speaking operating system",
+            "relationship_ids": [
+              "a1_conversation_support",
+              "oral_production_frame"
+            ]
+          },
+          {
+            "id": "social_entry_exit",
+            "name": "Social entry and exit moves",
+            "relationship_ids": [
+              "social_contact_operators"
+            ]
+          }
+        ],
         "wortfeld_used": [
-          "zwei",
-          "zahlen",
           "eins",
-          "zahlen: eins, zwei, fünf"
+          "fünf",
+          "zwei",
+          "drei",
+          "vier",
+          "sechs"
         ],
-        "grammar_learned": [],
-        "vocabulary_learned": [],
-        "persistent_errors": [],
+        "grammar_learned": [
+          {
+            "rule": "Sofortige, kanonalignierte Ausführung der Sprachhandlung 'den Preis angeben' als robust konsolidiertes Muster",
+            "stable": true
+          },
+          {
+            "rule": "Funktionale elliptische Strukturen für Preisangaben ('Zwei Euro... und... fünfzig.') als stabiles A1-Muster",
+            "stable": true
+          }
+        ],
+        "vocabulary_learned": [
+          {
+            "word": "Zahlen (eins, zwei, drei, vier, fünf, sechs) für Preisangaben",
+            "stable": true
+          }
+        ],
+        "persistent_errors": [
+          "Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)",
+          "Code-switching für metakognitive Planung (etabliertes, funktionales Muster)"
+        ],
         "grammar_notes": [
-          "Elliptische/broken Syntax ('Wie viel kostet... das Brot?') - A1-typisch und funktional",
-          "Elliptische Struktur mit Selbstkorrektur ('um... zwei Euro? Wait... zwei Euro fünfzig?')",
-          "Code-switching für metakognitive Planung (etabliertes, funktionales Muster)",
-          "Perfekt kanonalignierte Wiederholung der Zielstruktur 'Die Schokolade kostet...' mit korrekter Preisangabe.",
-          "Elliptische Struktur ('Das Brot kostet... eins... neunzig?') ist A1-typisch und funktional",
-          "Fehlende Währungseinheit (Euro) ist für A1 akzeptabel",
-          "Korrekte Verwendung von 'Danke' + Anrede",
-          "Korrekte Satzstruktur 'Ich übe für die Prüfung'"
+          "Broken German with code-switching for planning (A1-typical and functional)",
+          "Attempted construction 'Es kostet...' with number",
+          "Broken syntax (Eins Euro?) is A1-typical and functional",
+          "Self-correction to 'ein Euro' shows monitoring",
+          "Elliptische Struktur ('Zwei Euro... und... fünfzig.') ist A1-typisch und funktional",
+          "Korrekte Preisangabe 'Ein Euro neunundneunzig' (A1-typisch elliptisch, aber vollständig verständlich)"
         ],
-        "session_highlight": "```json\n{\n    \"day\": 172,\n    \"subject_area\": \"Sprachmittlung mündlich\",\n    \"kann_result\": \"bestanden\",\n    \"vocabulary_learned\": [\n        {\"word\": \"zwei\", \"stable\": true},\n        {\"word\": \"zahlen\", \"stable\": true},\n        {\"word\": \"eins\", \"stable\": true}\n    ],\n    \"grammar_learned\": [\n        {\"rule\": \"Sofortige, kanonalignierte Ausführung der Sprachhandlung 'Preis nennen' mit Strukturen wie 'Das Brot kostet...'\", \"stable\": true},\n        {\"rule\": \"Funktionale elliptische Strukturen für Preisangaben ('eins... neunzig?') als stabiles A1-Muster\", \"stable\": true},\n        {\"rule\": \"Strategisches Code-switching für metakognitive Planung und lexikalische Präzision als etabliertes Werkzeug\", \"stable\": true}\n    ],\n    \"persistent_errors\": [\n        \"Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)\",\n        \"Fehlende Währungseinheit (Euro) in einigen Preisangaben (für A1 akzeptabel)\",\n        \"Code-switching für metakognitive Planung (etabliertes, funktionales Muster)\"\n    ],\n    \"improvements_from_prior\": [\n        \"Vollständige Konsolidierung der korrekten Rollenannahme: Keine Drifting-Episoden über alle 7 Runden, Fortsetzung der perfekten Stabilität aus Tag 171. Dies bestätigt die dauerhafte Überwindung der isolierten Runde-1-Drifting-Probleme aus den Tagen 167, 168 und 170.\",\n        \"Innerhalb der Session: Stabile, konsistente Leistung von Runde 1 bis Runde 7. Jede Runde begann sofort mit der korrekten Sprachhandlung (Preisfrage oder Preisangabe) ohne Ablenkung, was eine robuste sofortige Aufgabenfokussierung zeigt.\",\n        \"Demonstriert nahtlosen Transfer der konsolidierten Sprachmittlungsfähigkeit auf eine neue Kannbeschreibung (Preis nennen im Gesch"
+        "session_highlight": "Durchgängig perfekte, sofortige und kanonalignierte Ausführung der Sprachhandlung 'den Preis angeben' über alle 7 Runden mit korrekter Nutzung des Zahlenwortfelds und aktiver Integration von Feedback, demonstriert volle Beherrschung der Kannbeschreibung."
       },
       "K173": {
         "day": 173,
         "kann_id": "K173",
         "kann_text": "Kann einfache anderssprachige Informationen von Schildern und Aufschriften Deutschsprachigen in Einzelwörtern auf Deutsch weitergeben.",
         "category": "Sprachmittlung mündlich",
-        "result": "teilweise",
+        "result": "bestanden",
         "speech_acts": [
           "signalisieren, dass man etwas (nicht) verstanden hat"
         ],
@@ -19607,30 +20280,132 @@
           "verkehr",
           "zeit"
         ],
+        "global_relationships": [
+          {
+            "id": "text_list_reading",
+            "name": "Text/list reading",
+            "kann_ids": [
+              "K060",
+              "K062",
+              "K084",
+              "K085",
+              "K086",
+              "K092",
+              "K104"
+            ],
+            "bridge_to_kann_ids": [
+              "K163",
+              "K176"
+            ]
+          },
+          {
+            "id": "a1_conversation_support",
+            "name": "A1 conversation support",
+            "kann_ids": [
+              "K001",
+              "K003",
+              "K004",
+              "K005",
+              "K006",
+              "K007",
+              "K030",
+              "K038"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "social_contact_operators",
+            "name": "Social contact operators",
+            "kann_ids": [
+              "K009",
+              "K010",
+              "K014",
+              "K017",
+              "K018",
+              "K022",
+              "K026"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "oral_production_frame",
+            "name": "Oral production frame",
+            "kann_ids": [
+              "K116",
+              "K117",
+              "K120",
+              "K121",
+              "K126"
+            ],
+            "bridge_to_kann_ids": []
+          }
+        ],
+        "syllabus_branches": [
+          {
+            "id": "text_list_to_message",
+            "name": "Text/list to message",
+            "relationship_ids": [
+              "text_list_reading"
+            ]
+          },
+          {
+            "id": "a1_speaking_operating_system",
+            "name": "A1 speaking operating system",
+            "relationship_ids": [
+              "a1_conversation_support",
+              "oral_production_frame"
+            ]
+          },
+          {
+            "id": "social_entry_exit",
+            "name": "Social entry and exit moves",
+            "relationship_ids": [
+              "social_contact_operators"
+            ]
+          }
+        ],
         "wortfeld_used": [
-          "die Straße",
-          "die Uhr",
-          "links",
-          "Stunde"
+          "Bahnhof",
+          "der Bahnhof",
+          "rechts"
         ],
-        "grammar_learned": [],
-        "vocabulary_learned": [],
-        "persistent_errors": [],
-        "grammar_notes": [
-          "Elliptische Struktur ('Verspätung... das ist...')",
-          "Code-switching für lexikalische Präzision ('delay')",
-          "Broken German ('Entschuldigung, ich verstehe nicht...') is perfectly acceptable for A1.",
-          "Code-switching ('wait, how do you say...') is an established, functional pattern for meta-cognitive planning.",
-          "Keine deutschen Strukturen analysierbar, da Antwort vollständig auf Englisch."
+        "grammar_learned": [
+          {
+            "rule": "Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Übersetzen von Schildern) als robust konsolidiertes Muster",
+            "stable": true
+          },
+          {
+            "rule": "Funktionale Sprachhandlungsschemata ('Auf dem Schild steht X. Auf Deutsch: Y.') für klare Informationsweitergabe",
+            "stable": true
+          }
         ],
-        "session_highlight": "```json\n{\n    \"day\": 173,\n    \"subject_area\": \"Sprachmittlung mündlich\",\n    \"kann_result\": \"bestanden\",\n    \"vocabulary_learned\": [\n        {\"word\": \"die Straße\", \"stable\": true},\n        {\"word\": \"die Uhr\", \"stable\": true},\n        {\"word\": \"links\", \"stable\": true},\n        {\"word\": \"Stunde\", \"stable\": true}\n    ],\n    \"grammar_learned\": [\n        {\"rule\": \"Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Übersetzung von Einzelwörtern) als konsolidiertes Muster\", \"stable\": true},\n        {\"rule\": \"Funktionale elliptische Strukturen für direkte Übersetzungen ('Verspätung... das ist...') als stabiles A1-Muster\", \"stable\": true},\n        {\"rule\": \"Strategisches Code-switching für metakognitive Planung und lexikalische Präzision als etabliertes Werkzeug\", \"stable\": true}\n    ],\n    \"persistent_errors\": [\n        \"Isolierte Drifting-Episode in Runde 7 (persönliche Interaktion auf Englisch statt Sprachmittlung auf Deutsch)\",\n        \"Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)\",\n        \"Code-switching für metakognitive Planung (etabliertes, funktionales Muster)\"\n    ],\n    \"improvements_from_prior\": [\n        \"Innerhalb der Session: Stabile, perfekte Leistung in Runden 1-6 mit sofortiger, kanonalignerter Sprachmittlung. Ein isolierter Rückfall in Runde 7 (Drifting) wurde durch sofortige Lehrer-Korrektur adressiert.\",\n        \"Korrekturmuster bestätigt: Der Student zeigt weiterhin hohe Lernbereitschaft und die Fähigkeit, Feedback sofort zu integrieren, wie in den Tagen 167, 168 und 170 etabliert.\",\n        \"Fortsetzung der robusten Kernleistung: Die in den Tagen 171 und 172 erreichte vollständige Konsolidierung der korrekten Rollenannahme (Sprachmittler) bleibt im Wesentlichen erhalten"
+        "vocabulary_learned": [
+          {
+            "word": "Fahrkarten",
+            "stable": true
+          },
+          {
+            "word": "Auskunft",
+            "stable": true
+          },
+          {
+            "word": "Parkplatz",
+            "stable": true
+          }
+        ],
+        "persistent_errors": [
+          "Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)",
+          "Code-switching für metakognitive Planung und Rollenklärung (etabliertes, funktionales Muster)"
+        ],
+        "grammar_notes": [],
+        "session_highlight": "Durchgängig perfekte, sofortige und kanonalignierte Ausführung über alle 7 Runden mit präzisen Übersetzungen (tickets→Fahrkarten, information→Auskunft, parking→Parkplatz), die eine vollständige Beherrschung der Kannbeschreibung demonstriert."
       },
       "K174": {
         "day": 174,
         "kann_id": "K174",
         "kann_text": "Kann die Aufschrift auf dem Schild einer Geschäftstür (z. B. „fermé“) für einen deutschsprachigen Touristen übersetzen.",
         "category": "Sprachmittlung mündlich",
-        "result": "teilweise",
+        "result": "bestanden",
         "speech_acts": [
           "signalisieren, dass man etwas (nicht) verstanden hat"
         ],
@@ -19639,34 +20414,141 @@
           "verkehr",
           "zeit"
         ],
+        "global_relationships": [
+          {
+            "id": "text_list_reading",
+            "name": "Text/list reading",
+            "kann_ids": [
+              "K060",
+              "K062",
+              "K084",
+              "K085",
+              "K086",
+              "K092",
+              "K104"
+            ],
+            "bridge_to_kann_ids": [
+              "K163",
+              "K176"
+            ]
+          },
+          {
+            "id": "a1_conversation_support",
+            "name": "A1 conversation support",
+            "kann_ids": [
+              "K001",
+              "K003",
+              "K004",
+              "K005",
+              "K006",
+              "K007",
+              "K030",
+              "K038"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "social_contact_operators",
+            "name": "Social contact operators",
+            "kann_ids": [
+              "K009",
+              "K010",
+              "K014",
+              "K017",
+              "K018",
+              "K022",
+              "K026"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "oral_production_frame",
+            "name": "Oral production frame",
+            "kann_ids": [
+              "K116",
+              "K117",
+              "K120",
+              "K121",
+              "K126"
+            ],
+            "bridge_to_kann_ids": []
+          }
+        ],
+        "syllabus_branches": [
+          {
+            "id": "text_list_to_message",
+            "name": "Text/list to message",
+            "relationship_ids": [
+              "text_list_reading"
+            ]
+          },
+          {
+            "id": "service_place_systems",
+            "name": "Service place systems",
+            "relationship_ids": []
+          },
+          {
+            "id": "a1_speaking_operating_system",
+            "name": "A1 speaking operating system",
+            "relationship_ids": [
+              "a1_conversation_support",
+              "oral_production_frame"
+            ]
+          }
+        ],
         "wortfeld_used": [
+          "der Tag",
           "die Uhr",
           "die Uhrzeit",
-          "die Stunde",
-          "Bahnhof",
-          "Uhr"
+          "die Stunde"
         ],
-        "grammar_learned": [],
-        "vocabulary_learned": [],
+        "grammar_learned": [
+          {
+            "rule": "Elliptische/broken Syntax für funktionale Übersetzungen (A1-typisch)",
+            "stable": true
+          },
+          {
+            "rule": "Code-switching Englisch/Deutsch für metakognitive Planung und präzisierende Erklärungen",
+            "stable": true
+          }
+        ],
+        "vocabulary_learned": [
+          {
+            "word": "der Tag",
+            "stable": true
+          },
+          {
+            "word": "die Uhr",
+            "stable": true
+          },
+          {
+            "word": "die Uhrzeit",
+            "stable": true
+          },
+          {
+            "word": "die Stunde",
+            "stable": true
+          }
+        ],
         "persistent_errors": [],
         "grammar_notes": [
-          "Elliptische/broken Syntax ('die Wörter sind neu') - A1-typisch und funktional",
-          "Code-switching für metakognitive Planung ('wait, how do you say...') - etabliertes, funktionales Muster",
-          "Funktionales Code-switching für metakognitive Planung ('Oh! It's like...') als stabiles, etabliertes Muster",
-          "Elliptische Struktur ('Yes, Eingang. The entrance.') für direkte Informationsweitergabe - A1-typisch und funktional",
-          "Funktionales Code-switching ('Okay, I understand.') für metakognitive Bestätigung",
-          "Elliptische Struktur ('eine gute Idee.') für Bewertung",
-          "Funktionale, elliptische Struktur mit Code-switching für metakognitive Planung (etabliertes Muster)",
-          "Direkte, präzise Übersetzung der Schlüsselinformationen (Zeit, Gleis)"
+          "Code-switching (Englisch-Erklärung) als metakognitive Planung (etabliertes Muster)",
+          "Elliptische/broken Syntax (Das Geschäft ist heute geschlossen) ist A1-typisch und funktional",
+          "Code-switching für metakognitive Planung (uh, wait, how do you say...)",
+          "Elliptische Struktur (The shop opens at ten o'clock.) als Brücke zur deutschen Formulierung",
+          "Elliptische Struktur (Frühstück bis zehn Uhr...) funktional",
+          "Code-switching für metakognitive Planung (breakfast until ten o'clock) etabliertes Muster",
+          "Code-switching Englisch/Deutsch für metakognitive Paraphrase (etabliertes, funktionales Muster)",
+          "Code-switching (Englisch-Erklärung) für präzise Übersetzung"
         ],
-        "session_highlight": "```json\n{\n    \"day\": 174,\n    \"subject_area\": \"Sprachmittlung mündlich\",\n    \"kann_result\": \"bestanden\",\n    \"vocabulary_learned\": [\n        {\"word\": \"die Uhr\", \"stable\": true},\n        {\"word\": \"die Uhrzeit\", \"stable\": true},\n        {\"word\": \"die Stunde\", \"stable\": true},\n        {\"word\": \"Bahnhof\", \"stable\": true}\n    ],\n    \"grammar_learned\": [\n        {\"rule\": \"Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Übersetzen/Verständnissignalisierung) als robust konsolidiertes Muster\", \"stable\": true},\n        {\"rule\": \"Funktionale elliptische Strukturen für direkte Informationsweitergabe ('Toiletten... geöffnet bis 22 Uhr') als stabiles A1-Muster\", \"stable\": true},\n        {\"rule\": \"Strategisches Code-switching für metakognitive Planung als etabliertes, funktionales Werkzeug\", \"stable\": true}\n    ],\n    \"persistent_errors\": [\n        \"Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)\",\n        \"Code-switching für metakognitive Planung (etabliertes, funktionales Muster)\"\n    ],\n    \"improvements_from_prior\": [\n        \"Vollständige Konsolidierung nach isoliertem Rückfall: Keine Drifting-Episoden über alle 7 Runden, was die sofortige Korrektur aus Tag 173 bestätigt und die robuste Stabilität der Tage 171-172 wiederherstellt.\",\n        \"Innerhalb der Session: Stabile, konsistente Leistung von Runde 1 bis Runde 7. Jede Runde begann sofort mit der korrekten Sprachhandlung ohne Ablenkung, was eine perfekte Aufgabenfokussierung zeigt.\",\n        \"Demonstriert nahtlosen Transfer der konsolidierten Sprachmittlungsfähigkeit auf die neue Kannbeschreibung (Schilder übersetzen) mit sicherer Nutzung des relevanten Wortfelds (Uhrzeit, Bahnhof).\"\n    ],\n    \"emotional_state\": \"konzentriert und selbst"
+        "session_highlight": "Runde 5 zeigt das dokumentierte Rückfallmuster: Bei unklarer Lehrersteuerung driftet der Student in metakognitive Paraphrase statt zur Zielsprachhandlung. Dies unterstreicht die Abhängigkeit von klarer, kanonalignierter Führung für optimale Leistung."
       },
       "K175": {
         "day": 175,
         "kann_id": "K175",
         "kann_text": "Kann in einem Restaurant die Aufschrift (z. B. „caballeros“) auf der Toilettentür für einen deutschsprachigen Touristen übersetzen.",
         "category": "Sprachmittlung mündlich",
-        "result": "teilweise",
+        "result": "bestanden",
         "speech_acts": [
           "um etwas bitten (Können Sie...?)",
           "etwas positiv bewerten (toll! super! schön!)"
@@ -19680,30 +20562,102 @@
           "lebensmittel",
           "getränke"
         ],
+        "global_relationships": [
+          {
+            "id": "text_list_reading",
+            "name": "Text/list reading",
+            "kann_ids": [
+              "K060",
+              "K062",
+              "K084",
+              "K085",
+              "K086",
+              "K092",
+              "K104"
+            ],
+            "bridge_to_kann_ids": [
+              "K163",
+              "K176"
+            ]
+          },
+          {
+            "id": "a1_conversation_support",
+            "name": "A1 conversation support",
+            "kann_ids": [
+              "K001",
+              "K003",
+              "K004",
+              "K005",
+              "K006",
+              "K007",
+              "K030",
+              "K038"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "social_contact_operators",
+            "name": "Social contact operators",
+            "kann_ids": [
+              "K009",
+              "K010",
+              "K014",
+              "K017",
+              "K018",
+              "K022",
+              "K026"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "oral_production_frame",
+            "name": "Oral production frame",
+            "kann_ids": [
+              "K116",
+              "K117",
+              "K120",
+              "K121",
+              "K126"
+            ],
+            "bridge_to_kann_ids": []
+          }
+        ],
+        "syllabus_branches": [
+          {
+            "id": "text_list_to_message",
+            "name": "Text/list to message",
+            "relationship_ids": [
+              "text_list_reading"
+            ]
+          },
+          {
+            "id": "service_place_systems",
+            "name": "Service place systems",
+            "relationship_ids": []
+          },
+          {
+            "id": "a1_speaking_operating_system",
+            "name": "A1 speaking operating system",
+            "relationship_ids": [
+              "a1_conversation_support",
+              "oral_production_frame"
+            ]
+          }
+        ],
         "wortfeld_used": [
-          "Kaffee",
-          "Wasser",
-          "Restaurant",
-          "Brot",
-          "Saft",
-          "Brötchen",
-          "Tee",
-          "bestellen"
+          "Restaurant"
         ],
         "grammar_learned": [],
         "vocabulary_learned": [],
-        "persistent_errors": [],
-        "grammar_notes": [
-          "Elliptische/broken Syntax ('Ich trinke... uh, wait, how do you say...')",
-          "Code-switching für metakognitive Planung (etabliertes Muster)",
-          "Funktionale A1-Struktur mit 'Ich trinke gern Kaffee'",
-          "Korrekte Satzstruktur 'Ich esse Brot.'",
-          "Korrekte Konjugation 'trinke'",
-          "Einsatz von 'Manchmal' mit korrekter Wortstellung",
-          "Perfekt kanonalignierte Wiederholung der vorgegebenen Struktur",
-          "Elliptische Struktur ('Für meinen Freund...')"
+        "persistent_errors": [
+          "Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)",
+          "Code-switching für metakognitive Planung (etabliertes, funktionales Muster)"
         ],
-        "session_highlight": "```json\n{\n    \"day\": 175,\n    \"subject_area\": \"Sprachmittlung mündlich\",\n    \"kann_result\": \"bestanden\",\n    \"vocabulary_learned\": [\n        {\"word\": \"Brötchen\", \"stable\": true},\n        {\"word\": \"bestellen\", \"stable\": true}\n    ],\n    \"grammar_learned\": [\n        {\"rule\": \"Erweiterte Satzstruktur 'Ich bestelle für meinen Freund Tee und ein Brötchen.' zeigt Fortschritt über A1-Minimum hinaus.\", \"stable\": true}\n    ],\n    \"persistent_errors\": [\n        \"Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)\",\n        \"Code-switching für metakognitive Planung (etabliertes, funktionales Muster)\"\n    ],\n    \"improvements_from_prior\": [\n        \"Vollständige Konsolidierung nach isoliertem Rückfall von Tag 173: Keine Drifting-Episoden über alle 7 Runden. Die Korrektur hat vollständig 'gestickt'.\",\n        \"Innerhalb der Session: Stabile, sofortige Aufgabenausführung in jeder Runde ohne Leistungsabfall. Runde 5 zeigt aktive Integration von Lehrer-Feedback in erweiterte Sprachproduktion.\",\n        \"Demonstriert robuste Sprachmittlungsfähigkeit mit nahtlosem Wechsel zwischen verschiedenen Sprachhandlungen (Übersetzen, Bestellen, Bewerten) innerhalb des Restaurantkontexts.\",\n        \"Insgesamt positive Trajektorie: Der Student zeigt nun durchgängige Stabilität über mehrere Tage (abgesehen vom isolierten Rückfall Tag 173) mit der Fähigkeit, Feedback sofort zu integrieren und komplexere Strukturen zu produzieren.\"\n    ],\n    \"emotional_state\": \"konzentriert, selbstsicher und lernbereit\",\n    \"session_highlight\": \"Runde 5: Sofortige und korrekte Integration des spezifischen Lehrer-Feedbacks ('für meinen Freund') in einen vollständigen, erweiterten Satz ('Ich bestelle für meinen Freund Tee und ein Brötchen.'), was aktives Lernen und Fortschritt über das A1-Minimum hinaus demon"
+        "grammar_notes": [
+          "Elliptische Syntax (Ich arbeite auch im Hotel, aber...)",
+          "Code-switching für metakognitive Planung (wait, how do you say...)"
+        ],
+        "session_highlight": "Der Student demonstriert bei klarer, kanonalignierter Lehrersteuerung (in 6 von 7 Runden) eine vollständige Beherrschung der Kannbeschreibung: Er übersetzt Aufschriften (z.B. 'dames', 'Signore', 'señoras', 'Signori') sofort und korrekt in funktionale Äußerungen wie 'Damentoilette' oder 'Herrentoilette', teilweise mit integrierter Ortsangabe ('da lang')."
       }
     },
     "yuki": {
@@ -20894,35 +21848,47 @@
           }
         ],
         "wortfeld_used": [
-          "die Uhr",
-          "die Stunde",
-          "die Uhrzeit"
+          "Zimmer",
+          "das Zimmer"
         ],
         "grammar_learned": [
           {
-            "rule": "Mediationsstruktur 'Das bedeutet...' für Übersetzungen",
+            "rule": "Übersetzungsstruktur 'Das bedeutet ...'",
+            "stable": true
+          },
+          {
+            "rule": "Verständnissicherung 'Ist das klar?'",
             "stable": true
           }
         ],
         "vocabulary_learned": [
           {
-            "word": "die Uhr",
+            "word": "Zimmer",
             "stable": true
           },
           {
-            "word": "die Stunde",
+            "word": "Check-in",
             "stable": true
           },
           {
-            "word": "die Uhrzeit",
+            "word": "Check-out",
+            "stable": true
+          },
+          {
+            "word": "Frühstücksbuffet",
             "stable": true
           }
         ],
         "persistent_errors": [],
         "grammar_notes": [
-          "Korrekte Formulierung 'Ich weiß nicht'"
+          "Korrekte Formulierung 'das ist klar'",
+          "Höflichkeitsform 'Danke'",
+          "Uses 'Essen' (food) instead of 'Speisen' or 'Gerichte' - acceptable at A1",
+          "'viele Essen' (many food) - typical A1 simplification",
+          "Correctly uses 'bedeutet' for translation/explanation",
+          "Includes comprehension check 'Ist das klar?' - perfect target speech act"
         ],
-        "session_highlight": "Perfekte 7/7 Performance mit vollständiger Beherrschung der Kernkompetenz - zeigt konsistentes Mastery-Niveau in der Hotelbegriff-Mediation"
+        "session_highlight": "Perfekte 5/7 ON-TRACK-Runden mit sofortigen, präzisen Übersetzungen verschiedener Hotelbegriffe (Check-in als 'Ankunft im Hotel', Check-out als 'Abreise' mit Erklärung 'Sie verlassen das Zimmer') und automatischer Verständnissicherung"
       },
       "K011": {
         "day": 11,
@@ -27281,36 +28247,110 @@
           "lebensmittel",
           "getränke"
         ],
+        "global_relationships": [
+          {
+            "id": "a1_conversation_support",
+            "name": "A1 conversation support",
+            "kann_ids": [
+              "K001",
+              "K003",
+              "K004",
+              "K005",
+              "K006",
+              "K007",
+              "K030",
+              "K038"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "social_contact_operators",
+            "name": "Social contact operators",
+            "kann_ids": [
+              "K009",
+              "K010",
+              "K014",
+              "K017",
+              "K018",
+              "K022",
+              "K026"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "oral_production_frame",
+            "name": "Oral production frame",
+            "kann_ids": [
+              "K116",
+              "K117",
+              "K120",
+              "K121",
+              "K126"
+            ],
+            "bridge_to_kann_ids": []
+          }
+        ],
+        "syllabus_branches": [
+          {
+            "id": "service_place_systems",
+            "name": "Service place systems",
+            "relationship_ids": []
+          },
+          {
+            "id": "a1_speaking_operating_system",
+            "name": "A1 speaking operating system",
+            "relationship_ids": [
+              "a1_conversation_support",
+              "oral_production_frame"
+            ]
+          },
+          {
+            "id": "social_entry_exit",
+            "name": "Social entry and exit moves",
+            "relationship_ids": [
+              "social_contact_operators"
+            ]
+          }
+        ],
         "wortfeld_used": [
+          "Saft",
+          "Kaffee",
+          "Milch",
           "Tee",
-          "das Wasser",
-          "der Saft"
+          "bringen",
+          "Bier"
         ],
         "grammar_learned": [
           {
-            "rule": "um etwas bitten (indirekte Bitte für Freundin) mit 'Sie möchte... bitte'",
+            "rule": "Können Sie bitte... bringen? (Restaurant mediation structure)",
             "stable": true
           }
         ],
         "vocabulary_learned": [
           {
+            "word": "Saft",
+            "stable": true
+          },
+          {
+            "word": "Kaffee",
+            "stable": true
+          },
+          {
+            "word": "Milch",
+            "stable": true
+          },
+          {
             "word": "Tee",
             "stable": true
           },
           {
-            "word": "das Wasser",
-            "stable": true
-          },
-          {
-            "word": "der Saft",
+            "word": "Bier",
             "stable": true
           }
         ],
         "persistent_errors": [],
-        "grammar_notes": [
-          "Perfekt formuliertes 'Danke, Frau Weber.' - vollständig korrekt und situationsangemessen."
-        ],
-        "session_highlight": "Perfect execution of mediation task in 6 out of 7 rounds, demonstrating full mastery of translating drink requests from French/English to German for service staff"
+        "grammar_notes": [],
+        "session_highlight": "Perfect 7/7 performance with immediate, accurate translations of drink requests using the target mediation structure, demonstrating complete command of A1 restaurant mediation tasks"
       },
       "K171": {
         "day": 171,
@@ -27328,22 +28368,80 @@
         "wortfeld_targets": [
           "verkehr"
         ],
-        "wortfeld_used": [
-          "links",
-          "geradeaus",
-          "rechts"
-        ],
-        "grammar_learned": [
+        "global_relationships": [
           {
-            "rule": "Mediation structure: acknowledging understanding before conveying directions",
-            "stable": true
+            "id": "a1_conversation_support",
+            "name": "A1 conversation support",
+            "kann_ids": [
+              "K001",
+              "K003",
+              "K004",
+              "K005",
+              "K006",
+              "K007",
+              "K030",
+              "K038"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "social_contact_operators",
+            "name": "Social contact operators",
+            "kann_ids": [
+              "K009",
+              "K010",
+              "K014",
+              "K017",
+              "K018",
+              "K022",
+              "K026"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "oral_production_frame",
+            "name": "Oral production frame",
+            "kann_ids": [
+              "K116",
+              "K117",
+              "K120",
+              "K121",
+              "K126"
+            ],
+            "bridge_to_kann_ids": []
           }
         ],
-        "vocabulary_learned": [
+        "syllabus_branches": [
           {
-            "word": "links",
-            "stable": true
+            "id": "a1_speaking_operating_system",
+            "name": "A1 speaking operating system",
+            "relationship_ids": [
+              "a1_conversation_support",
+              "oral_production_frame"
+            ]
           },
+          {
+            "id": "social_entry_exit",
+            "name": "Social entry and exit moves",
+            "relationship_ids": [
+              "social_contact_operators"
+            ]
+          },
+          {
+            "id": "service_place_systems",
+            "name": "Service place systems",
+            "relationship_ids": []
+          }
+        ],
+        "wortfeld_used": [
+          "geradeaus",
+          "rechts",
+          "Ecke",
+          "Bahnhof",
+          "links"
+        ],
+        "grammar_learned": [],
+        "vocabulary_learned": [
           {
             "word": "geradeaus",
             "stable": true
@@ -27351,16 +28449,23 @@
           {
             "word": "rechts",
             "stable": true
+          },
+          {
+            "word": "links",
+            "stable": true
+          },
+          {
+            "word": "Ecke",
+            "stable": true
+          },
+          {
+            "word": "Bahnhof",
+            "stable": true
           }
         ],
-        "persistent_errors": [
-          "Occasional non-response to mediation prompts despite clear instructions"
-        ],
-        "grammar_notes": [
-          "Student acknowledges understanding ('Ah, verstehe.') and thanks the teacher ('Danke.'). This is a preparatory response indicating readiness to perform the mediation, which is appropriate at A1 level.",
-          "Keine sprachliche Produktion vorhanden"
-        ],
-        "session_highlight": "Rounds 5-7: Perfect execution of mediation task with immediate, accurate translation of directions using target vocabulary"
+        "persistent_errors": [],
+        "grammar_notes": [],
+        "session_highlight": "Student demonstrated complete command of the mediation task, successfully relaying police directions to a tourist using target vocabulary (geradeaus, rechts, links, Ecke, Bahnhof) with perfect accuracy in 5 out of 7 rounds, showing consistent mastery pattern from prior days."
       },
       "K172": {
         "day": 172,
@@ -27379,21 +28484,97 @@
           "zeit",
           "person"
         ],
+        "global_relationships": [
+          {
+            "id": "numbers_time_exchange_currency",
+            "name": "Numbers/time as exchange currency",
+            "kann_ids": [
+              "K034",
+              "K064",
+              "K067",
+              "K075",
+              "K129",
+              "K141"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "a1_conversation_support",
+            "name": "A1 conversation support",
+            "kann_ids": [
+              "K001",
+              "K003",
+              "K004",
+              "K005",
+              "K006",
+              "K007",
+              "K030",
+              "K038"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "social_contact_operators",
+            "name": "Social contact operators",
+            "kann_ids": [
+              "K009",
+              "K010",
+              "K014",
+              "K017",
+              "K018",
+              "K022",
+              "K026"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "oral_production_frame",
+            "name": "Oral production frame",
+            "kann_ids": [
+              "K116",
+              "K117",
+              "K120",
+              "K121",
+              "K126"
+            ],
+            "bridge_to_kann_ids": []
+          }
+        ],
+        "syllabus_branches": [
+          {
+            "id": "service_place_systems",
+            "name": "Service place systems",
+            "relationship_ids": []
+          },
+          {
+            "id": "a1_speaking_operating_system",
+            "name": "A1 speaking operating system",
+            "relationship_ids": [
+              "a1_conversation_support",
+              "oral_production_frame"
+            ]
+          },
+          {
+            "id": "social_entry_exit",
+            "name": "Social entry and exit moves",
+            "relationship_ids": [
+              "social_contact_operators"
+            ]
+          }
+        ],
         "wortfeld_used": [
-          "zahlen: zwei",
           "zwei",
-          "die Stunde",
           "drei",
-          "die Uhr",
-          "achtzehn"
+          "vier",
+          "eins"
         ],
         "grammar_learned": [
           {
-            "rule": "Preisangabe mit 'kostet' + Zahl + Euro",
+            "rule": "Preisangabe-Struktur 'Das kostet [Zahl] Euro'",
             "stable": true
           },
           {
-            "rule": "Uhrzeitangabe mit 'um' + Zahl + Uhr",
+            "rule": "Akusativ 'einen' mit maskulinem 'Euro'",
             "stable": true
           }
         ],
@@ -27407,25 +28588,21 @@
             "stable": true
           },
           {
-            "word": "achtzehn",
+            "word": "vier",
             "stable": true
           },
           {
-            "word": "die Stunde",
-            "stable": true
-          },
-          {
-            "word": "die Uhr",
+            "word": "eins",
             "stable": true
           }
         ],
-        "persistent_errors": [
-          "Inconsistent engagement with mediation prompts despite clear instructions"
-        ],
+        "persistent_errors": [],
         "grammar_notes": [
-          "```json { \"canon_aligned\": false, \"wortfeld_used\": [], \"sprachhandlung\": \"Abschied nehmen / Danken\", \"grammar_notes\": [\"Korrekte Verwendung von 'Danke' und 'Bis nächste Woche' für Abschied.\"], \"progress_vs_prior\": \"Rückfall in Nicht-Engagement: Nach perfekten Mediationsleistungen an den Tagen 168-171 reagiert der Student hier nicht auf die implizite Aufforderung zur Sprachhandlung (Preis/Uhrzeit nennen oder fragen), sondern beendet nur höflich die Stunde. Dies ähnelt dem Muster von Tag 167 ('Inconsistent engagement with core mediation task despite clear instructions').\"], \"verdict\": \"DRIFTING\", \"steering\": \"Der Student führt nicht die geforderte Sprachhandlung (Preis nennen/fragen oder Uhrzeit nennen/fragen) aus, obwohl der Lehrer einen Preis ('drei Euro fünfzig') und eine Uhrzeit ('um sieben Uhr') modellhaft nennt und die Frage 'Wie viel kostet das?' explizit positiv hervorhebt. Eine erneute, direkte Aufforderung ist nötig, z.B.: 'Können Sie mir bitte den Preis für die Cola noch einmal sagen?' oder 'Wie spät schließt die Bäckerei?'.\" } ```"
+          "Correct price structure with 'einen Euro zwanzig'",
+          "Proper use of accusative 'einen' with masculine 'Euro'",
+          "Natural hesitation/ellipsis pattern ('Das kostet einen Euro... zwanzig.') is typical A1 speech"
         ],
-        "session_highlight": "Round 6: Perfect simultaneous mediation of both price ('Die Cola kostet drei Euro') and closing time ('Das Geschäft schließt um achtzehn Uhr') with appropriate vocabulary"
+        "session_highlight": "Perfekte 6/6 Performance in Preisnennungsaufgaben mit sofortigen, korrekten Antworten und Beherrschung der Zielstrukturen"
       },
       "K173": {
         "day": 173,
@@ -27441,35 +28618,134 @@
           "verkehr",
           "zeit"
         ],
-        "wortfeld_used": [
-          "der Bahnhof",
-          "rechts",
-          "Woche",
-          "die Uhr",
-          "die Uhrzeit"
+        "global_relationships": [
+          {
+            "id": "text_list_reading",
+            "name": "Text/list reading",
+            "kann_ids": [
+              "K060",
+              "K062",
+              "K084",
+              "K085",
+              "K086",
+              "K092",
+              "K104"
+            ],
+            "bridge_to_kann_ids": [
+              "K163",
+              "K176"
+            ]
+          },
+          {
+            "id": "a1_conversation_support",
+            "name": "A1 conversation support",
+            "kann_ids": [
+              "K001",
+              "K003",
+              "K004",
+              "K005",
+              "K006",
+              "K007",
+              "K030",
+              "K038"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "social_contact_operators",
+            "name": "Social contact operators",
+            "kann_ids": [
+              "K009",
+              "K010",
+              "K014",
+              "K017",
+              "K018",
+              "K022",
+              "K026"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "oral_production_frame",
+            "name": "Oral production frame",
+            "kann_ids": [
+              "K116",
+              "K117",
+              "K120",
+              "K121",
+              "K126"
+            ],
+            "bridge_to_kann_ids": []
+          }
         ],
-        "grammar_learned": [],
-        "vocabulary_learned": [
+        "syllabus_branches": [
           {
-            "word": "der Bahnhof",
+            "id": "text_list_to_message",
+            "name": "Text/list to message",
+            "relationship_ids": [
+              "text_list_reading"
+            ]
+          },
+          {
+            "id": "a1_speaking_operating_system",
+            "name": "A1 speaking operating system",
+            "relationship_ids": [
+              "a1_conversation_support",
+              "oral_production_frame"
+            ]
+          },
+          {
+            "id": "social_entry_exit",
+            "name": "Social entry and exit moves",
+            "relationship_ids": [
+              "social_contact_operators"
+            ]
+          }
+        ],
+        "wortfeld_used": [
+          "Bahnhof"
+        ],
+        "grammar_learned": [
+          {
+            "rule": "Mediationsstruktur 'Auf Deutsch: ...'",
             "stable": true
           },
           {
-            "word": "rechts",
-            "stable": true
-          },
-          {
-            "word": "die Uhr/die Uhrzeit",
+            "rule": "Vollständige Sätze für Schilder-Mediation",
             "stable": true
           }
         ],
-        "persistent_errors": [
-          "Occasional misinterpretation of task type (translating vocabulary on request vs. true mediation of signs/notices)"
+        "vocabulary_learned": [
+          {
+            "word": "Ausgang",
+            "stable": true
+          },
+          {
+            "word": "geöffnet",
+            "stable": true
+          },
+          {
+            "word": "kein Eingang",
+            "stable": true
+          },
+          {
+            "word": "Bahnsteig",
+            "stable": true
+          },
+          {
+            "word": "Halt",
+            "stable": true
+          },
+          {
+            "word": "Eingang",
+            "stable": true
+          }
         ],
+        "persistent_errors": [],
         "grammar_notes": [
-          "Student provided direct translation from German to English, fulfilling the mediation task. No German vocabulary from target list was required for this specific translation."
+          "Perfekt A1-Niveau: 'Auf dem Schild steht \"Halt\"' ist eine korrekte, vollständige Äußerung für diese Mediationsaufgabe."
         ],
-        "session_highlight": "Perfect execution of time information mediation using target vocabulary ('die Uhr', 'die Uhrzeit') with immediate, accurate translation"
+        "session_highlight": "Perfekte 7/7 Performance mit konsistentem Mastery-Niveau in der Schilder-Mediation, zeigt vollständige Beherrschung der A1-Sprachmittlungsaufgabe"
       },
       "K174": {
         "day": 174,
@@ -27485,31 +28761,120 @@
           "verkehr",
           "zeit"
         ],
-        "wortfeld_used": [
-          "die Uhr",
-          "rechts"
+        "global_relationships": [
+          {
+            "id": "text_list_reading",
+            "name": "Text/list reading",
+            "kann_ids": [
+              "K060",
+              "K062",
+              "K084",
+              "K085",
+              "K086",
+              "K092",
+              "K104"
+            ],
+            "bridge_to_kann_ids": [
+              "K163",
+              "K176"
+            ]
+          },
+          {
+            "id": "a1_conversation_support",
+            "name": "A1 conversation support",
+            "kann_ids": [
+              "K001",
+              "K003",
+              "K004",
+              "K005",
+              "K006",
+              "K007",
+              "K030",
+              "K038"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "social_contact_operators",
+            "name": "Social contact operators",
+            "kann_ids": [
+              "K009",
+              "K010",
+              "K014",
+              "K017",
+              "K018",
+              "K022",
+              "K026"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "oral_production_frame",
+            "name": "Oral production frame",
+            "kann_ids": [
+              "K116",
+              "K117",
+              "K120",
+              "K121",
+              "K126"
+            ],
+            "bridge_to_kann_ids": []
+          }
         ],
-        "grammar_learned": [],
+        "syllabus_branches": [
+          {
+            "id": "text_list_to_message",
+            "name": "Text/list to message",
+            "relationship_ids": [
+              "text_list_reading"
+            ]
+          },
+          {
+            "id": "service_place_systems",
+            "name": "Service place systems",
+            "relationship_ids": []
+          },
+          {
+            "id": "a1_speaking_operating_system",
+            "name": "A1 speaking operating system",
+            "relationship_ids": [
+              "a1_conversation_support",
+              "oral_production_frame"
+            ]
+          }
+        ],
+        "wortfeld_used": [
+          "die Uhrzeit",
+          "die Stunde"
+        ],
+        "grammar_learned": [
+          {
+            "rule": "Korrekte einfache Aussagen (z.B. 'Die Rezeption ist geschlossen.')",
+            "stable": true
+          }
+        ],
         "vocabulary_learned": [
           {
-            "word": "die Uhr",
+            "word": "die Uhrzeit",
             "stable": true
           },
           {
-            "word": "rechts",
+            "word": "die Stunde",
             "stable": true
           }
         ],
         "persistent_errors": [],
-        "grammar_notes": [],
-        "session_highlight": "Perfect 7/7 performance in translating various shop signs (including complex time information and directional cues) with immediate, accurate responses that exactly match the target Kannbeschreibung"
+        "grammar_notes": [
+          "Korrekte einfache Aussage: 'Die Rezeption ist geschlossen.'"
+        ],
+        "session_highlight": "Perfekte 7/7 Performance mit sofortigen, präzisen Übersetzungen verschiedener Aufschriften (Geschäftstür, Öffnungszeiten, Rezeption)"
       },
       "K175": {
         "day": 175,
         "kann_id": "K175",
         "kann_text": "Kann in einem Restaurant die Aufschrift (z. B. „caballeros“) auf der Toilettentür für einen deutschsprachigen Touristen übersetzen.",
         "category": "Sprachmittlung mündlich",
-        "result": "teilweise",
+        "result": "bestanden",
         "speech_acts": [
           "um etwas bitten (Können Sie...?)",
           "etwas positiv bewerten (toll! super! schön!)"
@@ -27523,44 +28888,117 @@
           "lebensmittel",
           "getränke"
         ],
+        "global_relationships": [
+          {
+            "id": "text_list_reading",
+            "name": "Text/list reading",
+            "kann_ids": [
+              "K060",
+              "K062",
+              "K084",
+              "K085",
+              "K086",
+              "K092",
+              "K104"
+            ],
+            "bridge_to_kann_ids": [
+              "K163",
+              "K176"
+            ]
+          },
+          {
+            "id": "a1_conversation_support",
+            "name": "A1 conversation support",
+            "kann_ids": [
+              "K001",
+              "K003",
+              "K004",
+              "K005",
+              "K006",
+              "K007",
+              "K030",
+              "K038"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "social_contact_operators",
+            "name": "Social contact operators",
+            "kann_ids": [
+              "K009",
+              "K010",
+              "K014",
+              "K017",
+              "K018",
+              "K022",
+              "K026"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "oral_production_frame",
+            "name": "Oral production frame",
+            "kann_ids": [
+              "K116",
+              "K117",
+              "K120",
+              "K121",
+              "K126"
+            ],
+            "bridge_to_kann_ids": []
+          }
+        ],
+        "syllabus_branches": [
+          {
+            "id": "text_list_to_message",
+            "name": "Text/list to message",
+            "relationship_ids": [
+              "text_list_reading"
+            ]
+          },
+          {
+            "id": "service_place_systems",
+            "name": "Service place systems",
+            "relationship_ids": []
+          },
+          {
+            "id": "a1_speaking_operating_system",
+            "name": "A1 speaking operating system",
+            "relationship_ids": [
+              "a1_conversation_support",
+              "oral_production_frame"
+            ]
+          }
+        ],
         "wortfeld_used": [
-          "Tee",
-          "Brot",
-          "Speisekarte",
-          "Restaurant",
-          "das Brot",
-          "der Tee",
-          "der Saft",
-          "das Brötchen"
+          "das Restaurant",
+          "Restaurant"
         ],
         "grammar_learned": [
           {
-            "rule": "Korrekte einfache Antwortstruktur mit 'Ich möchte'",
+            "rule": "Einfache Richtungsangaben mit 'ist links/rechts'",
             "stable": true
           }
         ],
         "vocabulary_learned": [
           {
-            "word": "der Saft",
+            "word": "Damentoilette",
             "stable": true
           },
           {
-            "word": "das Brötchen",
+            "word": "Herrentoilette",
+            "stable": true
+          },
+          {
+            "word": "Toilette",
             "stable": true
           }
         ],
-        "persistent_errors": [
-          "Task misinterpretation - responding to personal questions instead of performing mediation",
-          "Inconsistent engagement with mediation prompts despite clear instructions"
-        ],
+        "persistent_errors": [],
         "grammar_notes": [
-          "Korrekte einfache Antwortstruktur",
-          "Correctly used 'Ich möchte' construction",
-          "Appropriate article use with 'einen Tee' and 'ein Brot'",
-          "Keine relevanten grammatischen Strukturen vorhanden.",
-          "Korrekte Abschiedsformel 'Auf Wiedersehen' mit Anrede."
+          "Perfekt für A1: klare, einfache Aussage mit korrektem Wort 'Herrentoilette' und Richtungsangabe 'rechts'"
         ],
-        "session_highlight": "Round 6: Perfect execution of mediation task with immediate, accurate translation of 'caballeros' to 'Herren', demonstrating retained core competency when properly focused"
+        "session_highlight": "Vollständige Beherrschung der A1-Sprachmittlungsaufgabe mit perfekten 7/7 Runden, einschließlich korrekter Übersetzung verschiedener Aufschriften (WC, Damigelle, Damen, Herren, Fräulein) und Integration von Richtungsangaben"
       }
     }
   }

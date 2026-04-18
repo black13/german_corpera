@@ -14,12 +14,17 @@
       "mentions": 15
     },
     {
+      "word": "die Uhrzeit",
+      "stable": true,
+      "mentions": 14
+    },
+    {
       "word": "heißen",
       "stable": true,
       "mentions": 14
     },
     {
-      "word": "die Uhrzeit",
+      "word": "links",
       "stable": true,
       "mentions": 12
     },
@@ -39,19 +44,14 @@
       "mentions": 11
     },
     {
-      "word": "Brot",
+      "word": "Bahnhof",
       "stable": true,
       "mentions": 10
     },
     {
-      "word": "links",
-      "stable": true,
-      "mentions": 9
-    },
-    {
       "word": "geradeaus",
       "stable": true,
-      "mentions": 9
+      "mentions": 10
     }
   ],
   "unstable_vocabulary": [
@@ -81,6 +81,11 @@
       "mentions": 2
     },
     {
+      "word": "Cent",
+      "stable": false,
+      "mentions": 1
+    },
+    {
       "word": "die Milch",
       "stable": false,
       "mentions": 1
@@ -89,18 +94,13 @@
       "word": "das Bad",
       "stable": false,
       "mentions": 1
-    },
-    {
-      "word": "die Küche",
-      "stable": false,
-      "mentions": 1
     }
   ],
   "stable_grammar": [
     {
       "rule": "Elliptische Strukturen für funktionale Kommunikation",
       "stable": true,
-      "mentions": 19
+      "mentions": 20
     },
     {
       "rule": "Elliptische Strukturen für funktionale A1-Kommunikation",
@@ -173,9 +173,9 @@
   "persistent_errors": [
     "Fehlende Artikel (der/die/das/ein/eine)",
     "Elliptische Strukturen statt vollständiger Sätze",
-    "Englische Einmischung/Code-Switching"
+    "Code-switching (Englisch-Deutsch-Mischung)"
   ],
-  "emotional_state": "sicher und engagiert",
+  "emotional_state": "stabil und funktional",
   "recent_kanns": [
     {
       "kann_id": "K176",
@@ -209,12 +209,12 @@
     }
   ],
   "recent_highlights": [
-    "Runde 7: Übersetzung von 'check-out' mit funktionaler Erklärung ('Das bedeutet: Zimmer bis elf Uhr verlassen'), die perfekt die kommunikative Aufgabe erfüllt und über reine Wort-für-Wort-Übersetzung hinausgeht.",
-    "Runde 3: Übersetzung von 'breakfast' zu 'Frühstück' mit professioneller Ergänzung der Öffnungszeiten ('von sieben bis zehn Uhr'), zeigt tiefes Verständnis der kommunikativen Aufgabe über reine Übersetzung hinaus.",
-    "Runde 7: Übersetzung von 'check-out' mit funktionaler Erklärung ('Das bedeutet: Zimmer bis elf Uhr verlassen'), die über die reine Wort-für-Wort-Übersetzung hinausgeht und perfekt die kommunikative Aufgabe erfüllt."
+    "Runde 6: Student signalisiert Verständnis und beschreibt praktischen Anwendungskontext ('Im Hotel, ich sage das oft'), was auf Transferdenken und funktionales Verständnis der Sprachmittlungsaufgabe hindeutet.",
+    "Runde 5: Präzise Übersetzung von 'Herren' mit Richtungsangabe ('Das ist die Herrentoilette, rechts') zeigt perfekte Anwendung der Kannbeschreibung",
+    "Runde 7: Perfekte Übersetzung von 'Geöffnet außer Sonntag' mit klarer Vermittlung der Ausnahmeregelung, zeigt vollständige Beherrschung der Kannbeschreibung"
   ],
   "totals": {
-    "vocabulary": 351,
-    "grammar": 239
+    "vocabulary": 360,
+    "grammar": 248
   }
 }

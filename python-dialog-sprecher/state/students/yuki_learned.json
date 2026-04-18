@@ -2245,6 +2245,134 @@
     {
       "word": "die Uhrzeit",
       "stable": true
+    },
+    {
+      "word": "Zimmerservice",
+      "stable": true
+    },
+    {
+      "word": "geöffnet",
+      "stable": true
+    },
+    {
+      "word": "Nichtraucherzimmer",
+      "stable": true
+    },
+    {
+      "word": "Saft",
+      "stable": true
+    },
+    {
+      "word": "Kaffee",
+      "stable": true
+    },
+    {
+      "word": "Milch",
+      "stable": true
+    },
+    {
+      "word": "Tee",
+      "stable": true
+    },
+    {
+      "word": "Bier",
+      "stable": true
+    },
+    {
+      "word": "geradeaus",
+      "stable": true
+    },
+    {
+      "word": "rechts",
+      "stable": true
+    },
+    {
+      "word": "links",
+      "stable": true
+    },
+    {
+      "word": "Ecke",
+      "stable": true
+    },
+    {
+      "word": "Bahnhof",
+      "stable": true
+    },
+    {
+      "word": "zwei",
+      "stable": true
+    },
+    {
+      "word": "drei",
+      "stable": true
+    },
+    {
+      "word": "vier",
+      "stable": true
+    },
+    {
+      "word": "eins",
+      "stable": true
+    },
+    {
+      "word": "Ausgang",
+      "stable": true
+    },
+    {
+      "word": "geöffnet",
+      "stable": true
+    },
+    {
+      "word": "kein Eingang",
+      "stable": true
+    },
+    {
+      "word": "Bahnsteig",
+      "stable": true
+    },
+    {
+      "word": "Halt",
+      "stable": true
+    },
+    {
+      "word": "Eingang",
+      "stable": true
+    },
+    {
+      "word": "die Uhrzeit",
+      "stable": true
+    },
+    {
+      "word": "die Stunde",
+      "stable": true
+    },
+    {
+      "word": "Damentoilette",
+      "stable": true
+    },
+    {
+      "word": "Herrentoilette",
+      "stable": true
+    },
+    {
+      "word": "Toilette",
+      "stable": true
+    },
+    {
+      "word": "Zimmer",
+      "stable": true
+    },
+    {
+      "word": "Check-in",
+      "stable": true
+    },
+    {
+      "word": "Check-out",
+      "stable": true
+    },
+    {
+      "word": "Frühstücksbuffet",
+      "stable": true
     }
   ],
   "grammar_acquired": [
@@ -2838,6 +2966,50 @@
     },
     {
       "rule": "Mediationsstruktur 'Das bedeutet...' für Übersetzungen",
+      "stable": true
+    },
+    {
+      "rule": "Mediationsstruktur 'Das bedeutet...'",
+      "stable": true
+    },
+    {
+      "rule": "Fragestruktur 'Was bedeutet...?'",
+      "stable": true
+    },
+    {
+      "rule": "Können Sie bitte... bringen? (Restaurant mediation structure)",
+      "stable": true
+    },
+    {
+      "rule": "Preisangabe-Struktur 'Das kostet [Zahl] Euro'",
+      "stable": true
+    },
+    {
+      "rule": "Akusativ 'einen' mit maskulinem 'Euro'",
+      "stable": true
+    },
+    {
+      "rule": "Mediationsstruktur 'Auf Deutsch: ...'",
+      "stable": true
+    },
+    {
+      "rule": "Vollständige Sätze für Schilder-Mediation",
+      "stable": true
+    },
+    {
+      "rule": "Korrekte einfache Aussagen (z.B. 'Die Rezeption ist geschlossen.')",
+      "stable": true
+    },
+    {
+      "rule": "Einfache Richtungsangaben mit 'ist links/rechts'",
+      "stable": true
+    },
+    {
+      "rule": "Übersetzungsstruktur 'Das bedeutet ...'",
+      "stable": true
+    },
+    {
+      "rule": "Verständnissicherung 'Ist das klar?'",
       "stable": true
     }
   ],
@@ -3544,9 +3716,9 @@
     },
     "K175": {
       "day": 175,
-      "result": "teilweise"
+      "result": "bestanden"
     }
   },
   "persistent_errors": [],
-  "emotional_state": "sicher und engagiert"
+  "emotional_state": "sicher und selbstbewusst"
 }
