@@ -238,3 +238,5 @@ Student liest ein Wort.
 Deutschsprachige Person fragt.
 Student sagt: Das bedeutet ...
 ```
+
+Related broader production rule: `a1_closed_production_system.md`.
