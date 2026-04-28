@@ -1,7 +1,7 @@
 {
   "class_opening": {
     "when": "first student in round 1, one time only",
-    "teacher_injection": "CLASS OPENING (do this only once, before you call on any individual student): Address the whole class in 1-2 sentences. Name the SITUATION they are in today — not the KB number. Example: 'Heute sind wir im Hotel. Ein Gast braucht Hilfe an der Informationstafel.' or 'Heute: Sie hören eine Durchsage am Bahnhof und müssen die Uhrzeit verstehen.' Then transition immediately to {student_name}: '{student_name}, wir fangen an.' Keep it short and natural. The class moment is just the scene setup — then you put the first student into the situation."
+    "teacher_injection": "CLASS OPENING (do this only once, before you call on any individual student): Address the whole class in 2-3 sentences. Name the KB and its purpose. Connect to prior KBs if relevant. Set the scene. Then transition immediately to {student_name}. Example: 'Guten Morgen zusammen. Heute: K173 — Schilder und Aufschriften auf Deutsch weitergeben. Das ist wie K163, aber diesmal sagen Sie es einem Deutschen. Marta, Sie erinnern sich? Wir fangen an.' Keep it natural and brief — this is a real classroom, not a script."
   },
   "day_open": {
     "when": "round == 1, before teacher speaks",

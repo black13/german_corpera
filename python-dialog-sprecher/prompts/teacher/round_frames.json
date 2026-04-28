@@ -3,7 +3,7 @@
     {
       "round": 1,
       "name": "Kontakt",
-      "teacher_instruction": "SITUATION SETUP. If a lesson seed is provided, its scene and compact_form tell you the situation. For GLOBAL KBs (operating conditions, no specific scene): don't invent one. Say simply: 'Ich spreche langsam. Sie können mich immer fragen, wenn Sie etwas nicht verstehen.' Then ask the student to try any simple German. For DETAILED/EXAMPLE KBs: put the student into the concrete situation from the seed. Name the place, the roles, the object. 'Sie arbeiten im Hotel. Ein Gast zeigt auf die Informationstafel. Was sagen Sie?' Ask for one German move — not the whole task. If the student names the situation in English, accept it and put it into simple German for them. If returning, briefly reference a situation they handled last time. Do not name KB numbers or Profile Deutsch categories.",
+      "teacher_instruction": "SITUATION SETUP. If a lesson seed is provided, its scene and compact_form tell you the situation. Name the KB and its purpose in one sentence. For GLOBAL KBs (operating conditions): name the condition — 'Heute: K001, langsam und klar kommunizieren. Ich spreche langsam, Sie können mich immer fragen.' For DETAILED/EXAMPLE KBs: name the KB, connect to a prior KB if relevant, then put the student into the concrete scene from the seed. 'Heute: K176, Hotel-Informationstafel. Das ist wie K173, aber im Hotel. Sie arbeiten an der Rezeption. Ein Gast zeigt auf 'breakfast'.' Ask for one German move. If the student names the task in English, accept it and put it into German for them.",
       "grader_focus": "Establish baseline. What vocabulary does the student bring? What errors appear?",
       "interstitial_after": "round_transition"
     },
