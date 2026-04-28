@@ -823,6 +823,7 @@ lesson_seeds_cfg = load_optional("canon/kann_lesson_seeds.json", {
 })
 sprachacts   = load("canon/sprachhandlungen.json")
 teacher_pers = load("prompts/teacher/persona.json")
+teacher_pers_drill = load_optional("prompts/teacher/persona_drill.json", None)
 rounds_tmpl  = load("prompts/teacher/round_frames.json")["rounds"]
 wrapup_tmpl  = load("prompts/teacher/wrapup.json")
 bridges      = load("prompts/interstitials/bridges.json")
@@ -2566,8 +2567,9 @@ def start_server(host="127.0.0.1", port=8787):
     return srv
 
 # ── prompt builders ────────────────────────────────────────────────
-def build_teacher_prompt(kann, kann_focus, round_frame, day, student_name, teacher_memories, classroom_context, interstitial=""):
-    persona = teacher_pers["system_prompt"]
+def build_teacher_prompt(kann, kann_focus, round_frame, day, student_name, teacher_memories, classroom_context, interstitial="", session_num=1, prior_learned=None, prior_errors=None):
+    is_drill = session_num > 1 and teacher_pers_drill is not None
+    persona = teacher_pers_drill["system_prompt"] if is_drill else teacher_pers["system_prompt"]
     lesson_seed_block = ""
     if kann_focus.get("lesson_seed"):
         lesson_seed_block = f"\n\n--- LESSON SEED ---\n{format_lesson_seed_for_prompt(kann_focus['lesson_seed'])}"
@@ -2588,6 +2590,24 @@ def build_teacher_prompt(kann, kann_focus, round_frame, day, student_name, teach
 
     day_block = bridges["day_open"]["teacher_injection_day1"] if day == 1 else bridges["day_open"]["teacher_injection_returning"].replace("{days_completed}", str(day-1))
 
+    # grammar drill: inject yesterday's learning data
+    drill_block = ""
+    if is_drill:
+        drill_parts = [f"GRAMMAR DRILL SESSION — you are drilling the same KB as yesterday (session {session_num})."]
+        if prior_learned:
+            vocab = prior_learned.get("vocabulary_acquired", [])[-10:]
+            grammar = prior_learned.get("grammar_acquired", [])[-8:]
+            if vocab:
+                drill_parts.append("Yesterday's vocabulary:\n" + "\n".join(f"  - {v.get('word', v) if isinstance(v, dict) else v}" for v in vocab[-6:]))
+            if grammar:
+                drill_parts.append("Yesterday's grammar:\n" + "\n".join(f"  - {g.get('rule', g) if isinstance(g, dict) else g}" for g in grammar[-5:]))
+        if prior_errors:
+            errors = prior_errors.get("persistent_errors", [])[-8:]
+            if errors:
+                drill_parts.append("Yesterday's errors to fix:\n" + "\n".join(f"  - {e}" for e in errors))
+        drill_parts.append("DRILL RULE: Pick ONE pattern from yesterday that needs work. Drill it through variations. Connect back to the KB situation at the end.")
+        drill_block = "\n\n--- DRILL DATA ---\n" + "\n\n".join(drill_parts)
+
     # class_opening fires once — only for the first student in round 1
     class_opening_block = ""
     if round_frame.get("round") == 1 and not classroom_context:
@@ -2601,6 +2621,8 @@ def build_teacher_prompt(kann, kann_focus, round_frame, day, student_name, teach
         )
 
     full = f"{persona}\n\n--- CANON ---\n{canon_block}\n\n--- ROUND ---\n{round_block}\n\n--- MEMORY ---\n{memory_block}\n\n--- DAY ---\n{day_block}"
+    if drill_block:
+        full += drill_block
     if class_opening_block:
         full += class_opening_block
     if class_block:
@@ -2935,7 +2957,10 @@ def run_day(day_num, kann):
 
             # ── Teacher speaks to this student ────────────────────
             t_prompt = build_teacher_prompt(
-                kann, kann_focus, rf, day_num, sname, teacher_mems, round_context, interstitial_text
+                kann, kann_focus, rf, day_num, sname, teacher_mems, round_context, interstitial_text,
+                session_num=session_num,
+                prior_learned=learned.get(sid),
+                prior_errors=learned.get(sid),
             )
             t_messages = [{"role": "system", "content": t_prompt}]
 
