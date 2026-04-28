@@ -123,7 +123,18 @@ python-dialog-sprecher/
 ├── config/
 │   └── runtime.json          runtime roster, model selection, server config
 ├── canon/
-│   └── *.json                reference content
+│   ├── kannbeschreibungen.json   authoritative A1 KB list (176 items)
+│   ├── kann_map.json             grammar/vocabulary/speech-act mappings
+│   ├── kann_lesson_seeds.json    per-KB teacher-preparation artifacts ★
+│   ├── kann_quick_guides.json    reader-facing KB syllabus cards
+│   ├── kann_reductions.json      reduced KB mechanics (carrier/operation/output)
+│   ├── kann_relationships.json   global KB relationship groups
+│   ├── a1_syllabus_branches.json course-map planning scaffold
+│   ├── kb_pathways.json          A1→A2→B1 pathway maps
+│   ├── grammatik.json            German grammar canon
+│   ├── wortfelder.json           vocabulary fields
+│   ├── sprachhandlungen.json     speech act catalog
+│   └── bewertung.json            assessment rubric
 ├── prompts/
 │   ├── teacher/
 │   ├── students/
@@ -159,8 +170,57 @@ The following are intentionally treated as data, not implementation detail:
 - grader criteria
 - course state and memory
 - compressed pedagogical summaries
+- **per-KB lesson seeds** — scene-to-language ladder, drift paths with
+  recoveries, target utterances, grader guidance, telc tasks, core words,
+  examples with source notes
 
-## What Still Lives In Python
+## Lesson Seed Artifact (`canon/kann_lesson_seeds.json`)
+
+Each seed encodes the teacher-preparation scaffold for one Kannbeschreibung:
+
+```
+big scene → small scene → speech act → utterance → lexical field → grammar
+```
+
+Grammar comes last, derived from the utterance need. The shape includes:
+
+- `compact_form` — one-line prompt compression
+- `scene` — big scene and small scene
+- `roles` — who plays what part
+- `core_words` — 8-15 scene-central words
+- `target_speech_acts` — ordered ladder of acts the learner must perform
+- `target_utterances` — 3-6 prototype sentences
+- `target_grammar` — grammar that emerges from the utterance need
+- `lexical_fields` — 2-4 word field keys
+- `prior_dependencies` — KBs or skills the learner must already have
+- `drift_paths` — common learner failure modes, each paired with a concrete
+  teacher recovery move
+- `telc_tasks` — nearby telc-style task patterns
+- `examples` — curated example exchanges with source notes
+- `teacher_notes` — compact rules for the teacher prompt
+- `grader_guidance` — what the grader should verify (carrier presence,
+  mediation act, recipient correctness, A1 size, drift vs orientation)
+
+The seed is injected into:
+- the **teacher prompt** — after the kann_focus block, so the teacher has
+  explicit scene, speech-act ladder, drift paths, and recovery moves before
+  generating each turn
+- the **grader prompt** — so the grader receives per-KB grader_guidance and
+  knows what drift looks like for this specific task
+- the **UI sidebar** — as a "Lesson Seed" card below the KB Syllabus, visible
+  to the human operator during a run
+
+Seeds are loaded at startup and enriched into loaded day artifacts so they
+appear in the UI even for days generated before the seeds existed.
+
+### Coverage
+
+10 of 176 KBs have hand-built seeds, covering the text/list-to-mediation
+cluster (K084-K104, K163, K173-K176). The remaining KBs fall back to the
+automatic `kann_map` focus derivation. The intended workflow is: expensive
+planning models propose candidate seeds → human edits → seeds go live.
+
+
 
 The following remain in `runner.py` on purpose:
 

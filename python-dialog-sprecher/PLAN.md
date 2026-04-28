@@ -119,7 +119,7 @@ conversation-heavy systems:
 - persist a compressed durable summary
 - send only the compressed summary plus recent raw turns back to the model
 
-### 7. Teacher Preparation Layer
+### 7. Teacher Preparation Layer **✕ DONE**
 
 The teacher should not be forced to improvise from a bare `Kannbeschreibung`.
 
@@ -150,6 +150,14 @@ utterances such as "Das bedeutet Frühstück von sieben bis zehn Uhr." Only then
 should the system name the lexical field and grammar needed to support that
 exchange.
 
+**Status: Implemented.** `canon/kann_lesson_seeds.json` now holds 10 hand-built
+seeds for the text/list-to-mediation cluster (K084-K104, K163, K173-K176). Each
+seed contains the full scene-to-language ladder, drift paths with concrete
+teacher recovery moves, target utterances, grader guidance, telc tasks, core
+words, and curated examples with source notes. Seeds are injected into the
+teacher prompt, grader prompt, and UI sidebar. Remaining 166 KBs fall back to
+automatic `kann_map` focus derivation until more seeds are added.
+
 ### 8. Curriculum Planning Workflow
 
 Use two different compute modes for two different jobs.
@@ -177,6 +185,12 @@ The main workflow should become:
 3. hand the finished artifact to a stronger planning job
 4. update lesson seeds and curriculum notes
 5. feed those improvements back into future cheap runs
+
+**Seed generation pipeline (in progress):** The lesson seed artifact
+(`canon/kann_lesson_seeds.json`) is the handoff target. Stronger models should
+propose candidate seeds in the canonical shape; the human instructor edits the
+JSON; the runtime consumes the finished seed. This pipeline is not yet
+automated, but the artifact shape and runtime integration are in place.
 
 ### 9. Billing and Full Response Preservation
 
@@ -223,14 +237,17 @@ rounds, not just to a summary sentence.
 Current runtime behavior:
 
 - load `config/runtime.json`
-- load canon, prompts, and current state
+- load canon, prompts, lesson seeds, and current state
 - run one classroom day per `Kannbeschreibung`
+- inject per-KB lesson seed into teacher and grader prompts
+- render lesson seed in the UI sidebar for the active KB
 - loop through all configured students inside each round
 - grade each exchange
 - summarize each student day
 - update memory and learned state
 - write the day artifact to `output/`
 - serve a local HTML view during execution
+- enrich loaded day artifacts with lesson seeds at startup
 
 Target runtime behavior after compression work:
 
@@ -242,6 +259,8 @@ Target runtime behavior after compression work:
 - expose per-run billing and saved provider response data for later analysis
 - compute grader verdicts from structured exchange-level evidence
 - support a post-run planning pass that updates curriculum artifacts
+- run the seed generation pipeline: planning model → candidate seed → human edit
+  → runtime ingestion
 
 ## Review Standard
 
@@ -262,3 +281,4 @@ Be cautious with changes that mainly:
 - move pedagogy into code
 - create a second source of truth beside the JSON layer
 - spend expensive model time on routine low-value turn generation
+- add lesson seed content directly to Python instead of `kann_lesson_seeds.json`

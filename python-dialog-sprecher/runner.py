@@ -1,5 +1,5 @@
 """
-runner.py v2 — Classroom model. One Kann per day, configured student group.
+runner.py v2 — Classroom model. One active Kann per session, configured student group.
 Disposable. Reads JSON, calls APIs, writes JSON, serves HTTP.
 Contains ZERO rules about German. All meaning is in the JSON files.
 """
@@ -508,6 +508,7 @@ def derive_kann_focus(kann):
         "global_relationships": [],
         "syllabus_branches": [],
         "quick_guide": {},
+        "reduction": {},
     }
 
     category_defaults = kann_map_cfg.get("category_defaults", {})
@@ -555,7 +556,13 @@ def derive_kann_focus(kann):
             break
     focus["example_bank"] = deduped_examples
     focus["wortfeld_samples"] = _sample_wortfeld_examples(focus["wortfeld_targets"])
+    reduction = dict(kann_reductions_cfg.get("category_defaults", {}).get(kann.get("category", ""), {}) or {})
+    reduction.update(kann_reductions_cfg.get("manual_overrides", {}).get(kann["id"], {}) or {})
+    focus["reduction"] = reduction
     focus["quick_guide"] = _derive_kann_quick_guide(kann, focus)
+    seed = lesson_seeds_cfg.get("seeds", {}).get(kann["id"])
+    if seed:
+        focus["lesson_seed"] = seed
     return focus
 
 
@@ -616,6 +623,38 @@ def summarize_prior_progress(progress_entries, limit=5):
     return "\n".join(lines)
 
 
+def format_lesson_seed_for_prompt(seed):
+    if not seed:
+        return ""
+    blocks = []
+    if seed.get("compact_form"):
+        blocks.append(f"Compact form: {seed['compact_form']}")
+    blocks.append(f"Scene: {seed.get('scene', {}).get('big', '')} -> {seed.get('scene', {}).get('small', '')}")
+    if seed.get("roles"):
+        blocks.append("Roles: " + ", ".join(seed["roles"]))
+    if seed.get("target_speech_acts"):
+        blocks.append("Speech act ladder:\n" + "\n".join(f"  {i+1}. {act}" for i, act in enumerate(seed["target_speech_acts"])))
+    if seed.get("target_utterances"):
+        blocks.append("Target utterances:\n" + "\n".join(f"  - {u}" for u in seed["target_utterances"]))
+    if seed.get("target_grammar"):
+        blocks.append("Target grammar:\n" + "\n".join(f"  - {g}" for g in seed["target_grammar"]))
+    if seed.get("lexical_fields"):
+        blocks.append("Lexical fields: " + ", ".join(seed["lexical_fields"]))
+    if seed.get("prior_dependencies"):
+        blocks.append("Prior dependencies: " + ", ".join(seed["prior_dependencies"]))
+    if seed.get("drift_paths"):
+        drift_lines = []
+        for dp in seed["drift_paths"]:
+            drift_lines.append(f"  FAILURE: {dp.get('failure', '')}")
+            drift_lines.append(f"  RECOVERY: {dp.get('recovery', '')}")
+        blocks.append("Drift paths and recoveries:\n" + "\n".join(drift_lines))
+    if seed.get("teacher_notes"):
+        blocks.append(f"Teacher notes: {seed['teacher_notes']}")
+    if seed.get("grader_guidance"):
+        blocks.append(f"Grader guidance: {seed['grader_guidance']}")
+    return "\n\n".join(blocks)
+
+
 def format_kann_focus_for_prompt(kann_focus):
     blocks = []
     guide = kann_focus.get("quick_guide") or {}
@@ -635,6 +674,37 @@ def format_kann_focus_for_prompt(kann_focus):
         if guide.get("grammar_tools"):
             guide_lines.append("  - Grammar tools: " + "; ".join(guide["grammar_tools"][:6]))
         blocks.append("KB quick guide:\n" + "\n".join(line for line in guide_lines if line.strip()))
+    reduction = kann_focus.get("reduction") or {}
+    if reduction:
+        red_lines = []
+        for label, key in (("RIPS", "rips"), ("Identifier", "identifier"), ("Carrier", "carrier"), ("Channel", "channel"), ("Persistence", "persistence"), ("Operation", "operation"), ("Output", "output")):
+            if reduction.get(key):
+                red_lines.append(f"  - {label}: {reduction[key]}")
+        if reduction.get("teacher_rule"):
+            red_lines.append(f"  - Teacher rule: {reduction['teacher_rule']}")
+        if reduction.get("recognition_cues"):
+            red_lines.append("  - Recognition cues: " + "; ".join(reduction["recognition_cues"][:8]))
+        if reduction.get("learner_frames"):
+            red_lines.append("  - Learner frames: " + "; ".join(reduction["learner_frames"][:6]))
+        if reduction.get("examples"):
+            red_lines.append("  - Physical examples: " + "; ".join(reduction["examples"][:6]))
+        matrix = kann_reductions_cfg.get("carrier_matrix", {})
+        matrix_lines = []
+        for carrier in reduction.get("carrier_matrix_keys", [])[:6]:
+            row = matrix.get(carrier, {})
+            if not row:
+                continue
+            matrix_lines.append(
+                f"    {carrier}: {row.get('channel', '')} | {row.get('persistence', '')} | "
+                f"{row.get('operation', '')} -> {row.get('a1_output', '')}"
+            )
+        if matrix_lines:
+            red_lines.append("  - Carrier matrix:\n" + "\n".join(matrix_lines))
+        if reduction.get("near_kbs"):
+            red_lines.append("  - Near KBs: " + ", ".join(reduction["near_kbs"][:8]))
+        if reduction.get("memory"):
+            red_lines.append(f"  - Memory: {reduction['memory']}")
+        blocks.append("Reduced KB mechanics:\n" + "\n".join(red_lines))
     if kann_focus.get("global_relationships"):
         rel_lines = []
         for rel in kann_focus["global_relationships"]:
@@ -741,6 +811,16 @@ a1_syllabus_cfg = load_optional("canon/a1_syllabus_branches.json", {
 kann_quick_guides_cfg = load_optional("canon/kann_quick_guides.json", {
     "guides": {},
 })
+kann_reductions_cfg = load_optional("canon/kann_reductions.json", {
+    "category_defaults": {},
+    "manual_overrides": {},
+})
+kb_pathways_cfg = load_optional("canon/kb_pathways.json", {
+    "maps": [],
+})
+lesson_seeds_cfg = load_optional("canon/kann_lesson_seeds.json", {
+    "seeds": {},
+})
 sprachacts   = load("canon/sprachhandlungen.json")
 teacher_pers = load("prompts/teacher/persona.json")
 rounds_tmpl  = load("prompts/teacher/round_frames.json")["rounds"]
@@ -763,6 +843,7 @@ note_taker_tmpl = load_optional(f"prompts/observers/{NOTE_TAKER_ID}.json", {})
 live = {
     "status": "starting",
     "current_day": 0,
+    "current_session": 0,
     "current_kann": "",
     "current_kann_text": "",
     "current_kann_focus": {},
@@ -770,7 +851,7 @@ live = {
     "current_round_name": "",
     "active_student": "",
     "student_summaries": {},
-    "days": [],  # [{day, kann_id, kann_text, category, rounds, summaries}]
+    "days": [],  # [{day, session, kann_id, kann_text, category, rounds, summaries}]
     "done": False
 }
 run_lock = threading.Lock()
@@ -1061,6 +1142,27 @@ body.resizing *{cursor:col-resize !important;user-select:none !important}
 .syllabus-body .quick-tags{margin-bottom:8px}
 .syllabus-related-row{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px}
 .syllabus-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.pathway-card{border:1px solid #dfe5e8;background:#fafcfd;border-radius:10px;padding:10px}
+.pathway-lead{font-size:.78em;color:#3c4852;line-height:1.5;margin-bottom:10px}
+.pathway-meta{font-size:.72em;color:#66757f;line-height:1.45;margin-bottom:10px}
+.pathway-table-wrap{overflow:auto;border:1px solid #e7ecef;border-radius:10px;background:#fff}
+.pathway-table{border-collapse:collapse;min-width:820px;width:100%}
+.pathway-table th,.pathway-table td{vertical-align:top;padding:9px 10px;border-bottom:1px solid #eef2f4;font-size:.75em;line-height:1.45}
+.pathway-table thead th{font-size:.68em;text-transform:uppercase;letter-spacing:.05em;color:#66757f;background:#f6f8f9}
+.pathway-table tbody tr:last-child td{border-bottom:none}
+.pathway-row.active td{background:#eef8f6}
+.pathway-row.support td{background:#fffaf1}
+.pathway-row.support.active td{background:#f7f0da}
+.pathway-name-cell{min-width:180px;width:180px}
+.pathway-name{font-weight:800;color:#123}
+.pathway-kids{display:flex;flex-wrap:wrap;gap:4px;margin-top:7px}
+.pathway-kid{display:inline-block;padding:2px 6px;border-radius:999px;background:#eaf2ff;color:#135;text-decoration:none;font-size:.68em}
+.pathway-kid:hover{background:#d8e8ff}
+.pathway-kid.active{background:#075e54;color:#fff}
+.pathway-level-label{font-size:.66em;text-transform:uppercase;letter-spacing:.05em;color:#6a7780;margin-bottom:4px}
+.pathway-bottom{margin-top:10px}
+.pathway-bottom-label{font-size:.72em;font-weight:700;color:#5b6770;margin-bottom:6px}
+.pathway-note{margin-top:10px;font-size:.72em;color:#66757f;line-height:1.45}
 .student-card.active{border-color:#075e54;background:#eef8f6}
 .student-head{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
 .student-name{font-weight:700;font-size:.86em}
@@ -1170,7 +1272,7 @@ _JS = """
   function currentKbId() {
     var kann = document.querySelector('.lh-kann');
     var text = kann ? kann.textContent : '';
-    var match = text.match(/K\d{3}/);
+    var match = text.match(/K\\d{3}/);
     return match ? match[0] : '';
   }
 
@@ -1576,6 +1678,94 @@ def _render_quick_tags(items):
     return '<div class="quick-tags">' + "".join(f'<span class="quick-tag">{_esc(item)}</span>' for item in items) + "</div>"
 
 
+def _find_pathway_map_for_category(category):
+    if not category:
+        return None
+    for pathway_map in kb_pathways_cfg.get("maps", []):
+        if category in pathway_map.get("scope_categories", []):
+            return pathway_map
+    return None
+
+
+def _render_pathway_kid_links(kann_ids, current_kann_id):
+    if not kann_ids:
+        return ""
+    links = []
+    for kann_id in kann_ids:
+        active = " active" if kann_id == current_kann_id else ""
+        links.append(f'<a class="pathway-kid{active}" href="/?day={_attr(kann_id)}">{_esc(kann_id)}</a>')
+    return '<div class="pathway-kids">' + "".join(links) + '</div>'
+
+
+def _render_pathway_table(rows, current_kann_id, extra_class=""):
+    if not rows:
+        return ""
+    parts = [
+        f'<div class="pathway-table-wrap{(" " + extra_class) if extra_class else ""}">',
+        '<table class="pathway-table">',
+        '<thead><tr><th>Weg</th><th>A1</th><th>A2</th><th>B1</th></tr></thead><tbody>',
+    ]
+    for row in rows:
+        row_ids = row.get("a1_kann_ids", [])
+        active = " active" if current_kann_id and current_kann_id in row_ids else ""
+        support = " support" if extra_class == "support" else ""
+        parts.append(f'<tr class="pathway-row{support}{active}">')
+        parts.append('<td class="pathway-name-cell">')
+        parts.append(f'<div class="pathway-name">{_esc(row.get("name", ""))}</div>')
+        parts.append(_render_pathway_kid_links(row_ids, current_kann_id))
+        parts.append('</td>')
+        for key, label in (("a1", "A1"), ("a2", "A2"), ("b1", "B1")):
+            parts.append(
+                '<td>'
+                f'<div class="pathway-level-label">{label}</div>'
+                f'<div>{_esc(row.get(key, ""))}</div>'
+                '</td>'
+            )
+        parts.append('</tr>')
+    parts.append('</tbody></table></div>')
+    return "".join(parts)
+
+
+def _render_pathway_map_html(category, current_kann_id):
+    pathway_map = _find_pathway_map_for_category(category)
+    if not pathway_map:
+        return '<div class="status-text">No pathway map linked to this KB category yet.</div>'
+
+    parts = ['<div class="pathway-card">']
+    parts.append(f'<div class="focus-lead">{_esc(pathway_map.get("name", category or ""))}</div>')
+    if pathway_map.get("lead"):
+        parts.append(f'<div class="pathway-lead">{_esc(pathway_map["lead"])}</div>')
+
+    scope_categories = pathway_map.get("scope_categories", [])
+    if len(scope_categories) > 1:
+        parts.append(
+            '<div class="pathway-meta"><b>Gemeinsame Karte:</b> '
+            + _esc(", ".join(scope_categories))
+            + '</div>'
+        )
+
+    support_layers = pathway_map.get("support_layers", [])
+    if support_layers:
+        parts.append('<div class="focus-subtitle">Leitweg oben</div>')
+        parts.append(_render_pathway_table(support_layers, current_kann_id, extra_class="support"))
+
+    parts.append('<div class="focus-subtitle">Fan-out Wege</div>')
+    parts.append(_render_pathway_table(pathway_map.get("pathways", []), current_kann_id))
+
+    if pathway_map.get("bottom_items"):
+        parts.append('<div class="pathway-bottom">')
+        parts.append('<div class="pathway-bottom-label">Zettel / sichtbare Dinge</div>')
+        parts.append(_render_quick_tags(pathway_map["bottom_items"]))
+        parts.append('</div>')
+
+    parts.append(
+        '<div class="pathway-note">A1-KB Chips springen in die lokale A1-Kanon-Ansicht. '
+        'A2 und B1 bleiben hier bewusst als Wegbeschreibung statt als voll extrahierte Kanonliste.</div>'
+    )
+    parts.append('</div>')
+    return "".join(parts)
+
+
 def _render_kann_focus_html(kann_focus):
     if not kann_focus:
         return '<div class="status-text">No Kann focus available yet.</div>'
@@ -1649,6 +1839,58 @@ def _render_kann_focus_html(kann_focus):
             source = example.get("source", "seed")
             parts.append(f'<li>{_esc(example["text"])} <span class="student-meta">[{_esc(source)}]</span></li>')
         parts.append('</ul>')
+    parts.append('</div>')
+    return "".join(parts)
+
+
+def _render_lesson_seed_html(seed):
+    if not seed:
+        return ""
+    parts = ['<div class="focus-card">']
+    if seed.get("compact_form"):
+        parts.append(f'<div class="focus-lead">{_esc(seed["compact_form"])}</div>')
+    scene = seed.get("scene") or {}
+    if scene.get("big") or scene.get("small"):
+        parts.append(f'<div class="quick-line"><b>Scene:</b> {_esc(scene.get("big",""))} → {_esc(scene.get("small",""))}</div>')
+    if seed.get("roles"):
+        parts.append(f'<div class="quick-line"><b>Roles:</b> {_esc(", ".join(seed["roles"]))}</div>')
+    if seed.get("target_speech_acts"):
+        parts.append('<div class="focus-subtitle">Speech Act Ladder</div><ol class="focus-list">')
+        for act in seed["target_speech_acts"]:
+            parts.append(f'<li>{_esc(act)}</li>')
+        parts.append('</ol>')
+    if seed.get("target_utterances"):
+        parts.append('<div class="focus-subtitle">Target Utterances</div>')
+        parts.append(_render_quick_tags(seed["target_utterances"]))
+    if seed.get("target_grammar"):
+        parts.append('<div class="focus-subtitle">Target Grammar</div>')
+        parts.append(_render_focus_list(seed["target_grammar"]))
+    if seed.get("core_words"):
+        parts.append('<div class="focus-subtitle">Core Words</div>')
+        parts.append(_render_quick_tags(seed["core_words"]))
+    if seed.get("lexical_fields"):
+        parts.append(f'<div class="quick-line"><b>Fields:</b> {_esc(", ".join(seed["lexical_fields"]))}</div>')
+    if seed.get("prior_dependencies"):
+        parts.append(f'<div class="quick-line"><b>Dependencies:</b> {_esc(", ".join(seed["prior_dependencies"]))}</div>')
+    if seed.get("drift_paths"):
+        parts.append('<div class="focus-subtitle">Drift Paths & Recoveries</div><ul class="focus-list">')
+        for dp in seed["drift_paths"]:
+            parts.append(f'<li><b>Failure:</b> {_esc(dp.get("failure",""))}<br><span class="student-meta"><b>Recovery:</b> {_esc(dp.get("recovery",""))}</span></li>')
+        parts.append('</ul>')
+    if seed.get("telc_tasks"):
+        parts.append(f'<div class="quick-line"><b>telc:</b> {_esc(", ".join(seed["telc_tasks"]))}</div>')
+    if seed.get("examples"):
+        parts.append('<div class="focus-subtitle">Examples</div><ul class="focus-list">')
+        for example in seed["examples"]:
+            note = f' <span class="student-meta">[{_esc(example.get("source","") or "")}]</span>'
+            parts.append(f'<li>{_esc(example["text"])}{note}</li>')
+        parts.append('</ul>')
+    if seed.get("teacher_notes"):
+        parts.append('<div class="focus-subtitle">Teacher Notes</div>')
+        parts.append(f'<div class="quick-line">{_esc(seed["teacher_notes"])}</div>')
+    if seed.get("grader_guidance"):
+        parts.append('<div class="focus-subtitle">Grader Guidance</div>')
+        parts.append(f'<div class="quick-line">{_esc(seed["grader_guidance"])}</div>')
     parts.append('</div>')
     return "".join(parts)
 
@@ -1924,11 +2166,18 @@ def _render_billing_html(current_billing, session_billing):
 def render_html(include_static=True):
     status = _esc(live["status"])
     cur_day = live.get("current_day", 0)
+    cur_session = live.get("current_session", 0)
     cur_round = live.get("current_round", 0)
     cur_round_name = _esc(live.get("current_round_name", ""))
-    cur_kann = _esc(live.get("current_kann", ""))
+    cur_kann_id = live.get("current_kann", "")
+    cur_kann = _esc(cur_kann_id)
     cur_kann_text = _esc(live.get("current_kann_text", ""))
     cur_kann_focus = live.get("current_kann_focus", {})
+    cur_category = ""
+    if cur_kann_id in KANN_BY_ID:
+        cur_category = KANN_BY_ID[cur_kann_id].get("category", "")
+    elif cur_kann_focus:
+        cur_category = cur_kann_focus.get("category", "")
     active_stu = _esc(live.get("active_student", ""))
     student_summaries = live.get("student_summaries", {})
     is_done = live.get("done", False)
@@ -1943,8 +2192,9 @@ def render_html(include_static=True):
             result = ddata.get("summaries", {}).get(sid, {}).get("kann_result", "\u2026")
             cls = {"bestanden": "pass", "teilweise": "partial", "nicht_bestanden": "fail"}.get(result, "pending")
             cells += f'<td class="{cls}">{_esc(result)}</td>'
-        sc_label = f'{ddata["kann_id"]}: {ddata.get("kann_text","")}'
-        target_day = f'd_{ddata["day"]}'
+        session_label = f'S{int(ddata.get("session", 1)):02d}'
+        sc_label = f'{session_label} {ddata["kann_id"]}: {ddata.get("kann_text","")}'
+        target_day = f'd_{ddata["day"]}_s{int(ddata.get("session", 1)):02d}'
         sc_rows += (
             f'<tr class="scorecard-row" data-target-day="{target_day}">'
             f'<td class="sc-day">{ddata["day"]}</td>'
@@ -1959,13 +2209,14 @@ def render_html(include_static=True):
     n_days = len(live["days"])
     for idx, ddata in enumerate(live["days"]):
         day_num = ddata["day"]
+        session_num = int(ddata.get("session", 1))
         is_latest = (idx == n_days - 1)
-        is_active = (day_num == cur_day)
+        is_active = (day_num == cur_day and session_num == cur_session)
 
         kann_full = _esc(ddata.get("kann_text", ""))
         kann_cat = _esc(ddata.get("category", ""))
-        days_html += f'<details class="day-block" id="d_{day_num}" data-latest="{1 if is_latest else 0}" data-active="{1 if is_active else 0}">'
-        days_html += f'<summary>Tag {day_num}: {_esc(ddata["kann_id"])} \u2014 {kann_full}</summary>'
+        days_html += f'<details class="day-block" id="d_{day_num}_s{session_num:02d}" data-latest="{1 if is_latest else 0}" data-active="{1 if is_active else 0}">'
+        days_html += f'<summary>Tag {day_num} · Sitzung {session_num}: {_esc(ddata["kann_id"])} \u2014 {kann_full}</summary>'
         days_html += '<div class="day-content">'
         days_html += f'<div class="kann-banner"><span class="kann-id">{_esc(ddata["kann_id"])}</span> <span class="kann-cat">{kann_cat}</span><div class="kann-text">{kann_full}</div></div>'
 
@@ -2051,7 +2302,9 @@ def render_html(include_static=True):
     if cur_kann_text:
         kann_display += ": " + cur_kann_text
     kann_focus_html = _render_kann_focus_html(cur_kann_focus)
-    syllabus_browser_html = _render_syllabus_browser_html(cur_kann) if include_static else ""
+    lesson_seed_html = _render_lesson_seed_html(cur_kann_focus.get("lesson_seed"))
+    pathway_map_html = _render_pathway_map_html(cur_category, cur_kann_id)
+    syllabus_browser_html = _render_syllabus_browser_html(cur_kann_id) if include_static else ""
     student_summary_html = _render_student_summary_cards(student_summaries, active_stu)
     billing_html = _render_billing_html(current_billing, session_billing)
 
@@ -2066,6 +2319,8 @@ def render_html(include_static=True):
 <div class="live-header">
   <div class="lh-left">
     <span class="lh-tag">Tag {cur_day}/{TOTAL_KANNS}</span>
+    <span class="lh-sep">\u2502</span>
+    <span class="lh-tag">Sitzung {cur_session or 1}</span>
     <span class="lh-sep">\u2502</span>
     <span class="lh-round">Runde {cur_round}/7{(": " + cur_round_name) if cur_round_name else ""}</span>
     <span class="lh-sep">\u2502</span>
@@ -2096,6 +2351,14 @@ def render_html(include_static=True):
     <div class="sidebar-section" id="syllabus-section">
       <div class="sidebar-title">Current KB Syllabus</div>
       {kann_focus_html}
+    </div>
+    <div class="sidebar-section" id="lesson-seed-section">
+      <div class="sidebar-title">Lesson Seed</div>
+      {lesson_seed_html if lesson_seed_html else '<div class="status-text">No lesson seed available for this KB yet.</div>'}
+    </div>
+    <div class="sidebar-section" id="pathway-section">
+      <div class="sidebar-title">A1 → A2 → B1 Pathway Map</div>
+      {pathway_map_html}
     </div>
     <div class="sidebar-section" id="syllabus-browser-section" data-static="syllabus-browser">
       <div class="sidebar-title">Full KB Syllabus Browser</div>
@@ -2148,7 +2411,7 @@ def render_html(include_static=True):
     return "".join(parts)
 
 
-_OUTPUT_FILE_RE = re.compile(r"day(\d+)_K\d+\.json$")
+_OUTPUT_FILE_RE = re.compile(r"day(\d+)(?:_s(\d+))?_K\d+\.json$")
 
 
 def _output_file_day(path):
@@ -2156,11 +2419,22 @@ def _output_file_day(path):
     return int(match.group(1)) if match else 0
 
 
+def _output_file_session(path):
+    match = _OUTPUT_FILE_RE.match(path.name)
+    if not match:
+        return 0
+    return int(match.group(2) or 1)
+
+
+def _output_sort_key(path):
+    return (_output_file_day(path), _output_file_session(path), path.name)
+
+
 def load_existing_outputs():
     """Populate the live UI from saved output JSON without starting generation."""
     output_dir = BASE / "output"
     days = []
-    for path in sorted(output_dir.glob("day*_K*.json"), key=_output_file_day):
+    for path in sorted(output_dir.glob("day*_K*.json"), key=_output_sort_key):
         try:
             payload = json.loads(path.read_text(encoding="utf-8"))
         except Exception as exc:
@@ -2168,8 +2442,10 @@ def load_existing_outputs():
             continue
         kann = payload.get("kann", {})
         day_num = int(payload.get("day") or _output_file_day(path))
+        session_num = int(payload.get("session") or _output_file_session(path) or 1)
         days.append({
             "day": day_num,
+            "session": session_num,
             "kann_id": kann.get("id", f"K{day_num:03d}"),
             "kann_text": kann.get("kann", ""),
             "category": kann.get("category", ""),
@@ -2182,6 +2458,12 @@ def load_existing_outputs():
         })
 
     live["days"] = days
+    # Enrich loaded kann_focus with lesson seeds (which are runtime-loaded, not saved in output JSON)
+    for day in live["days"]:
+        kann_id = day.get("kann_id", "")
+        seed = lesson_seeds_cfg.get("seeds", {}).get(kann_id)
+        if seed and not day.get("kann_focus", {}).get("lesson_seed"):
+            day["kann_focus"]["lesson_seed"] = seed
     live["student_summaries"] = {
         sid: load_optional(f"state/students/{sid}_summary.json", {})
         for sid in STUDENT_IDS
@@ -2191,12 +2473,13 @@ def load_existing_outputs():
     if days:
         latest = days[-1]
         live["current_day"] = latest["day"]
+        live["current_session"] = latest.get("session", 1)
         live["current_kann"] = latest["kann_id"]
         live["current_kann_text"] = latest["kann_text"]
         live["current_kann_focus"] = latest.get("kann_focus", {})
-        live["status"] = f"Loaded {len(days)} saved conversation days. Use Run One Kann to generate a single day."
+        live["status"] = f"Loaded {len(days)} saved KB sessions. Use Run One Kann to generate another session."
     else:
-        live["status"] = "No saved conversations found. Use Run One Kann to generate a single day."
+        live["status"] = "No saved KB sessions found. Use Run One Kann to generate a single session."
 
 
 def resolve_run_target(target):
@@ -2285,10 +2568,14 @@ def start_server(host="127.0.0.1", port=8787):
 # ── prompt builders ────────────────────────────────────────────────
 def build_teacher_prompt(kann, kann_focus, round_frame, day, student_name, teacher_memories, classroom_context, interstitial=""):
     persona = teacher_pers["system_prompt"]
+    lesson_seed_block = ""
+    if kann_focus.get("lesson_seed"):
+        lesson_seed_block = f"\n\n--- LESSON SEED ---\n{format_lesson_seed_for_prompt(kann_focus['lesson_seed'])}"
     canon_block = (
         f"Today's Kannbeschreibung: {kann['kann']}\n"
         f"Category: {kann.get('category','')}\n\n"
         f"{format_kann_focus_for_prompt(kann_focus)}"
+        f"{lesson_seed_block}"
     )
     round_block = f"Round {round_frame['round']} of 7: {round_frame['name']}.\n{round_frame['teacher_instruction']}"
 
@@ -2301,6 +2588,11 @@ def build_teacher_prompt(kann, kann_focus, round_frame, day, student_name, teach
 
     day_block = bridges["day_open"]["teacher_injection_day1"] if day == 1 else bridges["day_open"]["teacher_injection_returning"].replace("{days_completed}", str(day-1))
 
+    # class_opening fires once — only for the first student in round 1
+    class_opening_block = ""
+    if round_frame.get("round") == 1 and not classroom_context:
+        class_opening_block = "\n\n--- CLASS OPENING ---\n" + bridges["class_opening"]["teacher_injection"].replace("{student_name}", student_name)
+
     # what other students said this round
     class_block = ""
     if classroom_context:
@@ -2309,6 +2601,8 @@ def build_teacher_prompt(kann, kann_focus, round_frame, day, student_name, teach
         )
 
     full = f"{persona}\n\n--- CANON ---\n{canon_block}\n\n--- ROUND ---\n{round_block}\n\n--- MEMORY ---\n{memory_block}\n\n--- DAY ---\n{day_block}"
+    if class_opening_block:
+        full += class_opening_block
     if class_block:
         full += f"\n\n--- CLASSROOM ---\n{class_block}"
     if interstitial:
@@ -2420,9 +2714,21 @@ def build_grader_prompt(kann, kann_focus, round_frame, day, teacher_msg, student
         f"- {rel.get('name', rel.get('id', 'relationship'))}: {rel.get('summary', '')} Grader: {rel.get('grader_guidance', '')}"
         for rel in kann_focus.get("global_relationships", [])
     ) or "No explicit global KB relationships."
+    reduction = kann_focus.get("reduction", {}) or {}
+    reduction_bits = []
+    for key in ("rips", "identifier", "carrier", "channel", "persistence", "operation", "output", "memory"):
+        if reduction.get(key):
+            reduction_bits.append(f"- {key}: {reduction[key]}")
+    if reduction.get("carrier_matrix_keys"):
+        reduction_bits.append("- carriers: " + ", ".join(reduction.get("carrier_matrix_keys", [])))
+    reduction_text = "\n".join(reduction_bits) or "No explicit reduced KB mechanics."
+    user_p = user_p.replace("{kann_reduction}", reduction_text)
     user_p = user_p.replace("{wortfeld}", wordfield_text)
     user_p = user_p.replace("{sprachhandlungen}", speech_act_text)
     user_p = user_p.replace("{kann_relationships}", relationship_text)
+    lesson_seed = kann_focus.get("lesson_seed")
+    if lesson_seed:
+        user_p += f"\n\n--- LESSON SEED ---\n{format_lesson_seed_for_prompt(lesson_seed)}"
     user_p = user_p.replace("{current_day}", str(day))
     user_p = user_p.replace("{current_round}", str(round_frame["round"]))
     user_p = user_p.replace("{round_name}", round_frame["name"])
@@ -2568,10 +2874,12 @@ def run_day(day_num, kann):
         progress.setdefault(sid, [])
         kann_progress.setdefault("students", {}).setdefault(sid, {})
     course_state.setdefault("current_day", {})
+    course_state.setdefault("kb_sessions", {})
     course_state.setdefault("areas_covered", {})
     for sid in STUDENT_IDS:
         course_state["current_day"].setdefault(sid, 0)
         course_state["areas_covered"].setdefault(sid, [])
+    course_state["kb_sessions"].setdefault(kann["id"], 0)
     student_summaries = {
         sid: load_optional(
             f"state/students/{sid}_summary.json",
@@ -2580,26 +2888,27 @@ def run_day(day_num, kann):
         for sid in STUDENT_IDS
     }
     kann_focus = derive_kann_focus(kann)
+    session_num = int(course_state["kb_sessions"].get(kann["id"], 0)) + 1
 
     day_live = {
-        "day": day_num, "kann_id": kann["id"], "kann_text": kann["kann"],
+        "day": day_num, "session": session_num, "kann_id": kann["id"], "kann_text": kann["kann"],
         "category": kann.get("category", ""), "kann_focus": kann_focus,
         "rounds": [], "summaries": {}, "billing": make_billing_bucket(),
         "summary_calls": {}, "wrapup_calls": {}
     }
     full_kann_label = f'{kann["id"]}: {kann["kann"]}'
-    live["days"] = [day for day in live["days"] if day.get("day") != day_num]
     live["days"].append(day_live)
-    live["days"].sort(key=lambda day: day.get("day", 0))
+    live["days"].sort(key=lambda day: (day.get("day", 0), day.get("session", 1)))
     live["current_day"] = day_num
+    live["current_session"] = session_num
     live["current_kann"] = kann["id"]
     live["current_kann_text"] = kann["kann"]
     live["current_kann_focus"] = kann_focus
     live["student_summaries"] = student_summaries
-    live["status"] = f"Tag {day_num}/{TOTAL_KANNS} \u2014 {full_kann_label} \u2014 Starting..."
+    live["status"] = f"Tag {day_num}/{TOTAL_KANNS} \u00b7 Sitzung {session_num} \u2014 {full_kann_label} \u2014 Starting..."
 
     print(f"\n{'='*70}")
-    print(f"  Tag {day_num} \u2014 {full_kann_label}")
+    print(f"  Tag {day_num} \u00b7 Sitzung {session_num} \u2014 {full_kann_label}")
     print(f"{'='*70}")
 
     # per-student conversation histories (teacher sees all, student sees own)
@@ -2610,7 +2919,7 @@ def run_day(day_num, kann):
 
     for rf in rounds_tmpl:
         rnd = rf["round"]
-        live["status"] = f"Tag {day_num} \u2014 Runde {rnd}/7: {rf['name']} \u2014 {full_kann_label}"
+        live["status"] = f"Tag {day_num} \u00b7 Sitzung {session_num} \u2014 Runde {rnd}/7: {rf['name']} \u2014 {full_kann_label}"
         live["current_round"] = rnd
         live["current_round_name"] = rf["name"]
         round_live = {"round": rnd, "name": rf["name"], "exchanges": []}
@@ -2766,7 +3075,7 @@ def run_day(day_num, kann):
     live["current_round"] = 0
     live["current_round_name"] = ""
     live["active_student"] = ""
-    live["status"] = f"Tag {day_num} \u2014 Summarizing \u2014 {full_kann_label}"
+    live["status"] = f"Tag {day_num} \u00b7 Sitzung {session_num} \u2014 Summarizing \u2014 {full_kann_label}"
     for sid in STUDENT_IDS:
         summary_user = grader_day["user_template"]
         summary_user = summary_user.replace("{student_name}", STUDENT_NAMES[sid])
@@ -2829,7 +3138,7 @@ def run_day(day_num, kann):
         new_learned["persistent_errors"] = ds.get("persistent_errors", learned[sid].get("persistent_errors", []))
         new_learned["emotional_state"] = ds.get("emotional_state", "")
         new_learned.setdefault("kannbeschreibungen_attempted", {})[kann["id"]] = {
-            "day": day_num, "result": ds.get("kann_result", "teilweise")
+            "day": day_num, "session": session_num, "result": ds.get("kann_result", "teilweise")
         }
         save(f"state/students/{sid}_learned.json", new_learned)
 
@@ -2848,11 +3157,12 @@ def run_day(day_num, kann):
         area = kann.get("category", "")
         if area and area not in course_state["areas_covered"][sid]:
             course_state["areas_covered"][sid].append(area)
+    course_state["kb_sessions"][kann["id"]] = session_num
     save("state/course/course_state.json", course_state)
 
     # save day output
-    save(f"output/day{day_num}_{kann['id']}.json", {
-        "day": day_num, "kann": kann, "kann_focus": kann_focus,
+    save(f"output/day{day_num}_s{session_num:02d}_{kann['id']}.json", {
+        "day": day_num, "session": session_num, "kann": kann, "kann_focus": kann_focus,
         "rounds": day_live["rounds"],
         "summaries": day_live["summaries"],
         "summary_calls": day_live["summary_calls"],
@@ -2868,7 +3178,7 @@ def run_day(day_num, kann):
         f" | {billing.get('completion_tokens', 0)} completion"
     )
 
-    live["status"] = f"Tag {day_num}/{TOTAL_KANNS} \u2014 {full_kann_label} \u2014 DONE"
+    live["status"] = f"Tag {day_num}/{TOTAL_KANNS} \u00b7 Sitzung {session_num} \u2014 {full_kann_label} \u2014 DONE"
 
 # ── run full course ────────────────────────────────────────────────
 def run_course(start_day=1, end_day=None):

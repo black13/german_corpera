@@ -143,23 +143,204 @@ stability, and support around the source:
 So at A1, `übersetzen` usually means word-level or phrase-level transfer, not
 full sentence or paragraph translation.
 
-## Carrier matrix
+## Whole carrier-operation system
+
+The first short matrix was only a sample. It was not the whole system.
+
+The whole A1 planning object is not a single carrier list. It is a product of
+five axes:
 
 ```text
-carrier             channel   persistence     operation      A1 output
-Schild              written   stays visible   verstehen      word/meaning
-Aufschrift          written   stays visible   übersetzen     Das bedeutet ...
-Aushang             written   stays visible   notieren       Termin/Uhrzeit
-Formular            written   stays visible   ausfüllen      Name/Adresse
-Fahrplan            written   stays visible   weitergeben    Uhrzeit/Gleis/Ziel
-Informationstafel   written   stays visible   erklären       Das ist ...
-Durchsage           spoken    disappears      verstehen      key fact only
-Frage               spoken    disappears      weitergeben    simple reported fact
-Anweisung           spoken    disappears      notieren       short action note
+carrier -> channel/persistence -> content unit -> operation -> output direction
 ```
 
-This matrix should become part of the teacher-preparation logic. It tells the
-teacher how hard the task is before choosing grammar.
+So the same carrier can appear in several tasks:
+
+```text
+Aushang verstehen
+Aushang notieren
+Information vom Aushang weitergeben
+```
+
+The carrier stays the same, but the operation changes.
+
+## Content units
+
+The content unit is what the learner has to extract, write, say, translate, or
+pass on.
+
+```text
+Wort / Ausdruck / Satz / Formel / Information
+Name / Zahl / Preis / Uhrzeit / Datum / Ort / Weg / Termin
+Person / Beruf / Hobby / Adresse / Telefonnummer
+Status / Verbot / Bitte / Anweisung / Grund / Anlass
+```
+
+These content units can live inside many carriers.
+
+## Full A1 carrier inventory by channel
+
+### 1. Live spoken partner input
+
+```text
+carrier/source                 persistence       common operation                A1 output
+Partneräußerung                disappears        verstehen + reagieren           Ja. / Nein. / Okay.
+direkte Frage                  disappears        antworten                       Ich heiße ... / Ich komme aus ...
+Bitte / Wunsch                 disappears        geben / bitten / danken          Bitte. / Danke. / Ich brauche ...
+Vorstellung                    disappears        reagieren / vorstellen           Das ist ... / Ich bin ...
+Befindensfrage                 disappears        antworten / zurückfragen         Gut. Und Ihnen?
+Terminabsprache                disappears        verstehen + weitergeben          Freitag um zehn Uhr.
+Wegbeschreibung                disappears        verstehen / wiederholen          links / rechts / geradeaus
+Erklärung des Partners         disappears        um Wiederholung bitten           Noch einmal, bitte.
+buchstabiertes Wort            disappears        verstehen / aufschreiben         Name / Adresse
+```
+
+Main KB area: K001-K041, with bridges into K153, K155-K162, K169-K172.
+
+### 2. Spoken institutional/broadcast input
+
+```text
+carrier/source                 persistence       common operation                A1 output
+Ansage                         disappears        Zeit/Ort verstehen              Beginn um acht Uhr.
+Durchsage                      disappears        Hauptinformation verstehen       Auto falsch / geschlossen
+Aufruf                         disappears        Name/Ort erkennen               Herr Bauer zur Information.
+Hörtext                        replayable        Übung/Thema erkennen            Übung 3 / Thema Familie
+Radiointerview                 disappears        Formel erkennen                 Danke / Auf Wiedersehen
+Fernsehnachrichten             disappears        Thema identifizieren            Sport / Politik / Wetter
+Sportbericht                   disappears        Ergebnis verstehen              4:1
+gesprochene Anweisung          disappears        Handlung verstehen              Buch auf Seite 14.
+Computer-Schulung              disappears        Handlung verstehen              Enter drücken.
+```
+
+Main KB area: K060-K083.
+
+### 3. Stable public written carriers
+
+```text
+carrier                        persistence       common operation                A1 output
+Schild                         stays visible     verstehen / übersetzen           Bahnhof / Parkplatz
+Aufschrift                     stays visible     verstehen / übersetzen           Das bedeutet ...
+Orientierungsschild            stays visible     Weg/Ort verstehen               links / rechts / Zimmer 24
+Informationstafel              stays visible     Angabe verstehen / erklären      Das ist ...
+Aushang                        stays visible     Termin/Ort verstehen/notieren    Montag, acht Uhr, Raum 2
+Informationsblatt              stays visible     Versammlung/Termin entnehmen     Heute um ...
+Fahrplan                       stays visible     Zeit/Ziel entnehmen              Abfahrt um ...
+Kursprogramm                   stays visible     Termin/Dauer/Preis verstehen     Kurs beginnt ...
+Kinoprogramm                   stays visible     Film/Zeit/Ort aussuchen          Film um ...
+Produktinformation             stays visible     Preis/Maß/Qualität verstehen     Das kostet ...
+Zeitungsartikel                stays visible     Personendaten verstehen          Alter, Wohnort, Beruf
+Zeitung/Sportergebnis          stays visible     Ergebnis suchen/verstehen        4:1
+CD-Inlay                       stays visible     biografische Angaben entnehmen   Name, Ort, Jahr
+Reiseprospekt                  stays visible     Wörter übersetzen                Zug / Restaurant
+Wettervorhersage               stays visible     Begriffe übersetzen              Sonne / Regen
+Sicherheitsvorschrift          stays visible     Verbot/Regel verstehen           Nicht rauchen.
+Medikamentenangabe             stays visible     Menge/Zeit verstehen             zweimal täglich
+schriftliche Anleitung         stays visible     Handlung verstehen               zuerst / dann
+```
+
+Main KB area: K084-K107, K163-K166, K173-K176.
+
+### 4. Stable form and data-entry carriers
+
+```text
+carrier                        persistence       common operation                A1 output
+Formular                       stays visible     verstehen + ausfüllen            Name, Adresse
+Fragebogen                     stays visible     Angaben machen                   Beruf, Alter, Wohnort
+Anmeldeformular                stays visible     persönliche Daten eintragen      Name, Adresse, Daten
+Kursanmeldung                  stays visible     Sprachausbildung angeben         Kursort, Dauer
+Amt/Kursbüro-Datenfeld         stays visible     Daten sagen/schreiben            Geburtsdatum, Adresse
+```
+
+Main KB area: K044-K048, K131, K149, K152.
+
+### 5. Personal written/social carriers
+
+```text
+carrier                        persistence       common operation                A1 output
+Mitteilung                     stays visible     schreiben / verstehen            Ich bin nicht da.
+Notiz                          stays visible     bitten / danken / mitteilen      Danke für die Blumen.
+Postkarte                      stays visible     schreiben / Anlass verstehen     Viele Grüße.
+E-Mail                         stays visible     schreiben / Einladung verstehen  Treffen am Freitag.
+Brief                          stays visible     Hauptinformation verstehen       Einladung / Gruß
+Glückwunschkarte               stays visible     schreiben                        Alles Gute.
+Feriengruß                     stays visible     schreiben/verstehen              Grüße aus ...
+Chat                           visible in thread vorstellen / fragen              Ich heiße ...
+Klassenporträt                 stays visible     über sich schreiben              Ich bin ...
+Lernpartner-Profil             stays visible     Angaben erfragen                 Wo wohnst du?
+```
+
+Main KB area: K042-K059, K108-K111.
+
+### 6. Digital/software carriers
+
+```text
+carrier                        persistence       common operation                A1 output
+Computerprogramm               stays visible     Befehl verstehen                 speichern / öffnen
+E-Mail-Programm                stays visible     Befehl verstehen/benutzen        senden / empfangen
+Sprachlernprogramm             replayable        Übung/Hörtext zuordnen          Übung 4
+CD-ROM                         stays visible     Softwarehandlung verstehen       Übung ausdrucken
+Computer-Schulungsanweisung    disappears        Handlung verstehen              Enter drücken.
+```
+
+Main KB area: K073, K078, K112-K115.
+
+Important distinction: `ausdrucken` means "to print." It is an operation in the
+software system, not a visible-text carrier like `Aufschrift`.
+
+### 7. Self-made written carriers
+
+```text
+carrier/output                 persistence       common operation                A1 output
+Aufzeichnung                   stays visible     von Tafel/Folie abschreiben      Wort / Satz / Zahl
+Notiz für sich                 stays visible     Zeit/Ort notieren               Montag, Raum 2
+Lernplan                       stays visible     Plan schreiben                   Montag Deutsch
+Putzplan                       stays visible     Namen/Tage/Räume schreiben       Anna, Küche, Montag
+Reiseplan/Reiseroute           stays visible     Stationen notieren              Bahnhof -> Hotel
+Stichpunkte                    stays visible     Fakten/Daten aufschreiben        Preis, Name, Termin
+Telefonnummer-Mitschrift       stays visible     Zahl hören + schreiben           0176 ...
+Buchdaten                      stays visible     Titel/Autor/Preis schreiben      Autor, Titel, 12 Euro
+```
+
+Main KB area: K133-K152.
+
+### 8. Mediation carriers by direction
+
+```text
+direction/source               channel          persistence       common operation
+German spoken -> shared lang   spoken           disappears        weitergeben
+German written -> shared lang  written          stays visible     weitergeben / übersetzen
+Other spoken -> German         spoken           disappears        weitergeben / übersetzen
+Other written -> German        written          stays visible     weitergeben / übersetzen
+```
+
+Main KB area:
+
+```text
+K153-K162: German spoken input -> shared language
+K163-K166: German written input -> shared language
+K167-K172: other-language spoken input -> German
+K173-K176: other-language written/visible input -> German
+```
+
+The easiest quadrant is K173-K176 because the other-language written object
+stays visible.
+
+## Whole-system matrix
+
+```text
+carrier class              example carriers                         channel   persistence       operations
+live partner speech         Frage, Bitte, Vorstellung, Auskunft       spoken    disappears        react/answer/ask/relay
+institutional speech        Ansage, Durchsage, Aufruf, Hörtext        spoken    disappears/replay understand/identify
+public written objects      Schild, Aushang, Fahrplan, Tafel          written   stays visible     read/extract/translate
+forms/data fields           Formular, Fragebogen, Anmeldung           written   stays visible     fill in/write/say data
+personal written texts      Notiz, Postkarte, E-Mail, Brief, Chat     written   stays visible     write/read/respond
+digital interfaces          Programm, E-Mail-Menü, CD-ROM             written   stays visible     command/action
+self-made notes             Notiz, Plan, Stichpunkte, Aufzeichnung    written   stays visible     write/copy/notate
+mediation sources           spoken/written DE or other language       mixed     mixed             pass on/translate
+```
+
+This is the whole carrier system at A1: not one list of nouns, but carrier
+class plus operation plus output direction.
 
 ## Where `Ausdrücke` fits
 

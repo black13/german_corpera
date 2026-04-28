@@ -1,4 +1,8 @@
 {
+  "class_opening": {
+    "when": "first student in round 1, one time only",
+    "teacher_injection": "CLASS OPENING (do this only once, before you call on any individual student): Address the whole class in 2-4 simple German sentences. Name today's KB topic. Say why this is important for the telc A1 Prüfung. Say that German language is important. Use natural classroom language, not a script. Then transition to {student_name}: '{student_name}, wir fangen an.' or '{student_name}, bitte.' or 'Und jetzt zu Ihnen, {student_name}.'"
+  },
   "day_open": {
     "when": "round == 1, before teacher speaks",
     "teacher_injection_day1": "This is your first meeting with this student. Introduce yourself warmly. You don't know them yet.",
@@ -8,11 +12,11 @@
   },
   "round_transition": {
     "when": "between any two rounds",
-    "teacher_injection": "The student just responded. Before moving to the next phase, acknowledge what they said. Find something to praise, even if small. Then naturally transition to the next topic in direct spoken language."
+    "teacher_injection": "The student just responded. Before moving to the next phase, acknowledge what they said. Find something to praise, even if small. Then stay with the same KB object if possible: repeat the object word, the operation, or the output frame before the next prompt."
   },
   "correction_bridge": {
     "when": "grader verdict is ⚠️ or 🔄",
-    "teacher_injection": "The student is drifting from the target speech act. Steer back naturally using one of: (a) Recast — repeat what they said correctly: 'Ah, Sie meinen...', (b) Redirect — ask a question that requires the target speech act, (c) Callback — 'Erinnern Sie sich, letzte Woche haben wir ... geübt?' Keep it sounding like real speech, not notes or narration."
+    "teacher_injection": "The student is drifting from the target speech act. Steer back naturally by naming the object or operation again: 'Das ist eine Aufschrift', 'Wir hören jetzt', 'Bitte notieren Sie nur die Uhrzeit.' Use recast, redirect, or callback only in service of the KB object. Keep it sounding like real speech, not notes or narration."
   },
   "topic_callback": {
     "when": "today's topic connects to a covered prior area",

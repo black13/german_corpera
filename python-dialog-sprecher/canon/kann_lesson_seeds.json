@@ -1,0 +1,473 @@
+{
+  "_meta": {
+    "purpose": "Per-Kann lesson seeds that make the instructional target explicit before class generation begins. This is the teacher-preparation artifact layer.",
+    "shape": "scene-to-language ladder: big scene -> small scene -> speech act -> utterance -> lexical field -> grammar. Grammar comes last, derived from the utterance need.",
+    "compact_form_rule": "A single line for prompt compression, e.g. 'hotel + info board + translate term + check understanding'",
+    "drift_path_rule": "Each drift path is a common learner failure mode paired with a concrete teacher recovery move.",
+    "grader_guidance_rule": "What the grader should verify: carrier presence, mediation act, recipient correctness, A1 size, drift vs orientation."
+  },
+  "seeds": {
+    "K084": {
+      "kb_id": "K084",
+      "kb_text_de": "Kann einzelne Wörter und sehr einfache Sätze in einfachen und übersichtlichen alltäglichen Texten verstehen, die konkrete Bereiche und Bedürfnisse des täglichen Lebens betreffen.",
+      "compact_form": "short everyday text + pick out single words + understand one key item",
+      "scene": {
+        "big": "everyday written information in public life",
+        "small": "a sign, notice, timetable line, or form entry"
+      },
+      "roles": ["Leser/in", "Helfer/in"],
+      "core_words": ["Name", "Adresse", "Uhrzeit", "Preis", "Zimmer", "Eingang"],
+      "target_speech_acts": [
+        "einzelne Wörter erkennen",
+        "die wichtigste Information nennen"
+      ],
+      "target_utterances": [
+        "Hier steht ...",
+        "Das Wort bedeutet ...",
+        "Ich sehe ..."
+      ],
+      "target_grammar": [
+        "Nomen erkennen",
+        "Zahlen erkennen",
+        "kurze Hauptsätze"
+      ],
+      "lexical_fields": ["person", "zeit", "wohnen"],
+      "prior_dependencies": [],
+      "drift_paths": [
+        {
+          "failure": "tries to read and understand the whole text",
+          "recovery": "Lesen Sie nur das erste Wort. Was steht da?"
+        },
+        {
+          "failure": "gives up and says 'Ich verstehe nicht'",
+          "recovery": "Kein Problem. Suchen Sie ein Wort, das Sie kennen. Vielleicht 'Hotel' oder 'Uhr'?"
+        }
+      ],
+      "telc_tasks": ["sign comprehension", "single-fact extraction from short text"],
+      "examples": [
+        {"text": "Schild: Eingang links. Lernende: Hier steht 'Eingang'.", "source": "seed", "note": "single word recognition from sign"},
+        {"text": "Timetable: Bus 14:30. Lernende: Die Uhrzeit ist halb drei.", "source": "seed", "note": "single fact extraction"}
+      ],
+      "grader_guidance": "Did the learner pick out a concrete word or fact? A1-sized answer only. Do not penalize for not understanding the full text.",
+      "teacher_notes": "Start from one visible word. Do not require full-sentence comprehension. Reward any correct single-word identification."
+    },
+    "K085": {
+      "kb_id": "K085",
+      "kb_text_de": "Kann in informierenden Texten, die viele Internationalismen enthalten und/oder illustriert sind, das Thema identifizieren und einzelne Informationen verstehen.",
+      "compact_form": "info text + international words or pictures + identify topic + find one detail",
+      "scene": {
+        "big": "everyday informational text with visual support",
+        "small": "brochure, poster, information board, or flyer"
+      },
+      "roles": ["Leser/in", "Person, die die Information braucht"],
+      "core_words": ["Information", "Programm", "Hotel", "Kurs", "Preis", "Termin"],
+      "target_speech_acts": [
+        "das Thema identifizieren (Worum geht es?)",
+        "eine einzelne Information finden und sagen"
+      ],
+      "target_utterances": [
+        "Das Thema ist ...",
+        "Hier steht ...",
+        "Die Information ist ..."
+      ],
+      "target_grammar": [
+        "Thema nennen",
+        "einzelne Information weitergeben",
+        "ist/hat/kostet"
+      ],
+      "lexical_fields": ["zeit", "wohnen", "person"],
+      "prior_dependencies": ["K084"],
+      "drift_paths": [
+        {
+          "failure": "describes the picture instead of finding the text information",
+          "recovery": "Das Bild ist schön! Aber was steht im Text? Ein Wort bitte."
+        },
+        {
+          "failure": "names the broad topic but no fact",
+          "recovery": "Ja, das ist ein Hotel-Prospekt. Und was kostet das Zimmer?"
+        }
+      ],
+      "telc_tasks": ["reading comprehension with visual cues", "topic identification"],
+      "examples": [
+        {"text": "Hotel-Prospekt mit Bild. Lernende: Das Thema ist Hotel. Das Zimmer kostet 80 Euro.", "source": "seed", "note": "topic + detail from brochure"},
+        {"text": "Kursprogramm mit Fotos. Lernende: Das ist ein Deutschkurs. Der Kurs beginnt am Montag.", "source": "seed", "note": "international word + date fact"}
+      ],
+      "grader_guidance": "Two-part check: did the learner name the topic AND did they extract one concrete fact? Accept picture-supported topic identification.",
+      "teacher_notes": "International words are your ally. Start with them. Point at one visible word, then ask for the topic. Then ask for one detail."
+    },
+    "K086": {
+      "kb_id": "K086",
+      "kb_text_de": "Kann Teile von kurzen, einfachen Texten verstehen, wenn er/sie Gelegenheit zu wiederholtem Lesen hat.",
+      "compact_form": "short text + re-read + understand parts (not whole) + build toward confidence",
+      "scene": {
+        "big": "everyday written text requiring multiple reads",
+        "small": "a short note, email, or notice that can be re-read"
+      },
+      "roles": ["Leser/in", "Helfer/in"],
+      "core_words": ["noch einmal", "Teil", "Text", "wichtig", "einfach", "kurz"],
+      "target_speech_acts": [
+        "signalisieren, dass man etwas verstanden hat",
+        "um Wiederholung bitten",
+        "einen verstandenen Teil nennen"
+      ],
+      "target_utterances": [
+        "Ich lese noch einmal.",
+        "Ich verstehe diesen Teil.",
+        "Das ist wichtig.",
+        "Noch einmal, bitte."
+      ],
+      "target_grammar": [
+        "wiederholtes Lesen als Strategie",
+        "Schlüsselwörter markieren",
+        "kurze Hauptsätze"
+      ],
+      "lexical_fields": ["person", "zeit"],
+      "prior_dependencies": ["K084", "K085"],
+      "drift_paths": [
+        {
+          "failure": "reads once and guesses randomly",
+          "recovery": "Lesen Sie es noch einmal. Langsam. Welches Wort kennen Sie?"
+        },
+        {
+          "failure": "gives up because they don't understand everything",
+          "recovery": "Sie müssen nicht alles verstehen. Nur einen Teil. Was haben Sie verstanden?"
+        }
+      ],
+      "telc_tasks": ["repeated reading comprehension", "partial text understanding"],
+      "examples": [
+        {"text": "Kurze Notiz: 'Treffen am Freitag, 15 Uhr, Raum 2'. Lernende liest zweimal: 'Ich verstehe: Freitag, 15 Uhr.'", "source": "seed", "note": "re-read extracts partial info"},
+        {"text": "E-Mail: 'Liebe Marta, Kurs beginnt Montag. Bring Buch mit.' Lernende: 'Ich verstehe: Montag und Buch.'", "source": "seed", "note": "partial comprehension accepted"}
+      ],
+      "grader_guidance": "Re-read behavior is the skill. Do not penalize if only part is understood. Penalize if learner refuses to re-read and guesses.",
+      "teacher_notes": "Model re-reading. Read the short text aloud once, then again. Ask which part they understood. One word or phrase is enough."
+    },
+    "K092": {
+      "kb_id": "K092",
+      "kb_text_de": "Kann den Inhalt von sehr einfachen Informationstexten und listenartigen Darstellungen zu vertrauten Themen erfassen, besonders wenn diese viele internationale Wörter und/oder visuelle Elemente enthalten.",
+      "compact_form": "list or table + familiar topic + international words + find one item + say it",
+      "scene": {
+        "big": "everyday lists and tables in public life",
+        "small": "menu, timetable, price list, or information board"
+      },
+      "roles": ["Leser/in", "Person, die eine Information braucht"],
+      "core_words": ["Liste", "Tabelle", "Uhrzeit", "Preis", "Adresse", "geöffnet"],
+      "target_speech_acts": [
+        "eine listenartige Darstellung als solche erkennen",
+        "eine einzelne Information aus einer Liste entnehmen",
+        "die Information nennen"
+      ],
+      "target_utterances": [
+        "In der Liste steht ...",
+        "Die Uhrzeit ist ...",
+        "Der Preis ist ..."
+      ],
+      "target_grammar": [
+        "einzelne Information",
+        "Zahlen und Uhrzeiten",
+        "von ... bis"
+      ],
+      "lexical_fields": ["zeit", "essen", "wohnen"],
+      "prior_dependencies": ["K084", "K085", "K086"],
+      "drift_paths": [
+        {
+          "failure": "reads the list but cannot extract the target item",
+          "recovery": "Zeigen Sie auf das Wort 'Frühstück'. Was steht daneben?"
+        },
+        {
+          "failure": "confuses similar entries (e.g., Monday vs Tuesday)",
+          "recovery": "Schauen Sie genau. Montag oder Dienstag? Zeigen Sie."
+        }
+      ],
+      "telc_tasks": ["list comprehension", "timetable reading", "menu reading"],
+      "examples": [
+        {"text": "Speisekarte: 'Frühstück 8 Euro'. Lernende: Der Preis ist 8 Euro.", "source": "seed", "note": "list entry extraction"},
+        {"text": "Fahrplan: 'Bus Zentrum 14:30'. Lernende: Die Uhrzeit ist 14:30.", "source": "seed", "note": "single timetable item"}
+      ],
+      "grader_guidance": "Target is list-entry extraction. Single-item answer is correct. Do not require the learner to explain the whole list or table.",
+      "teacher_notes": "Point at the list. Ask: 'Was steht hier?' The learner needs only one item. Lists are easy because format helps: left column = name, right column = value."
+    },
+    "K104": {
+      "kb_id": "K104",
+      "kb_text_de": "Kann kurze, einfache schriftliche Anleitungen verstehen, besonders wenn diese illustriert sind.",
+      "compact_form": "short instruction + pictures + understand what to do or not do",
+      "scene": {
+        "big": "everyday instructions with visual support",
+        "small": "a sign, label, or short instruction card"
+      },
+      "roles": ["Leser/in", "Benutzer/in"],
+      "core_words": ["öffnen", "schließen", "drücken", "ziehen", "benutzen", "nicht"],
+      "target_speech_acts": [
+        "eine Anweisung als solche erkennen",
+        "verstehen, was man tun oder nicht tun soll",
+        "die Handlung benennen"
+      ],
+      "target_utterances": [
+        "Bitte ...",
+        "Nicht ...",
+        "Man muss ...",
+        "Hier: drücken."
+      ],
+      "target_grammar": [
+        "Imperativ",
+        "nicht + Verb",
+        "müssen"
+      ],
+      "lexical_fields": ["handlung", "richtung"],
+      "prior_dependencies": ["K084", "K085", "K092"],
+      "drift_paths": [
+        {
+          "failure": "describes the object instead of the instruction",
+          "recovery": "Ja, das ist eine Tür. Aber was steht auf dem Schild? Was muss man tun?"
+        },
+        {
+          "failure": "reads words but cannot say what action is required",
+          "recovery": "Darf man hier rauchen? (point to sign) Was steht da?"
+        }
+      ],
+      "telc_tasks": ["instruction comprehension", "sign reading with action"],
+      "examples": [
+        {"text": "Schild: 'Bitte Tür schließen'. Lernende: Man muss die Tür schließen.", "source": "seed", "note": "imperative instruction understanding"},
+        {"text": "Schild: 'Rauchen verboten' mit Bild. Lernende: Nicht rauchen.", "source": "seed", "note": "prohibition with visual support"}
+      ],
+      "grader_guidance": "Target is action comprehension: what to do or not do. Accept single verb answers ('drücken', 'nicht rauchen'). Picture support is valid.",
+      "teacher_notes": "Pick instructions with pictures. The picture carries half the meaning. Ask: 'Was muss man hier machen?' Accept one-word action answers."
+    },
+    "K163": {
+      "kb_id": "K163",
+      "kb_text_de": "Kann einzelne Informationen aus einem kurzen schriftlichen, oft listenartigen deutschsprachigen Text zu vertrauten Themen anderen Personen in der gemeinsamen Sprache weitergeben, wenn der Text einfachen Basiswortschatz, Internationalismen oder visuelle Elemente enthält.",
+      "compact_form": "short list-like DE text + find one fact + relay to another person in shared language",
+      "scene": {
+        "big": "everyday written German information shared with others",
+        "small": "a menu line, timetable entry, notice, poster, or form-like list"
+      },
+      "roles": ["learner as helper/mediator", "friend/colleague as recipient", "German text as source"],
+      "core_words": ["Uhrzeit", "Preis", "Ort", "Datum", "Name", "Adresse"],
+      "target_speech_acts": [
+        "eine nützliche Information auswählen",
+        "die Information in der gemeinsamen Sprache weitergeben"
+      ],
+      "target_utterances": [
+        "It says ...",
+        "The course starts at ...",
+        "Breakfast is from seven to ten.",
+        "The price is ..."
+      ],
+      "target_grammar": [
+        "um, am, von ... bis (if time fact)",
+        "in, im, bei (if place fact)",
+        "kostet (if price fact)",
+        "heißen (if person fact)"
+      ],
+      "lexical_fields": ["zeit", "essen", "wohnen", "person"],
+      "prior_dependencies": ["K084", "K085", "K086", "K092"],
+      "drift_paths": [
+        {
+          "failure": "reads the German words aloud but does not relay the meaning in the shared language",
+          "recovery": "Sehr gut gelesen! Aber Ihr Freund spricht kein Deutsch. Was bedeutet das auf Englisch?"
+        },
+        {
+          "failure": "gives a general summary instead of one concrete fact",
+          "recovery": "Das ist interessant. Aber sagen Sie nur eine Sache: Wann beginnt der Kurs?"
+        }
+      ],
+      "telc_tasks": ["written-to-oral mediation", "information relay"],
+      "examples": [
+        {"text": "Menu: 'Frühstück 8 Euro, Kaffee inklusive'. Learner: 'It says breakfast is 8 euros and coffee is included.'", "source": "seed", "note": "price + detail relay"},
+        {"text": "Timetable: 'Bus Zentrum 14:30'. Learner: 'The bus to the center is at 2:30.'", "source": "seed", "note": "time relay"},
+        {"text": "Notice: 'Deutsch A1, Montag 18:00, Raum 2'. Learner: 'The German class is Monday at 6pm in room 2.'", "source": "seed", "note": "multiple fact relay"}
+      ],
+      "grader_guidance": "The operation is: read DE -> relay in shared language. Check that the relayed fact is correct. Do NOT check German production — the output is in the shared language. Do check that a fact was actually relayed, not just named.",
+      "teacher_notes": "This is the general mediation bridge. Information type drives grammar: time -> um/am/von...bis, place -> in/im/bei, price -> kostet, instruction -> bitte/nicht/müssen. Keep the written source short and concrete."
+    },
+    "K173": {
+      "kb_id": "K173",
+      "kb_text_de": "Kann einfache anderssprachige Informationen von Schildern und Aufschriften Deutschsprachigen in Einzelwörtern auf Deutsch weitergeben.",
+      "compact_form": "foreign sign or label + read one word + relay in German to a German speaker",
+      "scene": {
+        "big": "public signs, labels, and inscriptions in a foreign language",
+        "small": "a door sign, shop label, or notice that a German speaker cannot read"
+      },
+      "roles": ["learner as mediator", "deutschsprachige Person"],
+      "core_words": ["Schild", "Aufschrift", "Das bedeutet", "Das heißt", "Auf Deutsch"],
+      "target_speech_acts": [
+        "eine fremdsprachliche Aufschrift lesen",
+        "die Bedeutung einem Deutschsprachigen auf Deutsch sagen"
+      ],
+      "target_utterances": [
+        "Das bedeutet ...",
+        "Das heißt ...",
+        "Auf Deutsch: ...",
+        "Das ist ..."
+      ],
+      "target_grammar": [
+        "Das bedeutet + Nomen",
+        "Das ist + Nomen"
+      ],
+      "lexical_fields": ["verkehr", "wohnen", "essen"],
+      "prior_dependencies": ["K163"],
+      "drift_paths": [
+        {
+          "failure": "translates the word into the shared language instead of German",
+          "recovery": "Auf Deutsch bitte. Die Person spricht Deutsch. Was sagen Sie?"
+        },
+        {
+          "failure": "starts a general conversation about signs instead of translating",
+          "recovery": "Konzentrieren Sie sich. Was bedeutet dieses Wort auf Deutsch?"
+        }
+      ],
+      "telc_tasks": ["sign-to-oral mediation", "word-level translation"],
+      "examples": [
+        {"text": "Sign: 'entrance'. Deutschsprachige: 'Was bedeutet das?' Learner: 'Das bedeutet Eingang.'", "source": "seed", "note": "single word German mediation"},
+        {"text": "Label: 'exit'. Learner to German speaker: 'Das heißt Ausgang.'", "source": "seed", "note": "simple label translation"}
+      ],
+      "grader_guidance": "The mediator must output in German. One word is enough. Check: was the carrier visible? Was the recipient German-speaking? Was the answer A1-sized?",
+      "teacher_notes": "This is the easiest mediation form: the sign stays visible, the learner reads, thinks, and says one German word. The Gegenstand bleibt. Do not turn this into a reading comprehension lesson — the target is mediation."
+    },
+    "K174": {
+      "kb_id": "K174",
+      "kb_text_de": "Kann die Aufschrift auf dem Schild einer Geschäftstür (z. B. „fermé\") für einen deutschsprachigen Touristen übersetzen.",
+      "compact_form": "shop door sign + foreign word + translate to German for tourist",
+      "scene": {
+        "big": "shopping street, foreign city",
+        "small": "shop door with a foreign-language sign (e.g. 'fermé', 'open', 'saldi')"
+      },
+      "roles": ["learner as mediator", "deutschsprachiger Tourist"],
+      "core_words": ["Geschäft", "Tür", "Schild", "offen", "geschlossen", "geöffnet"],
+      "target_speech_acts": [
+        "die Aufschrift auf dem Türschild lesen",
+        "die Bedeutung auf Deutsch sagen"
+      ],
+      "target_utterances": [
+        "Das bedeutet geschlossen.",
+        "Das heißt: Das Geschäft ist zu.",
+        "Auf Deutsch: geöffnet.",
+        "Das ist ein Ausverkauf."
+      ],
+      "target_grammar": [
+        "Das bedeutet + Adjektiv/Nomen",
+        "Das Geschäft ist + Adjektiv"
+      ],
+      "lexical_fields": ["einkaufen", "zeit"],
+      "prior_dependencies": ["K173"],
+      "drift_paths": [
+        {
+          "failure": "describes the shop or street instead of translating the sign",
+          "recovery": "Das ist die Straße. Aber was steht auf der Tür? Was bedeutet 'fermé'?"
+        },
+        {
+          "failure": "translates to English instead of German",
+          "recovery": "Der Tourist spricht Deutsch. Sagen Sie es auf Deutsch."
+        }
+      ],
+      "telc_tasks": ["sign mediation oral", "tourist assistance"],
+      "examples": [
+        {"text": "Shop door: 'fermé'. Tourist: 'Was steht da?' Learner: 'Das bedeutet: Das Geschäft ist geschlossen.'", "source": "seed", "note": "French -> German mediation"},
+        {"text": "Shop door: 'saldi'. Learner: 'Auf Deutsch: Ausverkauf.'", "source": "seed", "note": "Italian -> German"},
+        {"text": "Shop door: 'open'. Learner: 'Das heißt geöffnet.'", "source": "seed", "note": "English -> German"}
+      ],
+      "grader_guidance": "One German word or short phrase is enough. Check: carrier is a shop door sign, recipient is a German-speaking tourist, operation is translate. Do not penalize simple language — gerade das ist A1.",
+      "teacher_notes": "K174 is the concrete version of K173. Shop door = Geschäftstür. The sign is visible, the word is simple, the task is clear. Keep it tight: read -> translate -> say."
+    },
+    "K175": {
+      "kb_id": "K175",
+      "kb_text_de": "Kann in einem Restaurant die Aufschrift (z. B. „caballeros\") auf der Toilettentür für einen deutschsprachigen Touristen übersetzen.",
+      "compact_form": "restaurant restroom door + foreign label + translate to German for tourist",
+      "scene": {
+        "big": "restaurant in a foreign country",
+        "small": "hallway, two doors, foreign-language labels"
+      },
+      "roles": ["learner as mediator", "deutschsprachiger Tourist"],
+      "core_words": ["Restaurant", "Toilettentür", "Herren", "Damen", "Toilette", "Aufschrift"],
+      "target_speech_acts": [
+        "die Aufschrift auf der Toilettentür lesen",
+        "die Bedeutung auf Deutsch sagen"
+      ],
+      "target_utterances": [
+        "Das bedeutet Herren.",
+        "Das ist die Damentoilette.",
+        "Auf Deutsch: Toilette."
+      ],
+      "target_grammar": [
+        "Das bedeutet + Nomen",
+        "Das ist die/der + Nomen"
+      ],
+      "lexical_fields": ["essen", "richtung"],
+      "prior_dependencies": ["K173", "K174"],
+      "drift_paths": [
+        {
+          "failure": "starts ordering food or discussing the restaurant",
+          "recovery": "Wir sind nicht beim Essen. Der Tourist steht vor der Toilettentür. Was bedeutet das Wort?"
+        },
+        {
+          "failure": "points and gestures but doesn't say the German word",
+          "recovery": "Zeigen ist gut! Aber sagen Sie es auch auf Deutsch. Wie heißt das?"
+        }
+      ],
+      "telc_tasks": ["sign mediation oral", "tourist assistance at door sign"],
+      "examples": [
+        {"text": "Restroom door: 'caballeros'. Tourist: 'Was bedeutet das?' Learner: 'Das bedeutet Herren.'", "source": "seed", "note": "Spanish -> German"},
+        {"text": "Restroom door: 'damas'. Learner: 'Das ist die Damentoilette.'", "source": "seed", "note": "Spanish -> German with article"},
+        {"text": "Restroom door: 'toilettes'. Learner: 'Auf Deutsch: Toiletten.'", "source": "seed", "note": "French -> German"},
+        {"text": "Door sign: 'staff only'. Learner: 'Das bedeutet: Nur für Personal.'", "source": "seed", "note": "English -> German phrase"}
+      ],
+      "grader_guidance": "Same pattern as K174: visible sign + one German word or phrase. Check for target mediation vs restaurant drift. The word 'Toilettentür' is part of the exact KB — the grader should verify the scene stays at the door.",
+      "teacher_notes": "K175 is identical to K174 in cognitive pattern. Only the building changes (restaurant, not shop). The door, the sign, the tourist, the task: all the same. Der Gegenstand bleibt — the door sign stays visible while the learner thinks."
+    },
+    "K176": {
+      "kb_id": "K176",
+      "kb_text_de": "Kann im Hotel einfache Begriffe auf der Informationstafel (z. B. „breakfast\") für einen deutschsprachigen Gast übersetzen.",
+      "compact_form": "hotel info board + foreign term + translate to German for guest",
+      "scene": {
+        "big": "hotel lobby / reception area",
+        "small": "information board with foreign-language terms that a German-speaking guest cannot read"
+      },
+      "roles": ["learner as hotel employee/mediator", "deutschsprachiger Gast"],
+      "core_words": ["Hotel", "Informationstafel", "Frühstück", "Rezeption", "Check-out", "Zimmer", "WLAN", "Buffet", "Abreise"],
+      "target_speech_acts": [
+        "eine Aufschrift auf der Informationstafel lesen",
+        "die Bedeutung auf Deutsch erklären oder übersetzen",
+        "Verständnis sichern (Verstehen Sie? / Ist das klar?)"
+      ],
+      "target_utterances": [
+        "Das bedeutet Frühstück.",
+        "Das heißt Empfang.",
+        "Auf Deutsch: Check-out.",
+        "Das Frühstück ist von sieben bis zehn Uhr.",
+        "Check-out ist bis elf Uhr.",
+        "Verstehen Sie?"
+      ],
+      "target_grammar": [
+        "Das bedeutet + Nomen",
+        "von ... bis (Zeitangaben)",
+        "bis (Frist)",
+        "hier, dort, links, rechts (Ort)",
+        "Das ist + Nomen"
+      ],
+      "lexical_fields": ["wohnen", "zeit", "richtung"],
+      "prior_dependencies": ["K173", "K174", "K175"],
+      "drift_paths": [
+        {
+          "failure": "starts general hotel conversation instead of mediating a specific term",
+          "recovery": "Wir sind an der Informationstafel. Der Gast zeigt auf ein Wort. Welches Wort? Was bedeutet es?"
+        },
+        {
+          "failure": "gives personal data or says what they need ('Ich brauche Frühstück')",
+          "recovery": "Sie sind der Hotelmitarbeiter. Der Gast versteht 'breakfast' nicht. Was fragen Sie IHN?"
+        },
+        {
+          "failure": "translates correctly but does not check if the guest understood",
+          "recovery": "Perfekt übersetzt! Aber fragen Sie den Gast: 'Verstehen Sie?' oder 'Ist das klar?'"
+        }
+      ],
+      "telc_tasks": ["hotel sign mediation", "information board translation", "guest assistance"],
+      "examples": [
+        {"text": "Info board: 'breakfast'. Gast: 'Was bedeutet das?' Learner: 'Das bedeutet Frühstück. Frühstück ist von sieben bis zehn Uhr. Verstehen Sie?'", "source": "improved", "note": "full mediation exchange: ask, translate, add context, check understanding"},
+        {"text": "Info board: 'check-out 11 am'. Learner: 'Das bedeutet: Sie müssen das Zimmer bis elf Uhr verlassen.'", "source": "improved", "note": "translation + explanation with time phrase"},
+        {"text": "Info board: 'pool'. Gast: 'Was ist das?' Learner: 'Das ist der Swimmingpool. Der Pool ist im Garten. Ist das klar?'", "source": "improved", "note": "translation + location + understanding check"},
+        {"text": "Info board: 'reception'. Learner: 'Das bedeutet Empfang. Die Rezeption ist dort links.'", "source": "seed", "note": "translation + direction"}
+      ],
+      "grader_guidance": "K176 is hotel mediation, not hotel conversation. Check: is the target object a visible information board? Is the recipient a German-speaking hotel guest? Is the student mediating a written term or just talking about hotels? Grade successful meaning transfer above grammatical perfection.",
+      "teacher_notes": "Start in medias res at the information board — do not begin with 'Warum gehen Leute ins Hotel?' The student is a hotel employee. The guest points at a word. The student translates. That's it. If time allows, add: location context (links/rechts/hier/dort) and a comprehension check (Verstehen Sie?)."
+    }
+  }
+}
