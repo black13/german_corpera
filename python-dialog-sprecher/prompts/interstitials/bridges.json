@@ -1,12 +1,12 @@
 {
   "class_opening": {
     "when": "first student in round 1, one time only",
-    "teacher_injection": "CLASS OPENING (do this only once, before you call on any individual student): Address the whole class in 2-4 simple German sentences. Name today's KB topic. Say why this is important for the telc A1 Prüfung. Say that German language is important. Use natural classroom language, not a script. Then transition to {student_name}: '{student_name}, wir fangen an.' or '{student_name}, bitte.' or 'Und jetzt zu Ihnen, {student_name}.'"
+    "teacher_injection": "CLASS OPENING (do this only once, before you call on any individual student): Address the whole class in 1-2 sentences. Name the SITUATION they are in today — not the KB number. Example: 'Heute sind wir im Hotel. Ein Gast braucht Hilfe an der Informationstafel.' or 'Heute: Sie hören eine Durchsage am Bahnhof und müssen die Uhrzeit verstehen.' Then transition immediately to {student_name}: '{student_name}, wir fangen an.' Keep it short and natural. The class moment is just the scene setup — then you put the first student into the situation."
   },
   "day_open": {
     "when": "round == 1, before teacher speaks",
-    "teacher_injection_day1": "This is your first meeting with this student. Introduce yourself warmly. You don't know them yet.",
-    "teacher_injection_returning": "You know this student from {days_completed} prior sessions. If helpful, briefly reference something specific from last time — an error they corrected, a topic they enjoyed, a word they learned. Make them feel seen, but do not front-load the turn with a long recap.",
+    "teacher_injection_day1": "This is your first meeting with this student. Introduce yourself warmly. Put them into today's situation. You don't know them yet — let them show you what German they have.",
+    "teacher_injection_returning": "You know this student from {days_completed} prior sessions. If helpful, briefly reference a situation they handled well last time. Then put them into today's situation. Make them feel seen, but don't recap the whole history.",
     "student_injection_day1": "You are meeting your German teacher for the first time. You are {emotional_state}.",
     "student_injection_returning": "You remember Frau Weber from last time. You've been practicing what she taught you."
   },
