@@ -302,9 +302,9 @@ def _word_html(query_string):
             if m.startswith("wortfeld:"):
                 field_targets.add(m.replace("wortfeld:", ""))
         if field_targets:
-            kbs_dict = {k["id"]: k for k in runner.all_kanns}
+            kbs_dict_local = {k["id"]: k for k in runner.all_kanns}
             for kid in all_kb_ids:
-                focus = runner.derive_kann_focus(kbs_dict[kid])
+                focus = runner.derive_kann_focus(kbs_dict_local[kid])
                 if field_targets & set(t.lower() for t in focus.get("wortfeld_targets", [])):
                     kb_matches.append(kid)
 
@@ -1063,217 +1063,446 @@ def _drill_html(query_string):
 # /graph — compressed KB cluster graph with bridge edges
 # ---------------------------------------------------------------------------
 def _graph_html(query_string):
+    query = parse_qs(query_string or "")
+    view = (query.get("v") or [""])[0].strip()
+    if view == "matrix":
+        return _graph_matrix_html()
+    return _graph_cluster_html()
+
+
+    def _graph_cluster_html():
+        """Cluster graph: categories as boxes with sub-clusters, bridge edges across domains."""
+        kbs_dict = {k["id"]: k for k in runner.all_kanns}
+        reductions = runner.kann_reductions_cfg
+        overrides = reductions.get("manual_overrides", {})
+        cat_defaults = reductions.get("category_defaults", {})
+        hand_guides = runner.kann_quick_guides_cfg.get("guides", {})
+
+        CATEGORIES = [
+            # Interaction: amber / gold family
+            ("Interaktion mündlich",    "K001", "K041", "ear ↔ mouth",   "#fef9e7", "#f5d66e", "#8b6914"),
+            ("Interaktion schriftlich", "K042", "K059", "hand ↔ eye",    "#fff8e1", "#f2c94c", "#7a5c14"),
+            # Reception: blue family
+            ("Rezeption mündlich",      "K060", "K083", "ear / disappears","#e8f0fe","#7899d4","#1e4a8a"),
+            ("Rezeption schriftlich",   "K084", "K115", "eye / stays",   "#dce8fa","#5a7fc0","#0a3a6a"),
+            # Production: green family
+            ("Produktion mündlich",     "K116", "K132", "mouth / disappears","#e8f5e9","#7cba80","#2e6a2e"),
+            ("Produktion schriftlich",  "K133", "K152", "hand / stays",  "#dceadc","#5e9e62","#1e4a1e"),
+            # Mediation: red / coral family
+            ("Sprachmittlung mündlich", "K153", "K176", "mouth after read/hear","#fef0ee","#e8847a","#a02020"),
+        ]
+
+        IM_CLUSTERS = [
+            ("basic communication · Grundlagen",               ["K001","K002","K003","K004","K005","K006","K007","K008","K009"]),
+            ("greetings & introductions · Begrüßung & Vorstellung", ["K010","K011","K012","K013","K014","K015","K016","K017"]),
+            ("wellbeing & preferences · Befinden & Vorlieben",  ["K018","K019","K020","K021","K022","K023","K024","K025"]),
+            ("requests & answers · Bitten & Antworten",         ["K026","K027","K028","K029","K030","K031","K032","K033"]),
+            ("numbers & transactions · Zahlen & Geschäfte",    ["K034","K035","K036","K037"]),
+            ("asking for help · um Hilfe bitten",              ["K038","K039","K040","K041"]),
+        ]
+
+        RS_CLUSTERS = [
+            ("single words · einzelne Wörter",                  ["K084","K085","K086"]),
+            ("numbers & tables · Zahlen & Tabellen",             ["K087","K092","K095"]),
+            ("public signs · Schilder & Aufschriften",          ["K100","K101","K102","K103"]),
+            ("instructions · Anleitungen",                      ["K104"]),
+            ("forms · Formulare",                               ["K105","K106","K107","K108","K109","K110"]),
+            ("everyday texts · Alltagstexte",                   ["K111","K112","K113","K114","K115"]),
+        ]
+
+        SM_CLUSTERS = [
+            ("DE → shared language · DE → gemeinsame Sprache", ["K153","K154","K155","K156","K157","K158","K159","K160","K161","K162","K163","K164","K165","K166"]),
+            ("other lang → DE · andere Sprache → DE",          ["K167","K168","K169","K170","K171","K172","K173","K174","K175","K176"]),
+        ]
+
+        # gather bridge edges from near_kbs and related_kbs
+        bridges = []
+        for kid, ov in overrides.items():
+            for near in ov.get("near_kbs", []):
+                bridges.append((kid, near, "near"))
+        for kid, guide in hand_guides.items():
+            for rel in guide.get("related_kbs", []):
+                bridges.append((kid, rel, "related"))
+
+        def _cid(kid):
+            """Category index 0..6 for a KB id"""
+            n = int(kid[1:])
+            if n <= 41:  return 0
+            if n <= 59:  return 1
+            if n <= 83:  return 2
+            if n <= 115: return 3
+            if n <= 132: return 4
+            if n <= 152: return 5
+            return 6
+
+        # collect cross-category edges (filter out same-category)
+        cross_edges = []
+        seen = set()
+        for a, b, typ in bridges:
+            ca, cb = _cid(a), _cid(b)
+            if ca == cb: continue
+            key = tuple(sorted([a, b]))
+            if key in seen: continue
+            seen.add(key)
+            cross_edges.append((a, b, typ, ca, cb))
+
+        # layout constants
+        COL_X = [20, 250, 510, 250, 510, 250, 250]
+        CAT_Y = [80, 420, 80, 420, 80, 420, 790]
+        CAT_W = [220, 220, 240, 260, 240, 260, 520]
+        CAT_H = [320, 120, 210, 340, 210, 210, 140]
+        IM_SUB_Y = [55, 99, 143, 187, 231, 275]
+        IM_SUB_H = 38
+        RS_SUB_Y = [55, 105, 155, 205, 255, 305]
+        RS_SUB_H = 42
+
+        def _box_color(cat_idx):
+            colors = ["#fef9e7","#fff8e1","#e8f0fe","#dce8fa","#e8f5e9","#dceadc","#fef0ee"]
+            strokes = ["#f5d66e","#f2c94c","#7899d4","#5a7fc0","#7cba80","#5e9e62","#e8847a"]
+            return colors[cat_idx], strokes[cat_idx]
+
+        def _hs(kid):
+            return kid in hand_guides
+
+        def _esc(t):
+            return escape(str(t))
+
+        # --- SVG ---
+        svg = []
+        svg.append(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 960" font-family="-apple-system,Segoe UI,sans-serif">')
+        svg.append(f'<rect width="820" height="960" fill="#fff"/>')
+        svg.append(f'<text x="410" y="28" text-anchor="middle" font-size="15" font-weight="700" fill="#1a2227">KB Compressed Graph</text>')
+
+        # Small legend in top-right
+        svg.append(f'<g transform="translate(600,10)">')
+        svg.append(f'<rect x="0" y="0" width="210" height="26" rx="4" fill="#f4f6f7" stroke="#ddd"/>')
+        svg.append(f'<line x1="10" y1="10" x2="30" y2="10" stroke="#1a2227" stroke-width="2" stroke-dasharray="6,3"/>')
+        svg.append(f'<text x="36" y="14" font-size="9" fill="#555">= cross-domain</text>')
+        svg.append(f'<line x1="110" y1="10" x2="130" y2="10" stroke="#1a2227" stroke-width="2"/>')
+        svg.append(f'<text x="136" y="14" font-size="9" fill="#555">= within-domain</text>')
+        svg.append('</g>')
+
+        # Draw bridge edges — simple orthogonal (L-shaped) lines
+        for a, b, typ, ca, cb in cross_edges:
+            ax = COL_X[ca] + CAT_W[ca] / 2
+            ay = CAT_Y[ca] + CAT_H[ca] / 2
+            bx = COL_X[cb] + CAT_W[cb] / 2
+            by = CAT_Y[cb] + CAT_H[cb] / 2
+            if ca == 0:
+                for i, cl in enumerate(IM_CLUSTERS):
+                    if a in cl[1]:
+                        ay = CAT_Y[0] + IM_SUB_Y[i] + IM_SUB_H / 2
+                        break
+            if cb == 0:
+                for i, cl in enumerate(IM_CLUSTERS):
+                    if b in cl[1]:
+                        by = CAT_Y[0] + IM_SUB_Y[i] + IM_SUB_H / 2
+                        break
+            if ca == 3:
+                for i, cl in enumerate(RS_CLUSTERS):
+                    if a in cl[1]:
+                        ay = CAT_Y[3] + RS_SUB_Y[i] + RS_SUB_H / 2
+                        break
+            if cb == 3:
+                for i, cl in enumerate(RS_CLUSTERS):
+                    if b in cl[1]:
+                        by = CAT_Y[3] + RS_SUB_Y[i] + RS_SUB_H / 2
+                        break
+            # orthogonal path: horizontal then vertical
+            midx = (ax + bx) / 2
+            ax_i, ay_i, bx_i, by_i = int(ax), int(ay), int(bx), int(by)
+            midx_i = int(midx)
+            domain_a = 0 if ca <= 1 else (1 if ca <= 3 else (2 if ca <= 5 else 3))
+            domain_b = 0 if cb <= 1 else (1 if cb <= 3 else (2 if cb <= 5 else 3))
+            dash = "6,3" if domain_a != domain_b else "none"
+            mid_y = (ay_i + by_i) / 2 - 8
+            label_text = "domain hop" if domain_a != domain_b else ""
+            svg.append(f'<polyline points="{ax_i},{ay_i} {midx_i},{ay_i} {midx_i},{by_i} {bx_i},{by_i}" fill="none" stroke="#1a2227" stroke-width="1.8" stroke-dasharray="{dash}" opacity="0.35" marker-end="url(#a)"/>')
+            # small dot at origin
+            svg.append(f'<circle cx="{ax_i}" cy="{ay_i}" r="3" fill="#1a2227" opacity="0.4"/>')
+            # label
+            svg.append(f'<text x="{midx_i+4}" y="{int(mid_y)}" font-size="7" fill="#888">{label_text}</text>')
+
+        # Arrow marker
+        svg.append('<defs><marker id="a" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1a2227" opacity="0.35"/></marker></defs>')
+
+        # Category boxes
+        for ci, (name, first, last, detail, bg, stroke, fg) in enumerate(CATEGORIES):
+            x, y, w, h = COL_X[ci], CAT_Y[ci], CAT_W[ci], CAT_H[ci]
+            count = sum(1 for k in kbs_dict.values() if _cid(k["id"]) == ci)
+            hcount = sum(1 for k in kbs_dict.values() if _cid(k["id"]) == ci and k["id"] in hand_guides)
+            prefix = name.replace(" muendlich"," mndl.").replace(" schriftlich"," schr.")
+            svg.append(f'<g transform="translate({x},{y})">')
+            svg.append(f'<rect x="0" y="0" width="{w}" height="{h}" rx="0" fill="{bg}" stroke="{stroke}" stroke-width="2"/>')
+            svg.append(f'<text x="8" y="18" font-size="10" font-weight="700" fill="{fg}">{_esc(prefix)}</text>')
+            svg.append(f'<text x="8" y="32" font-size="8" fill="{fg}" opacity="0.6">{first}–{last} · {detail}</text>')
+
+            has_reduction = cat_defaults.get(name)
+            note = f"{count} KBs" if not has_reduction else f"{count} KBs"
+            svg.append(f'<text x="8" y="{h-6}" font-size="8" fill="{fg}" opacity="0.4">{note}</text>')
+
+            # Sub-clusters for Im
+            if ci == 0:
+                for i, cl in enumerate(IM_CLUSTERS):
+                    sx, sy = 8, IM_SUB_Y[i]
+                    sw, sh = w - 16, IM_SUB_H
+                    fill_c, str_c = _box_color(ci)
+                    svg.append(f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="0" fill="{fill_c}" stroke="{str_c}" stroke-width="1"/>')
+                    svg.append(f'<text x="{sx+6}" y="{sy+14}" font-size="8" font-weight="600" fill="{fg}">{_esc(cl[0])}</text>')
+                    ids_text = " · ".join(f"{kid}{'✍' if _hs(kid) else ''}" for kid in cl[1])
+                    svg.append(f'<text x="{sx+6}" y="{sy+28}" font-size="7" fill="{fg}" opacity="0.6">{_esc(ids_text)}</text>')
+                    kid_list = ",".join(cl[1])
+                    svg.append(f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="0" fill="transparent" cursor="pointer" onclick="window.location.href=\'/guides?q={kid_list}\'"/><title>{_esc(cl[0])}</title>')
+
+            # Sub-clusters for Rs
+            if ci == 3:
+                for i, cl in enumerate(RS_CLUSTERS):
+                    sx, sy = 8, RS_SUB_Y[i]
+                    sw, sh = w - 16, RS_SUB_H
+                    fill_c, str_c = _box_color(ci)
+                    svg.append(f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="0" fill="{fill_c}" stroke="{str_c}" stroke-width="1"/>')
+                    svg.append(f'<text x="{sx+6}" y="{sy+14}" font-size="8" font-weight="600" fill="{fg}">{_esc(cl[0])}</text>')
+                    ids_text = " · ".join(f"{kid}{'✍' if _hs(kid) else ''}" for kid in cl[1])
+                    svg.append(f'<text x="{sx+6}" y="{sy+28}" font-size="7" fill="{fg}" opacity="0.6">{_esc(ids_text)}</text>')
+                    kid_list = ",".join(cl[1])
+                    svg.append(f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="0" fill="transparent" cursor="pointer" onclick="window.location.href=\'/guides?q={kid_list}\'"/><title>{_esc(cl[0])}</title>')
+
+            # Sub-clusters for Sm
+            if ci == 6:
+                for i, cl in enumerate(SM_CLUSTERS):
+                    sx, sy = 8 + i * 255, 48
+                    sw, sh = 242, 82
+                    fill_c, str_c = _box_color(ci)
+                    svg.append(f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="0" fill="{fill_c}" stroke="{str_c}" stroke-width="1"/>')
+                    svg.append(f'<text x="{sx+6}" y="{sy+14}" font-size="8" font-weight="600" fill="#a02020">{_esc(cl[0])}</text>')
+                    id_samples = " · ".join(f"{kid}{'✍' if _hs(kid) else ''}" for kid in cl[1][:5])
+                    svg.append(f'<text x="{sx+6}" y="{sy+28}" font-size="7" fill="#a02020" opacity="0.6">{_esc(id_samples)}</text>')
+                    if i == 1:
+                        svg.append(f'<text x="{sx+6}" y="{sy+42}" font-size="7" fill="#a02020" opacity="0.5">shop door → toilet → hotel board</text>')
+                    kid_list = ",".join(cl[1])
+                    svg.append(f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="0" fill="transparent" cursor="pointer" onclick="window.location.href=\'/guides?q={kid_list}\'"/><title>{_esc(cl[0])}</title>')
+
+            svg.append('</g>')
+
+        svg.append('</svg>')
+
+        # --- HTML wrapper ---
+        nav = [
+            '<a href="/" class="nv">Classroom</a>',
+            '<a href="/graph" class="nv active">Graph</a>',
+            '<a href="/guides" class="nv">Guides</a>',
+            '<a href="/quiz" class="nv">Quiz</a>',
+            '<a href="/drill" class="nv">Drill</a>',
+            '<a href="/word" class="nv">Word→KB</a>',
+        ]
+        parts = [
+            '<!DOCTYPE html><html><head><meta charset="utf-8">',
+            '<meta name="viewport" content="width=device-width,initial-scale=1">',
+            '<title>KB Graph</title>',
+            '<style>',
+            '*{box-sizing:border-box} body{margin:0;font-family:-apple-system,Segoe UI,Roboto,sans-serif;background:#f4f6f7;color:#1a2227}',
+            '.top{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid #d9e0e3;padding:12px 18px}',
+            '.top h1{margin:0;font-size:18px;color:#0b5e55}.top p{margin:4px 0 0;color:#5c6b74;font-size:13px}',
+            '.nav-bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}',
+            '.nv{color:#0b5e55;text-decoration:none;font-size:13px;padding:3px 8px;border-radius:4px;border:1px solid #c8d6db}',
+            '.nv.active,.nv:hover{background:#0b5e55;color:#fff;border-color:#0b5e55}',
+            '.page{padding:14px 18px;max-width:860px}',
+            '.legend-note{font-size:11px;color:#6b7c85;margin-top:4px}',
+            '</style></head><body>',
+            '<div class="top"><h1>KB Compressed Graph</h1>',
+            '<p>Clusters within categories, bridge edges across channels. Click any cluster to open its KBs in the Guides view.</p>',
+            '<div class="nav-bar">' + "".join(nav) + '</div></div>',
+            '<div class="page">',
+            '<p class="legend-note">Dashed edges = cross-domain bridges. Solid edges = within-domain connections. Click any cluster to open its KBs.</p>',
+            "".join(svg),
+        '</div></body></html>',
+    ]
+    return "".join(parts)
+
+
+def _graph_matrix_html():
+    """Carrier × Operation matrix: rows=physical objects, cols=what you can do."""
     kbs_dict = {k["id"]: k for k in runner.all_kanns}
     reductions = runner.kann_reductions_cfg
     overrides = reductions.get("manual_overrides", {})
-    cat_defaults = reductions.get("category_defaults", {})
     hand_guides = runner.kann_quick_guides_cfg.get("guides", {})
+    _esc = lambda t: escape(str(t))
+    _hs = lambda kid: "✍" if kid in hand_guides else ""
 
-    CATEGORIES = [
-        # Interaction: amber / gold family
-        ("Interaktion mündlich",    "K001", "K041", "ear ↔ mouth",   "#fef9e7", "#f5d66e", "#8b6914"),
-        ("Interaktion schriftlich", "K042", "K059", "hand ↔ eye",    "#fff8e1", "#f2c94c", "#7a5c14"),
-        # Reception: blue family
-        ("Rezeption mündlich",      "K060", "K083", "ear / disappears","#e8f0fe","#7899d4","#1e4a8a"),
-        ("Rezeption schriftlich",   "K084", "K115", "eye / stays",   "#dce8fa","#5a7fc0","#0a3a6a"),
-        # Production: green family
-        ("Produktion mündlich",     "K116", "K132", "mouth / disappears","#e8f5e9","#7cba80","#2e6a2e"),
-        ("Produktion schriftlich",  "K133", "K152", "hand / stays",  "#dceadc","#5e9e62","#1e4a1e"),
-        # Mediation: red / coral family
-        ("Sprachmittlung mündlich", "K153", "K176", "mouth after read/hear","#fef0ee","#e8847a","#a02020"),
-    ]
-
-    IM_CLUSTERS = [
-        ("basic communication · Grundlagen",               ["K001","K002","K003","K004","K005","K006","K007","K008","K009"]),
-        ("greetings & introductions · Begrüßung & Vorstellung", ["K010","K011","K012","K013","K014","K015","K016","K017"]),
-        ("wellbeing & preferences · Befinden & Vorlieben",  ["K018","K019","K020","K021","K022","K023","K024","K025"]),
-        ("requests & answers · Bitten & Antworten",         ["K026","K027","K028","K029","K030","K031","K032","K033"]),
-        ("numbers & transactions · Zahlen & Geschäfte",    ["K034","K035","K036","K037"]),
-        ("asking for help · um Hilfe bitten",              ["K038","K039","K040","K041"]),
-    ]
-
-    RS_CLUSTERS = [
-        ("single words · einzelne Wörter",                  ["K084","K085","K086"]),
-        ("numbers & tables · Zahlen & Tabellen",             ["K087","K092","K095"]),
-        ("public signs · Schilder & Aufschriften",          ["K100","K101","K102","K103"]),
-        ("instructions · Anleitungen",                      ["K104"]),
-        ("forms · Formulare",                               ["K105","K106","K107","K108","K109","K110"]),
-        ("everyday texts · Alltagstexte",                   ["K111","K112","K113","K114","K115"]),
-    ]
-
-    SM_CLUSTERS = [
-        ("DE → shared language · DE → gemeinsame Sprache", ["K153","K154","K155","K156","K157","K158","K159","K160","K161","K162","K163","K164","K165","K166"]),
-        ("other lang → DE · andere Sprache → DE",          ["K167","K168","K169","K170","K171","K172","K173","K174","K175","K176"]),
-    ]
-
-    # gather bridge edges from near_kbs and related_kbs
-    bridges = []
+    # Carrier → KB mapping from manual_overrides + carrier_matrix
+    carrier_kb = {}
+    carrier_channel = {}
     for kid, ov in overrides.items():
-        for near in ov.get("near_kbs", []):
-            bridges.append((kid, near, "near"))
+        carr = ov.get("carrier", "")
+        if carr:
+            carrier_kb.setdefault(carr, []).append(kid)
+            ckeys = ov.get("carrier_matrix_keys", [])
+            for ck in ckeys:
+                carrier_kb.setdefault(ck, []).append(kid)
+
+    # carrier_matrix channel assignments
+    cm = reductions.get("carrier_matrix", {})
+    for cname, cdata in cm.items():
+        carrier_channel[cname] = cdata.get("channel", "")
+        if cname not in carrier_kb:
+            carrier_kb[cname] = []
+
+    # Manual additional KBs by carrier from keyword_rules in kann_map
+    kann_map = runner.kann_map_cfg if hasattr(runner, 'kann_map_cfg') else {}
+    keyword_rules = kann_map.get("keyword_rules", [])
+    for rule in keyword_rules:
+        words = rule.get("match_any", [])
+        if not words: continue
+        for k in kbs_dict.values():
+            txt = k.get("kann", "").lower()
+            if any(w in txt for w in words):
+                # assign carrier by keyword
+                pass  # too noisy; stick to explicit overrides
+
+    # Define matrix grid
+    CARRIERS = [
+        ("Schild / Aufschrift",    "sign / label",      "#e8f0fe", "#7899d4"),
+        ("Aushang / Tafel",        "notice / board",    "#e8f0fe", "#7899d4"),
+        ("Fahrplan",               "timetable",         "#dce8fa", "#5a7fc0"),
+        ("Formular",               "form",              "#dce8fa", "#5a7fc0"),
+        ("Informationstafel",      "info board",        "#fef0ee", "#e8847a"),
+        ("Durchsage / Ansage",     "announcement",      "#e8f0fe", "#7899d4"),
+        ("Gespräch / Frage",       "conversation",      "#e8f5e9", "#7cba80"),
+        ("Anweisung",              "instruction",       "#fef9e7", "#f5d66e"),
+    ]
+
+    OPERATIONS = [
+        ("verstehen",      "understand",       "#dce8fa"),
+        ("sagen / sprechen","say / speak",      "#dceadc"),
+        ("aufschreiben",   "write down",        "#e8f5e9"),
+        ("weitergeben",    "pass on / relay",   "#fef0ee"),
+    ]
+
+    # Assign KBs to cells: combine overrides + carrier_matrix operations
+    # Build explicit cell assignments
+    matrix = {}
+    for ri, carr in enumerate(CARRIERS):
+        for ci, op in enumerate(OPERATIONS):
+            matrix[(ri, ci)] = set()
+
+    # From overrides + carrier_matrix
+    for kid, ov in overrides.items():
+        carrier = ov.get("carrier", "")
+        ckeys = ov.get("carrier_matrix_keys", [])
+        # map carrier text to row
+        row = None
+        for ri, (cname, _, _, _) in enumerate(CARRIERS):
+            if cname.lower().startswith(carrier.lower().split(" ")[0]) or carrier.lower() in cname.lower():
+                row = ri
+                break
+            for ck in ckeys:
+                if ck.lower() in cname.lower():
+                    row = ri
+                    break
+            if row is not None:
+                break
+        if row is None:
+            # try matching by carrier_matrix key
+            for ck in ckeys:
+                for ri, (cname, _, _, _) in enumerate(CARRIERS):
+                    if ck.lower() in cname.lower():
+                        row = ri
+                        break
+                if row is not None:
+                    break
+        if row is None: continue
+
+        # operation column
+        # look up from carrier_matrix
+        op_col = None
+        for ck in ckeys:
+            cdata = cm.get(ck, {})
+            cm_op = cdata.get("operation", "")
+            for ci, (op_de, _, _) in enumerate(OPERATIONS):
+                if op_de in cm_op or any(w in cm_op for w in op_de.split(" / ")):
+                    op_col = ci
+                    break
+            if op_col is not None: break
+        # fallback: derive from category
+        if op_col is None:
+            cat_op = ov.get("operation", "")
+            for ci, (op_de, _, _) in enumerate(OPERATIONS):
+                if op_de in cat_op or any(w in cat_op for w in op_de.split(" / ")):
+                    op_col = ci
+                    break
+        if op_col is None: continue
+        matrix[(row, op_col)].add(kid)
+
+    # Additional: assign mediation KBs by carrier text match
     for kid, guide in hand_guides.items():
-        for rel in guide.get("related_kbs", []):
-            bridges.append((kid, rel, "related"))
-
-    def _cid(kid):
-        """Category index 0..6 for a KB id"""
-        n = int(kid[1:])
-        if n <= 41:  return 0
-        if n <= 59:  return 1
-        if n <= 83:  return 2
-        if n <= 115: return 3
-        if n <= 132: return 4
-        if n <= 152: return 5
-        return 6
-
-    # collect cross-category edges (filter out same-category)
-    cross_edges = []
-    seen = set()
-    for a, b, typ in bridges:
-        ca, cb = _cid(a), _cid(b)
-        if ca == cb: continue
-        key = tuple(sorted([a, b]))
-        if key in seen: continue
-        seen.add(key)
-        cross_edges.append((a, b, typ, ca, cb))
-
-    # layout constants
-    COL_X = [20, 250, 510, 250, 510, 250, 250]
-    CAT_Y = [80, 420, 80, 420, 80, 420, 790]
-    CAT_W = [220, 220, 240, 260, 240, 260, 520]
-    CAT_H = [320, 120, 210, 340, 210, 210, 140]
-    IM_SUB_Y = [55, 99, 143, 187, 231, 275]
-    IM_SUB_H = 38
-    RS_SUB_Y = [55, 105, 155, 205, 255, 305]
-    RS_SUB_H = 42
-
-    def _box_color(cat_idx):
-        colors = ["#fef9e7","#fff8e1","#e8f0fe","#dce8fa","#e8f5e9","#dceadc","#fef0ee"]
-        strokes = ["#f5d66e","#f2c94c","#7899d4","#5a7fc0","#7cba80","#5e9e62","#e8847a"]
-        return colors[cat_idx], strokes[cat_idx]
-
-    def _hs(kid):
-        return kid in hand_guides
-
-    def _esc(t):
-        return escape(str(t))
+        scene = guide.get("scene", "").lower()
+        if "schild" in scene or "aufschrift" in scene:
+            for ri, (cname, _, _, _) in enumerate(CARRIERS):
+                if "schild" in cname.lower() or "aufschrift" in cname.lower():
+                    matrix[(ri, 3)].add(kid)  # weitergeben
+        if "hotel" in scene or "informationstafel" in scene:
+            for ri, (cname, _, _, _) in enumerate(CARRIERS):
+                if "informationstafel" in cname.lower():
+                    matrix[(ri, 3)].add(kid)
 
     # --- SVG ---
+    MX, MY = 20, 70
+    ROW_H = 50
+    COL_W = 170
+    LABEL_W = 160
+    LABEL_X = MX
+    GRID_X = MX + LABEL_W + 4
+
+    svg_w = GRID_X + COL_W * 4 + 20
+    svg_h = MY + ROW_H * (len(CARRIERS) + 1) + 50
+    svg_w_int = int(svg_w)
+    svg_h_int = int(svg_h)
+
     svg = []
-    svg.append(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 960" font-family="-apple-system,Segoe UI,sans-serif">')
-    svg.append(f'<rect width="820" height="960" fill="#fff"/>')
-    svg.append(f'<text x="410" y="28" text-anchor="middle" font-size="15" font-weight="700" fill="#1a2227">KB Compressed Graph</text>')
+    svg.append(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {svg_w_int} {svg_h_int}" font-family="-apple-system,Segoe UI,sans-serif">')
+    svg.append(f'<rect width="{svg_w_int}" height="{svg_h_int}" fill="#fff"/>')
+    svg.append(f'<text x="{int(svg_w)//2}" y="28" text-anchor="middle" font-size="15" font-weight="700" fill="#1a2227">Carrier × Operation Matrix</text>')
+    svg.append(f'<text x="{int(svg_w)//2}" y="48" text-anchor="middle" font-size="10" fill="#888">What object do you encounter? What can you do with it?</text>')
 
-    # Small legend in top-right
-    svg.append(f'<g transform="translate(600,10)">')
-    svg.append(f'<rect x="0" y="0" width="210" height="26" rx="4" fill="#f4f6f7" stroke="#ddd"/>')
-    svg.append(f'<line x1="10" y1="10" x2="30" y2="10" stroke="#1a2227" stroke-width="2" stroke-dasharray="6,3"/>')
-    svg.append(f'<text x="36" y="14" font-size="9" fill="#555">= cross-domain</text>')
-    svg.append(f'<line x1="110" y1="10" x2="130" y2="10" stroke="#1a2227" stroke-width="2"/>')
-    svg.append(f'<text x="136" y="14" font-size="9" fill="#555">= within-domain</text>')
-    svg.append('</g>')
+    # Column headers
+    for ci, (op_de, op_en, col_bg) in enumerate(OPERATIONS):
+        x = GRID_X + ci * COL_W
+        svg.append(f'<rect x="{x}" y="{MY}" width="{COL_W}" height="28" rx="0" fill="{col_bg}" stroke="#ccc" stroke-width="1"/>')
+        svg.append(f'<text x="{x+COL_W//2}" y="{MY+12}" text-anchor="middle" font-size="9" font-weight="700" fill="#333">{_esc(op_de)}</text>')
+        svg.append(f'<text x="{x+COL_W//2}" y="{MY+23}" text-anchor="middle" font-size="8" fill="#666">{_esc(op_en)}</text>')
 
-    # Draw bridge edges — simple orthogonal (L-shaped) lines
-    for a, b, typ, ca, cb in cross_edges:
-        ax = COL_X[ca] + CAT_W[ca] / 2
-        ay = CAT_Y[ca] + CAT_H[ca] / 2
-        bx = COL_X[cb] + CAT_W[cb] / 2
-        by = CAT_Y[cb] + CAT_H[cb] / 2
-        if ca == 0:
-            for i, cl in enumerate(IM_CLUSTERS):
-                if a in cl[1]:
-                    ay = CAT_Y[0] + IM_SUB_Y[i] + IM_SUB_H / 2
-                    break
-        if cb == 0:
-            for i, cl in enumerate(IM_CLUSTERS):
-                if b in cl[1]:
-                    by = CAT_Y[0] + IM_SUB_Y[i] + IM_SUB_H / 2
-                    break
-        if ca == 3:
-            for i, cl in enumerate(RS_CLUSTERS):
-                if a in cl[1]:
-                    ay = CAT_Y[3] + RS_SUB_Y[i] + RS_SUB_H / 2
-                    break
-        if cb == 3:
-            for i, cl in enumerate(RS_CLUSTERS):
-                if b in cl[1]:
-                    by = CAT_Y[3] + RS_SUB_Y[i] + RS_SUB_H / 2
-                    break
-        # orthogonal path: horizontal then vertical
-        midx = (ax + bx) / 2
-        ax_i, ay_i, bx_i, by_i = int(ax), int(ay), int(bx), int(by)
-        midx_i = int(midx)
-        domain_a = 0 if ca <= 1 else (1 if ca <= 3 else (2 if ca <= 5 else 3))
-        domain_b = 0 if cb <= 1 else (1 if cb <= 3 else (2 if cb <= 5 else 3))
-        dash = "6,3" if domain_a != domain_b else "none"
-        mid_y = (ay_i + by_i) / 2 - 8
-        label_text = "domain hop" if domain_a != domain_b else ""
-        svg.append(f'<polyline points="{ax_i},{ay_i} {midx_i},{ay_i} {midx_i},{by_i} {bx_i},{by_i}" fill="none" stroke="#1a2227" stroke-width="1.8" stroke-dasharray="{dash}" opacity="0.35" marker-end="url(#a)"/>')
-        # small dot at origin
-        svg.append(f'<circle cx="{ax_i}" cy="{ay_i}" r="3" fill="#1a2227" opacity="0.4"/>')
-        # label
-        svg.append(f'<text x="{midx_i+4}" y="{int(mid_y)}" font-size="7" fill="#888">{label_text}</text>')
+    # Rows
+    for ri, (carrier_de, carrier_en, row_bg, row_stroke) in enumerate(CARRIERS):
+        y = MY + 28 + ri * ROW_H
+        # Row label
+        svg.append(f'<rect x="{LABEL_X}" y="{y}" width="{LABEL_W}" height="{ROW_H}" rx="0" fill="{row_bg}" stroke="{row_stroke}" stroke-width="1.5"/>')
+        svg.append(f'<text x="{LABEL_X+8}" y="{y+18}" font-size="10" font-weight="700" fill="#333">{_esc(carrier_de)}</text>')
+        svg.append(f'<text x="{LABEL_X+8}" y="{y+34}" font-size="8" fill="#666">{_esc(carrier_en)}</text>')
+        # channel icon
+        ch = carrier_channel.get(carrier_de.split(" / ")[0], "") or carrier_channel.get(carrier_de, "")
+        icon = "👁" if ch == "written" else ("👂" if ch == "spoken" else "")
+        if icon:
+            svg.append(f'<text x="{LABEL_X+LABEL_W-22}" y="{y+18}" font-size="11">{icon}</text>')
 
-    # Arrow marker
-    svg.append('<defs><marker id="a" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1a2227" opacity="0.35"/></marker></defs>')
-
-    # Category boxes
-    for ci, (name, first, last, detail, bg, stroke, fg) in enumerate(CATEGORIES):
-        x, y, w, h = COL_X[ci], CAT_Y[ci], CAT_W[ci], CAT_H[ci]
-        count = sum(1 for k in kbs_dict.values() if _cid(k["id"]) == ci)
-        hcount = sum(1 for k in kbs_dict.values() if _cid(k["id"]) == ci and k["id"] in hand_guides)
-        prefix = name.replace(" muendlich"," mndl.").replace(" schriftlich"," schr.")
-        svg.append(f'<g transform="translate({x},{y})">')
-        svg.append(f'<rect x="0" y="0" width="{w}" height="{h}" rx="0" fill="{bg}" stroke="{stroke}" stroke-width="2"/>')
-        svg.append(f'<text x="8" y="18" font-size="10" font-weight="700" fill="{fg}">{_esc(prefix)}</text>')
-        svg.append(f'<text x="8" y="32" font-size="8" fill="{fg}" opacity="0.6">{first}–{last} · {detail}</text>')
-
-        has_reduction = cat_defaults.get(name)
-        note = f"{count} KBs" if not has_reduction else f"{count} KBs"
-        svg.append(f'<text x="8" y="{h-6}" font-size="8" fill="{fg}" opacity="0.4">{note}</text>')
-
-        # Sub-clusters for Im
-        if ci == 0:
-            for i, cl in enumerate(IM_CLUSTERS):
-                sx, sy = 8, IM_SUB_Y[i]
-                sw, sh = w - 16, IM_SUB_H
-                fill_c, str_c = _box_color(ci)
-                svg.append(f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="0" fill="{fill_c}" stroke="{str_c}" stroke-width="1"/>')
-                svg.append(f'<text x="{sx+6}" y="{sy+14}" font-size="8" font-weight="600" fill="{fg}">{_esc(cl[0])}</text>')
-                ids_text = " · ".join(f"{kid}{'✍' if _hs(kid) else ''}" for kid in cl[1])
-                svg.append(f'<text x="{sx+6}" y="{sy+28}" font-size="7" fill="{fg}" opacity="0.6">{_esc(ids_text)}</text>')
-                kid_list = ",".join(cl[1])
-                svg.append(f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="0" fill="transparent" cursor="pointer" onclick="window.location.href=\'/guides?q={kid_list}\'"/><title>{_esc(cl[0])}</title>')
-
-        # Sub-clusters for Rs
-        if ci == 3:
-            for i, cl in enumerate(RS_CLUSTERS):
-                sx, sy = 8, RS_SUB_Y[i]
-                sw, sh = w - 16, RS_SUB_H
-                fill_c, str_c = _box_color(ci)
-                svg.append(f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="0" fill="{fill_c}" stroke="{str_c}" stroke-width="1"/>')
-                svg.append(f'<text x="{sx+6}" y="{sy+14}" font-size="8" font-weight="600" fill="{fg}">{_esc(cl[0])}</text>')
-                ids_text = " · ".join(f"{kid}{'✍' if _hs(kid) else ''}" for kid in cl[1])
-                svg.append(f'<text x="{sx+6}" y="{sy+28}" font-size="7" fill="{fg}" opacity="0.6">{_esc(ids_text)}</text>')
-                kid_list = ",".join(cl[1])
-                svg.append(f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="0" fill="transparent" cursor="pointer" onclick="window.location.href=\'/guides?q={kid_list}\'"/><title>{_esc(cl[0])}</title>')
-
-        # Sub-clusters for Sm
-        if ci == 6:
-            for i, cl in enumerate(SM_CLUSTERS):
-                sx, sy = 8 + i * 255, 48
-                sw, sh = 242, 82
-                fill_c, str_c = _box_color(ci)
-                svg.append(f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="0" fill="{fill_c}" stroke="{str_c}" stroke-width="1"/>')
-                svg.append(f'<text x="{sx+6}" y="{sy+14}" font-size="8" font-weight="600" fill="#a02020">{_esc(cl[0])}</text>')
-                id_samples = " · ".join(f"{kid}{'✍' if _hs(kid) else ''}" for kid in cl[1][:5])
-                svg.append(f'<text x="{sx+6}" y="{sy+28}" font-size="7" fill="#a02020" opacity="0.6">{_esc(id_samples)}</text>')
-                if i == 1:
-                    svg.append(f'<text x="{sx+6}" y="{sy+42}" font-size="7" fill="#a02020" opacity="0.5">shop door → toilet → hotel board</text>')
-                kid_list = ",".join(cl[1])
-                svg.append(f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="0" fill="transparent" cursor="pointer" onclick="window.location.href=\'/guides?q={kid_list}\'"/><title>{_esc(cl[0])}</title>')
-
-        svg.append('</g>')
+    # Grid cells
+    for ri in range(len(CARRIERS)):
+        for ci in range(len(OPERATIONS)):
+            y = MY + 28 + ri * ROW_H
+            x = GRID_X + ci * COL_W
+            cell_bg = "#fff" if (ri + ci) % 2 == 0 else "#fafafa"
+            svg.append(f'<rect x="{x}" y="{y}" width="{COL_W}" height="{ROW_H}" rx="0" fill="{cell_bg}" stroke="#e0e0e0" stroke-width="0.5"/>')
+            kb_set = matrix.get((ri, ci), set())
+            if kb_set:
+                kbs_sorted = sorted(kb_set)[:8]
+                ids_text = " ".join(f"{kid}{_hs(kid)}" for kid in kbs_sorted)
+                svg.append(f'<text x="{x+6}" y="{y+14}" font-size="8" fill="#1a2227" font-weight="600">{_esc(ids_text)}</text>')
+                # count if more
+                if len(kb_set) > 8:
+                    svg.append(f'<text x="{x+6}" y="{y+30}" font-size="7" fill="#999">+{len(kb_set)-8} more</text>')
+                # clickable
+                kid_list = ",".join(sorted(kb_set))
+                svg.append(f'<rect x="{x}" y="{y}" width="{COL_W}" height="{ROW_H}" rx="0" fill="transparent" cursor="pointer" onclick="window.location.href=\'/guides?q={kid_list}\'"/>')
+                svg.append(f'<title>{_esc(f"{carrier_de} × {OPERATIONS[ci][0]}: {len(kb_set)} KBs")}</title>')
 
     svg.append('</svg>')
 
@@ -1281,15 +1510,15 @@ def _graph_html(query_string):
     nav = [
         '<a href="/" class="nv">Classroom</a>',
         '<a href="/graph" class="nv active">Graph</a>',
+        '<a href="/graph?v=matrix" class="nv" id="tog">Matrix view</a>',
         '<a href="/guides" class="nv">Guides</a>',
         '<a href="/quiz" class="nv">Quiz</a>',
-        '<a href="/drill" class="nv">Drill</a>',
         '<a href="/word" class="nv">Word→KB</a>',
     ]
     parts = [
         '<!DOCTYPE html><html><head><meta charset="utf-8">',
         '<meta name="viewport" content="width=device-width,initial-scale=1">',
-        '<title>KB Graph</title>',
+        '<title>KB Graph — Matrix</title>',
         '<style>',
         '*{box-sizing:border-box} body{margin:0;font-family:-apple-system,Segoe UI,Roboto,sans-serif;background:#f4f6f7;color:#1a2227}',
         '.top{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid #d9e0e3;padding:12px 18px}',
@@ -1297,14 +1526,12 @@ def _graph_html(query_string):
         '.nav-bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}',
         '.nv{color:#0b5e55;text-decoration:none;font-size:13px;padding:3px 8px;border-radius:4px;border:1px solid #c8d6db}',
         '.nv.active,.nv:hover{background:#0b5e55;color:#fff;border-color:#0b5e55}',
-        '.page{padding:14px 18px;max-width:860px}',
-        '.legend-note{font-size:11px;color:#6b7c85;margin-top:4px}',
+        '.page{padding:14px 18px}',
         '</style></head><body>',
-        '<div class="top"><h1>KB Compressed Graph</h1>',
-        '<p>Clusters within categories, bridge edges across channels. Click any cluster to open its KBs in the Guides view.</p>',
-        '<div class="nav-bar">' + "".join(nav) + '</div></div>',
+        '<div class="top"><h1>KB Matrix View</h1>',
+        '<p>Rows = carriers (physical objects you encounter). Columns = operations (what you can do). <a href="/graph" style="color:#0b5e55">→ cluster view</a></p>',
+        '<div class="nav-bar">' + "".join(nav[:3]) + '<a href="/guides" class="nv">Guides</a><a href="/quiz" class="nv">Quiz</a><a href="/word" class="nv">Word→KB</a></div></div>',
         '<div class="page">',
-        '<p class="legend-note">Dashed edges = cross-domain bridges. Solid edges = within-domain connections. Click any cluster to open its KBs.</p>',
         "".join(svg),
         '</div></body></html>',
     ]
