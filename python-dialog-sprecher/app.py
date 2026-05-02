@@ -1375,22 +1375,23 @@ def _graph_matrix_html():
                 break
 
     # Define matrix grid
+    # Colors: row bg matches the dominant domain for that carrier row
     CARRIERS = [
-        ("Schild / Aufschrift",    "sign / label",      "#e8f0fe", "#7899d4"),
-        ("Aushang / Tafel",        "notice / board",    "#e8f0fe", "#7899d4"),
-        ("Fahrplan",               "timetable",         "#dce8fa", "#5a7fc0"),
-        ("Formular",               "form",              "#dce8fa", "#5a7fc0"),
-        ("Informationstafel",      "info board",        "#fef0ee", "#e8847a"),
-        ("Durchsage / Ansage",     "announcement",      "#e8f0fe", "#7899d4"),
-        ("Gespräch / Frage",       "conversation",      "#e8f5e9", "#7cba80"),
-        ("Anweisung",              "instruction",       "#fef9e7", "#f5d66e"),
+        ("Schild / Aufschrift",    "sign / label",      "#e0f2f1", "#80cbc4"),  # reception (reading)
+        ("Aushang / Tafel",        "notice / board",    "#e0f2f1", "#80cbc4"),  # reception (reading)
+        ("Fahrplan",               "timetable",         "#e0f2f1", "#80cbc4"),  # reception (reading)
+        ("Formular",               "form",              "#f3e5f5", "#ce93d8"),  # interaction (written)
+        ("Informationstafel",      "info board",        "#fbe9e7", "#ff8a65"),  # mediation
+        ("Durchsage / Ansage",     "announcement",      "#e3f2fd", "#90caf9"),  # reception (listening)
+        ("Gespräch / Frage",       "conversation",      "#fff3e0", "#ffcc80"),  # interaction (spoken)
+        ("Anweisung",              "instruction",       "#fff8e1", "#ffcc80"),  # interaction (listen+do)
     ]
 
     OPERATIONS = [
-        ("verstehen",      "understand",       "#dce8fa"),
-        ("sagen / sprechen","say / speak",      "#dceadc"),
-        ("aufschreiben",   "write down",        "#e8f5e9"),
-        ("weitergeben",    "pass on / relay",   "#fef0ee"),
+        ("verstehen",      "understand",       "#e0f2f1"),  # reception
+        ("sagen / sprechen","say / speak",      "#fff3e0"),  # interaction/production spoken
+        ("aufschreiben",   "write down",        "#fce4ec"),  # production written
+        ("weitergeben",    "pass on / relay",   "#fbe9e7"),  # mediation
     ]
 
     # Assign KBs to cells: combine overrides + carrier_matrix operations
@@ -1558,7 +1559,12 @@ def _graph_matrix_html():
         '.page{padding:14px 18px}',
         '</style></head><body>',
         '<div class="top"><h1>KB Matrix View</h1>',
-        '<p>Rows = carriers (physical objects you encounter). Columns = operations (what you can do). <a href="/graph" style="color:#0b5e55">→ cluster view</a></p>',
+        '<p>Rows = carriers (physical objects you encounter). Columns = operations (what you can do). '
+        '<span style="background:#fff3e0;padding:1px 6px;border-radius:3px;border:1px solid #f5d66e;font-size:11px">Interaction</span> '
+        '<span style="background:#e3f2fd;padding:1px 6px;border-radius:3px;border:1px solid #90caf9;font-size:11px">Reception</span> '
+        '<span style="background:#fff8e1;padding:1px 6px;border-radius:3px;border:1px solid #ffcc80;font-size:11px">Production</span> '
+        '<span style="background:#fbe9e7;padding:1px 6px;border-radius:3px;border:1px solid #ff8a65;font-size:11px">Mediation</span> '
+        '<a href="/graph" style="color:#0b5e55">→ cluster view</a></p>',
         '<div class="nav-bar">' + "".join(nav[:3]) + '<a href="/guides" class="nv">Guides</a><a href="/quiz" class="nv">Quiz</a><a href="/word" class="nv">Word→KB</a></div></div>',
         '<div class="page">',
         "".join(svg),
