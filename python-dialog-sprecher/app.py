@@ -1070,13 +1070,17 @@ def _graph_html(query_string):
     hand_guides = runner.kann_quick_guides_cfg.get("guides", {})
 
     CATEGORIES = [
-        ("Interaktion mündlich",    "K001", "K041", "ear ↔ mouth",   "#fff3e0", "#e8c87a", "#8b6914"),
-        ("Interaktion schriftlich", "K042", "K059", "hand ↔ eye",    "#f3e5f5", "#ce93d8", "#6a1b9a"),
-        ("Rezeption mündlich",      "K060", "K083", "ear / disappears","#e3f2fd","#90caf9", "#2e6b8a"),
-        ("Rezeption schriftlich",   "K084", "K115", "eye / stays",   "#e0f2f1", "#80cbc4", "#00695c"),
-        ("Produktion mündlich",     "K116", "K132", "mouth / disappears","#fff8e1","#ffcc80","#c06014"),
-        ("Produktion schriftlich",  "K133", "K152", "hand / stays",  "#fce4ec", "#f48fb1", "#800040"),
-        ("Sprachmittlung mündlich", "K153", "K176", "mouth after read/hear","#fbe9e7","#ff8a65","#d84315"),
+        # Interaction: amber / gold family
+        ("Interaktion mündlich",    "K001", "K041", "ear ↔ mouth",   "#fef9e7", "#f5d66e", "#8b6914"),
+        ("Interaktion schriftlich", "K042", "K059", "hand ↔ eye",    "#fff8e1", "#f2c94c", "#7a5c14"),
+        # Reception: blue family
+        ("Rezeption mündlich",      "K060", "K083", "ear / disappears","#e8f0fe","#7899d4","#1e4a8a"),
+        ("Rezeption schriftlich",   "K084", "K115", "eye / stays",   "#dce8fa","#5a7fc0","#0a3a6a"),
+        # Production: green family
+        ("Produktion mündlich",     "K116", "K132", "mouth / disappears","#e8f5e9","#7cba80","#2e6a2e"),
+        ("Produktion schriftlich",  "K133", "K152", "hand / stays",  "#dceadc","#5e9e62","#1e4a1e"),
+        # Mediation: red / coral family
+        ("Sprachmittlung mündlich", "K153", "K176", "mouth after read/hear","#fef0ee","#e8847a","#a02020"),
     ]
 
     RS_CLUSTERS = [
@@ -1133,8 +1137,8 @@ def _graph_html(query_string):
     RS_SUB_H = 42
 
     def _box_color(cat_idx):
-        colors = ["#fef9e7","#faf0fc","#eaf2fa","#e6f4f0","#fef6e8","#fef0f4","#fef2ee"]
-        strokes = ["#e6d88a","#e1bee7","#bbdefb","#a0d8cf","#ffe0b2","#f8bbd0","#ffab91"]
+        colors = ["#fef9e7","#fff8e1","#e8f0fe","#dce8fa","#e8f5e9","#dceadc","#fef0ee"]
+        strokes = ["#f5d66e","#f2c94c","#7899d4","#5a7fc0","#7cba80","#5e9e62","#e8847a"]
         return colors[cat_idx], strokes[cat_idx]
 
     def _hs(kid):
@@ -1146,31 +1150,24 @@ def _graph_html(query_string):
     # --- SVG ---
     svg = []
     svg.append(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 860" font-family="-apple-system,Segoe UI,sans-serif">')
-    svg.append('<defs>')
-    svg.append('<filter id="sh"><feDropShadow dx="0" dy="1" stdDeviation="2" flood-opacity="0.10"/></filter>')
-    svg.append('<marker id="ar" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><path d="M0,0 L7,2.5 L0,5 Z" fill="#c0392b"/></marker>')
-    svg.append('<marker id="ag" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto"><path d="M0,0 L7,2.5 L0,5 Z" fill="#0b5e55"/></marker>')
-    svg.append('</defs>')
-    svg.append(f'<rect width="820" height="860" fill="#f4f6f7"/>')
-    svg.append(f'<text x="410" y="28" text-anchor="middle" font-size="15" font-weight="700" fill="#1a2227">KB Compressed Graph — Clusters within Categories, Bridges across Channels</text>')
+    svg.append(f'<rect width="820" height="860" fill="#fff"/>')
+    svg.append(f'<text x="410" y="28" text-anchor="middle" font-size="15" font-weight="700" fill="#1a2227">KB Compressed Graph</text>')
 
-    # Legend
-    svg.append(f'<g transform="translate(20,44)">')
-    svg.append(f'<rect x="0" y="0" width="160" height="22" rx="4" fill="#e6f4f0" stroke="#a0d8cf"/><text x="8" y="15" font-size="9" fill="#0b5e55">✍ = hand-written guide</text>')
-    svg.append(f'<rect x="180" y="0" width="160" height="22" rx="4" fill="#fff"/><line x1="188" y1="11" x2="210" y2="11" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="6,3"/><text x="214" y="15" font-size="9" fill="#c0392b">= channel shift</text>')
-    svg.append(f'<rect x="360" y="0" width="160" height="22" rx="4" fill="#fff"/><line x1="368" y1="11" x2="390" y2="11" stroke="#0b5e55" stroke-width="1.5"/><text x="394" y="15" font-size="9" fill="#0b5e55">= operation upgrade</text>')
+    # Small legend in top-right
+    svg.append(f'<g transform="translate(600,10)">')
+    svg.append(f'<rect x="0" y="0" width="210" height="26" rx="4" fill="#f4f6f7" stroke="#ddd"/>')
+    svg.append(f'<line x1="10" y1="10" x2="30" y2="10" stroke="#1a2227" stroke-width="2" stroke-dasharray="6,3"/>')
+    svg.append(f'<text x="36" y="14" font-size="9" fill="#555">= channel shift</text>')
+    svg.append(f'<line x1="110" y1="10" x2="130" y2="10" stroke="#1a2227" stroke-width="2"/>')
+    svg.append(f'<text x="136" y="14" font-size="9" fill="#555">= op upgrade</text>')
     svg.append('</g>')
 
-    # Edge layer (behind boxes)
+    # Draw bridge edges — simple orthogonal (L-shaped) lines
     for a, b, typ, ca, cb in cross_edges:
-        # compute approximate center of source KB cluster
-        # simple: use category box center as source/target
         ax = COL_X[ca] + CAT_W[ca] / 2
         ay = CAT_Y[ca] + CAT_H[ca] / 2
         bx = COL_X[cb] + CAT_W[cb] / 2
         by = CAT_Y[cb] + CAT_H[cb] / 2
-
-        # adjust vertical for sub-clusters in Rs
         if ca == 3:
             for i, cl in enumerate(RS_CLUSTERS):
                 if a in cl[1]:
@@ -1181,28 +1178,22 @@ def _graph_html(query_string):
                 if b in cl[1]:
                     by = CAT_Y[3] + RS_SUB_Y[i] + RS_SUB_H / 2
                     break
+        # orthogonal path: horizontal then vertical
+        midx = (ax + bx) / 2
+        ax_i, ay_i, bx_i, by_i = int(ax), int(ay), int(bx), int(by)
+        midx_i = int(midx)
+        dash = "6,3" if ca != cb else "none"
+        # draw label midpoint
+        mid_y = (ay_i + by_i) / 2 - 8
+        label_text = "ch shift" if dash != "none" else "op ↑"
+        svg.append(f'<polyline points="{ax_i},{ay_i} {midx_i},{ay_i} {midx_i},{by_i} {bx_i},{by_i}" fill="none" stroke="#1a2227" stroke-width="1.8" stroke-dasharray="{dash}" opacity="0.35" marker-end="url(#a)"/>')
+        # small dot at origin
+        svg.append(f'<circle cx="{ax_i}" cy="{ay_i}" r="3" fill="#1a2227" opacity="0.4"/>')
+        # label
+        svg.append(f'<text x="{midx_i+4}" y="{int(mid_y)}" font-size="7" fill="#888">{label_text}</text>')
 
-        # determine stroke style
-        same_channel_different = False
-        both_have_reduction = cat_defaults.get(CATEGORIES[ca][0]) and cat_defaults.get(CATEGORIES[cb][0])
-        if both_have_reduction:
-            ch_a = cat_defaults[CATEGORIES[ca][0]].get("channel","")
-            ch_b = cat_defaults[CATEGORIES[cb][0]].get("channel","")
-            same_channel_different = (ch_a and ch_b and ch_a == ch_b)
-
-        stroke = "#0b5e55" if same_channel_different else "#c0392b"
-        dash = "6,3" if ca == 3 or cb == 3 else "none"
-        marker = "ag" if same_channel_different else "ar"
-
-        ax_int = int(ax)
-        ay_int = int(ay)
-        bx_int = int(bx)
-        by_int = int(by)
-
-        # simple curve
-        midx = (ax_int + bx_int) / 2 + 30
-        midy = (ay_int + by_int) / 2 - 20
-        svg.append(f'<path d="M{ax_int},{ay_int} Q{int(midx)},{int(midy)} {bx_int},{by_int}" fill="none" stroke="{stroke}" stroke-width="1.2" stroke-dasharray="{dash}" marker-end="url(#{marker})" opacity="0.6"/>')
+    # Arrow marker
+    svg.append('<defs><marker id="a" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1a2227" opacity="0.35"/></marker></defs>')
 
     # Category boxes
     for ci, (name, first, last, detail, bg, stroke, fg) in enumerate(CATEGORIES):
@@ -1211,48 +1202,41 @@ def _graph_html(query_string):
         hcount = sum(1 for k in kbs_dict.values() if _cid(k["id"]) == ci and k["id"] in hand_guides)
         prefix = name.replace(" muendlich"," mndl.").replace(" schriftlich"," schr.")
         svg.append(f'<g transform="translate({x},{y})">')
-        svg.append(f'<rect x="0" y="0" width="{w}" height="{h}" rx="8" fill="{bg}" stroke="{stroke}" stroke-width="1.5" filter="url(#sh)"/>')
-        svg.append(f'<text x="10" y="20" font-size="11" font-weight="700" fill="{fg}">{_esc(prefix)}</text>')
-        svg.append(f'<text x="10" y="34" font-size="9" fill="{fg}" opacity="0.7">{first}–{last} · {detail}</text>')
+        svg.append(f'<rect x="0" y="0" width="{w}" height="{h}" rx="0" fill="{bg}" stroke="{stroke}" stroke-width="2"/>')
+        svg.append(f'<text x="8" y="18" font-size="10" font-weight="700" fill="{fg}">{_esc(prefix)}</text>')
+        svg.append(f'<text x="8" y="32" font-size="8" fill="{fg}" opacity="0.6">{first}–{last} · {detail}</text>')
 
-        # no reduction data note for interaction categories
         has_reduction = cat_defaults.get(name)
-        if not has_reduction:
-            svg.append(f'<text x="10" y="{h-6}" font-size="8" fill="{fg}" opacity="0.5" font-style="italic">{count} KBs · no reduction data</text>')
-        else:
-            svg.append(f'<text x="10" y="{h-6}" font-size="8" fill="{fg}" opacity="0.5" font-style="italic">{count} KBs · {hcount} hand✍</text>')
+        note = f"{count} KBs" if not has_reduction else f"{count} KBs"
+        svg.append(f'<text x="8" y="{h-6}" font-size="8" fill="{fg}" opacity="0.4">{note}</text>')
 
-        # Render sub-clusters for Rs
+        # Sub-clusters for Rs
         if ci == 3:
             for i, cl in enumerate(RS_CLUSTERS):
-                sx, sy = 10, RS_SUB_Y[i]
-                sw, sh = w - 20, RS_SUB_H
+                sx, sy = 8, RS_SUB_Y[i]
+                sw, sh = w - 16, RS_SUB_H
                 fill_c, str_c = _box_color(ci)
-                svg.append(f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="4" fill="{fill_c}" stroke="{str_c}"/>')
-                svg.append(f'<text x="{sx+8}" y="{sy+15}" font-size="9" font-weight="600" fill="{fg}">{_esc(cl[0])}</text>')
+                svg.append(f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="0" fill="{fill_c}" stroke="{str_c}" stroke-width="1"/>')
+                svg.append(f'<text x="{sx+6}" y="{sy+14}" font-size="8" font-weight="600" fill="{fg}">{_esc(cl[0])}</text>')
                 ids_text = " · ".join(f"{kid}{'✍' if _hs(kid) else ''}" for kid in cl[1])
-                svg.append(f'<text x="{sx+8}" y="{sy+29}" font-size="8" fill="{fg}" opacity="0.7">{_esc(ids_text)}</text>')
-                # clickable overlay
+                svg.append(f'<text x="{sx+6}" y="{sy+28}" font-size="7" fill="{fg}" opacity="0.6">{_esc(ids_text)}</text>')
                 kid_list = ",".join(cl[1])
-                svg.append(f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="4" fill="transparent" cursor="pointer" onclick="window.location.href=\'/guides?q={kid_list}\'" />')
-                svg.append(f'<title>{_esc(cl[0])} ({len(cl[1])} KBs)</title>')
+                svg.append(f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="0" fill="transparent" cursor="pointer" onclick="window.location.href=\'/guides?q={kid_list}\'"/><title>{_esc(cl[0])}</title>')
 
-        # Render sub-clusters for Sm
+        # Sub-clusters for Sm
         if ci == 6:
             for i, cl in enumerate(SM_CLUSTERS):
-                sx, sy = 10 + i * 255, 48
-                sw, sh = 240, 80
+                sx, sy = 8 + i * 255, 48
+                sw, sh = 242, 82
                 fill_c, str_c = _box_color(ci)
-                svg.append(f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="4" fill="{fill_c}" stroke="{str_c}"/>')
-                svg.append(f'<text x="{sx+8}" y="{sy+15}" font-size="9" font-weight="600" fill="#bf360c">{_esc(cl[0])}</text>')
-                id_samples = " · ".join(f"{kid}{'✍' if _hs(kid) else ''}" for kid in cl[1][:6])
-                svg.append(f'<text x="{sx+8}" y="{sy+29}" font-size="8" fill="#d84315" opacity="0.7">{_esc(id_samples)}</text>')
+                svg.append(f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="0" fill="{fill_c}" stroke="{str_c}" stroke-width="1"/>')
+                svg.append(f'<text x="{sx+6}" y="{sy+14}" font-size="8" font-weight="600" fill="#a02020">{_esc(cl[0])}</text>')
+                id_samples = " · ".join(f"{kid}{'✍' if _hs(kid) else ''}" for kid in cl[1][:5])
+                svg.append(f'<text x="{sx+6}" y="{sy+28}" font-size="7" fill="#a02020" opacity="0.6">{_esc(id_samples)}</text>')
                 if i == 1:
-                    svg.append(f'<text x="{sx+8}" y="{sy+43}" font-size="8" fill="#d84315" opacity="0.6">shop door → toilet door → hotel board</text>')
-                # clickable
+                    svg.append(f'<text x="{sx+6}" y="{sy+42}" font-size="7" fill="#a02020" opacity="0.5">shop door → toilet → hotel board</text>')
                 kid_list = ",".join(cl[1])
-                svg.append(f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="4" fill="transparent" cursor="pointer" onclick="window.location.href=\'/guides?q={kid_list}\'" />')
-                svg.append(f'<title>{_esc(cl[0])} ({len(cl[1])} KBs)</title>')
+                svg.append(f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="0" fill="transparent" cursor="pointer" onclick="window.location.href=\'/guides?q={kid_list}\'"/><title>{_esc(cl[0])}</title>')
 
         svg.append('</g>')
 
