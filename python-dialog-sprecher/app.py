@@ -1347,17 +1347,32 @@ def _graph_matrix_html():
         if cname not in carrier_kb:
             carrier_kb[cname] = []
 
-    # Manual additional KBs by carrier from keyword_rules in kann_map
-    kann_map = runner.kann_map_cfg if hasattr(runner, 'kann_map_cfg') else {}
-    keyword_rules = kann_map.get("keyword_rules", [])
-    for rule in keyword_rules:
-        words = rule.get("match_any", [])
-        if not words: continue
-        for k in kbs_dict.values():
-            txt = k.get("kann", "").lower()
-            if any(w in txt for w in words):
-                # assign carrier by keyword
-                pass  # too noisy; stick to explicit overrides
+    # Also assign remaining KBs by keyword matching in kann text
+    CARRIER_KW = [
+        (["schild","aufschrift","eingang","ausgang","wc","apotheke","verboten","rauchen","parken","geschlossen","geöffnet","tür"], 0),
+        (["aushang","tafel","notiz","notieren","stichpunkt","aufschreiben","prospekt","anzeige"], 1),
+        (["fahrplan","abfahrt","gleis","zug","bus","haltestelle","reiseplan","reiseroute","busverkehr"], 2),
+        (["formular","fragebogen","anmeldung","anmeldeformular"], 3),
+        (["informationstafel","informationstext","hotel","rezeption","frühstück","checkout","breakfast","zimmerservice","zimmer","unterkunft","informationstafel"], 4),
+        (["durchsage","ansage","aufruf","angesagt","durchgesagt","telefonansage","nachricht","mitteilung","information","hören","gesprochen","hörtext"], 5),
+        (["gespräch","frage","antwort","sprechen","sagen","erzählen","mitteilen","unterhalten","kolleg","bekannt","freund","gruß","begrüßung","verabschiedung","vorstellen","vorlieben","abneigungen","bitten","danken"], 6),
+        (["anleitung","anweisung","drücken","ziehen","öffnen","schließen","start","stopp","benutzen","gebrauch","bedienung","instruktion","programm","kopieren"], 7),
+    ]
+    for kid, kb in kbs_dict.items():
+        if kid in overrides: continue  # already placed via manual overrides
+        if kid in hand_guides: continue  # already placed via scenes
+        txt = kb.get("kann", "").lower()
+        cat = kb.get("category", "")
+        if "Rezeption" in cat:   op_col = 0
+        elif "Produktion" in cat and "schriftlich" in cat: op_col = 2
+        elif "Produktion" in cat: op_col = 1
+        elif "Interaktion" in cat: op_col = 1
+        elif "Sprachmittlung" in cat: op_col = 3
+        else: continue
+        for keywords, row in CARRIER_KW:
+            if any(kw in txt for kw in keywords):
+                matrix[(row, op_col)].add(kid)
+                break
 
     # Define matrix grid
     CARRIERS = [
@@ -1433,17 +1448,31 @@ def _graph_matrix_html():
         if op_col is None: continue
         matrix[(row, op_col)].add(kid)
 
-    # Additional: assign mediation KBs by carrier text match
+    # Additional: assign KBs from hand-written guide scenes
+    SCENE_CARRIER_MAP = [
+        (["schild","aufschrift","türschild","eingang","ausgang"], 0),
+        (["aushang","prospekt","tafel","notiz","anzeige"], 1),
+        (["fahrplan","reiseplan","reiseroute"], 2),
+        (["formular","fragebogen","anmeldeformular","liste","tabelle","fragebogen"], 3),
+        (["informationstafel","hotel","rezeption","informationstext","info"], 4),
+        (["durchsage","ansage","aufruf","gesprochen","langsam","hör"], 5),
+        (["gespräch","sprechen","frage","kolleg","bekannt","freund","party","kurs","treffen","restaurant","geschäft"], 6),
+        (["anleitung","anweisung","gebäude","bedienung","instruktion"], 7),
+    ]
     for kid, guide in hand_guides.items():
         scene = guide.get("scene", "").lower()
-        if "schild" in scene or "aufschrift" in scene:
-            for ri, (cname, _, _, _) in enumerate(CARRIERS):
-                if "schild" in cname.lower() or "aufschrift" in cname.lower():
-                    matrix[(ri, 3)].add(kid)  # weitergeben
-        if "hotel" in scene or "informationstafel" in scene:
-            for ri, (cname, _, _, _) in enumerate(CARRIERS):
-                if "informationstafel" in cname.lower():
-                    matrix[(ri, 3)].add(kid)
+        kb = kbs_dict.get(kid, {})
+        cat = kb.get("category", "")
+        # determine operation column from category
+        if "Rezeption" in cat:   op_col = 0  # verstehen
+        elif "Produktion" in cat: op_col = 2 if "schriftlich" in cat else 1  # aufschreiben or sagen
+        elif "Interaktion" in cat: op_col = 1  # sagen/sprechen
+        elif "Sprachmittlung" in cat: op_col = 3  # weitergeben
+        else: continue
+        for keywords, row in SCENE_CARRIER_MAP:
+            if any(kw in scene for kw in keywords):
+                matrix[(row, op_col)].add(kid)
+                break
 
     # --- SVG ---
     MX, MY = 20, 70
@@ -1502,7 +1531,7 @@ def _graph_matrix_html():
                 # clickable
                 kid_list = ",".join(sorted(kb_set))
                 svg.append(f'<rect x="{x}" y="{y}" width="{COL_W}" height="{ROW_H}" rx="0" fill="transparent" cursor="pointer" onclick="window.location.href=\'/guides?q={kid_list}\'"/>')
-                svg.append(f'<title>{_esc(f"{carrier_de} × {OPERATIONS[ci][0]}: {len(kb_set)} KBs")}</title>')
+                svg.append(f'<title>{_esc(f"{CARRIERS[ri][0]} × {OPERATIONS[ci][0]}: {len(kb_set)} KBs")}</title>')
 
     svg.append('</svg>')
 
