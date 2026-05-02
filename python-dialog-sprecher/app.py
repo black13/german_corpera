@@ -1083,18 +1083,27 @@ def _graph_html(query_string):
         ("Sprachmittlung mündlich", "K153", "K176", "mouth after read/hear","#fef0ee","#e8847a","#a02020"),
     ]
 
+    IM_CLUSTERS = [
+        ("basic communication · Grundlagen",               ["K001","K002","K003","K004","K005","K006","K007","K008","K009"]),
+        ("greetings & introductions · Begrüßung & Vorstellung", ["K010","K011","K012","K013","K014","K015","K016","K017"]),
+        ("wellbeing & preferences · Befinden & Vorlieben",  ["K018","K019","K020","K021","K022","K023","K024","K025"]),
+        ("requests & answers · Bitten & Antworten",         ["K026","K027","K028","K029","K030","K031","K032","K033"]),
+        ("numbers & transactions · Zahlen & Geschäfte",    ["K034","K035","K036","K037"]),
+        ("asking for help · um Hilfe bitten",              ["K038","K039","K040","K041"]),
+    ]
+
     RS_CLUSTERS = [
-        ("basic reading: words · topic · re-read",           ["K084","K085","K086"]),
-        ("numbers · time · price · tables",                  ["K087","K092","K095"]),
-        ("public signs · labels · notices",                  ["K100","K101","K102","K103"]),
-        ("short instructions with pictures",                 ["K104"]),
-        ("forms · questionnaires",                           ["K105","K106","K107","K108","K109","K110"]),
-        ("everyday texts · ads · notes",                     ["K111","K112","K113","K114","K115"]),
+        ("single words · einzelne Wörter",                  ["K084","K085","K086"]),
+        ("numbers & tables · Zahlen & Tabellen",             ["K087","K092","K095"]),
+        ("public signs · Schilder & Aufschriften",          ["K100","K101","K102","K103"]),
+        ("instructions · Anleitungen",                      ["K104"]),
+        ("forms · Formulare",                               ["K105","K106","K107","K108","K109","K110"]),
+        ("everyday texts · Alltagstexte",                   ["K111","K112","K113","K114","K115"]),
     ]
 
     SM_CLUSTERS = [
-        ("DE → shared language", ["K153","K154","K155","K156","K157","K158","K159","K160","K161","K162","K163","K164","K165","K166"]),
-        ("other lang → DE",      ["K167","K168","K169","K170","K171","K172","K173","K174","K175","K176"]),
+        ("DE → shared language · DE → gemeinsame Sprache", ["K153","K154","K155","K156","K157","K158","K159","K160","K161","K162","K163","K164","K165","K166"]),
+        ("other lang → DE · andere Sprache → DE",          ["K167","K168","K169","K170","K171","K172","K173","K174","K175","K176"]),
     ]
 
     # gather bridge edges from near_kbs and related_kbs
@@ -1130,9 +1139,11 @@ def _graph_html(query_string):
 
     # layout constants
     COL_X = [20, 250, 510, 250, 510, 250, 250]
-    CAT_Y = [80, 310, 80, 310, 80, 310, 690]
+    CAT_Y = [80, 420, 80, 420, 80, 420, 790]
     CAT_W = [220, 220, 240, 260, 240, 260, 520]
-    CAT_H = [210, 120, 210, 340, 210, 210, 140]
+    CAT_H = [320, 120, 210, 340, 210, 210, 140]
+    IM_SUB_Y = [55, 99, 143, 187, 231, 275]
+    IM_SUB_H = 38
     RS_SUB_Y = [55, 105, 155, 205, 255, 305]
     RS_SUB_H = 42
 
@@ -1149,17 +1160,17 @@ def _graph_html(query_string):
 
     # --- SVG ---
     svg = []
-    svg.append(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 860" font-family="-apple-system,Segoe UI,sans-serif">')
-    svg.append(f'<rect width="820" height="860" fill="#fff"/>')
+    svg.append(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 960" font-family="-apple-system,Segoe UI,sans-serif">')
+    svg.append(f'<rect width="820" height="960" fill="#fff"/>')
     svg.append(f'<text x="410" y="28" text-anchor="middle" font-size="15" font-weight="700" fill="#1a2227">KB Compressed Graph</text>')
 
     # Small legend in top-right
     svg.append(f'<g transform="translate(600,10)">')
     svg.append(f'<rect x="0" y="0" width="210" height="26" rx="4" fill="#f4f6f7" stroke="#ddd"/>')
     svg.append(f'<line x1="10" y1="10" x2="30" y2="10" stroke="#1a2227" stroke-width="2" stroke-dasharray="6,3"/>')
-    svg.append(f'<text x="36" y="14" font-size="9" fill="#555">= channel shift</text>')
+    svg.append(f'<text x="36" y="14" font-size="9" fill="#555">= cross-domain</text>')
     svg.append(f'<line x1="110" y1="10" x2="130" y2="10" stroke="#1a2227" stroke-width="2"/>')
-    svg.append(f'<text x="136" y="14" font-size="9" fill="#555">= op upgrade</text>')
+    svg.append(f'<text x="136" y="14" font-size="9" fill="#555">= within-domain</text>')
     svg.append('</g>')
 
     # Draw bridge edges — simple orthogonal (L-shaped) lines
@@ -1168,6 +1179,16 @@ def _graph_html(query_string):
         ay = CAT_Y[ca] + CAT_H[ca] / 2
         bx = COL_X[cb] + CAT_W[cb] / 2
         by = CAT_Y[cb] + CAT_H[cb] / 2
+        if ca == 0:
+            for i, cl in enumerate(IM_CLUSTERS):
+                if a in cl[1]:
+                    ay = CAT_Y[0] + IM_SUB_Y[i] + IM_SUB_H / 2
+                    break
+        if cb == 0:
+            for i, cl in enumerate(IM_CLUSTERS):
+                if b in cl[1]:
+                    by = CAT_Y[0] + IM_SUB_Y[i] + IM_SUB_H / 2
+                    break
         if ca == 3:
             for i, cl in enumerate(RS_CLUSTERS):
                 if a in cl[1]:
@@ -1182,10 +1203,11 @@ def _graph_html(query_string):
         midx = (ax + bx) / 2
         ax_i, ay_i, bx_i, by_i = int(ax), int(ay), int(bx), int(by)
         midx_i = int(midx)
-        dash = "6,3" if ca != cb else "none"
-        # draw label midpoint
+        domain_a = 0 if ca <= 1 else (1 if ca <= 3 else (2 if ca <= 5 else 3))
+        domain_b = 0 if cb <= 1 else (1 if cb <= 3 else (2 if cb <= 5 else 3))
+        dash = "6,3" if domain_a != domain_b else "none"
         mid_y = (ay_i + by_i) / 2 - 8
-        label_text = "ch shift" if dash != "none" else "op ↑"
+        label_text = "domain hop" if domain_a != domain_b else ""
         svg.append(f'<polyline points="{ax_i},{ay_i} {midx_i},{ay_i} {midx_i},{by_i} {bx_i},{by_i}" fill="none" stroke="#1a2227" stroke-width="1.8" stroke-dasharray="{dash}" opacity="0.35" marker-end="url(#a)"/>')
         # small dot at origin
         svg.append(f'<circle cx="{ax_i}" cy="{ay_i}" r="3" fill="#1a2227" opacity="0.4"/>')
@@ -1209,6 +1231,19 @@ def _graph_html(query_string):
         has_reduction = cat_defaults.get(name)
         note = f"{count} KBs" if not has_reduction else f"{count} KBs"
         svg.append(f'<text x="8" y="{h-6}" font-size="8" fill="{fg}" opacity="0.4">{note}</text>')
+
+        # Sub-clusters for Im
+        if ci == 0:
+            for i, cl in enumerate(IM_CLUSTERS):
+                sx, sy = 8, IM_SUB_Y[i]
+                sw, sh = w - 16, IM_SUB_H
+                fill_c, str_c = _box_color(ci)
+                svg.append(f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="0" fill="{fill_c}" stroke="{str_c}" stroke-width="1"/>')
+                svg.append(f'<text x="{sx+6}" y="{sy+14}" font-size="8" font-weight="600" fill="{fg}">{_esc(cl[0])}</text>')
+                ids_text = " · ".join(f"{kid}{'✍' if _hs(kid) else ''}" for kid in cl[1])
+                svg.append(f'<text x="{sx+6}" y="{sy+28}" font-size="7" fill="{fg}" opacity="0.6">{_esc(ids_text)}</text>')
+                kid_list = ",".join(cl[1])
+                svg.append(f'<rect x="{sx}" y="{sy}" width="{sw}" height="{sh}" rx="0" fill="transparent" cursor="pointer" onclick="window.location.href=\'/guides?q={kid_list}\'"/><title>{_esc(cl[0])}</title>')
 
         # Sub-clusters for Rs
         if ci == 3:
@@ -1269,7 +1304,7 @@ def _graph_html(query_string):
         '<p>Clusters within categories, bridge edges across channels. Click any cluster to open its KBs in the Guides view.</p>',
         '<div class="nav-bar">' + "".join(nav) + '</div></div>',
         '<div class="page">',
-        '<p class="legend-note">Red dashed = channel shift (ear↔eye), Green = operation upgrade (understand→relay). ✍ = hand-written guide.</p>',
+        '<p class="legend-note">Dashed edges = cross-domain bridges. Solid edges = within-domain connections. Click any cluster to open its KBs.</p>',
         "".join(svg),
         '</div></body></html>',
     ]
