@@ -1067,6 +1067,8 @@ def _graph_html(query_string):
     view = (query.get("v") or [""])[0].strip()
     if view == "matrix":
         return _graph_matrix_html()
+    if view == "original":
+        return _graph_original_html()
     return _graph_cluster_html()
 
 
@@ -1287,18 +1289,20 @@ def _graph_html(query_string):
         svg.append('</svg>')
 
         # --- HTML wrapper ---
-        nav = [
-            '<a href="/" class="nv">Classroom</a>',
-            '<a href="/graph" class="nv active">Graph</a>',
-            '<a href="/guides" class="nv">Guides</a>',
-            '<a href="/quiz" class="nv">Quiz</a>',
-            '<a href="/drill" class="nv">Drill</a>',
-            '<a href="/word" class="nv">Word→KB</a>',
-        ]
-        parts = [
-            '<!DOCTYPE html><html><head><meta charset="utf-8">',
-            '<meta name="viewport" content="width=device-width,initial-scale=1">',
-            '<title>KB Graph</title>',
+    nav = [
+        '<a href="/" class="nv">Classroom</a>',
+        '<a href="/graph" class="nv active">Graph</a>',
+        '<a href="/graph?v=original" class="nv">Original</a>',
+        '<a href="/graph?v=matrix" class="nv">Matrix</a>',
+        '<a href="/guides" class="nv">Guides</a>',
+        '<a href="/quiz" class="nv">Quiz</a>',
+        '<a href="/drill" class="nv">Drill</a>',
+        '<a href="/word" class="nv">Word→KB</a>',
+    ]
+    parts = [
+        '<!DOCTYPE html><html><head><meta charset="utf-8">',
+        '<meta name="viewport" content="width=device-width,initial-scale=1">',
+        '<title>KB Graph</title>',
             '<style>',
             '*{box-sizing:border-box} body{margin:0;font-family:-apple-system,Segoe UI,Roboto,sans-serif;background:#f4f6f7;color:#1a2227}',
             '.top{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid #d9e0e3;padding:12px 18px}',
@@ -1569,6 +1573,46 @@ def _graph_matrix_html():
         '<div class="page">',
         "".join(svg),
         '</div></body></html>',
+    ]
+    return "".join(parts)
+
+
+def _graph_original_html():
+    """Serve the original hand-crafted KB cluster SVG."""
+    import os
+    svg_path = os.path.join(os.path.dirname(__file__), "kb_graph.svg")
+    with open(svg_path, "r") as f:
+        svg_content = f.read()
+
+    nav = [
+        '<a href="/" class="nv">Classroom</a>',
+        '<a href="/graph" class="nv">Graph</a>',
+        '<a href="/graph?v=original" class="nv active">Original</a>',
+        '<a href="/graph?v=matrix" class="nv">Matrix</a>',
+        '<a href="/guides" class="nv">Guides</a>',
+        '<a href="/quiz" class="nv">Quiz</a>',
+        '<a href="/word" class="nv">Word→KB</a>',
+    ]
+    parts = [
+        '<!DOCTYPE html><html><head><meta charset="utf-8">',
+        '<meta name="viewport" content="width=device-width,initial-scale=1">',
+        '<title>KB Graph — Original</title>',
+        '<style>',
+        '*{box-sizing:border-box} body{margin:0;font-family:-apple-system,Segoe UI,Roboto,sans-serif;background:#f4f6f7;color:#1a2227}',
+        '.top{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid #d9e0e3;padding:12px 18px}',
+        '.top h1{margin:0;font-size:18px;color:#0b5e55}.top p{margin:4px 0 0;color:#5c6b74;font-size:13px}',
+        '.nav-bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}',
+        '.nv{color:#0b5e55;text-decoration:none;font-size:13px;padding:3px 8px;border-radius:4px;border:1px solid #c8d6db}',
+        '.nv.active,.nv:hover{background:#0b5e55;color:#fff;border-color:#0b5e55}',
+        '.page{padding:14px 18px}',
+        '.graph-container{max-width:1440px;margin:0 auto;background:#f4f6f7;border-radius:8px;overflow:hidden;border:1px solid #dde4e8}',
+        '</style></head><body>',
+        '<div class="top"><h1>KB Compressed Graph — Original</h1>',
+        '<p>Hand-crafted cluster map with bezier bridges, shadowed boxes, and colored edge types. <a href="/graph" style="color:#0b5e55">→ generated view</a></p>',
+        '<div class="nav-bar">' + "".join(nav) + '</div></div>',
+        '<div class="page"><div class="graph-container">',
+        svg_content,
+        '</div></div></body></html>',
     ]
     return "".join(parts)
 
