@@ -166,11 +166,11 @@
   <!-- ====== BRIDGE EDGES ===== -->
 
   <!-- Edge 1: Rs numbers ↔ Rm numbers (channel shift: eye ↔ ear) -->
-  <path d="M390,675 C390,640 490,620 490,490 L540,490"
+  <path d="M370,553 C340,500 480,470 500,473"
         fill="none" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4"
         marker-end="url(#arrow-red)"/>
-  <rect x="410" y="555" width="170" height="16" rx="3" fill="#fff" stroke="#c0392b" stroke-width="0.5"/>
-  <text x="416" y="566" font-size="10" fill="#c0392b">same content · channel shift</text>
+  <rect x="370" y="480" width="170" height="16" rx="3" fill="#fff" stroke="#c0392b" stroke-width="0.5"/>
+  <text x="376" y="491" font-size="10" fill="#c0392b">same content · channel shift</text>
 
   <!-- Edge 2: Rs signs (K100) → Sm relay signs (K173) -->
   <path d="M400,607 C400,750 450,790 450,860"
@@ -190,11 +190,11 @@
   <line x1="560" y1="553" x2="560" y2="661" stroke="#555" stroke-width="1.5" stroke-dasharray="4,4"/>
 
   <!-- Edge 5: Rm instructions (K076) → Rs instructions (K104) -->
-  <path d="M555,363 C580,363 590,500 590,520 L610,520"
+  <path d="M555,363 C580,363 590,500 590,510 L610,510"
         fill="none" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4"
         marker-end="url(#arrow-red)"/>
-  <rect x="582" y="415" width="130" height="15" rx="3" fill="#fff" stroke="#c0392b" stroke-width="0.5"/>
-  <text x="586" y="426" font-size="10" fill="#c0392b">ear → eye instructions</text>
+  <rect x="592" y="425" width="130" height="15" rx="3" fill="#fefefe" stroke="#c0392b" stroke-width="0.5"/>
+  <text x="596" y="436" font-size="10" fill="#c0392b">ear → eye instructions</text>
 
   <!-- Edge 6: Rm numbers (K063) ↔ Rm instructions (K076) via near_kbs -->
   <line x1="550" y1="323" x2="550" y2="363" stroke="#555" stroke-width="1.5" stroke-dasharray="4,4"/>
@@ -218,9 +218,9 @@
   <text x="634" y="716" font-size="10" fill="#0b5e55">tables → relay</text>
 
   <!-- Edge 10: Rs signs (K100–103) ↔ Ps write (K137) same Schild carrier -->
-  <path d="M610,607 C650,600 670,620 670,520 L685,520"
+  <path d="M610,607 C660,600 680,620 680,510 L685,510"
         fill="none" stroke="#555" stroke-width="1.5" stroke-dasharray="4,4"/>
-  <rect x="674" y="570" width="140" height="15" rx="3" fill="#fff" stroke="#888" stroke-width="0.5"/>
-  <text x="678" y="581" font-size="10" fill="#888">Schild → aufschreiben</text>
+  <rect x="688" y="495" width="140" height="15" rx="3" fill="#fefefe" stroke="#888" stroke-width="0.5"/>
+  <text x="692" y="506" font-size="10" fill="#888">Schild → aufschreiben</text>
 
 </svg>
