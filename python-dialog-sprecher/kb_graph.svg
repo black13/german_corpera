@@ -165,62 +165,62 @@
 
   <!-- ====== BRIDGE EDGES ===== -->
 
-  <!-- Edge 1: Rs numbers ↔ Rm numbers (channel shift: eye ↔ ear) -->
-  <path d="M370,553 C340,500 480,470 500,473"
+  <!-- Edge 1: Rs numbers (K087/K092/K095) ↔ Rm numbers (K063/K064) — out right of numbers cluster -->
+  <path d="M598,553 C640,530 640,470 500,473"
         fill="none" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4"
         marker-end="url(#arrow-red)"/>
-  <rect x="370" y="480" width="170" height="16" rx="3" fill="#fff" stroke="#c0392b" stroke-width="0.5"/>
-  <text x="376" y="491" font-size="10" fill="#c0392b">same content · channel shift</text>
+  <rect x="560" y="480" width="170" height="16" rx="3" fill="#fff" stroke="#c0392b" stroke-width="0.5"/>
+  <text x="566" y="491" font-size="10" fill="#c0392b">same content · channel shift</text>
 
-  <!-- Edge 2: Rs signs (K100) → Sm relay signs (K173) -->
-  <path d="M400,607 C400,750 450,790 450,860"
+  <!-- Edge 2: Rs signs (K100–103) → Sm relay (K173) — out bottom of public signs cluster -->
+  <path d="M460,630 C460,740 450,830 450,860"
         fill="none" stroke="#0b5e55" stroke-width="2"
         marker-end="url(#arrow-green)"/>
-  <rect x="350" y="715" width="140" height="15" rx="3" fill="#fff" stroke="#0b5e55" stroke-width="0.5"/>
-  <text x="354" y="726" font-size="10" fill="#0b5e55">same carrier · op upgrade</text>
+  <rect x="410" y="730" width="140" height="15" rx="3" fill="#fff" stroke="#0b5e55" stroke-width="0.5"/>
+  <text x="414" y="741" font-size="10" fill="#0b5e55">same carrier · op upgrade</text>
 
-  <!-- Edge 3: Rs instructions (K104) → Sm relay (K163) -->
-  <path d="M500,661 C500,750 470,800 440,860"
+  <!-- Edge 3: Rs instructions (K104) → Sm relay (K163) — out bottom of instructions cluster -->
+  <path d="M540,684 C540,770 510,810 480,860"
         fill="none" stroke="#0b5e55" stroke-width="2" stroke-dasharray="6,3"
         marker-end="url(#arrow-green)"/>
-  <rect x="410" y="745" width="150" height="15" rx="3" fill="#fff" stroke="#0b5e55" stroke-width="0.5"/>
-  <text x="414" y="756" font-size="10" fill="#0b5e55">comprehension → relay</text>
+  <rect x="470" y="765" width="150" height="15" rx="3" fill="#fff" stroke="#0b5e55" stroke-width="0.5"/>
+  <text x="474" y="776" font-size="10" fill="#0b5e55">comprehension → relay</text>
 
-  <!-- Edge 4: Rs numbers (K087) ↔ Rs instructions (K104) via near_kbs -->
-  <line x1="560" y1="553" x2="560" y2="661" stroke="#555" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <!-- Edge 4: Rs numbers ↔ Rs instructions via near_kbs — inside same box -->
+  <line x1="530" y1="576" x2="530" y2="638" stroke="#555" stroke-width="1.5" stroke-dasharray="4,4"/>
 
-  <!-- Edge 5: Rm instructions (K076) → Rs instructions (K104) -->
-  <path d="M555,363 C580,363 590,500 590,510 L610,510"
+  <!-- Edge 5: Rm instructions (K076) → Rs instructions (K104) — out bottom of Rm instructions, into Rs instructions left -->
+  <path d="M435,396 C435,500 320,520 322,661"
         fill="none" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4"
         marker-end="url(#arrow-red)"/>
-  <rect x="592" y="425" width="130" height="15" rx="3" fill="#fefefe" stroke="#c0392b" stroke-width="0.5"/>
-  <text x="596" y="436" font-size="10" fill="#c0392b">ear → eye instructions</text>
+  <rect x="340" y="520" width="130" height="15" rx="3" fill="#fefefe" stroke="#c0392b" stroke-width="0.5"/>
+  <text x="344" y="531" font-size="10" fill="#c0392b">ear → eye instructions</text>
 
-  <!-- Edge 6: Rm numbers (K063) ↔ Rm instructions (K076) via near_kbs -->
-  <line x1="550" y1="323" x2="550" y2="363" stroke="#555" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <!-- Edge 6: Rm numbers (K063) ↔ Rm instructions (K076) via near_kbs — inside same box -->
+  <line x1="560" y1="323" x2="560" y2="363" stroke="#555" stroke-width="1.5" stroke-dasharray="4,4"/>
 
-  <!-- Edge 7: Rs everyday texts (K084) → Sm relay (K163) via related_kbs -->
-  <path d="M390,765 C390,790 430,810 450,860"
+  <!-- Edge 7: Rs basic reading (K084) → Sm relay (K163) via related_kbs — out bottom -->
+  <path d="M360,522 C360,740 420,790 440,860"
         fill="none" stroke="#0b5e55" stroke-width="1.5" stroke-dasharray="5,3"
         marker-end="url(#arrow-green)"/>
 
-  <!-- Edge 8: Sm relay signs progression chain -->
+  <!-- Edge 8: Sm relay progression chain -->
   <path d="M580,895 C600,895 620,895 640,895"
         fill="none" stroke="#555" stroke-width="1" stroke-dasharray="3,3"/>
   <text x="588" y="888" font-size="9" fill="#666">K174</text>
   <text x="628" y="888" font-size="9" fill="#666">K175 → K176</text>
 
-  <!-- Edge 9: Rs reading (K092) → Sm (K163/K176) via related_kbs -->
-  <path d="M550,553 C620,553 660,650 660,860"
+  <!-- Edge 9: Rs numbers (K092) → Sm (K163/K176) via related_kbs — out right of numbers -->
+  <path d="M598,553 C660,553 680,700 660,860"
         fill="none" stroke="#0b5e55" stroke-width="1.2" stroke-dasharray="6,3"
         marker-end="url(#arrow-green)"/>
-  <rect x="630" y="705" width="80" height="15" rx="3" fill="#fff" stroke="#0b5e55" stroke-width="0.5"/>
-  <text x="634" y="716" font-size="10" fill="#0b5e55">tables → relay</text>
+  <rect x="660" y="700" width="90" height="15" rx="3" fill="#fff" stroke="#0b5e55" stroke-width="0.5"/>
+  <text x="664" y="711" font-size="10" fill="#0b5e55">tables → relay</text>
 
-  <!-- Edge 10: Rs signs (K100–103) ↔ Ps write (K137) same Schild carrier -->
-  <path d="M610,607 C660,600 680,620 680,510 L685,510"
+  <!-- Edge 10: Rs signs (K100–103) ↔ Ps write (K137) same Schild carrier — out right of public signs -->
+  <path d="M598,607 C660,600 680,600 685,556"
         fill="none" stroke="#555" stroke-width="1.5" stroke-dasharray="4,4"/>
-  <rect x="688" y="495" width="140" height="15" rx="3" fill="#fefefe" stroke="#888" stroke-width="0.5"/>
-  <text x="692" y="506" font-size="10" fill="#888">Schild → aufschreiben</text>
+  <rect x="688" y="580" width="140" height="15" rx="3" fill="#fefefe" stroke="#888" stroke-width="0.5"/>
+  <text x="692" y="591" font-size="10" fill="#888">Schild → aufschreiben</text>
 
 </svg>
