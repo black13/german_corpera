@@ -1617,6 +1617,143 @@ def _graph_original_html():
     return "".join(parts)
 
 
+def _prompt_text(query_string):
+    """Generate a copy-paste prompt for DeepSeek based on exam module and KB cluster."""
+    query = parse_qs(query_string or "")
+    module = (query.get("m") or ["lesen"])[0].strip()
+    teil = (query.get("t") or ["1"])[0].strip()
+    kbid = (query.get("kb") or [""])[0].strip().upper()
+
+    kbs_dict = {k["id"]: k for k in runner.all_kanns}
+    wf = runner.wortfelder
+    grammatik = runner.grammatik
+    red = runner.kann_reductions_cfg
+    overrides = red.get("manual_overrides", {})
+
+    def _grammar_txt():
+        lines = []
+        for cat, rules in grammatik.items():
+            lines.append(f"{cat}:")
+            for r in rules:
+                lines.append(f"  - {r}")
+        return "\n".join(lines)
+
+    def _vocab_txt(fields, max_items=10):
+        lines = []
+        for f in fields:
+            words = wf.get(f, [])[:max_items]
+            lines.append(f"{f}: {', '.join(words)}")
+        return "\n".join(lines)
+
+    # Per-KB prompt
+    if kbid and kbid in kbs_dict:
+        kb = kbs_dict[kbid]
+        ov = overrides.get(kbid, {})
+        near = ov.get("near_kbs", [])
+        examples = ov.get("examples", [])
+        ex_txt = "\n".join(f"  - {e}" for e in examples[:6])
+
+        return f"""You are a telc Deutsch A1 tutor. Help me master this one Kannbeschreibung from {kb['category']}.
+
+KB {kb['id']}: {kb['kann'][:400]}
+Level: {kb.get('level','')}
+
+Carrier: {ov.get('carrier','(not specified)')}
+Operation: {ov.get('operation','(not specified)')}
+Output: {ov.get('output','(not specified)')}
+
+Examples from this KB:
+{ex_txt}
+
+Near KBs (can be confused with): {', '.join(near) if near else '(none)'}
+
+A1 Grammar constraints:
+{_grammar_txt()}
+
+Available vocabulary:
+{_vocab_txt(['person','familie','beruf','einkaufen','lebensmittel','getraenke','restaurant','wohnen','moebel','verkehr','zeit','freizeit','zahlen'])}
+
+Your task: Generate 8 short practice questions in the telc A1 exam format that test EXACTLY this KB. Make distractors that test whether the learner confuses this KB with the near KBs.
+
+Include answer key.
+"""
+
+    # Module prompts
+    prompts = {
+        "lesen_1": ("Lesen Teil 1 — Kurze Texte (Richtig/Falsch)",
+            "Two short texts (notes, emails, invitations). Richtig/Falsch statements. FALSE because of ONE word like vielleicht, leider, aber, nicht, noch nicht, schon.",
+            ["person","familie","wohnen","verkehr","zeit","freizeit"],
+            ["K111","K112","K113","K114","K115"]),
+        "lesen_2": ("Lesen Teil 2 — Kleinanzeigen (a oder b)",
+            "10 ads, 5 situations, pick a or b. Ads: Wohnungen, Jobs, Autos, Möbel, Kurse, Reisen.",
+            ["wohnen","einkaufen","freizeit","verkehr","beruf","restaurant"],
+            ["K087","K092","K095"]),
+        "lesen_3": ("Lesen Teil 3 — Schilder und Aushänge (Richtig/Falsch)",
+            "5 short signs. One statement each. Signs: Heute geschlossen, Aufzug außer Betrieb, Parken verboten, etc.",
+            ["verkehr","einkaufen","wohnen","restaurant"],
+            ["K100","K101","K102","K103","K104"]),
+        "horen_1": ("Hören Teil 1 — Kurze Gespräche (a/b/c)",
+            "6 short everyday conversations. One question each with 3 options. Provide the spoken text, question, options, answer.",
+            ["person","familie","beruf","einkaufen","restaurant","verkehr","zeit","freizeit"],
+            ["K060","K068","K069"]),
+        "horen_2": ("Hören Teil 2 — Durchsagen (Richtig/Falsch)",
+            "4 public announcements. Heard ONCE. Provide the spoken announcement text, statement, Richtig/Falsch.",
+            ["verkehr","zeit","einkaufen","zahlen"],
+            ["K063","K064","K074"]),
+        "horen_3": ("Hören Teil 3 — Telefonansagen (a/b/c)",
+            "5 answering machine messages. One question each. Wer ruft an? Warum? Was soll der Hörer tun?",
+            ["person","beruf","zeit","wohnen","restaurant"],
+            ["K076","K079"]),
+        "sprechen_1": ("Sprechen Teil 1 — Sich vorstellen",
+            "Prompt me: give me 4 Stichwörter. I introduce myself. Score me 1-3 per item: Name/Alter/Herkunft/Wohnort/Beruf/Hobby/Buchstabieren/Nummer.",
+            ["person","familie","beruf","wohnen","freizeit"],
+            ["K121","K122","K014","K015","K016","K017"]),
+        "sprechen_2": ("Sprechen Teil 2 — Fragen und Antworten",
+            "Topics: Einkaufen, Essen/Trinken, Freizeit/Wochenende. Give me 8 Handlungskarten with model questions and answers.",
+            ["einkaufen","lebensmittel","getraenke","restaurant","freizeit","zeit"],
+            ["K022","K023","K024","K025"]),
+        "sprechen_3": ("Sprechen Teil 3 — Bitten formulieren",
+            "Give me 8 Bildkarten (one word each). I make a polite request. You show model Bitte + Antwort(+/-).",
+            ["einkaufen","restaurant","wohnen","lebensmittel","getraenke"],
+            ["K026","K027","K028","K029"]),
+        "schreiben_1": ("Schreiben Teil 1 — Formular ausfüllen",
+            "A situation text + a form with 5 blanks. I fill them in. Score 1 point per correct field.",
+            ["person","wohnen","verkehr","zeit"],
+            ["K137","K138"]),
+        "schreiben_2": ("Schreiben Teil 2 — Kurzmitteilung (~30 Wörter)",
+            "A situation + 3 Inhaltspunkte. I write ~30 words. Score me: 3 per Inhaltspunkt + 1 for Anrede/Gruß. Total 10.",
+            ["person","familie","wohnen","verkehr","zeit","freizeit","beruf"],
+            ["K149","K150","K151","K152"]),
+    }
+
+    key = f"{module}_{teil}"
+    if key not in prompts:
+        keys = "\n".join(f"  /prompt?m={k.split('_')[0]}&t={k.split('_')[1]} — {v[0]}" for k,v in sorted(prompts.items()))
+        return f"Unknown {module}/{teil}.\n\nAvailable:\n{keys}\n\nOr use /prompt?kb=K100 for a single KB."
+
+    title, desc, fields, kb_ids = prompts[key]
+    kb_list = [kbs_dict[kid] for kid in kb_ids if kid in kbs_dict]
+    kb_txt = "\n".join(f"  {k['id']}: {k['kann'][:150]}..." for k in kb_list)
+
+    # Phone-optimized: about 1500-2500 chars fits on one screen
+    phone_vocab = _vocab_txt(fields, max_items=8)
+
+    return f"""You are a telc Deutsch A1 tutor on mobile. Keep responses tight.
+
+{title}
+{desc}
+
+TARGET: {', '.join(kb_ids)}
+
+VOCABULARY — A1 only:
+{phone_vocab}
+
+GRAMMAR: Present tense. Modal verbs (können, müssen, möchten). W-Fragen. Negation with nicht/kein. Prepositions (in, aus, nach, zu, bei, an, auf, mit, von, bis). No subjunctive. No passive. Max 10 words per sentence.
+
+Generate now. Include answer key.
+"""
+
+
 # ---------------------------------------------------------------------------
 # WSGI app
 # ---------------------------------------------------------------------------
@@ -1655,6 +1792,11 @@ def app(environ, start_response):
         if method == "HEAD":
             return _response(start_response, "200 OK", "", content_type="text/html; charset=utf-8")
         return _response(start_response, "200 OK", _graph_html(environ.get("QUERY_STRING", "")), content_type="text/html; charset=utf-8")
+
+    if method in {"GET", "HEAD"} and path == "/prompt":
+        if method == "HEAD":
+            return _response(start_response, "200 OK", "", content_type="text/plain; charset=utf-8")
+        return _response(start_response, "200 OK", _prompt_text(environ.get("QUERY_STRING", "")), content_type="text/plain; charset=utf-8")
 
     if method == "POST" and path == "/run":
         try:
