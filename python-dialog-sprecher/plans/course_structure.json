@@ -1,0 +1,12 @@
+{
+  "subject_areas": [
+    {"id": "person_vorstellen", "name": "Person & Vorstellen", "primary_kann": ["K01_vorstellen", "K10_familie_beruf"], "connects_to": ["wohnen_beschreiben", "alltag_einkaufen"]},
+    {"id": "alltag_einkaufen", "name": "Alltag & Einkaufen", "primary_kann": ["K03_einkaufen", "K13_zahlen_geld"], "connects_to": ["essen_bestellen", "person_vorstellen"]},
+    {"id": "wohnen_beschreiben", "name": "Wohnen & Beschreiben", "primary_kann": ["K07_wohnen"], "connects_to": ["alltag_einkaufen", "freizeit_kontakt"]},
+    {"id": "reisen_orientierung", "name": "Reisen & Orientierung", "primary_kann": ["K05_wegbeschreibung"], "connects_to": ["zeit_termine", "alltag_einkaufen"]},
+    {"id": "essen_bestellen", "name": "Essen & Bestellen", "primary_kann": ["K06_essen_bestellen"], "connects_to": ["alltag_einkaufen", "freizeit_kontakt"]},
+    {"id": "zeit_termine", "name": "Zeit & Termine", "primary_kann": ["K04_zeitangaben"], "connects_to": ["reisen_orientierung", "person_vorstellen"]},
+    {"id": "freizeit_kontakt", "name": "Freizeit & Kontakt", "primary_kann": ["K15_freizeit", "K02_begruessen"], "connects_to": ["person_vorstellen", "zeit_termine"]}
+  ],
+  "day7_special": "Prüfungsvorbereitung — review all areas from Days 1-6"
+}

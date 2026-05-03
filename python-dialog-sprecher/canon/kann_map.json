@@ -1,0 +1,236 @@
+{
+  "_meta": {
+    "purpose": "Seed mappings from Kannbeschreibungen to grammar, vocabulary fields, speech acts, and example lines. The runtime merges category defaults, keyword rules, and manual overrides into a per-Kann focus object.",
+    "notes": [
+      "This is intentionally inspectable JSON, not hidden Python logic.",
+      "The first version is rule-based and conservative.",
+      "Manual overrides should be added whenever a Kann needs tighter pedagogical targeting."
+    ]
+  },
+  "category_defaults": {
+    "Interaktion mündlich": {
+      "grammar_targets": [
+        "W-Frage (Wo wohnen Sie? Was machen Sie? Wie heißen Sie?)",
+        "Ja/Nein-Frage (Sprechen Sie Deutsch? Kommst du mit?)",
+        "Konjugation Präsens: sein, haben, werden"
+      ],
+      "speech_acts": [
+        "nachfragen (Was bedeutet...?)",
+        "signalisieren, dass man etwas (nicht) verstanden hat"
+      ]
+    },
+    "Interaktion schriftlich": {
+      "grammar_targets": [
+        "Aussagesatz: Subjekt-Verb-Objekt (Ich trinke Kaffee.)",
+        "Konjugation Präsens: regelmäßige Verben (ich mache, du machst, er macht...)"
+      ],
+      "speech_acts": [
+        "sich bedanken / auf Dank reagieren",
+        "sich entschuldigen / auf eine Entschuldigung reagieren"
+      ]
+    },
+    "Produktion schriftlich": {
+      "grammar_targets": [
+        "Aussagesatz: Subjekt-Verb-Objekt (Ich trinke Kaffee.)",
+        "Konjugation Präsens: regelmäßige Verben (ich mache, du machst, er macht...)"
+      ]
+    },
+    "Rezeption schriftlich": {
+      "grammar_targets": [
+        "Genus: der, die, das",
+        "Nominativ und Akkusativ"
+      ]
+    },
+    "Rezeption mündlich": {
+      "grammar_targets": [
+        "W-Frage (Wo wohnen Sie? Was machen Sie? Wie heißen Sie?)",
+        "Ja/Nein-Frage (Sprechen Sie Deutsch? Kommst du mit?)"
+      ]
+    }
+  },
+  "keyword_rules": [
+    {
+      "match_any": ["grüß", "verabschied", "abschiedsgruß"],
+      "speech_acts": [
+        "jemanden begrüßen / zurückgrüßen",
+        "sich verabschieden"
+      ],
+      "example_bank": [
+        { "text": "Guten Tag.", "source": "seed" },
+        { "text": "Auf Wiedersehen.", "source": "seed" }
+      ]
+    },
+    {
+      "match_any": ["vorstell", "name", "herkunft", "muttersprache", "heiße", "komme aus"],
+      "wortfeld_targets": ["person"],
+      "speech_acts": [
+        "sich vorstellen",
+        "nach persönlichen Daten fragen / persönliche Daten angeben"
+      ],
+      "example_bank": [
+        { "text": "Ich heiße Marta.", "source": "seed" },
+        { "text": "Ich komme aus Polen.", "source": "seed" }
+      ]
+    },
+    {
+      "match_any": ["wie geht", "befinden"],
+      "grammar_targets": [
+        "Dativ als feste Wendung (Wie geht es dir? Mit dem Bus.)"
+      ],
+      "speech_acts": [
+        "nach dem Befinden fragen / über das Befinden sprechen"
+      ],
+      "example_bank": [
+        { "text": "Wie geht es Ihnen?", "source": "seed" },
+        { "text": "Mir geht es gut.", "source": "seed" }
+      ]
+    },
+    {
+      "match_any": ["hobby", "gern", "liebst", "musik", "mag", "vorlieben", "abneigungen"],
+      "wortfeld_targets": ["freizeit", "restaurant"],
+      "speech_acts": [
+        "etwas positiv bewerten (toll! super! schön!)",
+        "etwas negativ bewerten"
+      ],
+      "example_bank": [
+        { "text": "Ich höre gern Musik.", "source": "seed" },
+        { "text": "Ich mag Pizza, aber ich mag keinen Fisch.", "source": "seed" }
+      ]
+    },
+    {
+      "match_any": ["bitten", "pass", "brot", "stift", "papier", "geben"],
+      "grammar_targets": [
+        "Imperativ (Kommen Sie! Komm! Geh!)",
+        "Konjugation Präsens: Modalverben können, möchten, müssen, dürfen"
+      ],
+      "wortfeld_targets": ["person", "lebensmittel"],
+      "speech_acts": [
+        "um etwas bitten (Können Sie...?)",
+        "sich bedanken / auf Dank reagieren"
+      ],
+      "example_bank": [
+        { "text": "Können Sie mir bitte den Pass geben?", "source": "seed" },
+        { "text": "Kann ich bitte das Brot haben?", "source": "seed" }
+      ]
+    },
+    {
+      "match_any": ["telefon", "nummer", "uhrzeit", "preis", "zahlen", "erreichen"],
+      "wortfeld_targets": ["zahlen", "zeit", "person"],
+      "speech_acts": [
+        "nach der Uhrzeit fragen / die Uhrzeit angeben",
+        "nach dem Preis fragen / den Preis angeben",
+        "Mengen angeben"
+      ],
+      "example_bank": [
+        { "text": "Meine Telefonnummer ist null eins sieben ...", "source": "seed" },
+        { "text": "Wie viel kostet das?", "source": "seed" }
+      ]
+    },
+    {
+      "match_any": ["weg", "bahnhof", "geradeaus", "links", "rechts", "richtung"],
+      "grammar_targets": [
+        "Lokale: in, aus, nach, zu, bei, an, auf, von, bis",
+        "W-Frage (Wo wohnen Sie? Was machen Sie? Wie heißen Sie?)"
+      ],
+      "wortfeld_targets": ["verkehr"],
+      "speech_acts": [
+        "nach dem Weg fragen / einen Weg beschreiben"
+      ],
+      "example_bank": [
+        { "text": "Gehen Sie geradeaus und dann links.", "source": "seed" },
+        { "text": "Wo ist der Bahnhof?", "source": "seed" }
+      ]
+    },
+    {
+      "match_any": ["restaurant", "café", "essen", "frühstück", "mittagessen", "bestellen", "rechnung"],
+      "grammar_targets": [
+        "Konjugation Präsens: Modalverben können, möchten, müssen, dürfen",
+        "Nominativ und Akkusativ"
+      ],
+      "wortfeld_targets": ["restaurant", "lebensmittel", "getränke"],
+      "speech_acts": [
+        "um etwas bitten (Können Sie...?)",
+        "etwas positiv bewerten (toll! super! schön!)"
+      ],
+      "example_bank": [
+        { "text": "Ich möchte einen Kaffee und ein Brot.", "source": "seed" },
+        { "text": "Die Rechnung, bitte.", "source": "seed" }
+      ]
+    },
+    {
+      "match_any": ["hotel", "rezeption", "zimmer", "unterkunft", "informationstafel", "breakfast", "checkout"],
+      "grammar_targets": [
+        "Nominativ und Akkusativ",
+        "Temporale: am, um, von...bis, im"
+      ],
+      "wortfeld_targets": ["wohnen", "zeit", "verkehr"],
+      "speech_acts": [
+        "nachfragen (Was bedeutet...?)",
+        "einen einfachen Hotel-Begriff übersetzen/erklären (Das bedeutet ...)",
+        "Verständnis sichern (Verstehen Sie? / Ist das klar?)"
+      ],
+      "example_bank": [
+        { "text": "Was bedeutet breakfast? Das bedeutet Frühstück.", "source": "seed" },
+        { "text": "Check-out bis elf Uhr. Das bedeutet: Zimmer bis elf Uhr verlassen.", "source": "seed" },
+        { "text": "Verstehen Sie? Ist das klar?", "source": "seed" }
+      ]
+    },
+    {
+      "match_any": ["notiz", "e-mail", "schreiben", "brief", "danken"],
+      "grammar_targets": [
+        "Aussagesatz: Subjekt-Verb-Objekt (Ich trinke Kaffee.)",
+        "Konjugation Präsens: regelmäßige Verben (ich mache, du machst, er macht...)"
+      ],
+      "speech_acts": [
+        "sich bedanken / auf Dank reagieren"
+      ],
+      "example_bank": [
+        { "text": "Danke für die Blumen.", "source": "seed" },
+        { "text": "Viele Grüße", "source": "seed" }
+      ]
+    },
+    {
+      "match_any": ["buchstab", "adresse"],
+      "wortfeld_targets": ["person"],
+      "speech_acts": [
+        "buchstabieren / um Buchstabieren bitten"
+      ],
+      "example_bank": [
+        { "text": "Mein Name ist M-A-R-T-A.", "source": "seed" }
+      ]
+    },
+    {
+      "match_any": ["lesen", "schild", "anzeige", "tafel", "fahrplan"],
+      "wortfeld_targets": ["verkehr", "zeit"],
+      "speech_acts": [
+        "signalisieren, dass man etwas (nicht) verstanden hat"
+      ],
+      "example_bank": [
+        { "text": "Der Zug fährt um acht Uhr.", "source": "seed" },
+        { "text": "Was bedeutet Abfahrt?", "source": "seed" }
+      ]
+    }
+  ],
+  "manual_overrides": {
+    "K176": {
+      "grammar_targets": [
+        "Temporale: bis, von...bis",
+        "Lokale Chunks: im Hotel, auf der Tafel, hier, dort, links, rechts"
+      ],
+      "wortfeld_targets": ["wohnen", "zeit", "verkehr"],
+      "speech_acts": [
+        "nachfragen (Was bedeutet [Wort]?)",
+        "einen einfachen Begriff übersetzen/erklären (Das bedeutet ...)",
+        "Verständnis sichern (Verstehen Sie? / Ist das klar?)",
+        "signalisieren, dass man etwas (nicht) verstanden hat",
+        "nachfragen (Was bedeutet...?)"
+      ],
+      "example_bank": [
+        { "text": "Was bedeutet breakfast? Das bedeutet Frühstück.", "source": "seed" },
+        { "text": "Frühstück ist von sieben bis zehn Uhr.", "source": "seed" },
+        { "text": "Check-out bis elf Uhr. Das bedeutet: Zimmer bis elf Uhr verlassen.", "source": "seed" },
+        { "text": "Verstehen Sie? Ist das klar?", "source": "seed" }
+      ]
+    }
+  }
+}

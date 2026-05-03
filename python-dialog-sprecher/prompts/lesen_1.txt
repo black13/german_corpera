@@ -1,0 +1,32 @@
+You are a telc Deutsch A1 exam author. Generate Lesen Teil 1 practice questions.
+
+## Target can-do descriptions (Kannbeschreibungen)
+  K100: Kann Wörter und Ausdrücke in öffentlichen Aufschriften, denen man im Alltag oft begegnet, verstehen, besonders wenn sie ...
+  K101: Kann wichtige Orientierungsschilder auf der Straße (z. B. „Bahnhof“, „Parkplatz“) verstehen....
+  K102: Kann in einem Kaufhaus einzelne Angaben auf den Informationstafeln verstehen (z. B. „Sportartikel“, „Lebensmittel“, „Com...
+  K103: Kann an öffentlichen Orten Schilder wie „Rauchen verboten“ verstehen....
+  K111: Kann eine E-Mail, die zu einem Treffen einlädt, verstehen....
+  K112: Kann elementare Befehle eines Computerprogramms verstehen....
+  K113: Kann als Benutzer eines Computers Wörter wie „speichern“, „löschen“, „öffnen“, „schließen“ verstehen....
+  K114: Kann im Internetcafé ein E-Mail-Programm benutzen und dabei Angaben wie „Nachricht neu“, „Senden“, „Empfangen“ verstehen...
+  K115: Kann als Benutzerin eines Sprachlernprogramms auf CD-ROM verstehen, wie sie eine Übung ausdrucken kann....
+
+## Short texts (notes, emails, signs). Richtig/Falsch. Two short texts, 5 questions total.
+
+## Grammar & Vocabulary
+Use only A1 grammar and the vocabulary listed below. No words outside this list except proper names.
+
+Grammar: basic present tense, modal verbs (können, müssen, möchten, dürfen, sollen, wollen), separable verbs, W-Fragen (wer, was, wann, wo, wie, warum), Ja/Nein Fragen, negation with nicht/kein, prepositions (in, aus, nach, zu, bei, an, auf, mit, von, bis), connectors (und, oder, aber, denn).
+
+Vocabulary allowed (A1 word fields):
+person: alt, das Alter, das Geburtsdatum, das Handy, der Ausweis, der Familienname, der Familienstand, der Geburtsort, der Geburtstag, der Name, der Pass, der Vorname
+familie: das Kind, der Bruder, der Großvater, der Mann, der Sohn, der Vater, die Eltern, die Familie, die Frau, die Geschwister
+verkehr: die Straße, links, rechts, geradeaus, die Ecke, der Bahnhof, die Haltestelle, der Bus, die Bahn, der Zug
+zeit: die Uhr, die Uhrzeit, die Stunde, die Minute, der Tag, die Woche, der Monat, das Jahr, Montag, Dienstag
+einkaufen: kaufen, einkaufen, kosten, der Preis, bezahlen, die Kasse, teuer, billig, günstig, das Angebot
+wohnen: die Wohnung, das Haus, das Apartment, das Zimmer, die Küche, das Bad, das Schlafzimmer, das Wohnzimmer
+zahlen: eins, zwei, drei, vier, fünf, sechs, sieben, acht, neun, zehn, elf, zwölf, zwanzig, hundert, Euro, Cent
+restaurant: das Restaurant, das Café, das Lokal, bestellen, die Karte, die Speisekarte, die Rechnung, das Trinkgeld
+freizeit: die Freizeit, das Hobby, Sport treiben, schwimmen, der Fußball, lesen, das Buch, die Zeitung
+
+Generate 5 Lesen Teil 1 tasks now.

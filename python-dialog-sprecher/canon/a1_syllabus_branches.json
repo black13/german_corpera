@@ -1,0 +1,125 @@
+{
+  "_meta": {
+    "purpose": "Draft A1 syllabus branches that connect global KB relationships, place systems, word clusters, and grammar tools. These are planning scaffolds, not finished curriculum and not replacement Kannbeschreibungen.",
+    "use_in_prompt": "When a branch is relevant, the teacher may mention it as a course-map idea in simple German, then immediately return to the concrete KB scene.",
+    "do_not": [
+      "Do not lecture on the syllabus.",
+      "Do not replace the current Kannbeschreibung with the branch.",
+      "Do not claim the learner must know the KB ids."
+    ]
+  },
+  "branches": [
+    {
+      "id": "a1_speaking_operating_system",
+      "name": "A1 speaking operating system",
+      "relationship_ids": ["a1_conversation_support", "oral_production_frame"],
+      "scope_categories": ["Interaktion mündlich", "Produktion mündlich", "Sprachmittlung mündlich"],
+      "summary": "A1 speech uses short chunks, pauses, repetition, repair, and simple connectors.",
+      "teacher_language": "In unserem Kursplan ist das A1-Sprechen: kurze Sätze, Pausen, noch einmal fragen. Das ist erlaubt.",
+      "fruit_clusters": [
+        {
+          "id": "repair_phrases",
+          "words": ["Wie bitte?", "Noch einmal, bitte.", "Langsam, bitte.", "Ich weiß nicht.", "Was bedeutet ...?"],
+          "grammar_tools": ["W-Frage", "Bitte-Formel", "kurze vorgefertigte Äußerung"]
+        },
+        {
+          "id": "simple_connectors",
+          "words": ["und", "oder", "und dann"],
+          "grammar_tools": ["Wörter oder Wortgruppen verbinden"]
+        }
+      ]
+    },
+    {
+      "id": "social_entry_exit",
+      "name": "Social entry and exit moves",
+      "relationship_ids": ["social_contact_operators"],
+      "scope_categories": ["Interaktion mündlich", "Sprachmittlung mündlich"],
+      "summary": "Greetings, introductions, well-being, thanks, and small requests open or close a scene.",
+      "teacher_language": "Das ist unser Anfang und Ende im Gespräch: grüßen, fragen, danken. Danach kommt die Aufgabe.",
+      "fruit_clusters": [
+        {
+          "id": "contact_formulas",
+          "words": ["Guten Tag.", "Hallo.", "Auf Wiedersehen.", "Danke.", "Bitte."],
+          "grammar_tools": ["feste Formeln"]
+        },
+        {
+          "id": "wellbeing_preferences",
+          "words": ["Wie geht es Ihnen?", "Mir geht es gut.", "Ich mag ...", "Ich mag nicht ..."],
+          "grammar_tools": ["Dativ in fester Wendung", "Aussagesatz"]
+        }
+      ]
+    },
+    {
+      "id": "information_currency",
+      "name": "Information currency",
+      "relationship_ids": ["numbers_time_exchange_currency"],
+      "wortfeld_targets": ["zahlen", "zeit"],
+      "summary": "Numbers, times, dates, prices, places, and quantities travel across many scenes.",
+      "teacher_language": "Heute suchen wir eine kleine Information: Zeit, Preis, Ort oder Zahl.",
+      "fruit_clusters": [
+        {
+          "id": "time_price_place",
+          "words": ["um acht Uhr", "am Montag", "von sieben bis zehn", "bis elf Uhr", "Euro", "Raum 2"],
+          "grammar_tools": ["um", "am", "von...bis", "bis", "Zahlen"]
+        }
+      ]
+    },
+    {
+      "id": "text_list_to_message",
+      "name": "Text/list to message",
+      "relationship_ids": ["text_list_reading"],
+      "bridge_to_kann_ids": ["K163", "K176"],
+      "match_any": ["text", "liste", "listenartig", "schild", "schilder", "schildern", "aufschrift", "tafel", "informationstafel", "internationalismen", "visuelle"],
+      "summary": "Read one small visible item, find one useful fact, and pass it to another person.",
+      "teacher_language": "Im Kursplan ist das: ein kurzer Text, eine wichtige Information, dann sagen wir es einer Person.",
+      "fruit_clusters": [
+        {
+          "id": "visible_text_items",
+          "words": ["Schild", "Tafel", "Liste", "Programm", "Aushang", "Einladung", "Prospekt"],
+          "grammar_tools": ["Das steht da.", "Das bedeutet ..."]
+        },
+        {
+          "id": "fact_types",
+          "words": ["Zeit", "Ort", "Preis", "Name", "Zimmer", "Frühstück", "geschlossen", "geöffnet"],
+          "grammar_tools": ["ist", "kostet", "beginnt", "von...bis", "im/auf"]
+        }
+      ]
+    },
+    {
+      "id": "micro_writing_exchange",
+      "name": "Micro-writing exchange",
+      "relationship_ids": ["micro_writing"],
+      "scope_categories": ["Interaktion schriftlich", "Produktion schriftlich"],
+      "summary": "A note, form field, chat line, or short message does one small job.",
+      "teacher_language": "Heute schreiben wir nur eine kleine Sache: eine Notiz, ein Feld oder einen Satz.",
+      "fruit_clusters": [
+        {
+          "id": "small_written_forms",
+          "words": ["Name", "Adresse", "Telefonnummer", "Termin", "Viele Grüße", "Danke"],
+          "grammar_tools": ["Aussagesatz", "Stichpunkte", "und/oder/und dann"]
+        }
+      ]
+    },
+    {
+      "id": "service_place_systems",
+      "name": "Service place systems",
+      "relationship_ids": [],
+      "wortfeld_targets": ["wohnen", "restaurant", "einkaufen", "verkehr"],
+      "match_any": ["hotel", "restaurant", "geschäft", "kaufhaus", "bahnhof", "rezeption", "informationstafel"],
+      "summary": "Places like hotel, restaurant, shop, course office, workplace, and transport carry roles, objects, and typical actions.",
+      "teacher_language": "Das ist eine Szene mit Rollen: Gast, Mitarbeiterin, Kunde oder Tourist. Wir benutzen nur die Wörter, die die Szene braucht.",
+      "fruit_clusters": [
+        {
+          "id": "hotel_words",
+          "words": ["Hotel", "Rezeption", "Zimmer", "Frühstück", "Check-out", "Informationstafel"],
+          "grammar_tools": ["im Hotel", "auf der Tafel", "Das bedeutet ...", "bis", "von...bis"]
+        },
+        {
+          "id": "shop_restaurant_transport_words",
+          "words": ["Preis", "Karte", "Rechnung", "Speisekarte", "Bahnhof", "Parkplatz"],
+          "grammar_tools": ["Wie viel kostet ...?", "mit/ohne", "links/rechts"]
+        }
+      ]
+    }
+  ]
+}

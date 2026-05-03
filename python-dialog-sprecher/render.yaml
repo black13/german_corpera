@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: cefr-practice
+    runtime: python
+    rootDir: python-dialog-sprecher
+    buildCommand: pip install -r requirements.txt
+    startCommand: python3 -u runner.py --serve
+    healthCheckPath: /healthz
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: DEEPSEEK_API_KEY
+        sync: false
+      - key: HOST
+        value: "0.0.0.0"
+      - key: PYTHON_VERSION
+        value: "3.11.9"

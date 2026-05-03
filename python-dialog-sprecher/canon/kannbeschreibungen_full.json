@@ -1,0 +1,1103 @@
+{
+  "source": "Profile Deutsch A1, Section 8.1",
+  "total_count": 176,
+  "categories": [
+    "Interaktion mündlich",
+    "Rezeption mündlich",
+    "Produktion schriftlich",
+    "Interaktion schriftlich",
+    "Rezeption schriftlich",
+    "Produktion mündlich",
+    "Sprachmittlung mündlich"
+  ],
+  "kannbeschreibungen": [
+    {
+      "id": "K001",
+      "kann": "Kann auf einfache Art kommunizieren, wenn der Partner langsam und klar spricht, zu langsameren Wiederholungen und Umformulierungen bereit ist und jederzeit beim Formulieren hilft.",
+      "type": "global",
+      "category": "Interaktion mündlich",
+      "level": "global"
+    },
+    {
+      "id": "K002",
+      "kann": "Kann mit wenigen, einfachen und auswendig gelernten Ausdrücken und Sätzen vertraute Situationen bewältigen, die ganz alltägliche und konkrete Bedürfnisse betreffen, wobei es zu Missverständnissen kommen kann.",
+      "type": "global",
+      "category": "Interaktion mündlich",
+      "level": "global"
+    },
+    {
+      "id": "K003",
+      "kann": "Kann in sehr vertrauten Situationen einfache Wörter, alltägliche Ausdrücke und sehr einfache Strukturen anwenden, um auf direkt an ihn/sie gerichtete Fragen zu reagieren, und kann selbst sehr einfache Fragen stellen.",
+      "type": "global",
+      "category": "Interaktion mündlich",
+      "level": "global"
+    },
+    {
+      "id": "K004",
+      "kann": "Kann einfache Äußerungen im Allgemeinen so klar aussprechen, dass sie bei genauem Zuhören verstanden werden können, auch wenn ein deutlich erkennbarer fremder Akzent hörbar und manchmal klärendes Nachfragen durch den Kommunikationspartner nötig ist.",
+      "type": "global",
+      "category": "Interaktion mündlich",
+      "level": "global"
+    },
+    {
+      "id": "K005",
+      "kann": "Kann mit kurzen, unverbundenen und meist vorgefertigten Äußerungen kommunizieren, wobei er/sie viele Pausen macht, um Begriffe zu suchen oder schwierigere Wörter zu artikulieren.",
+      "type": "global",
+      "category": "Interaktion mündlich",
+      "level": "global"
+    },
+    {
+      "id": "K006",
+      "kann": "Kann Äußerungen von Gesprächspartnern aufgrund der Intonation meist als Aussagen, Fragen oder Aufforderungen interpretieren.",
+      "type": "global",
+      "category": "Interaktion mündlich",
+      "level": "global"
+    },
+    {
+      "id": "K007",
+      "kann": "Kann in seinen/ihren Äußerungen die Intonation so einsetzen, dass diese meist als Aussagen, Fragen oder Aufforderungen erkannt werden können.",
+      "type": "global",
+      "category": "Interaktion mündlich",
+      "level": "global"
+    },
+    {
+      "id": "K008",
+      "kann": "Kann buchstabierte Wörter, im Besonderen Namen oder Adressen, verstehen.",
+      "type": "global",
+      "category": "Interaktion mündlich",
+      "level": "global"
+    },
+    {
+      "id": "K009",
+      "kann": "Kann einfache Kontakte aufbauen und erhalten, indem er/sie die einfachsten Formen von Grüßen, Verabschiedungen und Höflichkeitsformeln verstehen und anwenden kann.",
+      "type": "global",
+      "category": "Interaktion mündlich",
+      "level": "global"
+    },
+    {
+      "id": "K010",
+      "kann": "Kann einfache Begrüßungen und Verabschiedungen verstehen und diese erwidern.",
+      "category": "Interaktion mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K011",
+      "kann": "Kann grüßen, wenn sie zu einer Gruppe von Bekannten oder Freunden dazustößt.",
+      "category": "Interaktion mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K012",
+      "kann": "Kann bei Arbeitsschluss den Abschiedsgruß einer Kollegin verstehen und mit einer entsprechenden Verabschiedung darauf reagieren.",
+      "category": "Interaktion mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K013",
+      "kann": "Kann sich nach einem offiziellen Termin auf einem Amt verabschieden.",
+      "category": "Interaktion mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K014",
+      "kann": "Kann sich selbst und andere vorstellen und reagieren, wenn er/sie vorgestellt wird.",
+      "category": "Interaktion mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K015",
+      "kann": "Kann in einer Kursgruppe bei der Vorstellungsrunde mit Name, Herkunft, Beruf über sich Auskunft geben.",
+      "category": "Interaktion mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K016",
+      "kann": "Kann verstehen, wenn ihr am Arbeitsplatz eine Kollegin vorgestellt wird, und auf die Vorstellung reagieren.",
+      "category": "Interaktion mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K017",
+      "kann": "Kann entsprechend reagieren, wenn sie neu zu einer Gruppe hinzukommt und dieser vorgestellt wird.",
+      "category": "Interaktion mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K018",
+      "kann": "Kann nach dem Befinden fragen und auf Informationen dazu reagieren bzw. Fragen danach beantworten.",
+      "category": "Interaktion mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K019",
+      "kann": "Kann auf die Frage des Chefs „Wie geht’s Ihnen?“ antworten.",
+      "category": "Interaktion mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K020",
+      "kann": "Kann sich bei einer Freundin erkundigen, wie es ihr geht, und reagieren, wenn er selbst gefragt wird.",
+      "category": "Interaktion mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K021",
+      "kann": "Kann beim Zusammentreffen mit den Kolleginnen am Kursort fragen, wie es ihnen geht, und darauf antworten.",
+      "category": "Interaktion mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K022",
+      "kann": "Kann mit einfachen Ausdrücken über Vorlieben und Abneigungen kommunizieren.",
+      "category": "Interaktion mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K023",
+      "kann": "Kann einer Bekannten sagen, was ihr Hobby ist, und sie auch fragen, was sie gern macht.",
+      "category": "Interaktion mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K024",
+      "kann": "Kann bei einem Treffen mit Kolleginnen mitteilen, welche Musik sie am liebsten hört und welche sie nicht mag.",
+      "category": "Interaktion mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K025",
+      "kann": "Kann seine Vorlieben beim Essen nennen, aber auch, was er nicht gern mag.",
+      "category": "Interaktion mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K026",
+      "kann": "Kann andere um alltägliche Dinge bitten, verstehen, wenn Dinge verlangt werden, und sich bedanken.",
+      "category": "Interaktion mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K027",
+      "kann": "Kann eine Kollegin um einen Stift oder ein Blatt Papier bitten und sich dafür bedanken.",
+      "category": "Interaktion mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K028",
+      "kann": "Kann an der Rezeption verstehen, wenn sie um den Pass gebeten wird.",
+      "category": "Interaktion mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K029",
+      "kann": "Kann beim Essen um das Brot bitten oder das Brot weitergeben.",
+      "category": "Interaktion mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K030",
+      "kann": "Kann auf einfache, direkt an ihn/sie gerichtete Fragen mit einfachen Antworten reagieren.",
+      "category": "Interaktion mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K031",
+      "kann": "Kann einer Bekannten, die nachfragt, in welcher Firma er arbeitet, antworten.",
+      "category": "Interaktion mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K032",
+      "kann": "Kann reagieren, wenn sie in einer Cafeteria nach ihrer Herkunft und Muttersprache gefragt wird.",
+      "category": "Interaktion mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K033",
+      "kann": "Kann einer Kurskollegin sagen, was sie nach dem Kurs macht.",
+      "category": "Interaktion mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K034",
+      "kann": "Kann in alltäglichen Situationen elementare Angaben, die auf Zahlen basieren, verstehen und machen.",
+      "category": "Interaktion mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K035",
+      "kann": "Kann einfache Einkäufe machen, wenn es möglich ist, durch Zeigen und Gesten auf die gewünschten Waren hinzuweisen.",
+      "category": "Interaktion mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K036",
+      "kann": "Kann im Kursbüro die Telefonnummer angeben, unter der sie am Abend zu erreichen ist.",
+      "category": "Interaktion mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K037",
+      "kann": "Kann eine Absprache über einen Termin verstehen und weitergeben (z. B. „Besprechung am Freitag um 10 Uhr“).",
+      "category": "Interaktion mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K038",
+      "kann": "Kann in alltäglichen Situationen bei Unklarheiten auch mit Hilfe von Gesten um Wiederholung bitten.",
+      "category": "Interaktion mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K039",
+      "kann": "Kann eine Kollegin bitten, die Wegbeschreibung zum Schwimmbad zu wiederholen.",
+      "category": "Interaktion mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K040",
+      "kann": "Kann den Kursleiter bitten, dass er ihm zeigt, wie die Übung funktioniert, wenn er die Anweisung nicht richtig verstanden hat.",
+      "category": "Interaktion mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K041",
+      "kann": "Kann einen Freund bitten, ihm zu erklären, was ein Wort heißt.",
+      "category": "Interaktion mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K042",
+      "kann": "Kann mit Hilfe des Wörterbuches einfache, meist stichpunktartige schriftliche Mitteilungen zu vertrauten Themen machen, in denen er/sie die wenigen einfachen grammatischen Strukturen und Satzmuster noch nicht sicher anwendet.",
+      "type": "global",
+      "category": "Interaktion schriftlich",
+      "level": "global"
+    },
+    {
+      "id": "K043",
+      "kann": "Kann kurze, einfache Texte schreiben, die zur Aufrechterhaltung von Sozialkontakten beitragen.",
+      "type": "global",
+      "category": "Interaktion schriftlich",
+      "level": "global"
+    },
+    {
+      "id": "K044",
+      "kann": "Kann einfache Formulare und Fragebögen mit Angaben zu seiner/ihrer Person verstehen und ausfüllen.",
+      "category": "Interaktion schriftlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K045",
+      "kann": "Kann bei der Ankunft im Hotel das Anmeldeformular ausfüllen (z. B. Name, Adresse, Staatsbürgerschaft, Daten).",
+      "category": "Interaktion schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K046",
+      "kann": "Kann auf einem Fragebogen Angaben zur Person (z. B. Beruf, Alter, Wohnort, Hobbys) machen.",
+      "category": "Interaktion schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K047",
+      "kann": "Kann bei der Kursanmeldung die bisherige Sprachausbildung (z. B. Kursort, Dauer) in einem Fragebogen angeben.",
+      "category": "Interaktion schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K048",
+      "kann": "Kann persönliche Angaben in schriftlicher Form machen und erfragen.",
+      "category": "Interaktion schriftlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K049",
+      "kann": "Kann für ein Klassenporträt, das die Partnerklasse erhalten soll, mit einfachen Sätzen über sich schreiben und um einen Briefpartner bitten.",
+      "category": "Interaktion schriftlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K050",
+      "kann": "Kann sich einem Partner für eine Lernpartnerschaft mit einfachen Mitteln vorstellen und/oder ihn um Angaben über sich selbst bitten.",
+      "category": "Interaktion schriftlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K051",
+      "kann": "Kann sich beim Einsteigen in einen Chat mit einfachen Mitteln vorstellen und/oder einen Chat-Partner um Informationen bitten.",
+      "category": "Interaktion schriftlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K052",
+      "kann": "Kann ganz einfache Mitteilungen schreiben.",
+      "category": "Interaktion schriftlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K053",
+      "kann": "Kann eine Notiz schreiben, in der sie sich bei einer Kollegin für die Blumen zum Geburtstag bedankt.",
+      "category": "Interaktion schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K054",
+      "kann": "Kann einen Arbeitskollegen mit einer kurzen Notiz um einen Termin bitten.",
+      "category": "Interaktion schriftlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K055",
+      "kann": "Kann in einer einfachen schriftlichen Notiz der Kursleiterin mitteilen, dass er in der nächsten Woche nicht da ist.",
+      "category": "Interaktion schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K056",
+      "kann": "Kann einfache Postkarten oder E-Mails schreiben.",
+      "category": "Interaktion schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K057",
+      "kann": "Kann einer Freundin eine Glückwunschkarte (z. B. zum Geburtstag) schreiben.",
+      "category": "Interaktion schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K058",
+      "kann": "Kann eine kurze, einfache Postkarte mit Feriengrüßen schreiben.",
+      "category": "Interaktion schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K059",
+      "kann": "Kann einem Freund eine kurze E-Mail darüber schreiben, was er gerade macht.",
+      "category": "Interaktion schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K060",
+      "kann": "Kann vertraute alltägliche Ausdrücke und einfache Sätze verstehen, die konkrete Bedürfnisse des täglichen Lebens betreffen, wenn sie deutlich und langsam in Standardsprache gesprochen und wichtige Sachen wiederholt werden.",
+      "type": "global",
+      "category": "Rezeption mündlich",
+      "level": "global"
+    },
+    {
+      "id": "K061",
+      "kann": "Kann ihm/ihr bekannte Wörter und sehr einfache Strukturen verstehen, die ihn/sie selbst, die Familie und Dinge aus der unmittelbaren Umgebung betreffen, wenn langsam und klar gesprochen wird.",
+      "type": "global",
+      "category": "Rezeption mündlich",
+      "level": "global"
+    },
+    {
+      "id": "K062",
+      "kann": "Kann in langsam und deutlich gesprochenen kurzen Texten, die einen erheblichen Anteil an Internationalismen enthalten und Pausen zum Erfassen der Bedeutung bieten, ihm vertraute Themen verstehen.",
+      "type": "global",
+      "category": "Rezeption mündlich",
+      "level": "global"
+    },
+    {
+      "id": "K063",
+      "kann": "Kann Namen, Zahlen, Preise und Zeitangaben verstehen, wenn deutlich gesprochen wird.",
+      "type": "global",
+      "category": "Rezeption mündlich",
+      "level": "global"
+    },
+    {
+      "id": "K064",
+      "kann": "Kann im vertrauten Bereich einfache Informationen, die Zeit- und Ortsangaben enthalten, verstehen.",
+      "category": "Rezeption mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K065",
+      "kann": "Kann eine einfache Terminmitteilung von Freunden oder Kollegen verstehen (z. B. „Freitag, 10.00 Uhr, Treffen“).",
+      "category": "Rezeption mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K066",
+      "kann": "Kann eine einfache Mitteilung der Sekretärin über Zeiten, Termine und Räume, in denen ein Kurs abgehalten wird, verstehen.",
+      "category": "Rezeption mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K067",
+      "kann": "Kann bei einer Veranstaltung eine Ansage für das Publikum über die genaue Zeit des Beginns verstehen.",
+      "category": "Rezeption mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K068",
+      "kann": "Kann in mündlichen Texten häufig gebrauchte Formeln (z. B. für Begrüßungen, Verabschiedungen oder Entschuldigungen) verstehen.",
+      "category": "Rezeption mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K069",
+      "kann": "Kann im Fernsehen die Begrüßung der Zuschauer am Anfang der Sendung verstehen.",
+      "category": "Rezeption mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K070",
+      "kann": "Kann am Ende eines Radiointerviews die Dank- und Abschiedsformeln verstehen.",
+      "category": "Rezeption mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K071",
+      "kann": "Kann verstehen, wenn die Gastgeberin ihre Gäste begrüßt.",
+      "category": "Rezeption mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K072",
+      "kann": "Kann in einfachen kurzen Texten, die langsam und deutlich gesprochen werden, internationale Wörter, Namen und Zahlen verstehen.",
+      "category": "Rezeption mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K073",
+      "kann": "Kann in einem Sprachlernprogramm verstehen, zu welcher Übung im Begleitheft ein Hörtext gehört und was er damit machen soll.",
+      "category": "Rezeption mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K074",
+      "kann": "Kann am Flughafen einen kurzen Aufruf verstehen (z. B. „Herr Bauer zur Information bitte, Herr Bauer!“).",
+      "category": "Rezeption mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K075",
+      "kann": "Kann die Durchsage „Das Auto mit dem Kennzeichen [eigene Nummer] versperrt eine Einfahrt!“ verstehen.",
+      "category": "Rezeption mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K076",
+      "kann": "Kann in vertrauten Situationen kurze, einfache und klare Anweisungen verstehen.",
+      "category": "Rezeption mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K077",
+      "kann": "Kann die Anweisung des Kursleiters „Schlagen Sie das Buch auf S. 14 auf“ verstehen, besonders wenn diese gestisch oder visuell unterstützt wird.",
+      "category": "Rezeption mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K078",
+      "kann": "Kann bei einer Computerschulung einfache Anweisungen verstehen (z. B. „Drücken Sie jetzt auf Enter“).",
+      "category": "Rezeption mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K079",
+      "kann": "Kann eine Kollegin verstehen, die ihm mit einfachen Worten den Weg zu einem vereinbarten Treffpunkt erklärt.",
+      "category": "Rezeption mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K080",
+      "kann": "Kann in Nachrichten, vor allem in Fernsehnachrichten, die Namen, Zeit- und Ortsangaben und einen erheblichen Anteil an Internationalismen enthalten, das Thema identifizieren.",
+      "category": "Rezeption mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K081",
+      "kann": "Kann als Zuschauer von Fernsehnachrichten die Themen der verschiedenen Beiträge identifizieren.",
+      "category": "Rezeption mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K082",
+      "kann": "Kann in einem Bericht zu einem vertrauten Thema in groben Zügen verstehen, welche Information neu ist (z. B. „Putin wurde bei den Wahlen in Russland zum Präsidenten gewählt“).",
+      "category": "Rezeption mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K083",
+      "kann": "Kann in Sportberichten die Ergebnisse seiner Lieblingssportart verstehen (z. B. „Schalke 04, Borussia Dortmund, 4:1“).",
+      "category": "Rezeption mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K084",
+      "kann": "Kann einzelne Wörter und sehr einfache Sätze in einfachen und übersichtlichen alltäglichen Texten verstehen, die konkrete Bereiche und Bedürfnisse des täglichen Lebens betreffen.",
+      "type": "global",
+      "category": "Rezeption schriftlich",
+      "level": "global"
+    },
+    {
+      "id": "K085",
+      "kann": "Kann in informierenden Texten, die viele Internationalismen enthalten und/oder illustriert sind, das Thema identifizieren und einzelne Informationen verstehen.",
+      "type": "global",
+      "category": "Rezeption schriftlich",
+      "level": "global"
+    },
+    {
+      "id": "K086",
+      "kann": "Kann Teile von kurzen, einfachen Texten verstehen, wenn er/sie Gelegenheit zu wiederholtem Lesen hat.",
+      "type": "global",
+      "category": "Rezeption schriftlich",
+      "level": "global"
+    },
+    {
+      "id": "K087",
+      "kann": "Kann Namen, Zahlen, Preise und Zeitangaben sowie einzelne Wörter und sehr einfache Ausdrücke verstehen, wenn der Kontext vertraut ist.",
+      "type": "global",
+      "category": "Rezeption schriftlich",
+      "level": "global"
+    },
+    {
+      "id": "K088",
+      "kann": "Kann in knappen, einfachen Texten in geläufigsten Alltagssituationen Namen, Zahlen, Wörter und sehr einfache Strukturen verstehen.",
+      "category": "Rezeption schriftlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K089",
+      "kann": "Kann aus dem Informationsblatt für die Hausbewohner entnehmen, wann und wo eine Versammlung stattfindet.",
+      "category": "Rezeption schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K090",
+      "kann": "Kann am Arbeitsplatz einen Aushang über den Betriebsausflug (z. B. Termin, Abfahrtszeiten, Zielort) verstehen.",
+      "category": "Rezeption schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K091",
+      "kann": "Kann beim Durchblättern von Kursprogrammen Termine, Anzahl und Dauer der Kurseinheiten und den Preis der Kurse verstehen.",
+      "category": "Rezeption schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K092",
+      "kann": "Kann den Inhalt von sehr einfachen Informationstexten und listenartigen Darstellungen zu vertrauten Themen erfassen, besonders wenn diese viele internationale Wörter und/oder visuelle Elemente enthalten.",
+      "category": "Rezeption schriftlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K093",
+      "kann": "Kann in einem Kinoprogramm einen Film für den Abend aussuchen und Ort und Zeitpunkt des Beginns verstehen.",
+      "category": "Rezeption schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K094",
+      "kann": "Kann sich über Produkte, die sie für ihr Hobby braucht, informieren (z. B. über verschiedene Snowboards: Maße, Preis, Qualitätsangaben).",
+      "category": "Rezeption schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K095",
+      "kann": "Kann aus einem Fahrplan Abfahrts- und Ankunftszeiten für ein einfaches Reiseziel entnehmen.",
+      "category": "Rezeption schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K096",
+      "kann": "Kann aus kurzen informierenden Texten Angaben zu Personen und Orten entnehmen.",
+      "category": "Rezeption schriftlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K097",
+      "kann": "Kann in einem Zeitungsartikel Angaben zu Alter, Wohnort und Beschäftigung einer Person verstehen.",
+      "category": "Rezeption schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K098",
+      "kann": "Kann als Fußballfan nach einem Spielabend in der Zeitung die Ergebnisse suchen und verstehen.",
+      "category": "Rezeption schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K099",
+      "kann": "Kann aus dem Inlay einer CD die wichtigsten biografischen Angaben der betreffenden Musikerin entnehmen.",
+      "category": "Rezeption schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K100",
+      "kann": "Kann Wörter und Ausdrücke in öffentlichen Aufschriften, denen man im Alltag oft begegnet, verstehen, besonders wenn sie konventionelle Logos oder Farben enthalten.",
+      "category": "Rezeption schriftlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K101",
+      "kann": "Kann wichtige Orientierungsschilder auf der Straße (z. B. „Bahnhof“, „Parkplatz“) verstehen.",
+      "category": "Rezeption schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K102",
+      "kann": "Kann in einem Kaufhaus einzelne Angaben auf den Informationstafeln verstehen (z. B. „Sportartikel“, „Lebensmittel“, „Computerabteilung“).",
+      "category": "Rezeption schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K103",
+      "kann": "Kann an öffentlichen Orten Schilder wie „Rauchen verboten“ verstehen.",
+      "category": "Rezeption schriftlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K104",
+      "kann": "Kann kurze, einfache schriftliche Anleitungen verstehen, besonders wenn diese illustriert sind.",
+      "category": "Rezeption schriftlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K105",
+      "kann": "Kann kurze, einfache Orientierungshilfen wie „2. Stock rechts, Zimmer 24“ verstehen, besonders wenn diese zusätzlich illustriert sind.",
+      "category": "Rezeption schriftlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K106",
+      "kann": "Kann auf Medikamenten einfache Anweisungen verstehen (z. B. Menge, Zeit der Einnahme).",
+      "category": "Rezeption schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K107",
+      "kann": "Kann die wichtigsten Informationen aus den Sicherheitsvorschriften am Arbeitsplatz verstehen, wenn diese mit Logos illustriert sind.",
+      "category": "Rezeption schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K108",
+      "kann": "Kann in bewusst einfach geschriebenen kurzen Postkarten, E-Mails oder Briefen den Anlass oder die Hauptinformation verstehen.",
+      "category": "Rezeption schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K109",
+      "kann": "Kann Feriengrüße auf einer Postkarte verstehen.",
+      "category": "Rezeption schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K110",
+      "kann": "Kann den Anlass einer Postkarte verstehen (z. B. Feiertag, Gratulation, Jahreswechsel etc.).",
+      "category": "Rezeption schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K111",
+      "kann": "Kann eine E-Mail, die zu einem Treffen einlädt, verstehen.",
+      "category": "Rezeption schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K112",
+      "kann": "Kann elementare Befehle eines Computerprogramms verstehen.",
+      "category": "Rezeption schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K113",
+      "kann": "Kann als Benutzer eines Computers Wörter wie „speichern“, „löschen“, „öffnen“, „schließen“ verstehen.",
+      "category": "Rezeption schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K114",
+      "kann": "Kann im Internetcafé ein E-Mail-Programm benutzen und dabei Angaben wie „Nachricht neu“, „Senden“, „Empfangen“ verstehen.",
+      "category": "Rezeption schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K115",
+      "kann": "Kann als Benutzerin eines Sprachlernprogramms auf CD-ROM verstehen, wie sie eine Übung ausdrucken kann.",
+      "category": "Rezeption schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K116",
+      "kann": "Kann in vertrauten alltäglichen Situationen kurze, unverbundene und meist vorgefertigte Äußerungen machen, mit vielen Pausen, um Begriffe zu suchen, schwierigere Wörter zu artikulieren oder noch einmal neu zu beginnen.",
+      "type": "global",
+      "category": "Produktion mündlich",
+      "level": "global"
+    },
+    {
+      "id": "K117",
+      "kann": "Kann in konkreten, vertrauten Situationen mit einfachen Wörtern, alltäglichen Ausdrücken und sehr einfachen Strukturen wichtige Informationen über sich selbst und die unmittelbare Umgebung geben.",
+      "type": "global",
+      "category": "Produktion mündlich",
+      "level": "global"
+    },
+    {
+      "id": "K118",
+      "kann": "Kann die Buchstaben des Alphabets und ein begrenztes Repertoire an Wörtern und Wendungen so aussprechen, dass er/sie ohne allzu große Anstrengung verstanden wird.",
+      "type": "global",
+      "category": "Produktion mündlich",
+      "level": "global"
+    },
+    {
+      "id": "K119",
+      "kann": "Kann seine/ihre Äußerungen unter Berücksichtigung von Wort- und Satzakzenten und der Sprechmelodie einigermaßen angemessen einsetzen.",
+      "type": "global",
+      "category": "Produktion mündlich",
+      "level": "global"
+    },
+    {
+      "id": "K120",
+      "kann": "Kann Wörter oder Wortgruppen mit einfachen Konnektoren wie „und“, „oder“, „und dann“ verknüpfen.",
+      "type": "global",
+      "category": "Produktion mündlich",
+      "level": "global"
+    },
+    {
+      "id": "K121",
+      "kann": "Kann mit einfachen, meist unverbundenen Ausdrücken sich selbst beschreiben, was er/sie macht und wo er/sie wohnt.",
+      "category": "Produktion mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K122",
+      "kann": "Kann im Sprachkurs sagen, woher sie kommt und wo sie jetzt wohnt.",
+      "category": "Produktion mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K123",
+      "kann": "Kann Kolleginnen sagen, was sie beruflich macht und was ihr liebstes Hobby ist.",
+      "category": "Produktion mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K124",
+      "kann": "Kann einem Kollegen sagen, was sie derzeit an einem normalen Tag macht.",
+      "category": "Produktion mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K125",
+      "kann": "Kann mit einfachen, meist unverbundenen Ausdrücken über sich, andere Personen und die unmittelbare Umgebung sprechen.",
+      "category": "Produktion mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K126",
+      "kann": "Kann mit einfachen Ausdrücken und Sätzen ihren Partner beschreiben.",
+      "category": "Produktion mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K127",
+      "kann": "Kann beschreiben, wie die Firma heißt, in der sie arbeitet, und was sie dort macht.",
+      "category": "Produktion mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K128",
+      "kann": "Kann bei einer Party einem anderen Gast sagen, wie groß die eigene Familie ist.",
+      "category": "Produktion mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K129",
+      "kann": "Kann Zahlen, wichtige Zeit- und Mengenangaben sowie Daten gut verständlich sprechen.",
+      "category": "Produktion mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K130",
+      "kann": "Kann die eigene Telefonnummer so deutlich sprechen, dass sie mitgeschrieben werden kann.",
+      "category": "Produktion mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K131",
+      "kann": "Kann auf einem Amt wichtige Angaben wie Geburtsdatum oder Adresse verständlich sagen.",
+      "category": "Produktion mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K132",
+      "kann": "Kann in einem Geschäft wichtige Größenangaben mit einfachen sprachlichen Mitteln nennen.",
+      "category": "Produktion mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K133",
+      "kann": "Kann kurze, einfache Angaben zur Person und zu ganz alltäglichen und vertrauten Dingen schreiben.",
+      "type": "global",
+      "category": "Produktion schriftlich",
+      "level": "global"
+    },
+    {
+      "id": "K134",
+      "kann": "Kann mit Hilfe eines Wörterbuches zu alltäglichen, vertrauten Themen kurze Aufzeichnungen machen.",
+      "type": "global",
+      "category": "Produktion schriftlich",
+      "level": "global"
+    },
+    {
+      "id": "K135",
+      "kann": "Kann ihm/ihr bekannte einzelne Wörter und häufig gebrauchte Wendungen einigermaßen korrekt schreiben.",
+      "type": "global",
+      "category": "Produktion schriftlich",
+      "level": "global"
+    },
+    {
+      "id": "K136",
+      "kann": "Kann Wörter oder Wortgruppen mit einfachen Konnektoren wie „und“, „oder“, „und dann“ verknüpfen.",
+      "type": "global",
+      "category": "Produktion schriftlich",
+      "level": "global"
+    },
+    {
+      "id": "K137",
+      "kann": "Kann Namen, einzelne Wörter und kurze Wortgruppen aufschreiben.",
+      "category": "Produktion schriftlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K138",
+      "kann": "Kann Autor, Titel und Preis eines Buches, das er für den Kurs besorgen soll, aufschreiben.",
+      "category": "Produktion schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K139",
+      "kann": "Kann in einem Kurs Aufzeichnungen des Lehrers von Tafel, Folie oder Flipchart-Bogen selbst notieren.",
+      "category": "Produktion schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K140",
+      "kann": "Kann den Titel einer CD, die ihm von einem Freund empfohlen wird, aufschreiben.",
+      "category": "Produktion schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K141",
+      "kann": "Kann in sehr vertrauten Bereichen einfache Notizen für sich machen, die Zeit- und Ortsangaben enthalten.",
+      "category": "Produktion schriftlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K142",
+      "kann": "Kann für sich einen Lernplan (mit Wochentagen, Daten, Uhrzeit und Aktivitäten) schreiben.",
+      "category": "Produktion schriftlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K143",
+      "kann": "Kann sich geänderte Kursräume und Terminänderungen für die folgende Kurswoche von einem Aushang notieren.",
+      "category": "Produktion schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K144",
+      "kann": "Kann sich den Termin und die Uhrzeiten für den bevorstehenden Betriebsausflug notieren.",
+      "category": "Produktion schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K145",
+      "kann": "Kann in Stichpunkten Fakten und Daten aufschreiben, die sich auf alltägliche Aufgaben beziehen.",
+      "category": "Produktion schriftlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K146",
+      "kann": "Kann in einfacher Form ihren Reiseplan und ihre Reiseroute notieren.",
+      "category": "Produktion schriftlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K147",
+      "kann": "Kann in einer Wohngemeinschaft den Putzplan (z. B. Tage, Namen, Räumlichkeiten) schreiben.",
+      "category": "Produktion schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K148",
+      "kann": "Kann sich im Betrieb auf Anweisung der Chefin notieren, welche Seiten er wie oft kopieren soll.",
+      "category": "Produktion schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K149",
+      "kann": "Kann einfache persönliche Angaben in geschriebener Form machen.",
+      "category": "Produktion schriftlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K150",
+      "kann": "Kann mit einfachen Sätzen schreiben, wo und wie er wohnt.",
+      "category": "Produktion schriftlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K151",
+      "kann": "Kann über andere Personen schreiben, was diese machen.",
+      "category": "Produktion schriftlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K152",
+      "kann": "Kann für eine Vorstellungsrunde im Kurs wichtige persönliche Angaben aufschreiben.",
+      "category": "Produktion schriftlich",
+      "level": "example"
+    },
+    {
+      "id": "K153",
+      "kann": "Kann vereinzelte bekannte Wörter oder Ausdrücke aus häufig gebrauchten, einfachen und kurzen deutschsprachigen Äußerungen zu vertrauten Themen, die langsam und ganz deutlich in Standardsprache gesprochen werden, anderen Personen in der gemeinsamen Sprache weitergeben.",
+      "type": "global",
+      "category": "Sprachmittlung mündlich",
+      "level": "global"
+    },
+    {
+      "id": "K154",
+      "kann": "Kann Namen, Zahlen, Preisangaben und sehr einfache Informationen aus einfachen schriftlichen deutschen Texten von unmittelbarem Interesse, die illustriert und einfach strukturiert sind oder viele Internationalismen enthalten, anderen Personen in der gemeinsamen Sprache weitergeben.",
+      "type": "global",
+      "category": "Sprachmittlung mündlich",
+      "level": "global"
+    },
+    {
+      "id": "K167",
+      "kann": "Kann aus einer anderen Sprache häufig gebrauchte Ausdrücke und Strukturen (z. B. „Guten Tag!“, „Guten Appetit!“, „Bezahlen, bitte!“) an Deutschsprachige auf Deutsch weitergeben, wobei der Gesprächspartner beim Formulieren helfen kann.",
+      "type": "global",
+      "category": "Sprachmittlung mündlich",
+      "level": "global"
+    },
+    {
+      "id": "K168",
+      "kann": "Kann aus schriftlichen Texten einer anderen Sprache einige wichtige Wörter aus dem Basiswortschatz oder andere Informationen mit Hilfe eines Wörterbuches an Deutschsprachige auf Deutsch weitergeben, wobei aufgrund der Aussprache auch ein klärendes Nachfragen des Partners nötig sein kann.",
+      "type": "global",
+      "category": "Sprachmittlung mündlich",
+      "level": "global"
+    },
+    {
+      "id": "K155",
+      "kann": "Kann aus kurzen deutschsprachigen mündlichen Äußerungen wichtige Informationen, die auf Namen oder Zahlen basieren, anderen Personen in der gemeinsamen Sprache weitergeben.",
+      "category": "Sprachmittlung mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K156",
+      "kann": "Kann einer Bekannten an der Hotelrezeption in Berlin die Auskunft der deutschsprachigen Empfangsdame über die Frühstückszeit in der gemeinsamen Sprache weitergeben.",
+      "category": "Sprachmittlung mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K157",
+      "kann": "Kann beim Einkaufen in Zürich die Information der deutschsprachigen Verkäuferin über den Preis eines Kleides einer Bekannten in der gemeinsamen Sprache weitergeben.",
+      "category": "Sprachmittlung mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K158",
+      "kann": "Kann bei der Einschreibung für einen Deutschkurs im Sekretariat wichtige Informationen zu den Kosten und zum Kursbeginn einem Bekannten in der gemeinsamen Sprache weitergeben.",
+      "category": "Sprachmittlung mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K159",
+      "kann": "Kann aus kurzen deutschsprachigen mündlichen Äußerungen ganz einfache, alltägliche und ihm/ihr vertraute Informationen anderen Personen in der gemeinsamen Sprache weitergeben.",
+      "category": "Sprachmittlung mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K160",
+      "kann": "Kann auf einer Party einer Freundin einfache Fragen der deutschsprachigen Kollegen zu Herkunft, Wohnort und zur Dauer des Aufenthalts in der gemeinsamen Sprache weitergeben.",
+      "category": "Sprachmittlung mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K161",
+      "kann": "Kann in einem Restaurant eine einfache Bemerkung des deutschsprachigen Kellners (z. B. „Mit oder ohne Eis?“) einer Kollegin in der gemeinsamen Sprache weitergeben.",
+      "category": "Sprachmittlung mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K162",
+      "kann": "Kann in einem Geschäft die Frage des deutschsprachigen Verkäufers nach der Zahlungsart (z. B. „Bezahlen Sie mit Karte?“) für einen Kollegen in der gemeinsamen Sprache übersetzen.",
+      "category": "Sprachmittlung mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K163",
+      "kann": "Kann einzelne Informationen aus einem kurzen schriftlichen, oft listenartigen deutschsprachigen Text zu vertrauten Themen anderen Personen in der gemeinsamen Sprache weitergeben, wenn der Text einfachen Basiswortschatz, Internationalismen oder visuelle Elemente enthält.",
+      "category": "Sprachmittlung mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K164",
+      "kann": "Kann einer neu eingezogenen Mitbewohnerin im Studentenwohnheim wichtige Angaben einer deutschsprachigen schriftlichen Einladung zu einem Sommerfest (z. B. Ort, Tag und Uhrzeit) in der gemeinsamen Sprache weitergeben.",
+      "category": "Sprachmittlung mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K165",
+      "kann": "Kann für einen Touristen einzelne einfache Wörter (z. B. Kinder – Eltern – Zug – Restaurant) aus einem deutschsprachigen Reiseprospekt in die gemeinsame Sprache übersetzen.",
+      "category": "Sprachmittlung mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K166",
+      "kann": "Kann einfache Begriffe (z. B. Sonne, Regen) der Wettervorhersage aus einer deutschsprachigen Tageszeitung für Bekannte in die gemeinsame Sprache übersetzen.",
+      "category": "Sprachmittlung mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K169",
+      "kann": "Kann in sehr vertrauten Situationen geläufige mündliche Informationen oder Fragen aus einer anderen Sprache Deutschsprachigen sehr einfach auf Deutsch weitergeben.",
+      "category": "Sprachmittlung mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K170",
+      "kann": "Kann in einem Restaurant helfen, den Getränkewunsch einer Bekannten (z. B. „Un verre d’eau, s’il vous plaît!“) für die deutschsprachige Bedienung auf Deutsch zu übersetzen.",
+      "category": "Sprachmittlung mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K171",
+      "kann": "Kann einem deutschsprachigen Touristen die Wegerklärung eines Polizisten mit sehr einfachen Worten (z. B. „rechts“, „links“) auf Deutsch weitergeben.",
+      "category": "Sprachmittlung mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K172",
+      "kann": "Kann in einem Geschäft einem deutschen Touristen behilflich sein und für ihn auf Deutsch den Preis von Waren nennen.",
+      "category": "Sprachmittlung mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K173",
+      "kann": "Kann einfache anderssprachige Informationen von Schildern und Aufschriften Deutschsprachigen in Einzelwörtern auf Deutsch weitergeben.",
+      "category": "Sprachmittlung mündlich",
+      "level": "detailed"
+    },
+    {
+      "id": "K174",
+      "kann": "Kann die Aufschrift auf dem Schild einer Geschäftstür (z. B. „fermé“) für einen deutschsprachigen Touristen übersetzen.",
+      "category": "Sprachmittlung mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K175",
+      "kann": "Kann in einem Restaurant die Aufschrift (z. B. „caballeros“) auf der Toilettentür für einen deutschsprachigen Touristen übersetzen.",
+      "category": "Sprachmittlung mündlich",
+      "level": "example"
+    },
+    {
+      "id": "K176",
+      "kann": "Kann im Hotel einfache Begriffe auf der Informationstafel (z. B. „breakfast“) für einen deutschsprachigen Gast übersetzen.",
+      "category": "Sprachmittlung mündlich",
+      "level": "example"
+    }
+  ]
+}

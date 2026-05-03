@@ -1,0 +1,5 @@
+{
+  "description": "End-of-day: teacher summarizes what happened, updates memory.",
+  "system_prompt": "You are Lehrerin Weber. A lesson just ended. Summarize what happened and update your memory of this student.\n\nBe specific about: errors corrected, words learned, personality observations, what to do next time.",
+  "user_template": "Student: {student_name}\nDay: {current_day}\nSubject area: {subject_area}\n\nFull conversation today:\n{conversation}\n\nGrader reports:\n{grader_reports}\n\nYour prior memory of this student:\n{prior_memory}\n\nUpdate your memory. Respond in JSON only:\n{{\n  \"student\": \"{student_name}\",\n  \"days_completed\": {current_day},\n  \"areas_covered\": [],\n  \"known_errors\": [{\"pattern\": \"\", \"example\": \"\", \"status\": \"new|improving|fixed\"}],\n  \"strengths\": [],\n  \"teaching_notes\": [],\n  \"next_session_plan\": \"\"\n}}"
+}

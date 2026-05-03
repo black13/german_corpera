@@ -1,0 +1,74 @@
+{
+  "kannbeschreibungen": [
+    {
+      "id": "K01_vorstellen",
+      "kann": "Kann sich und andere mit einfachen Worten vorstellen und einfache Fragen zur Person stellen und beantworten.",
+      "subject_area": "person_vorstellen",
+      "wortfeld": ["der Name", "heißen", "kommen aus", "wohnen in", "die Adresse", "das Alter", "alt", "jung", "der Beruf", "arbeiten", "die Familie", "verheiratet", "ledig", "Ich heiße...", "Mein Name ist...", "Ich komme aus...", "Ich wohne in...", "geboren", "der Geburtsort", "die Telefonnummer"],
+      "sprachhandlungen": ["sich vorstellen", "nach persönlichen Daten fragen", "persönliche Daten angeben"]
+    },
+    {
+      "id": "K02_begruessen",
+      "kann": "Kann einige einfache Grußformeln verwenden und auf Begrüßungen und Verabschiedungen reagieren.",
+      "subject_area": "freizeit_kontakt",
+      "wortfeld": ["Guten Morgen", "Guten Tag", "Guten Abend", "Hallo", "Tschüss", "Auf Wiedersehen", "Wie geht es Ihnen?", "Danke, gut.", "bitte", "danke", "Vielen Dank", "Entschuldigung"],
+      "sprachhandlungen": ["jemanden begrüßen", "sich verabschieden", "nach dem Befinden fragen", "sich bedanken"]
+    },
+    {
+      "id": "K03_einkaufen",
+      "kann": "Kann einfache Einkäufe tätigen, wenn die sprachliche Äußerung durch Zeigen oder andere Gesten unterstützt werden kann.",
+      "subject_area": "alltag_einkaufen",
+      "wortfeld": ["kaufen", "kosten", "der Preis", "bezahlen", "die Kasse", "teuer", "billig", "günstig", "das Angebot", "das Geschäft", "der Laden", "der Supermarkt", "die Bäckerei", "das Brot", "das Brötchen", "die Milch", "der Apfel", "die Banane", "die Kartoffel", "das Gemüse", "der Kaffee", "ein Kilo", "ein Pfund", "Was kostet...?", "Ich möchte...", "Ich hätte gern...", "Haben Sie...?"],
+      "sprachhandlungen": ["nach dem Preis fragen", "den Preis angeben", "etwas bestellen", "Mengen angeben"]
+    },
+    {
+      "id": "K04_zeitangaben",
+      "kann": "Kann Tag, Uhrzeit und Datum erfragen und angeben.",
+      "subject_area": "zeit_termine",
+      "wortfeld": ["die Uhr", "die Uhrzeit", "Wie spät ist es?", "Wann?", "der Tag", "die Woche", "der Monat", "das Jahr", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag", "das Wochenende", "heute", "morgen", "gestern", "jetzt", "um ... Uhr", "halb", "Viertel vor", "Viertel nach", "von ... bis ..."],
+      "sprachhandlungen": ["nach der Uhrzeit fragen", "die Uhrzeit angeben", "einen Termin vereinbaren", "nach dem Datum fragen"]
+    },
+    {
+      "id": "K05_wegbeschreibung",
+      "kann": "Kann nach dem Weg fragen und einfache Wegbeschreibungen verstehen.",
+      "subject_area": "reisen_orientierung",
+      "wortfeld": ["die Straße", "links", "rechts", "geradeaus", "die Ecke", "der Bahnhof", "die Haltestelle", "der Bus", "die Bahn", "der Zug", "das Auto", "das Fahrrad", "zu Fuß", "fahren", "gehen", "einsteigen", "aussteigen", "die Fahrkarte", "Wo ist...?", "Wie komme ich zum/zur...?", "der Flughafen"],
+      "sprachhandlungen": ["nach dem Weg fragen", "einen Weg beschreiben", "nach Verkehrsmitteln fragen"]
+    },
+    {
+      "id": "K06_essen_bestellen",
+      "kann": "Kann in einem Restaurant oder Café einfache Bestellungen aufgeben.",
+      "subject_area": "essen_bestellen",
+      "wortfeld": ["das Restaurant", "das Café", "bestellen", "die Karte", "die Speisekarte", "das Frühstück", "das Mittagessen", "das Abendessen", "die Suppe", "der Salat", "das Hähnchen", "der Kuchen", "das Eis", "die Tasse", "das Glas", "die Flasche", "Ich nehme...", "Zahlen, bitte.", "Guten Appetit!", "die Rechnung", "schmecken"],
+      "sprachhandlungen": ["etwas bestellen", "nach der Rechnung fragen", "Vorlieben ausdrücken"]
+    },
+    {
+      "id": "K07_wohnen",
+      "kann": "Kann mit einfachen Worten die eigene Wohnsituation beschreiben.",
+      "subject_area": "wohnen_beschreiben",
+      "wortfeld": ["die Wohnung", "das Haus", "das Apartment", "das Zimmer", "die Küche", "das Bad", "das Schlafzimmer", "das Wohnzimmer", "der Balkon", "der Garten", "die Miete", "mieten", "wohnen", "der Tisch", "der Stuhl", "das Bett", "der Schrank", "groß", "klein", "neu", "alt", "schön", "Wo wohnen Sie?"],
+      "sprachhandlungen": ["die Wohnung beschreiben", "nach der Wohnsituation fragen", "Möbel benennen"]
+    },
+    {
+      "id": "K10_familie_beruf",
+      "kann": "Kann mit einfachen Sätzen über die eigene Familie und den eigenen Beruf sprechen.",
+      "subject_area": "person_vorstellen",
+      "wortfeld": ["die Familie", "die Eltern", "der Vater", "die Mutter", "der Bruder", "die Schwester", "der Sohn", "die Tochter", "das Kind", "der Mann", "die Frau", "die Großeltern", "der Beruf", "arbeiten", "die Arbeit", "der Lehrer", "der Arzt", "der Student", "Was sind Sie von Beruf?", "Ich arbeite bei/als..."],
+      "sprachhandlungen": ["über die Familie sprechen", "den Beruf angeben", "nach dem Beruf fragen"]
+    },
+    {
+      "id": "K13_zahlen_geld",
+      "kann": "Kann Zahlen, Mengenangaben, Preise und Uhrzeiten verstehen und verwenden.",
+      "subject_area": "alltag_einkaufen",
+      "wortfeld": ["eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn", "elf", "zwölf", "zwanzig", "dreißig", "hundert", "tausend", "der Euro", "der Cent", "Was kostet das?", "die Nummer", "die Telefonnummer", "die Hausnummer"],
+      "sprachhandlungen": ["Zahlen nennen", "nach dem Preis fragen", "Telefonnummern austauschen"]
+    },
+    {
+      "id": "K15_freizeit",
+      "kann": "Kann mit einfachen Ausdrücken über Vorlieben und Freizeitaktivitäten sprechen.",
+      "subject_area": "freizeit_kontakt",
+      "wortfeld": ["die Freizeit", "das Hobby", "Sport treiben", "schwimmen", "der Fußball", "lesen", "das Buch", "der Film", "das Kino", "fernsehen", "das Radio", "die Musik", "kochen", "tanzen", "gern", "nicht gern", "lieber", "Was machst du gern?", "Hast du ein Hobby?"],
+      "sprachhandlungen": ["über Hobbys sprechen", "Vorlieben ausdrücken", "nach Interessen fragen"]
+    }
+  ]
+}

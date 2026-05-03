@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sprecher — A1 Klassenzimmer</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--sidebar-width:320px}
+html,body{height:100%;overflow:hidden}
+body{font-family:-apple-system,'Segoe UI',Roboto,Helvetica,sans-serif;background:#f0f0f0;color:#222;
+  -webkit-user-select:text;user-select:text}
+button,input{font:inherit}
+
+/* ── sticky header ── */
+.live-header{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:9px 20px;background:#075e54;color:#fff;
+  font-size:0.88em;box-shadow:0 2px 6px rgba(0,0,0,.18);
+}
+.lh-left{display:flex;align-items:baseline;gap:6px;min-width:0;flex-wrap:wrap}
+.lh-tag{font-weight:700}
+.lh-sep{opacity:.4;margin:0 4px}
+.lh-kann{opacity:.85;font-size:.92em;white-space:normal}
+.lh-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.lh-updated{opacity:.65;font-size:.82em}
+
+/* ── two-pane layout ── */
+.layout{
+  display:flex;
+  height:calc(100vh - 42px);margin-top:42px;
+}
+.transcript{flex:1;overflow-y:auto;padding:16px 28px 40px 28px;background:#f0f0f0;min-width:0}
+.splitter{
+  width:12px;flex-shrink:0;
+  background:#eef1f3;cursor:col-resize;touch-action:none;
+  border-left:1px solid #d6dbe0;border-right:1px solid #d6dbe0;
+  position:relative;
+}
+.splitter::before{
+  content:'';position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);
+  width:2px;border-radius:999px;background:#b5bec7;transition:background .15s ease;
+}
+.splitter:hover::before,.splitter.dragging::before{background:#075e54}
+.sidebar{
+  width:var(--sidebar-width);flex-shrink:0;
+  overflow-y:auto;padding:14px;background:#fff;border-left:1px solid #ddd;
+}
+body.resizing{cursor:col-resize}
+body.resizing *{cursor:col-resize !important;user-select:none !important}
+
+/* ── view controls ── */
+.view-controls{display:flex;gap:4px;margin-bottom:14px}
+.vbtn{flex:1;padding:7px 4px;border:1px solid #ccc;background:#f8f8f8;
+  cursor:pointer;font-size:.74em;border-radius:5px;transition:all .15s;font-weight:600}
+.vbtn:hover{background:#e8e8e8}
+.vbtn.active{background:#075e54;color:#fff;border-color:#075e54}
+
+/* ── sidebar sections ── */
+.sidebar-section{margin-bottom:16px}
+.sidebar-title{font-weight:700;font-size:.78em;color:#666;margin-bottom:6px;
+  text-transform:uppercase;letter-spacing:.5px}
+
+/* ── compact scorecard ── */
+.scorecard{width:100%;border-collapse:collapse;font-size:.72em}
+.scorecard th{background:#075e54;color:#fff;padding:3px 5px;text-align:left;position:sticky;top:0}
+.scorecard td{padding:2px 5px;border:1px solid #e0e0e0}
+.scorecard-tools{display:flex;gap:6px;margin:0 0 8px 0}
+.scorecard-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.scorecard-tool{
+  border:1px solid #cfd6dc;background:#f8f9fa;color:#34444c;border-radius:5px;
+  padding:5px 7px;font-size:.72em;font-weight:700;cursor:pointer;
+}
+.scorecard-tool:hover{background:#eef3f5;border-color:#aeb9c2}
+.sc-day{font-weight:700;width:28px}
+.sc-kann{min-width:240px;white-space:normal;line-height:1.35}
+.scorecard-row{cursor:pointer}
+.scorecard-row:hover .sc-kann{background:#eef8f6}
+.scorecard-link{
+  display:block;width:100%;border:0;background:transparent;color:inherit;
+  font:inherit;text-align:left;line-height:inherit;cursor:pointer;padding:0;
+}
+.pass{background:#d4edda;color:#155724;font-weight:700}
+.partial{background:#fff3cd;color:#856404;font-weight:700}
+.fail{background:#f8d7da;color:#721c24;font-weight:700}
+.pending{background:#f5f5f5;color:#aaa}
+
+/* ── day blocks ── */
+.day-block{background:#fff;border-radius:10px;margin:12px 0;box-shadow:0 1px 4px rgba(0,0,0,.07)}
+.day-block>summary{
+  padding:13px 18px;cursor:pointer;font-weight:600;font-size:.95em;color:#333;
+  list-style:none;
+}
+.day-block>summary::-webkit-details-marker{display:none}
+.day-block>summary::before{content:'\25b6';margin-right:10px;font-size:.65em;
+  transition:transform .2s;display:inline-block;color:#999}
+.day-block[open]>summary::before{transform:rotate(90deg)}
+.day-block[open]>summary{border-bottom:1px solid #eee}
+.day-content{padding:14px 20px}
+
+/* ── kann banner ── */
+.kann-banner{
+  background:#e8f5e9;border-left:4px solid #2e7d32;border-radius:6px;
+  padding:10px 14px;margin-bottom:16px;line-height:1.5;
+}
+.kann-id{font-weight:700;color:#2e7d32;font-size:.88em}
+.kann-cat{font-size:.78em;color:#666;margin-left:8px}
+.kann-text{margin-top:4px;font-size:.95em;color:#333}
+
+/* ── round headers ── */
+.round-header{
+  text-align:center;color:#555;font-size:.88em;font-weight:600;
+  margin:24px 0 10px 0;padding:6px 0;border-bottom:2px solid #e0e0e0;
+}
+
+/* ── exchange groups ── */
+.exchange-group{margin:0 0 20px 0;padding-bottom:16px;border-bottom:1px solid #eee}
+.exchange-group:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+
+/* ── messages ── */
+.msg{padding:12px 16px;border-radius:12px;margin:8px 0;line-height:1.65;font-size:1em}
+.teacher-msg{
+  background:#fff;border-left:4px solid #075e54;max-width:85%;
+  box-shadow:0 1px 2px rgba(0,0,0,.04);
+}
+.student-msg{
+  max-width:85%;margin-left:auto;border-right:4px solid rgba(0,0,0,.08);
+  box-shadow:0 1px 2px rgba(0,0,0,.04);
+}
+.speaker{font-weight:700;font-size:.82em;margin-bottom:4px}
+.teacher-label{color:#075e54}
+
+/* ── grader ── */
+.grader-block{
+  background:#fff8e1;max-width:90%;margin:8px auto;border-radius:8px;
+  border-left:4px solid #ffc107;padding:8px 14px;font-size:.85em;
+}
+.grader-label{font-weight:700;font-size:.75em;color:#856404;margin-bottom:2px}
+.grader-text{color:#5d4037}
+
+/* ── observer ── */
+.observer-block{
+  background:#eef6ff;max-width:92%;margin:8px auto;border-radius:8px;
+  border-left:4px solid #4f8fcf;padding:8px 14px;font-size:.85em;
+}
+.observer-label{font-weight:700;font-size:.75em;color:#24527a;margin-bottom:4px}
+.observer-text{color:#25384a;line-height:1.5}
+
+/* ── prompt boxes (debug) ── */
+.prompt-details{margin-top:6px}
+.prompt-toggle{font-size:.72em;color:#075e54;cursor:pointer;text-decoration:underline}
+.prompt-box{
+  background:#1a1a2e;color:#0f0;font-family:'SF Mono',Menlo,Consolas,monospace;
+  font-size:.72em;padding:10px;border-radius:6px;margin:4px 0;
+  max-height:220px;overflow-y:auto;white-space:pre-wrap;word-wrap:break-word;
+}
+
+/* ── day summaries ── */
+.day-summaries{margin-top:18px;padding-top:14px;border-top:2px solid #e0e0e0}
+.summaries-label{font-weight:700;font-size:.88em;color:#555;margin-bottom:8px}
+.summary-item{
+  padding:8px 14px;border-radius:6px;margin:5px 0;font-size:.9em;
+  border-left:4px solid #999;background:#fafafa;
+}
+.summary-item.pass{border-left-color:#28a745;background:#f0faf2}
+.summary-item.partial{border-left-color:#ffc107;background:#fffdf0}
+.summary-item.fail{border-left-color:#dc3545;background:#fef0f0}
+
+/* ── status ── */
+.status-text{font-size:.82em;color:#666;padding:8px 10px;background:#f8f9fa;border-radius:5px;line-height:1.5}
+
+/* ── billing ── */
+.billing-card{background:#f8f9fa;border:1px solid #e3e7ea;border-radius:8px;padding:10px 12px}
+.billing-card + .billing-card{margin-top:8px}
+.billing-amount{font-size:1.15em;font-weight:700;color:#075e54}
+.billing-meta{font-size:.76em;color:#5f6b73;line-height:1.45;margin-top:4px}
+
+/* ── student cards ── */
+.student-card{background:#f8f9fa;border:1px solid #e3e7ea;border-radius:8px;padding:10px 12px}
+.student-card + .student-card{margin-top:8px}
+.student-head{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.student-name{font-weight:700;font-size:.86em}
+.student-meta{font-size:.74em;color:#666}
+.student-row{font-size:.76em;color:#444;line-height:1.45;margin-top:6px}
+.student-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.student-tag{font-size:.7em;padding:2px 6px;border-radius:999px;background:#e9ecef;color:#495057}
+
+/* ── view mode filtering ── */
+body.view-conversation .grader-block{display:none}
+body.view-conversation .prompt-details{display:none}
+body.view-syllabus .grader-block{display:none}
+body.view-syllabus .prompt-details{display:none}
+body.view-grader .prompt-details{display:none}
+
+/* ── loading ── */
+.loading{display:flex;align-items:center;justify-content:center;height:100vh;
+  font-size:1.2em;color:#666}
+
+/* ── mobile ── */
+@media(max-width:768px){
+  .layout{display:block;height:auto;margin-top:0}
+  .live-header{position:sticky;flex-wrap:wrap;padding:8px 12px;font-size:.82em}
+  .splitter{display:none}
+  html,body{height:auto;overflow:auto}
+  .transcript{padding:10px 12px 30px 12px}
+  .sidebar{width:auto;border-left:none;border-top:1px solid #ddd;padding:12px}
+  .msg{max-width:100% !important;padding:10px 12px;font-size:.96em}
+  .teacher-msg,.student-msg,.grader-block,.observer-block{max-width:100%}
+  .student-msg{margin-left:0}
+}
+</style>
+</head>
+<body class="view-conversation">
+
+<div class="loading" id="loading">Loading dashboard data...</div>
+
+<div id="app" style="display:none">
+  <div class="live-header">
+    <div class="lh-left">
+      <span class="lh-tag" id="hdr-tag"></span>
+      <span class="lh-sep">&verbar;</span>
+      <span class="lh-kann" id="hdr-kann"></span>
+    </div>
+    <div class="lh-right">
+      <span class="lh-updated">Static</span>
+    </div>
+  </div>
+  <div class="layout">
+    <div class="transcript" id="transcript"></div>
+    <div class="splitter" id="splitter"></div>
+    <div class="sidebar" id="sidebar">
+      <div class="view-controls" id="view-controls">
+        <button class="vbtn active" data-view="conversation">Conversation</button>
+        <button class="vbtn" data-view="grader">+ Grader</button>
+        <button class="vbtn" data-view="debug">Full Debug</button>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Scorecard</div>
+        <div class="scorecard-tools">
+          <button class="scorecard-tool" id="btn-collapse">Collapse Days</button>
+          <button class="scorecard-tool" id="btn-expand">Expand Days</button>
+          <button class="scorecard-tool" id="btn-latest">Latest</button>
+        </div>
+        <div class="scorecard-scroll" id="scorecard-scroll"></div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Student Progress</div>
+        <div id="student-progress"></div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Billing</div>
+        <div id="billing"></div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Status</div>
+        <div class="status-text" id="status"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  // ── Helpers ──
+  function esc(s) {
+    if (!s) return '';
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function resultClass(r) {
+    return {bestanden:'pass',teilweise:'partial',nicht_bestanden:'fail'}[r] || 'pending';
+  }
+
+  function formatUsd(v) {
+    if (!v) return '$0.00';
+    return '$' + Number(v).toFixed(v < 0.01 ? 4 : 2);
+  }
+
+  // ── Splitter ──
+  function initSplitter() {
+    var splitter = document.getElementById('splitter');
+    var sidebar = document.getElementById('sidebar');
+    if (!splitter || !sidebar || window.innerWidth <= 768) return;
+
+    var sidebarWidth = parseInt(localStorage.getItem('sprecher-sidebar-width') || '320', 10);
+    var dragging = false;
+
+    function apply(w) {
+      var max = Math.floor(window.innerWidth * 0.75);
+      w = Math.max(200, Math.min(max, w));
+      sidebarWidth = w;
+      sidebar.style.width = w + 'px';
+    }
+
+    apply(sidebarWidth);
+
+    splitter.addEventListener('pointerdown', function(e) {
+      if (window.innerWidth <= 768) return;
+      dragging = true;
+      splitter.setPointerCapture(e.pointerId);
+      splitter.classList.add('dragging');
+      document.body.classList.add('resizing');
+      e.preventDefault();
+    });
+
+    splitter.addEventListener('pointermove', function(e) {
+      if (!dragging) return;
+      var w = document.body.clientWidth - e.clientX - 12;
+      apply(w);
+    });
+
+    splitter.addEventListener('pointerup', function(e) {
+      if (!dragging) return;
+      dragging = false;
+      splitter.releasePointerCapture(e.pointerId);
+      splitter.classList.remove('dragging');
+      document.body.classList.remove('resizing');
+      localStorage.setItem('sprecher-sidebar-width', String(sidebarWidth));
+    });
+
+    splitter.addEventListener('lostpointercapture', function() {
+      dragging = false;
+      splitter.classList.remove('dragging');
+      document.body.classList.remove('resizing');
+    });
+  }
+
+  // ── View toggle ──
+  function initViews() {
+    var current = localStorage.getItem('sprecher-view') || 'conversation';
+    document.body.className = 'view-' + current;
+
+    document.getElementById('view-controls').addEventListener('click', function(e) {
+      var btn = e.target.closest('[data-view]');
+      if (!btn) return;
+      var v = btn.dataset.view;
+      document.body.className = 'view-' + v;
+      localStorage.setItem('sprecher-view', v);
+      document.querySelectorAll('.vbtn').forEach(function(b) {
+        b.classList.toggle('active', b.dataset.view === v);
+      });
+    });
+
+    document.querySelectorAll('.vbtn').forEach(function(b) {
+      b.classList.toggle('active', b.dataset.view === current);
+    });
+  }
+
+  // ── Render scorecard ──
+  function renderScorecard(data) {
+    var sids = data.student_ids;
+    var students = data.students;
+    var ths = '<th>Tag</th><th>Kann</th>' +
+      sids.map(function(sid) { return '<th>' + esc(students[sid].name).substring(0,8) + '</th>'; }).join('');
+
+    var rows = data.days.map(function(d) {
+      var cells = sids.map(function(sid) {
+        var r = (d.summaries && d.summaries[sid]) ? d.summaries[sid].kann_result || '\u2026' : '\u2026';
+        return '<td class="' + resultClass(r) + '">' + esc(r) + '</td>';
+      }).join('');
+      var label = d.kann_id + ': ' + (d.kann_text || '');
+      return '<tr class="scorecard-row" data-target="d_' + d.day + '">' +
+        '<td class="sc-day">' + d.day + '</td>' +
+        '<td class="sc-kann"><button class="scorecard-link" data-target="d_' + d.day + '">' + esc(label) + '</button></td>' +
+        cells + '</tr>';
+    }).join('\n');
+
+    document.getElementById('scorecard-scroll').innerHTML =
+      '<table class="scorecard"><thead><tr>' + ths + '</tr></thead><tbody>' + rows + '</tbody></table>';
+  }
+
+  // ── Render transcript ──
+  function renderTranscript(data) {
+    var students = data.students;
+    var html = '';
+
+    data.days.forEach(function(d, idx) {
+      var isLatest = (idx === data.days.length - 1);
+      html += '<details class="day-block" id="d_' + d.day + '"' + (isLatest ? ' open' : '') + '>';
+      html += '<summary>Tag ' + d.day + ': ' + esc(d.kann_id) + ' \u2014 ' + esc(d.kann_text) + '</summary>';
+      html += '<div class="day-content">';
+      html += '<div class="kann-banner"><span class="kann-id">' + esc(d.kann_id) + '</span>' +
+        ' <span class="kann-cat">' + esc(d.category || '') + '</span>' +
+        '<div class="kann-text">' + esc(d.kann_text) + '</div></div>';
+
+      (d.rounds || []).forEach(function(r) {
+        html += '<div class="round-header">Runde ' + r.round + ': ' + esc(r.name) + '</div>';
+
+        (r.exchanges || []).forEach(function(ex) {
+          var sid = ex.student;
+          var s = students[sid] || {name: sid, color: '#f0f0f0', label_color: '#333'};
+
+          html += '<div class="exchange-group">';
+
+          // teacher
+          html += '<div class="msg teacher-msg">' +
+            '<div class="speaker teacher-label">Lehrerin Weber \u2192 ' + esc(s.name) + '</div>' +
+            '<div class="text">' + esc(ex.teacher_msg || '[missing]') + '</div>';
+          if (ex.teacher_prompt) {
+            html += '<details class="prompt-details"><summary class="prompt-toggle">teacher prompt</summary>' +
+              '<pre class="prompt-box">' + esc(ex.teacher_prompt) + '</pre></details>';
+          }
+          html += '</div>';
+
+          // student
+          if (ex.student_msg) {
+            html += '<div class="msg student-msg" style="background:' + s.color + '">' +
+              '<div class="speaker" style="color:' + s.label_color + '">' + esc(s.name) + '</div>' +
+              '<div class="text">' + esc(ex.student_msg) + '</div>';
+            if (ex.student_prompt) {
+              html += '<details class="prompt-details"><summary class="prompt-toggle">student prompt</summary>' +
+                '<pre class="prompt-box">' + esc(ex.student_prompt) + '</pre></details>';
+            }
+            html += '</div>';
+          }
+
+          // observer
+          if (ex.observer_note) {
+            html += '<div class="observer-block"><div class="observer-label">Observer</div>' +
+              '<div class="observer-text">' + esc(JSON.stringify(ex.observer_note)) + '</div></div>';
+          }
+
+          // grader
+          if (ex.grader) {
+            var g = ex.grader;
+            var gtext = (g.verdict || '') + ' | Sprachhandlung: ' + (g.sprachhandlung || '') +
+              ' | Wortfeld: ' + (g.wortfeld_used || []).join(', ');
+            html += '<div class="grader-block">' +
+              '<div class="grader-label">Grader \u2192 ' + esc(s.name) + '</div>' +
+              '<div class="grader-text">' + esc(gtext) + '</div>';
+            if (ex.grader_prompt) {
+              html += '<details class="prompt-details"><summary class="prompt-toggle">grader prompt</summary>' +
+                '<pre class="prompt-box">' + esc(ex.grader_prompt) + '</pre></details>';
+            }
+            html += '</div>';
+          }
+
+          html += '</div>'; // exchange-group
+        });
+      });
+
+      // day summaries
+      var sumHtml = '';
+      data.student_ids.forEach(function(sid) {
+        var summ = d.summaries && d.summaries[sid];
+        if (!summ) return;
+        var s = students[sid] || {name: sid};
+        var cls = resultClass(summ.kann_result);
+        sumHtml += '<div class="summary-item ' + cls + '"><b>' + esc(s.name) + '</b>: ' +
+          esc(summ.kann_result || '') + ' \u2014 ' + esc(summ.session_highlight || '') + '</div>';
+      });
+      if (sumHtml) {
+        html += '<div class="day-summaries"><div class="summaries-label">Tageszusammenfassung</div>' + sumHtml + '</div>';
+      }
+
+      html += '</div></details>\n';
+    });
+
+    document.getElementById('transcript').innerHTML = html;
+  }
+
+  // ── Render student progress ──
+  function renderStudentProgress(data) {
+    var html = '';
+    data.student_ids.forEach(function(sid) {
+      var s = data.students[sid];
+      var summ = data.student_summaries[sid] || {};
+      html += '<div class="student-card">';
+      html += '<div class="student-head"><span class="student-name">' + esc(s.name) + '</span>';
+      html += '<span class="student-meta">Day ' + (summ.day || summ.days_completed || '?') + '</span></div>';
+      if (summ.totals) {
+        html += '<div class="student-row">Vocab: ' + (summ.totals.vocabulary || 0) +
+          ' | Grammar: ' + (summ.totals.grammar || 0) + '</div>';
+      }
+      if (summ.persistent_errors && summ.persistent_errors.length) {
+        html += '<div class="student-tags">' +
+          summ.persistent_errors.slice(0, 5).map(function(e) {
+            return '<span class="student-tag">' + esc(e) + '</span>';
+          }).join('') + '</div>';
+      }
+      html += '</div>';
+    });
+    document.getElementById('student-progress').innerHTML = html;
+  }
+
+  // ── Render billing ──
+  function renderBilling(data) {
+    var total = {calls: 0, prompt_tokens: 0, completion_tokens: 0, estimated_cost_usd: 0};
+    data.days.forEach(function(d) {
+      var b = d.billing || {};
+      total.calls += b.calls || 0;
+      total.prompt_tokens += b.prompt_tokens || 0;
+      total.completion_tokens += b.completion_tokens || 0;
+      total.estimated_cost_usd += b.estimated_cost_usd || 0;
+    });
+    document.getElementById('billing').innerHTML =
+      '<div class="billing-card">' +
+      '<div class="billing-amount">' + formatUsd(total.estimated_cost_usd) + '</div>' +
+      '<div class="billing-meta">' + total.calls + ' calls | ' +
+      total.prompt_tokens.toLocaleString() + ' prompt | ' +
+      total.completion_tokens.toLocaleString() + ' completion</div></div>';
+  }
+
+  // ── Day controls ──
+  function initDayControls() {
+    document.getElementById('btn-collapse').addEventListener('click', function() {
+      document.querySelectorAll('.day-block').forEach(function(d) { d.open = false; });
+    });
+    document.getElementById('btn-expand').addEventListener('click', function() {
+      document.querySelectorAll('.day-block').forEach(function(d) { d.open = true; });
+    });
+    document.getElementById('btn-latest').addEventListener('click', function() {
+      var all = document.querySelectorAll('.day-block');
+      if (!all.length) return;
+      var last = all[all.length - 1];
+      last.open = true;
+      last.scrollIntoView({behavior: 'smooth', block: 'start'});
+    });
+
+    // scorecard click → scroll to day
+    document.getElementById('scorecard-scroll').addEventListener('click', function(e) {
+      var btn = e.target.closest('[data-target]');
+      if (!btn) return;
+      var day = document.getElementById(btn.dataset.target);
+      if (!day) return;
+      day.open = true;
+      day.scrollIntoView({behavior: 'smooth', block: 'start'});
+    });
+  }
+
+  // ── Load data and render ──
+  // Try loading from a <script> tag with id="dashboard-data", or from a JSON file
+  function loadData() {
+    var embedded = document.getElementById('dashboard-data');
+    if (embedded) {
+      try {
+        return Promise.resolve(JSON.parse(embedded.textContent));
+      } catch(e) {
+        // fall through
+      }
+    }
+
+    // Try relative JSON files
+    var files = ['output/dashboard_data_small.json', 'output/dashboard_data.json'];
+    function tryNext(i) {
+      if (i >= files.length) return Promise.reject('No data file found');
+      return fetch(files[i]).then(function(r) {
+        if (!r.ok) throw new Error(r.status);
+        return r.json();
+      }).catch(function() {
+        return tryNext(i + 1);
+      });
+    }
+    return tryNext(0);
+  }
+
+  loadData().then(function(data) {
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('app').style.display = '';
+
+    // header
+    var latest = data.days[data.days.length - 1];
+    document.getElementById('hdr-tag').textContent = 'Tag ' + (data.current_day || (latest ? latest.day : 0)) + '/' + data.total_kanns;
+    document.getElementById('hdr-kann').textContent = (data.current_kann || '') + ': ' + (data.current_kann_text || '');
+    document.getElementById('status').textContent = data.status || 'Loaded ' + data.days.length + ' days';
+
+    renderScorecard(data);
+    renderTranscript(data);
+    renderStudentProgress(data);
+    renderBilling(data);
+    initViews();
+    initSplitter();
+    initDayControls();
+  }).catch(function(err) {
+    document.getElementById('loading').textContent = 'Error loading data: ' + err;
+  });
+
+})();
+</script>
+</body>
+</html>

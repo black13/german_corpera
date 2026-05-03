@@ -1,0 +1,36 @@
+{
+  "current_day": {
+    "marta": 176,
+    "james": 176,
+    "yuki": 176
+  },
+  "areas_covered": {
+    "marta": [
+      "Interaktion mündlich",
+      "Interaktion schriftlich",
+      "Sprachmittlung mündlich",
+      "Rezeption mündlich",
+      "Rezeption schriftlich",
+      "Produktion mündlich",
+      "Produktion schriftlich"
+    ],
+    "james": [
+      "Interaktion mündlich",
+      "Interaktion schriftlich",
+      "Sprachmittlung mündlich",
+      "Rezeption mündlich",
+      "Rezeption schriftlich",
+      "Produktion mündlich",
+      "Produktion schriftlich"
+    ],
+    "yuki": [
+      "Interaktion mündlich",
+      "Interaktion schriftlich",
+      "Sprachmittlung mündlich",
+      "Rezeption mündlich",
+      "Rezeption schriftlich",
+      "Produktion mündlich",
+      "Produktion schriftlich"
+    ]
+  }
+}

@@ -1,0 +1,95 @@
+You are a telc Deutsch A1 exam author. Your task: generate Lesen (reading) practice questions.
+
+## A1 Grammar Constraints
+
+Verb:
+  - Konjugation Präsens: regelmäßige Verben (ich mache, du machst, er macht...)
+  - Konjugation Präsens: sein, haben, werden
+  - Konjugation Präsens: Modalverben können, möchten, müssen, dürfen
+  - Konjugation Präsens: trennbare Verben (anfangen, aufstehen, einkaufen)
+  - Imperativ (Kommen Sie! Komm! Geh!)
+  - Perfekt als feste Wendung (Ich habe gemacht / Ich bin gefahren)
+
+Satzstruktur:
+  - Aussagesatz: Subjekt-Verb-Objekt (Ich trinke Kaffee.)
+  - W-Frage (Wo wohnen Sie? Was machen Sie? Wie heißen Sie?)
+  - Ja/Nein-Frage (Sprechen Sie Deutsch? Kommst du mit?)
+  - Negation mit nicht / kein
+  - Satzklammer bei trennbaren Verben (Ich stehe um 7 Uhr auf.)
+
+Nomen:
+  - Genus: der, die, das
+  - Nominativ und Akkusativ
+  - Dativ als feste Wendung (Wie geht es dir? Mit dem Bus.)
+  - Plural: -e, -en, -er, -s, Umlaut
+
+Artikelwörter:
+  - bestimmter Artikel: der, die, das / die
+  - unbestimmter Artikel: ein, eine / kein, keine
+  - Possessivartikel: mein, dein, sein, ihr (Nominativ)
+
+Pronomen:
+  - Personalpronomen: ich, du, er, sie, es, wir, ihr, sie, Sie
+  - man (Man kann hier gut essen.)
+
+Präpositionen:
+  - Lokale: in, aus, nach, zu, bei, an, auf, von, bis
+  - Temporale: am, um, von...bis, im
+  - mit + Dativ (mit dem Bus, mit meiner Freundin)
+
+Konnektoren:
+  - und
+  - oder
+  - aber
+  - denn
+
+
+## Vocabulary
+Use ONLY these A1 words and their simple inflections. No words outside this list unless they are proper names (Personennamen, Städtenamen) or numbers.
+
+### People & Personal Info
+person: alt, das Alter, das Geburtsdatum, das Handy, der Ausweis, der Familienname, der Familienstand, der Geburtsort, der Geburtstag, der Name, der Pass, der Vorname, die Adresse, die E-Mail, die Straße
+
+### Family  
+familie: das Kind, der Bruder, der Großvater, der Mann, der Sohn, der Vater, die Eltern, die Familie, die Frau, die Geschwister
+
+### Work
+beruf: arbeiten, das Büro, der Arzt, der Beruf, der Chef, der Job, der Kollege, der Lehrer
+
+### Shopping
+einkaufen: bezahlen, billig, das Angebot, das Geschäft, der Kiosk, der Laden, der Markt, der Preis, der Supermarkt, die Bäckerei
+
+### Food
+lebensmittel: das Brot, das Brötchen, die Butter, der Käse, die Milch, das Ei, der Apfel, die Banane, die Birne, die Kartoffel
+getränke: das Wasser, der Saft, der Kaffee, der Tee, das Bier, der Wein, die Milch, die Cola
+restaurant: das Restaurant, das Café, das Lokal, bestellen, die Karte, die Speisekarte, die Rechnung, das Trinkgeld
+
+### Home
+wohnen: die Wohnung, das Haus, das Apartment, das Zimmer, die Küche, das Bad, das Schlafzimmer, das Wohnzimmer, der Balkon, der Garten
+möbel: der Tisch, der Stuhl, das Bett, der Schrank, das Regal, das Sofa, die Lampe, der Kühlschrank
+
+### Transport & Time
+verkehr: die Straße, links, rechts, geradeaus, die Ecke, der Bahnhof, die Haltestelle, der Bus, die Bahn, der Zug, das Auto, das Fahrrad
+zeit: die Uhr, die Uhrzeit, die Stunde, die Minute, der Tag, die Woche, der Monat, das Jahr, Montag, Dienstag, Mittwoch, Donnerstag
+
+### Leisure
+freizeit: die Freizeit, das Hobby, Sport treiben, schwimmen, der Fußball, lesen, das Buch, die Zeitung, der Film, das Kino
+
+### Numbers
+zahlen: eins, zwei, drei, vier, fünf, sechs, sieben, acht, neun, zehn, elf, zwölf, dreizehn, vierzehn, fünfzehn
+
+## EXACT telc A1 Lesen Format
+
+### Teil 1 — Kurze Texte (Richtig/Falsch)
+Two short everyday texts (notes, emails, invitations, small messages). Each has 2-3 Richtig/Falsch statements. Key rule: the FALSE statements are false because of ONE word — "vielleicht", "leider", "aber", "nicht", "noch nicht", "schon".
+
+### Teil 2 — Kleinanzeigen (Zuordnen)  
+10 short ads (Anzeigen). 5 situations. For each situation, show 2 ads (a/b). The learner marks which ad fits. Ads come from: Wohnungsmarkt, Jobs, Gebrauchtwagen, Bücher, Möbel, Kurse, Reisen.
+
+### Teil 3 — Schilder/Aushänge (Richtig/Falsch)
+5 very short signs or notices. One Richtig/Falsch statement each. Signs: "Heute geschlossen", "Aufzug außer Betrieb", "Parken verboten", "Bitte Tür schließen", "Kein Eintritt", etc.
+
+## Your Output
+Generate a complete Lesen practice set with ALL THREE Teile. Label each Teil clearly. Provide answers at the end.
+
+Begin now. Generate original content, not memorized exam items.

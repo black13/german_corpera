@@ -1,0 +1,220 @@
+{
+  "student": "marta",
+  "day": 176,
+  "days_completed": 176,
+  "stable_vocabulary": [
+    {
+      "word": "wohnen in",
+      "stable": true,
+      "mentions": 15
+    },
+    {
+      "word": "kommen aus",
+      "stable": true,
+      "mentions": 15
+    },
+    {
+      "word": "die Uhrzeit",
+      "stable": true,
+      "mentions": 14
+    },
+    {
+      "word": "heißen",
+      "stable": true,
+      "mentions": 14
+    },
+    {
+      "word": "links",
+      "stable": true,
+      "mentions": 12
+    },
+    {
+      "word": "Hotel",
+      "stable": true,
+      "mentions": 11
+    },
+    {
+      "word": "Danke",
+      "stable": true,
+      "mentions": 11
+    },
+    {
+      "word": "Gäste",
+      "stable": true,
+      "mentions": 11
+    },
+    {
+      "word": "Bahnhof",
+      "stable": true,
+      "mentions": 10
+    },
+    {
+      "word": "geradeaus",
+      "stable": true,
+      "mentions": 10
+    }
+  ],
+  "unstable_vocabulary": [
+    {
+      "word": "rechts",
+      "stable": false,
+      "mentions": 5
+    },
+    {
+      "word": "Drucken",
+      "stable": false,
+      "mentions": 3
+    },
+    {
+      "word": "telefonieren",
+      "stable": false,
+      "mentions": 2
+    },
+    {
+      "word": "Lehrerin",
+      "stable": false,
+      "mentions": 2
+    },
+    {
+      "word": "rot",
+      "stable": false,
+      "mentions": 2
+    },
+    {
+      "word": "Cent",
+      "stable": false,
+      "mentions": 1
+    },
+    {
+      "word": "die Milch",
+      "stable": false,
+      "mentions": 1
+    },
+    {
+      "word": "das Bad",
+      "stable": false,
+      "mentions": 1
+    }
+  ],
+  "stable_grammar": [
+    {
+      "rule": "Elliptische Strukturen für funktionale Kommunikation",
+      "stable": true,
+      "mentions": 20
+    },
+    {
+      "rule": "Elliptische Strukturen für funktionale A1-Kommunikation",
+      "stable": true,
+      "mentions": 3
+    },
+    {
+      "rule": "Elliptische Strukturen für pragmatische Kommunikation",
+      "stable": true,
+      "mentions": 3
+    },
+    {
+      "rule": "Elliptische Strukturen für funktionale Erklärungen",
+      "stable": true,
+      "mentions": 2
+    },
+    {
+      "rule": "Fehlende Artikel in typischen A1-Kontexten",
+      "stable": true,
+      "mentions": 2
+    },
+    {
+      "rule": "Elliptische Strukturen für Wegbeschreibungen",
+      "stable": true,
+      "mentions": 2
+    },
+    {
+      "rule": "Elliptische Strukturen für Preis- und Zeitangaben",
+      "stable": true,
+      "mentions": 2
+    },
+    {
+      "rule": "Elliptische Strukturen für Notizen",
+      "stable": true,
+      "mentions": 2
+    }
+  ],
+  "unstable_grammar": [
+    {
+      "rule": "simple sentence structure",
+      "stable": false,
+      "mentions": 15
+    },
+    {
+      "rule": "use of articles",
+      "stable": false,
+      "mentions": 2
+    },
+    {
+      "rule": "Fehlende Artikel in Ortsangaben",
+      "stable": false,
+      "mentions": 1
+    },
+    {
+      "rule": "Korrekte Präposition 'im Hotel' (nach Korrektur)",
+      "stable": false,
+      "mentions": 1
+    },
+    {
+      "rule": "Selbstkorrektur bei Verbkonjugation (schreiben → schreibe)",
+      "stable": false,
+      "mentions": 1
+    },
+    {
+      "rule": "Verb-Infinitiv als Nomen verwenden (z.B. 'nicht Drucken')",
+      "stable": false,
+      "mentions": 1
+    }
+  ],
+  "persistent_errors": [
+    "Fehlende Artikel (der/die/das/ein/eine)",
+    "Elliptische Strukturen statt vollständiger Sätze",
+    "Code-switching (Englisch-Deutsch-Mischung)"
+  ],
+  "emotional_state": "stabil und funktional",
+  "recent_kanns": [
+    {
+      "kann_id": "K176",
+      "day": 176,
+      "result": "bestanden",
+      "kann_text": "Kann im Hotel einfache Begriffe auf der Informationstafel (z. B. „breakfast“) für einen deutschsprachigen Gast übersetzen."
+    },
+    {
+      "kann_id": "K175",
+      "day": 175,
+      "result": "bestanden",
+      "kann_text": "Kann in einem Restaurant die Aufschrift (z. B. „caballeros“) auf der Toilettentür für einen deutschsprachigen Touristen übersetzen."
+    },
+    {
+      "kann_id": "K174",
+      "day": 174,
+      "result": "bestanden",
+      "kann_text": "Kann die Aufschrift auf dem Schild einer Geschäftstür (z. B. „fermé“) für einen deutschsprachigen Touristen übersetzen."
+    },
+    {
+      "kann_id": "K173",
+      "day": 173,
+      "result": "bestanden",
+      "kann_text": "Kann einfache anderssprachige Informationen von Schildern und Aufschriften Deutschsprachigen in Einzelwörtern auf Deutsch weitergeben."
+    },
+    {
+      "kann_id": "K172",
+      "day": 172,
+      "result": "bestanden",
+      "kann_text": "Kann in einem Geschäft einem deutschen Touristen behilflich sein und für ihn auf Deutsch den Preis von Waren nennen."
+    }
+  ],
+  "recent_highlights": [
+    "Runde 6: Student signalisiert Verständnis und beschreibt praktischen Anwendungskontext ('Im Hotel, ich sage das oft'), was auf Transferdenken und funktionales Verständnis der Sprachmittlungsaufgabe hindeutet.",
+    "Runde 5: Präzise Übersetzung von 'Herren' mit Richtungsangabe ('Das ist die Herrentoilette, rechts') zeigt perfekte Anwendung der Kannbeschreibung",
+    "Runde 7: Perfekte Übersetzung von 'Geöffnet außer Sonntag' mit klarer Vermittlung der Ausnahmeregelung, zeigt vollständige Beherrschung der Kannbeschreibung"
+  ],
+  "totals": {
+    "vocabulary": 360,
+    "grammar": 248
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "description": "Reader-facing KB quick guides. These are stable syllabus notes, not live conversation turns.",
+  "guides": {
+    "K060": {
+      "kb_de_simple": "Ich verstehe sehr einfache gesprochene Sätze, wenn die Person langsam spricht und wiederholt.",
+      "kb_en_simple": "I understand very simple spoken sentences when the other person speaks slowly and repeats important parts.",
+      "scene": "Alltag / Gespräch / Hilfe beim Verstehen",
+      "roles": ["Lernende Person", "Gesprächspartner/in"],
+      "task_shape": ["Die andere Person spricht langsam.", "Wichtige Wörter werden wiederholt.", "Die lernende Person versteht das konkrete Bedürfnis."],
+      "core_phrases": ["Langsam bitte.", "Noch einmal bitte.", "Ich verstehe."],
+      "word_bank": ["bitte", "langsam", "noch einmal", "verstehen", "brauchen", "heute"],
+      "grammar_tools": ["Imperativ als Bitte", "kurze Hauptsätze", "konkrete Nomen"],
+      "related_kbs": ["K001", "K003", "K004", "K005", "K006", "K007"]
+    },
+    "K062": {
+      "kb_de_simple": "Ich verstehe kurze gesprochene Texte mit vielen internationalen Wörtern, wenn es Pausen gibt.",
+      "kb_en_simple": "I understand short spoken texts with many international words when there are pauses.",
+      "scene": "Alltag / Ansage / kurze Information",
+      "roles": ["Sprecher/in", "Hörer/in"],
+      "task_shape": ["Ein kurzer Text wird langsam gesprochen.", "Internationale Wörter helfen.", "Pausen geben Zeit zum Verstehen."],
+      "core_phrases": ["Das Wort kenne ich.", "Ich höre ...", "Das Thema ist ..."],
+      "word_bank": ["Information", "Telefon", "Restaurant", "Hotel", "Taxi", "Minute"],
+      "grammar_tools": ["Thema + einzelne Information", "Nomen erkennen", "Pausen nutzen"],
+      "related_kbs": ["K060", "K085", "K092", "K163"]
+    },
+    "K084": {
+      "kb_de_simple": "Ich verstehe einzelne Wörter und sehr einfache Sätze in klaren Alltagstexten.",
+      "kb_en_simple": "I understand individual words and very simple sentences in clear everyday texts.",
+      "scene": "Alltag / Schild / kurzer Text",
+      "roles": ["Leser/in", "andere Person"],
+      "task_shape": ["Der Text ist kurz und übersichtlich.", "Ich suche einzelne Wörter.", "Ich verstehe die wichtigste Information."],
+      "core_phrases": ["Hier steht ...", "Das Wort bedeutet ...", "Ich sehe ..."],
+      "word_bank": ["Name", "Adresse", "Uhrzeit", "Preis", "Zimmer", "Eingang"],
+      "grammar_tools": ["Nomen erkennen", "Zahlen erkennen", "kurze Hauptsätze"],
+      "related_kbs": ["K085", "K086", "K092", "K163"]
+    },
+    "K085": {
+      "kb_de_simple": "Ich erkenne das Thema und einzelne Informationen in einfachen Texten mit Bildern oder internationalen Wörtern.",
+      "kb_en_simple": "I identify the topic and individual details in simple texts with pictures or international words.",
+      "scene": "Informationstext / Prospekt / Aushang",
+      "roles": ["Leser/in", "Person, die die Information braucht"],
+      "task_shape": ["Bilder oder internationale Wörter helfen.", "Zuerst erkenne ich das Thema.", "Dann finde ich eine einzelne Information."],
+      "core_phrases": ["Das Thema ist ...", "Hier steht ...", "Die Information ist ..."],
+      "word_bank": ["Information", "Programm", "Hotel", "Kurs", "Preis", "Termin"],
+      "grammar_tools": ["Thema nennen", "einzelne Information weitergeben", "ist/hat/kostet"],
+      "related_kbs": ["K084", "K092", "K163", "K176"]
+    },
+    "K086": {
+      "kb_de_simple": "Ich verstehe Teile von kurzen einfachen Texten, wenn ich sie mehrmals lesen darf.",
+      "kb_en_simple": "I understand parts of short simple texts when I can read them more than once.",
+      "scene": "Kurzer Alltagstext / wiederholtes Lesen",
+      "roles": ["Leser/in", "Helfer/in"],
+      "task_shape": ["Der Text wird mehrmals gelesen.", "Nicht alles muss sofort verstanden werden.", "Einzelne Teile werden sicher."],
+      "core_phrases": ["Ich lese noch einmal.", "Ich verstehe diesen Teil.", "Das ist wichtig."],
+      "word_bank": ["noch einmal", "Teil", "Text", "wichtig", "einfach", "kurz"],
+      "grammar_tools": ["wiederholtes Lesen", "Schlüsselwörter markieren", "kurze Hauptsätze"],
+      "related_kbs": ["K084", "K085", "K092", "K163"]
+    },
+    "K092": {
+      "kb_de_simple": "Ich verstehe sehr einfache Informationstexte und Listen zu vertrauten Themen.",
+      "kb_en_simple": "I understand very simple information texts and lists about familiar topics.",
+      "scene": "Liste / Tabelle / Informationstafel",
+      "roles": ["Leser/in", "Person, die eine Information braucht"],
+      "task_shape": ["Der Text ist oft eine Liste.", "Ich suche eine einzelne Information.", "Internationale Wörter oder Bilder helfen."],
+      "core_phrases": ["In der Liste steht ...", "Die Uhrzeit ist ...", "Der Preis ist ..."],
+      "word_bank": ["Liste", "Tabelle", "Uhrzeit", "Preis", "Adresse", "geöffnet"],
+      "grammar_tools": ["einzelne Information", "Zahlen und Uhrzeiten", "von ... bis"],
+      "related_kbs": ["K085", "K104", "K163", "K176"]
+    },
+    "K104": {
+      "kb_de_simple": "Ich verstehe kurze einfache Anleitungen, besonders mit Bildern.",
+      "kb_en_simple": "I understand short simple instructions, especially with pictures.",
+      "scene": "Anleitung / Schild / Gebrauch",
+      "roles": ["Leser/in", "Benutzer/in"],
+      "task_shape": ["Die Anleitung ist kurz.", "Bilder helfen.", "Ich erkenne, was man tun soll oder nicht tun soll."],
+      "core_phrases": ["Bitte ...", "Nicht ...", "Man muss ..."],
+      "word_bank": ["öffnen", "schließen", "drücken", "ziehen", "benutzen", "nicht"],
+      "grammar_tools": ["Imperativ", "nicht + Verb", "müssen"],
+      "related_kbs": ["K092", "K163", "K173"]
+    },
+    "K163": {
+      "kb_de_simple": "Ich lese einen kurzen deutschen Text oder eine Liste und gebe eine einzelne Information in der gemeinsamen Sprache weiter.",
+      "kb_en_simple": "I read a short German text or list and pass one piece of information to another person in our shared language.",
+      "scene": "Liste / Aushang / Formular / Informationstafel",
+      "roles": ["Leser/in", "Person, die die Information braucht"],
+      "task_shape": ["Der Text ist kurz oder listenartig.", "Ich suche nur eine einzelne Information.", "Ich gebe diese Information einfach weiter."],
+      "core_phrases": ["Hier steht ...", "Das bedeutet ...", "Die Information ist ...", "Es ist von ... bis ..."],
+      "word_bank": ["Information", "Liste", "Text", "Uhrzeit", "Preis", "Name", "Adresse", "geöffnet"],
+      "grammar_tools": ["einzelne Information", "Nominativ", "Zahlen/Uhrzeiten", "von ... bis"],
+      "related_kbs": ["K084", "K085", "K086", "K092", "K104", "K173", "K176"]
+    },
+    "K173": {
+      "kb_de_simple": "Ich sehe ein Schild oder eine Aufschrift in einer anderen Sprache und sage einem Deutschsprachigen einzelne Wörter auf Deutsch.",
+      "kb_en_simple": "I see a sign or label in another language and give a German speaker the important word in German.",
+      "scene": "Schild / Aufschrift / Orientierung",
+      "roles": ["Vermittler/in", "deutschsprachige Person"],
+      "task_shape": ["Eine Person zeigt auf ein Schild.", "Ich erkenne das wichtige Wort.", "Ich sage das deutsche Wort."],
+      "core_phrases": ["Das heißt ...", "Das bedeutet ...", "Auf Deutsch: ..."],
+      "word_bank": ["Schild", "Aufschrift", "Eingang", "Ausgang", "Toilette", "geöffnet", "geschlossen"],
+      "grammar_tools": ["Einzelwort + bedeutet", "Nomen mit Artikel", "hier/dort"],
+      "related_kbs": ["K163", "K174", "K175", "K176"]
+    },
+    "K174": {
+      "kb_de_simple": "Ich übersetze die Aufschrift auf einer Geschäftstür für einen deutschsprachigen Touristen.",
+      "kb_en_simple": "I translate the sign on a shop door for a German-speaking tourist.",
+      "scene": "Geschäft / Türschild / Tourist",
+      "roles": ["Tourist/in", "Helfer/in", "Geschäft"],
+      "task_shape": ["Der Tourist zeigt auf die Tür.", "Die Aufschrift ist kurz.", "Ich erkläre offen/geschlossen oder die wichtigste Information."],
+      "core_phrases": ["Das Geschäft ist geöffnet.", "Das Geschäft ist geschlossen.", "Das bedeutet geschlossen."],
+      "word_bank": ["Geschäft", "Tür", "geöffnet", "geschlossen", "Öffnungszeiten", "heute", "morgen"],
+      "grammar_tools": ["sein + Adjektiv", "Temporale: heute/morgen", "von ... bis"],
+      "related_kbs": ["K092", "K163", "K173", "K176"]
+    },
+    "K175": {
+      "kb_de_simple": "Ich übersetze die Aufschrift auf einer Toilettentür im Restaurant für einen deutschsprachigen Touristen.",
+      "kb_en_simple": "I translate the sign on a restroom door in a restaurant for a German-speaking tourist.",
+      "scene": "Restaurant / Toilettentür / Orientierung",
+      "roles": ["Tourist/in", "Helfer/in", "Restaurantgast"],
+      "task_shape": ["Der Tourist sucht die richtige Tür.", "Die Aufschrift ist kurz.", "Ich sage, welche Toilette gemeint ist."],
+      "core_phrases": ["Das ist die Herrentoilette.", "Das ist die Damentoilette.", "Das bedeutet ..."],
+      "word_bank": ["Restaurant", "Toilette", "Damen", "Herren", "Tür", "links", "rechts"],
+      "grammar_tools": ["Das ist ...", "Artikel bei Nomen", "links/rechts"],
+      "related_kbs": ["K163", "K173", "K174", "K176"]
+    },
+    "K176": {
+      "kb_de_simple": "Ich übersetze ein einfaches Wort auf einer Hotel-Informationstafel für einen deutschsprachigen Gast.",
+      "kb_en_simple": "I translate a simple word on a hotel information board for a German-speaking guest.",
+      "scene": "Hotel / Rezeption / Informationstafel",
+      "roles": ["Gast", "Hotelmitarbeiter/in", "Rezeption"],
+      "task_shape": ["Der Gast zeigt auf ein Wort.", "Der Gast fragt: Was bedeutet ...?", "Ich antworte: Das bedeutet ..."],
+      "core_phrases": ["Was bedeutet ...?", "Das bedeutet ...", "Auf Deutsch heißt das ...", "Ist das klar?"],
+      "word_bank": ["Hotel", "Gast", "Informationstafel", "breakfast", "Frühstück", "Check-out", "Zimmer", "Rezeption", "Zimmerservice", "geöffnet", "von ... bis"],
+      "grammar_tools": ["Das bedeutet ...", "Nomen mit Artikel", "bis", "von ... bis", "im Hotel", "auf der Tafel"],
+      "related_kbs": ["K084", "K085", "K092", "K163", "K173", "K174", "K175"]
+    }
+  }
+}

@@ -1,0 +1,213 @@
+Neutral critique of the current codebase
+
+This repository is in a stronger state than the earlier prototype snapshot.
+The main architectural direction is clearer: canon data, prompt templates,
+runtime config, evolving state, and generated conversation artifacts are treated
+as the course product, while the Python runtime is treated as execution
+infrastructure.
+
+Current strengths
+
+- Documentation and implementation are much closer than before. The repository
+  now describes the active classroom model rather than an older design sketch.
+- Runtime configuration has improved. Student roster and teacher/grader model
+  selection now live in JSON instead of being spread across hardcoded values.
+- Reset behavior is more disciplined. The reset script restores structured
+  initial state shapes instead of writing bare empty objects.
+- Repository hygiene is improved. Source references, tools, runtime code, and
+  generated data are more clearly separated.
+- The monitoring UI is more readable than the earlier debug-heavy version. The
+  sticky header, transcript/sidebar split, and conversation/grader/debug modes
+  make it easier to follow a run in progress.
+- Execution observability is improving. The runtime now trends toward preserving
+  call metadata and billing information instead of treating provider behavior as
+  invisible.
+
+Current areas of friction
+
+1. The pedagogical core is still flatter than the use case suggests.
+
+The system is centered on Kannbeschreibungen, but the canon data still does not
+explicitly map each individual Kannbeschreibung to grammar targets, vocabulary
+targets, speech acts, and curated example sentences. Those pieces exist in the
+repository, but mostly as separate global resources rather than as a single
+per-Kann unit.
+
+This matters because the main reading and evaluation goal is not just to watch a
+conversation happen. It is to watch a student gradually realize a specific
+Kannbeschreibung through grammar, vocabulary, and examples over time.
+
+2. Some artifact files exist, but are not part of the active runtime path.
+
+The repository contains prompt assets such as the planner prompt and additional
+bridge concepts, but the current runner does not appear to exercise all of them.
+That is not inherently wrong, but it creates ambiguity about which prompts are
+live and which are archival or experimental.
+
+3. Learned-state accumulation is append-only and becomes noisy over time.
+
+The student learned-state files grow by repeated appends of vocabulary and
+grammar items. In practice this produces many duplicates, which makes the state
+harder to interpret as a clean picture of what is actually stable, newly
+acquired, or still fragile.
+
+As the course gets longer, this weakens both the prompts and the reader-facing
+story of progress.
+
+4. Course state is currently too coarse to be very informative.
+
+The saved course state records broad categories such as "Interaktion mündlich"
+and "Interaktion schriftlich," but not a richer notion of pedagogical coverage.
+That means the long-term state does not yet express the finer-grained learning
+path that the UI and evaluation would ideally surface.
+
+5. The grader is permissive in the wrong place and final aggregation is too
+informal.
+
+"Sprachhandlung first" is a good A1 principle, but the current grader sometimes
+awards ON TRACK to empty, closing-formula, or near-empty behavior that does not
+really perform the target task. The final summaries can also be inconsistent
+with the visible evidence in the rounds. For example, a student can show a
+parse error or visible drift in a K176 run while the final student verdict still
+lands as "bestanden."
+
+This suggests the grader label is too flat. It is trying to express several
+different judgments through one label and prose explanation. The grader should
+separate at least these dimensions:
+
+- task alignment
+- communicative success
+- A1 appropriateness
+- style and scenario compliance
+
+The final per-student verdict should be computed from these fields, not
+improvised from prose. A student can be communicatively successful but
+scenario-drifting, A1-appropriate but incomplete, or on-task in one round while
+not meeting the full day target. Those differences should remain visible in the
+JSON and UI.
+
+6. The runner is still narrow, but it is no longer minimal.
+
+This is not a criticism by itself. The current runner now contains:
+
+- the live HTML interface
+- client-side polling behavior
+- prompt assembly
+- interstitial routing
+- classroom execution sequencing
+
+That may be a reasonable scope for the runtime, but it means the boundary should
+be described as "execution layer with observability" rather than as a nearly
+empty pipe.
+
+7. Prompt assembly depends on implicit template contracts.
+
+The runner uses manual string replacement against JSON templates. This keeps the
+system simple, but it also means the relationship between code and prompt schema
+is informal. Missing keys, renamed placeholders, or shape drift can become
+runtime prompt bugs rather than explicit validation failures.
+
+8. The improved UI is still more conversation-centric than pedagogy-centric.
+
+The live view is better for reading, but it still mainly presents:
+
+- the current transcript
+- grader summaries
+- prompt inspection
+
+It does not yet foreground the specific instructional lens that seems most
+important for this project: active Kannbeschreibung, target grammar,
+target vocabulary, supporting examples, and visible evidence that the student is
+becoming more competent in those targets over time.
+
+9. In this checkout, normal execution still creates git churn in tracked state.
+
+The repository now ignores state and output paths for new changes, which is
+helpful, but the current checkout still has tracked state files that change as
+the system runs. That creates friction for review and makes it harder to tell
+the difference between intentional source edits and ordinary runtime mutation.
+
+10. Deployment behavior is simple, but operationally blunt.
+
+The deployment configuration starts the runner directly. Since the runner both
+serves the live page and executes the course loop, deployment and execution are
+tightly coupled. That may be acceptable for experimentation, but it leaves
+little room for a separate "serve existing artifacts" mode versus "start a new
+course run" mode.
+
+11. There is still no first-class teacher-preparation artifact.
+
+The current system is much better at generating and displaying classroom turns
+than at preserving the pre-class reasoning that a human instructor would
+actually want:
+
+- what this Kannbeschreibung depends on
+- which words and acts really belong to the scene
+- what telc-style tasks are nearby
+- which examples from books would strengthen the lesson
+
+The current `kann_map` is a useful start, but it is still a thin seed rather
+than a real preparation layer.
+
+12. The repository is converging on an instructor-planning tool, but the
+artifacts do not yet fully reflect that role.
+
+The strongest current use case may not be "AI teacher." It may be "planning and
+review support for a very busy instructor." If that is the true product
+direction, then the repository still needs more first-class support for:
+
+- lesson seeds
+- curriculum dependencies
+- source-backed examples
+- post-run pedagogical analysis
+
+13. Cost-aware model separation is conceptually right, but not yet formalized as
+an architecture.
+
+There is now a clear distinction between cheaper generation and stronger
+planning, and that is a promising direction. But the repository still lacks a
+formal artifact handoff between:
+
+- cheap/local classroom generation
+- stronger post-run curriculum planning jobs, including possible Vast AI work
+
+Interpretation
+
+The major early-stage cleanup work has largely succeeded. The remaining issues
+are less about repository disorder and more about fidelity to the actual
+pedagogical goal.
+
+The central question is now:
+
+Can the repository make a Kannbeschreibung legible as a learning object, not
+just as a line of text that triggers a conversation?
+
+At the moment, the answer is only partial. The system can generate and display
+classroom interactions, but the mapping from Kannbeschreibung to grammar,
+vocabulary, examples, and visible student progress is still looser than the use
+case suggests.
+
+There is also a second important shift in understanding:
+
+This system may be more valuable as a curriculum and lesson-planning aid than as
+a claim about fully automated teaching.
+
+That is not a retreat. It is a clearer and probably more durable product
+definition.
+
+Practical implication
+
+The next improvements would be highest-value if they focus on:
+
+- defining explicit per-Kann mappings to grammar, vocabulary, and examples
+- turning those mappings into real teacher-preparation artifacts
+- making grader judgments multi-dimensional and computing final verdicts from
+  structured fields
+- deduplicating and normalizing learned-state accumulation
+- surfacing pedagogical targets in the UI, not just transcript flow
+- clarifying which prompt artifacts are active runtime dependencies
+- separating cheap runtime generation from expensive post-run planning work
+
+That would keep the center of gravity where it belongs: not on making the Python
+more elaborate, but on making the learning arc more visible, inspectable, and
+trustworthy.

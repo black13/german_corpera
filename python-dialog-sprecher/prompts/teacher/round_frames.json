@@ -1,0 +1,53 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "name": "Kontakt",
+      "teacher_instruction": "SITUATION SETUP. If a lesson seed is provided, its scene and compact_form tell you the situation. Name the KB and its purpose in one sentence. For GLOBAL KBs (operating conditions): name the condition — 'Heute: K001, langsam und klar kommunizieren. Ich spreche langsam, Sie können mich immer fragen.' For DETAILED/EXAMPLE KBs: name the KB, connect to a prior KB if relevant, then put the student into the concrete scene from the seed. 'Heute: K176, Hotel-Informationstafel. Das ist wie K173, aber im Hotel. Sie arbeiten an der Rezeption. Ein Gast zeigt auf 'breakfast'.' Ask for one German move. If the student names the task in English, accept it and put it into German for them.",
+      "grader_focus": "Establish baseline. What vocabulary does the student bring? What errors appear?",
+      "interstitial_after": "round_transition"
+    },
+    {
+      "round": 2,
+      "name": "Erkundung",
+      "teacher_instruction": "Probe the same carrier with a second physical example. Ask the student to identify the carrier and the operation: 'Ist das ein Schild oder eine Durchsage?' 'Lesen oder hören wir?' Then require the target A1 output. Keep the follow-up on the same object family, not a general topic question. If the student gives an English/meta explanation of the goal, recast it in German and ask for the actual utterance. If a student drifted, explicitly say the day goal again in simple language: 'Heute geht es um...' If you know this student from before, test whether previous corrections stuck, but do not sound like you are reading notes aloud.",
+      "grader_focus": "Which Sprachhandlungen did the student attempt? Which Wortfeld items appeared? Compare to prior days.",
+      "interstitial_after": "correction_bridge_if_needed"
+    },
+    {
+      "round": 3,
+      "name": "Modell",
+      "teacher_instruction": "Model the reduced move explicitly: carrier -> operation -> output. Use 'Man kann sagen...' and show the exact A1 frame, for example 'Hier steht ... Das bedeutet ...' or 'Ich höre ... Die Information ist ...'. Then ask the student to copy the frame with one new example. Do NOT lecture. Stay in natural spoken teacher language.",
+      "grader_focus": "Did the student pick up elements of the model?",
+      "interstitial_after": "round_transition"
+    },
+    {
+      "round": 4,
+      "name": "Komplikation",
+      "teacher_instruction": "Introduce a near-KB contrast without leaving the KB: static vs disappearing, verstehen vs weitergeben, read vs write. Make the student say which operation is happening and then perform it. Change only one detail in the same scene, add one useful word, or combine with a prior day only if the student must still perform the target speech act. If the lesson seed lists drift_paths, pick the most likely failure for this student and probe it. Do not open a new lesson. Force the student beyond rehearsed phrases, but stay readable and conversational.",
+      "grader_focus": "How does the student handle novelty? Do they fall back to L1? Do they use strategies (asking for repetition, paraphrasing)?",
+      "interstitial_after": "correction_bridge"
+    },
+    {
+      "round": 5,
+      "name": "Korrektur",
+      "teacher_instruction": "Correct only what blocks the reduced KB move. If the student showed a drift_path failure from the lesson seed, use the matching recovery move. If the student used the wrong carrier or operation, name it simply: 'Das ist Hören, nicht Lesen' or 'Das ist weitergeben, nicht verstehen.' Then retry with one clean example from the seed's target_utterances. Tie corrections to the Prüfung only after the object and operation are clear. If the student fixed an old error, praise it briefly. Keep it spoken and concise.",
+      "grader_focus": "Track new vs. repeat corrections. Flag self-corrections (highest learning signal).",
+      "interstitial_after": "round_transition"
+    },
+    {
+      "round": 6,
+      "name": "Übung",
+      "teacher_instruction": "Give a structured mini-task with minimal scaffolding using the carrier matrix. The student must produce the A1 output: word/meaning, Das bedeutet..., Termin/Uhrzeit, Name/Adresse, key fact only, or short action note. Keep it anchored to today's Kannbeschreibung and to one visible or hearable object. Prefer prompts like 'Erklären Sie bitte...' or 'Bitte notieren Sie...' that make the student perform the target speech act. Difficulty should scale with the day number. No narration or bracketed cues.",
+      "grader_focus": "Compare performance to round 2. Improvement = learning happened this session.",
+      "interstitial_after": "round_transition"
+    },
+    {
+      "round": 7,
+      "name": "Prüfung",
+      "teacher_instruction": "Simulate a test moment but do not pretend the KB is permanently finished. Ask the student to identify the carrier and perform the output independently. The final task should still match today's KB object, not a generic exam script. Close by naming what is stable and what needs another session. Keep it readable as spoken classroom dialogue.",
+      "grader_focus": "Final verdict. BESTANDEN / TEILWEISE / NICHT BESTANDEN. Compare to prior attempts.",
+      "interstitial_after": "day_close"
+    }
+  ]
+}

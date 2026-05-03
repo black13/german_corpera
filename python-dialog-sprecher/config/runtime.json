@@ -1,0 +1,81 @@
+{
+  "classroom": {
+    "students": [
+      "marta",
+      "james",
+      "yuki"
+    ],
+    "observer": {
+      "enabled": false,
+      "id": "note_taker",
+      "name": "Nora Weiss",
+      "frequency": "exchange",
+      "graded": false
+    }
+  },
+  "models": {
+    "teacher": {
+      "api": "deepseek",
+      "model": "deepseek-chat",
+      "temperature": 0.8,
+      "max_tokens": 350,
+      "request_timeout": 60
+    },
+    "grader_round": {
+      "api": "deepseek",
+      "model": "deepseek-chat",
+      "temperature": 0.3,
+      "max_tokens": 500
+    },
+    "grader_day": {
+      "api": "deepseek",
+      "model": "deepseek-chat",
+      "temperature": 0.3,
+      "max_tokens": 1000
+    },
+    "teacher_wrapup": {
+      "api": "deepseek",
+      "model": "deepseek-chat",
+      "temperature": 0.5,
+      "max_tokens": 500
+    },
+    "note_taker": {
+      "api": "deepseek",
+      "model": "deepseek-chat",
+      "temperature": 0.2,
+      "max_tokens": 220
+    }
+  },
+  "providers": {
+    "_comment": "Well-known providers are built-in: openai, deepseek, together, groq, ollama. For custom endpoints (vast.ai, runpod, local vLLM), set base_url and api_key_env on any model entry.",
+    "examples": {
+      "vast_ai": {
+        "api": "vast",
+        "model": "meta-llama/Llama-3.1-70B-Instruct",
+        "base_url": "http://YOUR_VAST_IP:8000/v1",
+        "api_key_env": "VAST_API_KEY"
+      },
+      "local_vllm": {
+        "api": "local",
+        "model": "mistralai/Mistral-7B-Instruct-v0.3",
+        "base_url": "http://localhost:8000/v1"
+      },
+      "together": {
+        "api": "together",
+        "model": "meta-llama/Llama-3.1-70B-Instruct-Turbo"
+      },
+      "groq": {
+        "api": "groq",
+        "model": "llama-3.1-70b-versatile"
+      },
+      "ollama": {
+        "api": "ollama",
+        "model": "llama3.1"
+      }
+    }
+  },
+  "server": {
+    "host": "127.0.0.1",
+    "port": 8787
+  }
+}

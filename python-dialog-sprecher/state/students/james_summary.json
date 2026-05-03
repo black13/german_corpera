@@ -1,0 +1,219 @@
+{
+  "student": "james",
+  "day": 176,
+  "days_completed": 176,
+  "stable_vocabulary": [
+    {
+      "word": "Entschuldigung",
+      "stable": true,
+      "mentions": 12
+    },
+    {
+      "word": "kommen aus",
+      "stable": true,
+      "mentions": 11
+    },
+    {
+      "word": "Danke",
+      "stable": true,
+      "mentions": 10
+    },
+    {
+      "word": "die Uhrzeit",
+      "stable": true,
+      "mentions": 9
+    },
+    {
+      "word": "heißen",
+      "stable": true,
+      "mentions": 9
+    },
+    {
+      "word": "wohnen in",
+      "stable": true,
+      "mentions": 9
+    },
+    {
+      "word": "links",
+      "stable": true,
+      "mentions": 8
+    },
+    {
+      "word": "Brot",
+      "stable": true,
+      "mentions": 8
+    },
+    {
+      "word": "Tschüss",
+      "stable": true,
+      "mentions": 8
+    },
+    {
+      "word": "die Uhr",
+      "stable": true,
+      "mentions": 7
+    }
+  ],
+  "unstable_vocabulary": [
+    {
+      "word": "lecker",
+      "stable": false,
+      "mentions": 9
+    },
+    {
+      "word": "bestellen",
+      "stable": false,
+      "mentions": 4
+    },
+    {
+      "word": "Kopfschmerzen",
+      "stable": false,
+      "mentions": 2
+    },
+    {
+      "word": "Videospiele spielen",
+      "stable": false,
+      "mentions": 2
+    },
+    {
+      "word": "Prüfung",
+      "stable": false,
+      "mentions": 2
+    },
+    {
+      "word": "Studentenwohnheim",
+      "stable": false,
+      "mentions": 2
+    },
+    {
+      "word": "der Saft",
+      "stable": false,
+      "mentions": 1
+    },
+    {
+      "word": "Leine",
+      "stable": false,
+      "mentions": 1
+    }
+  ],
+  "stable_grammar": [
+    {
+      "rule": "Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Übersetzen/Erklären von Hotelbegriffen) als robust konsolidiertes Muster",
+      "stable": true,
+      "mentions": 2
+    },
+    {
+      "rule": "Kann ich bitte... haben? (request structure)",
+      "stable": true,
+      "mentions": 2
+    },
+    {
+      "rule": "Code-switching als funktionales A1-Muster für metasprachliche Erklärungen",
+      "stable": true,
+      "mentions": 1
+    },
+    {
+      "rule": "Frageform 'Was bedeutet...?' mit korrekter Struktur",
+      "stable": true,
+      "mentions": 1
+    },
+    {
+      "rule": "Code-switching Englisch/Deutsch für metakognitive Planung und präzisierende Erklärungen",
+      "stable": true,
+      "mentions": 1
+    },
+    {
+      "rule": "Elliptische/broken Syntax für funktionale Übersetzungen (A1-typisch)",
+      "stable": true,
+      "mentions": 1
+    },
+    {
+      "rule": "Funktionale Sprachhandlungsschemata ('Auf dem Schild steht X. Auf Deutsch: Y.') für klare Informationsweitergabe",
+      "stable": true,
+      "mentions": 1
+    },
+    {
+      "rule": "Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Übersetzen von Schildern) als robust konsolidiertes Muster",
+      "stable": true,
+      "mentions": 1
+    }
+  ],
+  "unstable_grammar": [
+    {
+      "rule": "mixed English and German",
+      "stable": false,
+      "mentions": 26
+    },
+    {
+      "rule": "Formelle Höflichkeitsphrase 'Können Sie bitte... wiederholen?'",
+      "stable": false,
+      "mentions": 1
+    },
+    {
+      "rule": "Completing greeting formulas (Liebe.../Lieber...)",
+      "stable": false,
+      "mentions": 1
+    },
+    {
+      "rule": "Preposition 'für' with definite article ('für die Prüfung')",
+      "stable": false,
+      "mentions": 1
+    },
+    {
+      "rule": "Correct use of 'im Café' after correction",
+      "stable": false,
+      "mentions": 1
+    },
+    {
+      "rule": "temporal construction with 'seit'",
+      "stable": false,
+      "mentions": 1
+    }
+  ],
+  "persistent_errors": [
+    "Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)",
+    "Abhängigkeit von klarer, kanonalignierter Lehrersteuerung: Bei unklaren oder generischen Prompts driftet der Student in soziale Abschlussformeln statt zur Zielsprachhandlung (Runden 6-7)"
+  ],
+  "emotional_state": "Engagiert und reaktionsschnell bei klaren Aufgaben, kooperativ im sozialen Abschluss",
+  "recent_kanns": [
+    {
+      "kann_id": "K176",
+      "day": 176,
+      "result": "bestanden",
+      "kann_text": "Kann im Hotel einfache Begriffe auf der Informationstafel (z. B. „breakfast“) für einen deutschsprachigen Gast übersetzen."
+    },
+    {
+      "kann_id": "K175",
+      "day": 175,
+      "result": "bestanden",
+      "kann_text": "Kann in einem Restaurant die Aufschrift (z. B. „caballeros“) auf der Toilettentür für einen deutschsprachigen Touristen übersetzen."
+    },
+    {
+      "kann_id": "K174",
+      "day": 174,
+      "result": "bestanden",
+      "kann_text": "Kann die Aufschrift auf dem Schild einer Geschäftstür (z. B. „fermé“) für einen deutschsprachigen Touristen übersetzen."
+    },
+    {
+      "kann_id": "K173",
+      "day": 173,
+      "result": "bestanden",
+      "kann_text": "Kann einfache anderssprachige Informationen von Schildern und Aufschriften Deutschsprachigen in Einzelwörtern auf Deutsch weitergeben."
+    },
+    {
+      "kann_id": "K172",
+      "day": 172,
+      "result": "bestanden",
+      "kann_text": "Kann in einem Geschäft einem deutschen Touristen behilflich sein und für ihn auf Deutsch den Preis von Waren nennen."
+    }
+  ],
+  "recent_highlights": [
+    "Runden 1-5 zeigen durchgängig perfekte, kanonalignierte Leistung bei klarer Lehrersteuerung: Der Student übersetzt Hotelbegriffe (Check-out, Frühstück, Rezeption, Parkplatz) und Zeitangaben funktional, nutzt korrekte Nachfragestrukturen und integriert Verständnissicherung.",
+    "Der Student demonstriert bei klarer, kanonalignierter Lehrersteuerung (in 6 von 7 Runden) eine vollständige Beherrschung der Kannbeschreibung: Er übersetzt Aufschriften (z.B. 'dames', 'Signore', 'señoras', 'Signori') sofort und korrekt in funktionale Äußerungen wie 'Damentoilette' oder 'Herrentoilette', teilweise mit integrierter Ortsangabe ('da lang').",
+    "Runde 5 zeigt das dokumentierte Rückfallmuster: Bei unklarer Lehrersteuerung driftet der Student in metakognitive Paraphrase statt zur Zielsprachhandlung. Dies unterstreicht die Abhängigkeit von klarer, kanonalignierter Führung für optimale Leistung."
+  ],
+  "totals": {
+    "vocabulary": 322,
+    "grammar": 213
+  }
+}
