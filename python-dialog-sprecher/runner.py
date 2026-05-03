@@ -2533,6 +2533,42 @@ class Handler(SimpleHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(b"ok")
             return
+
+        if parsed.path == "/graph":
+            import os
+            svg_path = os.path.join(os.path.dirname(__file__), "kb_graph.svg")
+            svg_content = ""
+            if os.path.exists(svg_path):
+                with open(svg_path, "r") as f:
+                    svg_content = f.read()
+            html = (
+                '<!DOCTYPE html><html><head><meta charset="utf-8">'
+                '<meta name="viewport" content="width=device-width,initial-scale=1">'
+                '<title>KB Graph</title><style>'
+                '*{box-sizing:border-box}body{margin:0;font-family:-apple-system,Segoe UI,Roboto,sans-serif;background:#f4f6f7;color:#1a2227}'
+                '.top{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid #d9e0e3;padding:12px 18px}'
+                '.top h1{margin:0;font-size:18px;color:#0b5e55}'
+                '.nav-bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}'
+                '.nv{color:#0b5e55;text-decoration:none;font-size:13px;padding:3px 8px;border-radius:4px;border:1px solid #c8d6db}'
+                '.nv:hover{background:#0b5e55;color:#fff;border-color:#0b5e55}'
+                '.page{padding:14px 18px}.graph-container{background:#f4f6f7;border-radius:8px;overflow:hidden;border:1px solid #dde4e8}'
+                '</style></head><body>'
+                '<div class="top"><h1>KB Compressed Graph</h1>'
+                '<div class="nav-bar">'
+                '<a href="/" class="nv">Classroom</a>'
+                '<a href="/graph" class="nv" style="background:#0b5e55;color:#fff">Graph</a>'
+                '</div></div>'
+                '<div class="page"><div class="graph-container">'
+                + svg_content +
+                '</div></div></body></html>'
+            ).encode("utf-8")
+            self.send_response(200)
+            self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.send_header("Content-Length", str(len(html)))
+            self.end_headers()
+            self.wfile.write(html)
+            return
+
         query = parse_qs(parsed.query)
         include_static = query.get("poll", ["0"])[0] != "1"
         self.send_response(200)
