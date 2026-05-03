@@ -1,5 +1,6 @@
-"""WSGI entrypoint for Render's existing `gunicorn app:app` service command."""
+"""WSGI entrypoint for Render/`gunicorn app:app` deployments."""
 
+import json
 import os
 import random
 from html import escape
@@ -1796,6 +1797,23 @@ def app(environ, start_response):
         if method == "HEAD":
             return _response(start_response, "200 OK", "")
         return _response(start_response, "200 OK", "ok")
+
+    if method in {"GET", "HEAD"} and path == "/version":
+        if method == "HEAD":
+            return _response(
+                start_response,
+                "200 OK",
+                "",
+                content_type="application/json; charset=utf-8",
+                headers=[("Cache-Control", "no-store")],
+            )
+        return _response(
+            start_response,
+            "200 OK",
+            json.dumps(runner.deployment_status_payload(), ensure_ascii=False, indent=2),
+            content_type="application/json; charset=utf-8",
+            headers=[("Cache-Control", "no-store")],
+        )
 
     if method in {"GET", "HEAD"} and path == "/guides":
         if method == "HEAD":

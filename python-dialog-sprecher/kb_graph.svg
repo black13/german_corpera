@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" font-family="-apple-system, Segoe UI, sans-serif">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 980" font-family="-apple-system, Segoe UI, sans-serif">
   <defs>
     <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
       <path d="M0,0 L8,3 L0,6 Z" fill="#555"/>
@@ -15,214 +15,212 @@
   </defs>
 
   <!-- Background -->
-  <rect width="1400" height="900" fill="#f4f6f7"/>
+  <rect width="1600" height="980" fill="#f4f6f7"/>
 
   <!-- Title -->
-  <text x="700" y="36" text-anchor="middle" font-size="18" font-weight="700" fill="#1a2227">KB Compressed Graph — Clusters within Categories, Bridges across Channels</text>
+  <text x="800" y="38" text-anchor="middle" font-size="19" font-weight="700" fill="#1a2227">KB Compressed Graph — Clusters within Categories, Bridges across Channels</text>
 
   <!-- Legend -->
-  <g transform="translate(10,50)">
-    <rect x="0" y="0" width="280" height="88" rx="6" fill="#fff" stroke="#dde4e8"/>
-    <text x="14" y="20" font-size="12" font-weight="700" fill="#1a2227">Legend</text>
-    <rect x="14" y="30" width="12" height="12" rx="2" fill="#1a6a5e"/>
-    <text x="32" y="41" font-size="11" fill="#3a4a53">Reception schriftlich (eye / reading)</text>
-    <rect x="14" y="48" width="12" height="12" rx="2" fill="#2e6b8a"/>
-    <text x="32" y="59" font-size="11" fill="#3a4a53">Reception mündlich (ear / listening)</text>
-    <rect x="14" y="66" width="12" height="12" rx="2" fill="#c06014"/>
-    <text x="32" y="77" font-size="11" fill="#3a4a53">Sprachmittlung mündlich (relay)</text>
+  <g transform="translate(20,54)">
+    <rect x="0" y="0" width="320" height="100" rx="6" fill="#fff" stroke="#dde4e8"/>
+    <text x="16" y="22" font-size="13" font-weight="700" fill="#1a2227">Legend</text>
+    <rect x="16" y="34" width="14" height="14" rx="2" fill="#1a6a5e"/>
+    <text x="36" y="46" font-size="12" fill="#3a4a53">Reception schriftlich (eye / reading)</text>
+    <rect x="16" y="54" width="14" height="14" rx="2" fill="#2e6b8a"/>
+    <text x="36" y="66" font-size="12" fill="#3a4a53">Reception mündlich (ear / listening)</text>
+    <rect x="16" y="74" width="14" height="14" rx="2" fill="#c06014"/>
+    <text x="36" y="86" font-size="12" fill="#3a4a53">Sprachmittlung mündlich (relay)</text>
   </g>
 
   <!-- === CATEGORY: Interaktion mündlich (Im) K001-041 === -->
-  <g transform="translate(20,150)">
-    <rect x="0" y="0" width="200" height="210" rx="8" fill="#fff3e0" stroke="#e8c87a" stroke-width="1.5" filter="url(#shadow)"/>
-    <text x="10" y="22" font-size="12" font-weight="700" fill="#8b6914">Interaktion mündlich</text>
-    <text x="10" y="38" font-size="10" fill="#9a7b2a">K001–041 · ear ↔ mouth</text>
-    <rect x="10" y="50" width="180" height="32" rx="4" fill="#fef9e7" stroke="#e6d88a"/>
-    <text x="20" y="68" font-size="10" fill="#6b5a00">greetings / introductions</text>
-    <rect x="10" y="88" width="180" height="32" rx="4" fill="#fef9e7" stroke="#e6d88a"/>
-    <text x="20" y="106" font-size="10" fill="#6b5a00">asking / giving info</text>
-    <rect x="10" y="126" width="180" height="32" rx="4" fill="#fef9e7" stroke="#e6d88a"/>
-    <text x="20" y="144" font-size="10" fill="#6b5a00">preferences / opinions</text>
-    <rect x="10" y="164" width="180" height="32" rx="4" fill="#fef9e7" stroke="#e6d88a"/>
-    <text x="20" y="182" font-size="10" fill="#6b5a00">requests / thanks</text>
-    <text x="10" y="200" font-size="9" fill="#b8960f" font-style="italic">41 KBs · no reduction data</text>
+  <g transform="translate(30,170)">
+    <rect x="0" y="0" width="230" height="230" rx="8" fill="#fff3e0" stroke="#e8c87a" stroke-width="1.5" filter="url(#shadow)"/>
+    <text x="12" y="24" font-size="13" font-weight="700" fill="#8b6914">Interaktion mündlich</text>
+    <text x="12" y="42" font-size="11" fill="#9a7b2a">K001–041 · ear ↔ mouth</text>
+    <rect x="12" y="56" width="206" height="34" rx="4" fill="#fef9e7" stroke="#e6d88a"/>
+    <text x="24" y="74" font-size="11" fill="#6b5a00">greetings / introductions</text>
+    <rect x="12" y="96" width="206" height="34" rx="4" fill="#fef9e7" stroke="#e6d88a"/>
+    <text x="24" y="114" font-size="11" fill="#6b5a00">asking / giving info</text>
+    <rect x="12" y="136" width="206" height="34" rx="4" fill="#fef9e7" stroke="#e6d88a"/>
+    <text x="24" y="154" font-size="11" fill="#6b5a00">preferences / opinions</text>
+    <rect x="12" y="176" width="206" height="34" rx="4" fill="#fef9e7" stroke="#e6d88a"/>
+    <text x="24" y="194" font-size="11" fill="#6b5a00">requests / thanks</text>
+    <text x="12" y="222" font-size="10" fill="#b8960f" font-style="italic">41 KBs · no reduction data</text>
   </g>
 
   <!-- === CATEGORY: Interaktion schriftlich (Is) K042-059 === -->
-  <g transform="translate(20,380)">
-    <rect x="0" y="0" width="200" height="120" rx="8" fill="#f3e5f5" stroke="#ce93d8" stroke-width="1.5" filter="url(#shadow)"/>
-    <text x="10" y="22" font-size="12" font-weight="700" fill="#6a1b9a">Interaktion schriftlich</text>
-    <text x="10" y="38" font-size="10" fill="#7b2a9a">K042–059 · hand ↔ eye</text>
-    <rect x="10" y="50" width="180" height="32" rx="4" fill="#faf0fc" stroke="#e1bee7"/>
-    <text x="20" y="68" font-size="10" fill="#4a2870">short written messages</text>
-    <rect x="10" y="88" width="180" height="18" rx="4" fill="#faf0fc" stroke="#e1bee7"/>
-    <text x="20" y="100" font-size="9" fill="#7b2a9a" font-style="italic">18 KBs · no reduction data</text>
+  <g transform="translate(30,420)">
+    <rect x="0" y="0" width="230" height="140" rx="8" fill="#f3e5f5" stroke="#ce93d8" stroke-width="1.5" filter="url(#shadow)"/>
+    <text x="12" y="24" font-size="13" font-weight="700" fill="#6a1b9a">Interaktion schriftlich</text>
+    <text x="12" y="42" font-size="11" fill="#7b2a9a">K042–059 · hand ↔ eye</text>
+    <rect x="12" y="56" width="206" height="34" rx="4" fill="#faf0fc" stroke="#e1bee7"/>
+    <text x="24" y="74" font-size="11" fill="#4a2870">short written messages</text>
+    <rect x="12" y="100" width="206" height="24" rx="4" fill="#faf0fc" stroke="#e1bee7"/>
+    <text x="24" y="116" font-size="10" fill="#7b2a9a" font-style="italic">18 KBs · no reduction data</text>
   </g>
 
   <!-- === CATEGORY: Rezeption mündlich (Rm) K060-083 === -->
-  <g transform="translate(260,150)">
-    <rect x="0" y="0" width="220" height="210" rx="8" fill="#e3f2fd" stroke="#90caf9" stroke-width="1.5" filter="url(#shadow)"/>
-    <text x="10" y="22" font-size="12" font-weight="700" fill="#2e6b8a">Rezeption mündlich</text>
-    <text x="10" y="38" font-size="10" fill="#3a7a9a">K060–083 · ear / verschwindet</text>
-    <rect x="10" y="50" width="200" height="32" rx="4" fill="#eaf2fa" stroke="#bbdefb"/>
-    <text x="20" y="68" font-size="10" fill="#1e4a8a">understanding slow speech</text>
-    <rect x="10" y="88" width="200" height="32" rx="4" fill="#eaf2fa" stroke="#bbdefb"/>
-    <text x="20" y="106" font-size="10" fill="#1e4a8a">internat. words + pauses</text>
-    <rect x="10" y="126" width="200" height="32" rx="4" fill="#eaf2fa" stroke="#bbdefb"/>
-    <text x="20" y="144" font-size="10" fill="#1e4a8a">numbers / time spoken</text>
-    <rect x="10" y="164" width="200" height="32" rx="4" fill="#eaf2fa" stroke="#bbdefb"/>
-    <text x="20" y="182" font-size="10" fill="#1e4a8a">instructions / directions</text>
-    <text x="10" y="200" font-size="9" fill="#5a8aaa" font-style="italic">24 KBs</text>
+  <g transform="translate(310,170)">
+    <rect x="0" y="0" width="250" height="230" rx="8" fill="#e3f2fd" stroke="#90caf9" stroke-width="1.5" filter="url(#shadow)"/>
+    <text x="12" y="24" font-size="13" font-weight="700" fill="#2e6b8a">Rezeption mündlich</text>
+    <text x="12" y="42" font-size="11" fill="#3a7a9a">K060–083 · ear / verschwindet</text>
+    <rect x="12" y="56" width="226" height="34" rx="4" fill="#eaf2fa" stroke="#bbdefb"/>
+    <text x="24" y="74" font-size="11" fill="#1e4a8a">understanding slow speech</text>
+    <rect x="12" y="96" width="226" height="34" rx="4" fill="#eaf2fa" stroke="#bbdefb"/>
+    <text x="24" y="114" font-size="11" fill="#1e4a8a">internat. words + pauses</text>
+    <rect x="12" y="136" width="226" height="34" rx="4" fill="#eaf2fa" stroke="#bbdefb"/>
+    <text x="24" y="154" font-size="11" fill="#1e4a8a">numbers / time spoken</text>
+    <rect x="12" y="176" width="226" height="34" rx="4" fill="#eaf2fa" stroke="#bbdefb"/>
+    <text x="24" y="194" font-size="11" fill="#1e4a8a">instructions / directions</text>
+    <text x="12" y="222" font-size="10" fill="#5a8aaa" font-style="italic">24 KBs</text>
   </g>
 
   <!-- === CATEGORY: Rezeption schriftlich (Rs) K084-115 === -->
-  <g transform="translate(260,380)">
-    <rect x="0" y="0" width="260" height="340" rx="8" fill="#e0f2f1" stroke="#80cbc4" stroke-width="1.5" filter="url(#shadow)"/>
-    <text x="10" y="22" font-size="12" font-weight="700" fill="#00695c">Rezeption schriftlich</text>
-    <text x="10" y="38" font-size="10" fill="#1a6a5e">K084–115 · eye / stays</text>
+  <g transform="translate(310,420)">
+    <rect x="0" y="0" width="300" height="380" rx="8" fill="#e0f2f1" stroke="#80cbc4" stroke-width="1.5" filter="url(#shadow)"/>
+    <text x="12" y="24" font-size="13" font-weight="700" fill="#00695c">Rezeption schriftlich</text>
+    <text x="12" y="42" font-size="11" fill="#1a6a5e">K084–115 · eye / stays</text>
 
     <!-- Cluster: basic reading -->
-    <rect x="10" y="50" width="240" height="42" rx="4" fill="#e6f4f0" stroke="#a0d8cf"/>
-    <text x="20" y="66" font-size="10" font-weight="600" fill="#0b5e55">basic reading: words / topic / re-read</text>
-    <text x="20" y="80" font-size="10" fill="#2a6a5e">K084 · K085 · K086  (all hand✍)</text>
+    <rect x="12" y="56" width="276" height="46" rx="4" fill="#e6f4f0" stroke="#a0d8cf"/>
+    <text x="24" y="74" font-size="11" font-weight="600" fill="#0b5e55">basic reading: words / topic / re-read</text>
+    <text x="24" y="90" font-size="10" fill="#2a6a5e">K084 · K085 · K086  (all ✍)</text>
 
     <!-- Cluster: numbers/tables -->
-    <rect x="10" y="100" width="240" height="42" rx="4" fill="#e6f4f0" stroke="#a0d8cf"/>
-    <text x="20" y="116" font-size="10" font-weight="600" fill="#0b5e55">numbers / time / price / tables</text>
-    <text x="20" y="130" font-size="10" fill="#2a6a5e">K087 · K092 · K095  (K092 hand✍)</text>
+    <rect x="12" y="110" width="276" height="46" rx="4" fill="#e6f4f0" stroke="#a0d8cf"/>
+    <text x="24" y="128" font-size="11" font-weight="600" fill="#0b5e55">numbers / time / price / tables</text>
+    <text x="24" y="144" font-size="10" fill="#2a6a5e">K087 · K092 · K095  (K092 ✍)</text>
 
     <!-- Cluster: public signs -->
-    <rect x="10" y="150" width="240" height="42" rx="4" fill="#e6f4f0" stroke="#a0d8cf"/>
-    <text x="20" y="166" font-size="10" font-weight="600" fill="#0b5e55">public signs / labels / notices</text>
-    <text x="20" y="180" font-size="10" fill="#2a6a5e">K100 · K101 · K102 · K103</text>
+    <rect x="12" y="164" width="276" height="46" rx="4" fill="#e6f4f0" stroke="#a0d8cf"/>
+    <text x="24" y="182" font-size="11" font-weight="600" fill="#0b5e55">public signs / labels / notices</text>
+    <text x="24" y="198" font-size="10" fill="#2a6a5e">K100 · K101 · K102 · K103</text>
 
     <!-- Cluster: instructions -->
-    <rect x="10" y="200" width="240" height="42" rx="4" fill="#e6f4f0" stroke="#a0d8cf"/>
-    <text x="20" y="216" font-size="10" font-weight="600" fill="#0b5e55">short instructions with pictures</text>
-    <text x="20" y="230" font-size="10" fill="#2a6a5e">K104  (hand✍ + seed)</text>
+    <rect x="12" y="218" width="276" height="46" rx="4" fill="#e6f4f0" stroke="#a0d8cf"/>
+    <text x="24" y="236" font-size="11" font-weight="600" fill="#0b5e55">short instructions with pictures</text>
+    <text x="24" y="252" font-size="10" fill="#2a6a5e">K104  (✍ + seed)</text>
 
     <!-- Cluster: forms -->
-    <rect x="10" y="250" width="240" height="42" rx="4" fill="#e6f4f0" stroke="#a0d8cf"/>
-    <text x="20" y="266" font-size="10" font-weight="600" fill="#0b5e55">forms / questionnaires</text>
-    <text x="20" y="280" font-size="10" fill="#2a6a5e">K105 · K106 · K107 · K108 · K109 · K110</text>
+    <rect x="12" y="272" width="276" height="46" rx="4" fill="#e6f4f0" stroke="#a0d8cf"/>
+    <text x="24" y="290" font-size="11" font-weight="600" fill="#0b5e55">forms / questionnaires</text>
+    <text x="24" y="306" font-size="10" fill="#2a6a5e">K105 · K106 · K107 · K108 · K109 · K110</text>
 
     <!-- Cluster: everyday texts -->
-    <rect x="10" y="300" width="240" height="30" rx="4" fill="#e6f4f0" stroke="#a0d8cf"/>
-    <text x="20" y="318" font-size="10" fill="#2a6a5e">K111–K115 · everyday texts, ads, notes</text>
+    <rect x="12" y="326" width="276" height="38" rx="4" fill="#e6f4f0" stroke="#a0d8cf"/>
+    <text x="24" y="350" font-size="11" fill="#2a6a5e">K111–K115 · everyday texts, ads, notes</text>
   </g>
 
   <!-- === CATEGORY: Produktion mündlich (Pm) K116-132 === -->
-  <g transform="translate(540,150)">
-    <rect x="0" y="0" width="220" height="210" rx="8" fill="#fff8e1" stroke="#ffcc80" stroke-width="1.5" filter="url(#shadow)"/>
-    <text x="10" y="22" font-size="12" font-weight="700" fill="#c06014">Produktion mündlich</text>
-    <text x="10" y="38" font-size="10" fill="#d07024">K116–132 · mouth / output disappears</text>
-    <rect x="10" y="50" width="200" height="32" rx="4" fill="#fef6e8" stroke="#ffe0b2"/>
-    <text x="20" y="68" font-size="10" fill="#5c2a00">self-description</text>
-    <rect x="10" y="88" width="200" height="32" rx="4" fill="#fef6e8" stroke="#ffe0b2"/>
-    <text x="20" y="106" font-size="10" fill="#5c2a00">daily life / hobbies</text>
-    <rect x="10" y="126" width="200" height="32" rx="4" fill="#fef6e8" stroke="#ffe0b2"/>
-    <text x="20" y="144" font-size="10" fill="#5c2a00">numbers / dates aloud</text>
-    <rect x="10" y="164" width="200" height="32" rx="4" fill="#fef6e8" stroke="#ffe0b2"/>
-    <text x="20" y="182" font-size="10" fill="#5c2a00">describe people / places</text>
-    <text x="10" y="200" font-size="9" fill="#9a6a2a" font-style="italic">17 KBs</text>
+  <g transform="translate(660,170)">
+    <rect x="0" y="0" width="250" height="230" rx="8" fill="#fff8e1" stroke="#ffcc80" stroke-width="1.5" filter="url(#shadow)"/>
+    <text x="12" y="24" font-size="13" font-weight="700" fill="#c06014">Produktion mündlich</text>
+    <text x="12" y="42" font-size="11" fill="#d07024">K116–132 · mouth / disappears</text>
+    <rect x="12" y="56" width="226" height="34" rx="4" fill="#fef6e8" stroke="#ffe0b2"/>
+    <text x="24" y="74" font-size="11" fill="#5c2a00">self-description</text>
+    <rect x="12" y="96" width="226" height="34" rx="4" fill="#fef6e8" stroke="#ffe0b2"/>
+    <text x="24" y="114" font-size="11" fill="#5c2a00">daily life / hobbies</text>
+    <rect x="12" y="136" width="226" height="34" rx="4" fill="#fef6e8" stroke="#ffe0b2"/>
+    <text x="24" y="154" font-size="11" fill="#5c2a00">numbers / dates aloud</text>
+    <rect x="12" y="176" width="226" height="34" rx="4" fill="#fef6e8" stroke="#ffe0b2"/>
+    <text x="24" y="194" font-size="11" fill="#5c2a00">describe people / places</text>
+    <text x="12" y="222" font-size="10" fill="#9a6a2a" font-style="italic">17 KBs</text>
   </g>
 
   <!-- === CATEGORY: Produktion schriftlich (Ps) K133-152 === -->
-  <g transform="translate(540,380)">
-    <rect x="0" y="0" width="220" height="210" rx="8" fill="#fce4ec" stroke="#f48fb1" stroke-width="1.5" filter="url(#shadow)"/>
-    <text x="10" y="22" font-size="12" font-weight="700" fill="#800040">Produktion schriftlich</text>
-    <text x="10" y="38" font-size="10" fill="#900050">K133–152 · hand/keyboard / stays</text>
-    <rect x="10" y="50" width="200" height="32" rx="4" fill="#fef0f4" stroke="#f8bbd0"/>
-    <text x="20" y="68" font-size="10" fill="#4a0030">copy words / phrases</text>
-    <rect x="10" y="88" width="200" height="32" rx="4" fill="#fef0f4" stroke="#f8bbd0"/>
-    <text x="20" y="106" font-size="10" fill="#4a0030">personal notes (time/place)</text>
-    <rect x="10" y="126" width="200" height="32" rx="4" fill="#fef0f4" stroke="#f8bbd0"/>
-    <text x="20" y="144" font-size="10" fill="#4a0030">bullet facts / data</text>
-    <rect x="10" y="164" width="200" height="32" rx="4" fill="#fef0f4" stroke="#f8bbd0"/>
-    <text x="20" y="182" font-size="10" fill="#4a0030">write about self/others</text>
-    <text x="10" y="200" font-size="9" fill="#7a3050" font-style="italic">20 KBs</text>
+  <g transform="translate(660,420)">
+    <rect x="0" y="0" width="250" height="230" rx="8" fill="#fce4ec" stroke="#f48fb1" stroke-width="1.5" filter="url(#shadow)"/>
+    <text x="12" y="24" font-size="13" font-weight="700" fill="#800040">Produktion schriftlich</text>
+    <text x="12" y="42" font-size="11" fill="#900050">K133–152 · hand/keyboard / stays</text>
+    <rect x="12" y="56" width="226" height="34" rx="4" fill="#fef0f4" stroke="#f8bbd0"/>
+    <text x="24" y="74" font-size="11" fill="#4a0030">copy words / phrases</text>
+    <rect x="12" y="96" width="226" height="34" rx="4" fill="#fef0f4" stroke="#f8bbd0"/>
+    <text x="24" y="114" font-size="11" fill="#4a0030">personal notes (time/place)</text>
+    <rect x="12" y="136" width="226" height="34" rx="4" fill="#fef0f4" stroke="#f8bbd0"/>
+    <text x="24" y="154" font-size="11" fill="#4a0030">bullet facts / data</text>
+    <rect x="12" y="176" width="226" height="34" rx="4" fill="#fef0f4" stroke="#f8bbd0"/>
+    <text x="24" y="194" font-size="11" fill="#4a0030">write about self/others</text>
+    <text x="12" y="222" font-size="10" fill="#7a3050" font-style="italic">20 KBs</text>
   </g>
 
   <!-- === CATEGORY: Sprachmittlung mündlich (Sm) K153-176 === -->
-  <g transform="translate(260,750)">
-    <rect x="0" y="0" width="500" height="130" rx="8" fill="#fbe9e7" stroke="#ff8a65" stroke-width="1.5" filter="url(#shadow)"/>
-    <text x="10" y="22" font-size="12" font-weight="700" fill="#d84315">Sprachmittlung mündlich</text>
-    <text x="10" y="38" font-size="10" fill="#e85325">K153–176 · mouth after reading/hearing · relay output disappears</text>
+  <g transform="translate(310,835)">
+    <rect x="0" y="0" width="600" height="125" rx="8" fill="#fbe9e7" stroke="#ff8a65" stroke-width="1.5" filter="url(#shadow)"/>
+    <text x="12" y="24" font-size="13" font-weight="700" fill="#d84315">Sprachmittlung mündlich</text>
+    <text x="12" y="42" font-size="11" fill="#e85325">K153–176 · mouth after reading/hearing · relay output disappears</text>
 
     <!-- Cluster: DE→shared language -->
-    <rect x="10" y="48" width="230" height="70" rx="4" fill="#fef2ee" stroke="#ffab91"/>
-    <text x="20" y="64" font-size="10" font-weight="600" fill="#bf360c">DE → shared language</text>
-    <text x="20" y="78" font-size="9" fill="#d84315">K153–166 · relay German info</text>
-    <text x="20" y="90" font-size="9" fill="#d84315">to another person in common lang.</text>
-    <text x="20" y="104" font-size="9" fill="#d84315">K163 ✍ (hand + seed)</text>
+    <rect x="12" y="52" width="280" height="62" rx="4" fill="#fef2ee" stroke="#ffab91"/>
+    <text x="24" y="70" font-size="11" font-weight="600" fill="#bf360c">DE → shared language</text>
+    <text x="24" y="84" font-size="10" fill="#d84315">K153–166 · relay German info</text>
+    <text x="24" y="98" font-size="10" fill="#d84315">to another person in common lang.  K163 ✍ (hand + seed)</text>
 
     <!-- Cluster: other→DE -->
-    <rect x="255" y="48" width="230" height="70" rx="4" fill="#fef2ee" stroke="#ffab91"/>
-    <text x="265" y="64" font-size="10" font-weight="600" fill="#bf360c">other language → DE</text>
-    <text x="265" y="78" font-size="9" fill="#d84315">K167–176 · relay to German speaker</text>
-    <text x="265" y="90" font-size="9" fill="#d84315">K173 · K174 · K175 · K176 ✍ (all hand)</text>
-    <text x="265" y="104" font-size="9" fill="#d84315">shop door → toilet door → hotel board</text>
+    <rect x="310" y="52" width="280" height="62" rx="4" fill="#fef2ee" stroke="#ffab91"/>
+    <text x="322" y="70" font-size="11" font-weight="600" fill="#bf360c">other language → DE</text>
+    <text x="322" y="84" font-size="10" fill="#d84315">K167–176 · relay to German speaker</text>
+    <text x="322" y="98" font-size="10" fill="#d84315">K173 · K174 · K175 · K176 ✍ (all hand)</text>
   </g>
 
 
   <!-- ====== BRIDGE EDGES ===== -->
 
   <!-- Edge 1: Rs numbers ↔ Rm numbers (channel shift: eye ↔ ear) -->
-  <path d="M310,596 C310,570 460,570 460,430 L475,430"
+  <path d="M390,675 C390,640 490,620 490,490 L540,490"
         fill="none" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4"
         marker-end="url(#arrow-red)"/>
-  <rect x="346" y="512" width="170" height="16" rx="3" fill="#fff" stroke="#c0392b" stroke-width="0.5"/>
-  <text x="352" y="523" font-size="9" fill="#c0392b">same content · channel shift</text>
+  <rect x="410" y="555" width="170" height="16" rx="3" fill="#fff" stroke="#c0392b" stroke-width="0.5"/>
+  <text x="416" y="566" font-size="10" fill="#c0392b">same content · channel shift</text>
 
   <!-- Edge 2: Rs signs (K100) → Sm relay signs (K173) -->
-  <path d="M355,534 C355,700 390,740 390,780"
+  <path d="M400,607 C400,750 450,790 450,860"
         fill="none" stroke="#0b5e55" stroke-width="2"
         marker-end="url(#arrow-green)"/>
-  <rect x="300" y="675" width="140" height="14" rx="3" fill="#fff" stroke="#0b5e55" stroke-width="0.5"/>
-  <text x="314" y="685" font-size="9" fill="#0b5e55">same carrier · op upgrade</text>
+  <rect x="350" y="715" width="140" height="15" rx="3" fill="#fff" stroke="#0b5e55" stroke-width="0.5"/>
+  <text x="354" y="726" font-size="10" fill="#0b5e55">same carrier · op upgrade</text>
 
   <!-- Edge 3: Rs instructions (K104) → Sm relay (K163) -->
-  <path d="M420,534 C420,700 390,700 370,780"
+  <path d="M500,661 C500,750 470,800 440,860"
         fill="none" stroke="#0b5e55" stroke-width="2" stroke-dasharray="6,3"
         marker-end="url(#arrow-green)"/>
-  <rect x="350" y="660" width="150" height="14" rx="3" fill="#fff" stroke="#0b5e55" stroke-width="0.5"/>
-  <text x="355" y="670" font-size="9" fill="#0b5e55">comprehension → relay</text>
+  <rect x="410" y="745" width="150" height="15" rx="3" fill="#fff" stroke="#0b5e55" stroke-width="0.5"/>
+  <text x="414" y="756" font-size="10" fill="#0b5e55">comprehension → relay</text>
 
   <!-- Edge 4: Rs numbers (K087) ↔ Rs instructions (K104) via near_kbs -->
-  <line x1="470" y1="440" x2="470" y2="520" stroke="#555" stroke-width="1.2" stroke-dasharray="4,4"/>
+  <line x1="560" y1="553" x2="560" y2="661" stroke="#555" stroke-width="1.5" stroke-dasharray="4,4"/>
 
   <!-- Edge 5: Rm instructions (K076) → Rs instructions (K104) -->
-  <path d="M470,370 C470,370 480,480 480,520"
+  <path d="M555,363 C580,363 590,500 590,520 L610,520"
         fill="none" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4"
         marker-end="url(#arrow-red)"/>
-  <rect x="475" y="430" width="130" height="14" rx="3" fill="#fff" stroke="#c0392b" stroke-width="0.5"/>
-  <text x="481" y="440" font-size="9" fill="#c0392b">ear → eye instructions</text>
+  <rect x="582" y="415" width="130" height="15" rx="3" fill="#fff" stroke="#c0392b" stroke-width="0.5"/>
+  <text x="586" y="426" font-size="10" fill="#c0392b">ear → eye instructions</text>
 
   <!-- Edge 6: Rm numbers (K063) ↔ Rm instructions (K076) via near_kbs -->
-  <line x1="460" y1="240" x2="460" y2="300" stroke="#555" stroke-width="1.2" stroke-dasharray="4,4"/>
+  <line x1="550" y1="323" x2="550" y2="363" stroke="#555" stroke-width="1.5" stroke-dasharray="4,4"/>
 
   <!-- Edge 7: Rs everyday texts (K084) → Sm relay (K163) via related_kbs -->
-  <path d="M310,688 C310,710 340,730 370,788"
+  <path d="M390,765 C390,790 430,810 450,860"
         fill="none" stroke="#0b5e55" stroke-width="1.5" stroke-dasharray="5,3"
         marker-end="url(#arrow-green)"/>
 
   <!-- Edge 8: Sm relay signs progression chain -->
-  <path d="M430,830 C460,830 490,830 520,830"
+  <path d="M580,895 C600,895 620,895 640,895"
         fill="none" stroke="#555" stroke-width="1" stroke-dasharray="3,3"/>
-  <text x="445" y="820" font-size="8" fill="#666">K174</text>
-  <text x="505" y="820" font-size="8" fill="#666">K175→K176</text>
+  <text x="588" y="888" font-size="9" fill="#666">K174</text>
+  <text x="628" y="888" font-size="9" fill="#666">K175 → K176</text>
 
   <!-- Edge 9: Rs reading (K092) → Sm (K163/K176) via related_kbs -->
-  <path d="M370,482 C500,482 550,600 500,788"
+  <path d="M550,553 C620,553 660,650 660,860"
         fill="none" stroke="#0b5e55" stroke-width="1.2" stroke-dasharray="6,3"
         marker-end="url(#arrow-green)"/>
-  <rect x="510" y="610" width="80" height="14" rx="3" fill="#fff" stroke="#0b5e55" stroke-width="0.5"/>
-  <text x="514" y="620" font-size="9" fill="#0b5e55">tables → relay</text>
+  <rect x="630" y="705" width="80" height="15" rx="3" fill="#fff" stroke="#0b5e55" stroke-width="0.5"/>
+  <text x="634" y="716" font-size="10" fill="#0b5e55">tables → relay</text>
 
   <!-- Edge 10: Rs signs (K100–103) ↔ Ps write (K137) same Schild carrier -->
-  <path d="M520,480 C580,440 580,480 580,480"
-        fill="none" stroke="#555" stroke-width="1" stroke-dasharray="4,4"/>
-  <rect x="580" y="455" width="140" height="14" rx="3" fill="#fff" stroke="#888" stroke-width="0.5"/>
-  <text x="584" y="465" font-size="9" fill="#888">Schild → aufschreiben</text>
+  <path d="M610,607 C650,600 670,620 670,520 L685,520"
+        fill="none" stroke="#555" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <rect x="674" y="570" width="140" height="15" rx="3" fill="#fff" stroke="#888" stroke-width="0.5"/>
+  <text x="678" y="581" font-size="10" fill="#888">Schild → aufschreiben</text>
 
 </svg>

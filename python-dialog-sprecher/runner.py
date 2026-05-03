@@ -857,6 +857,22 @@ live = {
 }
 run_lock = threading.Lock()
 
+
+def deployment_status_payload():
+    latest = live["days"][-1] if live["days"] else {}
+    return {
+        "render": os.environ.get("RENDER", ""),
+        "service_name": os.environ.get("RENDER_SERVICE_NAME", ""),
+        "external_url": os.environ.get("RENDER_EXTERNAL_URL", ""),
+        "git_branch": os.environ.get("RENDER_GIT_BRANCH", ""),
+        "git_commit": os.environ.get("RENDER_GIT_COMMIT", ""),
+        "days_loaded": len(live["days"]),
+        "latest_day": latest.get("day"),
+        "latest_session": latest.get("session"),
+        "latest_kann": latest.get("kann_id"),
+        "status": live.get("status", ""),
+    }
+
 # ── HTML rendering ─────────────────────────────────────────────────
 def _esc(s):
     return str(s).replace("&","&amp;").replace("<","&lt;").replace(">","&gt;")
@@ -2532,6 +2548,16 @@ class Handler(SimpleHTTPRequestHandler):
             self.send_header("Content-Type", "text/plain; charset=utf-8")
             self.end_headers()
             self.wfile.write(b"ok")
+            return
+
+        if parsed.path == "/version":
+            payload = json.dumps(deployment_status_payload(), ensure_ascii=False, indent=2).encode("utf-8")
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.send_header("Cache-Control", "no-store")
+            self.send_header("Content-Length", str(len(payload)))
+            self.end_headers()
+            self.wfile.write(payload)
             return
 
         if parsed.path == "/graph":
