@@ -223,11 +223,11 @@
   <!-- ====== BRIDGE EDGES ===== -->
 
   <!-- Edge 1: Rs numbers (K087/K092/K095) ↔ Rm numbers (K063/K064) — out right of numbers cluster -->
-  <path d="M598,553 C640,530 640,470 500,473"
+  <path d="M598,553 C640,530 640,450 500,453"
         fill="none" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4"
         marker-end="url(#arrow-red)"/>
-  <rect x="560" y="480" width="170" height="16" rx="3" fill="#fff" stroke="#c0392b" stroke-width="0.5"/>
-  <text x="566" y="491" font-size="10" fill="#c0392b">same content · channel shift</text>
+  <rect x="560" y="440" width="170" height="16" rx="3" fill="#fff" stroke="#c0392b" stroke-width="0.5"/>
+  <text x="566" y="451" font-size="10" fill="#c0392b">same content · channel shift</text>
 
   <!-- Edge 2: Rs signs (K100–103) → Sm relay (K173) — out bottom of public signs cluster -->
   <path d="M460,630 C460,740 450,830 450,860"
