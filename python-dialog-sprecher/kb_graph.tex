@@ -1,0 +1,212 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usetikzlibrary{shadows,positioning,calc,shapes.geometric,arrows.meta,backgrounds,fit}
+
+% hand-written marker
+\newcommand{\handmark}{\textasteriskcentered}
+
+\begin{document}
+\begin{tikzpicture}[
+    % Background box style: takes 2 args {fill color}{draw color}
+    bg/.style 2 args={fill=#1,draw=#2,line width=1pt,rounded corners=6pt,drop shadow={shadow xshift=0pt,shadow yshift=1pt,opacity=0.12}},
+    % Sub-cluster style: takes 2 args {fill color}{draw color}
+    sub/.style 2 args={fill=#1,draw=#2,line width=0.5pt,rounded corners=3pt,inner sep=4pt,minimum height=0.6cm},
+    % Edge styles
+    edge cs/.style={->,>=Stealth,draw=red!60!black,dashed,line width=1.2pt},
+    edge op/.style={->,>=Stealth,draw=teal!60!black,line width=1.2pt},
+    edge nr/.style={draw=gray,line width=0.8pt,dashed},
+    % Text
+    cat title/.style={font=\bfseries\footnotesize},
+    cat detail/.style={font=\tiny,opacity=0.7},
+    cluster title/.style={font=\bfseries\tiny},
+    cluster ids/.style={font=\tiny,opacity=0.7},
+    edge label/.style={font=\tiny,fill=white,inner sep=1pt,rounded corners=2pt},
+]
+
+% ============================================================
+% LEGEND
+% ============================================================
+\node[fill=white,draw=gray!30,rounded corners=4pt,inner sep=4pt,anchor=north west] at (10.5, -0.5) {
+    \begin{tikzpicture}[baseline]
+        \draw[edge cs] (0,0) -- (0.5,0) node[right,edge label,font=\tiny] {channel shift (ear $\leftrightarrow$ eye)};
+        \draw[edge op] (0,-0.35) -- (0.5,-0.35) node[right,edge label,font=\tiny] {operation upgrade (understand $\rightarrow$ relay)};
+        \draw[edge nr] (0,-0.7) -- (0.5,-0.7) node[right,edge label,font=\tiny] {near\_kbs (same cluster)};
+    \end{tikzpicture}
+};
+
+\node[font=\small\bfseries] at (7, -1) {KB Compressed Graph --- Clusters within Categories, Bridges across Channels};
+
+% ============================================================
+% CATEGORY: Interaktion mündlich (K001-041)  [left column]
+% ============================================================
+\node[bg={yellow!10}{yellow!40!black!20},minimum width=4.4cm,minimum height=4.6cm] (Im) at (0,2) {};
+\node[cat title,text=orange!50!black] at (Im.north west) [anchor=north west,xshift=4pt,yshift=-3pt] {Interaktion mündlich};
+\node[cat detail,text=orange!50!black] at (Im.north west) [anchor=north west,xshift=4pt,yshift=-16pt] {K001--041 $\cdot$ ear $\leftrightarrow$ mouth};
+
+% Im sub-clusters
+\node[sub={yellow!15}{yellow!40!black!15},minimum width=4cm,minimum height=0.6cm] (Im1) at ([yshift=-0.9cm]Im.north) {};
+\node[cluster title] at (Im1.west) [anchor=west,xshift=4pt] {Begr\"u\ss ung \& Vorstellung (K010--K017)};
+\node[sub={yellow!15}{yellow!40!black!15},minimum width=4cm,minimum height=0.6cm] (Im2) at ([yshift=-1.7cm]Im.north) {};
+\node[cluster title] at (Im2.west) [anchor=west,xshift=4pt] {Befinden \& Vorlieben (K018--K025)};
+\node[sub={yellow!15}{yellow!40!black!15},minimum width=4cm,minimum height=0.6cm] (Im3) at ([yshift=-2.5cm]Im.north) {};
+\node[cluster title] at (Im3.west) [anchor=west,xshift=4pt] {Bitten, Antworten, Danken (K026--K033)};
+\node[sub={yellow!15}{yellow!40!black!15},minimum width=4cm,minimum height=0.6cm] (Im4) at ([yshift=-3.3cm]Im.north) {};
+\node[cluster title] at (Im4.west) [anchor=west,xshift=4pt] {Zahlen \& Gesch\"afte (K034--K037)};
+\node[cat detail,text=orange!30!black] at (Im.south) [anchor=south,yshift=2pt] {\footnotesize 41 KBs · ear{\scriptsize$\leftrightarrow$}mouth · kein Ein-Kanal-Modell};
+
+% ============================================================
+% CATEGORY: Rezeption mündlich (K060-083)  [center column top]
+% ============================================================
+\node[bg={blue!10}{blue!30!black!20},minimum width=5cm,minimum height=4.6cm] (Rm) at (5.4,2) {};
+\node[cat title,text=blue!50!black] at (Rm.north west) [anchor=north west,xshift=4pt,yshift=-3pt] {Rezeption mündlich};
+\node[cat detail,text=blue!50!black] at (Rm.north west) [anchor=north west,xshift=4pt,yshift=-16pt] {K060--083 $\cdot$ ear / disappears};
+
+\node[sub={blue!15}{blue!30!black!15},minimum width=4.6cm,minimum height=0.6cm] (Rm1) at ([yshift=-0.9cm]Rm.north) {};
+\node[cluster title] at (Rm1.west) [anchor=west,xshift=4pt] {understanding slow speech};
+\node[sub={blue!15}{blue!30!black!15},minimum width=4.6cm,minimum height=0.6cm] (Rm2) at ([yshift=-1.7cm]Rm.north) {};
+\node[cluster title] at (Rm2.west) [anchor=west,xshift=4pt] {internat. words + pauses};
+\node[sub={blue!15}{blue!30!black!15},minimum width=4.6cm,minimum height=0.6cm] (Rm3) at ([yshift=-2.5cm]Rm.north) {};
+\node[cluster title] at (Rm3.west) [anchor=west,xshift=4pt] {numbers / time spoken};
+\node[sub={blue!15}{blue!30!black!15},minimum width=4.6cm,minimum height=0.6cm] (Rm4) at ([yshift=-3.3cm]Rm.north) {};
+\node[cluster title] at (Rm4.west) [anchor=west,xshift=4pt] {instructions / directions};
+\node[cat detail,text=blue!30!black] at (Rm.south) [anchor=south,yshift=2pt] {24 KBs};
+
+% ============================================================
+% CATEGORY: Produktion mündlich (K116-132)  [right column top]
+% ============================================================
+\node[bg={green!12}{green!40!black!20},minimum width=5cm,minimum height=4.6cm] (Pm) at (10.8,2) {};
+\node[cat title,text=green!50!black] at (Pm.north west) [anchor=north west,xshift=4pt,yshift=-3pt] {Produktion mündlich};
+\node[cat detail,text=green!50!black] at (Pm.north west) [anchor=north west,xshift=4pt,yshift=-16pt] {K116--132 $\cdot$ mouth / disappears};
+
+\node[sub={green!15}{green!40!black!15},minimum width=4.6cm,minimum height=0.6cm] (Pm1) at ([yshift=-0.9cm]Pm.north) {};
+\node[cluster title] at (Pm1.west) [anchor=west,xshift=4pt] {self-description};
+\node[sub={green!15}{green!40!black!15},minimum width=4.6cm,minimum height=0.6cm] (Pm2) at ([yshift=-1.7cm]Pm.north) {};
+\node[cluster title] at (Pm2.west) [anchor=west,xshift=4pt] {daily life / hobbies};
+\node[sub={green!15}{green!40!black!15},minimum width=4.6cm,minimum height=0.6cm] (Pm3) at ([yshift=-2.5cm]Pm.north) {};
+\node[cluster title] at (Pm3.west) [anchor=west,xshift=4pt] {numbers / dates aloud};
+\node[sub={green!15}{green!40!black!15},minimum width=4.6cm,minimum height=0.6cm] (Pm4) at ([yshift=-3.3cm]Pm.north) {};
+\node[cluster title] at (Pm4.west) [anchor=west,xshift=4pt] {describe people / places};
+\node[cat detail,text=green!30!black] at (Pm.south) [anchor=south,yshift=2pt] {17 KBs};
+
+% ============================================================
+% CATEGORY: Interaktion schriftlich (K042-059)  [left column bottom]
+% ============================================================
+\node[bg={yellow!8}{yellow!40!black!30},minimum width=4.4cm,minimum height=2.6cm] (Is) at (0,-2.5) {};
+\node[cat title,text=orange!60!black] at (Is.north west) [anchor=north west,xshift=4pt,yshift=-3pt] {Interaktion schriftlich};
+\node[cat detail,text=orange!60!black] at (Is.north west) [anchor=north west,xshift=4pt,yshift=-16pt] {K042--059 $\cdot$ hand $\leftrightarrow$ eye};
+\node[sub={yellow!12}{yellow!40!black!20},minimum width=4cm,minimum height=0.6cm] (Is1) at ([yshift=-0.9cm]Is.north) {};
+\node[cluster title] at (Is1.west) [anchor=west,xshift=4pt] {short written messages};
+\node[cat detail,text=orange!40!black] at (Is.south) [anchor=south,yshift=2pt] {\footnotesize 18 KBs · hand{\scriptsize$\leftrightarrow$}eye · kein Ein-Kanal-Modell};
+
+% ============================================================
+% CATEGORY: Rezeption schriftlich (K084-115)  [center column bottom, tall]
+% ============================================================
+\node[bg={blue!8}{blue!30!black!25},minimum width=5.6cm,minimum height=7.4cm] (Rs) at (5.4,-3.4) {};
+\node[cat title,text=blue!60!black] at (Rs.north west) [anchor=north west,xshift=4pt,yshift=-3pt] {Rezeption schriftlich};
+\node[cat detail,text=blue!60!black] at (Rs.north west) [anchor=north west,xshift=4pt,yshift=-16pt] {K084--115 $\cdot$ eye / stays};
+
+\node[sub={blue!12}{blue!30!black!15},minimum width=5.2cm,minimum height=0.9cm] (Rs1) at ([yshift=-1cm]Rs.north) {};
+\node[cluster title] at (Rs1.west) [anchor=west,xshift=4pt] {basic reading: words / topic / re-read};
+\node[cluster ids] at ([yshift=0.32cm]Rs1.west) [anchor=west,xshift=4pt] {K084 $\cdot$ K085 $\cdot$ K086 (all hand{\handmark})};
+
+\node[sub={blue!12}{blue!30!black!15},minimum width=5.2cm,minimum height=0.9cm] (Rs2) at ([yshift=-2.1cm]Rs.north) {};
+\node[cluster title] at (Rs2.west) [anchor=west,xshift=4pt] {numbers / time / price / tables};
+\node[cluster ids] at ([yshift=0.32cm]Rs2.west) [anchor=west,xshift=4pt] {K087 $\cdot$ K092 $\cdot$ K095 (K092 hand)};
+
+\node[sub={blue!12}{blue!30!black!15},minimum width=5.2cm,minimum height=0.9cm] (Rs3) at ([yshift=-3.2cm]Rs.north) {};
+\node[cluster title] at (Rs3.west) [anchor=west,xshift=4pt] {public signs / labels / notices};
+\node[cluster ids] at ([yshift=0.32cm]Rs3.west) [anchor=west,xshift=4pt] {K100 $\cdot$ K101 $\cdot$ K102 $\cdot$ K103};
+
+\node[sub={blue!12}{blue!30!black!15},minimum width=5.2cm,minimum height=0.9cm] (Rs4) at ([yshift=-4.3cm]Rs.north) {};
+\node[cluster title] at (Rs4.west) [anchor=west,xshift=4pt] {short instructions with pictures};
+\node[cluster ids] at ([yshift=0.32cm]Rs4.west) [anchor=west,xshift=4pt] {K104 (hand + seed)};
+
+\node[sub={blue!12}{blue!30!black!15},minimum width=5.2cm,minimum height=0.9cm] (Rs5) at ([yshift=-5.4cm]Rs.north) {};
+\node[cluster title] at (Rs5.west) [anchor=west,xshift=4pt] {forms / questionnaires};
+\node[cluster ids] at ([yshift=0.32cm]Rs5.west) [anchor=west,xshift=4pt] {K105 $\cdot$ K106 $\cdot$ K107 $\cdot$ K108 $\cdot$ K109 $\cdot$ K110};
+
+\node[sub={blue!12}{blue!30!black!15},minimum width=5.2cm,minimum height=0.65cm] (Rs6) at ([yshift=-6.3cm]Rs.north) {};
+\node[cluster ids] at (Rs6.west) [anchor=west,xshift=4pt] {K111--K115 $\cdot$ everyday texts, ads, notes};
+
+% ============================================================
+% CATEGORY: Produktion schriftlich (K133-152)  [right column bottom]
+% ============================================================
+\node[bg={green!10}{green!40!black!30},minimum width=5cm,minimum height=4.6cm] (Ps) at (10.8,-3) {};
+\node[cat title,text=green!60!black] at (Ps.north west) [anchor=north west,xshift=4pt,yshift=-3pt] {Produktion schriftlich};
+\node[cat detail,text=green!60!black] at (Ps.north west) [anchor=north west,xshift=4pt,yshift=-16pt] {K133--152 $\cdot$ hand/keyboard / stays};
+
+\node[sub={green!15}{green!40!black!15},minimum width=4.6cm,minimum height=0.6cm] (Ps1) at ([yshift=-0.9cm]Ps.north) {};
+\node[cluster title] at (Ps1.west) [anchor=west,xshift=4pt] {copy words / phrases};
+\node[sub={green!15}{green!40!black!15},minimum width=4.6cm,minimum height=0.6cm] (Ps2) at ([yshift=-1.7cm]Ps.north) {};
+\node[cluster title] at (Ps2.west) [anchor=west,xshift=4pt] {personal notes (time/place)};
+\node[sub={green!15}{green!40!black!15},minimum width=4.6cm,minimum height=0.6cm] (Ps3) at ([yshift=-2.5cm]Ps.north) {};
+\node[cluster title] at (Ps3.west) [anchor=west,xshift=4pt] {bullet facts / data};
+\node[sub={green!15}{green!40!black!15},minimum width=4.6cm,minimum height=0.6cm] (Ps4) at ([yshift=-3.3cm]Ps.north) {};
+\node[cluster title] at (Ps4.west) [anchor=west,xshift=4pt] {write about self/others};
+\node[cat detail,text=green!30!black] at (Ps.south) [anchor=south,yshift=2pt] {20 KBs};
+
+% ============================================================
+% CATEGORY: Sprachmittlung mündlich (K153-176)  [bottom, wide]
+% ============================================================
+\node[bg={red!8}{red!40!black!20},minimum width=12.5cm,minimum height=3cm] (Sm) at (5.4,-8.2) {};
+\node[cat title,text=red!60!black] at (Sm.north west) [anchor=north west,xshift=4pt,yshift=-3pt] {Sprachmittlung mündlich};
+\node[cat detail,text=red!60!black] at (Sm.north west) [anchor=north west,xshift=4pt,yshift=-16pt] {K153--176 $\cdot$ mouth after reading/hearing $\cdot$ relay output disappears};
+
+\node[sub={red!10}{red!40!black!15},minimum width=5.6cm,minimum height=1.5cm] (Sm1) at ([yshift=-1.8cm,xshift=-3.2cm]Sm.north) {};
+\node[cluster title,text=red!60!black] at (Sm1.west) [anchor=west,xshift=4pt] {DE $\rightarrow$ shared language};
+\node[cluster ids,text=red!40!black] at ([yshift=0.35cm]Sm1.west) [anchor=west,xshift=4pt] {K153--166 $\cdot$ relay German info};
+\node[cluster ids,text=red!40!black] at ([yshift=0.65cm]Sm1.west) [anchor=west,xshift=4pt] {to another person in common lang.};
+\node[cluster ids,text=red!60!black] at ([yshift=0.95cm]Sm1.west) [anchor=west,xshift=4pt] {K163 {\handmark} (hand + seed)};
+
+\node[sub={red!10}{red!40!black!15},minimum width=5.6cm,minimum height=1.5cm] (Sm2) at ([yshift=-1.8cm,xshift=3.2cm]Sm.north) {};
+\node[cluster title,text=red!60!black] at (Sm2.west) [anchor=west,xshift=4pt] {other language $\rightarrow$ DE};
+\node[cluster ids,text=red!40!black] at ([yshift=0.35cm]Sm2.west) [anchor=west,xshift=4pt] {K167--176 $\cdot$ relay to German speaker};
+\node[cluster ids,text=red!40!black] at ([yshift=0.65cm]Sm2.west) [anchor=west,xshift=4pt] {K173 $\cdot$ K174 $\cdot$ K175 $\cdot$ K176 {\handmark} (all hand)};
+\node[cluster ids,text=red!30!black] at ([yshift=0.95cm]Sm2.west) [anchor=west,xshift=4pt] {shop door $\rightarrow$ toilet door $\rightarrow$ hotel board};
+
+% ============================================================
+% BRIDGE EDGES
+% ============================================================
+
+% Edge 1: Rs numbers (Rs2) <-> Rm numbers (Rm3)  [channel shift]
+\draw[edge cs] (Rs2.east) .. controls ($(Rs2.east)+(0.8,0)$) and ($(Rm3.east)+(0.5,0)$) .. (Rm3.east)
+    node[midway,edge label,right=2pt] {\footnotesize same content $\cdot$ channel shift};
+
+% Edge 2: Rs signs (Rs3) -> Sm relay signs (Sm1)  [operation upgrade]
+\draw[edge op] (Rs3.south) .. controls ($(Rs3.south)+(0,-1)$) and ($(Sm1.north)+(0,0.6)$) .. (Sm1.north)
+    node[midway,edge label,right=2pt] {\footnotesize same carrier $\cdot$ op upgrade};
+
+% Edge 3: Rs instructions (Rs4) -> Sm relay (Sm1)  [comprehension -> relay]
+\draw[edge op,dashed] (Rs4.south) .. controls ($(Rs4.south)+(0.8,-1)$) and ($(Sm1.north east)+(0.4,0.6)$) .. (Sm1.north east)
+    node[midway,edge label,right=2pt] {\footnotesize comprehension $\rightarrow$ relay};
+
+% Edge 4: Rs numbers (Rs2) <-> Rs instructions (Rs4)  [near_kbs]
+\draw[edge nr] (Rs2.east) -- ++(0.3,0) |- (Rs4.east);
+
+% Edge 5: Rm instructions (Rm4) -> Rs instructions (Rs4)  [ear -> eye]
+\draw[edge cs] (Rm4.east) .. controls ($(Rm4.east)+(1,0)$) and ($(Rs4.east)+(1,0)$) .. (Rs4.east)
+    node[midway,edge label,right=2pt] {\footnotesize ear $\rightarrow$ eye instructions};
+
+% Edge 6: Rm numbers (Rm3) <-> Rm instructions (Rm4)  [near_kbs]
+\draw[edge nr] (Rm3.east) -- ++(0.3,0) |- (Rm4.east);
+
+% Edge 7: Rs everyday texts (from Rs1) -> Sm relay (Sm1)  [via related_kbs]
+\draw[edge op,dashed] (Rs1.south west) .. controls ($(Rs1.south west)+(0,-2)$) and ($(Sm1.north west)+(0,0.6)$) .. (Sm1.north west);
+
+% Edge 8: Sm relay progression chain
+\draw[edge nr] ($(Sm1.east)!0.5!(Sm1.east)$) -- (Sm2.west)
+    node[midway,below=2pt,font=\tiny,text=gray] {K174 \hspace{1cm} K175 $\rightarrow$ K176};
+
+% Edge 9: Rs reading (Rs2) -> Sm (Sm1/Sm2)  [via related_kbs]
+\draw[edge op,dashed] (Rs2.south west) .. controls ($(Rs2.south west)+(1.5,-1)$) and ($(Sm.north)+(0,1.5)$) .. (Sm.north)
+    node[midway,edge label,below=2pt] {\footnotesize tables $\rightarrow$ relay};
+
+% Edge 10: Rs signs (Rs3) <-> Ps write (Ps3)  [Schild -> aufschreiben]
+\draw[edge nr] (Rs3.east) .. controls ($(Rs3.east)+(2,0)$) and ($(Ps3.west)+(0,0)$) .. (Ps3.west)
+    node[midway,edge label,above=2pt] {\footnotesize Schild $\rightarrow$ aufschreiben};
+
+\end{tikzpicture}
+\end{document}
