@@ -233,8 +233,8 @@
   <path d="M460,630 C460,740 450,830 450,860"
         fill="none" stroke="#0b5e55" stroke-width="2"
         marker-end="url(#arrow-green)"/>
-  <rect x="410" y="730" width="140" height="15" rx="3" fill="#fff" stroke="#0b5e55" stroke-width="0.5"/>
-  <text x="414" y="741" font-size="10" fill="#0b5e55">same carrier · op upgrade</text>
+  <rect x="410" y="755" width="140" height="15" rx="3" fill="#fff" stroke="#0b5e55" stroke-width="0.5"/>
+  <text x="414" y="766" font-size="10" fill="#0b5e55">same carrier · op upgrade</text>
 
   <!-- Edge 3: Rs instructions (K104) → Sm relay (K163) — out bottom of instructions cluster -->
   <path d="M540,684 C540,770 510,810 480,860"
@@ -247,11 +247,11 @@
   <line x1="530" y1="576" x2="530" y2="638" stroke="#555" stroke-width="1.5" stroke-dasharray="4,4"/>
 
   <!-- Edge 5: Rm instructions (K076) → Rs instructions (K104) — out bottom of Rm instructions, into Rs instructions left -->
-  <path d="M435,396 C435,500 320,520 322,661"
+  <path d="M435,396 C435,485 320,500 322,661"
         fill="none" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4"
         marker-end="url(#arrow-red)"/>
-  <rect x="340" y="520" width="130" height="15" rx="3" fill="#fefefe" stroke="#c0392b" stroke-width="0.5"/>
-  <text x="344" y="531" font-size="10" fill="#c0392b">ear → eye instructions</text>
+  <rect x="340" y="480" width="130" height="15" rx="3" fill="#fefefe" stroke="#c0392b" stroke-width="0.5"/>
+  <text x="344" y="491" font-size="10" fill="#c0392b">ear → eye instructions</text>
 
   <!-- Edge 6: Rm numbers (K063) ↔ Rm instructions (K076) via near_kbs — inside same box -->
   <line x1="560" y1="323" x2="560" y2="363" stroke="#555" stroke-width="1.5" stroke-dasharray="4,4"/>
