@@ -223,35 +223,35 @@
   <!-- ====== BRIDGE EDGES ===== -->
 
   <!-- Edge 1: Rs numbers (K087/K092/K095) ↔ Rm numbers (K063/K064) — out right of numbers cluster -->
-  <path d="M598,553 C640,530 640,450 500,453"
+  <path d="M598,553 C640,530 640,418 500,418"
         fill="none" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4"
         marker-end="url(#arrow-red)"/>
-  <rect x="560" y="440" width="170" height="16" rx="3" fill="#fff" stroke="#c0392b" stroke-width="0.5"/>
-  <text x="566" y="451" font-size="10" fill="#c0392b">same content · channel shift</text>
+  <rect x="560" y="408" width="170" height="16" rx="3" fill="#fff" stroke="#c0392b" stroke-width="0.5"/>
+  <text x="566" y="419" font-size="10" fill="#c0392b">same content · channel shift</text>
 
   <!-- Edge 2: Rs signs (K100–103) → Sm relay (K173) — out bottom of public signs cluster -->
   <path d="M460,630 C460,740 450,830 450,860"
         fill="none" stroke="#0b5e55" stroke-width="2"
         marker-end="url(#arrow-green)"/>
-  <rect x="410" y="755" width="140" height="15" rx="3" fill="#fff" stroke="#0b5e55" stroke-width="0.5"/>
-  <text x="414" y="766" font-size="10" fill="#0b5e55">same carrier · op upgrade</text>
+  <rect x="410" y="790" width="140" height="15" rx="3" fill="#fff" stroke="#0b5e55" stroke-width="0.5"/>
+  <text x="414" y="801" font-size="10" fill="#0b5e55">same carrier · op upgrade</text>
 
   <!-- Edge 3: Rs instructions (K104) → Sm relay (K163) — out bottom of instructions cluster -->
-  <path d="M540,684 C540,770 510,810 480,860"
+  <path d="M540,684 C540,780 510,815 480,860"
         fill="none" stroke="#0b5e55" stroke-width="2" stroke-dasharray="6,3"
         marker-end="url(#arrow-green)"/>
-  <rect x="470" y="765" width="150" height="15" rx="3" fill="#fff" stroke="#0b5e55" stroke-width="0.5"/>
-  <text x="474" y="776" font-size="10" fill="#0b5e55">comprehension → relay</text>
+  <rect x="470" y="790" width="150" height="15" rx="3" fill="#fff" stroke="#0b5e55" stroke-width="0.5"/>
+  <text x="474" y="801" font-size="10" fill="#0b5e55">comprehension → relay</text>
 
   <!-- Edge 4: Rs numbers ↔ Rs instructions via near_kbs — inside same box -->
   <line x1="530" y1="576" x2="530" y2="638" stroke="#555" stroke-width="1.5" stroke-dasharray="4,4"/>
 
   <!-- Edge 5: Rm instructions (K076) → Rs instructions (K104) — out bottom of Rm instructions, into Rs instructions left -->
-  <path d="M435,396 C435,485 320,500 322,661"
+  <path d="M435,396 C435,480 320,490 322,661"
         fill="none" stroke="#c0392b" stroke-width="2" stroke-dasharray="8,4"
         marker-end="url(#arrow-red)"/>
-  <rect x="340" y="480" width="130" height="15" rx="3" fill="#fefefe" stroke="#c0392b" stroke-width="0.5"/>
-  <text x="344" y="491" font-size="10" fill="#c0392b">ear → eye instructions</text>
+  <rect x="340" y="460" width="130" height="15" rx="3" fill="#fefefe" stroke="#c0392b" stroke-width="0.5"/>
+  <text x="344" y="471" font-size="10" fill="#c0392b">ear → eye instructions</text>
 
   <!-- Edge 6: Rm numbers (K063) ↔ Rm instructions (K076) via near_kbs — inside same box -->
   <line x1="560" y1="323" x2="560" y2="363" stroke="#555" stroke-width="1.5" stroke-dasharray="4,4"/>
@@ -271,13 +271,13 @@
   <path d="M598,553 C660,553 680,700 660,860"
         fill="none" stroke="#0b5e55" stroke-width="1.2" stroke-dasharray="6,3"
         marker-end="url(#arrow-green)"/>
-  <rect x="660" y="700" width="90" height="15" rx="3" fill="#fff" stroke="#0b5e55" stroke-width="0.5"/>
-  <text x="664" y="711" font-size="10" fill="#0b5e55">tables → relay</text>
+  <rect x="660" y="685" width="90" height="15" rx="3" fill="#fff" stroke="#0b5e55" stroke-width="0.5"/>
+  <text x="664" y="696" font-size="10" fill="#0b5e55">tables → relay</text>
 
   <!-- Edge 10: Rs signs (K100–103) ↔ Ps write (K137) same Schild carrier — out right of public signs -->
-  <path d="M598,607 C660,600 680,600 685,556"
+  <path d="M598,607 C660,600 680,600 685,550"
         fill="none" stroke="#555" stroke-width="1.5" stroke-dasharray="4,4"/>
-  <rect x="688" y="580" width="140" height="15" rx="3" fill="#fefefe" stroke="#888" stroke-width="0.5"/>
-  <text x="692" y="591" font-size="10" fill="#888">Schild → aufschreiben</text>
+  <rect x="688" y="535" width="140" height="15" rx="3" fill="#fefefe" stroke="#888" stroke-width="0.5"/>
+  <text x="692" y="546" font-size="10" fill="#888">Schild → aufschreiben</text>
 
 </svg>
