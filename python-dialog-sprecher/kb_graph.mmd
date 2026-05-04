@@ -1,0 +1,100 @@
+graph LR
+
+  subgraph Im["Interaktion mündlich (ear↔mouth) K001-K041"]
+    direction TB
+    Grundlagen_K001_K009["Grundlagen (K001-K009)"]
+    Begr_ung_und_Verabschiedung_K010_K013["Begrüßung und Verabschiedung (K010-K013)"]
+    Vorstellung_K014_K017["Vorstellung (K014-K017)"]
+    Befinden_und_Vorlieben_K018_K025["Befinden und Vorlieben (K018-K025)"]
+    Bitten_Antworten_Danken_K026_K033["Bitten Antworten Danken (K026-K033)"]
+    Zahlen_und_Gesch_fte_K034_K037["Zahlen und Geschäfte (K034-K037)"]
+    um_Hilfe_bitten_K038_K041["um Hilfe bitten (K038-K041)"]
+  end
+
+  subgraph Is["Interaktion schriftlich (hand↔eye) K042-K059"]
+    direction TB
+    Formulare_und_Frageb_gen_K044_K047["Formulare und Fragebögen (K044-K047)"]
+    Mitteilungen_schreiben_K048_K059["Mitteilungen schreiben (K048-K059)"]
+  end
+
+  subgraph Rm["Rezeption mündlich (ear, verschwindet) K060-K083"]
+    direction TB
+    langsame_deutliche_Rede_K060_K062["langsame deutliche Rede (K060-K062)"]
+    Internationalismen_und_Pausen_K068_K073["Internationalismen und Pausen (K068-K073)"]
+    Zahlen_Zeit_Preis_Ort_K063_K067["Zahlen Zeit Preis Ort (K063-K067)"]
+    Anweisungen_und_Wegerkl_rungen_K074_K079["Anweisungen und Wegerklärungen (K074-K079)"]
+    Nachrichten_und_Medien_K080_K083["Nachrichten und Medien (K080-K083)"]
+  end
+
+  subgraph Rs["Rezeption schriftlich (eye, bleibt) K084-K115"]
+    direction TB
+    einzelne_W_rter_K084_K086["einzelne Wörter (K084-K086)"]
+    Zahlen_Tabellen_Fahrplan_K087_K099["Zahlen Tabellen Fahrplan (K087-K099)"]
+    ffentliche_Schilder_K100_K103["öffentliche Schilder (K100-K103)"]
+    Anleitungen_K104_K107["Anleitungen (K104-K107)"]
+    Alltagstexte_K108_K115["Alltagstexte (K108-K115)"]
+  end
+
+  subgraph Pm["Produktion mündlich (mouth, verschwindet) K116-K132"]
+    direction TB
+    sich_beschreiben_K121_K124["sich beschreiben (K121-K124)"]
+    Personen_Umgebung_Alltag_K125_K128["Personen Umgebung Alltag (K125-K128)"]
+    Zahlen_Daten_sprechen_K129_K132["Zahlen Daten sprechen (K129-K132)"]
+  end
+
+  subgraph Ps["Produktion schriftlich (hand, bleibt) K133-K152"]
+    direction TB
+    aufschreiben_und_notieren_K137_K140["aufschreiben und notieren (K137-K140)"]
+    pers_nliche_Notizen_K141_K144["persönliche Notizen (K141-K144)"]
+    Fakten_Daten_Pl_ne_K145_K148["Fakten Daten Pläne (K145-K148)"]
+    ber_sich_und_andere_schreiben_K149_K152["über sich und andere schreiben (K149-K152)"]
+  end
+
+  subgraph Sm["Sprachmittlung mündlich (mouth after read/hear) K153-K176"]
+    direction TB
+    DE_zu_gemeinsamer_Sprache_K153_K166["DE zu gemeinsamer Sprache (K153-K166)"]
+    andere_Sprache_zu_DE_K167_K176["andere Sprache zu DE (K167-K176)"]
+  end
+
+  %% --- Labeled Bridges ---
+    langsame_deutliche_Rede_K060_K062 -. "same condition: Partner spricht langsam" .-> Grundlagen_K001_K009
+    langsame_deutliche_Rede_K060_K062 -. "same condition: Partner spricht langsam" .-> Grundlagen_K001_K009
+    langsame_deutliche_Rede_K060_K062 -. "same condition: Partner spricht langsam" .-> Grundlagen_K001_K009
+    langsame_deutliche_Rede_K060_K062 -. "same condition: Partner spricht langsam" .-> Grundlagen_K001_K009
+    langsame_deutliche_Rede_K060_K062 -. "same condition: Partner spricht langsam" .-> Grundlagen_K001_K009
+    langsame_deutliche_Rede_K060_K062 -. "same condition: Partner spricht langsam" .-> Grundlagen_K001_K009
+    langsame_deutliche_Rede_K060_K062 -.-> einzelne_W_rter_K084_K086
+    langsame_deutliche_Rede_K060_K062 -. "ear → eye: numbers understood in both channels" .-> Zahlen_Tabellen_Fahrplan_K087_K099
+    langsame_deutliche_Rede_K060_K062 -. "verstehen → weitergeben" .-> DE_zu_gemeinsamer_Sprache_K153_K166
+    Zahlen_Zeit_Preis_Ort_K063_K067 -.-> Zahlen_und_Gesch_fte_K034_K037
+    Zahlen_Zeit_Preis_Ort_K063_K067 -. "channel shift: ear ↔ eye" .-> Zahlen_Tabellen_Fahrplan_K087_K099
+    Zahlen_Zeit_Preis_Ort_K063_K067 -. "hear numbers → speak numbers aloud" .-> Zahlen_Daten_sprechen_K129_K132
+    Anweisungen_und_Wegerkl_rungen_K074_K079 -.-> Anleitungen_K104_K107
+    einzelne_W_rter_K084_K086 -.-> DE_zu_gemeinsamer_Sprache_K153_K166
+    einzelne_W_rter_K084_K086 -.-> DE_zu_gemeinsamer_Sprache_K153_K166
+    einzelne_W_rter_K084_K086 -.-> andere_Sprache_zu_DE_K167_K176
+    einzelne_W_rter_K084_K086 -.-> DE_zu_gemeinsamer_Sprache_K153_K166
+    Zahlen_Tabellen_Fahrplan_K087_K099 -. "channel shift: ear ↔ eye" .-> Zahlen_Zeit_Preis_Ort_K063_K067
+    Zahlen_Tabellen_Fahrplan_K087_K099 -. "tables → relay" .-> DE_zu_gemeinsamer_Sprache_K153_K166
+    Zahlen_Tabellen_Fahrplan_K087_K099 -. "tables → relay" .-> andere_Sprache_zu_DE_K167_K176
+    Zahlen_Tabellen_Fahrplan_K087_K099 -.-> pers_nliche_Notizen_K141_K144
+    Zahlen_Tabellen_Fahrplan_K087_K099 -.-> Fakten_Daten_Pl_ne_K145_K148
+    ffentliche_Schilder_K100_K103 -.-> andere_Sprache_zu_DE_K167_K176
+    ffentliche_Schilder_K100_K103 -.-> andere_Sprache_zu_DE_K167_K176
+    Anleitungen_K104_K107 -.-> Anweisungen_und_Wegerkl_rungen_K074_K079
+    Anleitungen_K104_K107 -. "instructions → relay" .-> DE_zu_gemeinsamer_Sprache_K153_K166
+    Anleitungen_K104_K107 -. "instructions → relay" .-> andere_Sprache_zu_DE_K167_K176
+    aufschreiben_und_notieren_K137_K140 -.-> ffentliche_Schilder_K100_K103
+    Fakten_Daten_Pl_ne_K145_K148 -.-> Zahlen_Tabellen_Fahrplan_K087_K099
+    Fakten_Daten_Pl_ne_K145_K148 -.-> Zahlen_Tabellen_Fahrplan_K087_K099
+    DE_zu_gemeinsamer_Sprache_K153_K166 -.-> einzelne_W_rter_K084_K086
+    DE_zu_gemeinsamer_Sprache_K153_K166 -.-> einzelne_W_rter_K084_K086
+    DE_zu_gemeinsamer_Sprache_K153_K166 -.-> einzelne_W_rter_K084_K086
+    DE_zu_gemeinsamer_Sprache_K153_K166 -. "tables → relay" .-> Zahlen_Tabellen_Fahrplan_K087_K099
+    DE_zu_gemeinsamer_Sprache_K153_K166 -. "instructions → relay" .-> Anleitungen_K104_K107
+    andere_Sprache_zu_DE_K167_K176 -.-> ffentliche_Schilder_K100_K103
+    andere_Sprache_zu_DE_K167_K176 -.-> ffentliche_Schilder_K100_K103
+    andere_Sprache_zu_DE_K167_K176 -. "tables → relay" .-> Zahlen_Tabellen_Fahrplan_K087_K099
+    andere_Sprache_zu_DE_K167_K176 -.-> einzelne_W_rter_K084_K086
+    andere_Sprache_zu_DE_K167_K176 -.-> einzelne_W_rter_K084_K086
+    andere_Sprache_zu_DE_K167_K176 -. "tables → relay" .-> Zahlen_Tabellen_Fahrplan_K087_K099

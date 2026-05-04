@@ -1,0 +1,409 @@
+digraph KB {
+  rankdir=LR;
+  newrank=true;
+  compound=true;
+  node [shape=box, style=filled, fontname="Helvetica", fontsize=9, margin="0.06,0.04"];
+  edge [fontname="Helvetica", fontsize=7];
+
+  subgraph cluster_0 {
+    label="Interaction (Im)\nK001-K041";
+    style="filled,rounded"; fillcolor="#fff3e0"; color="#8b6914";
+    fontsize=11; fontcolor="#8b6914";
+    penwidth=2;
+    subgraph cluster_0_0 {
+      label="Grundlagen: basic comm";
+      style="filled,rounded"; fillcolor="#fff3e0bb"; color="#8b691455";
+      fontsize=8; fontcolor="#8b6914";
+      K001 [label="K001\n[G]", tooltip="Kann auf einfache Art kommunizieren, wenn der Partner langsam und klar spricht, "];
+      K002 [label="K002\n[G]", tooltip="Kann mit wenigen, einfachen und auswendig gelernten Ausdrücken und Sätzen vertra"];
+      K003 [label="K003\n[G]", tooltip="Kann in sehr vertrauten Situationen einfache Wörter, alltägliche Ausdrücke und s"];
+      K004 [label="K004\n[G]", tooltip="Kann einfache Äußerungen im Allgemeinen so klar aussprechen, dass sie bei genaue"];
+      K005 [label="K005\n[G]", tooltip="Kann mit kurzen, unverbundenen und meist vorgefertigten Äußerungen kommunizieren"];
+      K006 [label="K006\n[G]", tooltip="Kann Äußerungen von Gesprächspartnern aufgrund der Intonation meist als Aussagen"];
+      K007 [label="K007\n[G]", tooltip="Kann in seinen/ihren Äußerungen die Intonation so einsetzen, dass diese meist al"];
+      K008 [label="K008\n[G]", tooltip="Kann buchstabierte Wörter, im Besonderen Namen oder Adressen, verstehen."];
+      K009 [label="K009\n[G]", tooltip="Kann einfache Kontakte aufbauen und erhalten, indem er/sie die einfachsten Forme"];
+    }
+    subgraph cluster_0_1 {
+      label="Begrüßung/Vorstellung";
+      style="filled,rounded"; fillcolor="#fff3e0bb"; color="#8b691455";
+      fontsize=8; fontcolor="#8b6914";
+      K010 [label="K010\n[D]", tooltip="Kann einfache Begrüßungen und Verabschiedungen verstehen und diese erwidern."];
+      K011 [label="K011\n[E]", tooltip="Kann grüßen, wenn sie zu einer Gruppe von Bekannten oder Freunden dazustößt."];
+      K012 [label="K012\n[E]", tooltip="Kann bei Arbeitsschluss den Abschiedsgruß einer Kollegin verstehen und mit einer"];
+      K013 [label="K013\n[E]", tooltip="Kann sich nach einem offiziellen Termin auf einem Amt verabschieden."];
+      K014 [label="K014\n[D]", tooltip="Kann sich selbst und andere vorstellen und reagieren, wenn er/sie vorgestellt wi"];
+      K015 [label="K015\n[E]", tooltip="Kann in einer Kursgruppe bei der Vorstellungsrunde mit Name, Herkunft, Beruf übe"];
+      K016 [label="K016\n[E]", tooltip="Kann verstehen, wenn ihr am Arbeitsplatz eine Kollegin vorgestellt wird, und auf"];
+      K017 [label="K017\n[D]", tooltip="Kann entsprechend reagieren, wenn sie neu zu einer Gruppe hinzukommt und dieser "];
+    }
+    subgraph cluster_0_2 {
+      label="Befinden/Vorlieben";
+      style="filled,rounded"; fillcolor="#fff3e0bb"; color="#8b691455";
+      fontsize=8; fontcolor="#8b6914";
+      K018 [label="K018\n[D]", tooltip="Kann nach dem Befinden fragen und auf Informationen dazu reagieren bzw. Fragen d"];
+      K019 [label="K019\n[E]", tooltip="Kann auf die Frage des Chefs „Wie geht’s Ihnen?“ antworten."];
+      K020 [label="K020\n[E]", tooltip="Kann sich bei einer Freundin erkundigen, wie es ihr geht, und reagieren, wenn er"];
+      K021 [label="K021\n[E]", tooltip="Kann beim Zusammentreffen mit den Kolleginnen am Kursort fragen, wie es ihnen ge"];
+      K022 [label="K022\n[D]", tooltip="Kann mit einfachen Ausdrücken über Vorlieben und Abneigungen kommunizieren."];
+      K023 [label="K023\n[D]", tooltip="Kann einer Bekannten sagen, was ihr Hobby ist, und sie auch fragen, was sie gern"];
+      K024 [label="K024\n[E]", tooltip="Kann bei einem Treffen mit Kolleginnen mitteilen, welche Musik sie am liebsten h"];
+      K025 [label="K025\n[D]", tooltip="Kann seine Vorlieben beim Essen nennen, aber auch, was er nicht gern mag."];
+    }
+    subgraph cluster_0_3 {
+      label="Bitten/Antworten";
+      style="filled,rounded"; fillcolor="#fff3e0bb"; color="#8b691455";
+      fontsize=8; fontcolor="#8b6914";
+      K026 [label="K026\n[D]", tooltip="Kann andere um alltägliche Dinge bitten, verstehen, wenn Dinge verlangt werden, "];
+      K027 [label="K027\n[E]", tooltip="Kann eine Kollegin um einen Stift oder ein Blatt Papier bitten und sich dafür be"];
+      K028 [label="K028\n[E]", tooltip="Kann an der Rezeption verstehen, wenn sie um den Pass gebeten wird."];
+      K029 [label="K029\n[D]", tooltip="Kann beim Essen um das Brot bitten oder das Brot weitergeben."];
+      K030 [label="K030\n[D]", tooltip="Kann auf einfache, direkt an ihn/sie gerichtete Fragen mit einfachen Antworten r"];
+      K031 [label="K031\n[E]", tooltip="Kann einer Bekannten, die nachfragt, in welcher Firma er arbeitet, antworten."];
+      K032 [label="K032\n[E]", tooltip="Kann reagieren, wenn sie in einer Cafeteria nach ihrer Herkunft und Muttersprach"];
+      K033 [label="K033\n[E]", tooltip="Kann einer Kurskollegin sagen, was sie nach dem Kurs macht."];
+    }
+    subgraph cluster_0_4 {
+      label="Zahlen/Geschäfte";
+      style="filled,rounded"; fillcolor="#fff3e0bb"; color="#8b691455";
+      fontsize=8; fontcolor="#8b6914";
+      K034 [label="K034\n[D]", tooltip="Kann in alltäglichen Situationen elementare Angaben, die auf Zahlen basieren, ve"];
+      K035 [label="K035\n[D]", tooltip="Kann einfache Einkäufe machen, wenn es möglich ist, durch Zeigen und Gesten auf "];
+      K036 [label="K036\n[E]", tooltip="Kann im Kursbüro die Telefonnummer angeben, unter der sie am Abend zu erreichen "];
+      K037 [label="K037\n[E]", tooltip="Kann eine Absprache über einen Termin verstehen und weitergeben (z. B. „Besprech"];
+    }
+    subgraph cluster_0_5 {
+      label="um Hilfe bitten";
+      style="filled,rounded"; fillcolor="#fff3e0bb"; color="#8b691455";
+      fontsize=8; fontcolor="#8b6914";
+      K038 [label="K038\n[D]", tooltip="Kann in alltäglichen Situationen bei Unklarheiten auch mit Hilfe von Gesten um W"];
+      K039 [label="K039\n[E]", tooltip="Kann eine Kollegin bitten, die Wegbeschreibung zum Schwimmbad zu wiederholen."];
+      K040 [label="K040\n[E]", tooltip="Kann den Kursleiter bitten, dass er ihm zeigt, wie die Übung funktioniert, wenn "];
+      K041 [label="K041\n[E]", tooltip="Kann einen Freund bitten, ihm zu erklären, was ein Wort heißt."];
+    }
+  }
+
+  subgraph cluster_1 {
+    label="Interaction (Is)\nK042-K059";
+    style="filled,rounded"; fillcolor="#f3e5f5"; color="#6a1b9a";
+    fontsize=11; fontcolor="#6a1b9a";
+    penwidth=2;
+    K042 [label="K042\n[G]", tooltip="Kann mit Hilfe des Wörterbuches einfache, meist stichpunktartige schriftliche Mi"];
+    K043 [label="K043\n[G]", tooltip="Kann kurze, einfache Texte schreiben, die zur Aufrechterhaltung von Sozialkontak"];
+    K044 [label="K044\n[D]", tooltip="Kann einfache Formulare und Fragebögen mit Angaben zu seiner/ihrer Person verste"];
+    K045 [label="K045\n[E]", tooltip="Kann bei der Ankunft im Hotel das Anmeldeformular ausfüllen (z. B. Name, Adresse"];
+    K046 [label="K046\n[E]", tooltip="Kann auf einem Fragebogen Angaben zur Person (z. B. Beruf, Alter, Wohnort, Hobby"];
+    K047 [label="K047\n[E]", tooltip="Kann bei der Kursanmeldung die bisherige Sprachausbildung (z. B. Kursort, Dauer)"];
+    K048 [label="K048\n[D]", tooltip="Kann persönliche Angaben in schriftlicher Form machen und erfragen."];
+    K049 [label="K049\n[D]", tooltip="Kann für ein Klassenporträt, das die Partnerklasse erhalten soll, mit einfachen "];
+    K050 [label="K050\n[D]", tooltip="Kann sich einem Partner für eine Lernpartnerschaft mit einfachen Mitteln vorstel"];
+    K051 [label="K051\n[D]", tooltip="Kann sich beim Einsteigen in einen Chat mit einfachen Mitteln vorstellen und/ode"];
+    K052 [label="K052\n[D]", tooltip="Kann ganz einfache Mitteilungen schreiben."];
+    K053 [label="K053\n[E]", tooltip="Kann eine Notiz schreiben, in der sie sich bei einer Kollegin für die Blumen zum"];
+    K054 [label="K054\n[D]", tooltip="Kann einen Arbeitskollegen mit einer kurzen Notiz um einen Termin bitten."];
+    K055 [label="K055\n[E]", tooltip="Kann in einer einfachen schriftlichen Notiz der Kursleiterin mitteilen, dass er "];
+    K056 [label="K056\n[E]", tooltip="Kann einfache Postkarten oder E-Mails schreiben."];
+    K057 [label="K057\n[E]", tooltip="Kann einer Freundin eine Glückwunschkarte (z. B. zum Geburtstag) schreiben."];
+    K058 [label="K058\n[E]", tooltip="Kann eine kurze, einfache Postkarte mit Feriengrüßen schreiben."];
+    K059 [label="K059\n[E]", tooltip="Kann einem Freund eine kurze E-Mail darüber schreiben, was er gerade macht."];
+  }
+
+  subgraph cluster_2 {
+    label="Reception listening (Rm)\nK060-K083";
+    style="filled,rounded"; fillcolor="#e3f2fd"; color="#2e6b8a";
+    fontsize=11; fontcolor="#2e6b8a";
+    penwidth=2;
+    subgraph cluster_2_0 {
+      label="slow speech";
+      style="filled,rounded"; fillcolor="#e3f2fdbb"; color="#2e6b8a55";
+      fontsize=8; fontcolor="#2e6b8a";
+      K060 [label="K060\n[G]", tooltip="Kann vertraute alltägliche Ausdrücke und einfache Sätze verstehen, die konkrete "];
+      K061 [label="K061\n[G]", tooltip="Kann ihm/ihr bekannte Wörter und sehr einfache Strukturen verstehen, die ihn/sie"];
+      K062 [label="K062\n[G]", tooltip="Kann in langsam und deutlich gesprochenen kurzen Texten, die einen erheblichen A"];
+    }
+    subgraph cluster_2_1 {
+      label="int'l words+pauses";
+      style="filled,rounded"; fillcolor="#e3f2fdbb"; color="#2e6b8a55";
+      fontsize=8; fontcolor="#2e6b8a";
+      K068 [label="K068\n[E]", tooltip="Kann in mündlichen Texten häufig gebrauchte Formeln (z. B. für Begrüßungen, Vera"];
+      K069 [label="K069\n[E]", tooltip="Kann im Fernsehen die Begrüßung der Zuschauer am Anfang der Sendung verstehen."];
+      K070 [label="K070\n[E]", tooltip="Kann am Ende eines Radiointerviews die Dank- und Abschiedsformeln verstehen."];
+      K071 [label="K071\n[D]", tooltip="Kann verstehen, wenn die Gastgeberin ihre Gäste begrüßt."];
+      K072 [label="K072\n[D]", tooltip="Kann in einfachen kurzen Texten, die langsam und deutlich gesprochen werden, int"];
+      K073 [label="K073\n[E]", tooltip="Kann in einem Sprachlernprogramm verstehen, zu welcher Übung im Begleitheft ein "];
+    }
+    subgraph cluster_2_2 {
+      label="numbers/time spoken";
+      style="filled,rounded"; fillcolor="#e3f2fdbb"; color="#2e6b8a55";
+      fontsize=8; fontcolor="#2e6b8a";
+      K063 [label="K063\n[G]", tooltip="Kann Namen, Zahlen, Preise und Zeitangaben verstehen, wenn deutlich gesprochen w"];
+      K064 [label="K064\n[D]", tooltip="Kann im vertrauten Bereich einfache Informationen, die Zeit- und Ortsangaben ent"];
+      K065 [label="K065\n[E]", tooltip="Kann eine einfache Terminmitteilung von Freunden oder Kollegen verstehen (z. B. "];
+      K066 [label="K066\n[E]", tooltip="Kann eine einfache Mitteilung der Sekretärin über Zeiten, Termine und Räume, in "];
+      K067 [label="K067\n[D]", tooltip="Kann bei einer Veranstaltung eine Ansage für das Publikum über die genaue Zeit d"];
+    }
+    subgraph cluster_2_3 {
+      label="instructions/directions";
+      style="filled,rounded"; fillcolor="#e3f2fdbb"; color="#2e6b8a55";
+      fontsize=8; fontcolor="#2e6b8a";
+      K074 [label="K074\n[E]", tooltip="Kann am Flughafen einen kurzen Aufruf verstehen (z. B. „Herr Bauer zur Informati"];
+      K075 [label="K075\n[D]", tooltip="Kann die Durchsage „Das Auto mit dem Kennzeichen [eigene Nummer] versperrt eine "];
+      K076 [label="K076\n[D]", tooltip="Kann in vertrauten Situationen kurze, einfache und klare Anweisungen verstehen."];
+      K077 [label="K077\n[E]", tooltip="Kann die Anweisung des Kursleiters „Schlagen Sie das Buch auf S. 14 auf“ versteh"];
+      K078 [label="K078\n[E]", tooltip="Kann bei einer Computerschulung einfache Anweisungen verstehen (z. B. „Drücken S"];
+      K079 [label="K079\n[E]", tooltip="Kann eine Kollegin verstehen, die ihm mit einfachen Worten den Weg zu einem vere"];
+    }
+    subgraph cluster_2_4 {
+      label="news/media";
+      style="filled,rounded"; fillcolor="#e3f2fdbb"; color="#2e6b8a55";
+      fontsize=8; fontcolor="#2e6b8a";
+      K080 [label="K080\n[D]", tooltip="Kann in Nachrichten, vor allem in Fernsehnachrichten, die Namen, Zeit- und Ortsa"];
+      K081 [label="K081\n[D]", tooltip="Kann als Zuschauer von Fernsehnachrichten die Themen der verschiedenen Beiträge "];
+      K082 [label="K082\n[E]", tooltip="Kann in einem Bericht zu einem vertrauten Thema in groben Zügen verstehen, welch"];
+      K083 [label="K083\n[E]", tooltip="Kann in Sportberichten die Ergebnisse seiner Lieblingssportart verstehen (z. B. "];
+    }
+  }
+
+  subgraph cluster_3 {
+    label="Reception reading (Rs)\nK084-K115";
+    style="filled,rounded"; fillcolor="#e0f2f1"; color="#00695c";
+    fontsize=11; fontcolor="#00695c";
+    penwidth=2;
+    subgraph cluster_3_0 {
+      label="single words";
+      style="filled,rounded"; fillcolor="#e0f2f1bb"; color="#00695c55";
+      fontsize=8; fontcolor="#00695c";
+      K084 [label="K084\n[G]", tooltip="Kann einzelne Wörter und sehr einfache Sätze in einfachen und übersichtlichen al"];
+      K085 [label="K085\n[G]", tooltip="Kann in informierenden Texten, die viele Internationalismen enthalten und/oder i"];
+      K086 [label="K086\n[G]", tooltip="Kann Teile von kurzen, einfachen Texten verstehen, wenn er/sie Gelegenheit zu wi"];
+    }
+    subgraph cluster_3_1 {
+      label="numbers/tables";
+      style="filled,rounded"; fillcolor="#e0f2f1bb"; color="#00695c55";
+      fontsize=8; fontcolor="#00695c";
+      K087 [label="K087\n[G]", tooltip="Kann Namen, Zahlen, Preise und Zeitangaben sowie einzelne Wörter und sehr einfac"];
+      K088 [label="K088\n[D]", tooltip="Kann in knappen, einfachen Texten in geläufigsten Alltagssituationen Namen, Zahl"];
+      K089 [label="K089\n[E]", tooltip="Kann aus dem Informationsblatt für die Hausbewohner entnehmen, wann und wo eine "];
+      K090 [label="K090\n[E]", tooltip="Kann am Arbeitsplatz einen Aushang über den Betriebsausflug (z. B. Termin, Abfah"];
+      K091 [label="K091\n[E]", tooltip="Kann beim Durchblättern von Kursprogrammen Termine, Anzahl und Dauer der Kursein"];
+      K092 [label="K092\n[D]", tooltip="Kann den Inhalt von sehr einfachen Informationstexten und listenartigen Darstell"];
+      K093 [label="K093\n[E]", tooltip="Kann in einem Kinoprogramm einen Film für den Abend aussuchen und Ort und Zeitpu"];
+      K094 [label="K094\n[E]", tooltip="Kann sich über Produkte, die sie für ihr Hobby braucht, informieren (z. B. über "];
+      K095 [label="K095\n[E]", tooltip="Kann aus einem Fahrplan Abfahrts- und Ankunftszeiten für ein einfaches Reiseziel"];
+      K096 [label="K096\n[D]", tooltip="Kann aus kurzen informierenden Texten Angaben zu Personen und Orten entnehmen."];
+      K097 [label="K097\n[E]", tooltip="Kann in einem Zeitungsartikel Angaben zu Alter, Wohnort und Beschäftigung einer "];
+      K098 [label="K098\n[E]", tooltip="Kann als Fußballfan nach einem Spielabend in der Zeitung die Ergebnisse suchen u"];
+      K099 [label="K099\n[E]", tooltip="Kann aus dem Inlay einer CD die wichtigsten biografischen Angaben der betreffend"];
+    }
+    subgraph cluster_3_2 {
+      label="public signs";
+      style="filled,rounded"; fillcolor="#e0f2f1bb"; color="#00695c55";
+      fontsize=8; fontcolor="#00695c";
+      K100 [label="K100\n[D]", tooltip="Kann Wörter und Ausdrücke in öffentlichen Aufschriften, denen man im Alltag oft "];
+      K101 [label="K101\n[E]", tooltip="Kann wichtige Orientierungsschilder auf der Straße (z. B. „Bahnhof“, „Parkplatz“"];
+      K102 [label="K102\n[E]", tooltip="Kann in einem Kaufhaus einzelne Angaben auf den Informationstafeln verstehen (z."];
+      K103 [label="K103\n[D]", tooltip="Kann an öffentlichen Orten Schilder wie „Rauchen verboten“ verstehen."];
+    }
+    subgraph cluster_3_3 {
+      label="instructions";
+      style="filled,rounded"; fillcolor="#e0f2f1bb"; color="#00695c55";
+      fontsize=8; fontcolor="#00695c";
+      K104 [label="K104\n[D]", tooltip="Kann kurze, einfache schriftliche Anleitungen verstehen, besonders wenn diese il"];
+      K105 [label="K105\n[D]", tooltip="Kann kurze, einfache Orientierungshilfen wie „2. Stock rechts, Zimmer 24“ verste"];
+      K106 [label="K106\n[E]", tooltip="Kann auf Medikamenten einfache Anweisungen verstehen (z. B. Menge, Zeit der Einn"];
+      K107 [label="K107\n[E]", tooltip="Kann die wichtigsten Informationen aus den Sicherheitsvorschriften am Arbeitspla"];
+    }
+    subgraph cluster_3_5 {
+      label="everyday texts";
+      style="filled,rounded"; fillcolor="#e0f2f1bb"; color="#00695c55";
+      fontsize=8; fontcolor="#00695c";
+      K108 [label="K108\n[E]", tooltip="Kann in bewusst einfach geschriebenen kurzen Postkarten, E-Mails oder Briefen de"];
+      K109 [label="K109\n[E]", tooltip="Kann Feriengrüße auf einer Postkarte verstehen."];
+      K110 [label="K110\n[E]", tooltip="Kann den Anlass einer Postkarte verstehen (z. B. Feiertag, Gratulation, Jahreswe"];
+      K111 [label="K111\n[E]", tooltip="Kann eine E-Mail, die zu einem Treffen einlädt, verstehen."];
+      K112 [label="K112\n[E]", tooltip="Kann elementare Befehle eines Computerprogramms verstehen."];
+      K113 [label="K113\n[E]", tooltip="Kann als Benutzer eines Computers Wörter wie „speichern“, „löschen“, „öffnen“, „"];
+      K114 [label="K114\n[E]", tooltip="Kann im Internetcafé ein E-Mail-Programm benutzen und dabei Angaben wie „Nachric"];
+      K115 [label="K115\n[E]", tooltip="Kann als Benutzerin eines Sprachlernprogramms auf CD-ROM verstehen, wie sie eine"];
+    }
+  }
+
+  subgraph cluster_4 {
+    label="Production speaking (Pm)\nK116-K132";
+    style="filled,rounded"; fillcolor="#fff8e1"; color="#c06014";
+    fontsize=11; fontcolor="#c06014";
+    penwidth=2;
+    subgraph cluster_4_0 {
+      label="self-description";
+      style="filled,rounded"; fillcolor="#fff8e1bb"; color="#c0601455";
+      fontsize=8; fontcolor="#c06014";
+      K121 [label="K121\n[D]", tooltip="Kann mit einfachen, meist unverbundenen Ausdrücken sich selbst beschreiben, was "];
+      K122 [label="K122\n[D]", tooltip="Kann im Sprachkurs sagen, woher sie kommt und wo sie jetzt wohnt."];
+      K123 [label="K123\n[E]", tooltip="Kann Kolleginnen sagen, was sie beruflich macht und was ihr liebstes Hobby ist."];
+      K124 [label="K124\n[E]", tooltip="Kann einem Kollegen sagen, was sie derzeit an einem normalen Tag macht."];
+    }
+    subgraph cluster_4_1 {
+      label="describe people/places";
+      style="filled,rounded"; fillcolor="#fff8e1bb"; color="#c0601455";
+      fontsize=8; fontcolor="#c06014";
+      K125 [label="K125\n[D]", tooltip="Kann mit einfachen, meist unverbundenen Ausdrücken über sich, andere Personen un"];
+      K126 [label="K126\n[D]", tooltip="Kann mit einfachen Ausdrücken und Sätzen ihren Partner beschreiben."];
+      K127 [label="K127\n[E]", tooltip="Kann beschreiben, wie die Firma heißt, in der sie arbeitet, und was sie dort mac"];
+      K128 [label="K128\n[E]", tooltip="Kann bei einer Party einem anderen Gast sagen, wie groß die eigene Familie ist."];
+    }
+    subgraph cluster_4_2 {
+      label="numbers aloud";
+      style="filled,rounded"; fillcolor="#fff8e1bb"; color="#c0601455";
+      fontsize=8; fontcolor="#c06014";
+      K129 [label="K129\n[D]", tooltip="Kann Zahlen, wichtige Zeit- und Mengenangaben sowie Daten gut verständlich sprec"];
+      K130 [label="K130\n[D]", tooltip="Kann die eigene Telefonnummer so deutlich sprechen, dass sie mitgeschrieben werd"];
+      K131 [label="K131\n[E]", tooltip="Kann auf einem Amt wichtige Angaben wie Geburtsdatum oder Adresse verständlich s"];
+      K132 [label="K132\n[E]", tooltip="Kann in einem Geschäft wichtige Größenangaben mit einfachen sprachlichen Mitteln"];
+    }
+    subgraph cluster_4_3 {
+      label="global chunks";
+      style="filled,rounded"; fillcolor="#fff8e1bb"; color="#c0601455";
+      fontsize=8; fontcolor="#c06014";
+      K116 [label="K116\n[G]", tooltip="Kann in vertrauten alltäglichen Situationen kurze, unverbundene und meist vorgef"];
+      K117 [label="K117\n[G]", tooltip="Kann in konkreten, vertrauten Situationen mit einfachen Wörtern, alltäglichen Au"];
+      K118 [label="K118\n[G]", tooltip="Kann die Buchstaben des Alphabets und ein begrenztes Repertoire an Wörtern und W"];
+      K119 [label="K119\n[G]", tooltip="Kann seine/ihre Äußerungen unter Berücksichtigung von Wort- und Satzakzenten und"];
+      K120 [label="K120\n[G]", tooltip="Kann Wörter oder Wortgruppen mit einfachen Konnektoren wie „und“, „oder“, „und d"];
+    }
+  }
+
+  subgraph cluster_5 {
+    label="Production writing (Ps)\nK133-K152";
+    style="filled,rounded"; fillcolor="#fce4ec"; color="#800040";
+    fontsize=11; fontcolor="#800040";
+    penwidth=2;
+    subgraph cluster_5_0 {
+      label="copy words/phrases";
+      style="filled,rounded"; fillcolor="#fce4ecbb"; color="#80004055";
+      fontsize=8; fontcolor="#800040";
+      K137 [label="K137\n[D]", tooltip="Kann Namen, einzelne Wörter und kurze Wortgruppen aufschreiben."];
+      K138 [label="K138\n[E]", tooltip="Kann Autor, Titel und Preis eines Buches, das er für den Kurs besorgen soll, auf"];
+      K139 [label="K139\n[E]", tooltip="Kann in einem Kurs Aufzeichnungen des Lehrers von Tafel, Folie oder Flipchart-Bo"];
+      K140 [label="K140\n[E]", tooltip="Kann den Titel einer CD, die ihm von einem Freund empfohlen wird, aufschreiben."];
+    }
+    subgraph cluster_5_1 {
+      label="personal notes";
+      style="filled,rounded"; fillcolor="#fce4ecbb"; color="#80004055";
+      fontsize=8; fontcolor="#800040";
+      K141 [label="K141\n[D]", tooltip="Kann in sehr vertrauten Bereichen einfache Notizen für sich machen, die Zeit- un"];
+      K142 [label="K142\n[D]", tooltip="Kann für sich einen Lernplan (mit Wochentagen, Daten, Uhrzeit und Aktivitäten) s"];
+      K143 [label="K143\n[E]", tooltip="Kann sich geänderte Kursräume und Terminänderungen für die folgende Kurswoche vo"];
+      K144 [label="K144\n[E]", tooltip="Kann sich den Termin und die Uhrzeiten für den bevorstehenden Betriebsausflug no"];
+    }
+    subgraph cluster_5_2 {
+      label="bullet facts/data";
+      style="filled,rounded"; fillcolor="#fce4ecbb"; color="#80004055";
+      fontsize=8; fontcolor="#800040";
+      K145 [label="K145\n[D]", tooltip="Kann in Stichpunkten Fakten und Daten aufschreiben, die sich auf alltägliche Auf"];
+      K146 [label="K146\n[D]", tooltip="Kann in einfacher Form ihren Reiseplan und ihre Reiseroute notieren."];
+      K147 [label="K147\n[E]", tooltip="Kann in einer Wohngemeinschaft den Putzplan (z. B. Tage, Namen, Räumlichkeiten) "];
+      K148 [label="K148\n[E]", tooltip="Kann sich im Betrieb auf Anweisung der Chefin notieren, welche Seiten er wie oft"];
+    }
+    subgraph cluster_5_3 {
+      label="write about self";
+      style="filled,rounded"; fillcolor="#fce4ecbb"; color="#80004055";
+      fontsize=8; fontcolor="#800040";
+      K149 [label="K149\n[D]", tooltip="Kann einfache persönliche Angaben in geschriebener Form machen."];
+      K150 [label="K150\n[D]", tooltip="Kann mit einfachen Sätzen schreiben, wo und wie er wohnt."];
+      K151 [label="K151\n[D]", tooltip="Kann über andere Personen schreiben, was diese machen."];
+      K152 [label="K152\n[E]", tooltip="Kann für eine Vorstellungsrunde im Kurs wichtige persönliche Angaben aufschreibe"];
+    }
+    subgraph cluster_5_4 {
+      label="global chunks";
+      style="filled,rounded"; fillcolor="#fce4ecbb"; color="#80004055";
+      fontsize=8; fontcolor="#800040";
+      K133 [label="K133\n[G]", tooltip="Kann kurze, einfache Angaben zur Person und zu ganz alltäglichen und vertrauten "];
+      K134 [label="K134\n[G]", tooltip="Kann mit Hilfe eines Wörterbuches zu alltäglichen, vertrauten Themen kurze Aufze"];
+      K135 [label="K135\n[G]", tooltip="Kann ihm/ihr bekannte einzelne Wörter und häufig gebrauchte Wendungen einigermaß"];
+      K136 [label="K136\n[G]", tooltip="Kann Wörter oder Wortgruppen mit einfachen Konnektoren wie „und“, „oder“, „und d"];
+    }
+  }
+
+  subgraph cluster_6 {
+    label="Mediation (Sm)\nK153-K176";
+    style="filled,rounded"; fillcolor="#fbe9e7"; color="#d84315";
+    fontsize=11; fontcolor="#d84315";
+    penwidth=2;
+    subgraph cluster_6_0 {
+      label="DE→shared lang";
+      style="filled,rounded"; fillcolor="#fbe9e7bb"; color="#d8431555";
+      fontsize=8; fontcolor="#d84315";
+      K153 [label="K153\n[G]", tooltip="Kann vereinzelte bekannte Wörter oder Ausdrücke aus häufig gebrauchten, einfache"];
+      K154 [label="K154\n[G]", tooltip="Kann Namen, Zahlen, Preisangaben und sehr einfache Informationen aus einfachen s"];
+      K155 [label="K155\n[D]", tooltip="Kann aus kurzen deutschsprachigen mündlichen Äußerungen wichtige Informationen, "];
+      K156 [label="K156\n[E]", tooltip="Kann einer Bekannten an der Hotelrezeption in Berlin die Auskunft der deutschspr"];
+      K157 [label="K157\n[D]", tooltip="Kann beim Einkaufen in Zürich die Information der deutschsprachigen Verkäuferin "];
+      K158 [label="K158\n[E]", tooltip="Kann bei der Einschreibung für einen Deutschkurs im Sekretariat wichtige Informa"];
+      K159 [label="K159\n[D]", tooltip="Kann aus kurzen deutschsprachigen mündlichen Äußerungen ganz einfache, alltäglic"];
+      K160 [label="K160\n[E]", tooltip="Kann auf einer Party einer Freundin einfache Fragen der deutschsprachigen Kolleg"];
+      K161 [label="K161\n[E]", tooltip="Kann in einem Restaurant eine einfache Bemerkung des deutschsprachigen Kellners "];
+      K162 [label="K162\n[E]", tooltip="Kann in einem Geschäft die Frage des deutschsprachigen Verkäufers nach der Zahlu"];
+      K163 [label="K163\n[D]", tooltip="Kann einzelne Informationen aus einem kurzen schriftlichen, oft listenartigen de"];
+      K164 [label="K164\n[E]", tooltip="Kann einer neu eingezogenen Mitbewohnerin im Studentenwohnheim wichtige Angaben "];
+      K165 [label="K165\n[E]", tooltip="Kann für einen Touristen einzelne einfache Wörter (z. B. Kinder – Eltern – Zug –"];
+      K166 [label="K166\n[E]", tooltip="Kann einfache Begriffe (z. B. Sonne, Regen) der Wettervorhersage aus einer deuts"];
+    }
+    subgraph cluster_6_1 {
+      label="other→DE";
+      style="filled,rounded"; fillcolor="#fbe9e7bb"; color="#d8431555";
+      fontsize=8; fontcolor="#d84315";
+      K167 [label="K167\n[G]", tooltip="Kann aus einer anderen Sprache häufig gebrauchte Ausdrücke und Strukturen (z. B."];
+      K168 [label="K168\n[G]", tooltip="Kann aus schriftlichen Texten einer anderen Sprache einige wichtige Wörter aus d"];
+      K169 [label="K169\n[D]", tooltip="Kann in sehr vertrauten Situationen geläufige mündliche Informationen oder Frage"];
+      K170 [label="K170\n[E]", tooltip="Kann in einem Restaurant helfen, den Getränkewunsch einer Bekannten (z. B. „Un v"];
+      K171 [label="K171\n[E]", tooltip="Kann einem deutschsprachigen Touristen die Wegerklärung eines Polizisten mit seh"];
+      K172 [label="K172\n[E]", tooltip="Kann in einem Geschäft einem deutschen Touristen behilflich sein und für ihn auf"];
+      K173 [label="K173\n[D]", tooltip="Kann einfache anderssprachige Informationen von Schildern und Aufschriften Deuts"];
+      K174 [label="K174\n[E]", tooltip="Kann die Aufschrift auf dem Schild einer Geschäftstür (z. B. „fermé“) für einen "];
+      K175 [label="K175\n[E]", tooltip="Kann in einem Restaurant die Aufschrift (z. B. „caballeros“) auf der Toilettentü"];
+      K176 [label="K176\n[E]", tooltip="Kann im Hotel einfache Begriffe auf der Informationstafel (z. B. „breakfast“) fü"];
+    }
+  }
+
+  K163 -> K086 [style=dashed, color="#c0392b", weight=0.5];
+  K176 -> K084 [style=dashed, color="#c0392b", weight=0.5];
+  K173 -> K103 [style=dashed, color="#c0392b", weight=0.5];
+  K163 -> K085 [style=dashed, color="#c0392b", weight=0.5];
+  K060 -> K004 [style=solid, color="#0b5e55", weight=0.5];
+  K104 -> K173 [style=dashed, color="#c0392b", weight=0.5];
+  K163 -> K092 [style=dashed, color="#c0392b", weight=0.5];
+  K095 -> K146 [style=solid, color="#0b5e55", weight=0.5];
+  K104 -> K076 [style=solid, color="#0b5e55", weight=0.5];
+  K176 -> K085 [style=dashed, color="#c0392b", weight=0.5];
+  K060 -> K001 [style=solid, color="#0b5e55", weight=0.5];
+  K062 -> K085 [style=solid, color="#0b5e55", weight=0.5];
+  K060 -> K006 [style=solid, color="#0b5e55", weight=0.5];
+  K085 -> K176 [style=dashed, color="#c0392b", weight=0.5];
+  K176 -> K092 [style=dashed, color="#c0392b", weight=0.5];
+  K062 -> K092 [style=solid, color="#0b5e55", weight=0.5];
+  K174 -> K092 [style=dashed, color="#c0392b", weight=0.5];
+  K060 -> K007 [style=solid, color="#0b5e55", weight=0.5];
+  K085 -> K163 [style=dashed, color="#c0392b", weight=0.5];
+  K092 -> K176 [style=dashed, color="#c0392b", weight=0.5];
+  K076 -> K104 [style=solid, color="#0b5e55", weight=0.5];
+  K086 -> K163 [style=dashed, color="#c0392b", weight=0.5];
+  K063 -> K034 [style=solid, color="#0b5e55", weight=0.5];
+  K137 -> K100 [style=solid, color="#0b5e55", weight=0.5];
+  K092 -> K163 [style=dashed, color="#c0392b", weight=0.5];
+  K104 -> K163 [style=dashed, color="#c0392b", weight=0.5];
+  K145 -> K095 [style=solid, color="#0b5e55", weight=0.5];
+  K063 -> K087 [style=solid, color="#0b5e55", weight=0.5];
+  K084 -> K163 [style=dashed, color="#c0392b", weight=0.5];
+  K145 -> K087 [style=solid, color="#0b5e55", weight=0.5];
+  K173 -> K100 [style=dashed, color="#c0392b", weight=0.5];
+  K060 -> K005 [style=solid, color="#0b5e55", weight=0.5];
+  K062 -> K163 [style=dashed, color="#c0392b", weight=0.5];
+  K060 -> K003 [style=solid, color="#0b5e55", weight=0.5];
+  K163 -> K104 [style=dashed, color="#c0392b", weight=0.5];
+  K063 -> K129 [style=solid, color="#0b5e55", weight=0.5];
+  K103 -> K173 [style=dashed, color="#c0392b", weight=0.5];
+  K100 -> K173 [style=dashed, color="#c0392b", weight=0.5];
+  K095 -> K141 [style=solid, color="#0b5e55", weight=0.5];
+  K163 -> K084 [style=dashed, color="#c0392b", weight=0.5];
+  K087 -> K063 [style=solid, color="#0b5e55", weight=0.5];
+}
