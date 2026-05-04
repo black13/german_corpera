@@ -1,9 +1,10 @@
-\documentclass[tikz,border=10pt]{standalone}
+\documentclass[tikz,border=5pt]{standalone}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{tikz}
 \usepackage{xcolor}
 \usetikzlibrary{shadows,positioning,calc,shapes.geometric,arrows.meta,backgrounds,fit}
+\usepackage[papersize={594mm,420mm},margin=0pt]{geometry}
 
 % hand-written marker
 \newcommand{\handmark}{\textasteriskcentered}
@@ -27,13 +28,38 @@
 ]
 
 % ============================================================
-% LEGEND
+% RIPS × m/s Matrix Legend
 % ============================================================
-\node[fill=white,draw=gray!30,rounded corners=4pt,inner sep=4pt,anchor=north west] at (10.5, -0.5) {
+\node[fill=white,draw=gray!30,rounded corners=4pt,inner sep=1pt,anchor=north east] at (15.5,1.5) {
     \begin{tikzpicture}[baseline]
-        \draw[edge cs] (0,0) -- (0.5,0) node[right,edge label,font=\tiny] {channel shift (ear $\leftrightarrow$ eye)};
-        \draw[edge op] (0,-0.35) -- (0.5,-0.35) node[right,edge label,font=\tiny] {operation upgrade (understand $\rightarrow$ relay)};
-        \draw[edge nr] (0,-0.7) -- (0.5,-0.7) node[right,edge label,font=\tiny] {near\_kbs (same cluster)};
+        \node[font=\small\bfseries] at (2.2,0.7) {RIPS $\times$ m/s};
+        \node[font=\tiny,text=gray] at (1.1,0.2) {m\"undlich};
+        \node[font=\tiny,text=gray] at (3.3,0.2) {schriftlich};
+        % R row
+        \node[fill=blue!10,draw=blue!30!black!20,minimum width=0.8cm,minimum height=0.45cm,inner sep=1pt] (Rlabel) at (0,0) {\tiny\bfseries R};
+        \node[fill=blue!10,draw=blue!30!black!20,minimum width=1.5cm,minimum height=0.45cm,inner sep=1pt] (Rmcell) at (1.1,0) {\tiny Rm{\tiny$\cdot$}ear};
+        \node[fill=blue!8,draw=blue!30!black!25,minimum width=1.5cm,minimum height=0.45cm,inner sep=1pt] (Rscell) at (3.3,0) {\tiny Rs{\tiny$\cdot$}eye};
+        % I row
+        \node[fill=yellow!10,draw=yellow!40!black!20,minimum width=0.8cm,minimum height=0.45cm,inner sep=1pt] (Ilabel) at (0,-0.55) {\tiny\bfseries I};
+        \node[fill=yellow!10,draw=yellow!40!black!20,minimum width=1.5cm,minimum height=0.45cm,inner sep=1pt] at (1.1,-0.55) {\tiny Im{\tiny$\cdot$}ear{\tiny$\leftrightarrow$}mouth};
+        \node[fill=yellow!8,draw=yellow!40!black!30,minimum width=1.5cm,minimum height=0.45cm,inner sep=1pt] at (3.3,-0.55) {\tiny Is{\tiny$\cdot$}hand{\tiny$\leftrightarrow$}eye};
+        % P row
+        \node[fill=green!12,draw=green!40!black!20,minimum width=0.8cm,minimum height=0.45cm,inner sep=1pt] (Plabel) at (0,-1.1) {\tiny\bfseries P};
+        \node[fill=green!12,draw=green!40!black!20,minimum width=1.5cm,minimum height=0.45cm,inner sep=1pt] at (1.1,-1.1) {\tiny Pm{\tiny$\cdot$}mouth};
+        \node[fill=green!10,draw=green!40!black!30,minimum width=1.5cm,minimum height=0.45cm,inner sep=1pt] at (3.3,-1.1) {\tiny Ps{\tiny$\cdot$}hand};
+        % S row
+        \node[fill=red!8,draw=red!40!black!20,minimum width=0.8cm,minimum height=0.45cm,inner sep=1pt] (Slabel) at (0,-1.65) {\tiny\bfseries S};
+        \node[fill=red!8,draw=red!40!black!20,minimum width=1.5cm,minimum height=0.45cm,inner sep=1pt] at (1.1,-1.65) {\tiny Sm{\tiny$\cdot$}mouth};
+        \node[fill=gray!5,draw=gray!30,minimum width=1.5cm,minimum height=0.45cm,inner sep=1pt] at (3.3,-1.65) {\tiny Ss (not in A1)};
+    \end{tikzpicture}
+};
+
+% Edge legend
+\node[fill=white,draw=gray!30,rounded corners=4pt,inner sep=3pt,anchor=north east] at (15.5,-0.7) {
+    \begin{tikzpicture}[baseline]
+        \draw[edge cs] (0,0) -- (0.5,0) node[right,font=\tiny] {channel shift};
+        \draw[edge op] (0,-0.3) -- (0.5,-0.3) node[right,font=\tiny] {operation upgrade};
+        \draw[edge nr] (0,-0.6) -- (0.5,-0.6) node[right,font=\tiny] {near\_kbs};
     \end{tikzpicture}
 };
 

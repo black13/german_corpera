@@ -20,16 +20,46 @@
   <!-- Title -->
   <text x="800" y="38" text-anchor="middle" font-size="19" font-weight="700" fill="#1a2227">KB Compressed Graph — Clusters within Categories, Bridges across Channels</text>
 
-  <!-- Legend -->
-  <g transform="translate(20,54)">
-    <rect x="0" y="0" width="320" height="100" rx="6" fill="#fff" stroke="#dde4e8"/>
-    <text x="16" y="22" font-size="13" font-weight="700" fill="#1a2227">Legend</text>
-    <rect x="16" y="34" width="14" height="14" rx="2" fill="#1a6a5e"/>
-    <text x="36" y="46" font-size="12" fill="#3a4a53">Reception schriftlich (eye / reading)</text>
-    <rect x="16" y="54" width="14" height="14" rx="2" fill="#2e6b8a"/>
-    <text x="36" y="66" font-size="12" fill="#3a4a53">Reception mündlich (ear / listening)</text>
-    <rect x="16" y="74" width="14" height="14" rx="2" fill="#c06014"/>
-    <text x="36" y="86" font-size="12" fill="#3a4a53">Sprachmittlung mündlich (relay)</text>
+  <!-- RIPS × m/s Matrix Legend -->
+  <g transform="translate(1200,54)">
+    <rect x="0" y="0" width="370" height="130" rx="6" fill="#fff" stroke="#dde4e8" filter="url(#shadow)"/>
+    <text x="185" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#1a2227">RIPS × m/s</text>
+    
+    <!-- Header row: mündlich / schriftlich -->
+    <text x="65" y="38" text-anchor="middle" font-size="10" font-weight="600" fill="#888">mündlich</text>
+    <text x="165" y="38" text-anchor="middle" font-size="10" font-weight="600" fill="#888">schriftlich</text>
+    
+    <!-- R row: Rezeption -->
+    <rect x="8" y="46" width="38" height="18" rx="3" fill="#e3f2fd" stroke="#90caf9"/>
+    <text x="27" y="58" text-anchor="middle" font-size="10" font-weight="700" fill="#2e6b8a">R</text>
+    <rect x="52" y="46" width="73" height="18" rx="3" fill="#e3f2fd" stroke="#90caf9"/>
+    <text x="88" y="58" text-anchor="middle" font-size="9" fill="#2e6b8a">Rm · ear</text>
+    <rect x="130" y="46" width="73" height="18" rx="3" fill="#e0f2f1" stroke="#80cbc4"/>
+    <text x="166" y="58" text-anchor="middle" font-size="9" fill="#00695c">Rs · eye</text>
+    
+    <!-- I row: Interaktion -->
+    <rect x="8" y="66" width="38" height="18" rx="3" fill="#fff3e0" stroke="#e8c87a"/>
+    <text x="27" y="78" text-anchor="middle" font-size="10" font-weight="700" fill="#8b6914">I</text>
+    <rect x="52" y="66" width="73" height="18" rx="3" fill="#fff3e0" stroke="#e8c87a"/>
+    <text x="88" y="78" text-anchor="middle" font-size="9" fill="#8b6914">Im · ear↔mouth</text>
+    <rect x="130" y="66" width="73" height="18" rx="3" fill="#f3e5f5" stroke="#ce93d8"/>
+    <text x="166" y="78" text-anchor="middle" font-size="9" fill="#6a1b9a">Is · hand↔eye</text>
+    
+    <!-- P row: Produktion -->
+    <rect x="8" y="86" width="38" height="18" rx="3" fill="#fff8e1" stroke="#ffcc80"/>
+    <text x="27" y="98" text-anchor="middle" font-size="10" font-weight="700" fill="#c06014">P</text>
+    <rect x="52" y="86" width="73" height="18" rx="3" fill="#fff8e1" stroke="#ffcc80"/>
+    <text x="88" y="98" text-anchor="middle" font-size="9" fill="#c06014">Pm · mouth</text>
+    <rect x="130" y="86" width="73" height="18" rx="3" fill="#fce4ec" stroke="#f48fb1"/>
+    <text x="166" y="98" text-anchor="middle" font-size="9" fill="#800040">Ps · hand</text>
+    
+    <!-- S row: Sprachmittlung -->
+    <rect x="8" y="106" width="38" height="18" rx="3" fill="#fbe9e7" stroke="#ff8a65"/>
+    <text x="27" y="118" text-anchor="middle" font-size="10" font-weight="700" fill="#d84315">S</text>
+    <rect x="52" y="106" width="73" height="18" rx="3" fill="#fbe9e7" stroke="#ff8a65"/>
+    <text x="88" y="118" text-anchor="middle" font-size="9" fill="#d84315">Sm · mouth</text>
+    <rect x="130" y="106" width="150" height="18" rx="3" fill="#f4f6f7" stroke="#ddd"/>
+    <text x="205" y="118" text-anchor="middle" font-size="9" fill="#aaa">Ss (not in A1)</text>
   </g>
 
   <!-- === CATEGORY: Interaktion mündlich (Im) K001-041 === -->
@@ -38,14 +68,18 @@
     <text x="12" y="24" font-size="13" font-weight="700" fill="#8b6914">Interaktion mündlich</text>
     <text x="12" y="42" font-size="11" fill="#9a7b2a">K001–041 · ear ↔ mouth</text>
     <rect x="12" y="56" width="206" height="34" rx="4" fill="#fef9e7" stroke="#e6d88a"/>
-    <text x="24" y="74" font-size="11" fill="#6b5a00">greetings / introductions</text>
+    <text x="24" y="70" font-size="11" fill="#6b5a00">greetings / introductions</text>
+    <text x="24" y="84" font-size="10" fill="#8a7a20">Begrüßung / Vorstellung</text>
     <rect x="12" y="96" width="206" height="34" rx="4" fill="#fef9e7" stroke="#e6d88a"/>
-    <text x="24" y="114" font-size="11" fill="#6b5a00">asking / giving info</text>
+    <text x="24" y="110" font-size="11" fill="#6b5a00">wellbeing / preferences</text>
+    <text x="24" y="124" font-size="10" fill="#8a7a20">Befinden / Vorlieben</text>
     <rect x="12" y="136" width="206" height="34" rx="4" fill="#fef9e7" stroke="#e6d88a"/>
-    <text x="24" y="154" font-size="11" fill="#6b5a00">preferences / opinions</text>
+    <text x="24" y="150" font-size="11" fill="#6b5a00">requests / answers / thanks</text>
+    <text x="24" y="164" font-size="10" fill="#8a7a20">Bitten / Antworten / Danken</text>
     <rect x="12" y="176" width="206" height="34" rx="4" fill="#fef9e7" stroke="#e6d88a"/>
-    <text x="24" y="194" font-size="11" fill="#6b5a00">requests / thanks</text>
-    <text x="12" y="222" font-size="10" fill="#b8960f" font-style="italic">41 KBs · no reduction data</text>
+    <text x="24" y="190" font-size="11" fill="#6b5a00">numbers / transactions</text>
+    <text x="24" y="204" font-size="10" fill="#8a7a20">Zahlen / Geschäfte</text>
+    <text x="12" y="222" font-size="10" fill="#b8960f" font-style="italic">41 KBs · bidirectional · no single-channel model</text>
   </g>
 
   <!-- === CATEGORY: Interaktion schriftlich (Is) K042-059 === -->
@@ -65,14 +99,18 @@
     <text x="12" y="24" font-size="13" font-weight="700" fill="#2e6b8a">Rezeption mündlich</text>
     <text x="12" y="42" font-size="11" fill="#3a7a9a">K060–083 · ear / verschwindet</text>
     <rect x="12" y="56" width="226" height="34" rx="4" fill="#eaf2fa" stroke="#bbdefb"/>
-    <text x="24" y="74" font-size="11" fill="#1e4a8a">understanding slow speech</text>
+    <text x="24" y="70" font-size="11" fill="#1e4a8a">slow, clear speech</text>
+    <text x="24" y="84" font-size="10" fill="#3a6aaa">langsame, deutliche Rede</text>
     <rect x="12" y="96" width="226" height="34" rx="4" fill="#eaf2fa" stroke="#bbdefb"/>
-    <text x="24" y="114" font-size="11" fill="#1e4a8a">internat. words + pauses</text>
+    <text x="24" y="110" font-size="11" fill="#1e4a8a">internat. words + pauses</text>
+    <text x="24" y="124" font-size="10" fill="#3a6aaa">Internationalismen + Pausen</text>
     <rect x="12" y="136" width="226" height="34" rx="4" fill="#eaf2fa" stroke="#bbdefb"/>
-    <text x="24" y="154" font-size="11" fill="#1e4a8a">numbers / time spoken</text>
+    <text x="24" y="150" font-size="11" fill="#1e4a8a">numbers / time / place</text>
+    <text x="24" y="164" font-size="10" fill="#3a6aaa">Zahlen / Zeit / Ort</text>
     <rect x="12" y="176" width="226" height="34" rx="4" fill="#eaf2fa" stroke="#bbdefb"/>
-    <text x="24" y="194" font-size="11" fill="#1e4a8a">instructions / directions</text>
-    <text x="12" y="222" font-size="10" fill="#5a8aaa" font-style="italic">24 KBs</text>
+    <text x="24" y="190" font-size="11" fill="#1e4a8a">instructions / directions</text>
+    <text x="24" y="204" font-size="10" fill="#3a6aaa">Anweisungen / Wegerklärungen</text>
+    <text x="12" y="222" font-size="10" fill="#5a8aaa" font-style="italic">24 KBs · object-focused reduction</text>
   </g>
 
   <!-- === CATEGORY: Rezeption schriftlich (Rs) K084-115 === -->
@@ -83,32 +121,33 @@
 
     <!-- Cluster: basic reading -->
     <rect x="12" y="56" width="276" height="46" rx="4" fill="#e6f4f0" stroke="#a0d8cf"/>
-    <text x="24" y="74" font-size="11" font-weight="600" fill="#0b5e55">basic reading: words / topic / re-read</text>
-    <text x="24" y="90" font-size="10" fill="#2a6a5e">K084 · K085 · K086  (all ✍)</text>
+    <text x="24" y="74" font-size="11" font-weight="600" fill="#0b5e55">single words / topic / re-read</text>
+    <text x="24" y="90" font-size="10" fill="#2a7a6e">einzelne Wörter / Thema / wiederholt lesen</text>
 
     <!-- Cluster: numbers/tables -->
     <rect x="12" y="110" width="276" height="46" rx="4" fill="#e6f4f0" stroke="#a0d8cf"/>
     <text x="24" y="128" font-size="11" font-weight="600" fill="#0b5e55">numbers / time / price / tables</text>
-    <text x="24" y="144" font-size="10" fill="#2a6a5e">K087 · K092 · K095  (K092 ✍)</text>
+    <text x="24" y="144" font-size="10" fill="#2a7a6e">Zahlen / Zeit / Preis / Tabellen</text>
 
     <!-- Cluster: public signs -->
     <rect x="12" y="164" width="276" height="46" rx="4" fill="#e6f4f0" stroke="#a0d8cf"/>
     <text x="24" y="182" font-size="11" font-weight="600" fill="#0b5e55">public signs / labels / notices</text>
-    <text x="24" y="198" font-size="10" fill="#2a6a5e">K100 · K101 · K102 · K103</text>
+    <text x="24" y="198" font-size="10" fill="#2a7a6e">öffentliche Schilder / Aufschriften</text>
 
     <!-- Cluster: instructions -->
     <rect x="12" y="218" width="276" height="46" rx="4" fill="#e6f4f0" stroke="#a0d8cf"/>
-    <text x="24" y="236" font-size="11" font-weight="600" fill="#0b5e55">short instructions with pictures</text>
-    <text x="24" y="252" font-size="10" fill="#2a6a5e">K104  (✍ + seed)</text>
+    <text x="24" y="236" font-size="11" font-weight="600" fill="#0b5e55">instructions with pictures</text>
+    <text x="24" y="252" font-size="10" fill="#2a7a6e">Anleitungen mit Bildern</text>
 
     <!-- Cluster: forms -->
     <rect x="12" y="272" width="276" height="46" rx="4" fill="#e6f4f0" stroke="#a0d8cf"/>
     <text x="24" y="290" font-size="11" font-weight="600" fill="#0b5e55">forms / questionnaires</text>
-    <text x="24" y="306" font-size="10" fill="#2a6a5e">K105 · K106 · K107 · K108 · K109 · K110</text>
+    <text x="24" y="306" font-size="10" fill="#2a7a6e">Formulare / Fragebögen</text>
 
     <!-- Cluster: everyday texts -->
     <rect x="12" y="326" width="276" height="38" rx="4" fill="#e6f4f0" stroke="#a0d8cf"/>
-    <text x="24" y="350" font-size="11" fill="#2a6a5e">K111–K115 · everyday texts, ads, notes</text>
+    <text x="24" y="342" font-size="11" fill="#2a6a5e">everyday texts · ads · notes</text>
+    <text x="24" y="356" font-size="10" fill="#3a8a7e">Alltagstexte · Anzeigen · Notizen</text>
   </g>
 
   <!-- === CATEGORY: Produktion mündlich (Pm) K116-132 === -->
