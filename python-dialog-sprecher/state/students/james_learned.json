@@ -1,6 +1,6 @@
 {
   "student": "james",
-  "day": 176,
+  "day": 165,
   "vocabulary_acquired": [
     {
       "word": "USA",
@@ -2417,6 +2417,134 @@
     {
       "word": "die Uhr / die Uhrzeit",
       "stable": true
+    },
+    {
+      "word": "Ausgang",
+      "stable": true
+    },
+    {
+      "word": "Eingang",
+      "stable": true
+    },
+    {
+      "word": "Schild",
+      "stable": true
+    },
+    {
+      "word": "heiße",
+      "stable": true
+    },
+    {
+      "word": "komme",
+      "stable": true
+    },
+    {
+      "word": "aus den USA",
+      "stable": true
+    },
+    {
+      "word": "Fahrplan",
+      "stable": false
+    },
+    {
+      "word": "Zug",
+      "stable": false
+    },
+    {
+      "word": "fahren",
+      "stable": false
+    },
+    {
+      "word": "seit",
+      "stable": false
+    },
+    {
+      "word": "Monaten",
+      "stable": false
+    },
+    {
+      "word": "lernen",
+      "stable": false
+    },
+    {
+      "word": "Eingang",
+      "stable": true
+    },
+    {
+      "word": "Warteraum",
+      "stable": false
+    },
+    {
+      "word": "Wartesaal",
+      "stable": false
+    },
+    {
+      "word": "Abfahrt",
+      "stable": true
+    },
+    {
+      "word": "nur für Personal",
+      "stable": true
+    },
+    {
+      "word": "Check-out",
+      "stable": true
+    },
+    {
+      "word": "Zimmer verlassen",
+      "stable": true
+    },
+    {
+      "word": "bis elf Uhr",
+      "stable": true
+    },
+    {
+      "word": "Frühstücksraum",
+      "stable": true
+    },
+    {
+      "word": "Zimmerservice",
+      "stable": true
+    },
+    {
+      "word": "Rezeption",
+      "stable": true
+    },
+    {
+      "word": "Empfang",
+      "stable": true
+    },
+    {
+      "word": "Frühstück",
+      "stable": true
+    },
+    {
+      "word": "Zeit",
+      "stable": true
+    },
+    {
+      "word": "Essen",
+      "stable": true
+    },
+    {
+      "word": "Fahrkarten",
+      "stable": false
+    },
+    {
+      "word": "Abfahrt",
+      "stable": false
+    },
+    {
+      "word": "Preis",
+      "stable": true
+    },
+    {
+      "word": "Fahrkarten",
+      "stable": false
+    },
+    {
+      "word": "Abendessen",
+      "stable": false
     }
   ],
   "grammar_acquired": [
@@ -3379,11 +3507,56 @@
     {
       "rule": "Code-switching als funktionales A1-Muster für metasprachliche Erklärungen",
       "stable": true
+    },
+    {
+      "rule": "Elliptische Syntax in Aufschriften",
+      "stable": true
+    },
+    {
+      "rule": "Artikelunsicherheit (der/die Ausgang) ist A1-typisch",
+      "stable": false
+    },
+    {
+      "rule": "seit + Dativ",
+      "stable": false
+    },
+    {
+      "rule": "aus + Dativ (aus den USA)",
+      "stable": true
+    },
+    {
+      "rule": "Elliptische Syntax in spontanen Äußerungen (A1-typisch)",
+      "stable": true
+    },
+    {
+      "rule": "Code-switching zur metakognitiven Planung (Englisch) als funktionales Muster",
+      "stable": true
+    },
+    {
+      "rule": "Verwendung von 'bis' für Fristen",
+      "stable": true
+    },
+    {
+      "rule": "Verwendung von 'von...bis' für Zeiträume",
+      "stable": true
+    },
+    {
+      "rule": "Verständnissicherung mit 'Ist das klar?'",
+      "stable": true
+    },
+    {
+      "rule": "von ... bis korrekt verwendet",
+      "stable": true
+    },
+    {
+      "rule": "Artikel vor Nomen (der/die/das)",
+      "stable": false
     }
   ],
   "kannbeschreibungen_attempted": {
     "K001": {
       "day": 1,
+      "session": 1,
       "result": "bestanden"
     },
     "K002": {
@@ -3488,6 +3661,7 @@
     },
     "K176": {
       "day": 176,
+      "session": 1,
       "result": "bestanden"
     },
     "K011": {
@@ -3784,7 +3958,7 @@
     },
     "K100": {
       "day": 100,
-      "result": "bestanden"
+      "result": "teilweise"
     },
     "K101": {
       "day": 101,
@@ -4044,7 +4218,8 @@
     },
     "K163": {
       "day": 165,
-      "result": "bestanden"
+      "session": 3,
+      "result": "teilweise"
     },
     "K164": {
       "day": 166,
@@ -4076,6 +4251,7 @@
     },
     "K173": {
       "day": 173,
+      "session": 1,
       "result": "bestanden"
     },
     "K174": {
@@ -4088,8 +4264,8 @@
     }
   },
   "persistent_errors": [
-    "Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)",
-    "Abhängigkeit von klarer, kanonalignierter Lehrersteuerung: Bei unklaren oder generischen Prompts driftet der Student in soziale Abschlussformeln statt zur Zielsprachhandlung (Runden 6-7)"
+    "Fehlender Artikel vor Nomen (A1-typisch)",
+    "Abhängigkeit von klarer Lehrersteuerung – Drift in Metakognition oder reine Wiederholung bei unklaren Prompts"
   ],
-  "emotional_state": "Engagiert und reaktionsschnell bei klaren Aufgaben, kooperativ im sozialen Abschluss"
+  "emotional_state": "Kooperativ, aber unsicher bei selbstständiger Mediation; zeigt Bereitschaft zur Korrektur"
 }

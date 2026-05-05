@@ -1,7 +1,7 @@
 {
   "student": "marta",
-  "day": 176,
-  "days_completed": 176,
+  "day": 165,
+  "days_completed": 165,
   "stable_vocabulary": [
     {
       "word": "wohnen in",
@@ -24,14 +24,14 @@
       "mentions": 14
     },
     {
-      "word": "links",
+      "word": "Hotel",
       "stable": true,
       "mentions": 12
     },
     {
-      "word": "Hotel",
+      "word": "links",
       "stable": true,
-      "mentions": 11
+      "mentions": 12
     },
     {
       "word": "Danke",
@@ -66,6 +66,16 @@
       "mentions": 3
     },
     {
+      "word": "Renovierung",
+      "stable": false,
+      "mentions": 2
+    },
+    {
+      "word": "wohnen",
+      "stable": false,
+      "mentions": 2
+    },
+    {
       "word": "telefonieren",
       "stable": false,
       "mentions": 2
@@ -81,17 +91,7 @@
       "mentions": 2
     },
     {
-      "word": "Cent",
-      "stable": false,
-      "mentions": 1
-    },
-    {
-      "word": "die Milch",
-      "stable": false,
-      "mentions": 1
-    },
-    {
-      "word": "das Bad",
+      "word": "Öffnungszeiten",
       "stable": false,
       "mentions": 1
     }
@@ -150,32 +150,31 @@
       "mentions": 2
     },
     {
-      "rule": "Fehlende Artikel in Ortsangaben",
+      "rule": "Vollständiger Satz mit bestimmtem Artikel (z.B. 'Das Frühstück ist...')",
       "stable": false,
       "mentions": 1
     },
     {
-      "rule": "Korrekte Präposition 'im Hotel' (nach Korrektur)",
+      "rule": "es gibt + Akkusativ (acceptance of correction)",
       "stable": false,
       "mentions": 1
     },
     {
-      "rule": "Selbstkorrektur bei Verbkonjugation (schreiben → schreibe)",
+      "rule": "Fehlende Präposition 'seit' (lernen drei Monate)",
       "stable": false,
       "mentions": 1
     },
     {
-      "rule": "Verb-Infinitiv als Nomen verwenden (z.B. 'nicht Drucken')",
+      "rule": "Elliptische Strukturen – A1-typisch",
       "stable": false,
       "mentions": 1
     }
   ],
   "persistent_errors": [
-    "Fehlende Artikel (der/die/das/ein/eine)",
-    "Elliptische Strukturen statt vollständiger Sätze",
-    "Code-switching (Englisch-Deutsch-Mischung)"
+    "Fehlende Artikel (der/die/das/ein/eine) bei neuen oder unbetonten Nomen",
+    "Elliptische Strukturen statt vollständiger Sätze"
   ],
-  "emotional_state": "stabil und funktional",
+  "emotional_state": "Sicher und aufmerksam, zeigt aktive Verarbeitung von Feedback, aber eine Runde mit Drift (Rückfall ins reine Vorlesen) deutet auf kurze Konzentrationsschwankung hin.",
   "recent_kanns": [
     {
       "kann_id": "K176",
@@ -209,12 +208,12 @@
     }
   ],
   "recent_highlights": [
-    "Runde 6: Student signalisiert Verständnis und beschreibt praktischen Anwendungskontext ('Im Hotel, ich sage das oft'), was auf Transferdenken und funktionales Verständnis der Sprachmittlungsaufgabe hindeutet.",
-    "Runde 5: Präzise Übersetzung von 'Herren' mit Richtungsangabe ('Das ist die Herrentoilette, rechts') zeigt perfekte Anwendung der Kannbeschreibung",
-    "Runde 7: Perfekte Übersetzung von 'Geöffnet außer Sonntag' mit klarer Vermittlung der Ausnahmeregelung, zeigt vollständige Beherrschung der Kannbeschreibung"
+    "Runde 1: Student wiederholt das Lehrermodell ('Das Frühstück ist von sieben bis zehn') und paraphrasiert es sofort auf Englisch für den Gast – zeigt perfektes Transferdenken und vollständige Erfüllung der Kannbeschreibung.",
+    "Student korrigierte spontan 'Hier ist Sitzplätze draußen' zu 'Hier gibt es Sitzplätze draußen' nach Lehrerhinweis – zeigt aktive Verarbeitung von Feedback.",
+    "Round 7: Student correctly extracted and relayed breakfast time in English, showing full task understanding and transfer thinking."
   ],
   "totals": {
-    "vocabulary": 360,
-    "grammar": 248
+    "vocabulary": 391,
+    "grammar": 261
   }
 }

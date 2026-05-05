@@ -4,7 +4,7 @@ services:
     runtime: python
     rootDir: python-dialog-sprecher
     buildCommand: pip install -r requirements.txt
-    startCommand: python3 -u runner.py --serve
+    startCommand: gunicorn app:app
     healthCheckPath: /healthz
     envVars:
       - key: OPENAI_API_KEY

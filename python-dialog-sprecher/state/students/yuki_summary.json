@@ -1,7 +1,7 @@
 {
   "student": "yuki",
-  "day": 176,
-  "days_completed": 176,
+  "day": 165,
+  "days_completed": 165,
   "stable_vocabulary": [
     {
       "word": "kommen aus",
@@ -26,10 +26,15 @@
     {
       "word": "Entschuldigung",
       "stable": true,
-      "mentions": 11
+      "mentions": 12
     },
     {
       "word": "die Uhr",
+      "stable": true,
+      "mentions": 11
+    },
+    {
+      "word": "die Stunde",
       "stable": true,
       "mentions": 10
     },
@@ -37,11 +42,6 @@
       "word": "Danke",
       "stable": true,
       "mentions": 10
-    },
-    {
-      "word": "die Stunde",
-      "stable": true,
-      "mentions": 9
     },
     {
       "word": "links",
@@ -113,12 +113,12 @@
       "mentions": 2
     },
     {
-      "rule": "Verständnissicherung 'Ist das klar?'",
+      "rule": "am + Wochentag",
       "stable": true,
       "mentions": 1
     },
     {
-      "rule": "Übersetzungsstruktur 'Das bedeutet ...'",
+      "rule": "von ... bis für Zeitangaben",
       "stable": true,
       "mentions": 1
     }
@@ -150,8 +150,11 @@
       "mentions": 1
     }
   ],
-  "persistent_errors": [],
-  "emotional_state": "sicher und selbstbewusst",
+  "persistent_errors": [
+    "Occasional missing article before nouns (e.g., 'Fahrkarten')",
+    "Occasional omission of 'Uhr' after time"
+  ],
+  "emotional_state": "neutral, task-focused",
   "recent_kanns": [
     {
       "kann_id": "K176",
@@ -185,12 +188,12 @@
     }
   ],
   "recent_highlights": [
-    "Perfekte 5/7 ON-TRACK-Runden mit sofortigen, präzisen Übersetzungen verschiedener Hotelbegriffe (Check-in als 'Ankunft im Hotel', Check-out als 'Abreise' mit Erklärung 'Sie verlassen das Zimmer') und automatischer Verständnissicherung",
-    "Vollständige Beherrschung der A1-Sprachmittlungsaufgabe mit perfekten 7/7 Runden, einschließlich korrekter Übersetzung verschiedener Aufschriften (WC, Damigelle, Damen, Herren, Fräulein) und Integration von Richtungsangaben",
-    "Perfekte 7/7 Performance mit sofortigen, präzisen Übersetzungen verschiedener Aufschriften (Geschäftstür, Öffnungszeiten, Rezeption)"
+    "Round 5: Student correctly relayed breakfast time and location in a full German sentence, demonstrating strong mediation skills.",
+    "Round 1: First complete German sentence with correct modal verb 'können' and infinitive 'kaufen', demonstrating clear progress in syntactic completeness.",
+    "Student flawlessly extracted and relayed breakfast time and coffee price from a café menu across multiple rounds, demonstrating full mastery of A1 mediation tasks."
   ],
   "totals": {
-    "vocabulary": 323,
-    "grammar": 153
+    "vocabulary": 342,
+    "grammar": 166
   }
 }

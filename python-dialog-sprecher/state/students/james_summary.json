@@ -1,7 +1,7 @@
 {
   "student": "james",
-  "day": 176,
-  "days_completed": 176,
+  "day": 165,
+  "days_completed": 165,
   "stable_vocabulary": [
     {
       "word": "Entschuldigung",
@@ -66,6 +66,21 @@
       "mentions": 4
     },
     {
+      "word": "Fahrkarten",
+      "stable": false,
+      "mentions": 3
+    },
+    {
+      "word": "Abfahrt",
+      "stable": false,
+      "mentions": 2
+    },
+    {
+      "word": "lernen",
+      "stable": false,
+      "mentions": 2
+    },
+    {
       "word": "Kopfschmerzen",
       "stable": false,
       "mentions": 2
@@ -79,21 +94,6 @@
       "word": "Prüfung",
       "stable": false,
       "mentions": 2
-    },
-    {
-      "word": "Studentenwohnheim",
-      "stable": false,
-      "mentions": 2
-    },
-    {
-      "word": "der Saft",
-      "stable": false,
-      "mentions": 1
-    },
-    {
-      "word": "Leine",
-      "stable": false,
-      "mentions": 1
     }
   ],
   "stable_grammar": [
@@ -108,32 +108,32 @@
       "mentions": 2
     },
     {
-      "rule": "Code-switching als funktionales A1-Muster für metasprachliche Erklärungen",
+      "rule": "von ... bis korrekt verwendet",
       "stable": true,
       "mentions": 1
     },
     {
-      "rule": "Frageform 'Was bedeutet...?' mit korrekter Struktur",
+      "rule": "Verständnissicherung mit 'Ist das klar?'",
       "stable": true,
       "mentions": 1
     },
     {
-      "rule": "Code-switching Englisch/Deutsch für metakognitive Planung und präzisierende Erklärungen",
+      "rule": "Verwendung von 'von...bis' für Zeiträume",
       "stable": true,
       "mentions": 1
     },
     {
-      "rule": "Elliptische/broken Syntax für funktionale Übersetzungen (A1-typisch)",
+      "rule": "Verwendung von 'bis' für Fristen",
       "stable": true,
       "mentions": 1
     },
     {
-      "rule": "Funktionale Sprachhandlungsschemata ('Auf dem Schild steht X. Auf Deutsch: Y.') für klare Informationsweitergabe",
+      "rule": "Code-switching zur metakognitiven Planung (Englisch) als funktionales Muster",
       "stable": true,
       "mentions": 1
     },
     {
-      "rule": "Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Übersetzen von Schildern) als robust konsolidiertes Muster",
+      "rule": "Elliptische Syntax in spontanen Äußerungen (A1-typisch)",
       "stable": true,
       "mentions": 1
     }
@@ -145,6 +145,21 @@
       "mentions": 26
     },
     {
+      "rule": "Artikel vor Nomen (der/die/das)",
+      "stable": false,
+      "mentions": 1
+    },
+    {
+      "rule": "seit + Dativ",
+      "stable": false,
+      "mentions": 1
+    },
+    {
+      "rule": "Artikelunsicherheit (der/die Ausgang) ist A1-typisch",
+      "stable": false,
+      "mentions": 1
+    },
+    {
       "rule": "Formelle Höflichkeitsphrase 'Können Sie bitte... wiederholen?'",
       "stable": false,
       "mentions": 1
@@ -153,28 +168,13 @@
       "rule": "Completing greeting formulas (Liebe.../Lieber...)",
       "stable": false,
       "mentions": 1
-    },
-    {
-      "rule": "Preposition 'für' with definite article ('für die Prüfung')",
-      "stable": false,
-      "mentions": 1
-    },
-    {
-      "rule": "Correct use of 'im Café' after correction",
-      "stable": false,
-      "mentions": 1
-    },
-    {
-      "rule": "temporal construction with 'seit'",
-      "stable": false,
-      "mentions": 1
     }
   ],
   "persistent_errors": [
-    "Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)",
-    "Abhängigkeit von klarer, kanonalignierter Lehrersteuerung: Bei unklaren oder generischen Prompts driftet der Student in soziale Abschlussformeln statt zur Zielsprachhandlung (Runden 6-7)"
+    "Fehlender Artikel vor Nomen (A1-typisch)",
+    "Abhängigkeit von klarer Lehrersteuerung – Drift in Metakognition oder reine Wiederholung bei unklaren Prompts"
   ],
-  "emotional_state": "Engagiert und reaktionsschnell bei klaren Aufgaben, kooperativ im sozialen Abschluss",
+  "emotional_state": "Kooperativ, aber unsicher bei selbstständiger Mediation; zeigt Bereitschaft zur Korrektur",
   "recent_kanns": [
     {
       "kann_id": "K176",
@@ -208,12 +208,12 @@
     }
   ],
   "recent_highlights": [
-    "Runden 1-5 zeigen durchgängig perfekte, kanonalignierte Leistung bei klarer Lehrersteuerung: Der Student übersetzt Hotelbegriffe (Check-out, Frühstück, Rezeption, Parkplatz) und Zeitangaben funktional, nutzt korrekte Nachfragestrukturen und integriert Verständnissicherung.",
-    "Der Student demonstriert bei klarer, kanonalignierter Lehrersteuerung (in 6 von 7 Runden) eine vollständige Beherrschung der Kannbeschreibung: Er übersetzt Aufschriften (z.B. 'dames', 'Signore', 'señoras', 'Signori') sofort und korrekt in funktionale Äußerungen wie 'Damentoilette' oder 'Herrentoilette', teilweise mit integrierter Ortsangabe ('da lang').",
-    "Runde 5 zeigt das dokumentierte Rückfallmuster: Bei unklarer Lehrersteuerung driftet der Student in metakognitive Paraphrase statt zur Zielsprachhandlung. Dies unterstreicht die Abhängigkeit von klarer, kanonalignierter Führung für optimale Leistung."
+    "Runde 5: Erfolgreiche Weitergabe der Endzeit (21 Uhr) auf Englisch mit deutschem Satz – kommunikativ effektiv und kanonaligniert",
+    "Runde 3: Korrekte Weitergabe der Frühstückszeit ('von sieben bis zehn Uhr') mit präziser Auswahl der relevanten Information – vollständig kanonaligniert und kommunikativ erfolgreich.",
+    "Runde 5: Perfekte Weitergabe des Kaffeepreises (2,50 €) auf Englisch – minimal, aber vollständig kanonaligniert und kommunikativ erfolgreich."
   ],
   "totals": {
-    "vocabulary": 322,
-    "grammar": 213
+    "vocabulary": 347,
+    "grammar": 224
   }
 }

@@ -1,6 +1,6 @@
 {
   "student": "yuki",
-  "day": 176,
+  "day": 165,
   "vocabulary_acquired": [
     {
       "word": "Japan",
@@ -2373,6 +2373,162 @@
     {
       "word": "Frühstücksbuffet",
       "stable": true
+    },
+    {
+      "word": "Eingang",
+      "stable": true
+    },
+    {
+      "word": "Ausgang",
+      "stable": true
+    },
+    {
+      "word": "Schild",
+      "stable": true
+    },
+    {
+      "word": "USA",
+      "stable": true
+    },
+    {
+      "word": "verstehen",
+      "stable": true
+    },
+    {
+      "word": "Entschuldigung",
+      "stable": true
+    },
+    {
+      "word": "fragen",
+      "stable": true
+    },
+    {
+      "word": "langsam",
+      "stable": true
+    },
+    {
+      "word": "woher",
+      "stable": true
+    },
+    {
+      "word": "kommen",
+      "stable": true
+    },
+    {
+      "word": "Deutsch",
+      "stable": true
+    },
+    {
+      "word": "Monaten",
+      "stable": true
+    },
+    {
+      "word": "spreche",
+      "stable": true
+    },
+    {
+      "word": "Zug",
+      "stable": true
+    },
+    {
+      "word": "Fahrplan",
+      "stable": true
+    },
+    {
+      "word": "14 Uhr 30",
+      "stable": true
+    },
+    {
+      "word": "halb drei",
+      "stable": true
+    },
+    {
+      "word": "fährt",
+      "stable": true
+    },
+    {
+      "word": "nachmittags",
+      "stable": true
+    },
+    {
+      "word": "Ausgang",
+      "stable": true
+    },
+    {
+      "word": "Zug",
+      "stable": true
+    },
+    {
+      "word": "geöffnet",
+      "stable": true
+    },
+    {
+      "word": "Café",
+      "stable": true
+    },
+    {
+      "word": "Fundbüro",
+      "stable": true
+    },
+    {
+      "word": "das Zimmer",
+      "stable": true
+    },
+    {
+      "word": "die Uhr",
+      "stable": true
+    },
+    {
+      "word": "die Stunde",
+      "stable": true
+    },
+    {
+      "word": "der Tag",
+      "stable": true
+    },
+    {
+      "word": "zeit",
+      "stable": true
+    },
+    {
+      "word": "wohnen",
+      "stable": true
+    },
+    {
+      "word": "Gepäck",
+      "stable": true
+    },
+    {
+      "word": "Koffer",
+      "stable": true
+    },
+    {
+      "word": "Frühstück",
+      "stable": true
+    },
+    {
+      "word": "Kaffee",
+      "stable": true
+    },
+    {
+      "word": "Preis",
+      "stable": true
+    },
+    {
+      "word": "Fahrt",
+      "stable": true
+    },
+    {
+      "word": "Feiertag",
+      "stable": true
+    },
+    {
+      "word": "Frühstück",
+      "stable": true
+    },
+    {
+      "word": "Fahrkarten",
+      "stable": true
     }
   ],
   "grammar_acquired": [
@@ -3011,11 +3167,64 @@
     {
       "rule": "Verständnissicherung 'Ist das klar?'",
       "stable": true
+    },
+    {
+      "rule": "Genusbewusstsein (der Eingang vs. das Schild)",
+      "stable": true
+    },
+    {
+      "rule": "Korrekte Satzstruktur (Aussagesatz)",
+      "stable": true
+    },
+    {
+      "rule": "Modalverbverwendung (möchte)",
+      "stable": true
+    },
+    {
+      "rule": "Dativ mit 'seit' (seit drei Monaten)",
+      "stable": true
+    },
+    {
+      "rule": "Einfache Verknüpfung mit 'aber'",
+      "stable": true
+    },
+    {
+      "rule": "Das bedeutet + Nomen",
+      "stable": true
+    },
+    {
+      "rule": "Use of 'bis' for deadlines",
+      "stable": true
+    },
+    {
+      "rule": "Correct use of 'Das bedeutet' in explanations",
+      "stable": true
+    },
+    {
+      "rule": "von ... bis (Zeitangabe)",
+      "stable": true
+    },
+    {
+      "rule": "kostet (Preisangabe)",
+      "stable": true
+    },
+    {
+      "rule": "Modalverb 'können' + Infinitiv (z.B. 'können kaufen')",
+      "stable": true
+    },
+    {
+      "rule": "von ... bis für Zeitangaben",
+      "stable": true
+    },
+    {
+      "rule": "am + Wochentag",
+      "stable": true
     }
   ],
   "kannbeschreibungen_attempted": {
     "K001": {
       "day": 1,
+      "session": 1,
       "result": "bestanden"
     },
     "K002": {
@@ -3120,6 +3329,7 @@
     },
     "K176": {
       "day": 176,
+      "session": 1,
       "result": "bestanden"
     },
     "K011": {
@@ -3416,7 +3626,7 @@
     },
     "K100": {
       "day": 100,
-      "result": "bestanden"
+      "result": "teilweise"
     },
     "K101": {
       "day": 101,
@@ -3676,6 +3886,7 @@
     },
     "K163": {
       "day": 165,
+      "session": 3,
       "result": "bestanden"
     },
     "K164": {
@@ -3708,6 +3919,7 @@
     },
     "K173": {
       "day": 173,
+      "session": 1,
       "result": "bestanden"
     },
     "K174": {
@@ -3719,6 +3931,9 @@
       "result": "bestanden"
     }
   },
-  "persistent_errors": [],
-  "emotional_state": "sicher und selbstbewusst"
+  "persistent_errors": [
+    "Occasional missing article before nouns (e.g., 'Fahrkarten')",
+    "Occasional omission of 'Uhr' after time"
+  ],
+  "emotional_state": "neutral, task-focused"
 }

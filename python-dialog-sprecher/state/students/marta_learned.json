@@ -1,6 +1,6 @@
 {
   "student": "marta",
-  "day": 176,
+  "day": 165,
   "vocabulary_acquired": [
     {
       "word": "Polen",
@@ -3169,6 +3169,218 @@
     {
       "word": "Hombres",
       "stable": true
+    },
+    {
+      "word": "Ausgang",
+      "stable": true
+    },
+    {
+      "word": "Eingang",
+      "stable": true
+    },
+    {
+      "word": "Apotheke",
+      "stable": true
+    },
+    {
+      "word": "WC",
+      "stable": true
+    },
+    {
+      "word": "Toilette",
+      "stable": true
+    },
+    {
+      "word": "Guten Morgen",
+      "stable": true
+    },
+    {
+      "word": "heiße",
+      "stable": true
+    },
+    {
+      "word": "wohnen",
+      "stable": false
+    },
+    {
+      "word": "Berlin",
+      "stable": true
+    },
+    {
+      "word": "aus USA",
+      "stable": false
+    },
+    {
+      "word": "lernen",
+      "stable": true
+    },
+    {
+      "word": "verstehen",
+      "stable": true
+    },
+    {
+      "word": "Fehler",
+      "stable": true
+    },
+    {
+      "word": "sagen",
+      "stable": true
+    },
+    {
+      "word": "Guten Tag",
+      "stable": true
+    },
+    {
+      "word": "Frau Weber",
+      "stable": true
+    },
+    {
+      "word": "Marta",
+      "stable": true
+    },
+    {
+      "word": "komme aus",
+      "stable": true
+    },
+    {
+      "word": "Polen",
+      "stable": true
+    },
+    {
+      "word": "Zehn Jahre",
+      "stable": true
+    },
+    {
+      "word": "lange Zeit",
+      "stable": true
+    },
+    {
+      "word": "Monate",
+      "stable": true
+    },
+    {
+      "word": "Straße",
+      "stable": true
+    },
+    {
+      "word": "Hotel",
+      "stable": true
+    },
+    {
+      "word": "Kurs",
+      "stable": true
+    },
+    {
+      "word": "Zug",
+      "stable": true
+    },
+    {
+      "word": "Fahrplan",
+      "stable": true
+    },
+    {
+      "word": "Frage",
+      "stable": true
+    },
+    {
+      "word": "Fahrkarte",
+      "stable": true
+    },
+    {
+      "word": "der Bahnhof",
+      "stable": true
+    },
+    {
+      "word": "der Zug",
+      "stable": true
+    },
+    {
+      "word": "Toilette",
+      "stable": true
+    },
+    {
+      "word": "Warteraum",
+      "stable": true
+    },
+    {
+      "word": "Gleis drei",
+      "stable": true
+    },
+    {
+      "word": "der Eingang",
+      "stable": true
+    },
+    {
+      "word": "Frühstück",
+      "stable": true
+    },
+    {
+      "word": "Frühstücksraum",
+      "stable": true
+    },
+    {
+      "word": "Empfang",
+      "stable": true
+    },
+    {
+      "word": "Gepäck",
+      "stable": true
+    },
+    {
+      "word": "Koffer",
+      "stable": true
+    },
+    {
+      "word": "Preis",
+      "stable": true
+    },
+    {
+      "word": "Frühstückszeit",
+      "stable": true
+    },
+    {
+      "word": "Fahrkarte",
+      "stable": true
+    },
+    {
+      "word": "Abfahrt",
+      "stable": true
+    },
+    {
+      "word": "offen",
+      "stable": true
+    },
+    {
+      "word": "Renovierung",
+      "stable": true
+    },
+    {
+      "word": "Sitzplätze draußen",
+      "stable": true
+    },
+    {
+      "word": "Frühstück",
+      "stable": true
+    },
+    {
+      "word": "Abendessen",
+      "stable": true
+    },
+    {
+      "word": "Sitzplätze",
+      "stable": true
+    },
+    {
+      "word": "Fahrkarten",
+      "stable": true
+    },
+    {
+      "word": "Öffnungszeiten",
+      "stable": false
+    },
+    {
+      "word": "Renovierung",
+      "stable": false
     }
   ],
   "grammar_acquired": [
@@ -4351,11 +4563,64 @@
     {
       "rule": "Elliptische Strukturen für funktionale Sprachmittlung",
       "stable": true
+    },
+    {
+      "rule": "Genus von 'Schild' (das Schild) korrekt verwendet",
+      "stable": true
+    },
+    {
+      "rule": "Nominativ mit Fragepartikel korrekt",
+      "stable": true
+    },
+    {
+      "rule": "Verbkonjugation: 'wohnen' statt 'wohne' – akzeptabel auf A1",
+      "stable": false
+    },
+    {
+      "rule": "Fehlender Artikel bei 'aus USA' – nicht penalisiert",
+      "stable": false
+    },
+    {
+      "rule": "Elliptische Strukturen – A1-typisch",
+      "stable": false
+    },
+    {
+      "rule": "Fehlende Präposition 'seit' (lernen drei Monate)",
+      "stable": false
+    },
+    {
+      "rule": "Elliptische Strukturen (fehlende Artikel) sind auf A1 akzeptabel",
+      "stable": true
+    },
+    {
+      "rule": "Situative Erklärungen ergänzen die Wortübersetzung",
+      "stable": true
+    },
+    {
+      "rule": "Verständnissicherung mit 'Ist das klar?'",
+      "stable": true
+    },
+    {
+      "rule": "Zeitangabe mit 'von ... bis'",
+      "stable": true
+    },
+    {
+      "rule": "es gibt + Akkusativ (acceptance of correction)",
+      "stable": false
+    },
+    {
+      "rule": "Präposition 'von...bis' mit Zeitangaben",
+      "stable": true
+    },
+    {
+      "rule": "Vollständiger Satz mit bestimmtem Artikel (z.B. 'Das Frühstück ist...')",
+      "stable": false
     }
   ],
   "kannbeschreibungen_attempted": {
     "K001": {
       "day": 1,
+      "session": 1,
       "result": "bestanden"
     },
     "K002": {
@@ -4460,6 +4725,7 @@
     },
     "K176": {
       "day": 176,
+      "session": 1,
       "result": "bestanden"
     },
     "K011": {
@@ -5016,6 +5282,7 @@
     },
     "K163": {
       "day": 165,
+      "session": 3,
       "result": "bestanden"
     },
     "K164": {
@@ -5048,6 +5315,7 @@
     },
     "K173": {
       "day": 173,
+      "session": 1,
       "result": "bestanden"
     },
     "K174": {
@@ -5060,9 +5328,8 @@
     }
   },
   "persistent_errors": [
-    "Fehlende Artikel (der/die/das/ein/eine)",
-    "Elliptische Strukturen statt vollständiger Sätze",
-    "Code-switching (Englisch-Deutsch-Mischung)"
+    "Fehlende Artikel (der/die/das/ein/eine) bei neuen oder unbetonten Nomen",
+    "Elliptische Strukturen statt vollständiger Sätze"
   ],
-  "emotional_state": "stabil und funktional"
+  "emotional_state": "Sicher und aufmerksam, zeigt aktive Verarbeitung von Feedback, aber eine Runde mit Drift (Rückfall ins reine Vorlesen) deutet auf kurze Konzentrationsschwankung hin."
 }

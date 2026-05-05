@@ -1,8 +1,8 @@
 {
   "current_day": {
-    "marta": 176,
-    "james": 176,
-    "yuki": 176
+    "marta": 165,
+    "james": 165,
+    "yuki": 165
   },
   "areas_covered": {
     "marta": [
@@ -32,5 +32,11 @@
       "Produktion mündlich",
       "Produktion schriftlich"
     ]
+  },
+  "kb_sessions": {
+    "K001": 1,
+    "K173": 1,
+    "K176": 1,
+    "K163": 3
   }
 }

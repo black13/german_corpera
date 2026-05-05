@@ -17,12 +17,204 @@
           "Konjugation Präsens: sein, haben, werden"
         ],
         "wortfeld_targets": [],
-        "wortfeld_used": [],
-        "grammar_learned": [],
-        "vocabulary_learned": [],
-        "persistent_errors": [],
-        "grammar_notes": [],
-        "session_highlight": "Student demonstrated immediate, correct application of target Sprachhandlungen (signalisieren, nachfragen) from the first round, showing strong task alignment and comprehension of the A1 communication framework."
+        "global_relationships": [
+          {
+            "id": "a1_conversation_support",
+            "name": "A1 conversation support",
+            "kann_ids": [
+              "K001",
+              "K003",
+              "K004",
+              "K005",
+              "K006",
+              "K007",
+              "K030",
+              "K038"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "social_contact_operators",
+            "name": "Social contact operators",
+            "kann_ids": [
+              "K009",
+              "K010",
+              "K014",
+              "K017",
+              "K018",
+              "K022",
+              "K026"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "oral_production_frame",
+            "name": "Oral production frame",
+            "kann_ids": [
+              "K116",
+              "K117",
+              "K120",
+              "K121",
+              "K126"
+            ],
+            "bridge_to_kann_ids": []
+          }
+        ],
+        "syllabus_branches": [
+          {
+            "id": "a1_speaking_operating_system",
+            "name": "A1 speaking operating system",
+            "relationship_ids": [
+              "a1_conversation_support",
+              "oral_production_frame"
+            ]
+          },
+          {
+            "id": "social_entry_exit",
+            "name": "Social entry and exit moves",
+            "relationship_ids": [
+              "social_contact_operators"
+            ]
+          }
+        ],
+        "wortfeld_used": [
+          "Guten Morgen",
+          "heiße",
+          "wohnen",
+          "Berlin",
+          "aus USA",
+          "falsch",
+          "lernen",
+          "verstehen"
+        ],
+        "grammar_learned": [
+          {
+            "rule": "Verbkonjugation: 'wohnen' statt 'wohne' – akzeptabel auf A1",
+            "stable": false
+          },
+          {
+            "rule": "Fehlender Artikel bei 'aus USA' – nicht penalisiert",
+            "stable": false
+          },
+          {
+            "rule": "Elliptische Strukturen – A1-typisch",
+            "stable": false
+          },
+          {
+            "rule": "Fehlende Präposition 'seit' (lernen drei Monate)",
+            "stable": false
+          }
+        ],
+        "vocabulary_learned": [
+          {
+            "word": "Guten Morgen",
+            "stable": true
+          },
+          {
+            "word": "heiße",
+            "stable": true
+          },
+          {
+            "word": "wohnen",
+            "stable": false
+          },
+          {
+            "word": "Berlin",
+            "stable": true
+          },
+          {
+            "word": "aus USA",
+            "stable": false
+          },
+          {
+            "word": "lernen",
+            "stable": true
+          },
+          {
+            "word": "verstehen",
+            "stable": true
+          },
+          {
+            "word": "Fehler",
+            "stable": true
+          },
+          {
+            "word": "sagen",
+            "stable": true
+          },
+          {
+            "word": "Guten Tag",
+            "stable": true
+          },
+          {
+            "word": "Frau Weber",
+            "stable": true
+          },
+          {
+            "word": "Marta",
+            "stable": true
+          },
+          {
+            "word": "komme aus",
+            "stable": true
+          },
+          {
+            "word": "Polen",
+            "stable": true
+          },
+          {
+            "word": "Zehn Jahre",
+            "stable": true
+          },
+          {
+            "word": "lange Zeit",
+            "stable": true
+          },
+          {
+            "word": "Monate",
+            "stable": true
+          },
+          {
+            "word": "Straße",
+            "stable": true
+          },
+          {
+            "word": "Hotel",
+            "stable": true
+          },
+          {
+            "word": "Kurs",
+            "stable": true
+          },
+          {
+            "word": "Zug",
+            "stable": true
+          },
+          {
+            "word": "Fahrplan",
+            "stable": true
+          },
+          {
+            "word": "Frage",
+            "stable": true
+          }
+        ],
+        "persistent_errors": [
+          "Fehlende Artikel (der/die/das/ein/eine)",
+          "Elliptische Strukturen statt vollständiger Sätze",
+          "Fehlende Präpositionen (z.B. 'aus USA' statt 'aus den USA', 'lernen drei Monate' statt 'seit drei Monaten')"
+        ],
+        "grammar_notes": [
+          "Verbkonjugation: 'wohnen' statt 'wohne' – akzeptabel auf A1",
+          "Fehlender Artikel bei USA (aus USA statt aus den USA)",
+          "Elliptische Struktur (James sagt...)",
+          "Fehlende Präposition (aus USA statt aus den USA) – nicht penalisiert",
+          "Elliptischer Satz (Das ist falsch) – A1-typisch",
+          "Keine Fehler in dieser Antwort – einfache, korrekte Struktur",
+          "Keine Nachfrage oder Verständnissignal, aber die Aufgabe war nur Antwort auf Vorstellung",
+          "Elliptische Struktur (Ja… ich verstehe.)"
+        ],
+        "session_highlight": "Runde 7: Student signalisiert sofort Nichtverstehen ('Ich verstehe nicht'), wiederholt die Frage zur Bestätigung und erklärt den Grund ('Ich habe Fahrplan nicht') – genau die geforderte Sprachhandlung für die Kannbeschreibung."
       },
       "K002": {
         "day": 2,
@@ -1334,24 +1526,63 @@
             ]
           }
         ],
-        "wortfeld_used": [],
-        "grammar_learned": [],
-        "vocabulary_learned": [],
+        "wortfeld_used": [
+          "zeit",
+          "das Zimmer",
+          "die Küche",
+          "das Bad",
+          "Empfang",
+          "Gepäck",
+          "Koffer",
+          "Frühstück"
+        ],
+        "grammar_learned": [
+          {
+            "rule": "Verständnissicherung mit 'Ist das klar?'",
+            "stable": true
+          },
+          {
+            "rule": "Zeitangabe mit 'von ... bis'",
+            "stable": true
+          }
+        ],
+        "vocabulary_learned": [
+          {
+            "word": "Frühstück",
+            "stable": true
+          },
+          {
+            "word": "Frühstücksraum",
+            "stable": true
+          },
+          {
+            "word": "Empfang",
+            "stable": true
+          },
+          {
+            "word": "Gepäck",
+            "stable": true
+          },
+          {
+            "word": "Koffer",
+            "stable": true
+          }
+        ],
         "persistent_errors": [
           "Fehlende Artikel (der/die/das/ein/eine)",
-          "Elliptische Strukturen statt vollständiger Sätze",
-          "Code-switching (Englisch-Deutsch-Mischung)"
+          "Elliptische Strukturen statt vollständiger Sätze"
         ],
         "grammar_notes": [
-          "Elliptische Struktur ('das ist hier. Wo wir sind')",
-          "Code-switching (Englisch 'reception')",
-          "Elliptische Struktur ('das ist diese Tafel')",
-          "Code-switching (Englisch 'Information board')",
-          "Elliptische Struktur ('Im Hotel, ich sage das oft')",
-          "Fehlende Artikel ('Im Hotel')",
-          "Wortstellungsvariation ('Im Hotel, ich sage...')"
+          "Fehlende Anführungszeichen um die direkte Rede des Gasts sind akzeptabel",
+          "Satzbau ist einfach und verständlich",
+          "Fehlender Artikel vor 'Frühstück' (elliptisch, aber akzeptabel)",
+          "Fehlende Präposition 'von' vor 'Sieben' (elliptisch, aber verständlich)",
+          "fehlender Artikel bei 'Essen auf Zimmer'",
+          "elliptische Struktur",
+          "kein vollständiger Satz",
+          "Fehlender Artikel vor 'Empfang' (korrekt: der Empfang)"
         ],
-        "session_highlight": "Runde 6: Student signalisiert Verständnis und beschreibt praktischen Anwendungskontext ('Im Hotel, ich sage das oft'), was auf Transferdenken und funktionales Verständnis der Sprachmittlungsaufgabe hindeutet."
+        "session_highlight": "Runde 7: Präzise Übersetzung von 'Frühstücksraum' mit Kontext (Zeit, Aktivität) und Verständnissicherung – zeigt Transferdenken und vollständige Beherrschung der Kannbeschreibung"
       },
       "K011": {
         "day": 11,
@@ -6008,79 +6239,92 @@
           "Nominativ und Akkusativ"
         ],
         "wortfeld_targets": [],
+        "global_relationships": [
+          {
+            "id": "text_list_reading",
+            "name": "Text/list reading",
+            "kann_ids": [
+              "K060",
+              "K062",
+              "K084",
+              "K085",
+              "K086",
+              "K092",
+              "K104"
+            ],
+            "bridge_to_kann_ids": [
+              "K163",
+              "K176"
+            ]
+          }
+        ],
+        "syllabus_branches": [
+          {
+            "id": "text_list_to_message",
+            "name": "Text/list to message",
+            "relationship_ids": [
+              "text_list_reading"
+            ]
+          }
+        ],
         "wortfeld_used": [
-          "Park",
-          "grün",
-          "Tankstelle",
-          "gelb",
-          "blau",
-          "Aufschrift",
-          "Farbe",
-          "braun"
+          "Schild",
+          "Ausgang",
+          "Eingang",
+          "Apotheke",
+          "sehen",
+          "verstehen",
+          "WC",
+          "Toilette"
         ],
         "grammar_learned": [
           {
-            "rule": "Elliptische Strukturen für Alltagskommunikation",
+            "rule": "Genus von 'Schild' (das Schild) korrekt verwendet",
             "stable": true
           },
           {
-            "rule": "Korrekte Satzstruktur in erweiterten Aussagen ('Jeden Tag sehe ich...')",
-            "stable": true
-          },
-          {
-            "rule": "Richtige Konjugation ('sehe', 'kaufe')",
+            "rule": "Nominativ mit Fragepartikel korrekt",
             "stable": true
           }
         ],
         "vocabulary_learned": [
           {
-            "word": "Park",
+            "word": "Ausgang",
             "stable": true
           },
           {
-            "word": "grün",
+            "word": "Eingang",
             "stable": true
           },
           {
-            "word": "Tankstelle",
+            "word": "Apotheke",
             "stable": true
           },
           {
-            "word": "gelb",
+            "word": "WC",
             "stable": true
           },
           {
-            "word": "blau",
-            "stable": true
-          },
-          {
-            "word": "Aufschrift",
-            "stable": true
-          },
-          {
-            "word": "Farbe",
-            "stable": true
-          },
-          {
-            "word": "braun",
+            "word": "Toilette",
             "stable": true
           }
         ],
         "persistent_errors": [
-          "Fehlende Artikel (der/die/das/ein/eine)",
-          "Elliptische Strukturen statt vollständiger Sätze"
+          "Fehlende Artikel (der/die/das/ein/eine) – elliptische Strukturen",
+          "Genusunsicherheit bei neuen Wörtern (z.B. der/die Eingang)",
+          "Elliptische Sätze statt vollständiger Sätze"
         ],
         "grammar_notes": [
-          "Elliptische Strukturen ('Auf der Straße?')",
-          "Fehlende Artikel ('für Brot' statt 'für das Brot')",
-          "Elliptische Struktur ('Park ist grün')",
-          "Fehlende Artikel ('mit Hund von Nachbar')",
-          "Elliptische Struktur ('Apotheke ist rot') statt vollständigem Satz",
-          "Fehlender Artikel ('die Apotheke')",
-          "Elliptische Strukturen ('Tankstelle ist gelb')",
-          "Fehlende Artikel ('Prüfung?')"
+          "Fehlender Artikel vor 'Schild' (elliptisch, akzeptabel)",
+          "Nominativ 'der Ausgang' mit Fragepartikel korrekt",
+          "Verbposition in 'Ich gehe raus' korrekt",
+          "Unsicherheit bei Genus (der/die Eingang) ist auf A1-Niveau akzeptabel",
+          "Fehlender Artikel vor 'Apotheke' im ersten Satz",
+          "Elliptische Struktur ('Ich sehe Apotheke')",
+          "Korrekte Verwendung von 'das ist'",
+          "Fehlende Artikel (kein der/die) ist für A1 akzeptabel"
         ],
-        "session_highlight": "Studentin demonstrierte durchgängig exakte Erfüllung der Kannbeschreibung, identifizierte korrekt öffentliche Aufschriften mit konventionellen Farben/Logos (Hotel, Restaurant, Bäckerei, Apotheke, Park, Tankstelle) und verknüpfte diese spontan mit persönlichen Erfahrungen, was funktionale A1-Kommunikation auf hohem Niveau zeigt."
+        "session_highlight": "Student erkennt das Apotheken-Symbol spontan und übersetzt es in den Alltagskontext, was funktionales Verständnis und Transferdenken zeigt."
       },
       "K101": {
         "day": 101,
@@ -9778,35 +10022,149 @@
         "speech_acts": [],
         "grammar_targets": [],
         "wortfeld_targets": [],
+        "global_relationships": [
+          {
+            "id": "text_list_reading",
+            "name": "Text/list reading",
+            "kann_ids": [
+              "K060",
+              "K062",
+              "K084",
+              "K085",
+              "K086",
+              "K092",
+              "K104"
+            ],
+            "bridge_to_kann_ids": [
+              "K163",
+              "K176"
+            ]
+          },
+          {
+            "id": "micro_writing",
+            "name": "Micro-writing",
+            "kann_ids": [
+              "K043",
+              "K048",
+              "K051",
+              "K052",
+              "K136",
+              "K145",
+              "K149",
+              "K150"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "a1_conversation_support",
+            "name": "A1 conversation support",
+            "kann_ids": [
+              "K001",
+              "K003",
+              "K004",
+              "K005",
+              "K006",
+              "K007",
+              "K030",
+              "K038"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "social_contact_operators",
+            "name": "Social contact operators",
+            "kann_ids": [
+              "K009",
+              "K010",
+              "K014",
+              "K017",
+              "K018",
+              "K022",
+              "K026"
+            ],
+            "bridge_to_kann_ids": []
+          }
+        ],
+        "syllabus_branches": [
+          {
+            "id": "text_list_to_message",
+            "name": "Text/list to message",
+            "relationship_ids": [
+              "text_list_reading"
+            ]
+          },
+          {
+            "id": "a1_speaking_operating_system",
+            "name": "A1 speaking operating system",
+            "relationship_ids": [
+              "a1_conversation_support",
+              "oral_production_frame"
+            ]
+          },
+          {
+            "id": "social_entry_exit",
+            "name": "Social entry and exit moves",
+            "relationship_ids": [
+              "social_contact_operators"
+            ]
+          }
+        ],
         "wortfeld_used": [
-          "Milch",
-          "Euro"
+          "essen",
+          "zeit",
+          "wohnen"
         ],
         "grammar_learned": [
           {
-            "rule": "Elliptische Strukturen für Informationsweitergabe (z.B. 'Milch ist ein Euro zehn')",
+            "rule": "Präposition 'von...bis' mit Zeitangaben",
             "stable": true
+          },
+          {
+            "rule": "Vollständiger Satz mit bestimmtem Artikel (z.B. 'Das Frühstück ist...')",
+            "stable": false
           }
         ],
         "vocabulary_learned": [
           {
-            "word": "Milch",
+            "word": "Frühstück",
             "stable": true
           },
           {
-            "word": "Euro",
+            "word": "Abendessen",
             "stable": true
+          },
+          {
+            "word": "Sitzplätze",
+            "stable": true
+          },
+          {
+            "word": "Fahrkarten",
+            "stable": true
+          },
+          {
+            "word": "Öffnungszeiten",
+            "stable": false
+          },
+          {
+            "word": "Renovierung",
+            "stable": false
           }
         ],
         "persistent_errors": [
-          "Fehlende Artikel (der/die/das/ein/eine)",
+          "Fehlende Artikel (der/die/das/ein/eine) bei neuen oder unbetonten Nomen",
           "Elliptische Strukturen statt vollständiger Sätze"
         ],
         "grammar_notes": [
-          "Elliptische Struktur ('Und was kostet das Wasser?') statt vollständigem Satz",
-          "Fehlende Präposition/Artikel für Kontext ('Auf der Karte steht...')"
+          "Fehlender Artikel 'Das' im ersten Teil, aber im zweiten Teil korrigiert",
+          "Elliptische Struktur im ersten Teil ('Frühstück von sieben bis zehn')",
+          "fehlender Artikel vor 'Abendessen' im ersten Teil des Satzes",
+          "korrekte Verwendung von 'von ... bis'",
+          "Student used correct article 'Die' and preposition 'von...bis' after teacher prompt",
+          "fehlender Artikel vor 'Fahrkarten'",
+          "Präposition 'von...bis' korrekt verwendet",
+          "Wortstellung in 'Fahrkarten gibt es' leicht abweichend, aber verständlich"
         ],
-        "session_highlight": "Durchgängig erfolgreiche Sprachmittlung mit perfekt angemessener A1-Sprache - zeigt klare Beherrschung der Kannbeschreibung"
+        "session_highlight": "Runde 1: Student wiederholt das Lehrermodell ('Das Frühstück ist von sieben bis zehn') und paraphrasiert es sofort auf Englisch für den Gast – zeigt perfektes Transferdenken und vollständige Erfüllung der Kannbeschreibung."
       },
       "K164": {
         "day": 166,
@@ -10535,47 +10893,68 @@
           }
         ],
         "wortfeld_used": [
-          "Bahnhof",
-          "Straße",
-          "links"
+          "Fahrkarte",
+          "der Bahnhof",
+          "der Zug",
+          "verkehr",
+          "der Eingang"
         ],
         "grammar_learned": [
           {
-            "rule": "Elliptische Strukturen für Sprachmittlung (z.B. 'Auf Deutsch: Straße')",
+            "rule": "Elliptische Strukturen (fehlende Artikel) sind auf A1 akzeptabel",
+            "stable": true
+          },
+          {
+            "rule": "Situative Erklärungen ergänzen die Wortübersetzung",
             "stable": true
           }
         ],
         "vocabulary_learned": [
           {
-            "word": "Bahnhof",
+            "word": "Fahrkarte",
             "stable": true
           },
           {
-            "word": "Eingang",
+            "word": "der Bahnhof",
             "stable": true
           },
           {
-            "word": "geschlossen",
+            "word": "der Zug",
             "stable": true
           },
           {
-            "word": "Straße",
+            "word": "Toilette",
             "stable": true
           },
           {
-            "word": "links",
+            "word": "Warteraum",
+            "stable": true
+          },
+          {
+            "word": "Gleis drei",
+            "stable": true
+          },
+          {
+            "word": "der Eingang",
             "stable": true
           }
         ],
         "persistent_errors": [
           "Fehlende Artikel (der/die/das/ein/eine)",
-          "Elliptische Strukturen statt vollständiger Sätze"
+          "Elliptische Strukturen statt vollständiger Sätze",
+          "Gelegentliches Code-switching (Englisch-Deutsch-Mischung)"
         ],
         "grammar_notes": [
-          "Elliptische Strukturen statt vollständiger Sätze",
-          "Fehlende Artikel ('Im Hotel' statt 'Im Hotel') akzeptabel"
+          "Elliptische Struktur (fehlender Artikel bei 'Fahrkarte')",
+          "Wiederholung des englischen Wortes 'Tickets' als Verständnisfrage ist akzeptabel",
+          "fehlender Artikel vor 'Zug'",
+          "elliptischer Satz statt vollständigem Satz",
+          "Elliptische Struktur (Kein Rauchen)",
+          "Das bedeutet + Nomen (Rauchen verboten)",
+          "Wiederholung zur Bestätigung (Ja, verboten)",
+          "Fehlender Artikel (Toilette statt die Toilette)"
         ],
-        "session_highlight": "Perfekte Demonstration der Kannbeschreibung in Runden 1-6 mit funktionaler, präziser Sprachmittlung von fünf verschiedenen Schildern (Bahnhof, Eingang, geschlossen, Straße, links)"
+        "session_highlight": "Runde 7: Perfekte Übersetzung von türkischem 'Giriş' als 'Eingang' mit sinntragender Handlungsanweisung ('Da gehen rein') – zeigt klare Verbesserung gegenüber früheren Runden"
       },
       "K174": {
         "day": 174,
@@ -10867,32 +11246,140 @@
           "Konjugation Präsens: sein, haben, werden"
         ],
         "wortfeld_targets": [],
-        "wortfeld_used": [],
-        "grammar_learned": [
+        "global_relationships": [
           {
-            "rule": "Ich bin Student für [Fach]",
-            "stable": true
+            "id": "a1_conversation_support",
+            "name": "A1 conversation support",
+            "kann_ids": [
+              "K001",
+              "K003",
+              "K004",
+              "K005",
+              "K006",
+              "K007",
+              "K030",
+              "K038"
+            ],
+            "bridge_to_kann_ids": []
           },
           {
-            "rule": "Ich habe [Zahl] [Familienmitglied]",
+            "id": "social_contact_operators",
+            "name": "Social contact operators",
+            "kann_ids": [
+              "K009",
+              "K010",
+              "K014",
+              "K017",
+              "K018",
+              "K022",
+              "K026"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "oral_production_frame",
+            "name": "Oral production frame",
+            "kann_ids": [
+              "K116",
+              "K117",
+              "K120",
+              "K121",
+              "K126"
+            ],
+            "bridge_to_kann_ids": []
+          }
+        ],
+        "syllabus_branches": [
+          {
+            "id": "a1_speaking_operating_system",
+            "name": "A1 speaking operating system",
+            "relationship_ids": [
+              "a1_conversation_support",
+              "oral_production_frame"
+            ]
+          },
+          {
+            "id": "social_entry_exit",
+            "name": "Social entry and exit moves",
+            "relationship_ids": [
+              "social_contact_operators"
+            ]
+          }
+        ],
+        "wortfeld_used": [
+          "heiße",
+          "komme",
+          "aus",
+          "USA",
+          "Fehler",
+          "verstehe",
+          "woher",
+          "kommen"
+        ],
+        "grammar_learned": [
+          {
+            "rule": "seit + Dativ",
+            "stable": false
+          },
+          {
+            "rule": "aus + Dativ (aus den USA)",
             "stable": true
           }
         ],
         "vocabulary_learned": [
           {
-            "word": "Ingenieurin",
+            "word": "heiße",
             "stable": true
+          },
+          {
+            "word": "komme",
+            "stable": true
+          },
+          {
+            "word": "aus den USA",
+            "stable": true
+          },
+          {
+            "word": "Fahrplan",
+            "stable": false
+          },
+          {
+            "word": "Zug",
+            "stable": false
+          },
+          {
+            "word": "fahren",
+            "stable": false
+          },
+          {
+            "word": "seit",
+            "stable": false
+          },
+          {
+            "word": "Monaten",
+            "stable": false
+          },
+          {
+            "word": "lernen",
+            "stable": false
           }
         ],
         "persistent_errors": [
-          "Mixing English and German within sentences (e.g., 'how do you say...?', 'engineer')"
+          "Fehlender Artikel vor Nomen (A1-typisch)",
+          "Code-switching zur metakognitiven Planung (Englisch) bei unklarer Steuerung",
+          "Unsicherheit bei Zeitangaben (sechs Monate/sechs Monaten)"
         ],
         "grammar_notes": [
-          "Code-switching (English 'wait'), but this is permissible at A1 as a communication strategy when struggling for words.",
-          "Broken but comprehensible German: 'Ich bin Student. Computer science.'",
-          "Student verwendet korrekt 'Sie ist...' und bricht dann ab, um nach einem Wort zu fragen ('how do you say engineer?'). Dies ist eine typische A1-Strategie, wenn ein Wort fehlt."
+          "Fehlender Artikel vor USA (A1-typisch)",
+          "Code-switching für metakognitive Planung (etabliertes Muster)",
+          "A1-typische Fehler: fehlendes 'aus' vor USA",
+          "A1-typische Fehler: 'seit' + Akkusativ statt Dativ",
+          "A1-typische Fehler: unvollständiger Satz 'aber ich spreche... nicht gut'",
+          "Korrekte Wiederholung der Zielstruktur 'aus den USA'",
+          "Eigeninitiative zur Fehlerreflexion (A1-typisch)",
+          "Code-switching (So, the question word...) ist A1-typisch und funktional."
         ],
-        "session_highlight": "Successfully learned and correctly used the word 'Ingenieurin' in context after asking for clarification, demonstrating effective A1 communication strategies"
+        "session_highlight": "Runde 5: Student signalisiert Verwirrung bei Zeitangabe und fragt implizit nach Korrektur – exakt die Zielsprachhandlung der Kannbeschreibung (Verständnissicherung/Nachfrage) bei klarer Lehrersteuerung."
       },
       "K002": {
         "day": 2,
@@ -12385,42 +12872,75 @@
           }
         ],
         "wortfeld_used": [
+          "Zimmer",
           "das Zimmer",
           "die Uhr",
-          "die Uhrzeit"
+          "der Tag",
+          "zeit",
+          "Essen",
+          "das Frühstück",
+          "der Raum"
         ],
         "grammar_learned": [
           {
-            "rule": "Frageform 'Was bedeutet...?' mit korrekter Struktur",
+            "rule": "Verwendung von 'bis' für Fristen",
             "stable": true
           },
           {
-            "rule": "Code-switching als funktionales A1-Muster für metasprachliche Erklärungen",
+            "rule": "Verwendung von 'von...bis' für Zeiträume",
+            "stable": true
+          },
+          {
+            "rule": "Verständnissicherung mit 'Ist das klar?'",
             "stable": true
           }
         ],
         "vocabulary_learned": [
           {
-            "word": "das Zimmer",
+            "word": "Check-out",
             "stable": true
           },
           {
-            "word": "die Uhr / die Uhrzeit",
+            "word": "Zimmer verlassen",
+            "stable": true
+          },
+          {
+            "word": "bis elf Uhr",
+            "stable": true
+          },
+          {
+            "word": "Frühstücksraum",
+            "stable": true
+          },
+          {
+            "word": "Zimmerservice",
+            "stable": true
+          },
+          {
+            "word": "Rezeption",
+            "stable": true
+          },
+          {
+            "word": "Empfang",
             "stable": true
           }
         ],
         "persistent_errors": [
-          "Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)",
-          "Abhängigkeit von klarer, kanonalignierter Lehrersteuerung: Bei unklaren oder generischen Prompts driftet der Student in soziale Abschlussformeln statt zur Zielsprachhandlung (Runden 6-7)"
+          "Fehlender Artikel vor Nomen (A1-typisch)",
+          "Elliptische Satzstruktur (A1-typisch)",
+          "Abhängigkeit von klarer Lehrersteuerung – Drift in soziale Abschlussformeln bei unklaren Prompts"
         ],
         "grammar_notes": [
-          "Code-switching for comprehension check (A1-typical functional pattern)",
-          "Elliptical structure 'leave the room until eleven' (functional communication)",
-          "Student uses correct question structure 'Was bedeutet...?' with target word in quotes",
-          "Code-switching (English/German mix) is functional A1 pattern",
-          "Elliptical structure 'bedeutet... closed' is acceptable"
+          "English placeholder 'wait, how do you say' is acceptable A1 repair",
+          "Missing article before 'Zimmer' is A1-typical",
+          "Incomplete sentence structure is functional",
+          "Elliptische Struktur (A1-typisch, funktional)",
+          "Code-switching zur metakognitiven Planung (Englisch: 'ah, ich weiß das Wort', 'Nein, das ist exit')",
+          "Fehlender Artikel vor 'Zimmer' (A1-typisch)",
+          "Korrekte Verwendung von 'bis' für Frist",
+          "A1-typische Ellipse (fehlendes Subjekt im ersten Satz)"
         ],
-        "session_highlight": "Runden 1-5 zeigen durchgängig perfekte, kanonalignierte Leistung bei klarer Lehrersteuerung: Der Student übersetzt Hotelbegriffe (Check-out, Frühstück, Rezeption, Parkplatz) und Zeitangaben funktional, nutzt korrekte Nachfragestrukturen und integriert Verständnissicherung."
+        "session_highlight": "Runde 5: Übersetzung von 'Frühstücksraum' mit Zeitangabe ('von sieben bis zehn Uhr') und Verständnissicherung – vollständig kanonaligniert und kommunikativ erfolgreich."
       },
       "K011": {
         "day": 11,
@@ -16586,71 +17106,90 @@
         "kann_id": "K100",
         "kann_text": "Kann Wörter und Ausdrücke in öffentlichen Aufschriften, denen man im Alltag oft begegnet, verstehen, besonders wenn sie konventionelle Logos oder Farben enthalten.",
         "category": "Rezeption schriftlich",
-        "result": "bestanden",
+        "result": "teilweise",
         "speech_acts": [],
         "grammar_targets": [
           "Genus: der, die, das",
           "Nominativ und Akkusativ"
         ],
         "wortfeld_targets": [],
+        "global_relationships": [
+          {
+            "id": "text_list_reading",
+            "name": "Text/list reading",
+            "kann_ids": [
+              "K060",
+              "K062",
+              "K084",
+              "K085",
+              "K086",
+              "K092",
+              "K104"
+            ],
+            "bridge_to_kann_ids": [
+              "K163",
+              "K176"
+            ]
+          }
+        ],
+        "syllabus_branches": [
+          {
+            "id": "text_list_to_message",
+            "name": "Text/list to message",
+            "relationship_ids": [
+              "text_list_reading"
+            ]
+          }
+        ],
         "wortfeld_used": [
-          "Apotheke",
-          "Bank",
-          "blau",
-          "Polizei",
-          "gelb",
-          "rot",
-          "Farbe",
-          "Bäckerei"
+          "Schild",
+          "Aufschrift",
+          "Ausgang",
+          "Durchsage",
+          "Zug",
+          "Berlin",
+          "Gleis",
+          "Eingang"
         ],
         "grammar_learned": [
           {
-            "rule": "Question formulation for translation requests",
+            "rule": "Elliptische Syntax in Aufschriften",
             "stable": true
           },
           {
-            "rule": "Color + noun description patterns",
-            "stable": true
+            "rule": "Artikelunsicherheit (der/die Ausgang) ist A1-typisch",
+            "stable": false
           }
         ],
         "vocabulary_learned": [
           {
-            "word": "Apotheke",
+            "word": "Ausgang",
             "stable": true
           },
           {
-            "word": "Bäckerei",
+            "word": "Eingang",
             "stable": true
           },
           {
-            "word": "Bank",
-            "stable": true
-          },
-          {
-            "word": "Supermarkt",
-            "stable": true
-          },
-          {
-            "word": "Café",
+            "word": "Schild",
             "stable": true
           }
         ],
         "persistent_errors": [
-          "Code-switching for lexical retrieval",
-          "Simplified/broken syntax",
-          "Missing articles"
+          "Abhängigkeit von klarer Lehrersteuerung: Bei unklaren oder generischen Prompts driftet der Student in Metakognition oder soziale Abschlussformeln statt zur Zielsprachhandlung (Runden 4 und 7).",
+          "Code-switching zur metakognitiven Planung (Englisch) bleibt ein etabliertes, aber funktionales Muster."
         ],
         "grammar_notes": [
-          "Code-switching for lexical retrieval (uh, wait, how do you say...)",
-          "Simplified/broken syntax (Ich sehe... Apotheke? Ja, Apotheke.)",
-          "Code-switching for lexical retrieval ('wait, blue is for Polizei')",
-          "Simplified/broken syntax ('Bank ist... gelb?')",
-          "Simplified/broken syntax (Bank ist... rot und blau?)",
-          "Code-switching for lexical retrieval (Amerika)",
-          "Missing articles",
-          "Simplified/broken syntax (Bäckerei ist... gelb und braun? Weil Brot ist braun.)"
+          "Artikelunsicherheit (der/die Ausgang) ist A1-typisch",
+          "Code-switching zur metakognitiven Planung (etabliertes Muster)",
+          "Broken Syntax (Das ist... the exit) ist funktional",
+          "A1-typisch: 'ich sehe das Schild' korrekt",
+          "'Das ist... der Ausgang' leicht holprig, aber verständlich",
+          "Code-switching ('exit') als metakognitive Stütze akzeptabel",
+          "Elliptische Syntax ist A1-typisch und funktional",
+          "Frage nach Artikelgebrauch zeigt Metakognition, kein Fehler"
         ],
-        "session_highlight": "Student demonstrated consistent ability to identify and describe public signs (Apotheke, Bank, Bäckerei, Supermarkt, Café) with associated colors, showing active engagement with everyday signage recognition tasks. Successfully imitated teacher-modeled question patterns when needed."
+        "session_highlight": "Runde 5: Nachdem der Lehrer von Englisch auf Deutsch umgesteuert hat, antwortet der Student sofort mit der korrekten Sprachhandlung (Bedeutung von 'Eingang' nennen) – demonstriert klare Kanonalignierung bei präziser Führung."
       },
       "K101": {
         "day": 101,
@@ -19679,24 +20218,130 @@
         "kann_id": "K163",
         "kann_text": "Kann einzelne Informationen aus einem kurzen schriftlichen, oft listenartigen deutschsprachigen Text zu vertrauten Themen anderen Personen in der gemeinsamen Sprache weitergeben, wenn der Text einfachen Basiswortschatz, Internationalismen oder visuelle Elemente enthält.",
         "category": "Sprachmittlung mündlich",
-        "result": "bestanden",
+        "result": "teilweise",
         "speech_acts": [],
         "grammar_targets": [],
         "wortfeld_targets": [],
-        "wortfeld_used": [],
-        "grammar_learned": [
+        "global_relationships": [
           {
-            "rule": "Präzise, kanonalignierte Weitergabe einzelner Informationen aus listenartigen Texten (Schilder, Menüs, Öffnungszeiten) unter Verwendung der korrekten Satzstruktur 'On the menu it says...'",
-            "stable": true
+            "id": "text_list_reading",
+            "name": "Text/list reading",
+            "kann_ids": [
+              "K060",
+              "K062",
+              "K084",
+              "K085",
+              "K086",
+              "K092",
+              "K104"
+            ],
+            "bridge_to_kann_ids": [
+              "K163",
+              "K176"
+            ]
+          },
+          {
+            "id": "micro_writing",
+            "name": "Micro-writing",
+            "kann_ids": [
+              "K043",
+              "K048",
+              "K051",
+              "K052",
+              "K136",
+              "K145",
+              "K149",
+              "K150"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "a1_conversation_support",
+            "name": "A1 conversation support",
+            "kann_ids": [
+              "K001",
+              "K003",
+              "K004",
+              "K005",
+              "K006",
+              "K007",
+              "K030",
+              "K038"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "social_contact_operators",
+            "name": "Social contact operators",
+            "kann_ids": [
+              "K009",
+              "K010",
+              "K014",
+              "K017",
+              "K018",
+              "K022",
+              "K026"
+            ],
+            "bridge_to_kann_ids": []
           }
         ],
-        "vocabulary_learned": [],
-        "persistent_errors": [],
-        "grammar_notes": [
-          "Korrekte Übernahme und Wiederholung der Zielstruktur 'On the menu it says...'",
-          "Funktionales Code-switching (Deutsch/Englisch) zur Bestätigung des Verständnisses"
+        "syllabus_branches": [
+          {
+            "id": "text_list_to_message",
+            "name": "Text/list to message",
+            "relationship_ids": [
+              "text_list_reading"
+            ]
+          },
+          {
+            "id": "a1_speaking_operating_system",
+            "name": "A1 speaking operating system",
+            "relationship_ids": [
+              "a1_conversation_support",
+              "oral_production_frame"
+            ]
+          },
+          {
+            "id": "social_entry_exit",
+            "name": "Social entry and exit moves",
+            "relationship_ids": [
+              "social_contact_operators"
+            ]
+          }
         ],
-        "session_highlight": "Durchgängig perfekte, kanonalignierte Sprachmittlungsleistung über alle 7 Runden, gekennzeichnet durch präzise Informationsweitergabe, aktive Feedback-Übernahme und das vollständige Fehlen von Drifting-Episoden."
+        "wortfeld_used": [
+          "zeit",
+          "essen"
+        ],
+        "grammar_learned": [
+          {
+            "rule": "Artikel vor Nomen (der/die/das)",
+            "stable": false
+          }
+        ],
+        "vocabulary_learned": [
+          {
+            "word": "Fahrkarten",
+            "stable": false
+          },
+          {
+            "word": "Abendessen",
+            "stable": false
+          }
+        ],
+        "persistent_errors": [
+          "Fehlender Artikel vor Nomen (A1-typisch)",
+          "Abhängigkeit von klarer Lehrersteuerung – Drift in Metakognition oder reine Wiederholung bei unklaren Prompts"
+        ],
+        "grammar_notes": [
+          "fehlender Artikel vor 'Fahrkarten' (A1-typisch)",
+          "elliptische Satzstruktur (A1-typisch)",
+          "A1-typisch: fehlender Artikel vor 'Abendessen' in der ersten Äußerung, dann korrigiert im Satz",
+          "A1-typisch: einfache Satzstruktur mit 'gibt es'",
+          "student repeated the German sentence verbatim instead of relaying in shared language",
+          "student correctly repeated the given German sentence with article"
+        ],
+        "session_highlight": "Runde 5: Erfolgreiche Weitergabe der Endzeit (21 Uhr) auf Englisch mit deutschem Satz – kommunikativ effektiv und kanonaligniert"
       },
       "K164": {
         "day": 166,
@@ -20365,40 +21010,58 @@
           }
         ],
         "wortfeld_used": [
-          "Bahnhof",
-          "der Bahnhof",
-          "rechts"
+          "Warteraum",
+          "Wartesaal",
+          "Wartezimmer",
+          "Abfahrt"
         ],
         "grammar_learned": [
           {
-            "rule": "Sofortige, kanonalignierte Ausführung der Sprachmittlungsaufgabe (Übersetzen von Schildern) als robust konsolidiertes Muster",
+            "rule": "Elliptische Syntax in spontanen Äußerungen (A1-typisch)",
             "stable": true
           },
           {
-            "rule": "Funktionale Sprachhandlungsschemata ('Auf dem Schild steht X. Auf Deutsch: Y.') für klare Informationsweitergabe",
+            "rule": "Code-switching zur metakognitiven Planung (Englisch) als funktionales Muster",
             "stable": true
           }
         ],
         "vocabulary_learned": [
           {
-            "word": "Fahrkarten",
+            "word": "Eingang",
             "stable": true
           },
           {
-            "word": "Auskunft",
+            "word": "Warteraum",
+            "stable": false
+          },
+          {
+            "word": "Wartesaal",
+            "stable": false
+          },
+          {
+            "word": "Abfahrt",
             "stable": true
           },
           {
-            "word": "Parkplatz",
+            "word": "nur für Personal",
             "stable": true
           }
         ],
         "persistent_errors": [
-          "Elliptische/broken Syntax in spontanen Äußerungen (A1-typisch und funktional)",
-          "Code-switching für metakognitive Planung und Rollenklärung (etabliertes, funktionales Muster)"
+          "Abhängigkeit von klarer, kanonalignierter Lehrersteuerung – bei unklarer Führung Drift in metakognitive Nachfrage auf Englisch",
+          "Unsicherheit bei Wortfelddifferenzierung (Warteraum/Wartesaal/Wartezimmer)"
         ],
-        "grammar_notes": [],
-        "session_highlight": "Durchgängig perfekte, sofortige und kanonalignierte Ausführung über alle 7 Runden mit präzisen Übersetzungen (tickets→Fahrkarten, information→Auskunft, parking→Parkplatz), die eine vollständige Beherrschung der Kannbeschreibung demonstriert."
+        "grammar_notes": [
+          "Elliptische Syntax in der Planungsphase (A1-typisch)",
+          "Code-switching zur metakognitiven Planung (Englisch)",
+          "Korrekte Nennung des Zielworts 'Eingang'",
+          "Student bricht ab und fragt auf Englisch nach",
+          "zeigt Unsicherheit bei 'hören'",
+          "Elliptische Antwort (A1-typisch)",
+          "Code-switching (closed) zur metakognitiven Planung, dann korrekte deutsche Zieläußerung",
+          "Unsicherheit bei der Wortwahl (Warteraum/Wartesaal/Wartezimmer) – A1-typisch"
+        ],
+        "session_highlight": "Runde 6: Student liest 'Staff only', signalisiert Verstehen und gibt 'nur für Personal' weiter – trotz kurzem englischen Planungsschritt vollständig kanonaligniert und ohne Drift."
       },
       "K174": {
         "day": 174,
@@ -20677,37 +21340,170 @@
           "Konjugation Präsens: sein, haben, werden"
         ],
         "wortfeld_targets": [],
+        "global_relationships": [
+          {
+            "id": "a1_conversation_support",
+            "name": "A1 conversation support",
+            "kann_ids": [
+              "K001",
+              "K003",
+              "K004",
+              "K005",
+              "K006",
+              "K007",
+              "K030",
+              "K038"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "social_contact_operators",
+            "name": "Social contact operators",
+            "kann_ids": [
+              "K009",
+              "K010",
+              "K014",
+              "K017",
+              "K018",
+              "K022",
+              "K026"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "oral_production_frame",
+            "name": "Oral production frame",
+            "kann_ids": [
+              "K116",
+              "K117",
+              "K120",
+              "K121",
+              "K126"
+            ],
+            "bridge_to_kann_ids": []
+          }
+        ],
+        "syllabus_branches": [
+          {
+            "id": "a1_speaking_operating_system",
+            "name": "A1 speaking operating system",
+            "relationship_ids": [
+              "a1_conversation_support",
+              "oral_production_frame"
+            ]
+          },
+          {
+            "id": "social_entry_exit",
+            "name": "Social entry and exit moves",
+            "relationship_ids": [
+              "social_contact_operators"
+            ]
+          }
+        ],
         "wortfeld_used": [
+          "USA",
+          "verstehen",
           "Entschuldigung",
-          "Was",
-          "Wie sagt man"
+          "fragen",
+          "langsam",
+          "woher",
+          "kommen",
+          "Sie"
         ],
         "grammar_learned": [
           {
-            "rule": "Correct negation structure 'ich bin nicht Studentin'",
+            "rule": "Korrekte Satzstruktur (Aussagesatz)",
+            "stable": true
+          },
+          {
+            "rule": "Modalverbverwendung (möchte)",
+            "stable": true
+          },
+          {
+            "rule": "Dativ mit 'seit' (seit drei Monaten)",
+            "stable": true
+          },
+          {
+            "rule": "Einfache Verknüpfung mit 'aber'",
             "stable": true
           }
         ],
         "vocabulary_learned": [
           {
+            "word": "USA",
+            "stable": true
+          },
+          {
+            "word": "verstehen",
+            "stable": true
+          },
+          {
             "word": "Entschuldigung",
             "stable": true
           },
           {
-            "word": "Was bedeutet...?",
+            "word": "fragen",
             "stable": true
           },
           {
-            "word": "Wie sagt man...?",
+            "word": "langsam",
+            "stable": true
+          },
+          {
+            "word": "woher",
+            "stable": true
+          },
+          {
+            "word": "kommen",
+            "stable": true
+          },
+          {
+            "word": "Deutsch",
+            "stable": true
+          },
+          {
+            "word": "Monaten",
+            "stable": true
+          },
+          {
+            "word": "spreche",
+            "stable": true
+          },
+          {
+            "word": "Zug",
+            "stable": true
+          },
+          {
+            "word": "Fahrplan",
+            "stable": true
+          },
+          {
+            "word": "14 Uhr 30",
+            "stable": true
+          },
+          {
+            "word": "halb drei",
+            "stable": true
+          },
+          {
+            "word": "fährt",
+            "stable": true
+          },
+          {
+            "word": "nachmittags",
             "stable": true
           }
         ],
         "persistent_errors": [],
         "grammar_notes": [
-          "Correct negation structure 'ich bin nicht Studentin'",
-          "Minor self-correction 'Ich... ich' shows processing"
+          "Korrekte Satzstruktur",
+          "Keine Fehler",
+          "Ich möchte auch fragen – korrekte Modalverbverwendung",
+          "aber ich bin langsam – einfache, verständliche Aussage",
+          "Korrekte Wiederholung des Dativs 'seit drei Monaten'",
+          "Einfacher, verständlicher Satz mit 'aber' als Verknüpfung"
         ],
-        "session_highlight": "Round 4: Excellent execution of both signaling non-understanding and asking for meaning, demonstrating perfect task alignment and A1-level competence"
+        "session_highlight": "Student zeigte durchgängig sicheres A1-Niveau, nutzte aktiv Nachfragen und Verständnissignale, und produzierte korrekte Sätze mit Dativ und Modalverb – keine Rückschritte, konsistent ON TRACK."
       },
       "K002": {
         "day": 2,
@@ -21848,47 +22644,71 @@
           }
         ],
         "wortfeld_used": [
-          "Zimmer",
-          "das Zimmer"
+          "das Zimmer",
+          "die Uhr",
+          "die Stunde",
+          "der Tag",
+          "zeit",
+          "wohnen",
+          "Gepäck",
+          "Koffer"
         ],
         "grammar_learned": [
           {
-            "rule": "Übersetzungsstruktur 'Das bedeutet ...'",
+            "rule": "Use of 'bis' for deadlines",
             "stable": true
           },
           {
-            "rule": "Verständnissicherung 'Ist das klar?'",
+            "rule": "Correct use of 'Das bedeutet' in explanations",
             "stable": true
           }
         ],
         "vocabulary_learned": [
           {
-            "word": "Zimmer",
+            "word": "das Zimmer",
             "stable": true
           },
           {
-            "word": "Check-in",
+            "word": "die Uhr",
             "stable": true
           },
           {
-            "word": "Check-out",
+            "word": "die Stunde",
             "stable": true
           },
           {
-            "word": "Frühstücksbuffet",
+            "word": "der Tag",
+            "stable": true
+          },
+          {
+            "word": "zeit",
+            "stable": true
+          },
+          {
+            "word": "wohnen",
+            "stable": true
+          },
+          {
+            "word": "Gepäck",
+            "stable": true
+          },
+          {
+            "word": "Koffer",
             "stable": true
           }
         ],
-        "persistent_errors": [],
-        "grammar_notes": [
-          "Korrekte Formulierung 'das ist klar'",
-          "Höflichkeitsform 'Danke'",
-          "Uses 'Essen' (food) instead of 'Speisen' or 'Gerichte' - acceptable at A1",
-          "'viele Essen' (many food) - typical A1 simplification",
-          "Correctly uses 'bedeutet' for translation/explanation",
-          "Includes comprehension check 'Ist das klar?' - perfect target speech act"
+        "persistent_errors": [
+          "Occasional missing article before nouns (e.g., 'Zimmer')",
+          "Occasional omission of comprehension check after translation"
         ],
-        "session_highlight": "Perfekte 5/7 ON-TRACK-Runden mit sofortigen, präzisen Übersetzungen verschiedener Hotelbegriffe (Check-in als 'Ankunft im Hotel', Check-out als 'Abreise' mit Erklärung 'Sie verlassen das Zimmer') und automatischer Verständnissicherung"
+        "grammar_notes": [
+          "Missing article before 'Zimmer'",
+          "Missing 'Das bedeutet' in full sentence",
+          "Correct use of 'bis' for deadline",
+          "Das bedeutet... der Ort im Hotel. Hier bin ich. Der Gast kommt hierher. – The student uses 'Das bedeutet' correctly, then explains with simple sentences. Minor article omission ('der Ort' is fine) and no comprehension check, but the meaning is clear.",
+          "Korrekte Verabschiedung und Dankesformel auf A1-Niveau"
+        ],
+        "session_highlight": "Round 2: Perfect translation of 'breakfast' to 'Frühstück' with added time info and comprehension check, demonstrating full mastery of the task."
       },
       "K011": {
         "day": 11,
@@ -25262,55 +26082,73 @@
         "kann_id": "K100",
         "kann_text": "Kann Wörter und Ausdrücke in öffentlichen Aufschriften, denen man im Alltag oft begegnet, verstehen, besonders wenn sie konventionelle Logos oder Farben enthalten.",
         "category": "Rezeption schriftlich",
-        "result": "bestanden",
+        "result": "teilweise",
         "speech_acts": [],
         "grammar_targets": [
           "Genus: der, die, das",
           "Nominativ und Akkusativ"
         ],
         "wortfeld_targets": [],
-        "wortfeld_used": [
-          "Grün",
-          "Apotheke",
-          "Schild",
-          "Tankstelle",
-          "rot",
-          "Buchhandlung"
+        "global_relationships": [
+          {
+            "id": "text_list_reading",
+            "name": "Text/list reading",
+            "kann_ids": [
+              "K060",
+              "K062",
+              "K084",
+              "K085",
+              "K086",
+              "K092",
+              "K104"
+            ],
+            "bridge_to_kann_ids": [
+              "K163",
+              "K176"
+            ]
+          }
         ],
-        "grammar_learned": [],
+        "syllabus_branches": [
+          {
+            "id": "text_list_to_message",
+            "name": "Text/list to message",
+            "relationship_ids": [
+              "text_list_reading"
+            ]
+          }
+        ],
+        "wortfeld_used": [
+          "Schild",
+          "Eingang",
+          "Ausgang"
+        ],
+        "grammar_learned": [
+          {
+            "rule": "Genusbewusstsein (der Eingang vs. das Schild)",
+            "stable": true
+          }
+        ],
         "vocabulary_learned": [
           {
-            "word": "Buchhandlung",
+            "word": "Eingang",
             "stable": true
           },
           {
-            "word": "Apotheke",
-            "stable": true
-          },
-          {
-            "word": "Grün",
-            "stable": true
-          },
-          {
-            "word": "rot",
+            "word": "Ausgang",
             "stable": true
           },
           {
             "word": "Schild",
             "stable": true
-          },
-          {
-            "word": "Tankstelle",
-            "stable": true
           }
         ],
-        "persistent_errors": [
-          "Occasional difficulty connecting conventional colors to specific public signs (e.g., red for gas station instead of blue/yellow)"
-        ],
+        "persistent_errors": [],
         "grammar_notes": [
-          "Antwort ist grammatikalisch korrekt (Das Wort ist Buchhandlung)"
+          "Korrekte Artikelwahl (der Eingang)",
+          "Einfache, verständliche Struktur",
+          "Student zeigt Bewusstsein für Genus (maskulin vs. neutral) – über A1-Niveau, aber nicht fehlerhaft"
         ],
-        "session_highlight": "Round 2: Successfully identified 'Apotheke' with green color association and self-corrected, demonstrating active application of the target skill"
+        "session_highlight": "Student demonstriert in Runde 5 metasprachliches Bewusstsein für grammatisches Geschlecht von Aufschrift-Wörtern, was über die reine Übersetzung hinausgeht."
       },
       "K101": {
         "day": 101,
@@ -28052,12 +28890,132 @@
         "speech_acts": [],
         "grammar_targets": [],
         "wortfeld_targets": [],
-        "wortfeld_used": [],
-        "grammar_learned": [],
-        "vocabulary_learned": [],
-        "persistent_errors": [],
-        "grammar_notes": [],
-        "session_highlight": "Complete recovery of consistent mediation skills with perfect execution across all seven rounds, showing the student has overcome the inconsistency issues from days 163-164."
+        "global_relationships": [
+          {
+            "id": "text_list_reading",
+            "name": "Text/list reading",
+            "kann_ids": [
+              "K060",
+              "K062",
+              "K084",
+              "K085",
+              "K086",
+              "K092",
+              "K104"
+            ],
+            "bridge_to_kann_ids": [
+              "K163",
+              "K176"
+            ]
+          },
+          {
+            "id": "micro_writing",
+            "name": "Micro-writing",
+            "kann_ids": [
+              "K043",
+              "K048",
+              "K051",
+              "K052",
+              "K136",
+              "K145",
+              "K149",
+              "K150"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "a1_conversation_support",
+            "name": "A1 conversation support",
+            "kann_ids": [
+              "K001",
+              "K003",
+              "K004",
+              "K005",
+              "K006",
+              "K007",
+              "K030",
+              "K038"
+            ],
+            "bridge_to_kann_ids": []
+          },
+          {
+            "id": "social_contact_operators",
+            "name": "Social contact operators",
+            "kann_ids": [
+              "K009",
+              "K010",
+              "K014",
+              "K017",
+              "K018",
+              "K022",
+              "K026"
+            ],
+            "bridge_to_kann_ids": []
+          }
+        ],
+        "syllabus_branches": [
+          {
+            "id": "text_list_to_message",
+            "name": "Text/list to message",
+            "relationship_ids": [
+              "text_list_reading"
+            ]
+          },
+          {
+            "id": "a1_speaking_operating_system",
+            "name": "A1 speaking operating system",
+            "relationship_ids": [
+              "a1_conversation_support",
+              "oral_production_frame"
+            ]
+          },
+          {
+            "id": "social_entry_exit",
+            "name": "Social entry and exit moves",
+            "relationship_ids": [
+              "social_contact_operators"
+            ]
+          }
+        ],
+        "wortfeld_used": [
+          "zeit",
+          "essen"
+        ],
+        "grammar_learned": [
+          {
+            "rule": "von ... bis für Zeitangaben",
+            "stable": true
+          },
+          {
+            "rule": "am + Wochentag",
+            "stable": true
+          }
+        ],
+        "vocabulary_learned": [
+          {
+            "word": "Frühstück",
+            "stable": true
+          },
+          {
+            "word": "Fahrkarten",
+            "stable": true
+          }
+        ],
+        "persistent_errors": [
+          "Occasional missing article before nouns (e.g., 'Fahrkarten')",
+          "Occasional omission of 'Uhr' after time"
+        ],
+        "grammar_notes": [
+          "Missing 'von ... bis' construction (used 'ist von sieben bis zehn' which is acceptable at A1)",
+          "Correct noun capitalization",
+          "Student repeated German sentence correctly but did not relay meaning in shared language",
+          "Student repeated teacher's corrected sentence verbatim, no original production",
+          "Correct use of 'von ... bis' for time range",
+          "Correct article 'das' before 'Frühstück'",
+          "Minor: missing 'Uhr' after 'zehn' is acceptable at A1",
+          "Correct use of 'am' with day of week"
+        ],
+        "session_highlight": "Round 5: Student correctly relayed breakfast time and location in a full German sentence, demonstrating strong mediation skills."
       },
       "K164": {
         "day": 166,
@@ -28703,15 +29661,12 @@
           }
         ],
         "wortfeld_used": [
-          "Bahnhof"
+          "verkehr",
+          "Café"
         ],
         "grammar_learned": [
           {
-            "rule": "Mediationsstruktur 'Auf Deutsch: ...'",
-            "stable": true
-          },
-          {
-            "rule": "Vollständige Sätze für Schilder-Mediation",
+            "rule": "Das bedeutet + Nomen",
             "stable": true
           }
         ],
@@ -28721,31 +29676,28 @@
             "stable": true
           },
           {
+            "word": "Zug",
+            "stable": true
+          },
+          {
             "word": "geöffnet",
             "stable": true
           },
           {
-            "word": "kein Eingang",
+            "word": "Café",
             "stable": true
           },
           {
-            "word": "Bahnsteig",
-            "stable": true
-          },
-          {
-            "word": "Halt",
-            "stable": true
-          },
-          {
-            "word": "Eingang",
+            "word": "Fundbüro",
             "stable": true
           }
         ],
         "persistent_errors": [],
         "grammar_notes": [
-          "Perfekt A1-Niveau: 'Auf dem Schild steht \"Halt\"' ist eine korrekte, vollständige Äußerung für diese Mediationsaufgabe."
+          "Das bedeutet + Nomen (geöffnet) ist korrekt als A1-Äußerung",
+          "Das bedeutet + Nomen is correct A1 structure"
         ],
-        "session_highlight": "Perfekte 7/7 Performance mit konsistentem Mastery-Niveau in der Schilder-Mediation, zeigt vollständige Beherrschung der A1-Sprachmittlungsaufgabe"
+        "session_highlight": "Perfekte 7/7 Runden mit konsistentem Mastery-Niveau – die Studentin zeigt vollständige Beherrschung der A1-Sprachmittlungsaufgabe, inklusive einer gelungenen Reparatursequenz bei unklarer Aufschrift."
       },
       "K174": {
         "day": 174,

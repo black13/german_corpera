@@ -8600,6 +8600,413 @@
       "improvements_from_prior": [],
       "emotional_state": "stabil und funktional",
       "session_highlight": "Runde 6: Student signalisiert Verständnis und beschreibt praktischen Anwendungskontext ('Im Hotel, ich sage das oft'), was auf Transferdenken und funktionales Verständnis der Sprachmittlungsaufgabe hindeutet."
+    },
+    {
+      "day": 100,
+      "subject_area": "Rezeption schriftlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "Ausgang",
+          "stable": true
+        },
+        {
+          "word": "Eingang",
+          "stable": true
+        },
+        {
+          "word": "Apotheke",
+          "stable": true
+        },
+        {
+          "word": "WC",
+          "stable": true
+        },
+        {
+          "word": "Toilette",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Genus von 'Schild' (das Schild) korrekt verwendet",
+          "stable": true
+        },
+        {
+          "rule": "Nominativ mit Fragepartikel korrekt",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [
+        "Fehlende Artikel (der/die/das/ein/eine) – elliptische Strukturen",
+        "Genusunsicherheit bei neuen Wörtern (z.B. der/die Eingang)",
+        "Elliptische Sätze statt vollständiger Sätze"
+      ],
+      "improvements_from_prior": [
+        "Sichereres Erkennen und Benennen von Alltagsaufschriften (Eingang, Ausgang, Apotheke, WC)",
+        "Versuch, Artikel zu verwenden (z.B. 'das Schild') – leichte Verbesserung gegenüber früheren rein elliptischen Strukturen",
+        "Transfer der Kannbeschreibung auf neue Symbole (Apotheke, WC) ohne Lehrerhilfe"
+      ],
+      "emotional_state": "stabil, aufmerksam, zeigt keine Frustration bei Unsicherheiten",
+      "session_highlight": "Student erkennt das Apotheken-Symbol spontan und übersetzt es in den Alltagskontext, was funktionales Verständnis und Transferdenken zeigt."
+    },
+    {
+      "day": 1,
+      "subject_area": "Interaktion mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "Guten Morgen",
+          "stable": true
+        },
+        {
+          "word": "heiße",
+          "stable": true
+        },
+        {
+          "word": "wohnen",
+          "stable": false
+        },
+        {
+          "word": "Berlin",
+          "stable": true
+        },
+        {
+          "word": "aus USA",
+          "stable": false
+        },
+        {
+          "word": "lernen",
+          "stable": true
+        },
+        {
+          "word": "verstehen",
+          "stable": true
+        },
+        {
+          "word": "Fehler",
+          "stable": true
+        },
+        {
+          "word": "sagen",
+          "stable": true
+        },
+        {
+          "word": "Guten Tag",
+          "stable": true
+        },
+        {
+          "word": "Frau Weber",
+          "stable": true
+        },
+        {
+          "word": "Marta",
+          "stable": true
+        },
+        {
+          "word": "komme aus",
+          "stable": true
+        },
+        {
+          "word": "Polen",
+          "stable": true
+        },
+        {
+          "word": "Zehn Jahre",
+          "stable": true
+        },
+        {
+          "word": "lange Zeit",
+          "stable": true
+        },
+        {
+          "word": "Monate",
+          "stable": true
+        },
+        {
+          "word": "Straße",
+          "stable": true
+        },
+        {
+          "word": "Hotel",
+          "stable": true
+        },
+        {
+          "word": "Kurs",
+          "stable": true
+        },
+        {
+          "word": "Zug",
+          "stable": true
+        },
+        {
+          "word": "Fahrplan",
+          "stable": true
+        },
+        {
+          "word": "Frage",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Verbkonjugation: 'wohnen' statt 'wohne' – akzeptabel auf A1",
+          "stable": false
+        },
+        {
+          "rule": "Fehlender Artikel bei 'aus USA' – nicht penalisiert",
+          "stable": false
+        },
+        {
+          "rule": "Elliptische Strukturen – A1-typisch",
+          "stable": false
+        },
+        {
+          "rule": "Fehlende Präposition 'seit' (lernen drei Monate)",
+          "stable": false
+        }
+      ],
+      "persistent_errors": [
+        "Fehlende Artikel (der/die/das/ein/eine)",
+        "Elliptische Strukturen statt vollständiger Sätze",
+        "Fehlende Präpositionen (z.B. 'aus USA' statt 'aus den USA', 'lernen drei Monate' statt 'seit drei Monaten')"
+      ],
+      "improvements_from_prior": [
+        "Student zeigt aktives Nachfragen und Verständnissignale, was zur neuen Kannbeschreibung passt",
+        "Student bleibt im Gespräch und erweitert mit eigenem Kontext (z.B. Straße, Hotel, kein Kurs)",
+        "Keine Regression – Fehler sind typisch A1 und beeinträchtigen nicht die Kommunikation"
+      ],
+      "emotional_state": "Sicher und funktional – zeigt metasprachliches Bewusstsein und Toleranz für Fehler",
+      "session_highlight": "Runde 7: Student signalisiert sofort Nichtverstehen ('Ich verstehe nicht'), wiederholt die Frage zur Bestätigung und erklärt den Grund ('Ich habe Fahrplan nicht') – genau die geforderte Sprachhandlung für die Kannbeschreibung."
+    },
+    {
+      "day": 173,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "Fahrkarte",
+          "stable": true
+        },
+        {
+          "word": "der Bahnhof",
+          "stable": true
+        },
+        {
+          "word": "der Zug",
+          "stable": true
+        },
+        {
+          "word": "Toilette",
+          "stable": true
+        },
+        {
+          "word": "Warteraum",
+          "stable": true
+        },
+        {
+          "word": "Gleis drei",
+          "stable": true
+        },
+        {
+          "word": "der Eingang",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Elliptische Strukturen (fehlende Artikel) sind auf A1 akzeptabel",
+          "stable": true
+        },
+        {
+          "rule": "Situative Erklärungen ergänzen die Wortübersetzung",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [
+        "Fehlende Artikel (der/die/das/ein/eine)",
+        "Elliptische Strukturen statt vollständiger Sätze",
+        "Gelegentliches Code-switching (Englisch-Deutsch-Mischung)"
+      ],
+      "improvements_from_prior": [
+        "Kontextuelle Erweiterung: Student ergänzt nun situative Erklärungen (z.B. 'Da fragen für Zug') statt nur Einzelwörter",
+        "Kein Drift ins Englische: In Runde 3 wurde das Schild ohne Code-switching übersetzt",
+        "Transferdenken: In Runde 6 wurde das Schild in einen praktischen Kontext eingebettet ('Im Hotel, ich sage das oft')"
+      ],
+      "emotional_state": "Engagiert und sicher, zeigt Freude an der Aufgabe",
+      "session_highlight": "Runde 7: Perfekte Übersetzung von türkischem 'Giriş' als 'Eingang' mit sinntragender Handlungsanweisung ('Da gehen rein') – zeigt klare Verbesserung gegenüber früheren Runden"
+    },
+    {
+      "day": 176,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "Frühstück",
+          "stable": true
+        },
+        {
+          "word": "Frühstücksraum",
+          "stable": true
+        },
+        {
+          "word": "Empfang",
+          "stable": true
+        },
+        {
+          "word": "Gepäck",
+          "stable": true
+        },
+        {
+          "word": "Koffer",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Verständnissicherung mit 'Ist das klar?'",
+          "stable": true
+        },
+        {
+          "rule": "Zeitangabe mit 'von ... bis'",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [
+        "Fehlende Artikel (der/die/das/ein/eine)",
+        "Elliptische Strukturen statt vollständiger Sätze"
+      ],
+      "improvements_from_prior": [
+        "Selbstständige Integration von Verständnissicherung (Ist das klar?)",
+        "Aktive Nutzung neuer Wortfelder (Frühstücksraum, Gepäckaufbewahrung)",
+        "Stabile Leistung über mehrere Runden hinweg, kein Drift ins Persönliche"
+      ],
+      "emotional_state": "Sicher und zielgerichtet, mit kurzem Abschweifen in Runde 6 (Selbstlob), aber schnell wieder fokussiert",
+      "session_highlight": "Runde 7: Präzise Übersetzung von 'Frühstücksraum' mit Kontext (Zeit, Aktivität) und Verständnissicherung – zeigt Transferdenken und vollständige Beherrschung der Kannbeschreibung"
+    },
+    {
+      "day": 165,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "Preis",
+          "stable": true
+        },
+        {
+          "word": "Frühstückszeit",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [],
+      "persistent_errors": [
+        "missing articles (der/die/das/ein/eine)",
+        "elliptical structures instead of full sentences"
+      ],
+      "improvements_from_prior": [
+        "Successful mediation in later rounds after initial drifting",
+        "Clear extraction and relay of specific information (price, breakfast time) in English"
+      ],
+      "emotional_state": "initially confused/drifting, then focused and confident",
+      "session_highlight": "Round 7: Student correctly extracted and relayed breakfast time in English, showing full task understanding and transfer thinking."
+    },
+    {
+      "day": 165,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "Fahrkarte",
+          "stable": true
+        },
+        {
+          "word": "Abfahrt",
+          "stable": true
+        },
+        {
+          "word": "offen",
+          "stable": true
+        },
+        {
+          "word": "Renovierung",
+          "stable": true
+        },
+        {
+          "word": "Sitzplätze draußen",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "es gibt + Akkusativ (acceptance of correction)",
+          "stable": false
+        }
+      ],
+      "persistent_errors": [
+        "fehlende Artikel (der/die/das/ein/eine)",
+        "elliptische Strukturen statt vollständiger Sätze",
+        "fehlende Präpositionen (z.B. am Montag)"
+      ],
+      "improvements_from_prior": [
+        "Kerninformationen werden jetzt mit Wiederholungsmarkern (immer, jeden) weitergegeben, nicht nur einzelne Wörter",
+        "situatives Verständnis führt zu ergänzenden Handlungsanweisungen (Bitte draußen)",
+        "akzeptiert und integriert grammatische Korrekturen (es gibt)"
+      ],
+      "emotional_state": "sicher und engagiert",
+      "session_highlight": "Student korrigierte spontan 'Hier ist Sitzplätze draußen' zu 'Hier gibt es Sitzplätze draußen' nach Lehrerhinweis – zeigt aktive Verarbeitung von Feedback."
+    },
+    {
+      "day": 165,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "Frühstück",
+          "stable": true
+        },
+        {
+          "word": "Abendessen",
+          "stable": true
+        },
+        {
+          "word": "Sitzplätze",
+          "stable": true
+        },
+        {
+          "word": "Fahrkarten",
+          "stable": true
+        },
+        {
+          "word": "Öffnungszeiten",
+          "stable": false
+        },
+        {
+          "word": "Renovierung",
+          "stable": false
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Präposition 'von...bis' mit Zeitangaben",
+          "stable": true
+        },
+        {
+          "rule": "Vollständiger Satz mit bestimmtem Artikel (z.B. 'Das Frühstück ist...')",
+          "stable": false
+        }
+      ],
+      "persistent_errors": [
+        "Fehlende Artikel (der/die/das/ein/eine) bei neuen oder unbetonten Nomen",
+        "Elliptische Strukturen statt vollständiger Sätze"
+      ],
+      "improvements_from_prior": [
+        "Konsistente Verwendung von 'von...bis' für Zeitangaben",
+        "Verbessertes Transferdenken: Information aus deutschem Text in gemeinsamer Sprache (Deutsch oder Englisch) weitergegeben",
+        "Spontane Selbstkorrektur nach Lehrerhinweis (z.B. Artikel 'Die' bei Sitzplätze)",
+        "Sichere Situationsbewältigung ohne Nachfragen in den meisten Runden"
+      ],
+      "emotional_state": "Sicher und aufmerksam, zeigt aktive Verarbeitung von Feedback, aber eine Runde mit Drift (Rückfall ins reine Vorlesen) deutet auf kurze Konzentrationsschwankung hin.",
+      "session_highlight": "Runde 1: Student wiederholt das Lehrermodell ('Das Frühstück ist von sieben bis zehn') und paraphrasiert es sofort auf Englisch für den Gast – zeigt perfektes Transferdenken und vollständige Erfüllung der Kannbeschreibung."
     }
   ],
   "james": [
@@ -15739,6 +16146,318 @@
       ],
       "emotional_state": "Engagiert und reaktionsschnell bei klaren Aufgaben, kooperativ im sozialen Abschluss",
       "session_highlight": "Runden 1-5 zeigen durchgängig perfekte, kanonalignierte Leistung bei klarer Lehrersteuerung: Der Student übersetzt Hotelbegriffe (Check-out, Frühstück, Rezeption, Parkplatz) und Zeitangaben funktional, nutzt korrekte Nachfragestrukturen und integriert Verständnissicherung."
+    },
+    {
+      "day": 100,
+      "subject_area": "Rezeption schriftlich",
+      "kann_result": "teilweise",
+      "vocabulary_learned": [
+        {
+          "word": "Ausgang",
+          "stable": true
+        },
+        {
+          "word": "Eingang",
+          "stable": true
+        },
+        {
+          "word": "Schild",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Elliptische Syntax in Aufschriften",
+          "stable": true
+        },
+        {
+          "rule": "Artikelunsicherheit (der/die Ausgang) ist A1-typisch",
+          "stable": false
+        }
+      ],
+      "persistent_errors": [
+        "Abhängigkeit von klarer Lehrersteuerung: Bei unklaren oder generischen Prompts driftet der Student in Metakognition oder soziale Abschlussformeln statt zur Zielsprachhandlung (Runden 4 und 7).",
+        "Code-switching zur metakognitiven Planung (Englisch) bleibt ein etabliertes, aber funktionales Muster."
+      ],
+      "improvements_from_prior": [
+        "Student erkennt und benennt öffentliche Aufschriften (Ausgang, Eingang) korrekt und erklärt deren Bedeutung – konsistent mit früheren Tagen.",
+        "Nach erfolgreicher Umsteuerung durch den Lehrer (Runde 5) kehrt der Student sofort zur kanonalignierten Sprachhandlung zurück, was eine gute Reaktionsfähigkeit zeigt.",
+        "Keine neuen Fehler oder Verschlechterung im Vergleich zu den letzten Tagen; das bekannte Rückfallmuster bei unklarer Steuerung bleibt stabil."
+      ],
+      "emotional_state": "Kooperativ und aufmerksam, zeigt guten Willen und Vokabelerinnerung, aber leichte Unsicherheit bei metakognitiven Rückfragen.",
+      "session_highlight": "Runde 5: Nachdem der Lehrer von Englisch auf Deutsch umgesteuert hat, antwortet der Student sofort mit der korrekten Sprachhandlung (Bedeutung von 'Eingang' nennen) – demonstriert klare Kanonalignierung bei präziser Führung."
+    },
+    {
+      "day": 1,
+      "subject_area": "Interaktion mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "heiße",
+          "stable": true
+        },
+        {
+          "word": "komme",
+          "stable": true
+        },
+        {
+          "word": "aus den USA",
+          "stable": true
+        },
+        {
+          "word": "Fahrplan",
+          "stable": false
+        },
+        {
+          "word": "Zug",
+          "stable": false
+        },
+        {
+          "word": "fahren",
+          "stable": false
+        },
+        {
+          "word": "seit",
+          "stable": false
+        },
+        {
+          "word": "Monaten",
+          "stable": false
+        },
+        {
+          "word": "lernen",
+          "stable": false
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "seit + Dativ",
+          "stable": false
+        },
+        {
+          "rule": "aus + Dativ (aus den USA)",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [
+        "Fehlender Artikel vor Nomen (A1-typisch)",
+        "Code-switching zur metakognitiven Planung (Englisch) bei unklarer Steuerung",
+        "Unsicherheit bei Zeitangaben (sechs Monate/sechs Monaten)"
+      ],
+      "improvements_from_prior": [
+        "Bei klarer Lehrersteuerung sofortige kanonalignierte Reaktion (wie an besten Tagen)",
+        "Eigeninitiative zur Fehlerreflexion und Selbstkorrektur",
+        "Kein Rückfall in soziale Abschlussformeln bei klarer Führung"
+      ],
+      "emotional_state": "kooperativ, abhängig von klarer Führung, aber motiviert bei Erfolg",
+      "session_highlight": "Runde 5: Student signalisiert Verwirrung bei Zeitangabe und fragt implizit nach Korrektur – exakt die Zielsprachhandlung der Kannbeschreibung (Verständnissicherung/Nachfrage) bei klarer Lehrersteuerung."
+    },
+    {
+      "day": 173,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "Eingang",
+          "stable": true
+        },
+        {
+          "word": "Warteraum",
+          "stable": false
+        },
+        {
+          "word": "Wartesaal",
+          "stable": false
+        },
+        {
+          "word": "Abfahrt",
+          "stable": true
+        },
+        {
+          "word": "nur für Personal",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Elliptische Syntax in spontanen Äußerungen (A1-typisch)",
+          "stable": true
+        },
+        {
+          "rule": "Code-switching zur metakognitiven Planung (Englisch) als funktionales Muster",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [
+        "Abhängigkeit von klarer, kanonalignierter Lehrersteuerung – bei unklarer Führung Drift in metakognitive Nachfrage auf Englisch",
+        "Unsicherheit bei Wortfelddifferenzierung (Warteraum/Wartesaal/Wartezimmer)"
+      ],
+      "improvements_from_prior": [
+        "Kein Rückfall in soziale Abschlussformeln oder reine Metakognition bei klarer Steuerung – deutliche Verbesserung gegenüber Day 174 und 176",
+        "Sofortige Rückkehr zur Zielsprachhandlung nach kurzer metakognitiver Planung auf Englisch – stabileres Muster als an früheren Tagen"
+      ],
+      "emotional_state": "konzentriert, bei Unsicherheit kurz irritiert, aber durch klare Führung schnell zurück in die Aufgabe",
+      "session_highlight": "Runde 6: Student liest 'Staff only', signalisiert Verstehen und gibt 'nur für Personal' weiter – trotz kurzem englischen Planungsschritt vollständig kanonaligniert und ohne Drift."
+    },
+    {
+      "day": 176,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "Check-out",
+          "stable": true
+        },
+        {
+          "word": "Zimmer verlassen",
+          "stable": true
+        },
+        {
+          "word": "bis elf Uhr",
+          "stable": true
+        },
+        {
+          "word": "Frühstücksraum",
+          "stable": true
+        },
+        {
+          "word": "Zimmerservice",
+          "stable": true
+        },
+        {
+          "word": "Rezeption",
+          "stable": true
+        },
+        {
+          "word": "Empfang",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Verwendung von 'bis' für Fristen",
+          "stable": true
+        },
+        {
+          "rule": "Verwendung von 'von...bis' für Zeiträume",
+          "stable": true
+        },
+        {
+          "rule": "Verständnissicherung mit 'Ist das klar?'",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [
+        "Fehlender Artikel vor Nomen (A1-typisch)",
+        "Elliptische Satzstruktur (A1-typisch)",
+        "Abhängigkeit von klarer Lehrersteuerung – Drift in soziale Abschlussformeln bei unklaren Prompts"
+      ],
+      "improvements_from_prior": [
+        "Kein Drift in soziale Formeln bei klarer Steuerung – im Gegensatz zu Tag 176 Runden 6-7",
+        "Konsistente Integration von Verständnissicherung ('Ist das klar?') in mehreren Runden",
+        "Produktiver Aushandlungsprozess bei Wortwahl (z.B. 'Ausgang? Nein, das ist exit') statt Drift",
+        "Übertrifft Kannbeschreibung durch zusätzliche Zeit- und Ortsangaben"
+      ],
+      "emotional_state": "Engagiert und selbstständig bei klarer Führung, zeigt situatives Engagement und produktive Unsicherheit",
+      "session_highlight": "Runde 5: Übersetzung von 'Frühstücksraum' mit Zeitangabe ('von sieben bis zehn Uhr') und Verständnissicherung – vollständig kanonaligniert und kommunikativ erfolgreich."
+    },
+    {
+      "day": 165,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "Frühstück",
+          "stable": true
+        },
+        {
+          "word": "Zeit",
+          "stable": true
+        },
+        {
+          "word": "Essen",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [],
+      "persistent_errors": [
+        "Abhängigkeit von klarer, kanonalignierter Lehrersteuerung – bei unklaren Prompts Drift in Metakognition (Englisch)"
+      ],
+      "improvements_from_prior": [
+        "Nach initialem Drift in Runde 1 (metakognitive Planung auf Englisch) sofortige Rückkehr zur Zielsprachhandlung bei klarem Prompt",
+        "Durchgängig kanonalignierte Leistung in Runden 2–7: präzise Auswahl und Weitergabe von Einzelinformationen (Preis, Zeit) in der gemeinsamen Sprache",
+        "Kein Rückfall in soziale Abschlussformeln oder Meta-Kommentare bei klarer Steuerung"
+      ],
+      "emotional_state": "stabil, fokussiert bei klarer Führung",
+      "session_highlight": "Runde 5: Perfekte Weitergabe des Kaffeepreises (2,50 €) auf Englisch – minimal, aber vollständig kanonaligniert und kommunikativ erfolgreich."
+    },
+    {
+      "day": 165,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "Fahrkarten",
+          "stable": false
+        },
+        {
+          "word": "Abfahrt",
+          "stable": false
+        },
+        {
+          "word": "Preis",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "von ... bis korrekt verwendet",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [
+        "fehlender Artikel vor Nomen (A1-typisch)",
+        "elliptische Satzstruktur (A1-typisch)",
+        "Abhängigkeit von klarer Lehrersteuerung – Drift in soziale Abschlussformeln oder Metakognition bei unklaren Prompts"
+      ],
+      "improvements_from_prior": [
+        "Konsistente Kanonalignierung bei klaren, situativen Prompts (bestätigt Muster aus Tagen 165, 173, 176)",
+        "Schnelle Erholung aus Drift in Runde 5/6 zurück zur Zielsprachhandlung in Runde 7",
+        "Selbsteinschätzung des Übungsbedarfs bei ganzen Sätzen – realistische Reflexion ohne Drift"
+      ],
+      "emotional_state": "stabil, aufgabenorientiert, akzeptiert Feedback konstruktiv",
+      "session_highlight": "Runde 3: Korrekte Weitergabe der Frühstückszeit ('von sieben bis zehn Uhr') mit präziser Auswahl der relevanten Information – vollständig kanonaligniert und kommunikativ erfolgreich."
+    },
+    {
+      "day": 165,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "teilweise",
+      "vocabulary_learned": [
+        {
+          "word": "Fahrkarten",
+          "stable": false
+        },
+        {
+          "word": "Abendessen",
+          "stable": false
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Artikel vor Nomen (der/die/das)",
+          "stable": false
+        }
+      ],
+      "persistent_errors": [
+        "Fehlender Artikel vor Nomen (A1-typisch)",
+        "Abhängigkeit von klarer Lehrersteuerung – Drift in Metakognition oder reine Wiederholung bei unklaren Prompts"
+      ],
+      "improvements_from_prior": [
+        "Bessere Situationswahrnehmung in frühen Runden (kein Drift in Metakognition oder soziale Formeln)",
+        "Annahme von Lehrersteuerung und korrekte Wiederholung der Zielstruktur"
+      ],
+      "emotional_state": "Kooperativ, aber unsicher bei selbstständiger Mediation; zeigt Bereitschaft zur Korrektur",
+      "session_highlight": "Runde 5: Erfolgreiche Weitergabe der Endzeit (21 Uhr) auf Englisch mit deutschem Satz – kommunikativ effektiv und kanonaligniert"
     }
   ],
   "yuki": [
@@ -22262,6 +22981,337 @@
       ],
       "emotional_state": "sicher und selbstbewusst",
       "session_highlight": "Perfekte 5/7 ON-TRACK-Runden mit sofortigen, präzisen Übersetzungen verschiedener Hotelbegriffe (Check-in als 'Ankunft im Hotel', Check-out als 'Abreise' mit Erklärung 'Sie verlassen das Zimmer') und automatischer Verständnissicherung"
+    },
+    {
+      "day": 100,
+      "subject_area": "Rezeption schriftlich",
+      "kann_result": "teilweise",
+      "vocabulary_learned": [
+        {
+          "word": "Eingang",
+          "stable": true
+        },
+        {
+          "word": "Ausgang",
+          "stable": true
+        },
+        {
+          "word": "Schild",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Genusbewusstsein (der Eingang vs. das Schild)",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [],
+      "improvements_from_prior": [
+        "Student zeigt vertieftes Verständnis durch metasprachliche Reflexion über Genus (über A1-Niveau)",
+        "Student erweitert Sprachhandlung um bewusste Struktur (Das Schild sagt... Das bedeutet...)"
+      ],
+      "emotional_state": "neutral bis positiv",
+      "session_highlight": "Student demonstriert in Runde 5 metasprachliches Bewusstsein für grammatisches Geschlecht von Aufschrift-Wörtern, was über die reine Übersetzung hinausgeht."
+    },
+    {
+      "day": 1,
+      "subject_area": "Interaktion mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "USA",
+          "stable": true
+        },
+        {
+          "word": "verstehen",
+          "stable": true
+        },
+        {
+          "word": "Entschuldigung",
+          "stable": true
+        },
+        {
+          "word": "fragen",
+          "stable": true
+        },
+        {
+          "word": "langsam",
+          "stable": true
+        },
+        {
+          "word": "woher",
+          "stable": true
+        },
+        {
+          "word": "kommen",
+          "stable": true
+        },
+        {
+          "word": "Deutsch",
+          "stable": true
+        },
+        {
+          "word": "Monaten",
+          "stable": true
+        },
+        {
+          "word": "spreche",
+          "stable": true
+        },
+        {
+          "word": "Zug",
+          "stable": true
+        },
+        {
+          "word": "Fahrplan",
+          "stable": true
+        },
+        {
+          "word": "14 Uhr 30",
+          "stable": true
+        },
+        {
+          "word": "halb drei",
+          "stable": true
+        },
+        {
+          "word": "fährt",
+          "stable": true
+        },
+        {
+          "word": "nachmittags",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Korrekte Satzstruktur (Aussagesatz)",
+          "stable": true
+        },
+        {
+          "rule": "Modalverbverwendung (möchte)",
+          "stable": true
+        },
+        {
+          "rule": "Dativ mit 'seit' (seit drei Monaten)",
+          "stable": true
+        },
+        {
+          "rule": "Einfache Verknüpfung mit 'aber'",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [],
+      "improvements_from_prior": [],
+      "emotional_state": "sicher, aktiv, kooperativ",
+      "session_highlight": "Student zeigte durchgängig sicheres A1-Niveau, nutzte aktiv Nachfragen und Verständnissignale, und produzierte korrekte Sätze mit Dativ und Modalverb – keine Rückschritte, konsistent ON TRACK."
+    },
+    {
+      "day": 173,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "Ausgang",
+          "stable": true
+        },
+        {
+          "word": "Zug",
+          "stable": true
+        },
+        {
+          "word": "geöffnet",
+          "stable": true
+        },
+        {
+          "word": "Café",
+          "stable": true
+        },
+        {
+          "word": "Fundbüro",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Das bedeutet + Nomen",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [],
+      "improvements_from_prior": [
+        "Konsistente Beherrschung der A1-Sprachmittlung über mehrere Tage hinweg",
+        "Sofortige und präzise Übersetzung von Aufschriften ohne Nachfragen (außer einer Runde mit Verständnisproblem, das aber situativ angemessen gelöst wurde)"
+      ],
+      "emotional_state": "sicher und aufgabenorientiert",
+      "session_highlight": "Perfekte 7/7 Runden mit konsistentem Mastery-Niveau – die Studentin zeigt vollständige Beherrschung der A1-Sprachmittlungsaufgabe, inklusive einer gelungenen Reparatursequenz bei unklarer Aufschrift."
+    },
+    {
+      "day": 176,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "das Zimmer",
+          "stable": true
+        },
+        {
+          "word": "die Uhr",
+          "stable": true
+        },
+        {
+          "word": "die Stunde",
+          "stable": true
+        },
+        {
+          "word": "der Tag",
+          "stable": true
+        },
+        {
+          "word": "zeit",
+          "stable": true
+        },
+        {
+          "word": "wohnen",
+          "stable": true
+        },
+        {
+          "word": "Gepäck",
+          "stable": true
+        },
+        {
+          "word": "Koffer",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Use of 'bis' for deadlines",
+          "stable": true
+        },
+        {
+          "rule": "Correct use of 'Das bedeutet' in explanations",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [
+        "Occasional missing article before nouns (e.g., 'Zimmer')",
+        "Occasional omission of comprehension check after translation"
+      ],
+      "improvements_from_prior": [
+        "Maintained strong mediation performance from prior days with clear, situationally appropriate translations",
+        "Successfully adapted teacher's model utterance from prior turn",
+        "Consistent use of time context and comprehension checks in most rounds"
+      ],
+      "emotional_state": "confident and engaged, with slight fatigue or distraction in later rounds leading to drift",
+      "session_highlight": "Round 2: Perfect translation of 'breakfast' to 'Frühstück' with added time info and comprehension check, demonstrating full mastery of the task."
+    },
+    {
+      "day": 165,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "Frühstück",
+          "stable": true
+        },
+        {
+          "word": "Kaffee",
+          "stable": true
+        },
+        {
+          "word": "Preis",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "von ... bis (Zeitangabe)",
+          "stable": true
+        },
+        {
+          "rule": "kostet (Preisangabe)",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [],
+      "improvements_from_prior": [
+        "Consistent accurate relay of time and price facts from German to shared language",
+        "Maintained strong mediation performance from Day 176 and prior days",
+        "No hesitation or errors in any round"
+      ],
+      "emotional_state": "confident and on-task",
+      "session_highlight": "Student flawlessly extracted and relayed breakfast time and coffee price from a café menu across multiple rounds, demonstrating full mastery of A1 mediation tasks."
+    },
+    {
+      "day": 165,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "Fahrt",
+          "stable": true
+        },
+        {
+          "word": "Feiertag",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "Modalverb 'können' + Infinitiv (z.B. 'können kaufen')",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [
+        "Missing article before 'Fahrkarten' (minor, acceptable at A1)",
+        "Missing article before 'Sitzplätze'",
+        "Wrong case in 'Hier ist Sitzplätze draußen' (should be 'Hier sind Sitzplätze draußen')"
+      ],
+      "improvements_from_prior": [
+        "Produces complete sentences instead of fragments, showing syntactic growth",
+        "Consistently extracts and relays key information accurately across all rounds",
+        "Builds on prior mastery of mediation tasks (Day 165, 176) with confidence"
+      ],
+      "emotional_state": "confident and engaged",
+      "session_highlight": "Round 1: First complete German sentence with correct modal verb 'können' and infinitive 'kaufen', demonstrating clear progress in syntactic completeness."
+    },
+    {
+      "day": 165,
+      "subject_area": "Sprachmittlung mündlich",
+      "kann_result": "bestanden",
+      "vocabulary_learned": [
+        {
+          "word": "Frühstück",
+          "stable": true
+        },
+        {
+          "word": "Fahrkarten",
+          "stable": true
+        }
+      ],
+      "grammar_learned": [
+        {
+          "rule": "von ... bis für Zeitangaben",
+          "stable": true
+        },
+        {
+          "rule": "am + Wochentag",
+          "stable": true
+        }
+      ],
+      "persistent_errors": [
+        "Occasional missing article before nouns (e.g., 'Fahrkarten')",
+        "Occasional omission of 'Uhr' after time"
+      ],
+      "improvements_from_prior": [
+        "Consistent mediation of time facts from written texts",
+        "Correct use of 'von ... bis' construction",
+        "Maintained mastery from Day 165 and prior sessions"
+      ],
+      "emotional_state": "neutral, task-focused",
+      "session_highlight": "Round 5: Student correctly relayed breakfast time and location in a full German sentence, demonstrating strong mediation skills."
     }
   ]
 }
